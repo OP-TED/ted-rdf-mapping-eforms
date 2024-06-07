@@ -1024,7 +1024,7 @@ tedm:MG-Lot_ND-LotProcurementScope a rr:TriplesMap ;
         [
             rdfs:label "BT-27-Lot";
             rdfs:comment "Estimated Value of MG-Lot under ND-LotProcurementScope";
-            rr:predicate epo:hasAmountValue  ;
+            rr:predicate epo:hasEstimatedValue ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:MG-MonetaryValue-hasEstimatedValue-Lot_ND-LotValueEstimate;
@@ -1312,7 +1312,7 @@ tedm:MG-EAuctionTechnique-usesTechnique-Lot_ND-AuctionTerms a rr:TriplesMap ;
         [
             rdfs:label "ND-AuctionTerms";
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_AuctionTerms_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-            rr:class epo:EAuctionTechniqueUsage
+            rr:class epo:EAuctionTechnique ;
         ] ;
     rr:predicateObjectMap
         [
@@ -1649,6 +1649,7 @@ tedm:MG-MultipleStageProcedureTerm-isSubjectToLotSpecificTerm-Lot_ND-SecondStage
             rr:objectMap
                 [
                     rml:reference "cbc:MinimumQuantity";
+                    rr:datatype xsd:integer ;
                 ] ;
         ]
 .
