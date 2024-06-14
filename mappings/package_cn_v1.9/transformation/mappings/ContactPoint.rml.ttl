@@ -91,20 +91,6 @@ tedm:MG-ContactPoint_ND-Touchpoint a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "OPT-201-Organization-TouchPoint" ;
-            rdfs:comment "TouchPoint Technical Identifier" ;
-            rr:predicate adms:identifier ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-Identifier-identifier-ContactPoint_ND-Touchpoint ;
-                    rr:joinCondition [
-                        rr:child "path(.)" ;
-                        rr:parent "path(../.)" ;
-                    ] ;
-                ]
-        ] ;
-    rr:predicateObjectMap
-        [
             rr:predicate locn:address ;
             rr:objectMap
                 [
@@ -123,42 +109,6 @@ tedm:MG-ContactPoint_ND-Touchpoint a rr:TriplesMap ;
                 [
                     rml:reference "cbc:WebsiteURI" ;
                     rr:datatype xsd:anyURI ;
-                ] ;
-        ] ;
-.
-
-tedm:MG-Identifier-identifier-ContactPoint_ND-Touchpoint a rr:TriplesMap ;
-    rdfs:label "MG-Identifier" ;
-    rdfs:comment "The identifier of a touchpoint" ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:TouchPoint/cac:PartyIdentification" ;
-            rml:referenceFormulation ql:XPath
-        ];
-    rr:subjectMap
-        [
-            rdfs:label "ND-Touchpoint" ;
-            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Identifier_' || cbc:ID else null" ;
-            rr:class epo:Identifier
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "identifier";
-            rr:predicate skos:notation ;
-            rr:objectMap
-                [
-                    rml:reference "cbc:ID";
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "OPT-200-Organization-TouchPoint-Scheme" ;
-            rdfs:comment "Scheme of MG-Identifier for MG-ContactPoint under ND-Touchpoint" ;
-            rr:predicate epo:hasScheme ;
-            rr:objectMap
-                [
-                    rml:reference "cbc:ID/@schemeName";
                 ] ;
         ] ;
 .

@@ -2670,29 +2670,6 @@ tedm:MG-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lot_ND-AwardingTerms 
                     ];
                 ] ;
         ];
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-45-Lot";
-            rdfs:comment "RewardsOther of MG-DesignContestRegimeTerm under ND-Prize";
-            rr:predicate  epo:hasFollowupContractInformation ;
-
-            rr:objectMap
-                [
-                   rml:reference "cac:Prize/cbc:Description";
-                   rml:languageMap [
-                        fnml:functionValue [
-                            rr:predicateObjectMap [
-                                rr:predicate idlab-fn:str ;
-                                rr:objectMap [ rml:reference "cac:Prize/cbc:Description/@languageID" ]
-                                ] ,
-                                tedm:idlab-fn_executes_lookup ,
-                                tedm:idlab-fn_inputFile_language ,
-                                tedm:idlab-fn_fromColumn_code ,
-                                tedm:idlab-fn_toColumn_code
-                        ]
-                    ] ;
-                ] ;
-        ];
 .
 
 tedm:MG-Prize-definesPrize-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lot_ND-Prize a rr:TriplesMap ;
@@ -2706,33 +2683,31 @@ tedm:MG-Prize-definesPrize-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lo
     rr:subjectMap
         [
             rdfs:label  "ND-Prize";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Prize_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Prize_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:Prize
         ] ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-44-Lot";
             rdfs:comment "PrizeRank of MG-Prize under ND-Prize";
-            rr:predicate  epo:hasPrizeRank;
-
+            rr:predicate epo:hasPrizeRank;
             rr:objectMap
                 [
                     rml:reference "cbc:RankCode";
-                   rr:datatype xsd:integer;
+                    rr:datatype xsd:integer;
                 ] ;
         ];
     rr:predicateObjectMap
         [
             rdfs:label "BT-644-Lot";
             rdfs:comment "PrizeValue of MG-Prize under ND-Prize";
-            rr:predicate  epo:hasPrizeValue ;
-
+            rr:predicate epo:hasPrizeValue ;
             rr:objectMap
                 [
                    rr:parentTriplesMap tedm:MG-MonetaryValue-hasPrizeValue-Prize-definesPrize-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lot_ND-Prize ;
-                    rr:joinCondition[
+                    rr:joinCondition [
                         rr:child "path(.)";
-                        rr:parent "path(.)"
+                        rr:parent "path(.)";
                     ];
                 ] ;
         ];
@@ -2749,15 +2724,14 @@ tedm:MG-MonetaryValue-hasPrizeValue-Prize-definesPrize-DesignContestRegimeTerm-i
     rr:subjectMap
         [
             rdfs:label  "ND-Prize";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_MonetaryValue_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_MonetaryValue_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:MonetaryValue
         ] ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-644-Lot";
             rdfs:comment "PrizeValue of MG-MonetaryValue under ND-Prize";
-            rr:predicate  epo:hasAmountValue ;
-
+            rr:predicate epo:hasAmountValue ;
             rr:objectMap
                 [
                    rml:reference "cbc:ValueAmount";
@@ -4583,37 +4557,12 @@ tedm:MG-Address-address-Location-definesSpecificPlaceOfPerformance-ContractTerm-
     rr:predicateObjectMap
         [
             # TODO min SDK 1.3 max SDK 1.4
-            rdfs:label "BT-5101(a)-Lot";
-            rdfs:comment "Place Performance Street of MG-Address under NND-LotPerformanceAddress";
+            rdfs:label "BT-5101(a|b|c)-, BT-5121-, BT-5131-, 5141-lot" ;
+            rdfs:comment "Place Performance Street, Place Performance Streetline 1, Place Performance Streetline 2, Place Performance City, Place Performance Post Code, Place Performance Country Code" ;
             rr:predicate locn:fullAddress ;
             rr:objectMap
                 [
-                    tedm:minSDKVersion "1.5.12" ;
-                    rml:reference "cbc:StreetName";
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            # TODO min SDK 1.3 max SDK 1.4
-            rdfs:label "BT-5101(b)-Lot";
-            rdfs:comment "Place Performance Streetline 1 of MG-Address under ND-LotPerformanceAddress";
-            rr:predicate  locn:fullAddress  ;
-            rr:objectMap
-                [
-                    tedm:minSDKVersion "1.5.12" ;
-                    rml:reference "cbc:AdditionalStreetName";
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            # TODO min SDK 1.3 max SDK 1.4
-            rdfs:label "BT-5101(c)-Lot";
-            rdfs:comment "Place Performance Streetline 2 of MG-Address under ND-LotPerformanceAddress";
-            rr:predicate locn:fullAddress ;
-            rr:objectMap
-                [
-                    tedm:minSDKVersion "1.5.12" ;
-                    rml:reference "cac:AddressLine/cbc:Line";
+                    rml:reference "replace(replace(cbc:StreetName || ', ' || cbc:AdditionalStreetName || ', ' || cac:AddressLine/cbc:Line || ', ' || cbc:CityName || ', ' || cbc:PostalZone || ', ' || cac:Country/cbc:IdentificationCode, '(, )+', ', '),  '^, |, $', '')" ;
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -4631,49 +4580,13 @@ tedm:MG-Address-address-Location-definesSpecificPlaceOfPerformance-ContractTerm-
     rr:predicateObjectMap
         [
             # TODO min SDK 1.3 max SDK 1.4
-            rdfs:label "BT-5131-Lot";
-            rdfs:comment "Place Performance City of MG-Address under ND-LotPerformanceAddress";
-            rr:predicate  locn:fullAddress ;
-            rr:objectMap
-                [
-                    tedm:minSDKVersion "1.5.12" ;
-                    rml:reference "cbc:CityName";
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            # TODO min SDK 1.3 max SDK 1.4
             rdfs:label "BT-5121-Lot";
-            rdfs:comment "Place Performance  Post Code of MG-Address under ND-LotPerformanceAddress";
+            rdfs:comment "Place Performance Post Code of MG-Address under ND-LotPerformanceAddress";
             rr:predicate locn:postCode ;
             rr:objectMap
                 [
                     tedm:minSDKVersion "1.5.12" ;
                     rml:reference "cbc:PostalZone";
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            # TODO min SDK 1.3 max SDK 1.4
-            rdfs:label "BT-5121-Lot";
-            rdfs:comment "Place Performance  Post Code of MG-Address under ND-LotPerformanceAddress";
-            rr:predicate locn:fullAddress ;
-            rr:objectMap
-                [
-                    tedm:minSDKVersion "1.5.12" ;
-                    rml:reference "cbc:PostalZone";
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            # TODO min SDK 1.3 max SDK 1.4
-            rdfs:label "BT-5141-Lot";
-            rdfs:comment "Place Performance Country Code of MG-Address under ND-LotPerformanceAddress";
-            rr:predicate locn:fullAddress ;
-            rr:objectMap
-                [
-                    tedm:minSDKVersion "1.5.12" ;
-                    rml:reference "cac:Country/cbc:IdentificationCode";
                 ] ;
         ] ;
 .
