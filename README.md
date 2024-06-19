@@ -17,6 +17,37 @@ The artefacts provided in this repository are used by the [TED-SWS system](https
 
 [Project official documentation is available here.](https://docs.ted.europa.eu/rdf-mapping/index.html)
 
+## Requirements
+
+Users need only to install the following external software tools, libraries
+and/or runtimes if developing and testing the RML mapping:
+
+- Java 11+ (tested up to 17)
+- RMLMapper-Java==v6.2.2
+
+RMLMapper is currently tied to v6.2.2 because of an [issue with conditional
+instantiation](https://github.com/RMLio/rmlmapper-java/issues/236) (currently
+fixed but yet unreleased).
+
+## RDF URI Scheme
+
+The eForms RML mappings use the URI scheme `{ns}id_{notice-id}_{concept}_{trailer}`, where:
+
+- `{ns}` is a base namespace, in this case `http://data.europa.eu/a4g/resource/`
+- `{concept}` is either (i) an ontology fragment label or (ii) source element label, with a suffix or prefix
+- `{trailer}` is either (i) an ID value (if the resource has one) or (ii) an _online_ computed, deterministic hash
+- Root concepts such as `epo:Notice` end up to only the `{concept}`
+
+Expanding on some of the components for further clarity:
+
+- Whether a `concept` is an ontology fragment or source element label, and whether this label has a suffix (rarely) or prefix, depends on the subjective (human) evaluation of whether only having the class name is sufficient hint of what the URI represents.
+- The trailer, when a hash, is computed (seeded) with the XPath named element (e.g. `cbc:ID`) or (often relative) path (e.g. `path(cbc:ID)`) of what is being mapped, and therefore lends a unique identity to the URI. This yields reproducible URIs across RML TripleMaps, in case a resource needed to be instantiated at different XPaths, for whatever purpose.
+  - A Lot or any other resource with an inherent ID, would simply have its `cbc:ID` value as the trailer, for e.g. `epd:id_14549263-b47b-4e59-96a1-2d0d13e19343_Lot_LOT-0001`, which is very useful for linking purposes at orthogonal XPaths (e.g. wherever an `id-ref` is concerned, that ID could simply be used to produce a linkable URI without having to navigate XPaths).
+  - Any other resource where there is no inherent ID would have a hash that is unique to the XPath it represents, e.g. an `epo:Purpose` instance, if instantiated at different XPaths for associating different attributes, would have the same URI across those instantiations, resulting in one unique instance and no duplication due to multiple mappings.
+    - The `adms:Identifier`, although having an ID, may still get a hash instead of ID in its trailer, as it may not have a short ID that is sensible to use/read (however we may not have enforced this rule strongly)
+
+Note: Wherever _URI_ is mentioned, [IRI](https://www.w3.org/2001/Talks/0912-IUC-IRI/paper.html#:~:text=In%20principle%2C%20the%20definition%20of,us%2Dascii%20characters%20in%20URIs) is meant. Also, the generation of hashes is done _online_ against a remote HTTP web API endpoint offering this function, during transformation (which can otherwise be an offline process).
+
 ## Contributing
 
 You are more than welcome to help expand and mature this project.
