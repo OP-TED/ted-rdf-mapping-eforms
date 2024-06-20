@@ -60,7 +60,7 @@ tedm:MG-EmploymentInformationProvider_ND-LotEmploymentLegislation a rr:TriplesMa
     rr:subjectMap [
         rdfs:label "ND-LotEmploymentLegislation" ;
         rr:class epo:EmploymentInformationProvider ;
-        rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_EmploymentInformationProvider_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+        rml:reference "if(exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_EmploymentInformationProvider_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null";
     ] ;
     tedm:minSDKVersion "1.5.12" .
 

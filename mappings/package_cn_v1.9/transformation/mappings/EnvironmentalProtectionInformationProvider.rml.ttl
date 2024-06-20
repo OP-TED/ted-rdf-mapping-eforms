@@ -15,6 +15,11 @@ tedm:MG-EnvironmentalProtectionInformationProvider_ND-LotEnvironmentalLegislatio
         rml:referenceFormulation ql:XPath ;
         rml:source "data/source.xml" ;
     ] ;
+    rr:subjectMap [
+        rdfs:label "ND-LotEnvironmentalLegislation" ;
+        rr:class epo:EnvironmentalProtectionInformationProvider ;
+        rml:reference "if(exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_EnvironmentalProtectionInformationProvider_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw') else null";
+    ] ;
     rr:predicateObjectMap [
         rdfs:label "OPT-301-Lot-EnvironLegis" ;
         rdfs:comment "Connection between AgentInRole and Organization OR ContactPoint" ;
@@ -57,11 +62,7 @@ tedm:MG-EnvironmentalProtectionInformationProvider_ND-LotEnvironmentalLegislatio
         ] ;
         rr:predicate epo:contextualisedBy ;
     ] ;
-    rr:subjectMap [
-        rdfs:label "ND-LotEnvironmentalLegislation" ;
-        rr:class epo:EnvironmentalProtectionInformationProvider ;
-        rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_EnvironmentalProtectionInformationProvider_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-    ] ;
+
     tedm:minSDKVersion "1.5.12" .
 
 

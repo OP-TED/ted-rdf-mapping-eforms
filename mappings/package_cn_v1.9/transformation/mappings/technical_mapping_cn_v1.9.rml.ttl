@@ -50,6 +50,16 @@ tedm:MG-CompetitionNotice_ND-Root
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Notice" ;
             rr:class epo-not:CompetitionNotice
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-04-notice" ;
+            rdfs:comment "Procedure Identifier of MG-Procedure-announcesProcedure-CompetitionNotice under ND-Root" ;
+            rr:predicate epo:announcesProcedure ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Procedure_ND-ProcedureProcurementScope
+                ] ;
+        ] ;
     # this is an example of a (backpropagated) association that is not represented by a BT/field
     rr:predicateObjectMap
         [
@@ -203,7 +213,8 @@ tedm:MG-CompetitionNotice_ND-Root
                     rr:parentTriplesMap tedm:MG-Mediator_ND-LotReviewTerms ;
                 ] ;
         ] ;
-    rr:predicateObjectMap [
+    rr:predicateObjectMap
+        [
             rdfs:label "MG-Lot-announcesLot-CompetitionNotice" ;
             rdfs:comment "MG-Lot-announcesLot-CompetitionNotice under ND-Lot" ;
             rr:predicate epo:announcesLot ;
@@ -212,7 +223,7 @@ tedm:MG-CompetitionNotice_ND-Root
                     rr:parentTriplesMap tedm:MG-Lot_ND-Lot
                 ] ;
         ] ;
-     rr:predicateObjectMap
+    rr:predicateObjectMap
         [
             rdfs:label "MG-EmploymentInformationProvider-announcesRole-CompetitionNotice" ;
             rdfs:comment "MG-EmploymentInformationProvider-announcesRole-CompetitionNotice under ND-LotEmploymentLegislation" ;
@@ -223,7 +234,7 @@ tedm:MG-CompetitionNotice_ND-Root
                     rr:parentTriplesMap tedm:MG-EmploymentInformationProvider-announcesRole-CompetitionNotice_ND-LotEmploymentLegislation;
                 ] ;
         ] ;
-     rr:predicateObjectMap
+    rr:predicateObjectMap
         [
             rdfs:label "BT-46-Lot" ;
             rdfs:comment "JuryMemberName of MG-CompetitionNotice under ND-AwardingTermsJuryMember" ;
@@ -409,6 +420,16 @@ tedm:MG-Notice_ND-Root
                     rr:datatype xsd:date ;
                 ] ;
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "MG-Lot-refersToLot-Notice" ;
+            rdfs:comment "MG-Lot-refersToLot-Notice under ND-Lot" ;
+            rr:predicate epo:refersToLot ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Lot_ND-Lot
+                ] ;
+        ] ;
 .
 
 # this is an example of a composition instance
@@ -461,7 +482,7 @@ tedm:MG-EmploymentInformationProvider-announcesRole-CompetitionNotice_ND-LotEmpl
     rr:subjectMap
         [
             rdfs:label "ND-LotEmploymentLegislation" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_EmploymentInformationProvider_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rml:reference "if(exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_EmploymentInformationProvider_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null";
             rr:class epo:EmploymentInformationProvider
         ] ;
     rr:predicateObjectMap
@@ -581,8 +602,9 @@ tedm:MG-EnvironmentalProtectionInformationProvider-announcesRole-CompetitionNoti
         [
             rdfs:label "ND-LotEmploymentLegislation" ;
             rdfs:comment "ND-LotEnvironmentalLegislation";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_EnvironmentalProtectionInformationProvider_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rml:reference "if(exists(cac:EnvironmentalLegislationDocumentReference/cac:IssuerParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_EnvironmentalProtectionInformationProvider_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null";
             rr:class epo:EnvironmentalProtectionInformationProvider
+
         ] ;
     rr:predicateObjectMap
         [

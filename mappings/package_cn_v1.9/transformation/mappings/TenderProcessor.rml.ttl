@@ -36,7 +36,7 @@ tedm:MG-TenderProcessor_ND-LotTenderingTerms a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-LotTenderingTerms" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_TenderProcessor_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rml:reference "if(exists(cac:TenderEvaluationParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_TenderProcessor_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null";
             rr:class epo:TenderProcessor
         ] ;
     rr:predicateObjectMap
@@ -47,17 +47,17 @@ tedm:MG-TenderProcessor_ND-LotTenderingTerms a rr:TriplesMap ;
             rr:objectMap
                 [
                     rdfs:label "ORG (playedBy)" ;
-                    rdfs:comment "Connection where IssuerParty is an Organization" ;
+                    rdfs:comment "Connection where TenderEvaluationParty is an Organization" ;
                     rr:parentTriplesMap tedm:MG-Organization_ND-Company ;
                     rr:joinCondition [
-                        rr:child "if(cac:TenderEvaluationParty/cac:PartyIdentification/cbc:ID/@schemeName='organization' or exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID[starts-with(text(), 'ORG-')])) then cac:TenderEvaluationParty/cac:PartyIdentification/cbc:ID else null" ;
+                        rr:child "if(cac:TenderEvaluationParty/cac:PartyIdentification/cbc:ID/@schemeName='organization' or exists(cac:TenderEvaluationParty/cac:PartyIdentification/cbc:ID[starts-with(text(), 'ORG-')])) then cac:TenderEvaluationParty/cac:PartyIdentification/cbc:ID else null" ;
                         rr:parent "cac:PartyIdentification/cbc:ID" ;
                     ] ;
                 ]
                 ,
                 [
                     rdfs:label "TPO (playedBy)" ;
-                    rdfs:comment "Connection where IssuerParty is a TouchPoint" ;
+                    rdfs:comment "Connection where TenderEvaluationParty is a TouchPoint" ;
                     # we create a deterministic IRI which is the same as that instantiated alongside the ContactPoint and rely on the sameAs link
                     rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Organization_{cac:TenderEvaluationParty/cac:PartyIdentification/cbc:ID}" ;
                 ] ;
@@ -65,13 +65,13 @@ tedm:MG-TenderProcessor_ND-LotTenderingTerms a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rdfs:label "OPT-301-Lot-TenderEval TPO (hasContactPointInRole)" ;
-            rdfs:comment "Connection where IssuerParty is a TouchPoint" ;
+            rdfs:comment "Connection where TenderEvaluationParty is a TouchPoint" ;
             rr:predicate epo:hasContactPointInRole ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:MG-ContactPoint_ND-Touchpoint ;
                     rr:joinCondition [
-                        rr:child "if(cac:TenderEvaluationParty/cac:PartyIdentification/cbc:ID/@schemeName='touchpoint' or exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID[starts-with(text(), 'TPO-')])) then cac:TenderEvaluationParty/cac:PartyIdentification/cbc:ID else null" ;
+                        rr:child "if(cac:TenderEvaluationParty/cac:PartyIdentification/cbc:ID/@schemeName='touchpoint' or exists(cac:TenderEvaluationParty/cac:PartyIdentification/cbc:ID[starts-with(text(), 'TPO-')])) then cac:TenderEvaluationParty/cac:PartyIdentification/cbc:ID else null" ;
                         rr:parent "cac:PartyIdentification/cbc:ID" ;
                     ] ;
                 ] ;

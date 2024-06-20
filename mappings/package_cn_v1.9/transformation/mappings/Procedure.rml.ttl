@@ -914,7 +914,12 @@ tedm:MG-MonetaryValue-hasEstimatedValue-Procedure_ND-ProcedureValueEstimate a rr
             rr:predicate epo:hasCurrency ;
             rr:objectMap
                 [
-                    rml:reference "cbc:EstimatedOverallContractAmount/@currencyID";
+                    rdfs:label "at-voc:currency" ;
+                    rr:parentTriplesMap tedm:currency ;
+                    rr:joinCondition [
+                        rr:child "cbc:EstimatedOverallContractAmount/@currencyID" ;
+                        rr:parent "code.value" ;
+                    ] ;
                 ] ;
         ]
 .
@@ -950,7 +955,12 @@ tedm:MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-Procedure_ND-Proce
             rr:predicate epo:hasCurrency ;
             rr:objectMap
                 [
-                    rml:reference "efbc:FrameworkMaximumAmount/@currencyID";
+                    rdfs:label "at-voc:currency" ;
+                    rr:parentTriplesMap tedm:currency ;
+                    rr:joinCondition [
+                        rr:child "efbc:FrameworkMaximumAmount/@currencyID" ;
+                        rr:parent "code.value" ;
+                    ] ;
                 ] ;
         ]
  .
@@ -1039,7 +1049,7 @@ tedm:MG-Address-address-Location-definesSpecificPlaceOfPerformance-ContractTerm-
             rr:predicate locn:fullAddress ;
             rr:objectMap
                 [
-                    rml:reference "replace(replace(cbc:StreetName || ', ' || cbc:AdditionalStreetName || ', ' || cac:AddressLine/cbc:Line || ', ' || cbc:CityName || ', ' || cbc:PostalZone || ', ' || cac:Country/cbc:IdentificationCode, '(, )+', ', '),  '^, |, $', '')" ;
+                    rml:reference  "if (exists(cbc:StreetName) or exists(cbc:AdditionalStreetName) or exists(cac:AddressLine/cbc:Line)) then replace(replace(cbc:StreetName || ', ' || cbc:AdditionalStreetName || ', ' || cac:AddressLine/cbc:Line || ', ' || cbc:CityName || ', ' || cbc:PostalZone || ', ' || cac:Country/cbc:IdentificationCode, '(, )+', ', '),  '^, |, $', '') else null" ;
                 ] ;
         ] ;
     rr:predicateObjectMap
