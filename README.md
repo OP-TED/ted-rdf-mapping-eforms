@@ -48,6 +48,37 @@ Expanding on some of the components for further clarity:
 
 Note: Wherever _URI_ is mentioned, [IRI](https://www.w3.org/2001/Talks/0912-IUC-IRI/paper.html#:~:text=In%20principle%2C%20the%20definition%20of,us%2Dascii%20characters%20in%20URIs) is meant. Also, the generation of hashes is done _online_ against a remote HTTP web API endpoint offering this function, during transformation (which can otherwise be an offline process).
 
+## RML Files Organization
+
+The structure of the RML files (we call them _modules_ because they are modular
+files with RML rules that work together when combined) is based on the
+primary/root class of a set of mapping rules, which are part of one or more
+_Mapping Groups_ (MGs) that share such a root class (the final segment of an MG
+name). An MG represents a logical grouping of related instances/resources (like
+a `foaf:Person` with all of its properties _and_ relationships together with
+the instances of those relationships), in the form:
+
+```
+MG-{EndingClass}-{IntermediatePropertyAndClassPath}-{RootClass}
+```
+
+The class and property names in this case are separated by hyphens and do not
+include prefixes. For example, to represent that a Company has a Location which
+in turn has an Address:
+
+```
+MG-Address-hasAddress-Location-hasLocation-Company
+```
+
+In a technical mapping, the node will also be represented:
+
+```
+tedm:MG-Address-hasAddress-Location-hasLocation_ND-Company
+```
+
+This is because information for the same RDF resource can be in different
+locations in the source XML.
+
 ## Contributing
 
 You are more than welcome to help expand and mature this project.
