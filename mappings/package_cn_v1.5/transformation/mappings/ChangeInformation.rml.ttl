@@ -93,7 +93,8 @@ tedm:MG-ChangeInformation_ND-ChangeReason  a rr:TriplesMap ;
         ]   ;
 .
 
-tedm:MG-ChangeInformation_ND-Change  a rr:TriplesMap ;
+tedm:MG-ChangeInformation_ND-Change a rr:TriplesMap ;
+    # epo:relatesToEFormSectionIdentifier predicate mapping  is in versioned files (ChangeInformation_v1.3-16|v1.7+)
     rdfs:label "MG-ChangeInformation";
     rml:logicalSource
         [
@@ -107,19 +108,6 @@ tedm:MG-ChangeInformation_ND-Change  a rr:TriplesMap ;
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ChangeInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
             rr:class epo:ChangeInformation
         ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-13716-notice";
-            rr:predicate epo:relatesToEFormSectionIdentifier ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-Identifier-relatesToEFormSectionIdentifier-ChangeInformation_ND-ChangedSection ;
-                    rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(..)";
-                    ];
-                ] ;
-        ]   ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-141(a)-notice";
@@ -245,29 +233,6 @@ tedm:MG-Notice-refersToPreviousNotice-ChangeInformation_ND-Changes a rr:TriplesM
 .
 
 tedm:MG-Identifier-relatesToEFormSectionIdentifier-ChangeInformation_ND-ChangedSection a rr:TriplesMap ;
+    # subject template and predicate mappings are in versioned files (ChangeInformation_v1.3-16|v1.7+)
     rdfs:label "MG-Identifier";
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Changes/efac:Change/efac:ChangedSection";
-            rml:referenceFormulation ql:XPath
-        ];
-    rr:subjectMap
-        [
-            rdfs:label "ND-Changes";
-            rml:reference "if (exists(efbc:ChangedSectionIdentifier)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(../../efbc:ChangedNoticeIdentifier, ' ', '-' ), '/' , '-') || '_ChangedSectionIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
-            rr:class adms:Identifier
-        ] ;
-    rr:predicateObjectMap
-        [
-            # TODO min SDK 1.3 max SDK 1.6
-            rdfs:label "BT-13716-notice";
-            rdfs:comment "Change Notice Section Identifier of MG-Identifier under ND-ChangedSection";
-            rr:predicate skos:notation  ;
-            rr:objectMap
-                [
-                    tedm:minSDKVersion "1.7" ;
-                    rml:reference "efbc:ChangedSectionIdentifier";
-                ] ;
-        ];
 .
