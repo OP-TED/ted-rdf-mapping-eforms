@@ -24,13 +24,49 @@
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix idlab-fn: <http://example.com/idlab/function/> .
 
-tedm:MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotProcurementDocument a rr:TriplesMap ;
+tedm:MG-Lot_ND-Lot a rr:TriplesMap ;
+    rdfs:label "MG-Lot" ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-707-Lot, BT-615-Lot";
+            rr:predicate epo:isSubjectToLotSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotRestrictedDocuments;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../..)";
+                    ];
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-15-Lot";
+            rr:predicate epo:isSubjectToLotSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotDocumentsReference;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../..)";
+                    ];
+                ] ;
+        ];
+.
+
+tedm:MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotRestrictedDocuments  a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
             rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:CallForTendersDocumentReference[cbc:DocumentType/text()='restricted-document']";
             rml:referenceFormulation ql:XPath
         ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotProcurementDocument";
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_AccessTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:AccessTerm
+        ] ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-707-Lot";
@@ -50,13 +86,41 @@ tedm:MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotProcurementDocument a rr
         ] ;
      rr:predicateObjectMap
         [
-            rdfs:label "BT-15-Lot";
+            rdfs:label "BT-615-Lot";
             rdfs:comment "Documents URL of MG-AccessTerm under ND-LotDocumentsReference";
-            rr:predicate epo:hasPublicAccessURL  ;
+            rr:predicate epo:hasRestrictedAccessURL ;
             rr:objectMap
                 [
                     tedm:minSDKVersion "1.3" ;
-                    tedm:minSDKVersion "1.6" ;
+                    tedm:maxSDKVersion "1.6" ;
+                    rml:reference "cac:Attachment/cac:ExternalReference/cbc:URI" ;
+                    rr:datatype xsd:anyURI;
+                ] ;
+        ] ;
+.
+
+tedm:MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotDocumentsReference a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:CallForTendersDocumentReference[not(cbc:DocumentType/text()='restricted-document')]";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotProcurementDocument";
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_AccessTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:AccessTerm
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-15-Lot";
+            rdfs:comment "Documents URL of MG-AccessTerm under ND-LotDocumentsReference";
+            rr:predicate epo:hasPublicAccessURL ;
+            rr:objectMap
+                [
+                    tedm:minSDKVersion "1.3" ;
+                    tedm:maxSDKVersion "1.6" ;
                     rml:reference "cac:Attachment/cac:ExternalReference/cbc:URI" ;
                     rr:datatype xsd:anyURI;
                 ] ;

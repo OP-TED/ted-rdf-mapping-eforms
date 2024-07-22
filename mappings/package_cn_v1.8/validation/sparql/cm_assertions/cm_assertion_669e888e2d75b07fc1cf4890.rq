@@ -1,0 +1,13 @@
+#title: OPT-201-Organization-TouchPoint
+#description: “TouchPoint Technical Identifier” The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:TouchPoint/cac:PartyIdentification/cbc:ID. The expected ontology instances are epo: cpov:ContactPoint / adms:Identifier / rdf:plainLiteral .
+#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:TouchPoint/cac:PartyIdentification/cbc:ID
+
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX cpov: <http://data.europa.eu/m8g/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+ASK WHERE { 
+	?this rdf:type cpov:ContactPoint .
+	?this adms:identifier / skos:notation ?value . 
+}

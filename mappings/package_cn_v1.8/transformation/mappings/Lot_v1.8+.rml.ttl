@@ -39,17 +39,19 @@ tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LateTendererInformation
             rr:objectMap
                 [
                     tedm:minSDKVersion "1.8" ;
+                    rdfs:label "BT-772-Lot-Language";
+                    rdfs:comment "Language of Late Tenderer Information of MG-SubmissionTerm under ND-LateTendererInformation";
                     rml:reference "cbc:Description";
                     rml:languageMap [
                         fnml:functionValue [
                             rr:predicateObjectMap [
                                 rr:predicate idlab-fn:str ;
                                 rr:objectMap [ rml:reference "cbc:Description/@languageID" ]
-                                ] ,
-                                tedm:idlab-fn_executes_lookup ,
-                                tedm:idlab-fn_inputFile_language ,
-                                tedm:idlab-fn_fromColumn_code ,
-                                tedm:idlab-fn_toColumn_code
+                            ] ,
+                            tedm:idlab-fn_executes_lookup ,
+                            tedm:idlab-fn_inputFile_language ,
+                            tedm:idlab-fn_fromColumn_code ,
+                            tedm:idlab-fn_toColumn_code
                         ]
                     ] ;
                 ] ;
@@ -61,7 +63,7 @@ tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LateTendererInformation
             rr:objectMap
                 [
                     tedm:minSDKVersion "1.8" ;
-                    rdfs:label "at-voc:missing-info-submission " ;
+                    rdfs:label "at-voc:missing-info-submission" ;
                     rr:parentTriplesMap tedm:missing-info-submission ;
                     rr:joinCondition [
                         rr:child "cbc:TendererRequirementTypeCode";
@@ -69,4 +71,24 @@ tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LateTendererInformation
                     ] ;
                 ] ;
         ]
+.
+tedm:MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotProcurementDocument a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:CallForTendersDocumentReference";
+            rml:referenceFormulation ql:XPath
+        ];
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-15-Lot";
+            rdfs:comment "Documents URL of MG-AccessTerm under ND-LotProcurementDocument";
+            rr:predicate epo:hasPublicAccessURL  ;
+            rr:objectMap
+                [
+                    tedm:minSDKVersion "1.8" ;
+                    rml:reference "cac:Attachment[../cbc:DocumentType/text()='non-restricted-document']/cac:ExternalReference/cbc:URI";
+                    rr:datatype xsd:anyURI;
+                ] ;
+        ] ;
 .

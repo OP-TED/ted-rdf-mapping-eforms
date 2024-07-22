@@ -28,7 +28,7 @@ tedm:MG-ProcurementDocument-involvesProcurementDocument-AccessTerm-isSubjectToLo
     rr:subjectMap
         [
             rdfs:label "ND-LotDocOfficialLanguage";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ProcurementDocument_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(.)) || '?response_type=raw')}" ;
+            rml:reference "if (exists(cbc:LanguageID[../cbc:DocumentStatusCode/text()='official'])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcurementDocument_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(concat(path(..), cbc:ID/text())) || '?response_type=raw') else null" ;
             rr:class epo:ProcurementDocument
         ] ;
     rml:logicalSource
@@ -57,24 +57,3 @@ tedm:MG-ProcurementDocument-involvesProcurementDocument-AccessTerm-isSubjectToLo
         ] ;
 .
 
-tedm:MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotProcurementDocument a rr:TriplesMap ;
-    # this is technically 1.8+ but will conflict with TriplesMap in 1.9+
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:CallForTendersDocumentReference";
-            rml:referenceFormulation ql:XPath
-        ];    
-     rr:predicateObjectMap
-        [
-            rdfs:label "BT-15-Lot";
-            rdfs:comment "Documents URL of MG-AccessTerm under ND-LotProcurementDocument";
-            rr:predicate epo:hasPublicAccessURL  ;
-            rr:objectMap
-                [
-                    tedm:minSDKVersion "1.8" ;
-                    rml:reference "cac:Attachment[../cbc:DocumentType/text()='non-restricted-document']/cac:ExternalReference/cbc:URI";
-                    rr:datatype xsd:anyURI;
-                ] ;
-        ] ;
-.

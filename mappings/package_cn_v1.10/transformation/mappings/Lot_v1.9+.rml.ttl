@@ -195,12 +195,6 @@ tedm:MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SecondStageWeigh
 
 tedm:MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotProcurementDocument a rr:TriplesMap ;
     rdfs:label "MG-AccessTerm";
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:CallForTendersDocumentReference";
-            rml:referenceFormulation ql:XPath
-        ];
     rr:predicateObjectMap
         [
             rdfs:label "BT-708-Lot (object)";
@@ -235,7 +229,7 @@ tedm:MG-ProcurementDocument-involvesProcurementDocument-AccessTerm-isSubjectToLo
     rr:subjectMap
         [
             rdfs:label "ND-LotDocOfficialLanguage";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ProcurementDocument_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../../../../../..)) || '?response_type=raw')}" ;
+            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcurementDocument_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../../../../../..)) || '?response_type=raw') else null" ;
             rr:class epo:ProcurementDocument
         ] ;
     rml:logicalSource
@@ -273,7 +267,7 @@ tedm:MG-ProcurementDocument-involvesProcurementDocument-AccessTerm-isSubjectToLo
     rr:subjectMap
         [
             rdfs:label "ND-LotDocAllNonOfficialLanguages";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ProcurementDocument_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../../../../../..)) || '?response_type=raw')}" ;
+            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcurementDocument_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../../../../../..)) || '?response_type=raw') else null" ;
             rr:class epo:ProcurementDocument
         ] ;
     rr:predicateObjectMap
