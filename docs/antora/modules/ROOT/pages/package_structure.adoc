@@ -1,0 +1,59 @@
+== Mapping Suite Structure
+
+The term "suite" or "package" can be used interchangeably.
+
+The structure of a eForms mapping suite is similar to the structure of the Standard Forms (SF) mapping suite, which is documented https://docs.ted.europa.eu/SWS/mapping_suite/mapping-suite-structure.html[here].
+
+The most relevant, but small, difference is related to the representation of the metadata, both in the Excel spreadsheet that encodes the Conceptual Mapping (CM) (`conceptual_mappings.xlsx`), as in the generated `metadata.json` file.
+
+== The eForms Metadata sheet
+
+The content of the "Metadata" sheet of an eForms Conceptual Mapping (which is slighly different from the https://docs.ted.europa.eu/SWS/mapping_suite/methodology.html#_the_metadata_sheet[Metadata sheet] of a Standard Forms CM) looks like this:
+
+image:metadata_sheet.png[]
+
+The comments in column C provide explanations, where necessary, about what each field in column A stands for, and how the values in column B should be formatted. Note that, in this example, as in most of the practical cases, there is no value specified for the "Start Date" and "End Date" fields. Those fields can be used to restrict the applicability of a given mapping package to notices published in a certain date range, which can be useful in certain scenarios (e.g. for testing), but will not be used in setups where the conversion of all the notices that belong to a certain eForms Subtype and were published according to an eForms SDK is desired.
+
+== The eForms `metadata.json` file
+After the content of a mapping package is prepared, from the "Metadata" sheet of the CM a `metadata.json` file, like https://github.com/OP-TED/ted-rdf-mapping-eforms/blob/1.0.0-rc.3/mappings/package_cn_v1.9/metadata.json[this one], is generated, with a content similar to this:
+
+```JSON
+{
+    "identifier": "package_eforms_10-24_v1.9",
+    "title": "Package EF10-EF24, SDK v1.9",
+    "created_at": "2024-07-22 16:53:19.047981+00:00",
+    "description": "This is the mapping suite for eForms subtype 10-24 SDK version 1.9",
+    "mapping_version": "1.0.0",
+    "ontology_version": "4.0.0",
+    "mapping_type": "eforms",
+    "metadata_constraints": {
+        "constraints": {
+            "eforms_subtype": [
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24"
+            ],
+            "start_date": null,
+            "end_date": null,
+            "eforms_sdk_versions": [
+                "1.9"
+            ]
+        }
+    },
+    "mapping_suite_hash_digest": "19766f0a089242004177d1bf929020292866c023a6caa29ec03389bddd83568a"
+}
+```
+
+*Note:* The `mapping_suite_hash_digest` is created based on the entire content of the mapping package, and serves as a validation key or signature, in order to ensure the TED-SWS pipeline software that the metadata in this file is valid for the current content of the package.
