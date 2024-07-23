@@ -26,16 +26,13 @@
     <a class="nav-link" href="index.html">Home</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="software_requirements.html">Software Requirements</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="methodology.html">Mapping Methodology</a>
   </li>
   <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="package_structure.html">Mapping Suite Structure</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="toolchain.html">Toolchain</a>
+    <a class="nav-link" href="usage.html">Usage Instructions</a>
   </li>
 </ul>
   </li>
@@ -113,7 +110,48 @@
 <p><span class="image"><img src="_images/metadata_sheet.png" alt="metadata sheet"></span></p>
 </div>
 <div class="paragraph">
-<p>The comments in column C provide explanations, where necessary, about what each field in column A stands for, and how the values in column B should be formatted. Note that, in this example, as in most of the practical cases, there is no value specified for the "Start Date" and "End Date" fields. Those fields can be used to restrict the applicability of a given mapping package to notices published in a certain date range, which can be useful in certain scenarios (e.g. for testing), but will not be used in setups where the conversion of all the notices that belong to a certain eForms Subtype and were published according to an eForms SDK is desired.</p>
+<p>The fields specified in the Metadata sheet are split into two section based on what type of information they provide. They can (a) describe the suite of mapping rules, and (b) the constraints necessary to identify notices eligible for transformation with this mapping suite (applicable in the context of TED-SWS pipeline).</p>
+</div>
+<div class="paragraph">
+<p><strong>Mapping suite metadata:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Identifier</strong> - a unique alphanumeric sequence to identify the mapping suite</p>
+</li>
+<li>
+<p><strong>Title</strong> - human-readable name of the mapping suite</p>
+</li>
+<li>
+<p><strong>Description</strong> - human-readable concise statement about the mapping suite</p>
+</li>
+<li>
+<p><strong>Mapping version</strong> - the version of the mapping suite</p>
+</li>
+<li>
+<p><strong>ePO version</strong> - the version of the TARGET ontology</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Metadata constraints:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>eForms Subtype</strong> - a comma separated list of eForm subtype IDs</p>
+</li>
+<li>
+<p><strong>Start date &amp; End date</strong> - the interval of time when an eForms notice is published. By default, they are empty</p>
+</li>
+<li>
+<p><strong>eForms SDK version</strong> - a comma separated list of eForms SDK versions. Only major and minor versions of the SDK are relevant, and not the patch numbers.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The comments in column C provide explanations, where necessary, about what each field in column A stands for, and how the values in column B should be formatted. Note that, in the example above, as in most of the practical cases, there is no value specified for the "Start Date" and "End Date" fields. Those fields can be used to restrict the applicability of a given mapping suite to notices published in a certain date range, which can be useful in certain scenarios (e.g. for testing), but will not be used in setups where the conversion of all the notices that belong to a certain eForms Subtype and were published according to an eForms SDK is desired.</p>
 </div>
 </div>
 </div>
@@ -162,6 +200,22 @@
     "mapping_suite_hash_digest": "19766f0a089242004177d1bf929020292866c023a6caa29ec03389bddd83568a"
 }</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>The interpretation of the meaning of the keys used in this JSON file should be straightforward based on the explanation provided above for the <a href="#_the_eforms_metadata_sheet">Metadata sheet of the CM</a>. They are basically lower cased, snake-case versions of the field names in the Metadata sheet. In addition, there are 3 more keys:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>created_at</strong> - the creation timestamp of the mapping suite, more specifically of the <code>metadata.json</code> file</p>
+</li>
+<li>
+<p><strong>mapping_type</strong> - the type of the mapping suite. It can be either <code>standard_forms</code> or <code>eforms</code> (and is the latter for all packages in this project)</p>
+</li>
+<li>
+<p><strong>mapping_suite_hash_digest</strong> - a hash digest that can serve as a unique key representative of the content of this mapping suite</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p><strong>Note:</strong> The <code>mapping_suite_hash_digest</code> is created based on the entire content of the mapping package, and serves as a validation key or signature, in order to ensure the TED-SWS pipeline software that the metadata in this file is valid for the current content of the package.</p>
