@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>TED-RDF eForms Mapping :: eForms-mapping-docs</title>
+    <title>Untitled :: eForms-mapping-docs</title>
     <meta name="generator" content="Antora 3.1.9">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -21,7 +21,7 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="index.html">Home</a>
 <ul class="nav-list">
@@ -34,7 +34,7 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="package_structure.html">Mapping Suite Structure</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="toolchain.html">Toolchain</a>
   </li>
 </ul>
@@ -75,11 +75,12 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="index.html" class="home-link is-current"></a>
+  <a href="index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">eForms mapping docs</a></li>
     <li><a href="index.html">Home</a></li>
+    <li><a href="toolchain.html">Toolchain</a></li>
   </ul>
 </nav>
 </div>
@@ -88,16 +89,32 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">TED-RDF eForms Mapping</h1>
+<div class="sect1">
+<h2 id="_toolchain"><a class="anchor" href="#_toolchain"></a>Toolchain</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_no_custom_tooling"><a class="anchor" href="#_no_custom_tooling"></a>No custom tooling</h3>
 <div class="paragraph">
-<p>The TED-RDF eForms Mapping project prescribes packages (or <em>suites</em>) of data transformation rules and related artefacts, for digital public procurement notices published on the <a href="https://ted.europa.eu/en">Tenders Electronic Daily (TED) website</a> by the <a href="https://op.europa.eu/en/home">Publications Office of the European Union (OP)</a>, based on the <a href="https://single-market-economy.ec.europa.eu/single-market/public-procurement/digital-procurement/eforms_en">eForms legislative standard</a>.</p>
+<p>While there is a comprehensive set of <a href="https://docs.ted.europa.eu/SWS/mapping_suite/toolchain.html">command-line software tools for the SF mapping project</a>, there is no such tooling provided for the eForms mapping project. The complete transformation cycle is supported in and carried out already by the <a href="https://github.com/OP-TED/ted-rdf-conversion-pipeline">pipeline</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_rmlmapper_for_development"><a class="anchor" href="#_rmlmapper_for_development"></a>RMLMapper for development</h3>
+<div class="paragraph">
+<p>For development, simple <a href="https://github.com/RMLio/rmlmapper-java">RMLMapper</a> commands (which the SF tools use) can be employed directly, for example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">rmlmapper -m $MAPPINGS_FOLDER/* -s turtle &gt; $OUTPUT_FILE</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>The transformation is based on model mapping between the original <a href="https://www.w3.org/XML/">XML</a> format of the TED eForm notices, and the <a href="https://docs.ted.europa.eu/EPO/latest/index.html">eProcurement ontology (ePO)</a>, producing data in the <a href="https://www.w3.org/RDF/">RDF</a> format for <a href="https://joinup.ec.europa.eu/collection/nifo-national-interoperability-framework-observatory/solution/eif-toolbox/interoperability-layer-5-semantic-interoperability">semantic data interoperability</a>. This transformation, which is documented here and is available in this <a href="https://github.com/OP-TED/ted-rdf-mapping-eforms/">GitHub repository</a>, is the next iteration of the <a href="https://github.com/OP-TED/ted-rdf-mapping">RDF mapping initiative</a>, which was conceived for the <a href="https://ted.europa.eu/en/simap/standard-ted-schema-forms-in-pdf">"TED schema" standard forms (SF)</a>, an older notice standard that is concurrently supported by the OP.</p>
+<p>where the <code>$MAPPING_FOLDER</code> is a folder with the right package structure, and
+<code>$OUTPUT_FILE</code> is the desired RDF output file, usually suffixed with the <code>.ttl</code>
+extension (for the Turtle serialization as provided with the <code>-s</code> argument).</p>
 </div>
-<div class="paragraph">
-<p>These RDF mapping projects, together with a <a href="https://github.com/OP-TED/ted-rdf-conversion-pipeline">pipeline system for automatic XML-RDF data conversion</a>, are collectively known as the <a href="https://docs.ted.europa.eu/SWS/index.html">TED Semantic Web Service (TED-SWS)</a>. As the groundwork for XML-RDF transformation was already set by the SF mapping project, <strong>much of the <a href="https://docs.ted.europa.eu/SWS/mapping_suite/index.html">existing documentation</a> is still applicable for eForms.</strong>
-Therefore, the focus of this document is mainly on the differences between SF and eForms mapping.</p>
+</div>
+</div>
 </div>
 </article>
   </div>

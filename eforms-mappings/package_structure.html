@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Untitled :: eForms-mapping-docs</title>
+    <meta name="generator" content="Antora 3.1.9">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<div class="navbar-item has-dropdown is-hoverable">
+<h1>TED-SWS</h1>
+</div><div class="body">
+<div class="nav-container" data-component="eforms-mappings" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">eForms mapping docs</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">Home</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="software_requirements.html">Software Requirements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="methodology.html">Mapping Methodology</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="package_structure.html">Mapping Suite Structure</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="toolchain.html">Toolchain</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text"><span class="separated"><strong>General References</strong></span></span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="glossary.html">Glossary</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">eForms mapping docs</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="index.html">eForms mapping docs</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">eForms mapping docs</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="package_structure.html">Mapping Suite Structure</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="6">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<div class="sect1">
+<h2 id="_mapping_suite_structure"><a class="anchor" href="#_mapping_suite_structure"></a>Mapping Suite Structure</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The term "suite" or "package" can be used interchangeably.</p>
+</div>
+<div class="paragraph">
+<p>The structure of a eForms mapping suite is similar to the structure of the Standard Forms (SF) mapping suite, which is documented <a href="https://docs.ted.europa.eu/SWS/mapping_suite/mapping-suite-structure.html">here</a>.</p>
+</div>
+<div class="paragraph">
+<p>The most relevant, but small, difference is related to the representation of the metadata, both in the Excel spreadsheet that encodes the Conceptual Mapping (CM) (<code>conceptual_mappings.xlsx</code>), as in the generated <code>metadata.json</code> file.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_eforms_metadata_sheet"><a class="anchor" href="#_the_eforms_metadata_sheet"></a>The eForms Metadata sheet</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The content of the "Metadata" sheet of an eForms Conceptual Mapping (which is slighly different from the <a href="https://docs.ted.europa.eu/SWS/mapping_suite/methodology.html#_the_metadata_sheet">Metadata sheet</a> of a Standard Forms CM) looks like this:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/metadata_sheet.png" alt="metadata sheet"></span></p>
+</div>
+<div class="paragraph">
+<p>The comments in column C provide explanations, where necessary, about what each field in column A stands for, and how the values in column B should be formatted. Note that, in this example, as in most of the practical cases, there is no value specified for the "Start Date" and "End Date" fields. Those fields can be used to restrict the applicability of a given mapping package to notices published in a certain date range, which can be useful in certain scenarios (e.g. for testing), but will not be used in setups where the conversion of all the notices that belong to a certain eForms Subtype and were published according to an eForms SDK is desired.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_eforms_metadata_json_file"><a class="anchor" href="#_the_eforms_metadata_json_file"></a>The eForms <code>metadata.json</code> file</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After the content of a mapping package is prepared, from the "Metadata" sheet of the CM a <code>metadata.json</code> file, like <a href="https://github.com/OP-TED/ted-rdf-mapping-eforms/blob/1.0.0-rc.3/mappings/package_cn_v1.9/metadata.json">this one</a>, is generated, with a content similar to this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-JSON hljs" data-lang="JSON">{
+    "identifier": "package_eforms_10-24_v1.9",
+    "title": "Package EF10-EF24, SDK v1.9",
+    "created_at": "2024-07-22 16:53:19.047981+00:00",
+    "description": "This is the mapping suite for eForms subtype 10-24 SDK version 1.9",
+    "mapping_version": "1.0.0",
+    "ontology_version": "4.0.0",
+    "mapping_type": "eforms",
+    "metadata_constraints": {
+        "constraints": {
+            "eforms_subtype": [
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24"
+            ],
+            "start_date": null,
+            "end_date": null,
+            "eforms_sdk_versions": [
+                "1.9"
+            ]
+        }
+    },
+    "mapping_suite_hash_digest": "19766f0a089242004177d1bf929020292866c023a6caa29ec03389bddd83568a"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> The <code>mapping_suite_hash_digest</code> is created based on the entire content of the mapping package, and serves as a validation key or signature, in order to ensure the TED-SWS pipeline software that the metadata in this file is valid for the current content of the package.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<div>
+</div>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
