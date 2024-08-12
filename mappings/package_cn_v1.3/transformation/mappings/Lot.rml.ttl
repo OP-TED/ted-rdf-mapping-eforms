@@ -1571,13 +1571,13 @@ tedm:MG-MultipleStageProcedureTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderin
     rml:logicalSource
         [
              rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:EconomicOperatorShortList";
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess";
             rml:referenceFormulation ql:XPath
         ];
     rr:subjectMap
         [
             rdfs:label "ND-LotTenderingProcess";
-            rml:reference "if (exists(cbc:CandidateReductionConstraintIndicator) or exists(descendant::cbc:LimitationDescription) or exists(descendant::cbc:MaximumQuantity) or exists(descendant::cbc:MinimumQuantity)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MultipleStageProcedureTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(cbc:CandidateReductionConstraintIndicator) or exists(cac:InvitationSubmissionPeriod) or exists(cac:ParticipationInvitationPeriod)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MultipleStageProcedureTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw') else null" ;
             rr:class  epo:MultipleStageProcedureTerm
         ] ;
     rr:predicateObjectMap
@@ -1587,7 +1587,7 @@ tedm:MG-MultipleStageProcedureTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderin
             rr:predicate epo:hasSuccessiveReduction ;
             rr:objectMap
                 [
-                    rml:reference "../cbc:CandidateReductionConstraintIndicator";
+                    rml:reference "cbc:CandidateReductionConstraintIndicator";
                     rr:datatype xsd:boolean
                 ] ;
         ];
@@ -1598,7 +1598,7 @@ rr:predicateObjectMap
             rr:predicate epo:hasEstimatedInvitationToTenderDate ;
             rr:objectMap
                 [
-                    rml:reference "../cac:InvitationSubmissionPeriod/cbc:StartDate";
+                    rml:reference "cac:InvitationSubmissionPeriod/cbc:StartDate";
                     rr:datatype xsd:date;
                 ] ;
         ];
@@ -1609,7 +1609,7 @@ rr:predicateObjectMap
             rr:predicate epo:hasEstimatedInvitationToExpressInterestDate ;
             rr:objectMap
                 [
-                    rml:reference "../cac:ParticipationInvitationPeriod/cbc:StartDate";
+                    rml:reference "cac:ParticipationInvitationPeriod/cbc:StartDate";
                     rr:datatype xsd:date;
                 ] ;
         ]
@@ -1626,7 +1626,7 @@ tedm:MG-MultipleStageProcedureTerm-isSubjectToLotSpecificTerm-Lot_ND-SecondStage
     rr:subjectMap
         [
             rdfs:label "ND-SecondStage";
-            rml:reference "if (exists(cbc:CandidateReductionConstraintIndicator) or exists(descendant::cbc:LimitationDescription) or exists(descendant::cbc:MaximumQuantity) or exists(descendant::cbc:MinimumQuantity)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MultipleStageProcedureTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(cbc:LimitationDescription) or exists(cbc:MaximumQuantity) or exists(cbc:MinimumQuantity)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MultipleStageProcedureTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw') else null" ;
             rr:class epo:MultipleStageProcedureTerm
         ] ;
     rr:predicateObjectMap
