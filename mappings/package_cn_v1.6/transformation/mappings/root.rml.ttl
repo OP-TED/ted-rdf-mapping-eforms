@@ -165,8 +165,8 @@ tedm:MG-CompetitionNotice_ND-Root
                 ] ;
         ] ;
     rr:predicateObjectMap [
-            rdfs:label "MG-ProcurementProcedureInformationProvider_ND-announcesRole-CompetitionNotice" ;
-            rdfs:comment "MG-ProcurementProcedureInformationProvider_ND-announcesRole-CompetitionNotice under ND-LotTenderingTerms" ;
+            rdfs:label "MG-ProcurementProcedureInformationProvider-announcesRole-CompetitionNotice" ;
+            rdfs:comment "MG-ProcurementProcedureInformationProvider-announcesRole-CompetitionNotice under ND-LotTenderingTerms" ;
             rr:predicate epo:announcesRole ;
             rr:objectMap
                 [
@@ -174,8 +174,8 @@ tedm:MG-CompetitionNotice_ND-Root
                 ] ;
         ] ;
     rr:predicateObjectMap [
-            rdfs:label "MG-OfflineAccessProvider_ND-announcesRole-CompetitionNotice" ;
-            rdfs:comment "MG-OfflineAccessProvider_ND-announcesRole-CompetitionNotice under ND-LotTenderingTerms" ;
+            rdfs:label "MG-OfflineAccessProvider-announcesRole-CompetitionNotice" ;
+            rdfs:comment "MG-OfflineAccessProvider-announcesRole-CompetitionNotice under ND-LotTenderingTerms" ;
             rr:predicate epo:announcesRole ;
             rr:objectMap
                 [
@@ -184,8 +184,8 @@ tedm:MG-CompetitionNotice_ND-Root
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "MG-Reviewer_ND-announcesRole-CompetitionNotice" ;
-            rdfs:comment "MG-Reviewer_ND-announcesRole-CompetitionNotice under ND-LotReviewTerms" ;
+            rdfs:label "MG-Reviewer-announcesRole-CompetitionNotice" ;
+            rdfs:comment "MG-Reviewer-announcesRole-CompetitionNotice under ND-LotReviewTerms" ;
             rr:predicate epo:announcesRole ;
             rr:objectMap
                 [
@@ -194,8 +194,8 @@ tedm:MG-CompetitionNotice_ND-Root
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label   "MG-ReviewProcedureInformationProvider_ND-announcesRole-CompetitionNotice" ;
-            rdfs:comment "MG-ReviewProcedureInformationProvider_ND-announcesRole-CompetitionNotice under ND-LotReviewTerms" ;
+            rdfs:label   "MG-ReviewProcedureInformationProvider-announcesRole-CompetitionNotice" ;
+            rdfs:comment "MG-ReviewProcedureInformationProvider-announcesRole-CompetitionNotice under ND-LotReviewTerms" ;
             rr:predicate epo:announcesRole ;
             rr:objectMap
                 [
@@ -204,8 +204,8 @@ tedm:MG-CompetitionNotice_ND-Root
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "MG-Mediator_ND-announcesRole-CompetitionNotice" ;
-            rdfs:comment "MG-Mediator_ND-announcesRole-CompetitionNotice under ND-LotReviewTerms" ;
+            rdfs:label "MG-Mediator-announcesRole-CompetitionNotice" ;
+            rdfs:comment "MG-Mediator-announcesRole-CompetitionNotice under ND-LotReviewTerms" ;
             rr:predicate epo:announcesRole ;
             rr:objectMap
                 [
@@ -224,34 +224,12 @@ tedm:MG-CompetitionNotice_ND-Root
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "MG-EmploymentInformationProvider-announcesRole-CompetitionNotice" ;
-            rdfs:comment "MG-EmploymentInformationProvider-announcesRole-CompetitionNotice under ND-LotEmploymentLegislation" ;
-            rr:predicate epo:announcesRole ;
-            rr:objectMap
-                [
-                    tedm:minSDKVersion "1.5.12" ;
-                    rr:parentTriplesMap tedm:MG-EmploymentInformationProvider-announcesRole-CompetitionNotice_ND-LotEmploymentLegislation;
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
             rdfs:label "BT-46-Lot" ;
             rdfs:comment "JuryMemberName of MG-CompetitionNotice under ND-AwardingTermsJuryMember" ;
             rr:predicate epo:announcesRole ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:MG-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember;
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "ND-LotEnvironmentalLegislationt" ;
-            rdfs:comment "LotEnvironmentalLegislationt of MG-CompetitionNotice  under ND-AwardingTerms" ;
-            rr:predicate epo:announcesRole    ;
-            rr:objectMap
-                [
-                    tedm:minSDKVersion "1.5.12" ;
-                    rr:parentTriplesMap tedm:MG-EnvironmentalProtectionInformationProvider-announcesRole-CompetitionNotice_ND-LotTenderingTerms;
                 ] ;
         ] ;
 .
@@ -469,49 +447,6 @@ tedm:MG-Identifier-identifier-Notice_ND-Root a rr:TriplesMap ;
         ] ;
 .
 
-tedm:MG-EmploymentInformationProvider-announcesRole-CompetitionNotice_ND-LotEmploymentLegislation a rr:TriplesMap ;
-    rdfs:label "MG-Lot";
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:EmploymentLegislationDocumentReference" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-LotEmploymentLegislation" ;
-            rml:reference "if(exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_EmploymentInformationProvider_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null";
-            rr:class epo:EmploymentInformationProvider
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "MG-Buyer-announcesRole-CompetitionNotice" ;
-            rdfs:comment "MG-EmploymentInformationProvider-announcesRole-CompetitionNotice under ND-LotEmploymentLegislation" ;
-            rr:predicate epo:contextualisedBy    ;
-            rr:objectMap
-                [
-                    tedm:minSDKVersion "1.5.12" ;
-                    rr:parentTriplesMap tedm:MG-Lot-contextualisedBy-EmploymentInformationProvider-announcesRole-CompetitionNotice_ND-LotEmploymentLegislation
-                ] ;
-        ] ;
-.
-
-tedm:MG-Lot-contextualisedBy-EmploymentInformationProvider-announcesRole-CompetitionNotice_ND-LotEmploymentLegislation a rr:TriplesMap ;
-    rdfs:label "MG-Lot";
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:EmploymentLegislationDocumentReference" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-LotEmploymentLegislation" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Lot_{../../cbc:ID}" ;
-            rr:class epo:Lot
-        ] ;
-.
-
 tedm:MG-Person-playedBy-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember a rr:TriplesMap ;
     rdfs:label "MG-Person";
     rml:logicalSource
@@ -572,55 +507,6 @@ tedm:MG-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember a 
         ] ;
 .
 
-tedm:MG-Lot-contextualisedBy-EnvironmentalProtectionInformationProvider-announcesRole-CompetitionNotice_ND-LotTenderingTerms a rr:TriplesMap ;
-    rdfs:label "MG-Lot";
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-LotEmploymentLegislation" ;
-            rdfs:comment "ND-LotEnvironmentalLegislation";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Lot_{../cbc:ID}" ;
-            rr:class epo:Lot
-        ] ;
-.
-
-tedm:MG-EnvironmentalProtectionInformationProvider-announcesRole-CompetitionNotice_ND-LotTenderingTerms a rr:TriplesMap ;
-    rdfs:label "MG-EnvironmentalProtectionInformationProvider";
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-LotEmploymentLegislation" ;
-            rdfs:comment "ND-LotEnvironmentalLegislation";
-            rml:reference "if(exists(cac:EnvironmentalLegislationDocumentReference/cac:IssuerParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_EnvironmentalProtectionInformationProvider_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null";
-            rr:class epo:EnvironmentalProtectionInformationProvider
-
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "ND-LotEnvironmentalLegislationt" ;
-            rdfs:comment "LotEnvironmentalLegislationt of MG-CompetitionNotice  under ND-AwardingTerms" ;
-            rr:predicate  epo:contextualisedBy    ;
-           rr:objectMap
-                [
-                    tedm:minSDKVersion "1.5.12" ;
-                    rr:parentTriplesMap tedm:MG-Lot-contextualisedBy-EnvironmentalProtectionInformationProvider-announcesRole-CompetitionNotice_ND-LotTenderingTerms;
-                    rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(.)";
-                    ];
-                ] ;
-        ] ;
-.
 ##--- Function Parameters ---
 
 tedm:idlab-fn_executes_lookup rr:predicate fno:executes ; rr:objectMap [ rr:constant idlab-fn:lookup ] .

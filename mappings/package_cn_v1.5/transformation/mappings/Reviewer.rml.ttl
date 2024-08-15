@@ -36,7 +36,7 @@ tedm:MG-Reviewer_ND-LotReviewTerms a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-LotReviewTerms" ;
-            rml:reference "if(exists(cac:AppealReceiverParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Reviewer_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null";
+            rml:reference "if(exists(cac:AppealReceiverParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Reviewer_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(concat(cac:AppealReceiverParty/cac:PartyIdentification/cbc:ID, cac:AppealReceiverParty/cac:PartyIdentification/cbc:ID/@schemeName)) || '?response_type=raw') else null";
             rr:class epo:Reviewer
         ] ;
     rr:predicateObjectMap

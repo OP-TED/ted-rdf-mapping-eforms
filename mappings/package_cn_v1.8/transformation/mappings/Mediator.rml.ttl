@@ -60,7 +60,6 @@ tedm:MG-Mediator_ND-LotReviewTerms a rr:TriplesMap ;
     rr:subjectMap [
         rdfs:label "ND-LotReviewTerms" ;
         rr:class epo:Mediator ;
-        rml:reference "if(exists(cac:MediationParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Mediator_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null";
-    ] .
-
-
+        rml:reference "if(exists(cac:MediationParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Mediator_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(concat(cac:MediationParty/cac:PartyIdentification/cbc:ID, cac:MediationParty/cac:PartyIdentification/cbc:ID/@schemeName)) || '?response_type=raw') else null";
+    ]
+.

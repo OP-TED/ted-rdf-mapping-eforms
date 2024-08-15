@@ -18,7 +18,7 @@ tedm:MG-EnvironmentalProtectionInformationProvider_ND-LotEnvironmentalLegislatio
     rr:subjectMap [
         rdfs:label "ND-LotEnvironmentalLegislation" ;
         rr:class epo:EnvironmentalProtectionInformationProvider ;
-        rml:reference "if(exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_EnvironmentalProtectionInformationProvider_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw') else null";
+        rml:reference "if(exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_EnvironmentalProtectionInformationProvider_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(concat(cac:IssuerParty/cac:PartyIdentification/cbc:ID, cac:IssuerParty/cac:PartyIdentification/cbc:ID/@schemeName)) || '?response_type=raw') else null";
     ] ;
     rr:predicateObjectMap [
         rdfs:label "OPT-301-Lot-EnvironLegis" ;
@@ -62,7 +62,5 @@ tedm:MG-EnvironmentalProtectionInformationProvider_ND-LotEnvironmentalLegislatio
         ] ;
         rr:predicate epo:contextualisedBy ;
     ] ;
-
-    tedm:minSDKVersion "1.5.12" .
-
-
+    tedm:minSDKVersion "1.5.12"
+.

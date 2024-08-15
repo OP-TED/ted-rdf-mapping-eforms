@@ -36,7 +36,7 @@ tedm:MG-TenderProcessor_ND-LotTenderingTerms a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-LotTenderingTerms" ;
-            rml:reference "if(exists(cac:TenderEvaluationParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_TenderProcessor_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null";
+            rml:reference "if(exists(cac:TenderEvaluationParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_TenderProcessor_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(concat(cac:TenderEvaluationParty/cac:PartyIdentification/cbc:ID, cac:TenderEvaluationParty/cac:PartyIdentification/cbc:ID/@schemeName)) || '?response_type=raw') else null";
             rr:class epo:TenderProcessor
         ] ;
     rr:predicateObjectMap
