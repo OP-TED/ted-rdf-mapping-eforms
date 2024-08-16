@@ -24,20 +24,19 @@
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix idlab-fn: <http://example.com/idlab/function/> .
 
-# this is an example of a type declaration on a field with secondary assertions
 tedm:MG-ProcurementProcessInformation_ND-ProcedureTenderingProcess a rr:TriplesMap ;
     rdfs:label "MG-ProcurementProcessInformation" ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:TenderingProcess/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension" ;
+            rml:iterator "/*/cac:TenderingProcess" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
         [
             rdfs:label "ND-ProcedureTenderingProcess" ;
             rdfs:comment "Primary type declaration for MG-ProcurementProcessInformation under ND-ProcedureTenderingProcess" ;
-            rml:reference "if(exists(efbc:ProcedureRelaunchIndicator)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcurementProcessInformation_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efbc:ProcedureRelaunchIndicator)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcurementProcessInformation_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:ProcurementProcessInformation
 
         ] ;
@@ -48,23 +47,18 @@ tedm:MG-ProcurementProcessInformation_ND-ProcedureTenderingProcess a rr:TriplesM
             rr:predicate epo:isToBeRelaunched ;
             rr:objectMap
                 [
-                    rml:reference "efbc:ProcedureRelaunchIndicator" ;
+                    rml:reference "ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efbc:ProcedureRelaunchIndicator" ;
                     rr:datatype xsd:boolean
                 ] ;
         ] ;
-    # this is an example of a predicate that can link to one of multiple TMaps with the same subject IRI
+    # this is an example of a relationship that can link to one of multiple TMaps with the same subject IRI
+    # (we link the one with the closest matching node, in this case an exact match)
     rr:predicateObjectMap
         [
             rr:predicate epo:concernsProcedure ;
             rr:objectMap
                 [
-                    # TODO how do we decide whether to link at ProcedureTenderingProcess or ProcedureProcurementScope?
-                    rr:parentTriplesMap tedm:MG-Procedure_ND-ProcedureProcurementScope ;
-                    # rr:parentTriplesMap tedm:ND-ProcedureTenderingProcess ;
-                    # rr:joinCondition [
-                    #     rr:child "path(/*/cac:TenderingProcess)" ;
-                    #     rr:parent "path(.)" ;
-                    # ] ;
+                    rr:parentTriplesMap tedm:MG-Procedure_ND-ProcedureTenderingProcess ;
                 ]
         ]
 .
