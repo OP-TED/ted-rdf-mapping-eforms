@@ -1,4 +1,4 @@
-#--- MG-ProcurementProcesInformation ---
+#--- MG-ProcurementProcessInformation (common) ---
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -8,7 +8,6 @@
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
@@ -23,6 +22,10 @@
 @prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix idlab-fn: <http://example.com/idlab/function/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 
 tedm:MG-ProcurementProcessInformation_ND-ProcedureTenderingProcess a rr:TriplesMap ;
     rdfs:label "MG-ProcurementProcessInformation" ;
@@ -36,7 +39,7 @@ tedm:MG-ProcurementProcessInformation_ND-ProcedureTenderingProcess a rr:TriplesM
         [
             rdfs:label "ND-ProcedureTenderingProcess" ;
             rdfs:comment "Primary type declaration for MG-ProcurementProcessInformation under ND-ProcedureTenderingProcess" ;
-            rml:reference "if(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efbc:ProcedureRelaunchIndicator)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcurementProcessInformation_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efbc:ProcedureRelaunchIndicator) or exists(cbc:TerminatedIndicator)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcurementProcessInformation_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:ProcurementProcessInformation
 
         ] ;
@@ -60,47 +63,16 @@ tedm:MG-ProcurementProcessInformation_ND-ProcedureTenderingProcess a rr:TriplesM
                 [
                     rr:parentTriplesMap tedm:MG-Procedure_ND-ProcedureTenderingProcess ;
                 ]
-        ]
-.
-
-tedm:MG-ProcurementProcessInformation_ND-LotTenderingProcessExtension a rr:TriplesMap ;
-    rdfs:label "MG-ProcurementProcessInformation";
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension";
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-LotTenderingProcessExtension";
-            rml:reference "if(exists(efbc:ProcedureRelaunchIndicator)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcurementProcessInformation_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
-            rr:class epo:ProcurementProcessInformation
-
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-634-Lot";
-            rdfs:comment "Procurement Relaunch of MG-ProcurementProcessInformation under ND-LotTenderingProcessExtension ";
-            rr:predicate   epo:isToBeRelaunched ;
-            rr:objectMap
-                [
-                    rml:reference "efbc:ProcedureRelaunchIndicator";
-                    rr:datatype xsd:boolean
-                ] ;
         ];
     rr:predicateObjectMap
         [
-            rdfs:label "BT-634-Lot";
-            rdfs:comment "this is for MG-Lot-concernsLot-ProcurementProcessInformation";
-            rr:predicate epo:concernsLot ;
+            rdfs:label " BT-756-Procedure";
+            rdfs:comment "Dynamic Purchasing System Termination of MG-ProcurementProcessInformation under ND-LotResult" ;
+            rr:predicate  epo:isCompetitionTerminated    ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-Lot_ND-Lot;
-                    rr:joinCondition [
-                       rr:child "path(../../../../..)";
-                        rr:parent "path(.)";
-                    ];
-            ];
-        ]
+                    rml:reference "cbc:TerminatedIndicator" ;
+                    rr:datatype xsd:boolean;
+                ] ;
+        ];
 .
