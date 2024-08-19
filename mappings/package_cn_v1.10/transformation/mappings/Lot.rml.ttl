@@ -86,7 +86,7 @@ tedm:MG-Lot_ND-Lot a rr:TriplesMap ;
                     rr:parentTriplesMap tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotSubmissionLanguage ;
                     rr:joinCondition [
                         rr:child  "path(.)" ;
-                        rr:parent "path(../../..)" ;
+                        rr:parent "path(../..)" ;
                     ] ;
                 ] ;
         ] ;
@@ -1571,13 +1571,13 @@ tedm:MG-MultipleStageProcedureTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderin
     rml:logicalSource
         [
              rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:EconomicOperatorShortList";
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess";
             rml:referenceFormulation ql:XPath
         ];
     rr:subjectMap
         [
             rdfs:label "ND-LotTenderingProcess";
-            rml:reference "if (exists(cbc:CandidateReductionConstraintIndicator) or exists(descendant::cbc:LimitationDescription) or exists(descendant::cbc:MaximumQuantity) or exists(descendant::cbc:MinimumQuantity)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MultipleStageProcedureTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(cbc:CandidateReductionConstraintIndicator) or exists(cac:InvitationSubmissionPeriod) or exists(cac:ParticipationInvitationPeriod)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MultipleStageProcedureTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw') else null" ;
             rr:class  epo:MultipleStageProcedureTerm
         ] ;
     rr:predicateObjectMap
@@ -1587,7 +1587,7 @@ tedm:MG-MultipleStageProcedureTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderin
             rr:predicate epo:hasSuccessiveReduction ;
             rr:objectMap
                 [
-                    rml:reference "../cbc:CandidateReductionConstraintIndicator";
+                    rml:reference "cbc:CandidateReductionConstraintIndicator";
                     rr:datatype xsd:boolean
                 ] ;
         ];
@@ -1598,7 +1598,7 @@ rr:predicateObjectMap
             rr:predicate epo:hasEstimatedInvitationToTenderDate ;
             rr:objectMap
                 [
-                    rml:reference "../cac:InvitationSubmissionPeriod/cbc:StartDate";
+                    rml:reference "cac:InvitationSubmissionPeriod/cbc:StartDate";
                     rr:datatype xsd:date;
                 ] ;
         ];
@@ -1609,7 +1609,7 @@ rr:predicateObjectMap
             rr:predicate epo:hasEstimatedInvitationToExpressInterestDate ;
             rr:objectMap
                 [
-                    rml:reference "../cac:ParticipationInvitationPeriod/cbc:StartDate";
+                    rml:reference "cac:ParticipationInvitationPeriod/cbc:StartDate";
                     rr:datatype xsd:date;
                 ] ;
         ]
@@ -1626,7 +1626,7 @@ tedm:MG-MultipleStageProcedureTerm-isSubjectToLotSpecificTerm-Lot_ND-SecondStage
     rr:subjectMap
         [
             rdfs:label "ND-SecondStage";
-            rml:reference "if (exists(cbc:CandidateReductionConstraintIndicator) or exists(descendant::cbc:LimitationDescription) or exists(descendant::cbc:MaximumQuantity) or exists(descendant::cbc:MinimumQuantity)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MultipleStageProcedureTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(cbc:LimitationDescription) or exists(cbc:MaximumQuantity) or exists(cbc:MinimumQuantity)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MultipleStageProcedureTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw') else null" ;
             rr:class epo:MultipleStageProcedureTerm
         ] ;
     rr:predicateObjectMap
@@ -1691,7 +1691,7 @@ tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-InterestExpressionRecep
     rr:subjectMap
         [
             rdfs:label "ND-InterestExpressionReceptionPeriod";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SubmissionTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SubmissionTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../../../../../..)) || '?response_type=raw')}" ;
             rr:class epo:SubmissionTerm
         ] ;
  rr:predicateObjectMap
@@ -1813,7 +1813,7 @@ tedm:MG-OpeningTerm-isSubjectToLotSpecificTerm-Lot_ND-PublicOpening a rr:Triples
     rr:predicateObjectMap
         [
             rdfs:label "BT-133-Lot";
-            rdfs:comment "Public Opening Place of MG-OpeningTerm under ND-PublicOpeningPlace";
+            rdfs:comment "Public Opening Place of MG-OpeningTerm under ND-PublicOpeningPlace (v1.4+), ND-PublicOpening (v1.3-1.3)";
             rr:predicate epo:definesOpeningPlace ;
             rr:objectMap
                 [
@@ -2116,7 +2116,7 @@ tedm:MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SelectionCriteri
     rr:subjectMap
         [
             rdfs:label "ND-SelectionCriteria";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SelectionTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SelectionCriterion_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:SelectionCriterion
         ] ;
     rr:predicateObjectMap
@@ -2188,7 +2188,6 @@ tedm:MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SelectionCriteri
             rr:predicate epo:hasSelectionCriteriaUsage ;
             rr:objectMap
                 [
-                    # rml:reference "cbc:CalculationExpressionCode[@listName='usage']";
                     rdfs:label ":at-voc:usage" ;
                     rr:parentTriplesMap tedm:usage ;
                     rr:joinCondition [
@@ -2319,7 +2318,7 @@ tedm:MG-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardWeightCriter
         ] ;
     rr:predicateObjectMap
         [
-            # TODO min SDK 1.3 and Max SDK 1.7
+            # TODO min SDK 1.3 max SDK 1.7
             rdfs:label "BT-541-Lot-WeightNumber";
             rdfs:comment "AwardCriterionWeightNumber of MG-AwardCriterion under ND-LotAwardWeightCriterionParameter";
             rr:predicate  cccev:weight ;
@@ -2366,7 +2365,6 @@ tedm:MG-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardFixedCriteri
         ] ;
     rr:predicateObjectMap
         [
-            # TODO test source
             rdfs:label "BT-541-Lot-FixedNumber";
             rdfs:comment "AwardCriterionFixedNumberof MG-AwardCriterion under ND-LotAwardFixedCriterionParameter";
             rr:predicate  epo:hasFixedValue ;
@@ -2379,7 +2377,6 @@ tedm:MG-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardFixedCriteri
         ];
      rr:predicateObjectMap
         [
-            #TODO test source
             # Differences across versions are practically superficial and have little to no functional effect on this mapping even though different iterators can be interpreted
             # VERINFO: SDK v1.8 from v1.3-1.7 contains only node change with stylistic XPath changes yielding the same effective XPaths, along with introduction of List attribute and other mapping-irrelevant changes
             rdfs:label "BT-5422-Lot";
@@ -2726,10 +2723,11 @@ tedm:MG-ParticipationCondition-specifiesProcurementCriterion-Lot_ND-LotReservedP
         ] ;
     rr:predicateObjectMap
         [
-           # TODO min SDK 1.4 max SDK 1.7
-           # TODO min SDK 1.3 max SDK 1.3
+            # Differences across versions are practically superficial and have little to no functional effect on this mapping even though different iterators can be interpreted
+            # VERINFO: SDK v1.4-1.7 from v1.3 contains only node change with stylistic XPath changes yielding the same effective XPaths, along with repeatable=false
+            # VERINFO: SDK v1.8+ contains only stylistic XPath changes yielding the same effective XPaths, along with introduction of List attribute
             rdfs:label "BT-71-Lot";
-            rdfs:comment "Reserved Participation of MG-ParticipationCondition under ND-LotReservedParticipation";
+            rdfs:comment "Reserved Participation of MG-ParticipationCondition under ND-LotReservedProcurement (v1.4+), ND-LotReservedParticipation (v1.3)";
             rr:predicate  epo:hasReservedProcurement  ;
 
             rr:objectMap
@@ -2833,7 +2831,7 @@ tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotSubmissionLanguage a
     rr:subjectMap
         [
             rdfs:comment "ND-LotTenderingTerms" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SubmissionTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SubmissionTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
             rr:class epo:SubmissionTerm
         ] ;
     rr:predicateObjectMap
@@ -3301,10 +3299,11 @@ tedm:MG-NonDisclosureAgreementTerm-isSubjectToLotSpecificTerm-Lot_ND-NDA a rr:Tr
         ] ;
       rr:predicateObjectMap
         [
-           # TODO min SDK 1.5.12 max SDK 1.7
+            # VERINFO: SDK v1.5-1.7 from v1.4 contain only node change with stylistic XPath changes yielding the same effective XPaths
+            # VERINFO: SDK v1.8+ contain only stylistic XPath changes yielding the same effective XPaths, along with introduction of List attribute
             rdfs:label "BT-801-Lot";
-            rdfs:comment "Non Disclosure Agreement of MG-NonDisclosureAgreementTerm under ND-NDA";
-            rr:predicate epo:isNonDisclosureAgreementRequired     ;
+            rdfs:comment "Non Disclosure Agreement of MG-NonDisclosureAgreementTerm under ND-NDA (v1.5+), ND-LotTenderingTerms (v1.3-1.4)";
+            rr:predicate epo:isNonDisclosureAgreementRequired ;
             rr:objectMap
                 [
                     tedm:minSDKVersion "1.8" ;
@@ -3351,7 +3350,7 @@ tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotESignature a rr:Trip
     rr:subjectMap
         [
             rdfs:label "ND-LotESignature";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SubmissionTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SubmissionTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
             rr:class epo:SubmissionTerm
         ] ;
       rr:predicateObjectMap
@@ -3422,7 +3421,7 @@ tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-SubcontractingIndicatio
     rr:subjectMap
         [
             rdfs:label "ND-SubcontractingIndication";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SubmissionTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}";
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SubmissionTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../../../../../..)) || '?response_type=raw')}";
             rr:class epo:SubmissionTerm
         ] ;
     rr:predicateObjectMap
@@ -3474,7 +3473,7 @@ tedm:MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-PaymentTerms a rr:Tripl
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-77-Lot-";
+            rdfs:label "BT-77-Lot";
             rdfs:comment "Terms Financial of MG-ContractTerm under ND-PaymentTerms";
             rr:predicate epo:hasPaymentArrangement  ;
             rr:objectMap
@@ -3509,7 +3508,7 @@ tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-FinancialGuarantee a rr
     rr:subjectMap
         [
             rdfs:label "ND-FinancialGuarantee";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SubmissionTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SubmissionTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
             rr:class epo:SubmissionTerm
         ] ;
     rr:predicateObjectMap
@@ -3562,7 +3561,7 @@ tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-TenderRecipient a rr:Tr
     rr:subjectMap
         [
             rdfs:label "ND-TenderRecipient";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SubmissionTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SubmissionTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
             rr:class epo:SubmissionTerm
         ] ;
     rr:predicateObjectMap
@@ -4260,7 +4259,6 @@ tedm:MG-GreenProcurement-fulfillsStrategicProcurement-Lot_ND-LotGreenCriteria a 
             rr:predicate epo:fulfillsRequirement   ;
             rr:objectMap
                 [
-                    # TODO add to source
                     tedm:minSDKVersion "1.9.1" ;
                     rdfs:label "at-voc:green-public-procurement-criteria";
                     rr:parentTriplesMap tedm:green-public-procurement-criteria ;
@@ -4288,13 +4286,13 @@ tedm:MG-StrategicProcurement-fulfillsStrategicProcurement-Lot-Lot_ND-Accessibili
         ] ;
     rr:predicateObjectMap
         [
+            # VERINFO: SDK v1.5-1.7 from 1.4 contain only node change with stylistic XPath changes yielding the same effective XPaths, along with repeatable=false
+            # VERINFO: SDK v1.8+ contain only stylistic XPath changes yielding the same effective XPaths, along with introduction of List attribute
             rdfs:label "BT-754-Lot";
-            rdfs:comment "Accessibility  of MG-StrategicProcurement under ND-AccessibilityJustification";
+            rdfs:comment "Accessibility  of MG-StrategicProcurement under ND-AccessibilityJustification (v1.5+), ND-LotProcurementScope (v1.3-1.4)";
             rr:predicate epo:includesAccessibilityCriterion ;
             rr:objectMap
                 [
-                    # TODO test source
-                    # TODO min SDK 1.5.12 max SDK 1.7
                     tedm:minSDKVersionn "1.8" ;
                     rdfs:label "at-voc:accessibility";
                     rr:parentTriplesMap tedm:accessibility ;
@@ -4628,13 +4626,12 @@ tedm:MG-Period-definesContractPeriod-ContractTerm-foreseesContractSpecificTerm-L
         ];
     rr:predicateObjectMap
         [
-            # min SDK 1.3 max SDK 1.7 no mapping-relevant changes
+            # VERINFO: across versions only mapping-irrelevant changes, and introduction of List attribute from 1.9+
             rdfs:label "BT-538-Lot";
             rdfs:comment "Duration Other of MG-SpecificDuration under ND-LotDuration";
             rr:predicate  epo:hasTimePeriod;
             rr:objectMap
                 [
-                    tedm:minSDKVersion "1.8" ;
                     rdfs:label "at-voc:timeperiod";
                     rr:parentTriplesMap tedm:timeperiod ;
                     rr:joinCondition [
@@ -4685,13 +4682,12 @@ tedm:MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-OptionsAndRenewals a rr
         ] ;
     rr:predicateObjectMap
         [
-            # min SDK 1.3 max SDK 1.7 no mapping-relevant changes
+            # VERINFO: across versions only mapping-irrelevant changes
             rdfs:label "BT-58-Lot";
             rdfs:comment "Renewal Maximum of MG-ContractTerm under ND-OptionsAndRenewals";
             rr:predicate epo:hasMaximumNumberOfRenewals ;
             rr:objectMap
                 [
-                    tedm:minSDKVersion "1.8" ;
                     rml:reference "cbc:MaximumNumberNumeric";
                     rr:datatype xsd:integer;
                 ] ;

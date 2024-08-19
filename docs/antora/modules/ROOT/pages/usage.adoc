@@ -33,6 +33,27 @@ For development, simple https://github.com/RMLio/rmlmapper-java[RMLMapper] comma
 rmlmapper -m $MAPPINGS_FOLDER/* -s turtle > $OUTPUT_FILE
 ```
 
-where the `$MAPPING_FOLDER` is a folder with the right package structure, and
+where the `$MAPPING_FOLDER` is a folder with RML files, and
 `$OUTPUT_FILE` is the desired RDF output file, usually suffixed with the `.ttl`
 extension (for the Turtle serialization as provided with the `-s` argument).
+
+The RML rules expect a data file path `data/source.xml` relative to where this
+command is run from. In the current package structure, this implies that a
+temporary `data` folder is created next to the `test_data` folder with a
+desired test data file (whether or not already bundled in the package) copied
+as `source.xml`, under `mappings/$PACKAGE_FOLDER`:
+
+```
+mappings
+mappings/package_cn_v1.9
+mappings/package_cn_v1.9/data
+mappings/package_cn_v1.9/data/source.xml
+mappings/package_cn_v1.9/test_data
+mappings/package_cn_v1.9/test_data/sdk_examples_cn
+mappings/package_cn_v1.9/test_data/sdk_examples_cn/cn_24_maximal.xml
+...
+```
+
+**Note:** Currently this transformation execution requires an Internet
+connection, due to the URI construction involving a remote HTTP web API call
+for xref:methodology.adoc#ref:uri-scheme[generating a seeded hash].
