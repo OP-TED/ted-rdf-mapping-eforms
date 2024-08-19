@@ -2726,10 +2726,11 @@ tedm:MG-ParticipationCondition-specifiesProcurementCriterion-Lot_ND-LotReservedP
         ] ;
     rr:predicateObjectMap
         [
-           # TODO min SDK 1.4 max SDK 1.7
-           # TODO min SDK 1.3 max SDK 1.3
+            # Differences across versions are practically superficial and have little to no functional effect on this mapping even though different iterators can be interpreted
+            # VERINFO: SDK v1.4-1.7 from v1.3 contains only node change with stylistic XPath changes yielding the same effective XPaths, along with repeatable=false
+            # VERINFO: SDK v1.8+ contains only stylistic XPath changes yielding the same effective XPaths, along with introduction of List attribute
             rdfs:label "BT-71-Lot";
-            rdfs:comment "Reserved Participation of MG-ParticipationCondition under ND-LotReservedParticipation";
+            rdfs:comment "Reserved Participation of MG-ParticipationCondition under ND-LotReservedProcurement (v1.4+), ND-LotReservedParticipation (v1.3)";
             rr:predicate  epo:hasReservedProcurement  ;
 
             rr:objectMap
@@ -3301,10 +3302,11 @@ tedm:MG-NonDisclosureAgreementTerm-isSubjectToLotSpecificTerm-Lot_ND-NDA a rr:Tr
         ] ;
       rr:predicateObjectMap
         [
-           # TODO min SDK 1.5.12 max SDK 1.7
+            # VERINFO: SDK v1.5-1.7 from v1.4 contain only node change with stylistic XPath changes yielding the same effective XPaths
+            # VERINFO: SDK v1.8+ contain only stylistic XPath changes yielding the same effective XPaths, along with introduction of List attribute
             rdfs:label "BT-801-Lot";
-            rdfs:comment "Non Disclosure Agreement of MG-NonDisclosureAgreementTerm under ND-NDA";
-            rr:predicate epo:isNonDisclosureAgreementRequired     ;
+            rdfs:comment "Non Disclosure Agreement of MG-NonDisclosureAgreementTerm under ND-NDA (v1.5+), ND-LotTenderingTerms (v1.3-1.4)";
+            rr:predicate epo:isNonDisclosureAgreementRequired ;
             rr:objectMap
                 [
                     tedm:minSDKVersion "1.8" ;
@@ -4288,13 +4290,13 @@ tedm:MG-StrategicProcurement-fulfillsStrategicProcurement-Lot-Lot_ND-Accessibili
         ] ;
     rr:predicateObjectMap
         [
+            # VERINFO: SDK v1.5-1.7 from 1.4 contain only node change with stylistic XPath changes yielding the same effective XPaths, along with repeatable=false
+            # VERINFO: SDK v1.8+ contain only stylistic XPath changes yielding the same effective XPaths, along with introduction of List attribute
             rdfs:label "BT-754-Lot";
-            rdfs:comment "Accessibility  of MG-StrategicProcurement under ND-AccessibilityJustification";
+            rdfs:comment "Accessibility  of MG-StrategicProcurement under ND-AccessibilityJustification (v1.5+), ND-LotProcurementScope (v1.3-1.4)";
             rr:predicate epo:includesAccessibilityCriterion ;
             rr:objectMap
                 [
-                    # TODO test source
-                    # TODO min SDK 1.5.12 max SDK 1.7
                     tedm:minSDKVersionn "1.8" ;
                     rdfs:label "at-voc:accessibility";
                     rr:parentTriplesMap tedm:accessibility ;
@@ -4628,13 +4630,12 @@ tedm:MG-Period-definesContractPeriod-ContractTerm-foreseesContractSpecificTerm-L
         ];
     rr:predicateObjectMap
         [
-            # min SDK 1.3 max SDK 1.7 no mapping-relevant changes
+            # VERINFO: across versions only mapping-irrelevant changes, and introduction of List attribute from 1.9+
             rdfs:label "BT-538-Lot";
             rdfs:comment "Duration Other of MG-SpecificDuration under ND-LotDuration";
             rr:predicate  epo:hasTimePeriod;
             rr:objectMap
                 [
-                    tedm:minSDKVersion "1.8" ;
                     rdfs:label "at-voc:timeperiod";
                     rr:parentTriplesMap tedm:timeperiod ;
                     rr:joinCondition [
@@ -4685,13 +4686,12 @@ tedm:MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-OptionsAndRenewals a rr
         ] ;
     rr:predicateObjectMap
         [
-            # min SDK 1.3 max SDK 1.7 no mapping-relevant changes
+            # VERINFO: across versions only mapping-irrelevant changes
             rdfs:label "BT-58-Lot";
             rdfs:comment "Renewal Maximum of MG-ContractTerm under ND-OptionsAndRenewals";
             rr:predicate epo:hasMaximumNumberOfRenewals ;
             rr:objectMap
                 [
-                    tedm:minSDKVersion "1.8" ;
                     rml:reference "cbc:MaximumNumberNumeric";
                     rr:datatype xsd:integer;
                 ] ;
