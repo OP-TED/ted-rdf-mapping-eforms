@@ -110,7 +110,7 @@
 <p><span class="image"><img src="_images/metadata_sheet.png" alt="metadata sheet"></span></p>
 </div>
 <div class="paragraph">
-<p>The fields specified in the Metadata sheet are split into two section based on what type of information they provide. They can (a) describe the suite of mapping rules, and (b) the constraints necessary to identify notices eligible for transformation with this mapping suite (applicable in the context of TED-SWS pipeline).</p>
+<p>The fields specified in the Metadata sheet are split into two section based on what type of information they provide. They can (a) describe the suite of mapping rules, and (b) the constraints necessary to identify notices eligible for transformation with this mapping suite (applicable in the context of the <a href="https://github.com/OP-TED/ted-rdf-conversion-pipeline">TED-SWS pipeline</a>).</p>
 </div>
 <div class="paragraph">
 <p><strong>Mapping suite metadata:</strong></p>
@@ -213,12 +213,12 @@
 <p><strong>mapping_type</strong> - the type of the mapping suite. It can be either <code>standard_forms</code> or <code>eforms</code> (and is the latter for all packages in this project)</p>
 </li>
 <li>
-<p><strong>mapping_suite_hash_digest</strong> - a hash digest that can serve as a unique key representative of the content of this mapping suite</p>
+<p><strong>mapping_suite_hash_digest</strong> - a hash digest that can serve as a fingerprint representative of the content of this mapping suite</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Note:</strong> The <code>mapping_suite_hash_digest</code> is created based on the entire content of the mapping package, and serves as a validation key or signature, in order to ensure the TED-SWS pipeline software that the metadata in this file is valid for the current content of the package.</p>
+<p><strong>Note:</strong> The <code>mapping_suite_hash_digest</code> is created by hashing the content of ALL the files in the <code>transformation</code> folder and the values of all the metadata fields. It serves as a validation fingerprint, in order to ensure the TED-SWS pipeline software that the metadata in this file is valid for the current content of the package (for more details see the <a href="https://github.com/OP-TED/ted-rdf-conversion-pipeline/blob/2.0.0-rc.4/ted_sws/mapping_suite_processor/adapters/mapping_suite_hasher.py">corresponding script</a> that does this validation).</p>
 </div>
 </div>
 </div>

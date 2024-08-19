@@ -143,9 +143,33 @@ unreleased</a>).</p>
 </div>
 </div>
 <div class="paragraph">
-<p>where the <code>$MAPPING_FOLDER</code> is a folder with the right package structure, and
+<p>where the <code>$MAPPING_FOLDER</code> is a folder with RML files, and
 <code>$OUTPUT_FILE</code> is the desired RDF output file, usually suffixed with the <code>.ttl</code>
 extension (for the Turtle serialization as provided with the <code>-s</code> argument).</p>
+</div>
+<div class="paragraph">
+<p>The RML rules expect a data file path <code>data/source.xml</code> relative to where this
+command is run from. In the current package structure, this implies that a
+temporary <code>data</code> folder is created next to the <code>test_data</code> folder with a
+desired test data file (whether or not already bundled in the package) copied
+as <code>source.xml</code>, under <code>mappings/$PACKAGE_FOLDER</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">mappings
+mappings/package_cn_v1.9
+mappings/package_cn_v1.9/data
+mappings/package_cn_v1.9/data/source.xml
+mappings/package_cn_v1.9/test_data
+mappings/package_cn_v1.9/test_data/sdk_examples_cn
+mappings/package_cn_v1.9/test_data/sdk_examples_cn/cn_24_maximal.xml
+...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> Currently this transformation execution requires an Internet
+connection, due to the URI construction involving a remote HTTP web API call
+for <a href="methodology.html#ref:uri-scheme" class="xref page">generating a seeded hash</a>.</p>
 </div>
 </div>
 </div>
