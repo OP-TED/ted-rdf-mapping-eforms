@@ -753,7 +753,7 @@ tedm:MG-Procedure_ND-ProcedureTenderingProcess a rr:TriplesMap ;
                 [
                     rdfs:label "BT-88-Procedure-Language" ;
                     rdfs:comment "Language of Procedure Features of MG-Procedure under ND-ProcedureTenderingProcess" ;
-                    rml:reference "cbc:Description" ;
+                    rml:reference "if(not( exists(../efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='pro-fea']) and cbc:Description/text() = 'unpublished' )) then cbc:Description else null";
                     rml:languageMap [
                         fnml:functionValue [
                             rr:predicateObjectMap [
@@ -778,7 +778,7 @@ tedm:MG-Procedure_ND-ProcedureTenderingProcess a rr:TriplesMap ;
                     rdfs:label "at-voc:procurement-procedure-type" ;
                     rr:parentTriplesMap tedm:procurement-procedure-type ;
                     rr:joinCondition [
-                        rr:child "cbc:ProcedureCode" ;
+                        rr:child "if(not( exists(../efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='pro-typ']) and cbc:ProcedureCode/text() = 'unpublished' )) then cbc:ProcedureCode else null" ;
                         rr:parent "code.value" ;
                     ] ;
                 ] ;
@@ -844,7 +844,7 @@ tedm:MG-Procedure_ND-AcceleratedProcedure a rr:TriplesMap ;
                 [
                     # this is an example of a version-specific mapping that has no difference
                     # with its other counterparts due to non-functional changes in the XPath
-                    rml:reference "cbc:ProcessReasonCode" ;
+                    rml:reference "if(not( exists(../efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='pro-acc']) and cbc:ProcessReasonCode/text() = '0' )) then cbc:ProcessReasonCode else null" ;
                     rr:datatype xsd:boolean
                 ] ;
         ] ;
@@ -858,6 +858,7 @@ tedm:MG-Procedure_ND-AcceleratedProcedure a rr:TriplesMap ;
                     rdfs:label "BT-1351-Procedure-Language" ;
                     rdfs:comment "Language of Procedure Accelerated Justification of MG-Procedure under ND-AcceleratedProcedure" ;
                     rml:reference "cbc:ProcessReason" ;
+                    rml:reference "if(not( exists(../efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='pro-acc-jus']) and cbc:ProcessReason/text() = 'unpublished' )) then cbc:ProcessReason else null" ;
                     rml:languageMap [
                         fnml:functionValue [
                             rr:predicateObjectMap [
