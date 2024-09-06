@@ -1,4 +1,4 @@
-#--- MG-ProcurementProcessInformation (common) ---
+#--- MG-ProcurementProcesInformation ---
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -8,6 +8,7 @@
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
@@ -22,10 +23,6 @@
 @prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix idlab-fn: <http://example.com/idlab/function/> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
-@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 
 tedm:MG-ProcurementProcessInformation_ND-ProcedureTenderingProcess a rr:TriplesMap ;
     rdfs:label "MG-ProcurementProcessInformation" ;
@@ -75,4 +72,45 @@ tedm:MG-ProcurementProcessInformation_ND-ProcedureTenderingProcess a rr:TriplesM
                     rr:datatype xsd:boolean;
                 ] ;
         ];
+.
+
+tedm:MG-ProcurementProcessInformation_ND-LotTenderingProcessExtension a rr:TriplesMap ;
+    rdfs:label "MG-ProcurementProcessInformation";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotTenderingProcessExtension";
+            rml:reference "if(exists(efbc:ProcedureRelaunchIndicator)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcurementProcessInformation_' || ../../../../../cbc:ID else null" ;
+            rr:class epo:ProcurementProcessInformation
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-634-Lot";
+            rdfs:comment "Procurement Relaunch of MG-ProcurementProcessInformation under ND-LotTenderingProcessExtension ";
+            rr:predicate epo:isToBeRelaunched ;
+            rr:objectMap
+                [
+                    rml:reference "efbc:ProcedureRelaunchIndicator";
+                    rr:datatype xsd:boolean
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-634-Lot";
+            rdfs:comment "this is for MG-Lot-concernsLot-ProcurementProcessInformation";
+            rr:predicate epo:concernsLot ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Lot_ND-Lot;
+                    rr:joinCondition [
+                       rr:child "path(../../../../..)";
+                        rr:parent "path(.)";
+                    ];
+            ];
+        ]
 .
