@@ -89,7 +89,7 @@ locations in the source XML.
   `epo:AgentInRole`'s "contact point in role" due to technical difficulty
   <https://github.com/OP-TED/ted-rdf-mapping-eforms/issues/30>
 
-- `Expected epo:hasTimePeriod --> [1..*] at-voc:timeperiod , but found 0 instances` predicate is an alternative and should not be mandatory
+- `Expected epo:hasTimePeriod --> [1..*] at-voc:timeperiod , but found 0 instances` predicate is an alternative and should not be mandatory <https://github.com/OP-TED/ePO/issues/529>
 
 - `model declares a xsd:dateTime` data type misalignment between eForms and ePO <https://github.com/OP-TED/ted-rdf-mapping-eforms/issues/8>
 
@@ -97,15 +97,13 @@ locations in the source XML.
 
 - External resources such as a referenced notices will raise violations if tested standalone (as they will only contain information in the current notice's scope)
 
-- `cpov:ContactPoint adms:identifier / skos:notation ?value` ePO 4.0.0 does not foresee an Identifier for ContactPoint (OPT-201-Organization-TouchPoint)
-
 - all `epo-not:CompetitionNotice` and associations of it will not exist for `epo:ResultNotice`
 
 - all alternative values will not exist for all notices (e.g.  `used` vs. `n-used`)
 
-- `epo hasAwardDecisionDate` data type misalignment between eForms and ePO <https://github.com/OP-TED/ted-rdf-mapping-eforms/issues/8>
+- `epo:hasAwardDecisionDate` data type misalignment between eForms and ePO <https://github.com/OP-TED/ted-rdf-mapping-eforms/issues/8>
 
-- `epo hasOJSIssueNumber` data type misalignment between eForms and ePO
+- `epo:hasOJSIssueNumber` data type misalignment between eForms and ePO
 
 - `Expected epo:hasAwardCriteriaStatedInProcurementDocuments` <https://github.com/OP-TED/ePO/issues/679>
 
