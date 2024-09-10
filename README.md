@@ -83,6 +83,36 @@ tedm:MG-Address-hasAddress-Location-hasLocation_ND-Company
 This is because information for the same RDF resource can be in different
 locations in the source XML.
 
+## Known Issues
+
+- `owl:sameAs` used to get through to the Organization of a TouchPoint for an
+  `epo:AgentInRole`'s "contact point in role" due to technical difficulty
+  <https://github.com/OP-TED/ted-rdf-mapping-eforms/issues/30>
+
+- `Expected epo:hasTimePeriod --> [1..*] at-voc:timeperiod , but found 0 instances` predicate is an alternative and should not be mandatory
+
+- `model declares a xsd:dateTime` data type misalignment between eForms and ePO <https://github.com/OP-TED/ted-rdf-mapping-eforms/issues/8>
+
+- `epo:Tender epo:isSubjectToGrouping epo:LotGroup` will _not_ have `epo:isSubmittedForLot epo:Lot` at the same time <https://github.com/OP-TED/ePO/issues/683>
+
+- External resources such as a referenced notices will raise violations if tested standalone (as they will only contain information in the current notice's scope)
+
+- `cpov:ContactPoint adms:identifier / skos:notation ?value` ePO 4.0.0 does not foresee an Identifier for ContactPoint (OPT-201-Organization-TouchPoint)
+
+- all `epo-not:CompetitionNotice` and associations of it will not exist for `epo:ResultNotice`
+
+- all alternative values will not exist for all notices (e.g.  `used` vs. `n-used`)
+
+- `epo hasAwardDecisionDate` data type misalignment between eForms and ePO <https://github.com/OP-TED/ted-rdf-mapping-eforms/issues/8>
+
+- `epo hasOJSIssueNumber` data type misalignment between eForms and ePO
+
+- `Expected epo:hasAwardCriteriaStatedInProcurementDocuments` <https://github.com/OP-TED/ePO/issues/679>
+
+- `Expected epo:isSubjectToProcedureSpecificTerm --> [1..*] epo:ProcedureSpecificTerm , but found 0 instances` No Procedure defined in a ResultNotice (it is defined fully in another notice)
+
+- `Expected epo:hasOfficialLanguage --> [1..*] at-voc:language , but found 0 instances` Subtypes of Document do not necessarily have languages in the data
+
 ## Contributing
 
 You are more than welcome to help expand and mature this project.
