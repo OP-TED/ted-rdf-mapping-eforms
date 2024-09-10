@@ -136,11 +136,24 @@ strongly)
 
 There are exceptions to this policy, namely in the _trailer_ segment, as that
 is what lends uniqueness to a resource, and determines whether instances being
-created from subject URI templates in the technical RML rules are correct. One
-such exception are epo:AgentInRole instances, which
+created from subject URI templates in the technical RML rules are correct. The
+following are such exceptions:
+
+1. `epo:AgentInRole` instances, which
 https://github.com/OP-TED/ted-rdf-mapping-eforms/issues/31[require a carefully
 constructed URI] seeded with information about the related party (a
-foaf:Agent).
+`foaf:Agent`).
+
+2. `epo:AwardDecision` instances, which are hashed on the `cbc:AwardDate` to
+yield the same instance for awards on the same date across possibly repeating
+elements.
+
+3. External notices that are referred to, whose base IRI involves the ID of the
+respective notice, not the current one in scope.
+
+4. External resources that cannot be identified, such as the Framework
+Agreement contract representing `OPT-100-Contract Framework Notice Identifier`,
+for whom a proxy `epo:FrameworkAgreement` is created _without_ a trailer.
 
 **Note:** Wherever _URI_ is mentioned,
 https://www.w3.org/2001/Talks/0912-IUC-IRI/paper.html#:~:text=In%20principle%2C%20the%20definition%20of,us%2Dascii%20characters%20in%20URIs[IRI]
