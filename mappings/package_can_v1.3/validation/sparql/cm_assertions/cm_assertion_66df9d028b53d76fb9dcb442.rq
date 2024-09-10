@@ -1,0 +1,11 @@
+#title: BT-773-Tender
+#description: “Subcontracting” The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender/efac:SubcontractingTerm[efbc:TermCode/@listName='applicability']/efbc:TermCode. The expected ontology instances are epo: epo:Tender / at-voc:applicability .
+#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender/efac:SubcontractingTerm[efbc:TermCode/@listName='applicability']/efbc:TermCode
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+	?this rdf:type epo:Tender .
+	?this epo:hasSubcontracting ?value . 
+}

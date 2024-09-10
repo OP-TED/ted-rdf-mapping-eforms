@@ -1,0 +1,13 @@
+#title: OPT-200-Organization-Company
+#description: “Organisation Technical Identifier” The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:PartyIdentification/cbc:ID. The expected ontology instances are epo: org:Organization / adms:Identifier / rdf:plainLiteral .
+#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:PartyIdentification/cbc:ID
+
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+ASK WHERE { 
+	?this rdf:type org:Organization .
+	?this adms:identifier / skos:notation ?value . 
+}
