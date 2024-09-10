@@ -286,11 +286,32 @@ strongly)</p>
 <div class="paragraph">
 <p>There are exceptions to this policy, namely in the <em>trailer</em> segment, as that
 is what lends uniqueness to a resource, and determines whether instances being
-created from subject URI templates in the technical RML rules are correct. One
-such exception are epo:AgentInRole instances, which
+created from subject URI templates in the technical RML rules are correct. The
+following are such exceptions:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>epo:AgentInRole</code> instances, which
 <a href="https://github.com/OP-TED/ted-rdf-mapping-eforms/issues/31">require a carefully
 constructed URI</a> seeded with information about the related party (a
-foaf:Agent).</p>
+<code>foaf:Agent</code>).</p>
+</li>
+<li>
+<p><code>epo:AwardDecision</code> instances, which are hashed on the <code>cbc:AwardDate</code> to
+yield the same instance for awards on the same date across possibly repeating
+elements.</p>
+</li>
+<li>
+<p>External notices that are referred to, whose base IRI involves the ID of the
+respective notice, not the current one in scope.</p>
+</li>
+<li>
+<p>External resources that cannot be identified, such as the Framework
+Agreement contract representing <code>OPT-100-Contract Framework Notice Identifier</code>,
+for whom a proxy <code>epo:FrameworkAgreement</code> is created <em>without</em> a trailer.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <p><strong>Note:</strong> Wherever <em>URI</em> is mentioned,
