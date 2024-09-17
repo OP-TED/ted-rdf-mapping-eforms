@@ -37,19 +37,19 @@ tedm:MG-ProcedureTerm_ND-ProcedureTenderingProcess a rr:TriplesMap ;
         [
             rdfs:label "ND-ProcedureTenderingProcess" ;
             rdfs:comment "Primary type declaration for MG-Procedure under ND-ProcedureTenderingProcess" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ProcedureTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rml:reference "if (exists(cbc:PartPresentationCode)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcedureTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw') else null" ;
             rr:class epo:ProcedureTerm
         ] ;
     rr:predicateObjectMap
         [
-            # TODO min SDK 1.3 max SDK 1.8
+            # Differences across versions have no functional effect on this mapping
+            # VERINFO: SDK v1.9 from v1.3-1.8 contains only introduction of List attribute and other mapping-irrelevant changes
             rdfs:label "BT-763-Procedure" ;
             rdfs:comment "Lots All Required of MG-ProcedureTerm under ND-ProcedureProcurementScope" ;
             rr:predicate epo:isSubmissionForAllLotsRequired ;
             rr:objectMap
                 [
                     # this needs no inverse mapping for false as there is only one value in the voc
-                    tedm:minSDKVersion "1.9.1" ;
                     rml:reference "if(cbc:PartPresentationCode/text()='all') then 'true' else null" ;
                     rr:datatype xsd:boolean ;
                 ]
@@ -156,7 +156,7 @@ tedm:MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-LotReviewTer
     rr:subjectMap
         [
             rdfs:label "ND-LotReviewTerms" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ProcedureTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rml:reference "if (exists(cac:MediationParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcedureTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw') else null" ;
             rr:class epo:ProcedureTerm
         ] ;
     rr:predicateObjectMap

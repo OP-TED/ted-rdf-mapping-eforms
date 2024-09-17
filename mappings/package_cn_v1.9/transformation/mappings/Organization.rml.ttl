@@ -24,6 +24,7 @@
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix idlab-fn: <http://example.com/idlab/function/> .
 
+# This is a catch-all TriplesMap to map several related nodes (we group into one representative node)
 tedm:MG-Organization_ND-Company a rr:TriplesMap ;
     rdfs:label "MG-Organization" ;
     rml:logicalSource
@@ -73,6 +74,8 @@ tedm:MG-Organization_ND-Company a rr:TriplesMap ;
             rr:predicate epo:hasLegalName ;
             rr:objectMap
                 [
+                    rdfs:label "BT-500-Organization-Company-Language" ;
+                    rdfs:comment "Language of Organisation Name of MG-Organization under ND-Company" ;
                     rml:reference "cac:PartyName/cbc:Name" ;
                     rml:languageMap [
                         fnml:functionValue [
@@ -104,13 +107,13 @@ tedm:MG-Organization_ND-Company a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            # TODO min SDK 1.3 max SDK 1.7
+            # Differences across versions are practically superficial and have little to no functional effect on this mapping even though different iterators can be interpreted
+            # VERINFO: SDK v1.8 from v1.3-1.7 contains only node change with stylistic XPath changes yielding the same effective XPaths, along with only relative XPath change, repeatable=false and other mapping-irrelevant changes
             rdfs:label "BT-501-Organization-Company" ;
-            rdfs:comment "Organisation Identifier of MG-Organization under ND-Company" ;
+            rdfs:comment "Organisation Identifier of MG-Organization under ND-CompanyLegalEntity (v1.8+), ND-Company (v1.3-1.7)" ;
             rr:predicate epo:hasLegalIdentifier ;
             rr:objectMap
                 [
-                    tedm:minSDKVersion "1.8" ;
                     rr:parentTriplesMap tedm:MG-Identifier-hasLegalIdentifier-Organization_ND-Company ;
                     rr:joinCondition [
                         rr:child "path(.)" ;

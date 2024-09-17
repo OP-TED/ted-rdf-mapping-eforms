@@ -188,6 +188,8 @@ tedm:MG-Procedure_ND-LocalLegalBasisWithID a rr:TriplesMap ;
             rr:predicate epo:hasLegalBasisDescription  ;
             rr:objectMap
                 [
+                    rdfs:label "BT-01(d)-Procedure-Language";
+                    rdfs:comment "Language of Procedure Legal Basis (Description) of MG-Procedure under ND-LocalLegalBasisWithID ";
                     rml:reference "if(exists(cbc:DocumentDescription)) then (if(exists(cbc:ID)) then cbc:ID || (if(exists(cbc:ID/@schemeName)) then ' [' || cbc:ID/@schemeName || ']' else '') || ' / ' else '') || cbc:DocumentDescription else null";
                     rml:languageMap [
                         fnml:functionValue [
@@ -244,6 +246,8 @@ tedm:MG-Procedure_ND-LocalLegalBasisNoID a rr:TriplesMap ;
             rr:objectMap
                 [
                     tedm:minSDKVersion "1.4" ;
+                    rdfs:label "BT-01(f)-Procedure-Language";
+                    rdfs:comment "Language of Procedure Legal Basis (NoID Description) of MG-Procedure under ND-LocalLegalBasisNoID";
                     rml:reference "cbc:DocumentDescription";
                     rml:languageMap [
                         fnml:functionValue [
@@ -292,7 +296,7 @@ tedm:MG-Procedure_ND-CrossBorderLaw a rr:TriplesMap ;
         ] ;
 .
 
-# TODO min SDK 1.3 max SDK 1.3 required only for BT-01(c)-Procedure
+# TODO min SDK 1.3 max SDK 1.3 required only for BT-01(c)-Procedure which is unmappable
 # tedm:MG-Procedure_ND-ProcedureTerms a rr:TriplesMap ;
 #     rdfs:label "MG-Procedure";
 #     rml:logicalSource
@@ -358,10 +362,9 @@ tedm:MG-LotGroup-definesLotGroup-ProcedureTerm-isSubjectToProcedureSpecificTerm-
         ] ;
     rr:predicateObjectMap
         [
-            # TODO min SDK 1.6 max SDK 1.7
-            # TODO min SDK 1.3 max SDK 1.5.12
+            # VERINFO: SDK v1.8+ from v1.3-1.7 contains only node change with rel XPath changes yielding the same effective XPaths, along with repeatable=false, introduction of Scheme attribute and other mapping-irrelevant changes
             rdfs:label "BT-1375-Procedure";
-            rdfs:comment "Group Lot Identifier of MG-LotGroup under ND-GroupComposition";
+            rdfs:comment "Group Lot Identifier of MG-LotGroup under ND-GroupComposition (v1.3-1.7), ND-GroupCompositionLotReference (v1.8+)";
             rr:predicate epo:setsGroupingContextForLot;
             rr:objectMap
                 [
@@ -396,7 +399,7 @@ tedm:MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-LotDistribut
         ] ;
     rr:predicateObjectMap
         [
-            # TODO min SDK 1.3 max SDK 1.5.12
+            # VERINFO: SDK v1.3-1.5 type was broader 'number', data and xsd type still compatible for 1.6+
             rdfs:label "BT-31-Procedure";
             rdfs:comment "Lots Max Allowed of MG-ProcedureTerm under ND-LotDistribution";
             rr:predicate epo:hasMaximumLotSubmissionAllowed ;
@@ -409,7 +412,7 @@ tedm:MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-LotDistribut
         ] ;
     rr:predicateObjectMap
         [
-            # TODO min SDK 1.3 max SDK 1.5.12
+            # VERINFO: SDK v1.3-1.5 type was broader 'number', data and xsd type still compatible for 1.6+
             rdfs:label "BT-33-Procedure";
             rdfs:comment "Lots Max Awarded of MG-ProcedureTerm under ND-LotDistribution";
             rr:predicate epo:hasMaximumNumberOfLotsToBeAwarded ;
@@ -422,7 +425,7 @@ tedm:MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-LotDistribut
         ] ;
     rr:predicateObjectMap
         [
-            # TODO min SDK 1.3 max SDK 1.5.12
+            # VERINFO: across SDK versions only introduction of Scheme attribute and mapping-irrelevant changes
             rdfs:label "BT-330-Procedure";
             rdfs:comment "Group Identifier of MG-ProcedureTerm under ND-LotDistribution";
             rr:predicate epo:definesLotGroup;
@@ -471,6 +474,8 @@ tedm:MG-Procedure_ND-ProcedureProcurementScope a rr:TriplesMap ;
             rr:predicate dct:title ;
             rr:objectMap
                 [
+                    rdfs:label "BT-21-Procedure-Language" ;
+                    rdfs:comment "Language of Title of MG-Procedure under ND-ProcedureProcurementScope" ;
                     rml:reference "cbc:Name" ;
                     rml:languageMap [
                         fnml:functionValue [
@@ -493,17 +498,19 @@ tedm:MG-Procedure_ND-ProcedureProcurementScope a rr:TriplesMap ;
             rr:predicate dct:description ;
             rr:objectMap
                 [
+                    rdfs:label "BT-24-Procedure-Language" ;
+                    rdfs:comment "Language of Description of MG-Procedure under ND-ProcedureProcurementScope" ;
                     rml:reference "cbc:Description" ;
                     rml:languageMap [
                         fnml:functionValue [
                             rr:predicateObjectMap [
                                 rr:predicate idlab-fn:str ;
                                 rr:objectMap [ rml:reference "cbc:Description/@languageID" ]
-                                ] ,
-                                tedm:idlab-fn_executes_lookup ,
-                                tedm:idlab-fn_inputFile_language ,
-                                tedm:idlab-fn_fromColumn_code ,
-                                tedm:idlab-fn_toColumn_code
+                            ] ,
+                            tedm:idlab-fn_executes_lookup ,
+                            tedm:idlab-fn_inputFile_language ,
+                            tedm:idlab-fn_fromColumn_code ,
+                            tedm:idlab-fn_toColumn_code
                         ]
                     ] ;
                 ] ;
@@ -515,6 +522,8 @@ tedm:MG-Procedure_ND-ProcedureProcurementScope a rr:TriplesMap ;
             rr:predicate epo:hasAdditionalInformation ;
             rr:objectMap
                 [
+                    rdfs:label "BT-300-Procedure-Language" ;
+                    rdfs:comment "Language of Additional Information of MG-Procedure under ND-ProcedureProcurementScope" ;
                     rml:reference "cbc:Note";
                     rml:languageMap [
                         fnml:functionValue [
@@ -670,36 +679,14 @@ tedm:MG-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedureProcurem
 .
 
 tedm:MG-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedureContractAdditionalNature a rr:TriplesMap ;
+    # predicate mappings are in versioned files (Procedure_v1.3-1.7|1.8+)
     rdfs:label "MG-ContractTerm" ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProject/cac:ProcurementAdditionalType[cbc:ProcurementTypeCode/@listName='contract-nature']" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
     rr:subjectMap
         [
             rdfs:label "ND-ProcedureProcurementScope" ;
             rdfs:comment "Primary type declaration for MG-ContractTerm under ND-ProcedureProcurementScope" ;
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ProcurementProjectContractTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
             rr:class epo:ContractTerm
-        ] ;
-    rr:predicateObjectMap
-        [
-            # TODO min SDK 1.3 max SDK 1.7
-            rdfs:label "BT-531-Procedure (value)" ;
-            rdfs:comment "Additional Nature (different from Main) of MG-ContractTerm under ND-ProcedurePlacePerformanceAdditionalInformation" ;
-            rr:predicate epo:hasAdditionalContractNature ;
-            rr:objectMap
-                [
-                    tedm:minSDKVersion "1.8" ;
-                    rdfs:label "at-voc:contract-nature" ;
-                    rr:parentTriplesMap tedm:contract-nature ;
-                    rr:joinCondition [
-                        rr:child "cbc:ProcurementTypeCode" ;
-                        rr:parent "code.value" ;
-                    ] ;
-                ]
         ] ;
 .
 
@@ -764,6 +751,8 @@ tedm:MG-Procedure_ND-ProcedureTenderingProcess a rr:TriplesMap ;
             rr:predicate epo:hasMainFeature ;
             rr:objectMap
                 [
+                    rdfs:label "BT-88-Procedure-Language" ;
+                    rdfs:comment "Language of Procedure Features of MG-Procedure under ND-ProcedureTenderingProcess" ;
                     rml:reference "cbc:Description" ;
                     rml:languageMap [
                         fnml:functionValue [
@@ -845,17 +834,16 @@ tedm:MG-Procedure_ND-AcceleratedProcedure a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            # TODO min SDK 1.3 max SDK 1.4
-            # TODO min SDK 1.5.12 max SDK 1.7
+            # Differences across versions are practically superficial and have little to no functional effect on this mapping even though different iterators can be interpreted
+            # VERINFO: SDK v1.6 from v1.3-1.5 contains only node change with stylistic XPath changes yielding the same effective XPaths
+            # VERINFO: SDK v1.8+ from 1.7 contain only stylistic XPath changes (removing redundant predicate), introduction of List attribute and other mapping-irrelevant changes
             rdfs:label "BT-106-Procedure" ;
-            rdfs:comment "Procedure Accelerated of MG-Procedure under ND-AcceleratedProcedure" ;
+            rdfs:comment "Procedure Accelerated of MG-Procedure under ND-AcceleratedProcedure (v1.6+), ND-AcceleratedProcedureJustification (v1.3-1.5)" ;
             rr:predicate epo:isAccelerated ;
             rr:objectMap
                 [
-                    # this is an example of a version-specific assertion that has no difference
-                    # with its other counterparts due to simple changes in the XPath only
-                    # i.e. one could've chosen to ignore this, but we choose to be consistent
-                    tedm:minSDKVersion "1.8" ;
+                    # this is an example of a version-specific mapping that has no difference
+                    # with its other counterparts due to non-functional changes in the XPath
                     rml:reference "cbc:ProcessReasonCode" ;
                     rr:datatype xsd:boolean
                 ] ;
@@ -867,6 +855,8 @@ tedm:MG-Procedure_ND-AcceleratedProcedure a rr:TriplesMap ;
             rr:predicate epo:hasAcceleratedProcedureJustification ;
             rr:objectMap
                 [
+                    rdfs:label "BT-1351-Procedure-Language" ;
+                    rdfs:comment "Language of Procedure Accelerated Justification of MG-Procedure under ND-AcceleratedProcedure" ;
                     rml:reference "cbc:ProcessReason" ;
                     rml:languageMap [
                         fnml:functionValue [
@@ -881,12 +871,12 @@ tedm:MG-Procedure_ND-AcceleratedProcedure a rr:TriplesMap ;
                         ]
                     ] ;
                 ] ;
-        ]   ;
+        ] ;
 .
 
 tedm:MG-MonetaryValue-hasEstimatedValue-Procedure_ND-ProcedureValueEstimate a rr:TriplesMap ;
     rdfs:label "MG-MonetaryValue";
-   rml:logicalSource
+    rml:logicalSource
         [
             rml:source "data/source.xml" ;
             rml:iterator "/*/cac:ProcurementProject/cac:RequestedTenderTotal";
@@ -911,6 +901,8 @@ tedm:MG-MonetaryValue-hasEstimatedValue-Procedure_ND-ProcedureValueEstimate a rr
         ];
     rr:predicateObjectMap
         [
+            rdfs:label "BT-27-Procedure-Currency";
+            rdfs:comment "Currency of Estimated Value of MG-MonetaryValue under ND-ProcedureValueEstimate";
             rr:predicate epo:hasCurrency ;
             rr:objectMap
                 [
@@ -921,7 +913,7 @@ tedm:MG-MonetaryValue-hasEstimatedValue-Procedure_ND-ProcedureValueEstimate a rr
                         rr:parent "code.value" ;
                     ] ;
                 ] ;
-        ]
+        ] ;
 .
 
 tedm:MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-Procedure_ND-ProcedureValueEstimateExtension a rr:TriplesMap ;
@@ -952,6 +944,8 @@ tedm:MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-Procedure_ND-Proce
         ];
     rr:predicateObjectMap
         [
+            rdfs:label "BT-271-Procedure-Currency";
+            rdfs:comment "Currency of Framework Maximum Value of MG-MonetaryValue under ND-ProcedureValueEstimateExtension";
             rr:predicate epo:hasCurrency ;
             rr:objectMap
                 [
@@ -962,7 +956,7 @@ tedm:MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-Procedure_ND-Proce
                         rr:parent "code.value" ;
                     ] ;
                 ] ;
-        ]
+        ] ;
  .
 
 tedm:MG-Purpose-hasPurpose-Procedure_ND-ProcedureMainClassificationCode a rr:TriplesMap ;
@@ -981,7 +975,7 @@ tedm:MG-Purpose-hasPurpose-Procedure_ND-ProcedureMainClassificationCode a rr:Tri
         ] ;
  rr:predicateObjectMap
         [
-            rdfs:label " BT-262-Procedure";
+            rdfs:label "BT-262-Procedure";
             rdfs:comment "Main Classification Code of MG-Purpose under ND-ProcedureMainClassificationCode";
             rr:predicate epo:hasMainClassification  ;
             rr:objectMap
@@ -1012,7 +1006,7 @@ tedm:MG-Purpose-hasPurpose-Procedure_ND-ProcedureAdditionalCommodityClassificati
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label " BT-263-Procedure";
+            rdfs:label "BT-263-Procedure";
             rdfs:comment "Additional Classification Code of MG-Purpose under ND-ProcedureMainClassificationCode";
             rr:predicate  epo:hasAdditionalClassification   ;
             rr:objectMap
@@ -1202,7 +1196,7 @@ tedm:MG-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePer
             rr:predicate epo:hasBroadPlaceOfPerformance ;
             rr:objectMap
                 [
-                    rdfs:label " at-voc:other-place-service";
+                    rdfs:label "at-voc:other-place-service";
                     rr:parentTriplesMap tedm:other-place-service ;
                     rr:joinCondition [
                         rr:child "cbc:Region" ;
@@ -1233,6 +1227,8 @@ tedm:MG-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePer
             rr:predicate epo:hasPlaceOfPerformanceAdditionalInformation ;
             rr:objectMap
                 [
+                    rdfs:label "BT-728-Procedure-Language";
+                    rdfs:comment "Language of Place Performance Additional Information of MG-ContractTerm under ND-ProcedurePlacePerformanceAdditionalInformation";
                     rml:reference "cbc:Description";
                     rml:languageMap [
                         fnml:functionValue [
@@ -1272,6 +1268,8 @@ tedm:MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-CrossBorderL
             rr:predicate epo:hasCrossBorderLaw ;
             rr:objectMap
                 [
+                    rdfs:label "BT-09(b)-Procedure-Language";
+                    rdfs:comment "Language of Cross Border Law Description of MG-ProcedureTerm under ND-CrossBorderLaw";
                     rml:reference "cbc:DocumentDescription";
                     rml:languageMap [
                         fnml:functionValue [
@@ -1286,5 +1284,5 @@ tedm:MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-CrossBorderL
                         ]
                     ] ;
                 ] ;
-        ]
+        ] ;
 .
