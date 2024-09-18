@@ -40,6 +40,21 @@ tedm:MG-Procedure_ND-Root a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rdfs:label "BT-01-notice" ;
+            rdfs:comment "Procedure Legal Basis of MG-Procedure under ND-Root" ;
+            rr:predicate epo:hasLegalBasis ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:legal-basis" ;
+                    rr:parentTriplesMap tedm:legal-basis ;
+                    rr:joinCondition [
+                        rr:child "cbc:RegulatoryDomain" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
             rdfs:label "BT-04-notice (object)" ;
             rdfs:comment "Procedure Identifier of MG-Procedure under ND-Root" ;
             rr:predicate adms:identifier ;
@@ -783,22 +798,6 @@ tedm:MG-Procedure_ND-ProcedureTenderingProcess a rr:TriplesMap ;
                     ] ;
                 ] ;
         ] ;
-    # TODO bring this into another TMap to align w/ MG+Node?
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-01-notice" ;
-            rdfs:comment "Procedure Legal Basis of MG-Procedure under ND-Root" ;
-            rr:predicate epo:hasLegalBasis ;
-            rr:objectMap
-                [
-                    rdfs:label "at-voc:legal-basis" ;
-                    rr:parentTriplesMap tedm:legal-basis ;
-                    rr:joinCondition [
-                        rr:child "/*/cbc:RegulatoryDomain" ;
-                        rr:parent "code.value" ;
-                    ] ;
-                ] ;
-        ]  ;
     rr:predicateObjectMap
         [
             rdfs:label "ProcedureTerm";
