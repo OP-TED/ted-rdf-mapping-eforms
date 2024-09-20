@@ -1,0 +1,11 @@
+#title: OPP-050-Organization
+#description: “Buyers Group Lead Indicator” The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efbc:GroupLeadIndicator. The expected ontology instances are epo: epo:LeadBuyer / org:Organization .
+#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efbc:GroupLeadIndicator
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+	?this rdf:type epo:LeadBuyer .
+	?this epo:playedBy ?value . 
+}
