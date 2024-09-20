@@ -1,0 +1,13 @@
+#title: BT-507-Organization-TouchPoint
+#description: “Country Subdivision” The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:TouchPoint/cac:PostalAddress/cbc:CountrySubentityCode. The expected ontology instances are epo: cpov:ContactPoint / locn:Address / at-voc:nuts .
+#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:TouchPoint/cac:PostalAddress/cbc:CountrySubentityCode
+
+PREFIX cpov: <http://data.europa.eu/m8g/>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+	?this rdf:type cpov:ContactPoint .
+	?this locn:address / epo:hasNutsCode ?value . 
+}

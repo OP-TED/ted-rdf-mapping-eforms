@@ -37,7 +37,7 @@ tedm:MG-Buyer_ND-ContractingParty a rr:TriplesMap ;
         [
             rdfs:label "ND-ContractingParty" ;
             rdfs:comment "Primary type declaration for MG-Buyer under ND-ContractingParty" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Buyer_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Buyer_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(concat(cac:Party/cac:PartyIdentification/cbc:ID, cac:Party/cac:PartyIdentification/cbc:ID/@schemeName)) || '?response_type=raw')}" ;
             rr:class epo:Buyer
         ] ;
     # this is an example of an association to an independent resource (role to organization)
