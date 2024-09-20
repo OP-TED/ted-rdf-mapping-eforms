@@ -24,6 +24,7 @@
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix idlab-fn: <http://example.com/idlab/function/> .
 
+# VERINFO: v1.10+ only parent node name change (ND-Buyer)
 tedm:MG-ProcurementServiceProvider_ND-ServiceProviderParty a rr:TriplesMap ;
     rdfs:label "MG-ProcurementServiceProvider";
     rml:logicalSource
@@ -58,11 +59,11 @@ tedm:MG-ProcurementServiceProvider_ND-ServiceProviderParty a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            # TODO min SDK 1.10
+            # Differences across versions have no functional effect on this mapping
+            # VERINFO: SDK v1.10+ from 1.3-1.9 contain only node name change
             rr:predicate epo:actsOnBehalfOf ;
             rr:objectMap
                 [
-                    tedm:minSDKVersion "1.3" ; ;
                     rr:parentTriplesMap tedm:MG-Buyer_ND-ContractingParty ;
                     # TODO: Check if a join is actually needed and whether absolute or relative child should be used
                     # rr:joinCondition [

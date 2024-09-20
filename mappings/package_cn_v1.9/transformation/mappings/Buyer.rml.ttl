@@ -41,12 +41,12 @@ tedm:MG-Buyer_ND-ContractingParty a rr:TriplesMap ;
             rr:class epo:Buyer
         ] ;
     # this is an example of an association to an independent resource (role to organization)
-    # TODO should this be another TMap, since it is under ND-ServiceProvider node instead of ND-ContractingParty?
     rr:predicateObjectMap
         [
-            # TODO min SDK 1.3 max SDK 1.9.1
+            # Differences across versions have no functional effect on this mapping
+            # VERINFO: SDK v1.10+ from 1.3-1.9 contain only node name change
             rdfs:label "OPT-300-Procedure-Buyer" ;
-            rdfs:comment "Buyer Technical Identifier Reference" ;
+            rdfs:comment "Buyer Technical Identifier Reference MG-Buyer under ND-ServiceProvider (v1.3-1.9), ND-Buyer (v1.10+)" ;
             rr:predicate epo:playedBy ;
             rr:objectMap
                 [
@@ -101,8 +101,8 @@ tedm:MG-Organization-playedBy-Buyer_ND-ServiceProvider a rr:TriplesMap ;
         ] ;
     rr:subjectMap
         [
-            rdfs:label "ND-ServiceProvider" ;
-            rdfs:comment "Primary type declaration for MG-Organization-playedBy-Buyer under ND-ServiceProvider" ;
+            rdfs:label "ND-ServiceProvider" ; # ND-Buyer in v1.10+
+            rdfs:comment "Primary type declaration for MG-Organization-playedBy-Buyer under ND-ServiceProvider (v1.3-1.9), ND-Buyer (v1.10+)" ;
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Organization_{cac:PartyIdentification/cbc:ID}" ;
             rr:class org:Organization
         ] ;
@@ -139,14 +139,14 @@ tedm:MG-Organization-playedBy-Buyer_ND-ServiceProvider a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-610-Procedure-Buyer" ;
-            rdfs:comment "ActivityEntity" ;
+            rdfs:comment "Activity Entity" ;
             rr:predicate epo:hasMainActivity ;
             rr:objectMap
                 [
                     rdfs:label "at-voc:main-activity" ;
                     rr:parentTriplesMap tedm:main-activity ;
                     rr:joinCondition [
-                        rr:child "../cac:ContractingActivity/cbc:ActivityTypeCode[@listName='authority-activity']" ;
+                        rr:child "../cac:ContractingActivity/cbc:ActivityTypeCode[@listName='entity-activity']" ;
                         rr:parent "code" ;
                     ] ;
                 ] ;
