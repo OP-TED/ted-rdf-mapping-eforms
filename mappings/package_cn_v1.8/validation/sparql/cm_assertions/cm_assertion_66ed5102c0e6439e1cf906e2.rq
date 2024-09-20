@@ -1,0 +1,11 @@
+#title: OPT-301-Lot-AddInfo
+#description: “Additional Info Provider Technical Identifier Reference” The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AdditionalInformationParty/cac:PartyIdentification/cbc:ID. The expected ontology instances are epo: epo:Lot / epo:AccessTerm  / epo:ProcurementProcedureInformationProvider / org:Organization .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AdditionalInformationParty/cac:PartyIdentification/cbc:ID
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+	?this rdf:type epo:Lot .
+	?this epo:isSubjectToLotSpecificTerm / epo:definesProcurementProcedureInformationProvider / epo:playedBy ?value . 
+}

@@ -1,0 +1,11 @@
+#title: BT-10-Procedure-Buyer
+#description: “Activity Authority” The corresponding XML element is /*/cac:ContractingParty/cac:ContractingActivity/cbc:ActivityTypeCode[@listName='authority-activity']. The expected ontology instances are epo: epo:Buyer / org:Organization / at-voc:main-activity .
+#xpath: /*/cac:ContractingParty/cac:ContractingActivity/cbc:ActivityTypeCode[@listName='authority-activity']
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+	?this rdf:type epo:Buyer .
+	?this epo:playedBy / epo:hasMainActivity ?value . 
+}
