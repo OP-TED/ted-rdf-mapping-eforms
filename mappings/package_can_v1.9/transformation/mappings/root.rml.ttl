@@ -291,6 +291,20 @@ tedm:MG-Notice_ND-Root
         ] ;
     rr:predicateObjectMap
         [
+            rdfs:label "OPP-090-Procedure";
+            rdfs:comment "Previous Notice Identifier of MG-Notice under ND-PreviousNoticeReference (v1.8+), ND-ProcedureTenderingProcess (v1.3-1.7)" ;
+            rr:predicate epo:refersToPrevious ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Notice-refersToPrevious-Notice_ND-PreviousNoticeReference ;
+                    # rr:joinCondition [
+                    #     rr:child "path(.)";
+                    #     rr:parent "path(.)";
+                    # ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
             rdfs:comment "The identifier of MG-Notice under ND-Root" ;
             rr:predicate adms:identifier ;
             rr:objectMap
@@ -503,6 +517,77 @@ tedm:MG-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember a 
                         rr:child "path(.)";
                         rr:parent "path(.)";
                     ];
+                ] ;
+        ] ;
+.
+
+# this is an external reference (another notice)
+tedm:MG-Notice-refersToPrevious-Notice_ND-ProcedureTenderingProcess owl:sameAs tedm:MG-Notice-refersToPrevious-Notice_ND-PreviousNoticeReference .
+tedm:MG-Notice-refersToPrevious-Notice_ND-PreviousNoticeReference a rr:TriplesMap ;
+    rdfs:label "MG-Notice" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:TenderingProcess/cac:NoticeDocumentReference" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-PreviousNoticeReference" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(cbc:ID, ' ', '-' ), '/' , '-')}_Notice" ;
+            rr:class epo:Notice
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPP-090-Procedure (object)";
+            rdfs:comment "Previous Notice Identifier of MG-Notice under ND-PreviousNoticeReference (v1.8+), ND-ProcedureTenderingProcess (v1.3-1.7)";
+            rr:predicate adms:identifier ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Identifier-identifier-Notice-refersToPrevious-Notice_ND-PreviousNoticeReference ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(.)";
+                    ];
+                ] ;
+        ];
+.
+
+tedm:MG-Identifier-identifier-Notice-refersToPrevious-Notice_ND-ProcedureTenderingProcess owl:sameAs tedm:MG-Identifier-identifier-Notice-refersToPrevious-Notice_ND-PreviousNoticeReference .
+tedm:MG-Identifier-identifier-Notice-refersToPrevious-Notice_ND-PreviousNoticeReference a rr:TriplesMap ;
+    rdfs:label "MG-Identifier" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:TenderingProcess/cac:NoticeDocumentReference" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-PreviousNoticeReference" ;
+            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(cbc:ID, ' ', '-' ), '/' , '-') || '_PreviousNoticeIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(cbc:ID) || '?response_type=raw') else null" ;
+            rr:class adms:Identifier
+        ] ;
+    rr:predicateObjectMap
+        [
+            # Differences across versions are practically superficial and have little to no functional effect on this mapping even though different iterators can be interpreted
+            # VERINFO: SDK v1.8 onwards contain only node change with relative XPath change yielding the same effective XPath, along with introduction of Scheme attribute and other mapping-irrelevant changes
+            rdfs:label "OPP-090-Procedure (value)" ;
+            rdfs:comment "Previous Notice Identifier of MG-Notice under ND-PreviousNoticeReference (v1.8+), ND-ProcedureTenderingProcess (v1.3-1.7)" ;
+            rr:predicate skos:notation ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ID" ;
+                ] ;
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "OPP-090-Procedure-Scheme" ;
+            rdfs:comment "Scheme of MG-Identifier under ND-PreviousNoticeReference (v1.8+), ND-ProcedureTenderingProcess (v1.3-1.7)" ;
+            rr:predicate epo:hasScheme ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ID/@schemeName" ;
                 ] ;
         ] ;
 .
