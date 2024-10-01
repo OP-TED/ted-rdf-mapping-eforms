@@ -147,3 +147,19 @@ tedm:MG-PaymentExecutor-seeAlso-LotAwardOutcome_ND-PayerParty a rr:TriplesMap ;
             rr:class epo:PaymentExecutor
         ] ;
     .
+
+tedm:MG-PaymentExecutor-announcesRole-ResultNotice_ND-PayerParty a rr:TriplesMap ;
+  rdfs:label "MG-PaymentExecutor";
+       rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/cac:PayerParty" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-PayerParty" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_PaymentExecutor_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:PaymentExecutor
+        ] ;
+    .
