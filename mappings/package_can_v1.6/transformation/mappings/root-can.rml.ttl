@@ -32,6 +32,44 @@ tedm:technical_mapping_can
   dct:date "2024-07-21"^^xsd:date
 .
 
+tedm:MG-ResultNotice_ND-Root
+    a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            # this is an example of a complex multi-element condition for instantiation of a subject not suitable as a condition below the iterator
+            rml:iterator "if(/*/cbc:NoticeTypeCode/@listName='result' or exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('29 30 31 32 E4 33 34 35 36 37', text())]) or exists(/ContractAwardNotice)) then /* else null" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Root" ;
+            rdfs:comment "Primary type declaration for MG-ResultNotice under ND-Root" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Notice" ;
+            rr:class epo-not:ResultNotice
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "MG-Buyer-refersToRole-ResultNotice" ;
+            rdfs:comment "MG-Buyer-refersToRole-ResultNotice under ND-ContractingParty" ;
+            rr:predicate epo-not:refersToRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Buyer_ND-ContractingParty
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "MG-ProcurementServiceProvider-refersToRole-ResultNotice" ;
+            rdfs:comment "MG-ProcurementServiceProvider-refersToRole-ResultNotice under ND-ServiceProviderParty" ;
+            rr:predicate epo-not:refersToRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ProcurementServiceProvider_ND-ServiceProviderParty
+                ] ;
+        ] ;
+.
+
 tedm:MG-ResultNotice_ND-NoticeResult a rr:TriplesMap ;
   rdfs:label "MG-ResultNotice";
     rml:logicalSource
