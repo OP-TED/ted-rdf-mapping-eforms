@@ -461,13 +461,14 @@ tedm:MG-Tender_ND-SubContractor  a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:TenderingParty/efac:SubContractor" ;
+            # Note that the iterator in this case is over the ND-LotTender, not over ND-SubContractor, which is suggested by the name of the TriplesMap
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
         [
             rdfs:label "ND-SubContractor";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Tender_{../../efac:LotTender/cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Tender_{cbc:ID}" ;
             rr:class epo:Tender
         ] ;
      rr:predicateObjectMap
@@ -476,10 +477,10 @@ tedm:MG-Tender_ND-SubContractor  a rr:TriplesMap ;
             rr:predicate epo:specifiesSubcontractors   ;
             rr:objectMap
                 [
-                   rr:parentTriplesMap tedm:MG-Subcontractor-specifiesSubcontractors-Tender_ND-SubContractor ;
+                    rr:parentTriplesMap tedm:MG-Subcontractor-specifiesSubcontractors-Tender_ND-SubContractor ;
                     rr:joinCondition[
-                        rr:child "path(.)";
-                        rr:parent "path(.)"
+                        rr:child "efac:TenderingParty/cbc:ID";
+                        rr:parent "../cbc:ID"
                     ];
                 ] ;
         ] ;
