@@ -83,30 +83,30 @@ tedm:MG-DirectAwardTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-DirectAwar
                     ] ;
                 ] ;
         ]   ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-135-Procedure";
-            rdfs:comment "Direct Award Justification Text of MG-DirectAwardTerm under ND-DirectAward";
-            rr:predicate  epo:hasJustification    ;
-            rr:objectMap
-                [
-                    rdfs:label "BT-135-Procedure-Language";
-                    rdfs:comment "Language of Direct Award Justification Text of MG-DirectAwardTerm under ND-DirectAward";
-                    rml:reference "if (not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='dir-awa-tex']) and cbc:ProcessReason/text() = 'unpublished')) then cbc:ProcessReason else null";
-                    rml:languageMap [
-                        fnml:functionValue [
-                            rr:predicateObjectMap [
-                                rr:predicate idlab-fn:str ;
-                                rr:objectMap [ rml:reference "cbc:ProcessReason/@languageID" ]
-                            ] ,
-                            tedm:idlab-fn_executes_lookup ,
-                            tedm:idlab-fn_inputFile_language ,
-                            tedm:idlab-fn_fromColumn_code ,
-                            tedm:idlab-fn_toColumn_code
-                        ]
-                    ] ;
-                ] ;
-        ]   ;
+    # rr:predicateObjectMap
+    #     [
+    #         rdfs:label "BT-135-Procedure";
+    #         rdfs:comment "Direct Award Justification Text of MG-DirectAwardTerm under ND-DirectAward";
+    #         rr:predicate  epo:hasJustification    ;
+    #         rr:objectMap
+    #             [
+    #                 rdfs:label "BT-135-Procedure-Language";
+    #                 rdfs:comment "Language of Direct Award Justification Text of MG-DirectAwardTerm under ND-DirectAward";
+    #                 rml:reference "if (not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='dir-awa-tex']) and cbc:ProcessReason/text() = 'unpublished')) then cbc:ProcessReason else null";
+    #                 rml:languageMap [
+    #                     fnml:functionValue [
+    #                         rr:predicateObjectMap [
+    #                             rr:predicate idlab-fn:str ;
+    #                             rr:objectMap [ rml:reference "cbc:ProcessReason/@languageID" ]
+    #                         ] ,
+    #                         tedm:idlab-fn_executes_lookup ,
+    #                         tedm:idlab-fn_inputFile_language ,
+    #                         tedm:idlab-fn_fromColumn_code ,
+    #                         tedm:idlab-fn_toColumn_code
+    #                     ]
+    #                 ] ;
+    #             ] ;
+    #     ] ;
      rr:predicateObjectMap
         [
             rr:predicate epo:refersToPreviousProcedure  ;
@@ -186,3 +186,40 @@ tedm:MG-Identifier-identifier-Procedure-refersToPreviousProcedure-DirectAwardTer
                 ] ;
         ];
     .
+
+tedm:MG-langString-hasJustification-DirectAwardTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-DirectAward a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:TenderingProcess/cac:ProcessJustification[cbc:ProcessReasonCode/@listName='direct-award-justification']/cbc:ProcessReason" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rr:class epo-not:DirectAwardTerm ;
+        rdfs:label "ND-DirectAward" ;
+        rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_DirectAwardTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate epo-not:hasJustification ;
+        rr:objectMap [
+            rml:reference "if (not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='dir-awa-tex']) and ./text() = 'unpublished')) then . else null" ;
+            rml:languageMap [
+                fnml:functionValue [
+                    rr:predicateObjectMap [
+                        rr:predicate idlab-fn:str ;
+                        rr:objectMap [
+                            rml:reference "@languageID" ;
+                        ] ;
+                    ] ;
+                    rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+                    rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+                    rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+                    rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+                ] ;
+            ] ;
+            rdfs:comment "Language of Direct Award Justification Text of MG-DirectAwardTerm under ND-DirectAward" ;
+            rdfs:label "BT-135-Procedure-Language" ;
+        ] ;
+        rdfs:comment "Direct Award Justification Text of MG-DirectAwardTerm under ND-DirectAward" ;
+        rdfs:label "BT-135-Procedure" ;
+    ] ;
+    rdfs:label "MG-DirectAwardTerm" .

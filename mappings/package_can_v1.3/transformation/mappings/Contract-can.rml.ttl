@@ -98,30 +98,30 @@ tedm:MG-Contract_ND-SettledContract  a rr:TriplesMap ;
                     rr:datatype xsd:date;
                 ] ;
         ] ;
-     rr:predicateObjectMap
-        [
-            rdfs:label "BT-721-Contract" ;
-            rdfs:comment "Contract Title of MG-Contract under ND-SettledContract" ;
-            rr:predicate  dct:title ;
-            rr:objectMap
-                [
-                    rdfs:label "BT-721-Contract-Language" ;
-                    rdfs:comment "Language of Title of of MG-Contract under ND-SettledContract" ;
-                    rml:reference "cbc:Title";
-                    rml:languageMap [
-                        fnml:functionValue [
-                            rr:predicateObjectMap [
-                                rr:predicate idlab-fn:str ;
-                                rr:objectMap  [ rml:reference "cbc:Title/@languageID" ]
-                            ] ,
-                            tedm:idlab-fn_executes_lookup ,
-                            tedm:idlab-fn_inputFile_language ,
-                            tedm:idlab-fn_fromColumn_code ,
-                            tedm:idlab-fn_toColumn_code
-                        ]
-                    ] ;
-                ] ;
-        ] ;
+    #  rr:predicateObjectMap
+    #     [
+    #         rdfs:label "BT-721-Contract" ;
+    #         rdfs:comment "Contract Title of MG-Contract under ND-SettledContract" ;
+    #         rr:predicate  dct:title ;
+    #         rr:objectMap
+    #             [
+    #                 rdfs:label "BT-721-Contract-Language" ;
+    #                 rdfs:comment "Language of Title of of MG-Contract under ND-SettledContract" ;
+    #                 rml:reference "cbc:Title";
+    #                 rml:languageMap [
+    #                     fnml:functionValue [
+    #                         rr:predicateObjectMap [
+    #                             rr:predicate idlab-fn:str ;
+    #                             rr:objectMap  [ rml:reference "cbc:Title/@languageID" ]
+    #                         ] ,
+    #                         tedm:idlab-fn_executes_lookup ,
+    #                         tedm:idlab-fn_inputFile_language ,
+    #                         tedm:idlab-fn_fromColumn_code ,
+    #                         tedm:idlab-fn_toColumn_code
+    #                     ]
+    #                 ] ;
+    #             ] ;
+    #     ] ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-151-Contract" ;
@@ -316,32 +316,32 @@ tedm:MG-Fund-isFundedBy-Contract_ND-ContractEUFunds a rr:TriplesMap ;
                         rr:parent "code.value" ;
                     ] ;
                 ] ;
-        ]   ;
-    rr:predicateObjectMap
-        [
-            tedm:minSDKVersion "1.9.1" ;
-            rdfs:label "BT-6110-Contract";
-            rdfs:comment "ntract EU Funds Details of MG-Fund under ND-ContractEUFunds";
-            rr:predicate dct:description;
-            rr:objectMap
-                [
-                    rdfs:label "BT-6110-Contract-Language";
-                    rdfs:comment "Language of Contract EU Funds Details of MG-Fund under ND-ContractEUFunds";
-                    rml:reference "cbc:Description";
-                    rml:languageMap [
-                        fnml:functionValue [
-                            rr:predicateObjectMap [
-                                rr:predicate idlab-fn:str ;
-                                rr:objectMap [ rml:reference "cbc:Description/@languageID" ]
-                            ] ,
-                            tedm:idlab-fn_executes_lookup ,
-                            tedm:idlab-fn_inputFile_language ,
-                            tedm:idlab-fn_fromColumn_code ,
-                            tedm:idlab-fn_toColumn_code
-                        ]
-                    ] ;
-                ] ;
         ] ;
+    # rr:predicateObjectMap
+    #     [
+    #         tedm:minSDKVersion "1.9.1" ;
+    #         rdfs:label "BT-6110-Contract";
+    #         rdfs:comment "ntract EU Funds Details of MG-Fund under ND-ContractEUFunds";
+    #         rr:predicate dct:description;
+    #         rr:objectMap
+    #             [
+    #                 rdfs:label "BT-6110-Contract-Language";
+    #                 rdfs:comment "Language of Contract EU Funds Details of MG-Fund under ND-ContractEUFunds";
+    #                 rml:reference "cbc:Description";
+    #                 rml:languageMap [
+    #                     fnml:functionValue [
+    #                         rr:predicateObjectMap [
+    #                             rr:predicate idlab-fn:str ;
+    #                             rr:objectMap [ rml:reference "cbc:Description/@languageID" ]
+    #                         ] ,
+    #                         tedm:idlab-fn_executes_lookup ,
+    #                         tedm:idlab-fn_inputFile_language ,
+    #                         tedm:idlab-fn_fromColumn_code ,
+    #                         tedm:idlab-fn_toColumn_code
+    #                     ]
+    #                 ] ;
+    #             ] ;
+    #     ] ;
 .
 
 tedm:MG-Organization-playedBy-Buyer-signedByBuyer-Contract_ND-ContractSignatory a rr:TriplesMap ;
@@ -599,3 +599,78 @@ tedm:MG-Contract_ND-PayerParty  a rr:TriplesMap ;
                 ] ;
         ] ;
     .
+
+tedm:MG-langString-description-Fund-isFundedBy-Contract_ND-ContractEUFunds a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:SettledContract/efac:Funding/cbc:Description" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rr:class epo-not:Fund ;
+        rdfs:label "ND-ContractEUFunds" ;
+        rml:reference "'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ContractFund_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')" ;
+    ] ;
+    rr:predicateObjectMap [
+        tedm:minSDKVersion "1.9.1" ;
+        rr:predicate dct:description ;
+        rr:objectMap [
+            rml:reference "." ;
+            rml:languageMap [
+                fnml:functionValue [
+                    rr:predicateObjectMap [
+                        rr:predicate idlab-fn:str ;
+                        rr:objectMap [
+                            rml:reference "@languageID" ;
+                        ] ;
+                    ] ;
+                    rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+                    rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+                    rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+                    rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+                ] ;
+            ] ;
+            rdfs:comment "Language of Contract EU Funds Details of MG-Fund under ND-ContractEUFunds" ;
+            rdfs:label "BT-6110-Contract-Language" ;
+        ] ;
+        rdfs:comment "ntract EU Funds Details of MG-Fund under ND-ContractEUFunds" ;
+        rdfs:label "BT-6110-Contract" ;
+    ] ;
+    rdfs:label "MG-Identifier" .
+
+tedm:MG-langString-title-Contract_ND-SettledContract a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:SettledContract/cbc:Title" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rr:class epo-not:Contract ;
+        rdfs:label "ND-SettledContract" ;
+        rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SettledContract_{../cbc:ID}" ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate dct:title ;
+        rr:objectMap [
+            rml:reference "." ;
+            rml:languageMap [
+                fnml:functionValue [
+                    rr:predicateObjectMap [
+                        rr:predicate idlab-fn:str ;
+                        rr:objectMap [
+                            rml:reference "@languageID" ;
+                        ] ;
+                    ] ;
+                    rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+                    rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+                    rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+                    rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+                ] ;
+            ] ;
+            rdfs:comment "Language of Title of of MG-Contract under ND-SettledContract" ;
+            rdfs:label "BT-721-Contract-Language" ;
+        ] ;
+        rdfs:comment "Contract Title of MG-Contract under ND-SettledContract" ;
+        rdfs:label "BT-721-Contract" ;
+    ] ;
+    rdfs:label "MG-Contract" .
