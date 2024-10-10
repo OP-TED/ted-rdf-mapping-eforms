@@ -372,7 +372,7 @@ tedm:MG-Lot-isSubmittedForLot-Tender_ND-LotTender  a rr:TriplesMap ;
     rr:subjectMap
         [
              rdfs:label "ND-LotTender" ;
-             rml:reference "if (exists(efac:TenderLot/cbc:ID[starts-with(text(), 'LOT-')])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Lot_' || efac:TenderLot/cbc:ID else null" ;
+             rml:reference "if (exists( efac:TenderLot/cbc:ID[text() = /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cbc:ID/text()] )) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Lot_' || efac:TenderLot/cbc:ID else null" ;
              rr:class epo:Lot
         ] ;
     .
@@ -388,7 +388,7 @@ tedm:MG-LotGroup-isSubjectToGrouping-Tender_ND-LotTender  a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-LotTender" ;
-            rml:reference "if (exists(efac:TenderLot/cbc:ID[starts-with(text(), 'GLO-')])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_LotGroup_' || efac:TenderLot/cbc:ID else null" ;
+            rml:reference "if (exists( efac:TenderLot/cbc:ID[text() = /*/cac:TenderingTerms/cac:LotDistribution/cac:LotsGroup/cbc:LotsGroupID/text()] )) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_LotGroup_' || efac:TenderLot/cbc:ID else null" ;
             rr:class epo:LotGroup
         ] ;
     .
