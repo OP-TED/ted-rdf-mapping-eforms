@@ -35,7 +35,7 @@ tedm:MG-BudgetProvider_ND-FinancingParty a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-FinancingParty" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_BudgetProvider_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_BudgetProvider_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(concat(cac:PartyIdentification/cbc:ID, cac:PartyIdentification/cbc:ID/@schemeName)) || '?response_type=raw')}" ;
             rr:class epo:BudgetProvider
         ] ;
     rr:predicateObjectMap
@@ -97,10 +97,27 @@ tedm:MG-BudgetProvider-seeAlso-LotAwardOutcome_ND-FinancingParty a rr:TriplesMap
     rr:subjectMap
         [
             rdfs:label "ND-FinancingParty" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_BudgetProvider_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_BudgetProvider_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(concat(cac:PartyIdentification/cbc:ID, cac:PartyIdentification/cbc:ID/@schemeName)) || '?response_type=raw')}" ;
             rr:class epo:BudgetProvider
         ] ;
 .
+
+tedm:MG-BudgetProvider-announcesRole-ResultNotice_ND-FinancingParty a rr:TriplesMap ;
+    rdfs:label "MG-BudgetProvider" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/cac:FinancingParty" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-FinancingParty" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_BudgetProvider_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(concat(cac:PartyIdentification/cbc:ID, cac:PartyIdentification/cbc:ID/@schemeName)) || '?response_type=raw')}" ;
+            rr:class epo:BudgetProvider
+        ] ;
+.
+
 
 tedm:MG-Organization-playedBy-BudgetProvider_ND-FinancingParty a rr:TriplesMap ;
     rdfs:label "MG-Organization" ;
