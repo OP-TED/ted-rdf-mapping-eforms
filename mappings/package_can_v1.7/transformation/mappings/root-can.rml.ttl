@@ -172,6 +172,21 @@ tedm:MG-MonetaryValue-hasTotalAwardedValue-NoticeAwardInformation-announcesNotic
                     rr:datatype xsd:decimal ;
                 ] ;
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-161-NoticeResult-Currency";
+            rdfs:comment "Currency of NoticeValue of MonetaryValue under ND-NoticeResult";
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:currency" ;
+                    rr:parentTriplesMap tedm:currency ;
+                    rr:joinCondition [
+                        rr:child "cbc:TotalAmount/@currencyID" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
 .
 
 tedm:MG-NoticeAwardInformation-announcesNoticeAwardInformation-ResultNotice a rr:TriplesMap ;
@@ -251,12 +266,27 @@ tedm:MG-MonetaryValue-hasMaximumFrameworkAgreementAwardedValue-NoticeAwardInform
             # TODO to be added to source
             # TODO Xpath condition
             rdfs:label "BT-118-NoticeResult" ;
-            rdfs:comment "NoticeFrameworkMaximumValue of MonetaryValue under ND-NoticeResult" ;
+            rdfs:comment "Notice Framework Maximum Value of MonetaryValue under ND-NoticeResult" ;
             rr:predicate  epo:hasAmountValue   ;
             rr:objectMap
                 [
                rml:reference "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='not-max-val']) and efbc:OverallMaximumFrameworkContractsAmount/text() = '-1' )) then efbc:OverallMaximumFrameworkContractsAmount else null";
                rr:datatype xsd:decimal;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-118-NoticeResult-Currency";
+            rdfs:comment "Currency of Notice Framework Maximum Value of MonetaryValue under ND-NoticeResult";
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:currency" ;
+                    rr:parentTriplesMap tedm:currency ;
+                    rr:joinCondition [
+                        rr:child "efbc:OverallMaximumFrameworkContractsAmount/@currencyID" ;
+                        rr:parent "code.value" ;
+                    ] ;
                 ] ;
         ] ;
 .
@@ -284,6 +314,21 @@ tedm:MG-MonetaryValue-hasApproximateFrameworkAgreementValue-NoticeAwardInformati
                 [
                rml:reference "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='not-app-val']) and efbc:OverallApproximateFrameworkContractsAmount/text() = '-1' )) then efbc:OverallApproximateFrameworkContractsAmount else null";
                rr:datatype xsd:decimal;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-1118-NoticeResult-Currency";
+            rdfs:comment "Currency of Notice Framework Approximate Value of MonetaryValue under ND-NoticeResult";
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:currency" ;
+                    rr:parentTriplesMap tedm:currency ;
+                    rr:joinCondition [
+                        rr:child "efbc:OverallApproximateFrameworkContractsAmount/@currencyID" ;
+                        rr:parent "code.value" ;
+                    ] ;
                 ] ;
         ] ;
 .
