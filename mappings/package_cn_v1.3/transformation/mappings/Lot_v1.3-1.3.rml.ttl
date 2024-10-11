@@ -24,36 +24,40 @@
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix idlab-fn: <http://example.com/idlab/function/> .
 
-tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-FinancialGuarantee a rr:TriplesMap ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:RequiredFinancialGuarantee[cbc:GuaranteeTypeCode/text()='true']" ;
-            rml:referenceFormulation ql:XPath
-        ];
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-75-Lot";
-            rdfs:comment "Guarantee Required Description of MG-SubmissionTerm under ND-LotTenderingTerms";
-            rr:predicate epo:hasGuaranteeDescription ;
-            rr:objectMap
-                [
-                    tedm:minSDKVersion "1.4" ;
-                    rdfs:label "BT-75-Lot-Language";
-                    rdfs:comment "Language of Guarantee Required Description of MG-SubmissionTerm under ND-LotTenderingTerms";
-                    rml:reference "cbc:Description";
-                    rml:languageMap [
-                        fnml:functionValue [
-                            rr:predicateObjectMap [
-                                rr:predicate idlab-fn:str ;
-                                rr:objectMap [ rml:reference "cbc:Description/@languageID" ]
-                            ] ,
-                            tedm:idlab-fn_executes_lookup ,
-                            tedm:idlab-fn_inputFile_language ,
-                            tedm:idlab-fn_fromColumn_code ,
-                            tedm:idlab-fn_toColumn_code
-                        ]
+tedm:MG-langString-hasGuaranteeDescription-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-FinancialGuarantee a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:RequiredFinancialGuarantee[cbc:GuaranteeTypeCode/text()='true']/cbc:Description" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rr:class epo-not:SubmissionTerm ;
+        rdfs:label "ND-FinancialGuarantee" ;
+        rml:reference "if (exists(../cbc:GuaranteeTypeCode[@listName='tender-guarantee-required'])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_SubmissionTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../../..)) || '?response_type=raw') else null" ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate epo-not:hasGuaranteeDescription ;
+        rr:objectMap [
+            tedm:minSDKVersion "1.3" ;
+            tedm:maxSDKVersion "1.3" ;
+            rml:reference "." ;
+            rml:languageMap [
+                fnml:functionValue [
+                    rr:predicateObjectMap [
+                        rr:predicate idlab-fn:str ;
+                        rr:objectMap [
+                            rml:reference "@languageID" ;
+                        ] ;
                     ] ;
+                    rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+                    rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+                    rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+                    rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
                 ] ;
+            ] ;
+            rdfs:comment "Language of Guarantee Required Description of MG-SubmissionTerm under ND-LotTenderingTerms" ;
+            rdfs:label "BT-75-Lot-Language" ;
         ] ;
-.
+        rdfs:comment "Guarantee Required Description of MG-SubmissionTerm under ND-LotTenderingTerms" ;
+        rdfs:label "BT-75-Lot" ;
+    ] .

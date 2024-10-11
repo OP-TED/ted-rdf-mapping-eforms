@@ -67,30 +67,30 @@ tedm:MG-ContactPoint_ND-Touchpoint a rr:TriplesMap ;
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_TouchPoint_{cac:PartyIdentification/cbc:ID}" ;
             rr:class cpov:ContactPoint
         ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-500-Organization-TouchPoint" ;
-            rdfs:comment "Name of MG-ContactPoint of under ND-Touchpoint" ;
-            rr:predicate dct:description ;
-            rr:objectMap
-                [
-                    rdfs:label "BT-500-Organization-TouchPoint-Language" ;
-                    rdfs:comment "Language of Name of MG-ContactPoint of under ND-Touchpoint" ;
-                    rml:reference "cac:PartyName/cbc:Name" ;
-                    rml:languageMap [
-                        fnml:functionValue [
-                            rr:predicateObjectMap [
-                                rr:predicate idlab-fn:str ;
-                                rr:objectMap [ rml:reference "cac:PartyName/cbc:Name/@languageID" ]
-                            ] ,
-                            tedm:idlab-fn_executes_lookup ,
-                            tedm:idlab-fn_inputFile_language ,
-                            tedm:idlab-fn_fromColumn_code ,
-                            tedm:idlab-fn_toColumn_code
-                        ]
-                    ] ;
-                ] ;
-        ] ;
+    # rr:predicateObjectMap
+    #     [
+    #         rdfs:label "BT-500-Organization-TouchPoint" ;
+    #         rdfs:comment "Name of MG-ContactPoint of under ND-Touchpoint" ;
+    #         rr:predicate dct:description ;
+    #         rr:objectMap
+    #             [
+    #                 rdfs:label "BT-500-Organization-TouchPoint-Language" ;
+    #                 rdfs:comment "Language of Name of MG-ContactPoint of under ND-Touchpoint" ;
+    #                 rml:reference "cac:PartyName/cbc:Name" ;
+    #                 rml:languageMap [
+    #                     fnml:functionValue [
+    #                         rr:predicateObjectMap [
+    #                             rr:predicate idlab-fn:str ;
+    #                             rr:objectMap [ rml:reference "cac:PartyName/cbc:Name/@languageID" ]
+    #                         ] ,
+    #                         tedm:idlab-fn_executes_lookup ,
+    #                         tedm:idlab-fn_inputFile_language ,
+    #                         tedm:idlab-fn_fromColumn_code ,
+    #                         tedm:idlab-fn_toColumn_code
+    #                     ]
+    #                 ] ;
+    #             ] ;
+    #     ] ;
     rr:predicateObjectMap
         [
             rr:predicate locn:address ;
@@ -248,3 +248,41 @@ tedm:MG-ContactPoint_ND-TouchpointContact a rr:TriplesMap ;
                 ] ;
         ] ;
 .
+
+tedm:MG-langString-description-ContactPoint_ND-Touchpoint a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/source.xml" ;
+    rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:TouchPoint/cac:PartyName/cbc:Name" ;
+    rml:referenceFormulation ql:XPath ;
+  ] ;
+  rr:subjectMap [
+    rr:class cccev:ContactPoint ;
+    rdfs:comment "Primary type declaration for MG-ContactPoint under ND-Touchpoint" ;
+    rdfs:label "ND-Touchpoint" ;
+    rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_TouchPoint_{../../cac:PartyIdentification/cbc:ID}" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dct:description ;
+    rr:objectMap [
+      rml:reference "." ;
+      rml:languageMap [
+        fnml:functionValue [
+          rr:predicateObjectMap [
+            rr:predicate idlab-fn:str ;
+            rr:objectMap [
+              rml:reference "@languageID" ;
+            ] ;
+          ] ;
+          rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+          rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+          rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+          rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+        ] ;
+      ] ;
+      rdfs:comment "Language of Name of MG-ContactPoint of under ND-Touchpoint" ;
+      rdfs:label "BT-500-Organization-TouchPoint-Language" ;
+    ] ;
+    rdfs:comment "Name of MG-ContactPoint of under ND-Touchpoint" ;
+    rdfs:label "BT-500-Organization-TouchPoint" ;
+  ] ;
+  rdfs:label "MG-ContactPoint" .

@@ -53,31 +53,31 @@ tedm:MG-ChangeInformation_ND-ChangeReason  a rr:TriplesMap ;
                     ] ;
                 ] ;
         ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-762-notice";
-            rdfs:comment "Change Reason Description of MG-ChangeInformation under ND-ChangeReason";
-            rr:predicate epo:hasChangeReasonDescription ;
-            rr:objectMap
-                [
-                    tedm:minSDKVersion "1.4" ;
-                    rdfs:label "BT-762-notice-Language";
-                    rdfs:comment "Language of Change Reason Description of MG-ChangeInformation under ND-ChangeReason";
-                    rml:reference "efbc:ReasonDescription";
-                    rml:languageMap [
-                        fnml:functionValue [
-                            rr:predicateObjectMap [
-                                rr:predicate idlab-fn:str ;
-                                rr:objectMap [ rml:reference "efbc:ReasonDescription/@languageID" ]
-                            ] ,
-                            tedm:idlab-fn_executes_lookup ,
-                            tedm:idlab-fn_inputFile_language ,
-                            tedm:idlab-fn_fromColumn_code ,
-                            tedm:idlab-fn_toColumn_code
-                        ]
-                    ] ;
-                ] ;
-        ] ;
+    # rr:predicateObjectMap
+    #     [
+    #         rdfs:label "BT-762-notice";
+    #         rdfs:comment "Change Reason Description of MG-ChangeInformation under ND-ChangeReason";
+    #         rr:predicate epo:hasChangeReasonDescription ;
+    #         rr:objectMap
+    #             [
+    #                 tedm:minSDKVersion "1.4" ;
+    #                 rdfs:label "BT-762-notice-Language";
+    #                 rdfs:comment "Language of Change Reason Description of MG-ChangeInformation under ND-ChangeReason";
+    #                 rml:reference "efbc:ReasonDescription";
+    #                 rml:languageMap [
+    #                     fnml:functionValue [
+    #                         rr:predicateObjectMap [
+    #                             rr:predicate idlab-fn:str ;
+    #                             rr:objectMap [ rml:reference "efbc:ReasonDescription/@languageID" ]
+    #                         ] ,
+    #                         tedm:idlab-fn_executes_lookup ,
+    #                         tedm:idlab-fn_inputFile_language ,
+    #                         tedm:idlab-fn_fromColumn_code ,
+    #                         tedm:idlab-fn_toColumn_code
+    #                     ]
+    #                 ] ;
+    #             ] ;
+    #     ] ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-758-notice";
@@ -108,30 +108,30 @@ tedm:MG-ChangeInformation_ND-Change a rr:TriplesMap ;
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ChangeInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
             rr:class epo:ChangeInformation
         ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-141(a)-notice";
-            rdfs:comment "Change Description of MG-ChangeInformation under ND-Change";
-            rr:predicate epo:hasChangeDescription ;
-            rr:objectMap
-                [
-                    rdfs:label "BT-141(a)-notice-Language";
-                    rdfs:comment "Language of Change Description of MG-ChangeInformation under ND-Change";
-                    rml:reference "efbc:ChangeDescription";
-                    rml:languageMap [
-                        fnml:functionValue [
-                            rr:predicateObjectMap [
-                                rr:predicate idlab-fn:str ;
-                                rr:objectMap [ rml:reference "efbc:ChangeDescription/@languageID" ]
-                            ] ,
-                            tedm:idlab-fn_executes_lookup ,
-                            tedm:idlab-fn_inputFile_language ,
-                            tedm:idlab-fn_fromColumn_code ,
-                            tedm:idlab-fn_toColumn_code
-                        ]
-                    ] ;
-                ] ;
-        ] ;
+    # rr:predicateObjectMap
+    #     [
+    #         rdfs:label "BT-141(a)-notice";
+    #         rdfs:comment "Change Description of MG-ChangeInformation under ND-Change";
+    #         rr:predicate epo:hasChangeDescription ;
+    #         rr:objectMap
+    #             [
+    #                 rdfs:label "BT-141(a)-notice-Language";
+    #                 rdfs:comment "Language of Change Description of MG-ChangeInformation under ND-Change";
+    #                 rml:reference "efbc:ChangeDescription";
+    #                 rml:languageMap [
+    #                     fnml:functionValue [
+    #                         rr:predicateObjectMap [
+    #                             rr:predicate idlab-fn:str ;
+    #                             rr:objectMap [ rml:reference "efbc:ChangeDescription/@languageID" ]
+    #                         ] ,
+    #                         tedm:idlab-fn_executes_lookup ,
+    #                         tedm:idlab-fn_inputFile_language ,
+    #                         tedm:idlab-fn_fromColumn_code ,
+    #                         tedm:idlab-fn_toColumn_code
+    #                     ]
+    #                 ] ;
+    #             ] ;
+    #     ] ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-718-notice";
@@ -236,3 +236,78 @@ tedm:MG-Identifier-relatesToEFormSectionIdentifier-ChangeInformation_ND-ChangedS
     # subject template and predicate mappings are in versioned files (ChangeInformation_v1.3-16|v1.7+)
     rdfs:label "MG-Identifier";
 .
+
+tedm:MG-langString-hasChangeDescription-ChangeInformation_ND-Change a rr:TriplesMap ;
+  rr:subjectMap [
+    rr:class epo-not:ChangeInformation ;
+    rdfs:label "ND-Change" ;
+    rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ChangeInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate epo-not:hasChangeDescription ;
+    rr:objectMap [
+      rml:reference "." ;
+      rml:languageMap [
+        fnml:functionValue [
+          rr:predicateObjectMap [
+            rr:predicate idlab-fn:str ;
+            rr:objectMap [
+              rml:reference "@languageID" ;
+            ] ;
+          ] ;
+          rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+          rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+          rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+          rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+        ] ;
+      ] ;
+      rdfs:comment "Language of Change Description of MG-ChangeInformation under ND-Change" ;
+      rdfs:label "BT-141(a)-notice-Language" ;
+    ] ;
+    rdfs:comment "Change Description of MG-ChangeInformation under ND-Change" ;
+    rdfs:label "BT-141(a)-notice" ;
+  ] ;
+  rdfs:label "MG-ChangeInformation" ;
+  rml:logicalSource [
+    rml:source "data/source.xml" ;
+    rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Changes/efac:Change/efbc:ChangeDescription" ;
+    rml:referenceFormulation ql:XPath ;
+  ] .
+
+tedm:MG-langString-hasChangeReasonDescription-ChangeInformation_ND-ChangeReason a rr:TriplesMap ;
+  rr:subjectMap [
+    rr:class epo-not:ChangeInformation ;
+    rdfs:label "ND-ChangeReason" ;
+    rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ChangeInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate epo-not:hasChangeReasonDescription ;
+    rr:objectMap [
+      tedm:minSDKVersion "1.4" ;
+      rml:reference "." ;
+      rml:languageMap [
+        fnml:functionValue [
+          rr:predicateObjectMap [
+            rr:predicate idlab-fn:str ;
+            rr:objectMap [
+              rml:reference "@languageID" ;
+            ] ;
+          ] ;
+          rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+          rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+          rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+          rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+        ] ;
+      ] ;
+      rdfs:comment "Language of Change Reason Description of MG-ChangeInformation under ND-ChangeReason" ;
+      rdfs:label "BT-762-notice-Language" ;
+    ] ;
+    rdfs:comment "Change Reason Description of MG-ChangeInformation under ND-ChangeReason" ;
+    rdfs:label "BT-762-notice" ;
+  ] ;
+  rdfs:label "MG-ChangeInformation" ;
+  rml:logicalSource [
+    rml:source "data/source.xml" ;
+    rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Changes/efac:ChangeReason/efbc:ReasonDescription" ;
+    rml:referenceFormulation ql:XPath ;
+  ] .

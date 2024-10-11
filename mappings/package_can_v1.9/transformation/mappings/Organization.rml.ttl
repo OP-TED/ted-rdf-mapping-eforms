@@ -67,30 +67,30 @@ tedm:MG-Organization_ND-Company a rr:TriplesMap ;
                     ] ;
                 ] ;
         ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-500-Organization-Company" ;
-            rdfs:comment "Organisation Name of MG-Organization under ND-Company" ;
-            rr:predicate epo:hasLegalName ;
-            rr:objectMap
-                [
-                    rdfs:label "BT-500-Organization-Company-Language" ;
-                    rdfs:comment "Language of Organisation Name of MG-Organization under ND-Company" ;
-                    rml:reference "cac:PartyName/cbc:Name" ;
-                    rml:languageMap [
-                        fnml:functionValue [
-                            rr:predicateObjectMap [
-                                rr:predicate idlab-fn:str ;
-                                rr:objectMap [ rml:reference "cac:PartyName/cbc:Name/@languageID" ]
-                            ] ,
-                            tedm:idlab-fn_executes_lookup ,
-                            tedm:idlab-fn_inputFile_language ,
-                            tedm:idlab-fn_fromColumn_code ,
-                            tedm:idlab-fn_toColumn_code
-                        ]
-                    ] ;
-                ] ;
-        ] ;
+    # rr:predicateObjectMap
+    #     [
+    #         rdfs:label "BT-500-Organization-Company" ;
+    #         rdfs:comment "Organisation Name of MG-Organization under ND-Company" ;
+    #         rr:predicate epo:hasLegalName ;
+    #         rr:objectMap
+    #             [
+    #                 rdfs:label "BT-500-Organization-Company-Language" ;
+    #                 rdfs:comment "Language of Organisation Name of MG-Organization under ND-Company" ;
+    #                 rml:reference "cac:PartyName/cbc:Name" ;
+    #                 rml:languageMap [
+    #                     fnml:functionValue [
+    #                         rr:predicateObjectMap [
+    #                             rr:predicate idlab-fn:str ;
+    #                             rr:objectMap [ rml:reference "cac:PartyName/cbc:Name/@languageID" ]
+    #                         ] ,
+    #                         tedm:idlab-fn_executes_lookup ,
+    #                         tedm:idlab-fn_inputFile_language ,
+    #                         tedm:idlab-fn_fromColumn_code ,
+    #                         tedm:idlab-fn_toColumn_code
+    #                     ]
+    #                 ] ;
+    #             ] ;
+    #     ] ;
     rr:predicateObjectMap
         [
             rdfs:label "OPT-200-Organization-Company" ;
@@ -322,3 +322,41 @@ tedm:MG-ContactPoint-hasPrimaryContactPoint-Organization_ND-CompanyContact a rr:
                 ] ;
         ] ;
 .
+
+tedm:MG-langString-hasLegalName-Organization_ND-Company a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:PartyName/cbc:Name" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rr:class org:Organization ;
+        rdfs:comment "Primary type declaration for MG-Organization under ND-Company" ;
+        rdfs:label "ND-Company" ;
+        rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Organization_{../../cac:PartyIdentification/cbc:ID}" ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate epo-not:hasLegalName ;
+        rr:objectMap [
+            rml:reference "." ;
+            rml:languageMap [
+                fnml:functionValue [
+                    rr:predicateObjectMap [
+                        rr:predicate idlab-fn:str ;
+                        rr:objectMap [
+                            rml:reference "@languageID" ;
+                        ] ;
+                    ] ;
+                    rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+                    rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+                    rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+                    rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+                ] ;
+            ] ;
+            rdfs:comment "Language of Organisation Name of MG-Organization under ND-Company" ;
+            rdfs:label "BT-500-Organization-Company-Language" ;
+        ] ;
+        rdfs:comment "Organisation Name of MG-Organization under ND-Company" ;
+        rdfs:label "BT-500-Organization-Company" ;
+    ] ;
+    rdfs:label "MG-Organization" .

@@ -24,22 +24,23 @@
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix idlab-fn: <http://example.com/idlab/function/> .
 
-tedm:MG-LotGroup_ND-NoticeResult a rr:TriplesMap ;
-    rdfs:label "MG-LotGroup";
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult";
-            rml:referenceFormulation ql:XPath
-        ];
-    rr:subjectMap
-        [
-            # TODO Not in the source
-            rdfs:label  "ND-NoticeResult";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotGroup_{../cbc:ID}" ;
-            rr:class epo:LotGroup
-        ] ;
-.
+#commented out this as it is unnecessary. See tedm:MG-LotGroup_ND-NoticeResultGroupFA instead
+# tedm:MG-LotGroup_ND-NoticeResult a rr:TriplesMap ;
+#     rdfs:label "MG-LotGroup";
+#     rml:logicalSource
+#         [
+#             rml:source "data/source.xml" ;
+#             rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult";
+#             rml:referenceFormulation ql:XPath
+#         ];
+#     rr:subjectMap
+#         [
+#             # TODO Not in the source
+#             rdfs:label  "ND-NoticeResult";
+#             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotGroup_{../cbc:ID}" ;
+#             rr:class epo:LotGroup
+#         ] ;
+# .
 
 tedm:MG-LotGroup-describesLotGroup-LotGroupAwardInformation_ND-NoticeResultGroupFA a rr:TriplesMap ;
     rdfs:label "MG-LotGroup";
@@ -51,68 +52,68 @@ tedm:MG-LotGroup-describesLotGroup-LotGroupAwardInformation_ND-NoticeResultGroup
         ];
     rr:subjectMap
         [
-            # TODO Not in the source
             rdfs:label  "ND-NoticeResultGroupFA";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotGroup_{../cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotGroup_{efac:TenderLot/cbc:ID}" ;
             rr:class epo:LotGroup
         ] ;
 .
 
-tedm:MG-Identifier-identifier-Lot-setsGroupingContextForLot-LotGroup_ND-NoticeResultGroupFA  a rr:TriplesMap ;
-    rdfs:label "MG-Identifier";
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:GroupFramework" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-NoticeResultGroupFA";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Lot_{cbc:ID}" ;
-            rr:class epo:Identifier
-        ] ;
-   rr:predicateObjectMap
-        [
-            rdfs:label "BT-556-NoticeResult";
-            rdfs:comment "GroupFrameworkValueLotIdentifier of MG-Lot under ND-NoticeResultGroupFA";
-            rr:predicate  skos:notation ;
-            rr:objectMap
-                [
-                    rml:reference "if (not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='gro-max-ide']) and efac:TenderLot/cbc:ID/text() = 'unpublished' )) then efac:TenderLot/cbc:ID else null";
-                ] ;
-        ];
-.
-
-tedm:MG-Lot-setsGroupingContextForLot-LotGroup_ND-NoticeResultGroupFA  a rr:TriplesMap ;
-    rdfs:label "MG-Lot";
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:GroupFramework" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-NoticeResultGroupFA";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Lot_{cbc:ID}" ;
-            rr:class epo:Lot
-        ] ;
-   rr:predicateObjectMap
-        [
-            rdfs:label "BT-556-NoticeResult";
-            rdfs:comment "GroupFrameworkValueLotIdentifier of MG-Lot under ND-NoticeResultGroupFA";
-            rr:predicate  adms:identifier ;
-            rr:objectMap
-                [
-                  rr:parentTriplesMap tedm:MG-LotGroup-describesLotGroup-LotGroupAwardInformation_ND-NoticeResult ;
-                    rr:joinCondition[
-                        rr:child "path(.)";
-                        rr:parent "path(.)"
-                    ];
-                ] ;
-        ];
-.
+# remove this after confirmed by OP that CM is wrong
+# tedm:MG-Identifier-identifier-Lot-setsGroupingContextForLot-LotGroup_ND-NoticeResultGroupFA  a rr:TriplesMap ;
+#     rdfs:label "MG-Identifier";
+#     rml:logicalSource
+#         [
+#             rml:source "data/source.xml" ;
+#             rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:GroupFramework" ;
+#             rml:referenceFormulation ql:XPath
+#         ] ;
+#     rr:subjectMap
+#         [
+#             rdfs:label "ND-NoticeResultGroupFA";
+#             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotIdentifier_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(efac:TenderLot/cbc:ID) || '?response_type=raw')}" ;
+#             rr:class adms:Identifier
+#         ] ;
+#    rr:predicateObjectMap
+#         [
+#             rdfs:label "BT-556-NoticeResult";
+#             rdfs:comment "GroupFrameworkValueLotIdentifier of MG-Lot under ND-NoticeResultGroupFA";
+#             rr:predicate  skos:notation ;
+#             rr:objectMap
+#                 [
+#                     rml:reference "if (not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='gro-max-ide']) and efac:TenderLot/cbc:ID/text() = 'unpublished' )) then efac:TenderLot/cbc:ID else null";
+#                 ] ;
+#         ];
+# .
+#
+# tedm:MG-Lot-setsGroupingContextForLot-LotGroup_ND-NoticeResultGroupFA  a rr:TriplesMap ;
+#     rdfs:label "MG-Lot";
+#     rml:logicalSource
+#         [
+#             rml:source "data/source.xml" ;
+#             rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:GroupFramework" ;
+#             rml:referenceFormulation ql:XPath
+#         ] ;
+#     rr:subjectMap
+#         [
+#             rdfs:label "ND-NoticeResultGroupFA";
+#             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Lot_{efac:TenderLot/cbc:ID}" ;
+#             rr:class epo:Lot
+#         ] ;
+#    rr:predicateObjectMap
+#         [
+#             rdfs:label "BT-556-NoticeResult";
+#             rdfs:comment "GroupFrameworkValueLotIdentifier of MG-Lot under ND-NoticeResultGroupFA";
+#             rr:predicate  adms:identifier ;
+#             rr:objectMap
+#                 [
+#                   rr:parentTriplesMap tedm:MG-Identifier-identifier-Lot-setsGroupingContextForLot-LotGroup_ND-NoticeResultGroupFA ;
+#                     rr:joinCondition[
+#                         rr:child "path(.)";
+#                         rr:parent "path(.)"
+#                     ];
+#                 ] ;
+#         ];
+# .
 
 tedm:MG-LotGroup_ND-NoticeResultGroupFA  a rr:TriplesMap ;
     rdfs:label "MG-LotGroup_ND";
@@ -125,23 +126,24 @@ tedm:MG-LotGroup_ND-NoticeResultGroupFA  a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-NoticeResultGroupFA";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotGroup_{cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotGroup_{efac:TenderLot/cbc:ID}" ;
             rr:class epo:LotGroup
         ] ;
-   rr:predicateObjectMap
-        [
-            rdfs:label "BT-556-NoticeResult";
-            rdfs:comment "GroupFrameworkValueLotIdentifier of MG-Lot under ND-NoticeResultGroupFA";
-            rr:predicate  epo:setsGroupingContextForLot ;
-            rr:objectMap
-                [
-                   rr:parentTriplesMap tedm:MG-LotGroup-describesLotGroup-LotGroupAwardInformation_ND-NoticeResultGroupFA ;
-                    rr:joinCondition[
-                        rr:child "path(.)";
-                        rr:parent "path(.)";
-                    ];
-                ] ;
-        ];
+# remove this after confirmed by OP that CM is wrong
+#    rr:predicateObjectMap
+#         [
+#             rdfs:label "BT-556-NoticeResult";
+#             rdfs:comment "GroupFrameworkValueLotIdentifier of MG-Lot under ND-NoticeResultGroupFA";
+#             rr:predicate  epo:setsGroupingContextForLot ;
+#             rr:objectMap
+#                 [
+#                    rr:parentTriplesMap tedm:MG-Lot-setsGroupingContextForLot-LotGroup_ND-NoticeResultGroupFA ;
+#                     rr:joinCondition[
+#                         rr:child "path(.)";
+#                         rr:parent "path(.)";
+#                     ];
+#                 ] ;
+#         ];
    rdfs:comment "this will be supported only in ePO 4.2.0, ( see GH issue #644)";
 #   rr:predicateObjectMap
 #        [

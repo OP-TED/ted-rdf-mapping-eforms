@@ -81,31 +81,31 @@ tedm:MG-SubcontractingEstimate-foreseesSubcontracting-Tender_ND-SubcontractedCon
             rml:reference "if (exists(efbc:TermDescription)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_SubcontractingEstimate_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw') else null" ;
             rr:class epo:SubcontractingEstimate ;
         ] ;
-     rr:predicateObjectMap
-        [
-            tedm:minSDKVersion "1.9" ;
-            rdfs:label "BT-554-Tender" ;
-            rdfs:comment "Description of Subcontracting of MG-SubcontractingEstimate under ND-SubcontractedContract" ;
-            rr:predicate dct:description ;
-            rr:objectMap
-                [
-                    rdfs:label "BT-554-Tender-Language" ;
-                    rdfs:comment "Language of Subcontracting Description of MG-SubcontractingEstimate under ND-SubcontractedContract" ;
-                    rml:reference "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='sub-des']) and efbc:TermDescription/text() = 'unpublished' )) then efbc:TermDescription else null" ;
-                    rml:languageMap [
-                        fnml:functionValue [
-                            rr:predicateObjectMap [
-                                rr:predicate idlab-fn:str ;
-                                rr:objectMap  [ rml:reference "efbc:TermDescription/@languageID" ]
-                            ] ,
-                            tedm:idlab-fn_executes_lookup ,
-                            tedm:idlab-fn_inputFile_language ,
-                            tedm:idlab-fn_fromColumn_code ,
-                            tedm:idlab-fn_toColumn_code
-                        ]
-                    ] ;
-                ] ;
-        ] ;
+    #  rr:predicateObjectMap
+    #     [
+    #         tedm:minSDKVersion "1.9" ;
+    #         rdfs:label "BT-554-Tender" ;
+    #         rdfs:comment "Description of Subcontracting of MG-SubcontractingEstimate under ND-SubcontractedContract" ;
+    #         rr:predicate dct:description ;
+    #         rr:objectMap
+    #             [
+    #                 rdfs:label "BT-554-Tender-Language" ;
+    #                 rdfs:comment "Language of Subcontracting Description of MG-SubcontractingEstimate under ND-SubcontractedContract" ;
+    #                 rml:reference "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='sub-des']) and efbc:TermDescription/text() = 'unpublished' )) then efbc:TermDescription else null" ;
+    #                 rml:languageMap [
+    #                     fnml:functionValue [
+    #                         rr:predicateObjectMap [
+    #                             rr:predicate idlab-fn:str ;
+    #                             rr:objectMap  [ rml:reference "efbc:TermDescription/@languageID" ]
+    #                         ] ,
+    #                         tedm:idlab-fn_executes_lookup ,
+    #                         tedm:idlab-fn_inputFile_language ,
+    #                         tedm:idlab-fn_fromColumn_code ,
+    #                         tedm:idlab-fn_toColumn_code
+    #                     ]
+    #                 ] ;
+    #             ] ;
+    #     ] ;
      rr:predicateObjectMap
         [
             tedm:minSDKVersion "1.9" ;
@@ -118,4 +118,42 @@ tedm:MG-SubcontractingEstimate-foreseesSubcontracting-Tender_ND-SubcontractedCon
                     rr:datatype xsd:decimal ;
                 ] ;
         ] ;
-    .
+.
+
+tedm:MG-langString-description-SubcontractingEstimate-foreseesSubcontracting-Tender_ND-SubcontractedContract a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender/efac:SubcontractingTerm[efbc:TermCode/@listName='applicability']/efbc:TermDescription" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rr:class epo-not:SubcontractingEstimate ;
+        rdfs:label "ND-SubcontractedContract" ;
+        rml:reference "'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_SubcontractingEstimate_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')" ;
+    ] ;
+    rr:predicateObjectMap [
+        tedm:minSDKVersion "1.9" ;
+        rr:predicate dct:description ;
+        rr:objectMap [
+            rml:reference "if(not(exists(../efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='sub-des']) and ./text() = 'unpublished' )) then . else null" ;
+            rml:languageMap [
+                fnml:functionValue [
+                    rr:predicateObjectMap [
+                        rr:predicate idlab-fn:str ;
+                        rr:objectMap [
+                            rml:reference "@languageID" ;
+                        ] ;
+                    ] ;
+                    rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+                    rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+                    rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+                    rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+                ] ;
+            ] ;
+            rdfs:comment "Language of Subcontracting Description of MG-SubcontractingEstimate under ND-SubcontractedContract" ;
+            rdfs:label "BT-554-Tender-Language" ;
+        ] ;
+        rdfs:comment "Description of Subcontracting of MG-SubcontractingEstimate under ND-SubcontractedContract" ;
+        rdfs:label "BT-554-Tender" ;
+    ] ;
+    rdfs:label "MG-SubcontractingEstimate" .
