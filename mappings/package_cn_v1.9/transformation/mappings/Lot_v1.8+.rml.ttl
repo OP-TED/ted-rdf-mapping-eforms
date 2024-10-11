@@ -31,31 +31,31 @@ tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LateTendererInformation
             rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:TendererQualificationRequest[not(cbc:CompanyLegalFormCode)]/cac:SpecificTendererRequirement[cbc:TendererRequirementTypeCode/@listName='missing-info-submission']";
             rml:referenceFormulation ql:XPath
         ];
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-772-Lot";
-            rdfs:comment "Late Tenderer Information of MG-SubmissionTerm under ND-LateTendererInformation";
-            rr:predicate epo:hasLateSubmissionInformationDescription;
-            rr:objectMap
-                [
-                    tedm:minSDKVersion "1.8" ;
-                    rdfs:label "BT-772-Lot-Language";
-                    rdfs:comment "Language of Late Tenderer Information of MG-SubmissionTerm under ND-LateTendererInformation";
-                    rml:reference "cbc:Description";
-                    rml:languageMap [
-                        fnml:functionValue [
-                            rr:predicateObjectMap [
-                                rr:predicate idlab-fn:str ;
-                                rr:objectMap [ rml:reference "cbc:Description/@languageID" ]
-                            ] ,
-                            tedm:idlab-fn_executes_lookup ,
-                            tedm:idlab-fn_inputFile_language ,
-                            tedm:idlab-fn_fromColumn_code ,
-                            tedm:idlab-fn_toColumn_code
-                        ]
-                    ] ;
-                ] ;
-        ] ;
+    # rr:predicateObjectMap
+    #     [
+    #         rdfs:label "BT-772-Lot";
+    #         rdfs:comment "Late Tenderer Information of MG-SubmissionTerm under ND-LateTendererInformation";
+    #         rr:predicate epo:hasLateSubmissionInformationDescription;
+    #         rr:objectMap
+    #             [
+    #                 tedm:minSDKVersion "1.8" ;
+    #                 rdfs:label "BT-772-Lot-Language";
+    #                 rdfs:comment "Language of Late Tenderer Information of MG-SubmissionTerm under ND-LateTendererInformation";
+    #                 rml:reference "cbc:Description";
+    #                 rml:languageMap [
+    #                     fnml:functionValue [
+    #                         rr:predicateObjectMap [
+    #                             rr:predicate idlab-fn:str ;
+    #                             rr:objectMap [ rml:reference "cbc:Description/@languageID" ]
+    #                         ] ,
+    #                         tedm:idlab-fn_executes_lookup ,
+    #                         tedm:idlab-fn_inputFile_language ,
+    #                         tedm:idlab-fn_fromColumn_code ,
+    #                         tedm:idlab-fn_toColumn_code
+    #                     ]
+    #                 ] ;
+    #             ] ;
+    #     ] ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-771-Lot";
@@ -72,6 +72,7 @@ tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LateTendererInformation
                 ] ;
         ]
 .
+
 tedm:MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotProcurementDocument a rr:TriplesMap ;
     rml:logicalSource
         [
@@ -92,3 +93,41 @@ tedm:MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotProcurementDocument a rr
                 ] ;
         ] ;
 .
+
+
+tedm:MG-langString-hasLateSubmissionInformationDescription-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LateTendererInformation a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:TendererQualificationRequest[not(cbc:CompanyLegalFormCode)]/cac:SpecificTendererRequirement[cbc:TendererRequirementTypeCode/@listName='missing-info-submission']/cbc:Description" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-LateTendererInformation";
+        rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SubmissionTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../../../..)) || '?response_type=raw')}" ;
+        rr:class epo:SubmissionTerm
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate epo-not:hasLateSubmissionInformationDescription ;
+        rr:objectMap [
+            tedm:minSDKVersion "1.8" ;
+            rml:reference "." ;
+            rml:languageMap [
+                fnml:functionValue [
+                    rr:predicateObjectMap [
+                        rr:predicate idlab-fn:str ;
+                        rr:objectMap [
+                            rml:reference "@languageID" ;
+                        ] ;
+                    ] ;
+                    rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+                    rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+                    rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+                    rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+                ] ;
+            ] ;
+            rdfs:comment "Language of Late Tenderer Information of MG-SubmissionTerm under ND-LateTendererInformation" ;
+            rdfs:label "BT-772-Lot-Language" ;
+        ] ;
+        rdfs:comment "Late Tenderer Information of MG-SubmissionTerm under ND-LateTendererInformation" ;
+        rdfs:label "BT-772-Lot" ;
+    ] .
