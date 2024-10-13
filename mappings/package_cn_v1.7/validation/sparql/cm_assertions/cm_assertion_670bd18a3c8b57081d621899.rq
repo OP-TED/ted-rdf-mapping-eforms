@@ -1,0 +1,12 @@
+#title: BT-46-Lot
+#description: “Jury Member Name” The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AwardingTerms/cac:TechnicalCommitteePerson/cbc:FamilyName. The expected ontology instances are epo: epo:CompetitionNotice / epo:JuryMember / person:Person / rdf:PlainLiteral .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AwardingTerms/cac:TechnicalCommitteePerson/cbc:FamilyName
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+	?this rdf:type epo:CompetitionNotice .
+	?this epo:announcesRole / epo:playedBy / foaf:familyName ?value . 
+}
