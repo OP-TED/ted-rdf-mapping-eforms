@@ -1,0 +1,11 @@
+#title: BT-142-LotResult
+#description: “Winner Chosen” The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/cbc:TenderResultCode. The expected ontology instances are epo: epo:LotAwardOutcome / at-voc:winner-selection-status. .
+#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/cbc:TenderResultCode
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+	?this rdf:type epo:LotAwardOutcome .
+	?this epo:hasAwardStatus ?value . 
+}

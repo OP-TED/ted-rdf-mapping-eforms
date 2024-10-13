@@ -1,0 +1,12 @@
+#title: OPT-160-UBO
+#description: “First Name” The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:UltimateBeneficialOwner/cbc:FirstName. The expected ontology instances are epo: person:Person / rdf:PlainLiteral .
+#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:UltimateBeneficialOwner/cbc:FirstName
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+	?this rdf:type person:Person .
+	?this foaf:givenName ?value . 
+}

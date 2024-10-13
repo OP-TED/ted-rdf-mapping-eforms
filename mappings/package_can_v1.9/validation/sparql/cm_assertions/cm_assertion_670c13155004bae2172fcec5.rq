@@ -1,0 +1,11 @@
+#title: ND-PayerParty
+#description: The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/cac:PayerParty. The expected ontology instances are epo: epo:Contract / epo:ContractTerm / epo:PaymentExecutor .
+#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/cac:PayerParty
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+	?this rdf:type epo:Contract .
+	?this epo:isSubjectToContractSpecificTerm / epo:definesPaymentExecutor ?value . 
+}

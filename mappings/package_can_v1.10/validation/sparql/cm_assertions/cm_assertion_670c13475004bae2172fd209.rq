@@ -1,0 +1,13 @@
+#title: BT-1252-Procedure
+#description: “Direct Award Justification Previous Procedure Identifier” The corresponding XML element is /*/cac:TenderingProcess/cac:ProcessJustification[cbc:ProcessReasonCode/@listName='direct-award-justification']/cbc:Description. The expected ontology instances are epo: epo:Procedure / epo:DirectAwardTerm / epo:Procedure / adms:Identifier / rdf:plainLiteral .
+#xpath: /*/cac:TenderingProcess/cac:ProcessJustification[cbc:ProcessReasonCode/@listName='direct-award-justification']/cbc:Description
+
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+ASK WHERE { 
+	?this rdf:type epo:Procedure .
+	?this epo:isSubjectToProcedureSpecificTerm / epo:refersToPreviousProcedure / adms:identifier / skos:notation ?value . 
+}

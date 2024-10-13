@@ -1,0 +1,12 @@
+#title: BT-554-Tender
+#description: “Subcontracting Description” The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender/efac:SubcontractingTerm/efbc:TermDescription. The expected ontology instances are epo: epo:Tender / epo:SubcontractingEstimate / rdf:langString .
+#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender/efac:SubcontractingTerm/efbc:TermDescription
+
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+	?this rdf:type epo:Tender .
+	?this epo:foreseesSubcontracting / dct:description ?value . 
+}
