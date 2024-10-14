@@ -1,0 +1,12 @@
+#title: BT-150-Contract
+#description: “Contract Identifier” The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:SettledContract/efac:ContractReference/cbc:ID. The expected ontology instances are epo: epo:Contract / adms:Identifier / rdf:PlainLiteral .
+#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:SettledContract/efac:ContractReference/cbc:ID
+
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+	?this rdf:type epo:Contract .
+	?this adms:identifier /skos:notation ?value . 
+}

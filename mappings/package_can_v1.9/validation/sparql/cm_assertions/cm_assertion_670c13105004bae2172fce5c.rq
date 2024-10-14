@@ -1,0 +1,11 @@
+#title: BT-136-Procedure
+#description: “Direct Award Justification Code” The corresponding XML element is /*/cac:TenderingProcess/cac:ProcessJustification[cbc:ProcessReasonCode/@listName='direct-award-justification']/cbc:ProcessReasonCode. The expected ontology instances are epo: epo:Procedure / epo:DirectAwardTerm / at-voc:direct-award-justification .
+#xpath: /*/cac:TenderingProcess/cac:ProcessJustification[cbc:ProcessReasonCode/@listName='direct-award-justification']/cbc:ProcessReasonCode
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+	?this rdf:type epo:Procedure .
+	?this epo:isSubjectToProcedureSpecificTerm / epo:hasDirectAwardJustification ?value . 
+}

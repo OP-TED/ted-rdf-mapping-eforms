@@ -1,0 +1,11 @@
+#title: BT-746-Organization
+#description: “Winner Listed” The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efbc:ListedOnRegulatedMarketIndicator. The expected ontology instances are epo: epo:Business / xsd:boolean .
+#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efbc:ListedOnRegulatedMarketIndicator
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+	?this rdf:type epo:Business .
+	?this epo:isListedCompany ?value . 
+}
