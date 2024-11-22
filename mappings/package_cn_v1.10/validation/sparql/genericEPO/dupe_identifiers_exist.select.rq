@@ -1,0 +1,35 @@
+#title: Find entities with more than one adms:identifier
+#description: Finds RDF resources with multiple adms:identifier occurrences
+#xpath: None
+#was: gen_unique_ids (TED-929/TED-1151), https://github.com/OP-TED/ted-rdf-mapping/issues/273
+
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX cccev: <http://data.europa.eu/m8g/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX epd: <http://data.europa.eu/a4g/resource/>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX fnml: <http://semweb.mmlab.be/ns/fnml#>
+PREFIX fno: <https://w3id.org/function/ontology#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX idlab-fn: <http://example.com/idlab/function/>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX ql: <http://semweb.mmlab.be/ns/ql#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rml: <http://semweb.mmlab.be/ns/rml#>
+PREFIX rr: <http://www.w3.org/ns/r2rml#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX tedm: <http://data.europa.eu/a4g/mapping/sf-rml/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT
+?s
+(COUNT(?what) as ?idCount)
+{ 
+    ?s adms:identifier ?what .
+}
+GROUP BY ?s
+HAVING (?idCount > 1)
