@@ -1,0 +1,97 @@
+#--- Root ---
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
+@prefix cv: <http://data.europa.eu/m8g/> .
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix cpov: <http://data.europa.eu/m8g/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix idlab-fn: <http://example.com/idlab/function/> .
+@prefix person: <http://www.w3.org/ns/person#> .
+
+tedm:technical_mapping_pin
+    a owl:Ontology ;
+    dct:description "This module provides the root mapping definitions for the PIN eForm subtypes against ePO 4.0.0"@en ;
+    rdfs:label "TED-SWS mapping of PIN eForms ePO 4.0.0"@en ;
+    dct:date "2024-12-03"^^xsd:date
+.
+
+tedm:MG-Procedure-refersToProcedure-Notice_ND-Root a rr:TriplesMap ;
+    rdfs:label "MG-Procedure" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Root" ;
+            rml:reference "if (exists(cbc:PlannedDate)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcedureTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(.)) || '?response_type=raw') else null" ;
+            rr:class epo:Procedure
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:comment "Future Notice for MG-ProcessPlanningTerm under ND-Root" ;
+            rr:predicate epo:isSubjectToProcedureSpecificTerm ;
+            rr:objectMap
+               [
+                    rr:parentTriplesMap tedm:MG-ProcessPlanningTerm-isSubjectToProcedureSpecificTerm-Procedure-refersToProcedure-Notice_ND-Root ;
+                        rr:joinCondition [
+                            rr:child "path(.)" ;
+                            rr:parent "path(.)" ;
+                        ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-ProcessPlanningTerm-isSubjectToProcedureSpecificTerm-Procedure-refersToProcedure-Notice_ND-Root a rr:TriplesMap ;
+    rdfs:label "MG-ProcessPlanningTerm" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Root" ;
+            rml:reference "if (exists(cbc:PlannedDate)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcedureTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(.)) || '?response_type=raw') else null" ;
+            rr:class epo:ProcessPlanningTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+
+            rdfs:label "BT-127-notice" ;
+            rdfs:comment "Future Notice for MG-ProcessPlanningTerm under ND-Root" ;
+            rr:predicate epo:hasEstimatedContractNoticePublicationDate ;
+            rr:objectMap
+                [
+                   rml:reference "cbc:PlannedDate";
+                   rr:datatype xsd:date ;
+                ] ;
+        ] ;
+.
+
+##--- Function Parameters ---
+
+tedm:idlab-fn_executes_lookup rr:predicate fno:executes ; rr:objectMap [ rr:constant idlab-fn:lookup ] .
+tedm:idlab-fn_inputFile_language rr:predicate idlab-fn:inputFile ; rr:objectMap [ rr:constant "transformation/resources/language.csv" ] .
+tedm:idlab-fn_fromColumn_code rr:predicate idlab-fn:fromColumn ; rr:objectMap [ rr:constant "3" ] . # op_code
+tedm:idlab-fn_toColumn_code rr:predicate idlab-fn:toColumn ; rr:objectMap [ rr:constant "1" ] . # code_ted
