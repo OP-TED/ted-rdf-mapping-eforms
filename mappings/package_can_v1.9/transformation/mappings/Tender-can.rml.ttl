@@ -485,3 +485,203 @@ tedm:MG-Tender_ND-SubContractor  a rr:TriplesMap ;
                 ] ;
         ] ;
 .
+
+tedm:MG-Tender_ND-ConcessionRevenue a rr:TriplesMap ;
+    rdfs:label "MG-Tender" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender/efac:ConcessionRevenue" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ConcessionRevenue" ;
+            rml:reference "if (exists(efbc:RevenueBuyerAmount) or exists(efbc:RevenueUserAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Tender_' || ../cbc:ID else null" ;
+            rr:class epo:Tender
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-160-Tender" ;
+            rdfs:comment "Concession Revenue Buyer of MG-Tender under ND-ConcessionRevenue" ;
+            rr:predicate epo:foreseesConcession ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ConcessionEstimate-foreseesConcession-Tender_ND-ConcessionRevenue ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-ConcessionEstimate-foreseesConcession-Tender_ND-ConcessionRevenue a rr:TriplesMap ;
+    rdfs:label "MG-ConcessionEstimate" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender/efac:ConcessionRevenue" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ConcessionRevenue" ;
+            rml:reference "if (exists(efbc:RevenueBuyerAmount) or exists(efbc:RevenueUserAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ConcessionEstimate_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:ConcessionEstimate
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-160-Tender" ;
+            rdfs:comment "Concession Revenue Buyer of MG-ConcessionEstimate under ND-ConcessionRevenue" ;
+            rr:predicate epo:hasEstimatedUserConcessionRevenue ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-MonetaryValue-hasEstimatedUserConcessionRevenue-ConcessionEstimate-foreseesConcession-Tender_ND-ConcessionRevenue ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-162-Tender" ;
+            rdfs:comment "Concession Revenue user of MG-ConcessionEstimate under ND-ConcessionRevenue" ;
+            rr:predicate epo:hasEstimatedBuyerConcessionRevenue ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-MonetaryValue-hasEstimatedBuyerConcessionRevenue-ConcessionEstimate-foreseesConcession-Tender_ND-ConcessionRevenue ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-MonetaryValue-hasEstimatedBuyerConcessionRevenue-ConcessionEstimate-foreseesConcession-Tender_ND-ConcessionRevenue a rr:TriplesMap ;
+    rdfs:label "MG-MonetaryValue" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender/efac:ConcessionRevenue" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ConcessionRevenue" ;
+            rml:reference "if (exists(efbc:RevenueBuyerAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MonetaryValue_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(efbc:RevenueBuyerAmount)) || '?response_type=raw') else null" ;
+            rr:class epo:MonetaryValue
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-160-Tender" ;
+            rdfs:comment "Concession Revenue Buyer of MG-MonetaryValue under ND-ConcessionRevenue" ;
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "efbc:RevenueBuyerAmount" ;
+                    rr:datatype xsd:decimal ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-160-Tender-Currency" ;
+            rdfs:comment "Currency of Concession Revenue Buyer of MG-MonetaryValue under ND-ConcessionRevenue" ;
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:currency" ;
+                    rr:parentTriplesMap tedm:currency ;
+                    rr:joinCondition [
+                        rr:child "efbc:RevenueBuyerAmount/@currencyID" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-MonetaryValue-hasEstimatedUserConcessionRevenue-ConcessionEstimate-foreseesConcession-Tender_ND-ConcessionRevenue a rr:TriplesMap ;
+    rdfs:label "MG-MonetaryValue" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender/efac:ConcessionRevenue" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ConcessionRevenue" ;
+            rml:reference "if (exists(efbc:RevenueUserAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MonetaryValue_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(efbc:RevenueUserAmount)) || '?response_type=raw') else null" ;
+            rr:class epo:MonetaryValue
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-160-Tender" ;
+            rdfs:comment "Concession Revenue User of MG-MonetaryValue under ND-ConcessionRevenue" ;
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "efbc:RevenueUserAmount" ;
+                    rr:datatype xsd:decimal ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-160-Tender-Currency" ;
+            rdfs:comment "Currency of Concession Revenue user of MG-MonetaryValue under ND-ConcessionRevenue" ;
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:currency" ;
+                    rr:parentTriplesMap tedm:currency ;
+                    rr:joinCondition [
+                        rr:child "efbc:RevenueUserAmount/@currencyID" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-langString-hasCalculationMethod-ConcessionEstimate-foreseesConcession-Tender_ND-ConcessionRevenue a rr:TriplesMap ;
+    rdfs:label "MG-ConcessionEstimate" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender/efac:ConcessionRevenue/efbc:ValueDescription" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ConcessionRevenue" ;
+            rml:reference "'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ConcessionEstimate_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')" ;
+            rr:class epo:ConcessionEstimate
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-163-Tender" ;
+            rdfs:comment "Concession Value Description of MG-ConcessionEstimate under ND-ConcessionRevenue" ;
+            rr:predicate epo:hasCalculationMethod ;
+            rr:objectMap
+                [
+                    rml:reference "." ;
+                    rml:languageMap [
+                        fnml:functionValue [
+                            rr:predicateObjectMap [
+                                rr:predicate idlab-fn:str ;
+                                rr:objectMap [
+                                    rml:reference "@languageID" ;
+                                ] ;
+                            ] ;
+                            rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+                            rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+                            rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+                            rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+                        ] ;
+                    ] ;
+                    rdfs:comment "Language of Concession Value Description of MG-ConcessionEstimate under ND-ConcessionRevenue" ;
+                    rdfs:label "BT-163-Tender-Language" ;
+                ] ;
+        ] ;
+.
