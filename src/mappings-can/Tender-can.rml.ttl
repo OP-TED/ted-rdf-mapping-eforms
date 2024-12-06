@@ -486,6 +486,37 @@ tedm:MG-Tender_ND-SubContractor  a rr:TriplesMap ;
         ] ;
 .
 
+tedm:MG-Tender_ND-LotTenderOriginCountry a rr:TriplesMap ;
+    rdfs:label "MG-Tender" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender/efac:Origin" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotTenderOriginCountry" ;
+            rml:reference "if (exists(efbc:AreaCode)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Tender_' || ../cbc:ID else null" ;
+            rr:class epo:Tender
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-191-Tender" ;
+            rdfs:comment "Country Origin of MG-Tender under ND-LotTenderOriginCountry" ;
+            rr:predicate epo:hasItemCountryOfOrigin ;
+            rr:objectMap
+                 [
+                    rdfs:label "at-voc:country" ;
+                    rr:parentTriplesMap tedm:country ;
+                    rr:joinCondition [
+                        rr:child "efbc:AreaCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
 tedm:MG-Tender_ND-ConcessionRevenue a rr:TriplesMap ;
     rdfs:label "MG-Tender" ;
     rml:logicalSource
