@@ -42,10 +42,10 @@ tedm:MG-PlannedProcurementPart_ND-Part a rr:TriplesMap ;
         [
             rdfs:label "BT-137-Part" ;
             rdfs:comment "Purpose Lot Identifier of MG-PlannedProcurementPart under ND-Part" ;
-            rr:predicate epo:foreseesProcurementObject ;
+            rr:predicate epo:identifier ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-Lot-foreseesProcurementObject-PlannedProcurementPart_ND-Part ;
+                    rr:parentTriplesMap tedm:MG-Identifier-identifier-PlannedProcurementPart_ND-Part ;
                     rr:joinCondition [
                         rr:child "cbc:ID";
                         rr:parent "cbc:ID";
@@ -54,7 +54,7 @@ tedm:MG-PlannedProcurementPart_ND-Part a rr:TriplesMap ;
         ] ;
 .
 
-tedm:MG-Identifier-identifier-Lot-foreseesProcurementObject-PlannedProcurementPart_ND-Part a rr:TriplesMap ;
+tedm:MG-Identifier-identifier-PlannedProcurementPart_ND-Part a rr:TriplesMap ;
     rdfs:label "MG-Identifier" ;
     rml:logicalSource
         [
@@ -65,7 +65,7 @@ tedm:MG-Identifier-identifier-Lot-foreseesProcurementObject-PlannedProcurementPa
     rr:subjectMap
         [
             rdfs:label "ND-Part" ;
-            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_PurposeLotIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_PartPurposeLotIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -121,36 +121,6 @@ tedm:MG-Identifier-hasInternalIdentifier-PlannedProcurementPart_ND-PartProcureme
             rr:objectMap
                 [
                     rml:reference "cbc:ID/@schemeName" ;
-                ] ;
-        ] ;
-.
-
-tedm:MG-Lot-foreseesProcurementObject-PlannedProcurementPart_ND-Part a rr:TriplesMap ;
-    rdfs:label "MG-Lot" ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-Part" ;
-            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Lot_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
-            rr:class epo:Lot
-        ] ;
-     rr:predicateObjectMap
-        [
-            rdfs:label "BT-137-Part" ;
-            rdfs:comment "Purpose Lot Identifier of MG-Lot under ND-Part" ;
-            rr:predicate adms:identifier ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-Identifier-identifier-Lot-foreseesProcurementObject-PlannedProcurementPart_ND-Part ;
-                    rr:joinCondition [
-                        rr:child "cbc:ID" ;
-                        rr:parent "cbc:ID" ;
-                    ] ;
                 ] ;
         ] ;
 .
