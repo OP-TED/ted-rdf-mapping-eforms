@@ -32,62 +32,107 @@ tedm:technical_mapping_pin
     dct:date "2024-12-03"^^xsd:date
 .
 
-tedm:MG-Procedure-refersToProcedure-Notice_ND-Root a rr:TriplesMap ;
-    rdfs:label "MG-Procedure" ;
+tedm:MG-PlanningNotice_ND-Part a rr:TriplesMap ;
+    rdfs:label "MG-PlanningNotice" ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/*" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
         [
-            rdfs:label "ND-Root" ;
-            rml:reference "if (exists(cbc:PlannedDate)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcedureTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(.)) || '?response_type=raw') else null" ;
-            rr:class epo:Procedure
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Notice" ;
+            rr:class epo-not:PlanningNotice
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:comment "Future Notice for MG-ProcessPlanningTerm under ND-Root" ;
-            rr:predicate epo:isSubjectToProcedureSpecificTerm ;
-            rr:objectMap
-               [
-                    rr:parentTriplesMap tedm:MG-ProcessPlanningTerm-isSubjectToProcedureSpecificTerm-Procedure-refersToProcedure-Notice_ND-Root ;
-                        rr:joinCondition [
-                            rr:child "path(.)" ;
-                            rr:parent "path(.)" ;
-                        ] ;
-                ] ;
-        ] ;
-.
-
-tedm:MG-ProcessPlanningTerm-isSubjectToProcedureSpecificTerm-Procedure-refersToProcedure-Notice_ND-Root a rr:TriplesMap ;
-    rdfs:label "MG-ProcessPlanningTerm" ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-Root" ;
-            rml:reference "if (exists(cbc:PlannedDate)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcedureTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(.)) || '?response_type=raw') else null" ;
-            rr:class epo:ProcessPlanningTerm
-        ] ;
-    rr:predicateObjectMap
-        [
-
-            rdfs:label "BT-127-notice" ;
-            rdfs:comment "Future Notice for MG-ProcessPlanningTerm under ND-Root" ;
-            rr:predicate epo:hasEstimatedContractNoticePublicationDate ;
+            rdfs:label "ND-Part" ;
+            rdfs:comment "Connection between PlannedProcurementPart and PlanningNotice under ND-Part" ;
+            rr:predicate epo:announcesPlannedProcurementPart ;
             rr:objectMap
                 [
-                   rml:reference "cbc:PlannedDate";
-                   rr:datatype xsd:date ;
+                   rr:parentTriplesMap tedm:MG-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice_ND-Part ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ] ;
                 ] ;
         ] ;
 .
+
+tedm:MG-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice_ND-Part a rr:TriplesMap ;
+    rdfs:label "MG-PlannedProcurementPart" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Part" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_PlannedProcurementPart_{cbc:ID}" ;
+            rr:class epo:PlannedProcurementPart
+        ] ;
+.
+
+#tedm:MG-Procedure-refersToProcedure-Notice_ND-Root a rr:TriplesMap ;
+#    rdfs:label "MG-Procedure" ;
+#    rml:logicalSource
+#        [
+#            rml:source "data/source.xml" ;
+#            rml:iterator "/*" ;
+#            rml:referenceFormulation ql:XPath
+#        ] ;
+#    rr:subjectMap
+#        [
+#            rdfs:label "ND-Root" ;
+#            rml:reference "if (exists(cbc:PlannedDate)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcedureTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(.)) || '?response_type=raw') else null" ;
+#            rr:class epo:Procedure
+#        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rdfs:comment "Future Notice for MG-ProcessPlanningTerm under ND-Root" ;
+#            rr:predicate epo:isSubjectToProcedureSpecificTerm ;
+#            rr:objectMap
+#               [
+#                    rr:parentTriplesMap tedm:MG-ProcessPlanningTerm-isSubjectToProcedureSpecificTerm-Procedure-refersToProcedure-Notice_ND-Root ;
+#                        rr:joinCondition [
+#                            rr:child "path(.)" ;
+#                            rr:parent "path(.)" ;
+#                        ] ;
+#                ] ;
+#        ] ;
+#.
+
+#tedm:MG-ProcessPlanningTerm-isSubjectToProcedureSpecificTerm-Procedure-refersToProcedure-Notice_ND-Root a rr:TriplesMap ;
+#    rdfs:label "MG-ProcessPlanningTerm" ;
+#    rml:logicalSource
+#        [
+#            rml:source "data/source.xml" ;
+#            rml:iterator "/*" ;
+#            rml:referenceFormulation ql:XPath
+#        ] ;
+#    rr:subjectMap
+#        [
+#            rdfs:label "ND-Root" ;
+#            rml:reference "if (exists(cbc:PlannedDate)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcedureTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(.)) || '?response_type=raw') else null" ;
+#            rr:class epo:ProcessPlanningTerm
+#        ] ;
+#    rr:predicateObjectMap
+#        [
+#
+#            rdfs:label "BT-127-notice" ;
+#            rdfs:comment "Future Notice for MG-ProcessPlanningTerm under ND-Root" ;
+#            rr:predicate epo:hasEstimatedContractNoticePublicationDate ;
+#            rr:objectMap
+#                [
+#                   rml:reference "cbc:PlannedDate";
+#                   rr:datatype xsd:date ;
+#                ] ;
+#        ] ;
+#.
 
 ##--- Function Parameters ---
 
