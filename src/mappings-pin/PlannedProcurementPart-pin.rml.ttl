@@ -223,6 +223,19 @@ tedm:MG-PlannedProcurementPart_ND-PartProcurementScope a rr:TriplesMap ;
                     ];
                 ] ;
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5101(a|b|c)-Part, BT-5131-Part, BT-5121-Part, BT-5071-Part, BT-5141-Part ";
+            rr:predicate epo:foreseesProcurementObject ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartProcurementScope ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(.)";
+                    ];
+                ] ;
+        ] ;
 .
 
 tedm:MG-langString-title-PlannedProcurementPart_ND-PartProcurementScope a rr:TriplesMap ;
@@ -459,6 +472,241 @@ tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-Pa
                         rr:child "path(.)";
                         rr:parent "path(.)";
                     ];
+                ] ;
+        ] ;
+.
+
+tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartProcurementScope a rr:TriplesMap ;
+    rdfs:label "MG-ProcurementObject" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:ProcurementProject";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-PartProcurementScope";
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_PartProcurementObject_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}";
+            rr:class epo:ProcurementObject
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5101(a|b|c)-Part, BT-5131-Part, BT-5121-Part, BT-5071-Part, BT-5141-Part ";
+            rr:predicate epo:foreseesContractSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ContractTerm-foreseesContractSpecificTerm-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartProcurementScope ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-ContractTerm-foreseesContractSpecificTerm-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartProcurementScope a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:ProcurementProject" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-PartProcurementScope" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:ContractTerm
+        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rdfs:label "BT-23-Lot";
+#            rdfs:comment "Main Nature of MG-ContractTerm under ND-LotProcurementScope";
+#            rr:predicate epo:hasContractNatureType   ;
+#            rr:objectMap
+#                [
+#                    rdfs:label "at-voc:contract-nature" ;
+#                    rr:parentTriplesMap tedm:contract-nature ;
+#                    rr:joinCondition [
+#                        rr:child "cbc:ProcurementTypeCode[@listName='contract-nature']";
+#                        rr:parent "code.value" ;
+#                    ] ;
+#                ] ;
+#        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5101(a)-Lot, BT-5101(b)-Lot, BT-5101(c)-Part, BT-5131-Part, BT-5121-Part, BT-5071-Part, BT-5141-Part " ;
+            rr:predicate epo:definesSpecificPlaceOfPerformance ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartPerformanceAddress ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(../..)" ;
+                    ] ;
+                ] ;
+        ] ;
+#     rr:predicateObjectMap
+#        [
+#            rdfs:label "BT-36-Lot (object)" ;
+#            rr:predicate epo:definesContractDuration ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:MG-SpecificDuration-definesContractDuration-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotDuration ;
+#                    rr:joinCondition[
+#                        rr:child "path(.)" ;
+#                        rr:parent "path(..)" ;
+#                    ] ;
+#                ] ;
+#        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rdfs:label "BT-536-Lot, BT-537-Lot and BT-538-Lot" ;
+#            rr:predicate epo:definesContractPeriod ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:MG-Period-definesContractPeriod-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotDuration ;
+#                    rr:joinCondition[
+#                        rr:child "path(.)" ;
+#                        rr:parent "path(..)" ;
+#                    ] ;
+#                ] ;
+#        ] ;
+.
+
+tedm:MG-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartPerformanceAddress a rr:TriplesMap ;
+    rdfs:label "MG-Location" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:ProcurementProject/cac:RealizedLocation/cac:Address" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotPerformanceAddress" ;
+            # we check for the elements of a linked Address as otherwise this Location should not be instantiated either
+            # TODO: if only country exists then no location/address will be created; however adding exists(cac:Country/cbc:IdentificationCode) the one for broad place will also be taken
+            rml:reference "if (exists(cbc:StreetName) or exists(cbc:AdditionalStreetName) or exists(cac:AddressLine/cbc:Line) or exists(cbc:CityName) or exists(cbc:PostalZone)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_PartContractLocation_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class dct:Location
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5101(a|b|c)-Part, BT-5131-Lot, BT-5121-Lot " ;
+            rr:predicate locn:address ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Address-address-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartPerformanceAddress ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5071-Lot" ;
+            rdfs:comment "Place Performance Country Subdivision of MG-Location under ND-PartPerformanceAddress " ;
+            rr:predicate epo:hasNutsCode ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:nuts ;
+                    rr:joinCondition [
+                        rr:child "cbc:CountrySubentityCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5141-Lot" ;
+            rdfs:comment "Place Performance Country Code of MG-Location under ND-PartPerformanceAddress" ;
+            rr:predicate epo:hasCountryCode ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:country" ;
+                    rr:parentTriplesMap tedm:country ;
+                    rr:joinCondition [
+                        rr:child "cac:Country/cbc:IdentificationCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-Address-address-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartPerformanceAddress a rr:TriplesMap ;
+    rdfs:label "MG-Address" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:ProcurementProject/cac:RealizedLocation/cac:Address" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:comment "ND-PartPerformanceAddress" ;
+            # TODO: if only country exists then no location/address will be created; however adding exists(cac:Country/cbc:IdentificationCode) the one for broad place will also be taken
+            rml:reference "if(exists(cbc:StreetName) or exists(cbc:AdditionalStreetName) or exists(cac:AddressLine/cbc:Line) or exists(cbc:CityName) or exists(cbc:PostalZone)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_PartContractLocationAddress_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class locn:Address
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5101(a|b|c)-, BT-5121-, BT-5131-, 5071-, 5141-Part" ;
+            rdfs:comment "Place Performance Street, Place Performance Streetline 1, Place Performance Streetline 2, Place Performance City, Place Performance Post Code, Place Performance Country Code under ND-PartPerformanceAddress" ;
+            rr:predicate locn:fullAddress ;
+            rr:objectMap
+                [
+                   rml:reference "if (exists(cbc:StreetName) or exists(cbc:AdditionalStreetName) or exists(cac:AddressLine/cbc:Line)) then replace(replace(cbc:StreetName || ', ' || cbc:AdditionalStreetName || ', ' || cac:AddressLine/cbc:Line || ', ' || cbc:CityName || ', ' || cbc:PostalZone || ', ' || cac:Country/cbc:IdentificationCode, '(, )+', ', '),  '^, |, $', '') else null" ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5131-Part" ;
+            rdfs:comment "Place Performance City of MG-Address under ND-PartPerformanceAddress" ;
+            rr:predicate locn:postName ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:CityName" ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5121-Part" ;
+            rdfs:comment "Place Performance Post Code of MG-Address under ND-PartPerformanceAddress" ;
+            rr:predicate locn:postCode ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:PostalZone" ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5071-Part" ;
+            rdfs:comment "Place Performance Country Subdivision of MG-Location under ND-PartPerformanceAddress" ;
+            rr:predicate epo:hasNutsCode ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:nuts ;
+                    rr:joinCondition [
+                        rr:child "cbc:CountrySubentityCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5141-Part" ;
+            rdfs:comment "Place Performance Country Code of MG-Location under ND-PartPerformanceAddress" ;
+            rr:predicate epo:hasCountryCode ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:country" ;
+                    rr:parentTriplesMap tedm:country ;
+                    rr:joinCondition [
+                        rr:child "cac:Country/cbc:IdentificationCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
                 ] ;
         ] ;
 .
