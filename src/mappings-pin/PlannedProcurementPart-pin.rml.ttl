@@ -35,7 +35,7 @@ tedm:MG-PlannedProcurementPart_ND-Part a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-Part" ;
-            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_PurposeLotIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_PlannedProcurementPart_{cbc:ID}" ;
             rr:class epo:PlannedProcurementPart
         ] ;
      rr:predicateObjectMap
@@ -45,7 +45,7 @@ tedm:MG-PlannedProcurementPart_ND-Part a rr:TriplesMap ;
             rr:predicate epo:foreseesProcurementObject ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-PlannedProcurementPart_ND-Part ;
+                    rr:parentTriplesMap tedm:MG-Lot-foreseesProcurementObject-PlannedProcurementPart_ND-Part ;
                     rr:joinCondition [
                         rr:child "cbc:ID";
                         rr:parent "cbc:ID";
@@ -105,7 +105,7 @@ tedm:MG-Identifier-hasInternalIdentifier-PlannedProcurementPart_ND-PartProcureme
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-22-Lot" ;
+            rdfs:label "BT-22-Part" ;
             rdfs:comment "Internal Identifier of MG-Identifier under ND-PartProcurementScope" ;
             rr:predicate skos:notation ;
             rr:objectMap
@@ -115,7 +115,7 @@ tedm:MG-Identifier-hasInternalIdentifier-PlannedProcurementPart_ND-PartProcureme
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-22-Lot-Scheme" ;
+            rdfs:label "BT-22-Part-Scheme" ;
             rdfs:comment "Scheme of MG-Identifier under ND-PartProcurementScope" ;
             rr:predicate epo:hasScheme ;
             rr:objectMap
@@ -126,7 +126,7 @@ tedm:MG-Identifier-hasInternalIdentifier-PlannedProcurementPart_ND-PartProcureme
 .
 
 tedm:MG-Lot-foreseesProcurementObject-PlannedProcurementPart_ND-Part a rr:TriplesMap ;
-    rdfs:label "MG-Identifier" ;
+    rdfs:label "MG-Lot" ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -136,7 +136,7 @@ tedm:MG-Lot-foreseesProcurementObject-PlannedProcurementPart_ND-Part a rr:Triple
     rr:subjectMap
         [
             rdfs:label "ND-Part" ;
-            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_PurposeLotIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Lot_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:Lot
         ] ;
      rr:predicateObjectMap
@@ -166,7 +166,7 @@ tedm:MG-PlannedProcurementPart_ND-PartProcurementScope a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-PartProcurementScope" ;
-            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_PlannedProcurementPart_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_PlannedProcurementPart_{../cbc:ID}" ;
             rr:class epo:PlannedProcurementPart
         ] ;
     rr:predicateObjectMap
@@ -181,16 +181,6 @@ tedm:MG-PlannedProcurementPart_ND-PartProcurementScope a rr:TriplesMap ;
                         rr:child "cbc:ID" ;
                         rr:parent "cbc:ID" ;
                     ] ;
-                ] ;
-        ] ;
-     rr:predicateObjectMap
-        [
-            rdfs:label "BT-22-Part-Scheme" ;
-            rdfs:comment "Scheme of MG-Identifier under ND-PartProcurementScope" ;
-            rr:predicate epo:hasScheme ;
-            rr:objectMap
-                [
-                    rml:reference "cbc:ID/@schemeName" ;
                 ] ;
         ] ;
       rr:predicateObjectMap
