@@ -72,6 +72,19 @@ tedm:MG-PlanningNotice_ND-Part a rr:TriplesMap ;
                     ];
                 ] ;
         ];
+     rr:predicateObjectMap
+        [
+            rdfs:label "ND-PartFiscalLegislation" ;
+            rr:predicate epo:announcesRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-EnvironmentalProtectionInformationProvider_ND-PartEnvironmentalLegislation ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(../..)" ;
+                    ];
+                ] ;
+        ];
 .
 
 tedm:MG-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice_ND-Part a rr:TriplesMap ;
@@ -270,6 +283,21 @@ tedm:MG-ProcurementObject-contextualisedBy-TaxInformationProvider-announcesRole-
         [
             rml:source "data/source.xml" ;
             rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:FiscalLegislationDocumentReference" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_PartProcurementObject_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
+            rr:class epo:ProcurementObject
+        ] ;
+.
+
+tedm:MG-ProcurementObject-contextualisedBy-EnvironmentalProtectionInformationProvider-announcesRole-PlanningNotice_ND-PartEnvironmentalLegislation a rr:TriplesMap ;
+    rdfs:label "MG-ProcurementObject" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:EnvironmentalLegislationDocumentReference" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
