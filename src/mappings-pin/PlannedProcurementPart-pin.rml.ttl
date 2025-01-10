@@ -65,6 +65,19 @@ tedm:MG-PlannedProcurementPart_ND-Part a rr:TriplesMap ;
                     ];
                 ] ;
         ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-766-Part" ;
+            rr:predicate epo:usesTechnique ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-DynamicPurchaseSystemTechnique-usesTechnique-PlannedProcurementPart_ND-PartDPSContractingSystem;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(../..)" ;
+                    ];
+                ] ;
+        ];
 .
 
 tedm:MG-Identifier-identifier-PlannedProcurementPart_ND-Part a rr:TriplesMap ;
@@ -1023,6 +1036,38 @@ tedm:MG-FrameworkAgreementTerm-foreseesContractSpecificTerm-ProcurementObject-fo
                 [
                     rdfs:label "at-voc:framework-agreement" ;
                     rr:parentTriplesMap tedm:framework-agreement ;
+                    rr:joinCondition [
+                        rr:child "cbc:ContractingSystemTypeCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ]
+ .
+
+tedm:MG-DynamicPurchaseSystemTechnique-usesTechnique-PlannedProcurementPart_ND-PartDPSContractingSystem a rr:TriplesMap ;
+    rdfs:label "MG-DynamicPurchaseSystemTechnique" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingProcess/cac:ContractingSystem[cbc:ContractingSystemTypeCode/@listName='dps-usage']";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-PartDPSContractingSystem";
+            rml:reference "if (exists(cbc:ContractingSystemTypeCode)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_PartDynamicPurchaseSystemTechnique_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:DynamicPurchaseSystemTechnique
+        ] ;
+
+   rr:predicateObjectMap
+        [
+            rdfs:label "BT-766-Part";
+            rdfs:comment "Dynamic Purchasing System of MG-DynamicPurchaseSystemTechnique under PartDPSContractingSystem " ;
+            rr:predicate epo:hasDPSScope ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:dps-usage" ;
+                    rr:parentTriplesMap tedm:dps-usage ;
                     rr:joinCondition [
                         rr:child "cbc:ContractingSystemTypeCode" ;
                         rr:parent "code.value" ;
