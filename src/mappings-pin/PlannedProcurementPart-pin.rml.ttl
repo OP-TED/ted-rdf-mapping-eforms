@@ -78,6 +78,19 @@ tedm:MG-PlannedProcurementPart_ND-Part a rr:TriplesMap ;
                     ];
                 ] ;
         ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-736-Part" ;
+            rr:predicate epo:foreseesProcurementObject ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartReservedExecution ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(../..)" ;
+                    ];
+                ] ;
+        ];
 .
 
 tedm:MG-Identifier-identifier-PlannedProcurementPart_ND-Part a rr:TriplesMap ;
@@ -1075,3 +1088,63 @@ tedm:MG-DynamicPurchaseSystemTechnique-usesTechnique-PlannedProcurementPart_ND-P
                 ] ;
         ]
  .
+
+tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartReservedExecution a rr:TriplesMap ;
+    rdfs:label "MG-ProcurementObject" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:ContractExecutionRequirement[cbc:ExecutionRequirementCode/@listName='reserved-execution']" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-PartReservedExecution" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_PartProcurementObject_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
+            rr:class epo:ProcurementObject
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-736-Part" ;
+            rr:predicate epo:foreseesContractSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ContractTerm-foreseesContractSpecificTerm-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartReservedExecution ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(.)";
+                    ];
+                ] ;
+        ] ;
+.
+
+tedm:MG-ContractTerm-foreseesContractSpecificTerm-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartReservedExecution a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:ContractExecutionRequirement[cbc:ExecutionRequirementCode/@listName='reserved-execution']" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-PartReservedExecution" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
+            rr:class epo:ContractTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-736-Part";
+            rdfs:comment "Reserved Execution of MG-ContractTerm under ND-PartReservedExecution";
+            rr:predicate epo:hasReservedExecution ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:applicability" ;
+                    rr:parentTriplesMap tedm:applicability ;
+                    rr:joinCondition [
+                        rr:child "cbc:ExecutionRequirementCode";
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+.
