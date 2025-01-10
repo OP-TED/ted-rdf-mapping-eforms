@@ -1089,6 +1089,44 @@ tedm:MG-DynamicPurchaseSystemTechnique-usesTechnique-PlannedProcurementPart_ND-P
         ]
  .
 
+tedm:MG-langString-hasAdditionalInformation-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartProcurementScope a rr:TriplesMap ;
+    rdfs:label "MG-ProcurementObject" ;
+    rml:logicalSource [
+    rml:source "data/source.xml" ;
+    rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:ProcurementProject/cbc:Note" ;
+    rml:referenceFormulation ql:XPath ;
+  ] ;
+  rr:subjectMap [
+    rr:class epo:ProcurementObject ;
+    rdfs:label "ND-PartProcurementScope" ;
+    rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_PartProcurementObject_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}";
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate epo:hasAdditionalInformation ;
+    rr:objectMap [
+     rdfs:comment "Language of Additional Information of MG-ProcurementObject under ND-PartProcurementScope" ;
+     rdfs:label "BT-300-Part-Language" ;
+     rml:reference "." ;
+      rml:languageMap [
+        fnml:functionValue [
+          rr:predicateObjectMap [
+            rr:predicate idlab-fn:str ;
+            rr:objectMap [
+              rml:reference "@languageID" ;
+            ] ;
+          ] ;
+          rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+          rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+          rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+          rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+        ] ;
+      ] ;
+    ] ;
+    rdfs:comment "Additional Information of MG-ProcurementObject under ND-PartProcurementScope" ;
+    rdfs:label "BT-300-Part" ;
+  ] ;
+.
+
 tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartReservedExecution a rr:TriplesMap ;
     rdfs:label "MG-ProcurementObject" ;
     rml:logicalSource
