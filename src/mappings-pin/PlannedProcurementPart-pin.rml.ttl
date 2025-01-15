@@ -206,6 +206,32 @@ tedm:MG-PlannedProcurementPart_ND-PartProcurementScope a rr:TriplesMap ;
                     ];
                 ] ;
         ] ;
+    rr:predicateObjectMap
+        [
+             rdfs:label "BT-536-Part, BT-537-Part" ;
+            rr:predicate epo:hasPlannedPeriod ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Period-hasPlannedPeriod-PlannedProcurementPart_ND-PartDuration ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(..)" ;
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+             rdfs:label "BT-36-Part" ;
+            rr:predicate epo:hasPlannedDuration ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-SpecificDuration-hasPlannedDuration-PlannedProcurementPart_ND-PartDuration ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(..)" ;
+                    ];
+                ] ;
+        ] ;
 .
 
 tedm:MG-langString-title-PlannedProcurementPart_ND-PartProcurementScope a rr:TriplesMap ;
@@ -836,4 +862,84 @@ tedm:MG-langString-hasPlaceOfPerformanceAdditionalInformation-ContractTerm-fores
     rdfs:comment " Place Performance Additional Information of MG-ContractTerm under ND-PartPlacePerformance" ;
     rdfs:label "BT-728-Part" ;
   ] ;
+.
+
+tedm:MG-Period-hasPlannedPeriod-PlannedProcurementPart_ND-PartDuration a rr:TriplesMap ;
+    rdfs:label "MG-Period" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:ProcurementProject/cac:PlannedPeriod" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-PartDuration" ;
+            rml:reference "if ((exists(cbc:StartDate)) or (exists(cbc:EndDate))) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_PartPeriod_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:Period
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-536-Part" ;
+            rdfs:comment "Duration Start Date of MG-Period under ND-PartDuration" ;
+            rr:predicate epo:hasBeginning ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:StartDate" ;
+                    rr:datatype xsd:date;
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-536-Part";
+            rdfs:comment "Duration End Date of MG-Period under ND-PartDuration" ;
+            rr:predicate epo:epo:hasEnd ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:EndDate" ;
+                    rr:datatype xsd:date ;
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-538-Part";
+            rdfs:comment "Duration Other of MG-Period under ND-PartDuration";
+            rr:predicate epo:hasTimePeriod;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:timeperiod";
+                    rr:parentTriplesMap tedm:timeperiod ;
+                    rr:joinCondition [
+                        rr:child "cbc:DescriptionCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ]
+  .
+
+tedm:MG-SpecificDuration-hasPlannedDuration-PlannedProcurementPart_ND-PartDuration a rr:TriplesMap ;
+    rdfs:label "MG-SpecificDuration" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:ProcurementProject/cac:PlannedPeriod" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-PartDuration" ;
+            rml:reference "if (exists(cbc:DurationMeasure)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_PartSpecificDuration_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:SpecificDuration
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-36-Part" ;
+            rdfs:comment "Duration Period of MG-SpecificDuration under ND-PartDuration" ;
+            rr:predicate time:numericDuration  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:DurationMeasure" ;
+                    rr:datatype xsd:decimal;
+                ] ;
+        ];
 .
