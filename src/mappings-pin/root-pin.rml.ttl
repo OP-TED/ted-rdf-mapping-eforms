@@ -77,6 +77,180 @@ tedm:MG-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice_ND
         ] ;
 .
 
+tedm:MG-Notice_ND-PartPreviousPlanning a rr:TriplesMap ;
+    rdfs:label "MG-Notice" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingProcess/cac:NoticeDocumentReference" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-PartPreviousPlanning" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Notice" ;
+            rr:class epo:Notice
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-125(i)-Part, BT-1251-Part" ;
+            rr:predicate epo:refersToPrevious ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-PlanningNotice-refersToPrevious-Notice_ND-PartPreviousPlanning ;
+                     rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-PlanningNotice-refersToPrevious-Notice_ND-PartPreviousPlanning a rr:TriplesMap ;
+    rdfs:label "MG-PlanningNotice" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingProcess/cac:NoticeDocumentReference" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-PartPreviousPlanning" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(cbc:ID, ' ', '-' ), '/' , '-')}_Notice" ;
+            rr:class epo-not:PlanningNotice
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-125(i)-Part" ;
+            rdfs:comment "Previous Planning Identifier of MG-PlanningNotice under ND-PartPreviousPlanning" ;
+            rr:predicate adms:identifier ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Identifier-identifier-PlanningNotice-refersToPrevious-Notice_ND-PartPreviousPlanning ;
+                     rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-1251-Part" ;
+            rdfs:comment "Previous Planning Part Identifier of MG-PlanningNotice under ND-PartPreviousPlanning" ;
+            rr:predicate epo:announcesPlannedProcurementPart ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice-refersToPrevious-Notice_ND-PartPreviousPlanning;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ];
+                ] ;
+        ] ;
+.
+
+tedm:MG-Identifier-identifier-PlanningNotice-refersToPrevious-Notice_ND-PartPreviousPlanning a rr:TriplesMap ;
+    rdfs:label "MG-Identifier" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingProcess/cac:NoticeDocumentReference" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-PartPreviousPlanning" ;
+            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(cbc:ID, ' ', '-' ), '/' , '-') || '_PreviousPlanningIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class adms:Identifier
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-125(i)-Part" ;
+            rr:predicate skos:notation ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ID" ;
+                ] ;
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-125(i)-Part-Scheme" ;
+            rdfs:comment "Scheme of MG-Identifier under ND-PartPreviousPlanning" ;
+            rr:predicate epo:hasScheme ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ID/@schemeName" ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice-refersToPrevious-Notice_ND-PartPreviousPlanning a rr:TriplesMap ;
+    rdfs:label "MG-PlannedProcurementPart" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingProcess/cac:NoticeDocumentReference" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-PartPreviousPlanning" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(cbc:ID, ' ', '-' ), '/' , '-')}_PlannedProcurementPart_{cbc:ReferencedDocumentInternalAddress}" ;
+            rr:class epo:PlannedProcurementPart
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-1251-Part" ;
+            rdfs:comment "Previous Planning Part Identifier of MG-PlannedProcurementPart under ND-PartPreviousPlanning" ;
+            rr:predicate adms:identifier ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Identifier-identifier-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice-refersToPrevious-Notice_ND-PartPreviousPlanning;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ];
+                ] ;
+        ] ;
+.
+
+tedm:MG-Identifier-identifier-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice-refersToPrevious-Notice_ND-PartPreviousPlanning a rr:TriplesMap ;
+    rdfs:label "MG-Identifier" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingProcess/cac:NoticeDocumentReference" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-PartPreviousPlanning" ;
+            rml:reference "if (exists(cbc:ReferencedDocumentInternalAddress)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_PreviousPlanningPartIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class adms:Identifier
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-1251-Part" ;
+            rdfs:comment "Previous Planning Part Identifier of MG-Identifier under ND-PartPreviousPlanning" ;
+            rr:predicate skos:notation ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ReferencedDocumentInternalAddress" ;
+                ] ;
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-1251-Part-Scheme" ;
+            rdfs:comment "Previous Planning Part Identifier Scheme of MG-Identifier under ND-PartPreviousPlanning" ;
+            rr:predicate epo:hasScheme ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ReferencedDocumentInternalAddress/@schemeName" ;
+                ] ;
+        ] ;
+.
+
 #tedm:MG-Procedure-refersToProcedure-Notice_ND-Root a rr:TriplesMap ;
 #    rdfs:label "MG-Procedure" ;
 #    rml:logicalSource
