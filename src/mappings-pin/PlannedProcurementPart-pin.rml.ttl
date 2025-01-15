@@ -195,7 +195,7 @@ tedm:MG-PlannedProcurementPart_ND-PartProcurementScope a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-5101(a|b|c)-Part, BT-5131-Part, BT-5121-Part, BT-5071-Part, BT-5141-Part, BT-727-Part ";
+            rdfs:label "BT-5101(a|b|c)-Part, BT-5131-Part, BT-5121-Part, BT-5071-Part, BT-5141-Part, BT-727-Part, BT-23-Part, BT-531-Part, BT-726-Part";
             rr:predicate epo:foreseesProcurementObject ;
             rr:objectMap
                 [
@@ -462,7 +462,7 @@ tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-Pa
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-5101(a|b|c)-Part, BT-5131-Part, BT-5121-Part, BT-5071-Part, BT-5141-Part ";
+            rdfs:label "BT-5101(a|b|c)-Part, BT-5131-Part, BT-5121-Part, BT-5071-Part, BT-5141-Part, BT-23-Part ";
             rr:predicate epo:foreseesContractSpecificTerm ;
             rr:objectMap
                 [
@@ -471,6 +471,31 @@ tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-Pa
                         rr:child "path(.)" ;
                         rr:parent "path(.)" ;
                     ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-531-Part";
+            rr:predicate epo:foreseesContractSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ContractTerm-foreseesContractSpecificTerm-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartContractAdditionalNature ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(..)" ;
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-726-Part";
+            rdfs:comment "Suitable For SMEs of MG-ProcurementObject under ND-PartProcurementScope";
+            rr:predicate epo:isSMESuitable  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:SMESuitableIndicator";
+                    rr:datatype xsd:boolean ;
+
                 ] ;
         ] ;
 .
@@ -515,24 +540,24 @@ tedm:MG-ContractTerm-foreseesContractSpecificTerm-ProcurementObject-foreseesProc
     rr:subjectMap
         [
             rdfs:label "ND-PartProcurementScope" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
             rr:class epo:ContractTerm
         ] ;
-#    rr:predicateObjectMap
-#        [
-#            rdfs:label "BT-23-Lot";
-#            rdfs:comment "Main Nature of MG-ContractTerm under ND-LotProcurementScope";
-#            rr:predicate epo:hasContractNatureType   ;
-#            rr:objectMap
-#                [
-#                    rdfs:label "at-voc:contract-nature" ;
-#                    rr:parentTriplesMap tedm:contract-nature ;
-#                    rr:joinCondition [
-#                        rr:child "cbc:ProcurementTypeCode[@listName='contract-nature']";
-#                        rr:parent "code.value" ;
-#                    ] ;
-#                ] ;
-#        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-23-part";
+            rdfs:comment "Main Nature of MG-ContractTerm under ND-PartProcurementScope";
+            rr:predicate epo:hasContractNatureType   ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:contract-nature" ;
+                    rr:parentTriplesMap tedm:contract-nature ;
+                    rr:joinCondition [
+                        rr:child "cbc:ProcurementTypeCode[@listName='contract-nature']";
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ];
     rr:predicateObjectMap
         [
             rdfs:label "BT-5101(a)-Lot, BT-5101(b)-Lot, BT-5101(c)-Part, BT-5131-Part, BT-5121-Part, BT-5071-Part, BT-5141-Part " ;
@@ -584,7 +609,7 @@ tedm:MG-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContract
         ] ;
     rr:subjectMap
         [
-            rdfs:label "ND-LotPerformanceAddress" ;
+            rdfs:label "ND-PartPerformanceAddress" ;
             # we check for the elements of a linked Address as otherwise this Location should not be instantiated either
             # TODO: if only country exists then no location/address will be created; however adding exists(cac:Country/cbc:IdentificationCode) the one for broad place will also be taken
             rml:reference "if (exists(cbc:StreetName) or exists(cbc:AdditionalStreetName) or exists(cac:AddressLine/cbc:Line) or exists(cbc:CityName) or exists(cbc:PostalZone)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_PartContractLocation_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
@@ -739,4 +764,76 @@ tedm:MG-ContractTerm-foreseesContractSpecificTerm-ProcurementObject-foreseesProc
                     ] ;
                 ] ;
         ];
+.
+
+tedm:MG-ContractTerm-foreseesContractSpecificTerm-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartContractAdditionalNature a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:ProcurementProject/cac:ProcurementAdditionalType[cbc:ProcurementTypeCode/@listName='contract-nature']" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-PartContractAdditionalNature" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
+            rr:class epo:ContractTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-531-Part (value)" ;
+            rdfs:comment "Additional Nature (different from Main) of MG-ContractTerm under ND-PartContractAdditionalNature" ;
+            rr:predicate epo:hasAdditionalContractNature ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:contract-nature" ;
+                    rr:parentTriplesMap tedm:contract-nature ;
+                    rr:joinCondition [
+                        rr:child "cbc:ProcurementTypeCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ]
+        ] ;
+.
+
+# currently this is standalone (there is no TMap for ContractTerm-foreseesContractSpecificTerm-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartPlacePerformance)
+# if there are other predicates without language tags, then such a TMap would be created as referenced by another via parentTriplesMap
+# the template in both cases is special, i.e. not similar to other TMaps with the same iterator, as the path needs to be on the part not the location
+tedm:MG-langString-hasPlaceOfPerformanceAdditionalInformation-ContractTerm-foreseesContractSpecificTerm-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartPlacePerformance a rr:TriplesMap ;
+   rdfs:label "MG-ContractTerm" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:ProcurementProject/cac:RealizedLocation/cbc:Description" ;
+    rml:referenceFormulation ql:XPath ;
+  ] ;
+  rr:subjectMap [
+    rr:class epo:ContractTerm ;
+    rdfs:label "ND-PartPlacePerformance" ;
+     rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../../..)) || '?response_type=raw')}" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate epo:hasPlaceOfPerformanceAdditionalInformation  ;
+    rr:objectMap [
+      rml:reference "." ;
+      rml:languageMap [
+        fnml:functionValue [
+          rr:predicateObjectMap [
+            rr:predicate idlab-fn:str ;
+            rr:objectMap [
+              rml:reference "@languageID" ;
+            ] ;
+          ] ;
+          rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+          rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+          rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+          rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+        ] ;
+      ] ;
+      rdfs:comment "Language of Place Performance Additional Information of MG-ContractTerm under ND-PartPlacePerformance" ;
+      rdfs:label "BT-728-Part-Language" ;
+    ] ;
+    rdfs:comment " Place Performance Additional Information of MG-ContractTerm under ND-PartPlacePerformance" ;
+    rdfs:label "BT-728-Part" ;
+  ] ;
 .
