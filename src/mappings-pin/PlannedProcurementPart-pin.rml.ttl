@@ -52,6 +52,19 @@ tedm:MG-PlannedProcurementPart_ND-Part a rr:TriplesMap ;
                     ];
                 ] ;
         ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-115-Part, BT-765-Part" ;
+            rr:predicate epo:foreseesProcurementObject ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartTenderingProcess;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(..)" ;
+                    ];
+                ] ;
+        ];
 .
 
 tedm:MG-Identifier-identifier-PlannedProcurementPart_ND-Part a rr:TriplesMap ;
@@ -394,7 +407,7 @@ tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-Pa
     rr:subjectMap
         [
             rdfs:label "ND-PartMainClassification ";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_PartProcurementObject_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_PartProcurementObject_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
             rr:class epo:ProcurementObject ;
         ] ;
     rr:predicateObjectMap
@@ -454,7 +467,7 @@ tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-Pa
     rr:subjectMap
         [
             rdfs:label "ND-PartAdditionalClassification ";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_PartProcurementObject_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_PartProcurementObject_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
             rr:class epo:ProcurementObject ;
         ] ;
     rr:predicateObjectMap
@@ -483,7 +496,7 @@ tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-Pa
     rr:subjectMap
         [
             rdfs:label "ND-PartProcurementScope";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_PartProcurementObject_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}";
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_PartProcurementObject_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}";
             rr:class epo:ProcurementObject
         ] ;
     rr:predicateObjectMap
@@ -537,7 +550,7 @@ tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-Pa
     rr:subjectMap
         [
             rdfs:label "ND-PartProcurementScope";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_PartProcurementObject_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}";
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_PartProcurementObject_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}";
             rr:class epo:ProcurementObject
         ] ;
      rr:predicateObjectMap
@@ -915,7 +928,7 @@ tedm:MG-Period-hasPlannedPeriod-PlannedProcurementPart_ND-PartDuration a rr:Trip
                     ] ;
                 ] ;
         ]
-  .
+.
 
 tedm:MG-SpecificDuration-hasPlannedDuration-PlannedProcurementPart_ND-PartDuration a rr:TriplesMap ;
     rdfs:label "MG-SpecificDuration" ;
@@ -943,3 +956,77 @@ tedm:MG-SpecificDuration-hasPlannedDuration-PlannedProcurementPart_ND-PartDurati
                 ] ;
         ];
 .
+
+tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartTenderingProcess a rr:TriplesMap ;
+    rdfs:label "MG-ProcurementObject" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingProcess";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-PartTenderingProcess";
+            rml:reference "if (exists(cbc:GovernmentAgreementConstraintIndicator)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_PartProcurementObject_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw') else null" ;
+            rr:class epo:ProcurementObject
+        ] ;
+
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-115-Part";
+            rdfs:comment "GPA Coverage of MG-ProcurementObject under ND-PartTenderingProcess";
+            rr:predicate epo:isCoveredByGPA   ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:GovernmentAgreementConstraintIndicator";
+                    rr:datatype xsd:boolean ;
+
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-765-Part (object)";
+            rr:predicate epo:foreseesContractSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-FrameworkAgreementTerm-foreseesContractSpecificTerm-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartFAContractingSystem ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(..)" ;
+                    ] ;
+                ] ;
+        ] ;
+ .
+
+tedm:MG-FrameworkAgreementTerm-foreseesContractSpecificTerm-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartFAContractingSystem a rr:TriplesMap ;
+    rdfs:label "MG-FrameworkAgreementTerm" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingProcess/cac:ContractingSystem[cbc:ContractingSystemTypeCode/@listName='framework-agreement']";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-PartFAContractingSystem";
+            rml:reference "if (exists(cbc:ContractingSystemTypeCode)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_PartFrameworkAgreementTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:FrameworkAgreementTerm
+        ] ;
+
+   rr:predicateObjectMap
+        [
+            rdfs:label "BT-765-Part (value)";
+            rdfs:comment "Framework Agreement of MG-FrameworkAgreementTerm under PartFAContractingSystem " ;
+            rr:predicate epo:hasFrameworkAgreementType ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:framework-agreement" ;
+                    rr:parentTriplesMap tedm:framework-agreement ;
+                    rr:joinCondition [
+                        rr:child "cbc:ContractingSystemTypeCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ]
+ .
