@@ -53,7 +53,7 @@ tedm:MG-AccessTerm_ND-PartInfoRequestPeriod a rr:TriplesMap ;
      rr:predicateObjectMap
         [
             rdfs:label "BT-13(d)-Part and BT-13(t)-Part" ;
-            rdfs:comment "Additional Information Deadline MG-AccessTerm_ND under ND-PartInfoRequestPeriod" ;
+            rdfs:comment "Additional Information Deadline MG-AccessTerm under ND-PartInfoRequestPeriod" ;
             rr:predicate epo:hasAdditionalInformationDeadline ;
             rr:objectMap
                 [
@@ -93,7 +93,7 @@ tedm:MG-AccessTerm_ND-PartProcurementDocument a rr:TriplesMap ;
      rr:predicateObjectMap
         [
             rdfs:label "BT-14-Part" ;
-            rdfs:comment "Additional Information Deadline MG-AccessTerm_ND under ND-PartProcurementDocument" ;
+            rdfs:comment "Documents Restricted MG-AccessTerm under ND-PartProcurementDocument" ;
             rr:predicate epo:isProcurementDocumentRestricted ;
             rr:objectMap
                 [
@@ -120,6 +120,30 @@ tedm:MG-AccessTerm_ND-PartProcurementDocument a rr:TriplesMap ;
                         rr:child "cbc:DocumentTypeCode" ;
                         rr:parent "code.value" ;
                     ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-15-Part" ;
+            rdfs:comment "Documents URL MG-AccessTerm under ND-PartProcurementDocument" ;
+            rr:predicate epo:hasPublicAccessURL ;
+            rr:objectMap
+                [
+                    rml:reference "cac:Attachment[../cbc:DocumentType/text()='non-restricted-document']/cac:ExternalReference/cbc:URI" ;
+                    rr:datatype xsd:anyURI ;
+
+                ] ;
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-615-Part";
+            rdfs:comment "Documents Restricted URL MG-AccessTerm under ND-PartProcurementDocument" ;
+            rr:predicate epo:hasRestrictedAccessURL ;
+            rr:objectMap
+                [
+                    rml:reference "cac:Attachment[../cbc:DocumentType/text()='restricted-document']/cac:ExternalReference/cbc:URI" ;
+                    rr:datatype xsd:anyURI ;
+
                 ] ;
         ] ;
 .
