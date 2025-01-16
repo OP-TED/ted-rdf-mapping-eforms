@@ -32,6 +32,23 @@ tedm:technical_mapping_pin
     dct:date "2024-12-03"^^xsd:date
 .
 
+tedm:MG-PlanningNotice_ND-Root
+    a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "if(/*/cbc:NoticeTypeCode/@listName='planning' or exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 7 8 9', text())]) or exists(/PriorInformationNotice)) then /* else null" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Root" ;
+            rdfs:comment "Primary type declaration for MG-PlanningNotice under ND-Root" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Notice" ;
+            rr:class epo-not:PlanningNotice
+        ] ;
+.
+
 tedm:MG-PlanningNotice_ND-Part a rr:TriplesMap ;
     rdfs:label "MG-PlanningNotice" ;
     rml:logicalSource
