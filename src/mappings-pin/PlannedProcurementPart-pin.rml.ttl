@@ -91,6 +91,32 @@ tedm:MG-PlannedProcurementPart_ND-Part a rr:TriplesMap ;
                     ];
                 ] ;
         ];
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-124-Part" ;
+            rr:predicate epo:usesChannel  ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-AdHocChannel-usesChannel-PlannedProcurementPart_ND-PartTenderingProcess ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(..)" ;
+                    ];
+                ] ;
+        ];
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-632-Part" ;
+            rr:predicate epo:usesChannel  ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-AdHocChannel-usesChannel-PlannedProcurementPart_ND-PartTenderingProcessExtension ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(../../../../..)" ;
+                    ];
+                ] ;
+        ];
 .
 
 tedm:MG-Identifier-identifier-PlannedProcurementPart_ND-Part a rr:TriplesMap ;
@@ -1183,6 +1209,62 @@ tedm:MG-ContractTerm-foreseesContractSpecificTerm-ProcurementObject-foreseesProc
                         rr:child "cbc:ExecutionRequirementCode";
                         rr:parent "code.value" ;
                     ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-AdHocChannel-usesChannel-PlannedProcurementPart_ND-PartTenderingProcessExtension a rr:TriplesMap ;
+    rdfs:label "MG-AdHocChannel" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingProcess/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-PartTenderingProcess";
+            rml:reference "if (exists(efbc:AccessToolName)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_AdHocChannel_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../../../../..)) || '?response_type=raw') else null" ;
+            rr:class epo:AdHocChannel
+        ] ;
+
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-632-Part";
+            rdfs:comment "Tool Name of MG-AdHocChannel under ND-PartTenderingProcess";
+            rr:predicate dct:description   ;
+            rr:objectMap
+                [
+                    rml:reference "efbc:AccessToolName";
+
+                ] ;
+        ] ;
+.
+
+tedm:MG-AdHocChannel-usesChannel-PlannedProcurementPart_ND-PartTenderingProcess a rr:TriplesMap ;
+    rdfs:label "MG-AdHocChannel" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingProcess";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-PartTenderingProcess";
+            rml:reference "if (exists(cbc:AccessToolsURI)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_AdHocChannel_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw') else null" ;
+            rr:class epo:AdHocChannel
+        ] ;
+
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-124-Part";
+            rdfs:comment "Tool Name of MG-AdHocChannel under ND-PartTenderingProcess";
+            rr:predicate epo:hasAddressURL   ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:AccessToolsURI";
+
                 ] ;
         ] ;
 .
