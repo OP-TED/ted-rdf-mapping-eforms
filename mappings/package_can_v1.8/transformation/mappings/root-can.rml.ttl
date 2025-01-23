@@ -27,8 +27,8 @@
 
 tedm:technical_mapping_can
   a owl:Ontology ;
-  dct:description "This module provides the root mapping definitions for the eForm subtype 29 for against ePO 4.0.0"@en ;
-  rdfs:label "TED-SWS mapping of eForm subtype 29 ePO 4.0.0"@en ;
+  dct:description "This module provides the root mapping definitions for the eForm subtypes 29-37, E4 and T02 for against ePO 4.0.0"@en ;
+  rdfs:label "TED-SWS mapping of CAN eForms ePO 4.0.0"@en ;
   dct:date "2024-07-21"^^xsd:date
 .
 
@@ -38,7 +38,7 @@ tedm:MG-ResultNotice_ND-Root
         [
             rml:source "data/source.xml" ;
             # this is an example of a complex multi-element condition for instantiation of a subject not suitable as a condition below the iterator
-            rml:iterator "if(/*/cbc:NoticeTypeCode/@listName='result' or exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('29 30 31 32 E4 33 34 35 36 37', text())]) or exists(/ContractAwardNotice)) then /* else null" ;
+            rml:iterator "if(/*/cbc:NoticeTypeCode/@listName='result' or (/*/cbc:NoticeTypeCode/@listName='change' and exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('29 30 31 32 33 34 35 36 37 E4 T02', text())]))) then /* else null" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap

@@ -24,6 +24,30 @@
 @prefix idlab-fn: <http://example.com/idlab/function/> .
 @prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
 
+tedm:technical_mapping_can
+  a owl:Ontology ;
+  dct:description "This module provides the mapping definitions for the eForm subtypes 38-40 and E6 against ePO 4.0.0"@en ;
+  rdfs:label "TED-SWS mapping of can-modif eForms ePO 4.0.0"@en ;
+  dct:date "2025-01-23"^^xsd:date
+.
+
+tedm:MG-ContractModificationNotice_ND-Root
+    a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "if(/*/cbc:NoticeTypeCode/@listName='cont-modif' or (/*/cbc:NoticeTypeCode/@listName='change' and exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('38 39 40 E6', text())]))) then /* else null" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Root" ;
+            rdfs:comment "Primary type declaration for MG-ContractModificationNotice under ND-Root" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Notice" ;
+            rr:class epo-not:ContractModificationNotice
+        ] ;
+.
+
 tedm:MG-ContractModificationNotice_ND-ContractModification a rr:TriplesMap ;
     rdfs:label "MG-ContractModificationNotice" ;
     rml:logicalSource
