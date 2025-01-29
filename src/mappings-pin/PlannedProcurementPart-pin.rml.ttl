@@ -1253,7 +1253,7 @@ tedm:MG-AdHocChannel-usesChannel-PlannedProcurementPart_ND-PartTenderingProcess 
         [
             rdfs:label "ND-PartTenderingProcess";
             rml:reference "if (exists(cbc:AccessToolsURI)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_AdHocChannel_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw') else null" ;
-            rr:class epo:AdHocChannel
+            rr:class epo:AdHocChannel ;
         ] ;
 
     rr:predicateObjectMap
@@ -1264,7 +1264,7 @@ tedm:MG-AdHocChannel-usesChannel-PlannedProcurementPart_ND-PartTenderingProcess 
             rr:objectMap
                 [
                     rml:reference "cbc:AccessToolsURI";
-
+                    rr:datatype xsd:anyURI ;
                 ] ;
         ] ;
 .
