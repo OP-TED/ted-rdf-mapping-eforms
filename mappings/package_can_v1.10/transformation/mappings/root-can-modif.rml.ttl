@@ -23,6 +23,7 @@
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix idlab-fn: <http://example.com/idlab/function/> .
 @prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix epo-con: <http://data.europa.eu/a4g/ontology#>.
 
 tedm:technical_mapping_can
   a owl:Ontology ;
@@ -60,16 +61,30 @@ tedm:MG-ContractModificationNotice_ND-ContractModification a rr:TriplesMap ;
         [
             rdfs:label "ND-ContractModification" ;
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Notice" ;
-            rr:class epo:ContractModificationNotice
+            rr:class epo-not:ContractModificationNotice
         ] ;
      rr:predicateObjectMap
         [
-            rdfs:label "BT-1501(n)-Contract" ;
+            rdfs:label "BT-1501(n)-Contract, BT-1501(s)-Contract" ;
             rdfs:comment "Modification Previous Notice Identifier of MG-ContractModificationNotice under ND-ContractModification" ;
             rr:predicate epo:refersToPrevious ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:MG-Notice-refersToPrevious-ContractModificationNotice_ND-ContractModification ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ];
+                ] ;
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "ND-ContractModification" ;
+            rdfs:comment "Relation between ContractAmendment and ContractModificationNotice under ND-ContractModification" ;
+            rr:predicate epo:announcesContractAmendment  ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ContractAmendment-epo:announcesContractAmendment-ContractModificationNotice_ND-ContractModification ;
                     rr:joinCondition [
                         rr:child "path(.)" ;
                         rr:parent "path(.)" ;
@@ -143,3 +158,253 @@ tedm:MG-Identifier-identifier-Notice-refersToPrevious-ContractModificationNotice
                 ] ;
         ] ;
   .
+
+tedm:MG-ContractAmendment-epo:announcesContractAmendment-ContractModificationNotice_ND-ContractModification a rr:TriplesMap ;
+    rdfs:label "MG-ContractAmendment" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:ContractModification" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ContractModification" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractAmendment_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(.)) || '?response_type=raw')}" ;
+            rr:class epo-con:ContractAmendment
+        ] ;
+.
+
+tedm:MG-ContractModificationInformation_ND-ModificationReason a rr:TriplesMap ;
+    rdfs:label "MG-ContractModificationInformation" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:ContractModification/efac:ChangeReason" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ModificationReason" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractModificationInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:class epo-con:ContractModificationInformation
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-ModificationReason" ;
+            rdfs:comment "Relation between ContractAmendment and ContractModificationInformation under ND-ModificationReason" ;
+            rr:predicate epo:concernsContractAmendment  ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ContractAmendment-concernsContractAmendment-ContractModificationInformation_ND-ModificationReason ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ];
+                ] ;
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-200-Contract";
+            rdfs:comment "Modification Reason Code of MG-ContractModificationInformation under ND-ModificationReason";
+            rr:predicate  epo:hasModificationJustification   ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:modification-justification" ;
+                    rr:parentTriplesMap tedm:modification-justification ;
+                    rr:joinCondition [
+                        rr:child "cbc:ReasonCode" ;
+                        rr:parent "code.value" ;
+                     ] ;
+                 ] ;
+        ] ;
+.
+
+tedm:MG-ContractAmendment-concernsContractAmendment-ContractModificationInformation_ND-ModificationReason a rr:TriplesMap ;
+    rdfs:label "MG-ContractAmendment" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:ContractModification/efac:ChangeReason" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ModificationReason" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractAmendment_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:class epo-con:ContractAmendment
+        ] ;
+.
+
+tedm:MG-langString-hasModificationReasonDescription-ContractModificationInformation_ND-ModificationReason a rr:TriplesMap ;
+   rdfs:label "MG-ContractModificationInformation" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:ContractModification/efac:ChangeReason/efbc:ReasonDescription" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rr:class epo-con:ContractModificationInformation ;
+        rdfs:label "ND-ModificationReason" ;
+        rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractModificationInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate  epo:hasModificationReasonDescription ;
+        rr:objectMap [
+            rml:reference "." ;
+            rml:languageMap [
+                    fnml:functionValue [
+                    rr:predicateObjectMap [
+                        rr:predicate idlab-fn:str ;
+                        rr:objectMap [
+                            rml:reference "@languageID" ;
+                        ] ;
+                    ] ;
+                    rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+                    rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+                    rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+                    rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+                ] ;
+            ] ;
+            rdfs:comment "Language of Modification Reason Description of MG-ContractModificationInformation under ND-ModificationReason" ;
+            rdfs:label "BT-201-Contract-Language" ;
+        ] ;
+        rdfs:comment "Modification Reason Description of MG-ContractModificationInformation under ND-ModificationReason" ;
+        rdfs:label "BT-201-Contract" ;
+    ] ;
+.
+
+tedm:MG-ContractAmendment-concernsContractAmendment-ContractModificationInformation_ND-Modification a rr:TriplesMap ;
+    rdfs:label "MG-ContractAmendment" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:ContractModification/efac:Change" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Modification" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractAmendment_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:class epo-con:ContractAmendment
+        ] ;
+.
+
+tedm:MG-ContractModificationInformation_ND-Modification a rr:TriplesMap ;
+    rdfs:label "MG-ContractModificationInformation" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:ContractModification/efac:Change" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Modification" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractModificationInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:class epo-con:ContractModificationInformation
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-Modification" ;
+            rdfs:comment "Relation between ContractAmendment and ContractModificationInformation under ND-Modification" ;
+            rr:predicate epo:concernsContractAmendment ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ContractAmendment-concernsContractAmendment-ContractModificationInformation_ND-Modification ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-1501(s)-Contract" ;
+            rdfs:comment "Modification Previous Notice Section Identifier of MG-Notice under ND-ModifiedSection" ;
+            rr:predicate epo:relatesToEFormSectionIdentifier ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Identifier-relatesToEFormSectionIdentifier-ContractModificationInformation_ND-ModifiedSection ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(..)" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-Identifier-relatesToEFormSectionIdentifier-ContractModificationInformation_ND-ModifiedSection a rr:TriplesMap ;
+    rdfs:label "MG-Identifier" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:ContractModification/efac:Change/efac:ChangedSection" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ContractModification" ;
+            # FIXME should the base URI be that of the current notice or that of the previous?
+            rml:reference "if (exists(efbc:ChangedSectionIdentifier)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ModificationPreviousNoticeSectionIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class adms:Identifier
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-1501(s)-Contract" ;
+            rdfs:comment "Modification Previous Notice Section Identifier of MG-Identifier under ND-ModifiedSection" ;
+            rr:predicate skos:notation ;
+            rr:objectMap
+                [
+                    rml:reference "efbc:ChangedSectionIdentifier" ;
+                ] ;
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-1501(s)-Contract" ;
+            rdfs:comment "Scheme of Modification Previous Notice Identifier of MG-Identifier under ND-ContractModification" ;
+            rr:predicate epo:hasScheme ;
+            rr:objectMap
+                [
+                    rml:reference "efbc:ChangedSectionIdentifier" ;
+                ] ;
+        ] ;
+  .
+
+tedm:MG-langString-hasModificationReasonDescription-ContractModificationInformation_ND-Modification a rr:TriplesMap ;
+   rdfs:label "MG-ContractModificationInformation" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:ContractModification/efac:Change/efbc:ChangeDescription" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rr:class epo-con:ContractModificationInformation ;
+        rdfs:label "ND-ModificationReason" ;
+        rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractModificationInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate  epo:hasModificationDescription ;
+        rr:objectMap [
+            rml:reference "." ;
+            rml:languageMap [
+                    fnml:functionValue [
+                    rr:predicateObjectMap [
+                        rr:predicate idlab-fn:str ;
+                        rr:objectMap [
+                            rml:reference "@languageID" ;
+                        ] ;
+                    ] ;
+                    rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+                    rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+                    rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+                    rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+                ] ;
+            ] ;
+            rdfs:comment "Language of Modification  Description of MG-ContractModificationInformation under ND-Modification" ;
+            rdfs:label "BT-202-Contract-Language" ;
+        ] ;
+        rdfs:comment "Modification  Description of MG-ContractModificationInformation under ND-Modification" ;
+        rdfs:label "BT-202-Contract" ;
+    ] ;
+.
