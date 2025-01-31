@@ -1020,10 +1020,9 @@ tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-Pa
     rr:subjectMap
         [
             rdfs:label "ND-PartTenderingProcess";
-            rml:reference "if (exists(cbc:GovernmentAgreementConstraintIndicator)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_PartProcurementObject_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(cbc:GovernmentAgreementConstraintIndicator) or exists(cac:ContractingSystem)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_PartProcurementObject_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw') else null" ;
             rr:class epo:ProcurementObject
         ] ;
-
     rr:predicateObjectMap
         [
             rdfs:label "BT-115-Part";
