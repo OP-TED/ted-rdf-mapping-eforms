@@ -25,28 +25,11 @@
 @prefix idlab-fn: <http://example.com/idlab/function/> .
 @prefix person: <http://www.w3.org/ns/person#> .
 
-tedm:technical_mapping_other
+tedm:technical_mapping_compl
     a owl:Ontology ;
-    dct:description "This module provides the root mapping definitions for E1 and E5 eForm subtypes against ePO 4.0.0"@en ;
-    rdfs:label "TED-SWS mapping of pmc & compl eForms ePO 4.0.0"@en ;
+    dct:description "This module provides the root mapping definitions for the E5 eForm subtype against ePO 4.0.0"@en ;
+    rdfs:label "TED-SWS mapping of compl eForms ePO 4.0.0"@en ;
     dct:date "2025-01-23"^^xsd:date
-.
-
-tedm:MG-PreMarketConsultationNotice_ND-Root
-    a rr:TriplesMap ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "if(/*/cbc:NoticeTypeCode/@listName='consultation' or (/*/cbc:NoticeTypeCode/@listName='change' and exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('E1', text())]))) then /* else null" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-Root" ;
-            rdfs:comment "Primary type declaration for MG-PreMarketConsultationNotice under ND-Root" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Notice" ;
-            rr:class epo-not:epo-not:PreMarketConsultationNotice
-        ] ;
 .
 
 tedm:MG-CompletionNotice_ND-Root
