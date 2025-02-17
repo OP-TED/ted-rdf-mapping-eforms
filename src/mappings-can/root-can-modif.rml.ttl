@@ -186,7 +186,7 @@ tedm:MG-ContractModificationInformation_ND-ModificationReason a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-ModificationReason" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractModificationInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rml:reference "if (exists(cbc:ReasonCode) or exists(efbc:ReasonDescription)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ContractModificationInformation_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw') else null" ;
             rr:class epo-con:ContractModificationInformation
         ] ;
     rr:predicateObjectMap
@@ -301,7 +301,7 @@ tedm:MG-ContractModificationInformation_ND-Modification a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-Modification" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractModificationInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rml:reference "if (exists(efac:ChangedSection/efbc:ChangedSectionIdentifier)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ContractModificationInformation_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw') else null" ;
             rr:class epo-con:ContractModificationInformation
         ] ;
     rr:predicateObjectMap
