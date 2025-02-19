@@ -826,7 +826,7 @@ tedm:MG-ReviewDecision_ND-AppealIrregularity a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-791-Review";
-            rdfs:comment "Review Irregularity Type of MG-ReviewDecision under ND-ReviewStatus" ;
+            rdfs:comment "Review Irregularity Type of MG-ReviewDecision under ND-AppealIrregularity" ;
             rr:predicate epo:hasConfirmedIrregularityType  ;
             rr:objectMap
                 [
@@ -858,7 +858,7 @@ tedm:MG-ReviewRequest_ND-AppealIrregularity a rr:TriplesMap ;
         [
             rdfs:label "BT-791-Review";
             rdfs:comment "Review Irregularity Type of MG-ReviewRequest under ND-AppealIrregularity" ;
-            rr:predicate epo:hasConfirmedIrregularityType  ;
+            rr:predicate epo:hasAllegedIrregularityType  ;
             rr:objectMap
                 [
                     rdfs:label "at-voc:irregularity-type" ;
@@ -996,6 +996,69 @@ tedm:MG-Reviewer_ND-AppealProcessingParty a rr:TriplesMap ;
                      rr:joinCondition [
                         rr:child "path(.)" ;
                         rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-ReviewDecision_ND-AppealRemedy a rr:TriplesMap ;
+    rdfs:label "MG-ReviewDecision" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation/efac:AppealRemedy" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ReviewStatus" ;
+            rml:reference "if (../efbc:AppealStageCode='dec') then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ReviewDecision_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw') else null" ;
+            rr:class epo:ReviewDecision;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-792-Review";
+            rdfs:comment "Review Remedy Type of MG-ReviewDecision under ND-AppealRemedy" ;
+            rr:predicate epo:providesRulingOnRemedy   ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:remedy-type" ;
+                    rr:parentTriplesMap tedm:remedy-type ;
+                    rr:joinCondition [
+                        rr:child "efbc:RemedyTypeCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-ReviewRequest_ND-AppealRemedy a rr:TriplesMap ;
+    rdfs:label "MG-ReviewRequest" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation/efac:AppealRemedy" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ReviewStatus" ;
+            rml:reference "if (../efbc:AppealStageCode='req') then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ReviewRequest_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw') else null" ;
+            rr:class epo:ReviewRequest ;
+        ] ;
+
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-792-Review";
+            rdfs:comment "Review Remedy Type of MG-ReviewDecision under ND-AppealRemedy" ;
+            rr:predicate epo:requestsRemedyType    ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:remedy-type" ;
+                    rr:parentTriplesMap tedm:remedy-type ;
+                    rr:joinCondition [
+                        rr:child "efbc:RemedyTypeCode" ;
+                        rr:parent "code.value" ;
                     ] ;
                 ] ;
         ] ;
