@@ -913,7 +913,7 @@ tedm:MG-Identifier-identifier-Organization-playedBy-Reviewer_ND-AppealProcessing
         ] ;
     rr:subjectMap
         [
-            rdfs:label "ND-ReviewStatus" ;
+            rdfs:label "ND-AppealProcessingParty" ;
             rml:reference "if (exists(cac:Party/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ReviewerIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class adms:Identifier ;
         ] ;
@@ -999,6 +999,22 @@ tedm:MG-Reviewer_ND-AppealProcessingParty a rr:TriplesMap ;
                     ] ;
                 ] ;
         ] ;
+     rr:predicateObjectMap
+        [
+            tedm:minSDKVersion "1.13" ;
+            rdfs:label "BT-799-ReviewBody";
+            rdfs:comment "Review body Type of MG-Reviewer under ND-AppealProcessingParty" ;
+            rr:predicate epo:hasReviewBodyType    ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:review-body-type" ;
+                    rr:parentTriplesMap tedm:review-body-type ;
+                    rr:joinCondition [
+                        rr:child "efbc:AppealProcessingPartyTypeCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
 .
 
 tedm:MG-ReviewDecision_ND-AppealRemedy a rr:TriplesMap ;
@@ -1017,6 +1033,7 @@ tedm:MG-ReviewDecision_ND-AppealRemedy a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            tedm:minSDKVersion "1.13" ;
             rdfs:label "BT-792-Review";
             rdfs:comment "Review Remedy Type of MG-ReviewDecision under ND-AppealRemedy" ;
             rr:predicate epo:providesRulingOnRemedy   ;
@@ -1049,6 +1066,7 @@ tedm:MG-ReviewRequest_ND-AppealRemedy a rr:TriplesMap ;
 
      rr:predicateObjectMap
         [
+            tedm:minSDKVersion "1.13" ;
             rdfs:label "BT-792-Review";
             rdfs:comment "Review Remedy Type of MG-ReviewDecision under ND-AppealRemedy" ;
             rr:predicate epo:requestsRemedyType    ;
@@ -1063,3 +1081,35 @@ tedm:MG-ReviewRequest_ND-AppealRemedy a rr:TriplesMap ;
                 ] ;
         ] ;
 .
+
+tedm:MG-ReviewDecision_ND-AppealDecision a rr:TriplesMap ;
+    rdfs:label "MG-ReviewDecision" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation/efac:AppealDecision" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-AppealDecision" ;
+            rml:reference "if (../efbc:AppealStageCode='dec') then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ReviewDecision_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw') else null" ;
+            rr:class epo:ReviewDecision;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-790-Review";
+            rdfs:comment "Review Decision Type of MG-ReviewDecision under ND-AppealDecision" ;
+            rr:predicate epo:hasReviewDecisionType  ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:review-decision-type" ;
+                    rr:parentTriplesMap tedm:review-decision-type ;
+                    rr:joinCondition [
+                        rr:child "efbc:DecisionTypeCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
