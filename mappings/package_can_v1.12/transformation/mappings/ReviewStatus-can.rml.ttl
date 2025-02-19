@@ -61,6 +61,16 @@ tedm:MG-CompletionNotice_ND-ReviewStatus
                    rr:parentTriplesMap tedm:MG-ReviewRequest-announcesReviewObject-CompletionNotice_ND-ReviewStatus ;
                 ] ;
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ResultNotice under ND-ReviewStatus" ;
+            rdfs:comment "the relation between MG-ReviewDecision and ResultNotice under ND-ReviewStatus" ;
+            rr:predicate epo:announcesRole  ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Reviewer-announcesRole-CompletionNotice_ND-AppealProcessingParty;
+                ] ;
+        ] ;
 .
 
 tedm:MG-ReviewDecision-announcesReviewObject-CompletionNotice_ND-ReviewStatus a rr:TriplesMap ;
@@ -451,6 +461,16 @@ tedm:MG-ResultNotice_ND-ReviewStatus a rr:TriplesMap ;
                     rr:parentTriplesMap tedm:MG-ReviewDecision-seeAlso-ResultNotice_ND-ReviewStatus
                 ] ;
         ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "ResultNotice under ND-ReviewStatus" ;
+            rdfs:comment "the relation between MG-ReviewDecision and ResultNotice under ND-ReviewStatus" ;
+            rr:predicate epo:announcesRole  ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Reviewer-announcesRole-ResultNotice_ND-AppealProcessingParty;
+                ] ;
+        ] ;
     .
 
 tedm:MG-MonetaryValue-hasRemedyValue-ReviewDecision_ND-ReviewStatus a rr:TriplesMap ;
@@ -786,5 +806,99 @@ tedm:MG-ReviewObject-refersToPreviousReview-ReviewRequest_ND-ReviewStatus a rr:T
                         rr:parent "path(.)" ;
                     ] ;
                 ] ;
+        ] ;
+.
+
+tedm:MG-ReviewDecision_ND-AppealIrregularity a rr:TriplesMap ;
+    rdfs:label "MG-ReviewDecision" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation/efac:AppealIrregularity" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ReviewStatus" ;
+            rml:reference "if (../efbc:AppealStageCode='dec') then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ReviewDecision_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw') else null" ;
+            rr:class epo:ReviewDecision;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-791-Review";
+            rdfs:comment "Review Irregularity Type of MG-ReviewDecision under ND-ReviewStatus" ;
+            rr:predicate epo:hasConfirmedIrregularityType  ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:irregularity-type" ;
+                    rr:parentTriplesMap tedm:irregularity-type ;
+                    rr:joinCondition [
+                        rr:child "efbc:IrregularityTypeCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-ReviewRequest_ND-AppealIrregularity a rr:TriplesMap ;
+    rdfs:label "MG-ReviewRequest" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation/efac:AppealIrregularity" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ReviewStatus" ;
+            rml:reference "if (../efbc:AppealStageCode='req') then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ReviewRequest_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw') else null" ;
+            rr:class epo:ReviewRequest ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-791-Review";
+            rdfs:comment "Review Irregularity Type of MG-ReviewRequest under ND-AppealIrregularity" ;
+            rr:predicate epo:hasConfirmedIrregularityType  ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:irregularity-type" ;
+                    rr:parentTriplesMap tedm:irregularity-type ;
+                    rr:joinCondition [
+                        rr:child "efbc:IrregularityTypeCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-Reviewer-announcesRole-ResultNotice_ND-AppealProcessingParty a rr:TriplesMap ;
+    rdfs:label "MG-Reviewer" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation/efac:AppealProcessingParty" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ReviewStatus" ;
+            rml:reference "if (/*/cbc:NoticeTypeCode/@listName='result') then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Reviewer_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:Reviewer ;
+        ] ;
+.
+
+tedm:MG-Reviewer-announcesRole-CompletionNotice_ND-AppealProcessingParty a rr:TriplesMap ;
+    rdfs:label "MG-Reviewer" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation/efac:AppealProcessingParty" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ReviewStatus" ;
+            rml:reference "if (/*/cbc:NoticeTypeCode/@listName='completion') then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Reviewer_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:Reviewer ;
         ] ;
 .
