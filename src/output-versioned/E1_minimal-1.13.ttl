@@ -1,0 +1,111 @@
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix fnml: <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix idlab-fn: <http://example.com/idlab/function/> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix person: <http://www.w3.org/ns/person#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_Buyer_HGvue6GtAm3yppLpDLnBKD a epo:Buyer;
+  epo:playedBy epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_Organization_ORG-0001 .
+
+epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_CompanyAddress_PcFLvGUMubmeEHZGZJQoer
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/LUX> .
+
+epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_ContractLocation_hM8neAaQhxtDsQ6JVKqiMJ
+  a dct:Location .
+
+epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_ContractTerm_adyhtKZkzxr6SEjy3tRyua a
+    epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_ContractLocation_hM8neAaQhxtDsQ6JVKqiMJ;
+  epo:hasBroadPlaceOfPerformance <http://publications.europa.eu/resource/authority/other-place-service/anyw-eea>;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
+
+epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_DynamicPurchaseSystemTechnicalUsage_Hu7wzHDygWmeSqTPnwY9wa
+  a epo:DynamicPurchaseSystemTechnique .
+
+epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_Identifier_ORG-0001 a adms:Identifier;
+  epo:hasScheme "organization";
+  skos:notation "ORG-0001" .
+
+epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_LotIdentifier_adyhtKZkzxr6SEjy3tRyua a
+    adms:Identifier;
+  epo:hasScheme "Lot";
+  skos:notation "LOT-0001" .
+
+epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_LotPurpose_hq9SUTbfgyszaBVWP2RTwv a epo:Purpose;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/72000000> .
+
+epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_Lot_LOT-0001 a epo:Lot;
+  epo:foreseesContractSpecificTerm epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_ContractTerm_adyhtKZkzxr6SEjy3tRyua;
+  epo:hasPurpose epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_LotPurpose_hq9SUTbfgyszaBVWP2RTwv;
+  epo:isSubjectToLotSpecificTerm epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_SubmissionTerm_adyhtKZkzxr6SEjy3tRyua;
+  epo:usesTechnique epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_DynamicPurchaseSystemTechnicalUsage_Hu7wzHDygWmeSqTPnwY9wa;
+  dct:description "Lot description"@en;
+  dct:title "Lot Name"@en;
+  adms:identifier epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_LotIdentifier_adyhtKZkzxr6SEjy3tRyua .
+
+epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_Notice a epo:Notice, epo:NoticeE1, epo:epo-not:PreMarketConsultationNotice;
+  epo:hasESenderDispatchDate "2024-12-05T12:00:00+01:00"^^xsd:dateTime;
+  epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pmc>;
+  epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/ENG>;
+  epo:hasVersion "01";
+  epo:refersToLot epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_Lot_LOT-0001;
+  epo:refersToProcedure epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_Procedure_iNVWPykMuHh9p4AY3uzvA2;
+  adms:identifier epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_NoticeIdentifier_UqBk5rJmTLyMMKTBaBF8aL .
+
+epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_NoticeIdentifier_UqBk5rJmTLyMMKTBaBF8aL
+  a adms:Identifier;
+  epo:hasScheme "notice-id";
+  skos:notation "52fe3748-f475-4381-9dbf-31ebb08889e8" .
+
+epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_Organization_ORG-0001 a org:Organization;
+  epo:hasLegalName "Buyer Org"@en;
+  cccev:registeredAddress epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_CompanyAddress_PcFLvGUMubmeEHZGZJQoer;
+  adms:identifier epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_Identifier_ORG-0001 .
+
+epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_ProcedureIdentifier_iNVWPykMuHh9p4AY3uzvA2
+  a adms:Identifier .
+
+epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_ProcedurePurpose_ByC2hyDTLG6nmfsEEo8uPF
+  a epo:Purpose;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/72000000> .
+
+epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_Procedure_iNVWPykMuHh9p4AY3uzvA2 a epo:Procedure;
+  epo:foreseesContractSpecificTerm epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_ProcurementProjectContractTerm_ByC2hyDTLG6nmfsEEo8uPF,
+    epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_ProcurementProjectContractTerm_aewGTk97uNwNrN6oeAb5vB;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/other>;
+  epo:hasProcurementScopeDividedIntoLot epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_Lot_LOT-0001;
+  epo:hasPurpose epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_ProcedurePurpose_ByC2hyDTLG6nmfsEEo8uPF;
+  dct:description "Procedure description"@en;
+  dct:title "Procedure Name"@en;
+  adms:identifier epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_ProcedureIdentifier_iNVWPykMuHh9p4AY3uzvA2 .
+
+epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_ProcurementProjectContractTerm_ByC2hyDTLG6nmfsEEo8uPF
+  a epo:ContractTerm;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
+
+epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_ProcurementProjectContractTerm_aewGTk97uNwNrN6oeAb5vB
+  a epo:ContractTerm;
+  epo:hasBroadPlaceOfPerformance <http://publications.europa.eu/resource/authority/other-place-service/anyw-eea> .
+
+epd:id_52fe3748-f475-4381-9dbf-31ebb08889e8_SubmissionTerm_adyhtKZkzxr6SEjy3tRyua
+  a epo:SubmissionTerm;
+  epo:hasLanguage <http://publications.europa.eu/resource/authority/language/ENG>;
+  epo:hasSubmissionURL "https://example.com/endpoint"^^xsd:anyURI .
