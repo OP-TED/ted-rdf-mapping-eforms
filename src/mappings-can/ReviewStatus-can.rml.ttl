@@ -63,12 +63,22 @@ tedm:MG-CompletionNotice_ND-ReviewStatus
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "ResultNotice under ND-ReviewStatus" ;
-            rdfs:comment "the relation between MG-ReviewDecision and ResultNotice under ND-ReviewStatus" ;
+            rdfs:label "Connection between CompletionNotice and Reviewew" ;
+            rdfs:comment "the relation between MG-Reviewer and CompletionNotice under ND-ReviewStatus" ;
             rr:predicate epo:announcesRole  ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:MG-Reviewer-announcesRole-CompletionNotice_ND-AppealProcessingParty;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "Connection between CompletionNotice and ReviewRequester " ;
+            rdfs:comment "the relation between CompletionNotice and ReviewRequester under ND-ReviewStatus" ;
+            rr:predicate epo:announcesRole  ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ReviewRequester_ND-AppealingParty;
                 ] ;
         ] ;
 .
@@ -469,6 +479,16 @@ tedm:MG-ResultNotice_ND-ReviewStatus a rr:TriplesMap ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:MG-Reviewer-announcesRole-ResultNotice_ND-AppealProcessingParty;
+                ] ;
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "Connection between CompletionNotice and ReviewRequester " ;
+            rdfs:comment "the relation between ResultNotice and ReviewRequester under ND-ReviewStatus" ;
+            rr:predicate epo:announcesRole  ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ReviewRequester_ND-AppealingParty;
                 ] ;
         ] ;
     .
@@ -914,7 +934,7 @@ tedm:MG-Identifier-identifier-Organization-playedBy-Reviewer_ND-AppealProcessing
     rr:subjectMap
         [
             rdfs:label "ND-AppealProcessingParty" ;
-            rml:reference "if (exists(cac:Party/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ReviewerIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(cac:Party/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Identifier_' || cac:Party/cac:PartyIdentification/cbc:ID else null" ;
             rr:class adms:Identifier ;
         ] ;
     rr:predicateObjectMap
@@ -1113,3 +1133,101 @@ tedm:MG-ReviewDecision_ND-AppealDecision a rr:TriplesMap ;
         ] ;
 .
 
+tedm:MG-Identifier-identifier-Organization-playedBy-ReviewRequester_ND-AppealingParty a rr:TriplesMap ;
+    rdfs:label "MG-Reviewer" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation/efac:AppealingParty" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-AppealingParty" ;
+            rml:reference "if (exists(cac:Party/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Identifier_' || cac:Party/cac:PartyIdentification/cbc:ID else null" ;
+            rr:class adms:Identifier ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            tedm:minSDKVersion "1.13" ;
+            rdfs:label "BT-807-Review" ;
+            rdfs:comment "Review Applicant Identifier of MG-Identifier under ND-AppealingParty" ;
+            rr:predicate skos:notation ;
+            rr:objectMap
+                [
+                    rml:reference "cac:Party/cac:PartyIdentification/cbc:ID" ;
+                ] ;
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-808-Review-Scheme" ;
+            rdfs:comment "Scheme of Review Applicant Identifier of MG-Identifier under ND-AppealingParty" ;
+            rr:predicate epo:hasScheme ;
+            rr:objectMap
+                [
+                    rml:reference "cac:Party/cac:PartyIdentification/cbc:ID/@schemeName" ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-Organization-playedBy-ReviewRequester_ND-AppealingParty a rr:TriplesMap ;
+    rdfs:label "MG-Organization" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation/efac:AppealingParty" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ReviewStatus" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Organization_{cac:Party/cac:PartyIdentification/cbc:ID}" ;
+            rr:class org:Organization ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            tedm:minSDKVersion "1.13" ;
+            rdfs:label "BT-807-Review" ;
+            rdfs:comment "Review Applicant Identifier of MG-Organization under ND-AppealingParty" ;
+            rr:predicate adms:identifier ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Identifier-identifier-Organization-playedBy-ReviewRequester_ND-AppealingParty ;
+                     rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-ReviewRequester_ND-AppealingParty a rr:TriplesMap ;
+    rdfs:label "MG-ReviewRequester" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation/efac:AppealingParty" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ReviewStatus" ;
+            rml:reference "if (exists(cac:Party/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ReviewRequester_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:ReviewRequester ;
+        ] ;
+     rr:predicateObjectMap
+        [
+            tedm:minSDKVersion "1.13" ;
+            rdfs:label "BT-808-Review" ;
+            rdfs:comment "Review Applicant  Identifier of MG-Organization under ND-AppealingParty" ;
+            rr:predicate epo:playedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Organization-playedBy-ReviewRequester_ND-AppealingParty ;
+                     rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ] ;
+.
