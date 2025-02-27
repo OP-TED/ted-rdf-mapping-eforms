@@ -455,3 +455,50 @@ tedm:MG-langString-hasModificationReasonDescription-ContractModificationInformat
         rdfs:label "BT-202-Contract" ;
     ] ;
 .
+
+tedm:MG-ContractAmendment_ND-ContractModification a rr:TriplesMap ;
+    rdfs:label "MG-ContractAmendment" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:ContractModification" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ContractModification" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SettledContract_{efbc:ModifiedContractIdentifier}" ;
+            rr:class epo-not:ContractAmendment
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-1501(c)-Contract" ;
+            rdfs:comment "Modified Contract Reference of MG-ContractAmendment under ND-ContractModification" ;
+            tedm:minSDKVersion "1.11" ;
+            rr:predicate epo:amendsContract ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Contract-amendsContract-ContractAmendment_ND-ContractModification ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-Contract-amendsContract-ContractAmendment_ND-ContractModification a rr:TriplesMap ;
+    rdfs:label "MG-Contract" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:ContractModification" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ContractModification" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SettledContract_{efbc:ModifiedContractIdentifier}" ;
+            rr:class epo:Contract
+        ] ;
+.
