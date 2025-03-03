@@ -47,6 +47,46 @@ tedm:MG-CompletionNotice_ND-Root
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Notice" ;
             rr:class epo-not:CompletionNotice
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-ReviewStatus" ;
+            rdfs:comment "Connection between CompletionNotice and ReviewDecision under ND-ReviewStatus" ;
+            rr:predicate epo:announcesReviewObject ;
+            rr:objectMap
+                [
+                   rr:parentTriplesMap tedm:MG-ReviewDecision-announcesReviewObject-CompletionNotice_ND-ReviewStatus ;
+                ] ;
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "ND-ReviewStatus" ;
+            rdfs:comment "Connection between CompletionNotice and ReviewRequest under ND-ReviewStatus" ;
+            rr:predicate epo:announcesReviewObject ;
+            rr:objectMap
+                [
+                   rr:parentTriplesMap tedm:MG-ReviewRequest-announcesReviewObject-CompletionNotice_ND-ReviewStatus ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "Connection between CompletionNotice and Review" ;
+            rdfs:comment "the relation between MG-Reviewer and CompletionNotice under ND-ReviewStatus" ;
+            rr:predicate epo:announcesRole  ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Reviewer-announcesRole-CompletionNotice_ND-AppealProcessingParty;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "Connection between CompletionNotice and ReviewRequester " ;
+            rdfs:comment "the relation between CompletionNotice and ReviewRequester under ND-ReviewStatus" ;
+            rr:predicate epo:announcesRole  ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ReviewRequester_ND-AppealingParty;
+                ] ;
+        ] ;
 .
 
 ##--- Function Parameters ---

@@ -25,64 +25,6 @@
 @prefix idlab-fn: <http://example.com/idlab/function/> .
 @prefix person: <http://www.w3.org/ns/person#> .
 
-tedm:MG-CompletionNotice_ND-ReviewStatus
-    a rr:TriplesMap ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            # this is an example of a complex multi-element condition for instantiation of a subject not suitable as a condition below the iterator
-            rml:iterator "if(/*/cbc:NoticeTypeCode/@listName='completion' or (/*/cbc:NoticeTypeCode/@listName='change' and exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('E5', text())]))) then /* else null" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-ReviewStatus" ;
-            rdfs:comment "Primary type declaration for MG-CompletionNotice under ND-ReviewStatus" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Notice" ;
-            rr:class epo-not:CompletionNotice
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "ND-ReviewStatus" ;
-            rdfs:comment "Connection between CompletionNotice and ReviewDecision under ND-ReviewStatus" ;
-            rr:predicate epo:announcesReviewObject ;
-            rr:objectMap
-                [
-                   rr:parentTriplesMap tedm:MG-ReviewDecision-announcesReviewObject-CompletionNotice_ND-ReviewStatus ;
-                ] ;
-        ] ;
-     rr:predicateObjectMap
-        [
-            rdfs:label "ND-ReviewStatus" ;
-            rdfs:comment "Connection between CompletionNotice and ReviewRequest under ND-ReviewStatus" ;
-            rr:predicate epo:announcesReviewObject ;
-            rr:objectMap
-                [
-                   rr:parentTriplesMap tedm:MG-ReviewRequest-announcesReviewObject-CompletionNotice_ND-ReviewStatus ;
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "Connection between CompletionNotice and Reviewew" ;
-            rdfs:comment "the relation between MG-Reviewer and CompletionNotice under ND-ReviewStatus" ;
-            rr:predicate epo:announcesRole  ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-Reviewer-announcesRole-CompletionNotice_ND-AppealProcessingParty;
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "Connection between CompletionNotice and ReviewRequester " ;
-            rdfs:comment "the relation between CompletionNotice and ReviewRequester under ND-ReviewStatus" ;
-            rr:predicate epo:announcesRole  ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-ReviewRequester_ND-AppealingParty;
-                ] ;
-        ] ;
-.
-
 tedm:MG-ReviewDecision-announcesReviewObject-CompletionNotice_ND-ReviewStatus a rr:TriplesMap ;
     rdfs:label "MG-ReviewDecision" ;
     rml:logicalSource
@@ -394,33 +336,6 @@ tedm:MG-ReviewDecision-seeAlso-ResultNotice_ND-ReviewStatus a rr:TriplesMap ;
         ] ;
 .
 
-#tedm:MG-ResultNotice_ND-ReviewStatus a rr:TriplesMap ;
-#  rdfs:label "MG-ResultNotice";
-#    rml:logicalSource
-#        [
-#            rml:source "data/source.xml" ;
-#            rml:iterator "if(/*/cbc:NoticeTypeCode/@listName='result' or (/*/cbc:NoticeTypeCode/@listName='change' and exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('29 30 31 32 33 34 35 36 37 E4 T02', text())]))) then /* else null" ;
-#            rml:referenceFormulation ql:XPath
-#        ] ;
-#    rr:subjectMap
-#        [
-#            rdfs:label "NoticeResult" ;
-#            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ResultNotice" ;
-#            rr:class epo-not:ResultNotice
-#        ] ;
-#    rr:predicateObjectMap
-#        [
-#            rdfs:label "ResultNotice under ND-ReviewStatus" ;
-#            rdfs:comment "the relation between MG-ReviewDecision and ResultNotice under ND-ReviewStatus" ;
-#            rr:predicate rdfs:seeAlso ;
-#            rr:objectMap
-#                [
-#                    rr:parentTriplesMap tedm:MG-ReviewDecision-seeAlso-ResultNotice_ND-ReviewStatus
-#                    rr:parentTriplesMap tedm:MG-ReviewDecision-seeAlso-ResultNotice_ND-ReviewStatus
-#                ] ;
-#        ] ;
-#    .
-
 tedm:MG-ReviewRequest-seeAlso-ResultNotice_ND-ReviewStatus a rr:TriplesMap ;
     rdfs:label "MG-ReviewDecision" ;
     rml:logicalSource
@@ -432,66 +347,10 @@ tedm:MG-ReviewRequest-seeAlso-ResultNotice_ND-ReviewStatus a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-ReviewStatus" ;
-            rml:reference "if (/*/cbc:NoticeTypeCode/@listName='result' and efbc:AppealStageCode='req')  then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ReviewReviewRequest_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if (/*/cbc:NoticeTypeCode/@listName='result' and efbc:AppealStageCode='req')  then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ReviewRequest_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:ReviewRequest
         ] ;
 .
-
-tedm:MG-ResultNotice_ND-ReviewStatus a rr:TriplesMap ;
-  rdfs:label "MG-ResultNotice";
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "if(/*/cbc:NoticeTypeCode/@listName='result' or (/*/cbc:NoticeTypeCode/@listName='change' and exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('29 30 31 32 33 34 35 36 37 E4 T02', text())]))) then /* else null" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "NoticeResult" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Notice" ;
-            rr:class epo-not:ResultNotice
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "ResultNotice under ND-ReviewStatus" ;
-            rdfs:comment "the relation between MG-ReviewDecision and ResultNotice under ND-ReviewStatus" ;
-            rr:predicate rdfs:seeAlso ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-ReviewRequest-seeAlso-ResultNotice_ND-ReviewStatus
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "ResultNotice under ND-ReviewStatus" ;
-            rdfs:comment "the relation between MG-ReviewDecision and ResultNotice under ND-ReviewStatus" ;
-            rr:predicate rdfs:seeAlso ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-ReviewDecision-seeAlso-ResultNotice_ND-ReviewStatus
-                ] ;
-        ] ;
-     rr:predicateObjectMap
-        [
-            rdfs:label "ResultNotice under ND-ReviewStatus" ;
-            rdfs:comment "the relation between MG-ReviewDecision and ResultNotice under ND-ReviewStatus" ;
-            rr:predicate epo:announcesRole  ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-Reviewer-announcesRole-ResultNotice_ND-AppealProcessingParty;
-                ] ;
-        ] ;
-     rr:predicateObjectMap
-        [
-            rdfs:label "Connection between CompletionNotice and ReviewRequester " ;
-            rdfs:comment "the relation between ResultNotice and ReviewRequester under ND-ReviewStatus" ;
-            rr:predicate epo:announcesRole  ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-ReviewRequester_ND-AppealingParty;
-                ] ;
-        ] ;
-    .
 
 tedm:MG-MonetaryValue-hasRemedyValue-ReviewDecision_ND-ReviewStatus a rr:TriplesMap ;
     rdfs:label "MG-MonetaryValue" ;
