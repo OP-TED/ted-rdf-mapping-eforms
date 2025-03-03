@@ -36,7 +36,49 @@ tedm:MG-MonetaryValue-providesContractTotalPaymentValue-ContractLotCompletionInf
     rr:subjectMap
         [
             rdfs:label "ND-TenderAggregatedAmounts" ;
-            rml:reference "if (exists(efbc:PenaltiesAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MonetaryValue_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(efbc:PenaltiesAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ContractTotalPaymentMonetaryValue_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:MonetaryValue
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-779-Tender";
+            rdfs:comment " Tender Payment Value of MG-MonetaryValue under ND-TenderAggregatedAmounts";
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:PaidAmount" ;
+                    rr:datatype xsd:decimal ;
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-779-Tender-Currency";
+            rdfs:comment "Currency of  Tender Payment Value of MG-MonetaryValue under ND-TenderAggregatedAmounts";
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:currency" ;
+                    rr:parentTriplesMap tedm:currency ;
+                    rr:joinCondition [
+                        rr:child "cbc:PaidAmount/@currencyID" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-MonetaryValue-providesContractTotalPenaltyValue-ContractLotCompletionInformation_ND-TenderAggregatedAmounts a rr:TriplesMap ;
+  rdfs:label "MG-MonetaryValue";
+       rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender/efac:AggregatedAmounts" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-TenderAggregatedAmounts" ;
+            rml:reference "if (exists(efbc:PenaltiesAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ContractTotalPenaltyMonetaryValue_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:MonetaryValue
         ] ;
     rr:predicateObjectMap
@@ -61,32 +103,6 @@ tedm:MG-MonetaryValue-providesContractTotalPaymentValue-ContractLotCompletionInf
                     rr:parentTriplesMap tedm:currency ;
                     rr:joinCondition [
                         rr:child "efbc:PenaltiesAmount/@currencyID" ;
-                        rr:parent "code.value" ;
-                    ] ;
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-779-Tender";
-            rdfs:comment " Tender Payment Value of MG-MonetaryValue under ND-TenderAggregatedAmounts";
-            rr:predicate epo:hasAmountValue ;
-            rr:objectMap
-                [
-                    rml:reference "cbc:PaidAmount" ;
-                    rr:datatype xsd:decimal ;
-                ] ;
-        ];
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-779-Tender-Currency";
-            rdfs:comment "Currency of  Tender Payment Value of MG-MonetaryValue under ND-TenderAggregatedAmounts";
-            rr:predicate epo:hasCurrency ;
-            rr:objectMap
-                [
-                    rdfs:label "at-voc:currency" ;
-                    rr:parentTriplesMap tedm:currency ;
-                    rr:joinCondition [
-                        rr:child "cbc:PaidAmount/@currencyID" ;
                         rr:parent "code.value" ;
                     ] ;
                 ] ;
@@ -142,7 +158,7 @@ tedm:MG-ContractLotCompletionInformation_ND-TenderAggregatedAmounts a rr:Triples
             rr:predicate epo:providesContractTotalPenaltyValue ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-MonetaryValue-providesContractTotalPaymentValue-ContractLotCompletionInformation_ND-TenderAggregatedAmounts;
+                    rr:parentTriplesMap tedm:MG-MonetaryValue-providesContractTotalPenaltyValue-ContractLotCompletionInformation_ND-TenderAggregatedAmounts;
                      rr:joinCondition [
                         rr:child "path(.)" ;
                         rr:parent "path(.)" ;
@@ -182,10 +198,10 @@ tedm:MG-langString-hasPaymentValueDiscrepancyJustification-ContractLotCompletion
                 ] ;
             ] ;
             rdfs:comment "Language of Tender Payment Value Additional Information of f MG-ContractLotCompletionInformation under ND-TenderAggregatedAmounts" ;
-            rdfs:label "BT-789-Review-Language" ;
+            rdfs:label "BT-780-Tender" ;
         ] ;
         rdfs:comment "Tender Payment Value Additional Information of MG-ContractLotCompletionInformation under ND-TenderAggregatedAmounts" ;
-        rdfs:label "BT-789-Review" ;
+        rdfs:label "BT-780-Tender" ;
     ] ;
 .
 
