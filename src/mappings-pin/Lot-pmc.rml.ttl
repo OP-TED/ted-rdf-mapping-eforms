@@ -45,13 +45,8 @@ tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-PMCAnswersDeadline a rr
             rr:predicate epo:hasReceiptPreliminaryMarketConsultationDeadline ;
             rr:objectMap
                 [
-                    rml:reference "cbc:EndDate";
-                    rr:datatype xsd:date;
-                ] ;
-             rr:objectMap
-                [
-                    rml:reference "cbc:EndTime";
-                    rr:datatype xsd:date;
+                    rml:reference "if(exists(cbc:EndDate) and exists(cbc:EndTime) and contains(cbc:EndDate, '+')) then substring-before(cbc:EndDate, '+') || 'T' || cbc:EndTime else if(exists(cbc:EndDate) and exists(cbc:EndTime)) then cbc:EndDate || 'T' || cbc:EndTime else if(exists(cbc:EndDate)) then cbc:EndDate else null";
+                    rr:datatype xsd:dateTime;
                 ] ;
         ] ;
 .
