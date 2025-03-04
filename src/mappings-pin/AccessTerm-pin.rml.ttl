@@ -179,3 +179,73 @@ tedm:MG-PlannedProcurementPart-refersToPlannedPart-AccessTerm_ND-PartProcurement
             rr:class epo:PlannedProcurementPart ;
         ] ;
 .
+
+tedm:AccessTerm_ND-PartTenderingTerms a rr:TriplesMap ;
+    rdfs:label "MG-AccessTerm" ;
+    rml:logicalSource
+        [
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms" ;
+            rml:referenceFormulation ql:XPath ;
+            rml:source "data/source.xml" ;
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-PartTenderingTerms" ;
+            rr:class epo:AccessTerm ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_AccessTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:refersToPlannedPart ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-PlannedProcurementPart-refersToPlannedPart-AccessTerm_ND-PartTenderingTerms ;
+                    rr:joinCondition [
+                        rr:child "path(../..)" ;
+                        rr:parent "path(../..)" ;
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-301-Part-AddInfo" ;
+            rr:predicate epo:definesProcurementProcedureInformationProvider ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ProcurementProcedureInformationProvider_ND-PartTenderingTerms ;
+                    rr:joinCondition [
+                            rr:child "path(.)" ;
+                            rr:parent "path(.)" ;
+                        ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-301-Part-DocProvider" ;
+            rr:predicate epo:definesOfflineAccessProvider ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-OfflineAccessProvider_ND-PartTenderingTerms ;
+                    rr:joinCondition [
+                            rr:child "path(.)" ;
+                            rr:parent "path(.)" ;
+                    ];
+                ] ;
+        ] ;        
+.
+
+tedm:MG-PlannedProcurementPart-refersToPlannedPart-AccessTerm_ND-PartTenderingTerms a rr:TriplesMap ;
+    rdfs:label "PlannedProcurementPart" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms" ;
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-PartInfoRequestPeriod " ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_PlannedProcurementPart_{../cbc:ID}" ;
+            rr:class epo:PlannedProcurementPart ;
+        ] ;
+.
