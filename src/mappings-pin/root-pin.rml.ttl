@@ -206,6 +206,32 @@ tedm:MG-PlanningNotice_ND-Part a rr:TriplesMap ;
                     ];
                 ] ;
         ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-125(i)-Part" ;
+            rr:predicate epo:refersToPrevious ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Notice-refersToPrevious-PlanningNotice_ND-PartPreviousPlanning ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(../..)" ;
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-1251-Part" ;
+            rr:predicate epo:refersToPrevious ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-PlanningNotice-refersToPrevious-PlanningNotice_ND-PartPreviousPlanning ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(../..)" ;
+                    ] ;
+                ] ;
+        ] ;
 .
 
 tedm:MG-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice_ND-Part a rr:TriplesMap ;
@@ -224,7 +250,7 @@ tedm:MG-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice_ND
         ] ;
 .
 
-tedm:MG-Notice_ND-PartPreviousPlanning a rr:TriplesMap ;
+tedm:MG-Notice-refersToPrevious-PlanningNotice_ND-PartPreviousPlanning a rr:TriplesMap ;
     rdfs:label "MG-Notice" ;
     rml:logicalSource
         [
@@ -235,17 +261,18 @@ tedm:MG-Notice_ND-PartPreviousPlanning a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-PartPreviousPlanning" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Notice" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(cbc:ID, ' ', '-' ), '/' , '-')}_Notice" ;
             rr:class epo:Notice
         ] ;
      rr:predicateObjectMap
         [
-            rdfs:label "BT-125(i)-Part, BT-1251-Part" ;
-            rr:predicate epo:refersToPrevious ;
+            rdfs:label "BT-125(i)-Part" ;
+            rdfs:comment "Previous Planning Identifier of MG-Notice under ND-PartPreviousPlanning" ;
+            rr:predicate adms:identifier ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-PlanningNotice-refersToPrevious-Notice_ND-PartPreviousPlanning ;
-                     rr:joinCondition [
+                    rr:parentTriplesMap tedm:MG-Identifier-identifier-Notice-refersToPrevious-PlanningNotice_ND-PartPreviousPlanning ;
+                    rr:joinCondition [
                         rr:child "path(.)" ;
                         rr:parent "path(.)" ;
                     ] ;
@@ -253,8 +280,8 @@ tedm:MG-Notice_ND-PartPreviousPlanning a rr:TriplesMap ;
         ] ;
 .
 
-tedm:MG-PlanningNotice-refersToPrevious-Notice_ND-PartPreviousPlanning a rr:TriplesMap ;
-    rdfs:label "MG-PlanningNotice" ;
+tedm:MG-PlanningNotice-refersToPrevious-PlanningNotice_ND-PartPreviousPlanning a rr:TriplesMap ;
+    rdfs:label "MG-Notice" ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -269,26 +296,12 @@ tedm:MG-PlanningNotice-refersToPrevious-Notice_ND-PartPreviousPlanning a rr:Trip
         ] ;
      rr:predicateObjectMap
         [
-            rdfs:label "BT-125(i)-Part" ;
-            rdfs:comment "Previous Planning Identifier of MG-PlanningNotice under ND-PartPreviousPlanning" ;
-            rr:predicate adms:identifier ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-Identifier-identifier-PlanningNotice-refersToPrevious-Notice_ND-PartPreviousPlanning ;
-                     rr:joinCondition [
-                        rr:child "path(.)" ;
-                        rr:parent "path(.)" ;
-                    ] ;
-                ] ;
-        ] ;
-     rr:predicateObjectMap
-        [
             rdfs:label "BT-1251-Part" ;
-            rdfs:comment "Previous Planning Part Identifier of MG-PlanningNotice under ND-PartPreviousPlanning" ;
+            rdfs:comment "Previous Planning Part Identifier of MG-Notice under ND-PartPreviousPlanning" ;
             rr:predicate epo:announcesPlannedProcurementPart ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice-refersToPrevious-Notice_ND-PartPreviousPlanning;
+                    rr:parentTriplesMap tedm:MG-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice-refersToPrevious-PlanningNotice_ND-PartPreviousPlanning;
                     rr:joinCondition [
                         rr:child "path(.)" ;
                         rr:parent "path(.)" ;
@@ -297,7 +310,7 @@ tedm:MG-PlanningNotice-refersToPrevious-Notice_ND-PartPreviousPlanning a rr:Trip
         ] ;
 .
 
-tedm:MG-Identifier-identifier-PlanningNotice-refersToPrevious-Notice_ND-PartPreviousPlanning a rr:TriplesMap ;
+tedm:MG-Identifier-identifier-Notice-refersToPrevious-PlanningNotice_ND-PartPreviousPlanning a rr:TriplesMap ;
     rdfs:label "MG-Identifier" ;
     rml:logicalSource
         [
@@ -332,7 +345,7 @@ tedm:MG-Identifier-identifier-PlanningNotice-refersToPrevious-Notice_ND-PartPrev
         ] ;
 .
 
-tedm:MG-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice-refersToPrevious-Notice_ND-PartPreviousPlanning a rr:TriplesMap ;
+tedm:MG-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice-refersToPrevious-PlanningNotice_ND-PartPreviousPlanning a rr:TriplesMap ;
     rdfs:label "MG-PlannedProcurementPart" ;
     rml:logicalSource
         [
@@ -353,7 +366,7 @@ tedm:MG-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice-re
             rr:predicate adms:identifier ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-Identifier-identifier-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice-refersToPrevious-Notice_ND-PartPreviousPlanning;
+                    rr:parentTriplesMap tedm:MG-Identifier-identifier-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice-refersToPrevious-PlanningNotice_ND-PartPreviousPlanning;
                     rr:joinCondition [
                         rr:child "path(.)" ;
                         rr:parent "path(.)" ;
@@ -362,7 +375,7 @@ tedm:MG-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice-re
         ] ;
 .
 
-tedm:MG-Identifier-identifier-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice-refersToPrevious-Notice_ND-PartPreviousPlanning a rr:TriplesMap ;
+tedm:MG-Identifier-identifier-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice-refersToPrevious-PlanningNotice_ND-PartPreviousPlanning a rr:TriplesMap ;
     rdfs:label "MG-Identifier" ;
     rml:logicalSource
         [
