@@ -392,8 +392,7 @@ tedm:MG-Identifier-relatesToEFormSectionIdentifier-ContractModificationInformati
     rr:subjectMap
         [
             rdfs:label "ND-ContractModification" ;
-            # FIXME should the base URI be that of the current notice or that of the previous?
-            rml:reference "if (exists(efbc:ChangedSectionIdentifier)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ModificationPreviousNoticeSectionIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(efbc:ChangedSectionIdentifier)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ModifiedSectionIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
