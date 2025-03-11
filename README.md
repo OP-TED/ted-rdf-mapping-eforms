@@ -13,13 +13,13 @@
 
 This repository provides mappings between [eForms SDK](https://github.com/OP-TED/eForms-SDK) representation and [eProcurement Ontology](https://github.com/OP-TED/ePO) representation of [eForms Notices](https://simap.ted.europa.eu/eforms).
 
-The artefacts provided in this repository are used by the [TED-SWS system](https://docs.ted.europa.eu/SWS/index.html). They are provided in the [mappings](./mappings) folder and are organised in packages called [Mapping Suites](https://docs.ted.europa.eu/ODS/latest/mapping_eforms/package_structure.html).
+The artefacts provided in this repository are used by the [TED-SWS system](https://docs.ted.europa.eu/ODS/latest/index.html). They are provided in the [mappings](./mappings) folder and are organised in packages called [Mapping Suites](https://docs.ted.europa.eu/ODS/latest/mapping_eforms/package_structure.html).
 
 This project is under development. The current scope of this project includes the mapping of:
 - all **Competition Notices (CNs)**, including **eForms subtypes 10-24** according to **eForms SDK versions 1.3 to 1.10**
 - **Contract Award Notices (CANs)** of **eForms subtype 29** according to **eForms SDK versions 1.3 to 1.1**0, **_excluding_** the information **encoded in privacy fields** (represented by BT IDs `BT-195`, `BT-196`, `BT-197` and `BT-198`), and those that are **masked by such privacy fields**
 
-The official documentation of this project [is available here](http://docs.ted.europa.eu/ted-rdf-mapping-eforms/index.html) and will be integrated into the [TED Semantic Web Service Project Documentation](https://docs.ted.europa.eu/ODS/index.html).
+The official documentation of this project [is available here](http://docs.ted.europa.eu/ted-rdf-mapping-eforms/index.html) and will be integrated into the [TED Semantic Web Service Project Documentation](https://docs.ted.europa.eu/ODS/latest/).
 
 ## Requirements
 
