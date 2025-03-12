@@ -363,7 +363,7 @@ tedm:MG-MonetaryValue-hasRemedyValue-ReviewDecision_ND-ReviewStatus a rr:Triples
     rr:subjectMap
         [
             rdfs:label "ND-ReviewStatus" ;
-            rml:reference "if (exists(efbc:AppealStageCode='dec') and exists (efbc:AppealRemedyValue)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_RemedyMonetaryValue_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if ((efbc:AppealStageCode='dec') and exists (efbc:AppealRemedyValue)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_RemedyMonetaryValue_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:MonetaryValue
         ] ;
      rr:predicateObjectMap
@@ -375,6 +375,21 @@ tedm:MG-MonetaryValue-hasRemedyValue-ReviewDecision_ND-ReviewStatus a rr:Triples
                 [
                    rml:reference "efbc:AppealRemedyValue";
                    rr:datatype xsd:decimal    ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-793-Review-Currency";
+            rdfs:comment "Currency of Review Remedy Value of MG-ReviewDecision under ND-ReviewStatus";
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:currency" ;
+                    rr:parentTriplesMap tedm:currency ;
+                    rr:joinCondition [
+                        rr:child "efbc:AppealRemedyValue/@currencyID";
+                        rr:parent "code.value" ;
+                    ] ;
                 ] ;
         ] ;
 .
@@ -390,7 +405,7 @@ tedm:MG-MonetaryValue-hasReviewRequestFee-ReviewRequest_ND-ReviewStatus a rr:Tri
     rr:subjectMap
         [
             rdfs:label "ND-ReviewStatus" ;
-            rml:reference "if (exists(efbc:AppealStageCode='req') and exists (cbc:FeeAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_RequestFeeMonetaryValue_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if ((efbc:AppealStageCode='req') and exists (cbc:FeeAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_RequestFeeMonetaryValue_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:MonetaryValue
         ] ;
      rr:predicateObjectMap
@@ -404,6 +419,22 @@ tedm:MG-MonetaryValue-hasReviewRequestFee-ReviewRequest_ND-ReviewStatus a rr:Tri
                    rr:datatype xsd:decimal    ;
                 ] ;
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-795-Review-Currency";
+            rdfs:comment "Currency of Review Request Fee of MG-ReviewRequest under ND-ReviewStatus";
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:currency" ;
+                    rr:parentTriplesMap tedm:currency ;
+                    rr:joinCondition [
+                        rr:child "cbc:FeeAmount/@currencyID";
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+
 .
 
 tedm:MG-langString-description-ReviewDecision_ND-ReviewStatus a rr:TriplesMap ;
