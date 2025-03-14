@@ -51,15 +51,17 @@ tedm:MG-OfflineAccessProvider_ND-PartTenderingTerms a rr:TriplesMap ;
             ] ;
         ] ;
     ] ;
-    # rr:predicateObjectMap [
-    #     rdfs:label "OPT-301-Part-DocProvider (contextualisedBy)" ;
-    #     rr:objectMap [
-    #         rr:joinCondition [
-    #             rr:child "../cbc:ID" ;
-    #             rr:parent "cbc:ID" ;
-    #         ] ;
-    #         rr:parentTriplesMap tedm:MG-Part_ND-Part ;
-    #     ] ;
-    #     rr:predicate epo:contextualisedBy ;
-    # ] ;
+    rr:predicateObjectMap
+        [
+        rdfs:label "OPT-301-Part-OfflineAccessProvider (contextualisedBy)" ;
+            rr:predicate epo:contextualisedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ProcurementObject-contextualisedBy-OfflineAccessProvider-announcesRole-PlanningNotice_ND-PartTenderingTerms ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ];
+                ] ;
+        ] ;
 .
