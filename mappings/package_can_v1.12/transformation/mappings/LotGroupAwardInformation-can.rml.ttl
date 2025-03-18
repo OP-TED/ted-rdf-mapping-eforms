@@ -49,22 +49,21 @@ tedm:MG-MonetaryValue-hasGroupFrameworkAgreementMaximumValue-LotGroupAwardInform
                     rr:datatype xsd:decimal ;
                 ] ;
         ] ;
-      rr:predicateObjectMap
-        [
-            rr:predicate epo:hasCurrency ;
-            rr:objectMap
-                [
-                    rml:reference "cbc:EstimatedOverallContractAmount/@currencyID";
-                ] ;
-        ];
     rr:predicateObjectMap
         [
+            rdfs:label "BT-156-NoticeResult";
+            rdfs:comment "Currency of Group Framework Maximum Value of MG-MonetaryValue under ND-NoticeResultGroupFA";
             rr:predicate epo:hasCurrency ;
             rr:objectMap
                 [
-                    rml:reference "efbc:GroupFrameworkMaximumValueAmount/@currencyID";
+                    rdfs:label "at-voc:currency" ;
+                    rr:parentTriplesMap tedm:currency ;
+                    rr:joinCondition [
+                        rr:child "efbc:GroupFrameworkMaximumValueAmount/@currencyID" ;
+                        rr:parent "code.value" ;
+                    ] ;
                 ] ;
-        ]
+        ] ;
 .
 
 tedm:MG-LotGroupAwardInformation_ND-NoticeResultGroupFA  a rr:TriplesMap ;
