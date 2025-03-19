@@ -144,7 +144,21 @@ tedm:MG-ContractLotCompletionInformation_ND-TenderAggregatedAmounts a rr:Triples
             rr:predicate epo:describesLotCompletion  ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-Lot-ContractLotCompletionInformation_ND-TenderAggregatedAmounts;
+                    rr:parentTriplesMap tedm:MG-Lot-describesLotCompletion-ContractLotCompletionInformation_ND-TenderAggregatedAmounts;
+                     rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-TenderAggregatedAmounts";
+            rdfs:comment " Connection between ContractLotCompletionInformation and LotGroup under ND-TenderAggregatedAmounts";
+            rr:predicate  rdfs:seeAlso  ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-LotGroup-seeAlso-ContractLotCompletionInformation_ND-TenderAggregatedAmounts;
                      rr:joinCondition [
                         rr:child "path(.)" ;
                         rr:parent "path(.)" ;
@@ -205,7 +219,7 @@ tedm:MG-langString-hasPaymentValueDiscrepancyJustification-ContractLotCompletion
     ] ;
 .
 
-tedm:MG-Lot-ContractLotCompletionInformation_ND-TenderAggregatedAmounts a rr:TriplesMap ;
+tedm:MG-Lot-describesLotCompletion-ContractLotCompletionInformation_ND-TenderAggregatedAmounts a rr:TriplesMap ;
   rdfs:label "MG-Lot";
        rml:logicalSource
         [
@@ -216,7 +230,25 @@ tedm:MG-Lot-ContractLotCompletionInformation_ND-TenderAggregatedAmounts a rr:Tri
     rr:subjectMap
         [
             rdfs:label "ND-TenderAggregatedAmounts" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Lot_{../efac:TenderLot/cbc:ID}" ;
+#            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Lot_{../efac:TenderLot/cbc:ID}" ;
+            rml:reference "if (exists(../efac:TenderLot/cbc:ID[text() = /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cbc:ID/text()]) or starts-with(efac:TenderLot/cbc:ID, 'LOT')) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Lot_' || ../efac:TenderLot/cbc:ID else null";
             rr:class epo:Lot
+        ] ;
+.
+
+tedm:MG-LotGroup-seeAlso-ContractLotCompletionInformation_ND-TenderAggregatedAmounts a rr:TriplesMap ;
+  rdfs:label "MG-LotGroup";
+       rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender/efac:AggregatedAmounts" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-TenderAggregatedAmounts" ;
+            rml:reference " if (exists(../efac:TenderLot/cbc:ID[text() = /*/cac:TenderingTerms/cac:LotDistribution/cac:LotsGroup/cbc:LotsGroupID/text()]) or starts-with(efac:TenderLot/cbc:ID, 'GLO')) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_LotGroup_' || ../efac:TenderLot/cbc:ID else null";
+          #   rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotGroup_{efac:TenderLot/cbc:ID}" ;
+            rr:class epo:LotGroup
         ] ;
 .
