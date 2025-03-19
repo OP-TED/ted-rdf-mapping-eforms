@@ -511,6 +511,7 @@ tedm:MG-Tender_ND-LotTenderOriginCountry a rr:TriplesMap ;
                     rr:parentTriplesMap tedm:country ;
                     rr:joinCondition [
                         rr:child "efbc:AreaCode" ;
+                        rr:child "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='cou-ori']) and efbc:AreaCode/text() = 'unpublished' ))) then efbc:AreaCode else null";
                         rr:parent "code.value" ;
                     ] ;
                 ] ;
@@ -563,8 +564,8 @@ tedm:MG-ConcessionEstimate-foreseesConcession-Tender_ND-ConcessionRevenue a rr:T
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-160-Tender" ;
-            rdfs:comment "Concession Revenue Buyer of MG-ConcessionEstimate under ND-ConcessionRevenue" ;
+            rdfs:label "BT-162-Tender" ;
+            rdfs:comment "Concession Revenue User of MG-ConcessionEstimate under ND-ConcessionRevenue" ;
             rr:predicate epo:hasEstimatedUserConcessionRevenue ;
             rr:objectMap
                 [
@@ -612,7 +613,7 @@ tedm:MG-MonetaryValue-hasEstimatedBuyerConcessionRevenue-ConcessionEstimate-fore
             rr:predicate epo:hasAmountValue ;
             rr:objectMap
                 [
-                    rml:reference "efbc:RevenueBuyerAmount" ;
+                    rml:reference "if(not( exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='con-rev-buy']) and efbc:RevenueBuyerAmount/text() = '-1' )) then efbc:RevenueBuyerAmount else null" ;
                     rr:datatype xsd:decimal ;
                 ] ;
         ] ;
@@ -649,18 +650,18 @@ tedm:MG-MonetaryValue-hasEstimatedUserConcessionRevenue-ConcessionEstimate-fores
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-160-Tender" ;
+            rdfs:label "BT-162-Tender" ;
             rdfs:comment "Concession Revenue User of MG-MonetaryValue under ND-ConcessionRevenue" ;
             rr:predicate epo:hasAmountValue ;
             rr:objectMap
                 [
-                    rml:reference "efbc:RevenueUserAmount" ;
+                    rml:reference "if(not( exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='con-rev-use']) and efbc:RevenueUserAmount/text() = '-1' )) then efbc:RevenueUserAmount else null" ;
                     rr:datatype xsd:decimal ;
                 ] ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-160-Tender-Currency" ;
+            rdfs:label "BT-162-Tender-Currency" ;
             rdfs:comment "Currency of Concession Revenue user of MG-MonetaryValue under ND-ConcessionRevenue" ;
             rr:predicate epo:hasCurrency ;
             rr:objectMap
@@ -696,7 +697,7 @@ tedm:MG-langString-hasCalculationMethod-ConcessionEstimate-foreseesConcession-Te
             rr:predicate epo:hasCalculationMethod ;
             rr:objectMap
                 [
-                    rml:reference "." ;
+                    rml:reference "if(not( exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='val-con-des']) and efbc:ValueDescription/text() = 'unpublished' )) then . else null" ;
                     rml:languageMap [
                         fnml:functionValue [
                             rr:predicateObjectMap [
