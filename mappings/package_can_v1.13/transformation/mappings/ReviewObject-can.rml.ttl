@@ -29,6 +29,7 @@ tedm:MG-ReviewDecision-announcesReviewObject-CompletionNotice_ND-ReviewStatus a 
     rdfs:label "MG-ReviewDecision" ;
     rml:logicalSource
         [
+            tedm:minSDKVersion "1.13" ;
             rml:source "data/source.xml" ;
             rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation" ;
             rml:referenceFormulation ql:XPath
@@ -51,6 +52,7 @@ tedm:MG-ReviewRequest-announcesReviewObject-CompletionNotice_ND-ReviewStatus a r
         ] ;
     rr:subjectMap
         [
+            tedm:minSDKVersion "1.13" ;
             rdfs:label "ND-ReviewStatus" ;
             rml:reference "if (/*/cbc:NoticeTypeCode/@listName='completion' and efbc:AppealStageCode='req') then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ReviewRequest_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:ReviewRequest
@@ -73,6 +75,7 @@ tedm:MG-Identifier-identifier-ReviewDecision_ND-ReviewStatus a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            tedm:minSDKVersion "1.13" ;
             rdfs:label "BT-784-Review" ;
             rr:predicate skos:notation ;
             rr:objectMap
@@ -122,6 +125,7 @@ tedm:MG-ReviewDecision_ND-ReviewStatus a rr:TriplesMap ;
         ] ;
      rr:predicateObjectMap
         [
+            tedm:minSDKVersion "1.13" ;
             rdfs:label "BT-794-Review" ;
             rdfs:comment "Review URL of MG-ReviewDecision under ND-ReviewStatus" ;
             rr:predicate epo:hasAccessURL ;
@@ -133,6 +137,7 @@ tedm:MG-ReviewDecision_ND-ReviewStatus a rr:TriplesMap ;
         ] ;
      rr:predicateObjectMap
         [
+            tedm:minSDKVersion "1.13" ;
             rdfs:label "BT-787-Review" ;
             rdfs:comment "Review Date of MG-ReviewDecision under ND-ReviewStatus" ;
             rr:predicate epo:hasDecisionDate    ;
@@ -144,6 +149,7 @@ tedm:MG-ReviewDecision_ND-ReviewStatus a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            tedm:minSDKVersion "1.13" ;
             rdfs:label "BT-793-Review" ;
             rdfs:comment "Review Remedy Value of MG-ReviewDecision under ND-ReviewStatus" ;
             rr:predicate epo:hasRemedyValue     ;
@@ -182,6 +188,7 @@ tedm:MG-Identifier-identifier-ReviewRequest_ND-ReviewStatus a rr:TriplesMap ;
         ] ;
     rr:subjectMap
         [
+            tedm:minSDKVersion "1.13" ;
             rdfs:label "ND-ReviewStatus" ;
             rml:reference "if(efbc:AppealStageCode='req') then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ReviewRequestIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class adms:Identifier
@@ -237,6 +244,7 @@ tedm:MG-ReviewRequest_ND-ReviewStatus a rr:TriplesMap ;
         ] ;
      rr:predicateObjectMap
         [
+            tedm:minSDKVersion "1.13" ;
             rdfs:label "BT-794-Review" ;
             rdfs:comment "Review URL of MG-ReviewRequest under ND-ReviewStatus" ;
             rr:predicate epo:hasAccessURL ;
@@ -248,6 +256,7 @@ tedm:MG-ReviewRequest_ND-ReviewStatus a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            tedm:minSDKVersion "1.13" ;
             rdfs:label "BT-787-Review" ;
             rdfs:comment "Review Date of MG-ReviewRequest under ND-ReviewStatus" ;
             rr:predicate epo:hasRequestDate   ;
@@ -259,6 +268,7 @@ tedm:MG-ReviewRequest_ND-ReviewStatus a rr:TriplesMap ;
         ] ;
      rr:predicateObjectMap
         [
+            tedm:minSDKVersion "1.13" ;
             rdfs:label "BT-796-Review" ;
             rdfs:comment "Review Request Withdrawn of MG-ReviewRequest under ND-ReviewStatus" ;
             rr:predicate epo:isWithdrawn  ;
@@ -281,6 +291,7 @@ tedm:MG-ReviewRequest_ND-ReviewStatus a rr:TriplesMap ;
         ] ;
      rr:predicateObjectMap
         [
+            tedm:minSDKVersion "1.13" ;
             rdfs:label "BT-797-Review" ;
             rdfs:comment "Review Request Withdrawn Date of MG-ReviewRequest under ND-ReviewStatus" ;
             rr:predicate epo:hasWithdrawalDate   ;
@@ -306,6 +317,7 @@ tedm:MG-ReviewRequest_ND-ReviewStatus a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            tedm:minSDKVersion "1.13" ;
             rdfs:label "BT-795-Review" ;
             rdfs:comment "Review Request Fee of MG-ReviewRequest under ND-ReviewStatus" ;
             rr:predicate epo:hasReviewRequestFee     ;
@@ -410,6 +422,7 @@ tedm:MG-MonetaryValue-hasReviewRequestFee-ReviewRequest_ND-ReviewStatus a rr:Tri
         ] ;
      rr:predicateObjectMap
         [
+            tedm:minSDKVersion "1.13" ;
             rdfs:label "BT-795-Review" ;
             rdfs:comment "Review Request Fee of MG-ReviewRequest under ND-ReviewStatus" ;
             rr:predicate epo:hasAmountValue    ;
@@ -472,6 +485,7 @@ tedm:MG-langString-description-ReviewDecision_ND-ReviewStatus a rr:TriplesMap ;
         ] ;
         rdfs:comment "Review Description of MG-ReviewDecision under ND-ReviewStatus" ;
         rdfs:label "BT-789-Review" ;
+        tedm:minSDKVersion "1.13" ;
     ] ;
 .
 
@@ -510,6 +524,7 @@ tedm:MG-langString-description-ReviewRequest_ND-ReviewStatus a rr:TriplesMap ;
         ] ;
         rdfs:comment "Review Description of MG-ReviewRequest  under ND-ReviewStatus" ;
         rdfs:label "BT-789-Review" ;
+        tedm:minSDKVersion "1.13" ;
     ] ;
 .
 
@@ -545,9 +560,11 @@ tedm:MG-langString-title-ReviewDecision_ND-ReviewStatus a rr:TriplesMap ;
             ] ;
             rdfs:comment "Language of Review Title of MG-ReviewDecision under ND-ReviewStatus" ;
             rdfs:label "BT-788-Review-Language" ;
+
         ] ;
         rdfs:comment "Review Title of MG-ReviewDecision under ND-ReviewStatus" ;
         rdfs:label "BT-788-Review" ;
+        tedm:minSDKVersion "1.13" ;
     ] ;
 .
 
@@ -586,6 +603,7 @@ tedm:MG-langString-title-ReviewRequest_ND-ReviewStatus a rr:TriplesMap ;
         ] ;
         rdfs:comment "Review Title of MG-ReviewRequest  under ND-ReviewStatus" ;
         rdfs:label "BT-788-Review" ;
+        tedm:minSDKVersion "1.13" ;
     ] ;
 .
 
@@ -599,6 +617,7 @@ tedm:MG-Identifier-identifier-ReviewObject-refersToPreviousReview-ReviewDecision
         ] ;
     rr:subjectMap
         [
+            tedm:minSDKVersion "1.13" ;
             rdfs:label "ND-ReviewStatus" ;
             rml:reference "if (efbc:AppealStageCode='dec') then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(cbc:ID, ' ', '-' ), '/' , '-') || '_ReviewDecisionPreviousIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class adms:Identifier
@@ -664,6 +683,7 @@ tedm:MG-Identifier-identifier-ReviewObject-refersToPreviousReview-ReviewRequest_
         ] ;
     rr:subjectMap
         [
+            tedm:minSDKVersion "1.13" ;
             rdfs:label "ND-ReviewStatus" ;
             rml:reference "if ((efbc:AppealStageCode='req')and exists(efbc:PreviousAppealID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(cbc:ID, ' ', '-' ), '/' , '-') || '_ReviewRequestPreviousIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class adms:Identifier
@@ -735,6 +755,7 @@ tedm:MG-ReviewDecision_ND-AppealIrregularity a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            tedm:minSDKVersion "1.13" ;
             rdfs:label "BT-791-Review";
             rdfs:comment "Review Irregularity Type of MG-ReviewDecision under ND-AppealIrregularity" ;
             rr:predicate epo:hasConfirmedIrregularityType  ;
@@ -766,6 +787,7 @@ tedm:MG-ReviewRequest_ND-AppealIrregularity a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            tedm:minSDKVersion "1.13" ;
             rdfs:label "BT-791-Review";
             rdfs:comment "Review Irregularity Type of MG-ReviewRequest under ND-AppealIrregularity" ;
             rr:predicate epo:hasAllegedIrregularityType  ;
@@ -862,6 +884,7 @@ tedm:MG-ReviewDecision_ND-AppealDecision a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            tedm:minSDKVersion "1.13" ;
             rdfs:label "BT-790-Review";
             rdfs:comment "Review Decision Type of MG-ReviewDecision under ND-AppealDecision" ;
             rr:predicate epo:hasReviewDecisionType  ;

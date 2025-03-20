@@ -41,6 +41,7 @@ tedm:MG-MonetaryValue-providesContractTotalPaymentValue-ContractLotCompletionInf
         ] ;
     rr:predicateObjectMap
         [
+            tedm:minSDKVersion "1.13" ;
             rdfs:label "BT-779-Tender";
             rdfs:comment " Tender Payment Value of MG-MonetaryValue under ND-TenderAggregatedAmounts";
             rr:predicate epo:hasAmountValue ;
@@ -83,6 +84,7 @@ tedm:MG-MonetaryValue-providesContractTotalPenaltyValue-ContractLotCompletionInf
         ] ;
     rr:predicateObjectMap
         [
+            tedm:minSDKVersion "1.13" ;
             rdfs:label "BT-782-Tender";
             rdfs:comment " Tender Penalties of MG-MonetaryValue under ND-TenderAggregatedAmounts";
             rr:predicate epo:hasAmountValue ;
@@ -212,10 +214,11 @@ tedm:MG-langString-hasPaymentValueDiscrepancyJustification-ContractLotCompletion
                 ] ;
             ] ;
             rdfs:comment "Language of Tender Payment Value Additional Information of f MG-ContractLotCompletionInformation under ND-TenderAggregatedAmounts" ;
-            rdfs:label "BT-780-Tender" ;
+            rdfs:label "BT-780-Tender-language" ;
         ] ;
         rdfs:comment "Tender Payment Value Additional Information of MG-ContractLotCompletionInformation under ND-TenderAggregatedAmounts" ;
         rdfs:label "BT-780-Tender" ;
+        tedm:minSDKVersion "1.13" ;
     ] ;
 .
 
@@ -229,8 +232,8 @@ tedm:MG-Lot-describesLotCompletion-ContractLotCompletionInformation_ND-TenderAgg
         ] ;
     rr:subjectMap
         [
+            tedm:minSDKVersion "1.13" ;
             rdfs:label "ND-TenderAggregatedAmounts" ;
-#            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Lot_{../efac:TenderLot/cbc:ID}" ;
             rml:reference "if (exists(../efac:TenderLot/cbc:ID[text() = /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cbc:ID/text()]) or starts-with(efac:TenderLot/cbc:ID, 'LOT')) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Lot_' || ../efac:TenderLot/cbc:ID else null";
             rr:class epo:Lot
         ] ;
@@ -246,9 +249,9 @@ tedm:MG-LotGroup-seeAlso-ContractLotCompletionInformation_ND-TenderAggregatedAmo
         ] ;
     rr:subjectMap
         [
+            tedm:minSDKVersion "1.13" ;
             rdfs:label "ND-TenderAggregatedAmounts" ;
             rml:reference " if (exists(../efac:TenderLot/cbc:ID[text() = /*/cac:TenderingTerms/cac:LotDistribution/cac:LotsGroup/cbc:LotsGroupID/text()]) or starts-with(efac:TenderLot/cbc:ID, 'GLO')) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_LotGroup_' || ../efac:TenderLot/cbc:ID else null";
-          #   rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotGroup_{efac:TenderLot/cbc:ID}" ;
             rr:class epo:LotGroup
         ] ;
 .
