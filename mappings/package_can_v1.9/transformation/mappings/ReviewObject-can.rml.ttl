@@ -665,7 +665,7 @@ tedm:MG-Identifier-identifier-ReviewObject-refersToPreviousReview-ReviewRequest_
     rr:subjectMap
         [
             rdfs:label "ND-ReviewStatus" ;
-            rml:reference "if (efbc:AppealStageCode='req') then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(cbc:ID, ' ', '-' ), '/' , '-') || '_ReviewRequestPreviousIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if ((efbc:AppealStageCode='req')and exists(efbc:PreviousAppealID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(cbc:ID, ' ', '-' ), '/' , '-') || '_ReviewRequestPreviousIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
