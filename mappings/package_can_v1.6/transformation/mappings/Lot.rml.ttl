@@ -2121,6 +2121,8 @@ tedm:MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SelectionCriteri
         ] ;
     rr:predicateObjectMap
         [
+            tedm:minSDKVersion "1.3" ;
+            tedm:maxSDKVersion "1.11" ;
             rdfs:label "BT-747-Lot";
             rdfs:comment "Selection Criteria Type of MG-SelectionCriterion under ND-SelectionCriteria";
             rr:predicate epo:hasSelectionCriterionType ;
@@ -2130,6 +2132,22 @@ tedm:MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SelectionCriteri
                     rr:parentTriplesMap tedm:selection-criterion ;
                     rr:joinCondition [
                         rr:child "cbc:CriterionTypeCode[@listName='selection-criterion']" ;
+                        rr:parent "code.value"
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            tedm:minSDKVersion "1.12" ;
+            rdfs:label "BT-809-Lot" ;
+            rdfs:comment "Selection Criteria of MG-SelectionCriterion under ND-SelectionCriteria";
+            rr:predicate epo:hasSelectionCriterionType ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:selection-criterion" ;
+                    rr:parentTriplesMap tedm:selection-criterion ;
+                    rr:joinCondition [
+                        rr:child "cbc:TendererRequirementTypeCode" ;
                         rr:parent "code.value"
                     ];
                 ] ;
