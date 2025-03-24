@@ -899,3 +899,42 @@ tedm:MG-ReviewDecision_ND-AppealDecision a rr:TriplesMap ;
                 ] ;
         ] ;
 .
+
+tedm:MG-langString-hasWithdrawalReason-ReviewRequest_ND-ReviewStatus a rr:TriplesMap ;
+   rdfs:label "MG-ReviewRequest" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation/efbc:WithdrawnAppealReasons" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rr:class epo:ReviewRequest ;
+        rdfs:label "ND-ReviewStatus" ;
+        rml:reference "if (../efbc:AppealStageCode='req') then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ReviewRequest_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw') else null" ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate   epo:hasWithdrawalReason ;
+        rr:objectMap [
+            rml:reference "." ;
+            rml:languageMap [
+                    fnml:functionValue [
+                    rr:predicateObjectMap [
+                        rr:predicate idlab-fn:str ;
+                        rr:objectMap [
+                            rml:reference "@languageID" ;
+                        ] ;
+                    ] ;
+                    rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+                    rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+                    rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+                    rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+                ] ;
+            ] ;
+            rdfs:comment "Language of Review Request Withdrawn Reasons of MG-ReviewRequest under ND-ReviewStatus" ;
+            rdfs:label "BT-798-Review-Language" ;
+        ] ;
+        rdfs:comment "Review Request Withdrawn Reasons of MG-Reviewrequest under ND-ReviewStatus" ;
+        rdfs:label "BT-798-Review" ;
+        tedm:minSDKVersion "1.13" ;
+    ] ;
+.
