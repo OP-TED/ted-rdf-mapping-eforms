@@ -78,6 +78,7 @@ tedm:MG-AccessTerm_ND-PartProcurementDocument a rr:TriplesMap ;
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_AccessTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:AccessTerm ;
         ] ;
+    # BT-15-Part is in the relevant versioned files
     rr:predicateObjectMap
         [
             rr:predicate epo:refersToPlannedPart ;
@@ -120,18 +121,6 @@ tedm:MG-AccessTerm_ND-PartProcurementDocument a rr:TriplesMap ;
                         rr:child "cbc:DocumentTypeCode" ;
                         rr:parent "code.value" ;
                     ] ;
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-15-Part" ;
-            rdfs:comment "Documents URL MG-AccessTerm under ND-PartProcurementDocument" ;
-            rr:predicate epo:hasPublicAccessURL ;
-            rr:objectMap
-                [
-                    rml:reference "cac:Attachment[../cbc:DocumentType/text()='non-restricted-document']/cac:ExternalReference/cbc:URI" ;
-                    rr:datatype xsd:anyURI ;
-
                 ] ;
         ] ;
      rr:predicateObjectMap
