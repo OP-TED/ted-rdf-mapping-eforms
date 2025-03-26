@@ -24,54 +24,40 @@
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix idlab-fn: <http://example.com/idlab/function/> .
 
-tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LateTendererInformation a rr:TriplesMap ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:TendererQualificationRequest[not(cbc:CompanyLegalFormCode)]/cac:SpecificTendererRequirement[cbc:TendererRequirementTypeCode/@listName='missing-info-submission']";
-            rml:referenceFormulation ql:XPath
-        ];
-    # rr:predicateObjectMap
-    #     [
-    #         rdfs:label "BT-772-Lot";
-    #         rdfs:comment "Late Tenderer Information of MG-SubmissionTerm under ND-LateTendererInformation";
-    #         rr:predicate epo:hasLateSubmissionInformationDescription;
-    #         rr:objectMap
-    #             [
-    #                 tedm:minSDKVersion "1.8" ;
-    #                 rdfs:label "BT-772-Lot-Language";
-    #                 rdfs:comment "Language of Late Tenderer Information of MG-SubmissionTerm under ND-LateTendererInformation";
-    #                 rml:reference "cbc:Description";
-    #                 rml:languageMap [
-    #                     fnml:functionValue [
-    #                         rr:predicateObjectMap [
-    #                             rr:predicate idlab-fn:str ;
-    #                             rr:objectMap [ rml:reference "cbc:Description/@languageID" ]
-    #                         ] ,
-    #                         tedm:idlab-fn_executes_lookup ,
-    #                         tedm:idlab-fn_inputFile_language ,
-    #                         tedm:idlab-fn_fromColumn_code ,
-    #                         tedm:idlab-fn_toColumn_code
-    #                     ]
-    #                 ] ;
-    #             ] ;
-    #     ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-771-Lot";
-            rr:predicate epo:hasLateSubmissionPermission;
-            rr:objectMap
-                [
-                    tedm:minSDKVersion "1.8" ;
-                    rdfs:label "at-voc:missing-info-submission" ;
-                    rr:parentTriplesMap tedm:missing-info-submission ;
-                    rr:joinCondition [
-                        rr:child "cbc:TendererRequirementTypeCode";
-                        rr:parent "code.value" ;
-                    ] ;
-                ] ;
-        ]
-.
+# this is just here for the language mapping, which has been refactored to an independent TMap below
+# tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LateTendererInformation a rr:TriplesMap ;
+#     rml:logicalSource
+#         [
+#             rml:source "data/source.xml" ;
+#             rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:TendererQualificationRequest[not(cbc:CompanyLegalFormCode)]/cac:SpecificTendererRequirement[cbc:TendererRequirementTypeCode/@listName='missing-info-submission']";
+#             rml:referenceFormulation ql:XPath
+#         ];
+#     rr:predicateObjectMap
+#         [
+#             rdfs:label "BT-772-Lot";
+#             rdfs:comment "Late Tenderer Information of MG-SubmissionTerm under ND-LateTendererInformation";
+#             rr:predicate epo:hasLateSubmissionInformationDescription;
+#             rr:objectMap
+#                 [
+#                     tedm:minSDKVersion "1.8" ;
+#                     rdfs:label "BT-772-Lot-Language";
+#                     rdfs:comment "Language of Late Tenderer Information of MG-SubmissionTerm under ND-LateTendererInformation";
+#                     rml:reference "cbc:Description";
+#                     rml:languageMap [
+#                         fnml:functionValue [
+#                             rr:predicateObjectMap [
+#                                 rr:predicate idlab-fn:str ;
+#                                 rr:objectMap [ rml:reference "cbc:Description/@languageID" ]
+#                             ] ,
+#                             tedm:idlab-fn_executes_lookup ,
+#                             tedm:idlab-fn_inputFile_language ,
+#                             tedm:idlab-fn_fromColumn_code ,
+#                             tedm:idlab-fn_toColumn_code
+#                         ]
+#                     ] ;
+#                 ] ;
+#         ] ;
+# .
 
 tedm:MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotProcurementDocument a rr:TriplesMap ;
     rml:logicalSource
