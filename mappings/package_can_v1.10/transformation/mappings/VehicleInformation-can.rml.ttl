@@ -117,50 +117,7 @@ tedm:MG-VehicleInformation_ND-ProcurementStatistics a rr:TriplesMap ;
         ];
 .
 
-tedm:MG-VehicleInformation_ND-ProcurementDetailsLotResult a rr:TriplesMap ;
-    rdfs:label "MG-VehicleInformation";
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:StrategicProcurement/efac:StrategicProcurementInformation/efac:ProcurementDetails" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-ProcurementDetailsLotResult" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_VehicleInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
-            rr:class epo:VehicleInformation
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "ND-StrategicProcurementInformationLotResult";
-            rr:predicate epo:concernsGreenProcurement ;
-            rr:objectMap
-                [
-                   rr:parentTriplesMap tedm:MG-GreenProcurement-concernsGreenProcurement-VehicleInformation_ND-StrategicProcurementLotResult ;
-                   rr:joinCondition [
-                        rr:child "path(..)";
-                        rr:parent "path(.)";
-                    ];
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            tedm:minSDKVersion "1.9.1" ;
-            rdfs:label "BT-723-LotResult";
-            rdfs:comment "VehicleCategory of MG-VehicleInformation under ND-StrategicProcurementInformationLotResult";
-            rr:predicate epo:specifiesCleanVehicleDirectiveVehicleCategory ;
-            rr:objectMap
-                [
-                    rdfs:label "at-voc:vehicle-category" ;
-                    rr:parentTriplesMap tedm:vehicle-category ;
-                    rr:joinCondition [
-                        rr:child "efbc:AssetCategoryCode" ;
-                        rr:parent "code.value" ;
-                    ] ;
-                ] ;
-        ] ;
-.
+# VERINFO: tedm:MG-VehicleInformation_ND-ProcurementDetailsLotResult is in versioned files due to BT-723-LotResult
 
 tedm:MG-VehicleInformation-seeAlso-LotAwardOutcome_ND-StrategicProcurementInformationLotResult  a rr:TriplesMap ;
     rdfs:label "MG-VehicleInformation";
