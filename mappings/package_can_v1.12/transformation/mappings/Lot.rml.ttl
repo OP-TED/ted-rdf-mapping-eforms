@@ -1931,10 +1931,10 @@ tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-NonEsubmission a rr:Tri
                     ] ;
                 ] ;
         ];
+    # VERINFO: BT-745-Lot language-only TriplesMap is in versioned files
+    # the commented out code below is here for reference in case the dedicated language-only TriplesMap is ever reverted
     # rr:predicateObjectMap
     #     [
-    #         # Differences across versions have no functional effect on this mapping
-    #         # VERINFO: SDK v1.8+ from 1.3-1.7 contain only node name change, along with introduction of Language attribute and other mapping-irrelevant changes
     #         rdfs:label "BT-745-Lot";
     #         rdfs:comment "Submission Nonelectronic Description of MG-SubmissionTerm under ND-NonEsubmission (v1.8+), ND-NoESubmission (v1.3-1.7)";
     #         rr:predicate epo:hasNonElectronicSubmissionDescription ;
@@ -5322,43 +5322,6 @@ tedm:MG-langString-hasNonAccessibilityCriterionJustification-StrategicProcuremen
     rdfs:label "BT-755-Lot" ;
   ] ;
   rdfs:label "MG-StrategicProcurement" .
-
-tedm:MG-langString-hasNonElectronicSubmissionDescription-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-NonEsubmission a rr:TriplesMap ;
-  rml:logicalSource [
-    rml:source "data/source.xml" ;
-    rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:ProcessJustification/cbc:Description" ;
-    rml:referenceFormulation ql:XPath ;
-  ] ;
-  rr:subjectMap [
-    rr:class epo-not:SubmissionTerm ;
-    rdfs:label "ND-NonEsubmission" ;
-    rml:reference "'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_SubmissionTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../../..)) || '?response_type=raw')" ;
-  ] ;
-  rr:predicateObjectMap [
-    rr:predicate epo-not:hasNonElectronicSubmissionDescription ;
-    rr:objectMap [
-      rml:reference "." ;
-      rml:languageMap [
-        fnml:functionValue [
-          rr:predicateObjectMap [
-            rr:predicate idlab-fn:str ;
-            rr:objectMap [
-              rml:reference "@languageID" ;
-            ] ;
-          ] ;
-          rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
-          rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
-          rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
-          rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
-        ] ;
-      ] ;
-      rdfs:comment "Language of Submission Nonelectronic Description of MG-SubmissionTerm under ND-NonEsubmission" ;
-      rdfs:label "BT-745-Lot-Language" ;
-    ] ;
-    rdfs:comment "Submission Nonelectronic Description of MG-SubmissionTerm under ND-NonEsubmission (v1.8+), ND-NoESubmission (v1.3-1.7)" ;
-    rdfs:label "BT-745-Lot" ;
-  ] ;
-  rdfs:label "MG-SubmissionTerm" .
 
 tedm:MG-langString-hasOpeningDescription-OpeningTerm-isSubjectToLotSpecificTerm-Lot_ND-PublicOpening a rr:TriplesMap ;
   rml:logicalSource [
