@@ -25,8 +25,8 @@
 @prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
 
 tedm:MG-LotAwardOutcome_ND-LotResult  a rr:TriplesMap ;
-  rdfs:label "MG-LotAwardOutcome";
-       rml:logicalSource
+    rdfs:label "MG-LotAwardOutcome";
+    rml:logicalSource
         [
             rml:source "data/source.xml" ;
             rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult" ;
@@ -96,7 +96,6 @@ tedm:MG-LotAwardOutcome_ND-LotResult  a rr:TriplesMap ;
                     ];
                 ] ;
         ];
-
      rr:predicateObjectMap
         [
             rdfs:label "BT-709-LotResult";
@@ -114,7 +113,7 @@ tedm:MG-LotAwardOutcome_ND-LotResult  a rr:TriplesMap ;
 .
 
 tedm:MG-MonetaryValue-hasApproximateFrameworkAgreementValue-LotAwardOutcome_ND-LotResultFAValues  a rr:TriplesMap ;
-  rdfs:label "MG-MonetaryValue";
+    rdfs:label "MG-MonetaryValue";
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -156,23 +155,23 @@ tedm:MG-MonetaryValue-hasApproximateFrameworkAgreementValue-LotAwardOutcome_ND-L
                     ] ;
                 ] ;
         ] ;
-    .
+.
 
 tedm:MG-MonetaryValue-hasFrameworkAgreementMaximumValue-LotAwardOutcome_ND-LotResultFAValues  a rr:TriplesMap ;
-  rdfs:label "MG-MonetaryValue";
+    rdfs:label "MG-MonetaryValue";
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
             rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:FrameworkAgreementValues" ;
             rml:referenceFormulation ql:XPath
         ] ;
-   rr:subjectMap
+    rr:subjectMap
         [
             rdfs:label "ND-LotResultFAValues";
             rml:reference "if (exists(cbc:MaximumValueAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_FrameworkAgreementMaximumMonetaryValue_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(.)) || '?response_type=raw') else null" ;
             rr:class epo:MonetaryValue
         ] ;
-   rr:predicateObjectMap
+    rr:predicateObjectMap
         [
             rdfs:label "BT-709-LotResult" ;
             rdfs:comment "Framework Maximum Value of MG-MonetaryValue under ND-LotResultFAValues" ;
@@ -198,10 +197,11 @@ tedm:MG-MonetaryValue-hasFrameworkAgreementMaximumValue-LotAwardOutcome_ND-LotRe
                     ] ;
                 ] ;
         ] ;
-    .
+.
+
 tedm:MG-LotAwardOutcome-summarisesInformationForAwardOutcome-SubmissionStatisticalInformation_ND-LotResult a rr:TriplesMap ;
-  rdfs:label "MG-LotAwardOutcome";
-       rml:logicalSource
+    rdfs:label "MG-LotAwardOutcome";
+    rml:logicalSource
         [
             rml:source "data/source.xml" ;
             rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult" ;
@@ -213,11 +213,11 @@ tedm:MG-LotAwardOutcome-summarisesInformationForAwardOutcome-SubmissionStatistic
             rml:reference "if(exists(cbc:LowerTenderAmount) or exists(cbc:HigherTenderAmount) or exists(efac:ReceivedSubmissionsStatistics)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_LotAwardOutcome_' || cbc:ID else null";
             rr:class epo:LotAwardOutcome
         ] ;
-    .
+.
 
 tedm:MG-LotAwardOutcome_ND-LotResultTenderReference  a rr:TriplesMap ;
-  rdfs:label "MG-LotAwardOutcome";
-       rml:logicalSource
+    rdfs:label "MG-LotAwardOutcome";
+    rml:logicalSource
         [
             rml:source "data/source.xml" ;
             rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:LotTender" ;
@@ -229,7 +229,7 @@ tedm:MG-LotAwardOutcome_ND-LotResultTenderReference  a rr:TriplesMap ;
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotAwardOutcome_{../cbc:ID}" ;
             rr:class epo:LotAwardOutcome
         ] ;
-     rr:predicateObjectMap
+    rr:predicateObjectMap
         [
             # Differences across versions have no functional effect on this mapping even though different iterators can be interpreted
             # VERINFO: SDK v1.8 onwards contain node change yielding the same effective XPaths
@@ -239,7 +239,7 @@ tedm:MG-LotAwardOutcome_ND-LotResultTenderReference  a rr:TriplesMap ;
             rr:objectMap
                 [
                    rr:parentTriplesMap tedm:MG-TenderAwardOutcome-comprisesTenderAwardOutcome-LotAwardOutcome_ND-LotResultTenderReference ;
-                    rr:joinCondition[
+                    rr:joinCondition [
                         rr:child "path(.)";
                         rr:parent "path(.)"
                     ];
@@ -248,8 +248,8 @@ tedm:MG-LotAwardOutcome_ND-LotResultTenderReference  a rr:TriplesMap ;
 .
 
 tedm:MG-LotAwardOutcome_ND-StrategicProcurementLotResult  a rr:TriplesMap ;
-  rdfs:label "MG-LotAwardOutcome";
-       rml:logicalSource
+    rdfs:label "MG-LotAwardOutcome";
+    rml:logicalSource
         [
             rml:source "data/source.xml" ;
             rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:StrategicProcurement/efac:StrategicProcurementInformation" ;
@@ -267,18 +267,34 @@ tedm:MG-LotAwardOutcome_ND-StrategicProcurementLotResult  a rr:TriplesMap ;
             rr:predicate rdfs:seeAlso ;
             rr:objectMap
                 [
-                   rr:parentTriplesMap tedm:MG-VehicleInformation-seeAlso-LotAwardOutcome_ND-StrategicProcurementInformationLotResult ;
-                    rr:joinCondition[
+                    rr:parentTriplesMap tedm:MG-VehicleInformation-seeAlso-LotAwardOutcome_ND-StrategicProcurementInformationLotResult ;
+                    rr:joinCondition [
                         rr:child "path(.)";
                         rr:parent "path(.)"
                     ];
                 ] ;
         ] ;
-    .
+.
 
-  tedm:MG-LotAwardOutcome_ND-FinancingParty  a rr:TriplesMap ;
-  rdfs:label "MG-LotAwardOutcome";
-       rml:logicalSource
+tedm:MG-VehicleInformation-seeAlso-LotAwardOutcome_ND-StrategicProcurementInformationLotResult  a rr:TriplesMap ;
+    rdfs:label "MG-VehicleInformation";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:StrategicProcurement/efac:StrategicProcurementInformation" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ProcurementStatistics" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_VehicleInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:VehicleInformation
+        ] ;
+.
+
+tedm:MG-LotAwardOutcome_ND-FinancingParty  a rr:TriplesMap ;
+    rdfs:label "MG-LotAwardOutcome";
+    rml:logicalSource
         [
             rml:source "data/source.xml" ;
             rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/cac:FinancingParty" ;
@@ -290,14 +306,14 @@ tedm:MG-LotAwardOutcome_ND-StrategicProcurementLotResult  a rr:TriplesMap ;
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotAwardOutcome_{../cbc:ID}" ;
             rr:class epo:LotAwardOutcome
         ] ;
-     rr:predicateObjectMap
+    rr:predicateObjectMap
         [
             rdfs:comment "ND-FinancingParty of MG-LotAwardOutcome, this relationship will be represented differently in future EPO versions" ;
             rr:predicate rdfs:seeAlso ;
             rr:objectMap
                 [
                    rr:parentTriplesMap tedm:MG-BudgetProvider-seeAlso-LotAwardOutcome_ND-FinancingParty ;
-                    rr:joinCondition[
+                    rr:joinCondition [
                         rr:child "path(.)";
                         rr:parent "path(.)"
                     ];
@@ -325,13 +341,13 @@ tedm:MG-LotAwardOutcome_ND-BuyerReviewComplainants  a rr:TriplesMap ;
             rr:objectMap
                 [
                    rr:parentTriplesMap tedm:MG-ReviewRequestSummary-seeAlso-LotAwardOutcome_ND-BuyerReviewComplainants ;
-                    rr:joinCondition[
+                    rr:joinCondition [
                         rr:child "path(.)";
                         rr:parent "path(.)"
                     ];
                 ] ;
         ] ;
-    .
+.
 
 tedm:MG-LotAwardOutcome-comprisesAwardOutcome-AwardDecision-LotResult a rr:TriplesMap ;
     rdfs:label "MG-LotAwardOutcome" ;
@@ -347,11 +363,11 @@ tedm:MG-LotAwardOutcome-comprisesAwardOutcome-AwardDecision-LotResult a rr:Tripl
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotAwardOutcome_{cbc:ID}" ;
             rr:class epo:LotAwardOutcome
         ] ;
-    .
+.
 
 tedm:MG-LotAwardOutcome_ND-PayerParty a rr:TriplesMap ;
-  rdfs:label "MG-LotAwardOutcome";
-       rml:logicalSource
+    rdfs:label "MG-LotAwardOutcome";
+    rml:logicalSource
         [
             rml:source "data/source.xml" ;
             rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/cac:PayerParty" ;
@@ -363,16 +379,16 @@ tedm:MG-LotAwardOutcome_ND-PayerParty a rr:TriplesMap ;
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotAwardOutcome_{../cbc:ID}" ;
             rr:class epo:LotAwardOutcome
         ] ;
-     rr:predicateObjectMap
+    rr:predicateObjectMap
         [
             rr:predicate rdfs:seeAlso ;
             rr:objectMap
                 [
                    rr:parentTriplesMap tedm:MG-PaymentExecutor-seeAlso-LotAwardOutcome_ND-PayerParty ;
-                    rr:joinCondition[
+                    rr:joinCondition [
                         rr:child "path(.)";
                         rr:parent "path(.)"
                     ];
                 ] ;
         ] ;
-    .
+.

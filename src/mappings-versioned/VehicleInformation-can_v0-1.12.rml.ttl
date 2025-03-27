@@ -120,3 +120,48 @@ tedm:MG-VehicleInformation_ND-ProcurementStatistics a rr:TriplesMap ;
                 ] ;
         ];
 .
+
+tedm:MG-VehicleInformation_ND-StrategicProcurementInformationLotResult a rr:TriplesMap ;
+    rdfs:label "MG-VehicleInformation" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:StrategicProcurement/efac:StrategicProcurementInformation" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-StrategicProcurementInformationLotResult" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_VehicleInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:VehicleInformation
+        ] ;            
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-735-LotResult";
+            rdfs:comment "CVD Contract Type of MG-VehicleInformation under ND-StrategicProcurementInformationLotResult";
+            rr:predicate epo:specifiesCleanVehicleDirectiveContractType  ;
+            rr:objectMap
+                [
+                    tedm:maxSDKVersion "1.12" ;
+                    rdfs:label "at-voc:cvd-contract-type" ;
+                    rr:parentTriplesMap tedm:cvd-contract-type ;
+                    rr:joinCondition [
+                        rr:child "efbc:ProcurementCategoryCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-StrategicProcurementInformationLotResult";
+            rr:predicate epo:concernsGreenProcurement ;
+            rr:objectMap
+                [
+                   rr:parentTriplesMap tedm:MG-GreenProcurement-concernsGreenProcurement-VehicleInformation_ND-StrategicProcurementLotResult ;
+                   rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(.)";
+                    ];
+                ] ;
+        ] ;        
+.
