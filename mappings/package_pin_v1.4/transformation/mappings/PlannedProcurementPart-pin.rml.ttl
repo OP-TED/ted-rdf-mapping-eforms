@@ -870,12 +870,16 @@ tedm:MG-ContractTerm-foreseesContractSpecificTerm-ProcurementObject-foreseesProc
         ];
 .
 
+tedm:MG-ContractTerm-foreseesContractSpecificTerm-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartAdditionalNature owl:sameAs tedm:MG-ContractTerm-foreseesContractSpecificTerm-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartContractAdditionalNature .
+tedm:MG-ContractTerm-foreseesContractSpecificTerm-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartProcurementScope owl:sameAs tedm:MG-ContractTerm-foreseesContractSpecificTerm-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartContractAdditionalNature .
 tedm:MG-ContractTerm-foreseesContractSpecificTerm-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartContractAdditionalNature a rr:TriplesMap ;
     rdfs:label "MG-ContractTerm" ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
             rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:ProcurementProject/cac:ProcurementAdditionalType[cbc:ProcurementTypeCode/@listName='contract-nature']" ;
+            # the newer XPath (v1.8+) does _not_ cover for all SDK versions up to v1.13
+            # rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:ProcurementProject/cac:ProcurementAdditionalType[cbc:ProcurementTypeCode/@listName='contract-nature']/cbc:ProcurementTypeCode" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -887,10 +891,12 @@ tedm:MG-ContractTerm-foreseesContractSpecificTerm-ProcurementObject-foreseesProc
     rr:predicateObjectMap
         [
             rdfs:label "BT-531-Part (value)" ;
-            rdfs:comment "Additional Nature (different from Main) of MG-ContractTerm under ND-PartContractAdditionalNature" ;
+            rdfs:comment "Additional Nature (different from Main) of MG-ContractTerm under ND-PartContractAdditionalNature (v1.8+), ND-PartProcurementScope (v1.4-1.7), ND-PartAdditionalNature (v1.3)" ;
             rr:predicate epo:hasAdditionalContractNature ;
             rr:objectMap
                 [
+                    # VERINFO: SDK v1.3-v1.4 contains only rel XPath change within the same abs XPath due to node change, along with repeatable=true and other mapping-irrelevant changes such as node ID
+                    # VERINFO: SDK v1.7-v1.8 contains what looks like a stylistic XPath change (but is in effect backwards-incompatible), along with repeatable=false and other mapping-irrelevant changes
                     rdfs:label "at-voc:contract-nature" ;
                     rr:parentTriplesMap tedm:contract-nature ;
                     rr:joinCondition [
