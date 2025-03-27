@@ -3715,31 +3715,14 @@ rdfs:label  "MG-StrategicProcurement";
 .
 
 tedm:MG-GreenProcurement-fulfillsStrategicProcurement-Lot_ND-StrategicProcurementLot a rr:TriplesMap;
-rdfs:label  "MG-GreenProcurement";
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:StrategicProcurement";
-            rml:referenceFormulation ql:XPath
-        ];
+    rdfs:label "MG-GreenProcurement";
     rr:subjectMap
         [
             rdfs:label "ND-StrategicProcurementLot";
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_GreenProcurement_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:GreenProcurement
         ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-717-Lot";
-            rdfs:comment "CleanVehiclesDirective of MG-GreenProcurement under ND-StrategicProcurementLot";
-            rr:predicate epo:usesCleanVehicleDirective ;
-            rr:objectMap
-                [
-                    tedm:minSDKVersion "1.9.1" ;
-                    rml:reference "efbc:ApplicableLegalBasis";
-                    rr:datatype xsd:boolean
-                ] ;
-        ]
+        # VERINFO: BT-717-Lot is in versioned files
 .
 
 tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotECatalog a rr:TriplesMap ;
