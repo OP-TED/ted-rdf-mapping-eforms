@@ -2726,39 +2726,14 @@ tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LateTendererInformation
 
 tedm:MG-ParticipationCondition-specifiesProcurementCriterion-Lot_ND-LotReservedParticipation a rr:TriplesMap ;
     rdfs:label "MG-ParticipationCondition";
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:TendererQualificationRequest[not(cbc:CompanyLegalFormCode)][not(cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode[@listName='missing-info-submission'])]/cac:SpecificTendererRequirement[cbc:TendererRequirementTypeCode/@listName='reserved-procurement']";
-            rml:referenceFormulation ql:XPath
-        ];
     rr:subjectMap
         [
             rdfs:label  "ND-LotReservedParticipation";
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ParticipationCondition_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
             rr:class epo:ParticipationCondition
         ] ;
-    rr:predicateObjectMap
-        [
-            # Differences across versions are practically superficial and have little to no functional effect on this mapping even though different iterators can be interpreted
-            # VERINFO: SDK v1.4-1.7 from v1.3 contains only node change with stylistic XPath changes yielding the same effective XPaths, along with repeatable=false
-            # VERINFO: SDK v1.8+ contains only stylistic XPath changes yielding the same effective XPaths, along with introduction of List attribute
-            rdfs:label "BT-71-Lot";
-            rdfs:comment "Reserved Participation of MG-ParticipationCondition under ND-LotReservedProcurement (v1.4+), ND-LotReservedParticipation (v1.3)";
-            rr:predicate epo:hasReservedProcurement ;
-
-            rr:objectMap
-                [
-                    tedm:minSDKVersion "1.8" ;
-                    rdfs:label "at-voc:reserved-procurement" ;
-                    rr:parentTriplesMap tedm:reserved-procurement ;
-                    rr:joinCondition [
-                        rr:child "cbc:TendererRequirementTypeCode";
-                        rr:parent "code.value" ;
-                    ] ;
-                ] ;
-        ];
-  .
+        # VERINFO: BT-71-Lot is in versioned files
+.
 
 tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingTerms a rr:TriplesMap ;
     rdfs:label "MG-SubmissionTerm";

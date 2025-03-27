@@ -47,3 +47,29 @@ tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LateTendererInformation
                 ] ;
         ]
 .
+
+tedm:MG-ParticipationCondition-specifiesProcurementCriterion-Lot_ND-LotReservedParticipation a rr:TriplesMap ;
+    rdfs:label "MG-ParticipationCondition";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:TendererQualificationRequest[not(cbc:CompanyLegalFormCode)][not(cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode[@listName='missing-info-submission'])][not(cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode[@listName='selection-criteria-source'])]/cac:SpecificTendererRequirement[cbc:TendererRequirementTypeCode/@listName='reserved-procurement']";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-71-Lot";
+            rdfs:comment "Reserved Participation of MG-ParticipationCondition under ND-LotReservedProcurement (v1.4+), ND-LotReservedParticipation (v1.3)";
+            rr:predicate epo:hasReservedProcurement ;
+            rr:objectMap
+                [
+                    tedm:minSDKVersion "1.12" ;
+                    rdfs:label "at-voc:reserved-procurement" ;
+                    rr:parentTriplesMap tedm:reserved-procurement ;
+                    rr:joinCondition [
+                        rr:child "cbc:TendererRequirementTypeCode";
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ];
+.
