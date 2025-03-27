@@ -70,3 +70,53 @@ tedm:MG-VehicleInformation_ND-ProcurementDetailsLotResult a rr:TriplesMap ;
                 ] ;
         ] ;
 .
+
+tedm:MG-VehicleInformation_ND-ProcurementStatistics a rr:TriplesMap ;
+    rdfs:label "MG-VehicleInformation" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:StrategicProcurement/efac:StrategicProcurementInformation/efac:ProcurementDetails/efac:StrategicProcurementStatistics" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ProcurementStatistics" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_VehicleInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
+            rr:class epo:VehicleInformation
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-156-LotResult";
+            rdfs:comment "Total Vehicle Numeric of MG-VehicleInformation under ND-ProcurementStatistics";
+            rr:predicate  epo:hasTotalVehicles  ;
+            rr:objectMap
+                [
+                    rml:reference "if (efbc:StatisticsCode='vehicles')then efbc:StatisticsNumeric else null";
+                    rr:datatype xsd:integer  ;
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-156-LotResult";
+            rdfs:comment "Clean Vehicle Numeric of MG-VehicleInformation under ND-ProcurementStatistics";
+            rr:predicate  epo:hasCleanVehicles   ;
+            rr:objectMap
+                [
+                    rml:reference "if (efbc:StatisticsCode='vehicles-clean')then efbc:StatisticsNumeric else null";
+                    rr:datatype xsd:integer  ;
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-156-LotResult";
+            rdfs:comment "Zero Emission Vehicle Numeric of MG-VehicleInformation under ND-ProcurementStatistics";
+            rr:predicate  epo:hasZeroEmissionVehicles    ;
+            rr:objectMap
+                [
+                    tedm:maxSDKVersion "1.12" ;
+                    rml:reference "if (efbc:StatisticsCode='vehicles-zero-emission') then efbc:StatisticsNumeric else null";
+                    rr:datatype xsd:integer  ;
+                ] ;
+        ];
+.
