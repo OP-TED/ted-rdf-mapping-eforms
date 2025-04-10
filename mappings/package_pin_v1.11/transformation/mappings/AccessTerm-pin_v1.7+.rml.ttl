@@ -1,4 +1,4 @@
-#--- MG-AccessTerm PIN version-specific SDK v1.3-1.6 ---
+#--- MG-AccessTerm PIN version-specific SDK v1.7+ ---
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -25,29 +25,11 @@
 @prefix idlab-fn: <http://example.com/idlab/function/> .
 
 tedm:MG-AccessTerm_ND-PartProcurementDocument a rr:TriplesMap ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-15-Part" ;
-            rdfs:comment "Documents URL MG-AccessTerm under ND-PartProcurementDocument" ;
-            rr:predicate epo:hasPublicAccessURL ;
-            rr:objectMap
-                [
-                    tedm:minSDKVersion "1.3" ;
-                    tedm:maxSDKVersion "1.6" ;
-                    rml:reference "cac:Attachment/cac:ExternalReference/cbc:URI" ;
-                    rr:datatype xsd:anyURI ;
-
-                ] ;
-        ] ;
-.
-
-tedm:MG-AccessTerm_ND-PartRestrictedDocuments owl:sameAs tedm:MG-AccessTerm_ND-PartProcurementDocument .
-tedm:MG-AccessTerm_ND-PartProcurementDocument a rr:TriplesMap ;
     rdfs:label "AccessTerm" ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:CallForTendersDocumentReference[cbc:DocumentType/text()='restricted-document']" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:CallForTendersDocumentReference" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -88,9 +70,8 @@ tedm:MG-AccessTerm_ND-PartProcurementDocument a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            tedm:maxSDKVersion "1.6" ;
             rdfs:label "BT-707-Part" ;
-            rdfs:comment "Documents Restricted Justification of MG-AccessTerm under ND-PartProcurementDocument (1.7+), ND-PartRestrictedDocuments (up to v1.6)" ;
+            rdfs:comment "Documents Restricted Justification of MG-AccessTerm under ND-PartProcurementDocument" ;
             rr:predicate epo:hasDocumentRestrictionJustification ;
             rr:objectMap
                 [
