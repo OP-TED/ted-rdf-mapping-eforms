@@ -1187,6 +1187,7 @@ tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-Pa
         ] ;
 .
 
+tedm:MG-ContractTerm-foreseesContractSpecificTerm-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartTenderingTerms owl:sameAs tedm:MG-ContractTerm-foreseesContractSpecificTerm-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartReservedExecution .
 tedm:MG-ContractTerm-foreseesContractSpecificTerm-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartReservedExecution a rr:TriplesMap ;
     rdfs:label "MG-ContractTerm" ;
     rml:logicalSource
@@ -1203,8 +1204,9 @@ tedm:MG-ContractTerm-foreseesContractSpecificTerm-ProcurementObject-foreseesProc
         ] ;
     rr:predicateObjectMap
         [
+            # VERINFO: SDK v1.9 introduces node change but the later iterator and rel XPath works in all cases
             rdfs:label "BT-736-Part";
-            rdfs:comment "Reserved Execution of MG-ContractTerm under ND-PartReservedExecution";
+            rdfs:comment "Reserved Execution of MG-ContractTerm under ND-PartReservedExecution (v1.9+), ND-PartTenderingTerms (up to v1.8)" ;
             rr:predicate epo:hasReservedExecution ;
             rr:objectMap
                 [
