@@ -1101,11 +1101,13 @@ tedm:MG-FrameworkAgreementTerm-foreseesContractSpecificTerm-ProcurementObject-fo
         ]
  .
 
+tedm:MG-DynamicPurchaseSystemTechnique-foreseesTechnique-PlannedProcurementPart_ND-PartTenderingProcess owl:sameAs tedm:MG-DynamicPurchaseSystemTechnique-foreseesTechnique-PlannedProcurementPart_ND-PartDPSContractingSystem .
 tedm:MG-DynamicPurchaseSystemTechnique-foreseesTechnique-PlannedProcurementPart_ND-PartDPSContractingSystem a rr:TriplesMap ;
     rdfs:label "MG-DynamicPurchaseSystemTechnique" ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
+            # VERINFO: SDK up to v1.8 has a different node but the iterator of the later versions works in all cases as it is more restrictive
             rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingProcess/cac:ContractingSystem[cbc:ContractingSystemTypeCode/@listName='dps-usage']";
             rml:referenceFormulation ql:XPath
         ];
@@ -1115,23 +1117,7 @@ tedm:MG-DynamicPurchaseSystemTechnique-foreseesTechnique-PlannedProcurementPart_
             rml:reference "if (exists(cbc:ContractingSystemTypeCode)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_PartDynamicPurchaseSystemTechnique_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:DynamicPurchaseSystemTechnique
         ] ;
-
-   rr:predicateObjectMap
-        [
-            tedm:minSDKVersion "1.9.1" ;
-            rdfs:label "BT-766-Part";
-            rdfs:comment "Dynamic Purchasing System of MG-DynamicPurchaseSystemTechnique under PartDPSContractingSystem " ;
-            rr:predicate epo:hasDPSScope ;
-            rr:objectMap
-                [
-                    rdfs:label "at-voc:dps-usage" ;
-                    rr:parentTriplesMap tedm:dps-usage ;
-                    rr:joinCondition [
-                        rr:child "cbc:ContractingSystemTypeCode" ;
-                        rr:parent "code.value" ;
-                    ] ;
-                ] ;
-        ]
+        # VERINFO: BT-766-Part is in versioned files
  .
 
 tedm:MG-langString-hasAdditionalInformation-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartProcurementScope a rr:TriplesMap ;
