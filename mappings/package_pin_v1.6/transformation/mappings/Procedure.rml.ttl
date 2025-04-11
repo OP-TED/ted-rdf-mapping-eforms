@@ -144,7 +144,7 @@ tedm:MG-Identifier-identifier-Procedure-refersToProcedure-Notice_ND-Root a rr:Tr
         [
             rdfs:label "MG-Identifier" ;
             rdfs:comment "Type declaration for MG-Identifier under ND-ProcedureProcurementScope" ;
-            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcedureIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(cbc:ContractFolderID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcedureIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -153,6 +153,8 @@ tedm:MG-Identifier-identifier-Procedure-refersToProcedure-Notice_ND-Root a rr:Tr
             rr:predicate skos:notation ;
             rr:objectMap
                 [
+                    rdfs:label "BT-04-notice (value)" ;
+                    rdfs:comment "Procedure Identifier of MG-Procedure under ND-Root" ;
                     rml:reference "cbc:ContractFolderID";
                 ] ;
         ] ;
