@@ -1019,13 +1019,29 @@ tedm:MG-SpecificDuration-hasPlannedDuration-PlannedProcurementPart_ND-PartDurati
         [
             rdfs:label "BT-36-Part" ;
             rdfs:comment "Duration Period of MG-SpecificDuration under ND-PartDuration" ;
-            rr:predicate time:numericDuration  ;
+            rr:predicate time:numericDuration ;
             rr:objectMap
                 [
                     rml:reference "cbc:DurationMeasure" ;
-                    rr:datatype xsd:decimal;
+                    rr:datatype xsd:decimal ;
                 ] ;
-        ];
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-36-Part (unit)";
+            rdfs:comment "Duration Period of MG-SpecificDuration under ND-PartDuration";
+            rr:predicate time:unitType ;
+            rr:objectMap
+                [
+                    rdfs:label "BT-36-Part-Unit (time:TemporalUnit)" ;
+                    rdfs:comment "Unit of Duration Period of MG-SpecificDuration under ND-PartDuration";
+                    rr:parentTriplesMap tedm:temporal_unit ;
+                    rr:joinCondition [
+                        rr:child "cbc:DurationMeasure/@unitCode" ;
+                        rr:parent "xmlElement" ;
+                    ] ;
+                ] ;
+        ] ;
 .
 
 tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartTenderingProcess a rr:TriplesMap ;
