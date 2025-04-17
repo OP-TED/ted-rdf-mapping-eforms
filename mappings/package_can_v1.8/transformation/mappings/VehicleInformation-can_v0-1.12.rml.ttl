@@ -1,4 +1,4 @@
-#--- MG-VehicleInformation version-specific SDK v0-1.12 ---
+#--- MG-VehicleInformation CAN version-specific SDK v0-1.12 ---
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -35,7 +35,7 @@ tedm:MG-VehicleInformation_ND-ProcurementDetailsLotResult a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-ProcurementDetailsLotResult" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_VehicleInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rml:reference "'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_VehicleInformation_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(if (exists(../efac:ProcurementDetails[2])) then path() else path(..)) || '?response_type=raw')" ;
             rr:class epo:VehicleInformation
         ] ;
     rr:predicateObjectMap
@@ -82,7 +82,7 @@ tedm:MG-VehicleInformation_ND-ProcurementStatistics a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-ProcurementStatistics" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_VehicleInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
+            rml:reference "'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_VehicleInformation_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(if (exists(../../efac:ProcurementDetails[2])) then path(..) else path(../..)) || '?response_type=raw')" ;
             rr:class epo:VehicleInformation
         ] ;
     rr:predicateObjectMap
@@ -92,7 +92,7 @@ tedm:MG-VehicleInformation_ND-ProcurementStatistics a rr:TriplesMap ;
             rr:predicate  epo:hasTotalVehicles  ;
             rr:objectMap
                 [
-                    rml:reference "if (efbc:StatisticsCode='vehicles')then efbc:StatisticsNumeric else null";
+                    rml:reference "if (efbc:StatisticsCode='vehicles') then efbc:StatisticsNumeric else null";
                     rr:datatype xsd:integer  ;
                 ] ;
         ];
@@ -103,7 +103,7 @@ tedm:MG-VehicleInformation_ND-ProcurementStatistics a rr:TriplesMap ;
             rr:predicate  epo:hasCleanVehicles   ;
             rr:objectMap
                 [
-                    rml:reference "if (efbc:StatisticsCode='vehicles-clean')then efbc:StatisticsNumeric else null";
+                    rml:reference "if (efbc:StatisticsCode='vehicles-clean') then efbc:StatisticsNumeric else null";
                     rr:datatype xsd:integer  ;
                 ] ;
         ];
@@ -132,9 +132,9 @@ tedm:MG-VehicleInformation_ND-StrategicProcurementInformationLotResult a rr:Trip
     rr:subjectMap
         [
             rdfs:label "ND-StrategicProcurementInformationLotResult" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_VehicleInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rml:reference "if (exists(efbc:ProcurementCategoryCode)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_VehicleInformation_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:VehicleInformation
-        ] ;            
+        ] ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-735-LotResult";
@@ -163,5 +163,5 @@ tedm:MG-VehicleInformation_ND-StrategicProcurementInformationLotResult a rr:Trip
                         rr:parent "path(.)";
                     ];
                 ] ;
-        ] ;        
+        ] ;
 .
