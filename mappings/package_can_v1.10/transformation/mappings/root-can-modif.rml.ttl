@@ -180,13 +180,13 @@ tedm:MG-ContractAmendment_ND-ContractModification a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:ContractModification" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:ContractModification/efbc:ModifiedContractIdentifier" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
         [
             rdfs:label "ND-ContractModification" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SettledContract_{efbc:ModifiedContractIdentifier}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractAmendment_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
             rr:class epo-con:ContractAmendment
         ] ;
      rr:predicateObjectMap
@@ -199,7 +199,7 @@ tedm:MG-ContractAmendment_ND-ContractModification a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:MG-Contract-amendsContract-ContractAmendment_ND-ContractModification ;
                     rr:joinCondition [
-                        rr:child "path(.)" ;
+                        rr:child "path(..)" ;
                         rr:parent "path(.)" ;
                     ] ;
                 ] ;
