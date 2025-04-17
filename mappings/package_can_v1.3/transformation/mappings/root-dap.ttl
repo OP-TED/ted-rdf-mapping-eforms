@@ -47,6 +47,40 @@ tedm:MG-DirectAwardPrenotificationNotice_ND-Root
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Notice" ;
             rr:class epo-not:DirectAwardPrenotificationNotice
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-04-notice" ;
+            rdfs:comment "Procedure Identifier of MG-Procedure-announcesProcedure-DirectAwardPrenotificationNotice under ND-Root" ;
+            rr:predicate epo:announcesProcedure ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Procedure_ND-ProcedureProcurementScope
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "MG-Lot-announcesLot-DirectAwardPrenotificationNotice" ;
+            rdfs:comment "MG-Lot-announcesLot-DirectAwardPrenotificationNotice under ND-Lot" ;
+            rr:predicate epo:announcesLot ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Lot_ND-Lot
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "MG-Lot-announcesLot-DirectAwardPrenotificationNotice";
+            rdfs:comment "MG-Lot-announcesLot-DirectAwardPrenotificationNotice of MG-LotGroupAwardInformation under ND-NoticeResult";
+            rr:predicate epo:announcesLotGroupAwardInformation ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-LotGroupAwardInformation-announcesLotGroupAwardInformation-ResultNotice_ND-NoticeResultGroupFA ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(..)";
+                    ];
+                ] ;
+        ] ;
 .
 
 ##--- Function Parameters ---
