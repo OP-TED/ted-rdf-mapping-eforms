@@ -96,7 +96,7 @@ tedm:MG-AgentInRole-announcesRole-Notice_ND-Root_CAN a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "if(/*/cbc:NoticeTypeCode/@listName='result' or /*/cbc:NoticeTypeCode/@listName='dir-awa-pre' or /*/cbc:NoticeTypeCode/@listName='cont-modif' or (/*/cbc:NoticeTypeCode/@listName='change' and exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('29 30 31 32 33 34 35 36 37 T02   25 26 27 28   38 39 40', text())]))) then /* else null" ;
+            rml:iterator "if(/*/cbc:NoticeTypeCode/@listName='result' or /*/cbc:NoticeTypeCode/@listName='dir-awa-pre' or (/*/cbc:NoticeTypeCode/@listName='change' and exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('29 30 31 32 33 34 35 36 37 T02   25 26 27 28', text())]))) then /* else null" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -108,8 +108,8 @@ tedm:MG-AgentInRole-announcesRole-Notice_ND-Root_CAN a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "OPT-210-Tenderer" ;
-            rdfs:comment "Tendering Party ID of MG-Tenderer under ND-TenderingParty" ;
+            rdfs:label "ND-TenderingParty" ;
+            rdfs:comment "Connection between SubContractor and Notice under ND-TenderingParty" ;
             rr:predicate epo:announcesRole ;
             rr:objectMap
                 [
@@ -119,7 +119,7 @@ tedm:MG-AgentInRole-announcesRole-Notice_ND-Root_CAN a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rdfs:label "ND-SubContractor" ;
-            rdfs:comment "Connection between SubContractor and ResultNotice under ND-SubContractor" ;
+            rdfs:comment "Connection between SubContractor and Notice under ND-SubContractor" ;
             rr:predicate epo:announcesRole ;
             rr:objectMap
                 [
@@ -128,8 +128,8 @@ tedm:MG-AgentInRole-announcesRole-Notice_ND-Root_CAN a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "MG-BudgetProvider-refersToRole-ResultNotice" ;
-            rdfs:comment "MG-BudgetProvider-refersToRole-ResultNotice under ND-FinancingParty" ;
+            rdfs:label "ND-FinancingParty" ;
+            rdfs:comment "Connection between FinancingParty and Notice under ND-FinancingParty" ;
             rr:predicate epo-not:announcesRole ;
             rr:objectMap
                 [
@@ -138,8 +138,8 @@ tedm:MG-AgentInRole-announcesRole-Notice_ND-Root_CAN a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "MG-PaymentExecutor-refersToRole-ResultNotice" ;
-            rdfs:comment "MG-PaymentExecutor-refersToRole-ResultNotice under ND-PayerParty" ;
+            rdfs:label "ND-PayerParty" ;
+            rdfs:comment "Connection between PayerParty and Notice under ND-PayerParty" ;
             rr:predicate epo-not:announcesRole ;
             rr:objectMap
                 [
@@ -152,7 +152,7 @@ tedm:MG-AgentInRole-refersToRole-Notice_ND-Root_CAN a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "if(/*/cbc:NoticeTypeCode/@listName='completion') then /* else null" ;
+            rml:iterator "if(/*/cbc:NoticeTypeCode/@listName='completion' or /*/cbc:NoticeTypeCode/@listName='cont-modif' or (/*/cbc:NoticeTypeCode/@listName='change' and exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('38 39 40', text())]))) then /* else null" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -172,10 +172,40 @@ tedm:MG-AgentInRole-refersToRole-Notice_ND-Root_CAN a rr:TriplesMap ;
                     rr:parentTriplesMap tedm:MG-Tenderer-announcesRole-ResultNotice_ND-TenderingParty;
                 ] ;
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-SubContractor" ;
+            rdfs:comment "Connection between SubContractor and ResultNotice under ND-SubContractor" ;
+            rr:predicate epo:refersToRole ;
+            rr:objectMap
+                [
+                   rr:parentTriplesMap tedm:MG-Subcontractor-announcesRole-ResultNotice_ND-SubContractor ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "MG-BudgetProvider-refersToRole-ResultNotice" ;
+            rdfs:comment "MG-BudgetProvider-refersToRole-ResultNotice under ND-FinancingParty" ;
+            rr:predicate epo:refersToRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-BudgetProvider-announcesRole-ResultNotice_ND-FinancingParty
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "MG-PaymentExecutor-refersToRole-ResultNotice" ;
+            rdfs:comment "MG-PaymentExecutor-refersToRole-ResultNotice under ND-PayerParty" ;
+            rr:predicate epo:refersToRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-PaymentExecutor-announcesRole-ResultNotice_ND-PayerParty
+                ] ;
+        ] ;
 .
 
 tedm:MG-ResultNotice_ND-NoticeResult a rr:TriplesMap ;
-  rdfs:label "MG-ResultNotice";
+    rdfs:label "MG-ResultNotice";
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
