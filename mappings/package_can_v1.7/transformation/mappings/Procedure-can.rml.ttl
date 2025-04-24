@@ -132,7 +132,7 @@ tedm:MG-Procedure-refersToPreviousProcedure-DirectAwardTerm-isSubjectToProcedure
     rr:subjectMap
         [
             rdfs:label "ND-DirectAward";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Procedure_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rml:reference "if (exists(cbc:Description)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Procedure_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:Procedure
         ] ;
 
@@ -201,7 +201,7 @@ tedm:MG-langString-hasJustification-DirectAwardTerm-isSubjectToProcedureSpecific
     rr:predicateObjectMap [
         rr:predicate epo-not:hasJustification ;
         rr:objectMap [
-            rml:reference "if (not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='dir-awa-tex']) and ./text() = 'unpublished')) then . else null" ;
+            rml:reference "if((exists(@languageID)) and  (not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='dir-awa-tex']) and ./text() = 'unpublished'))) then . else null" ;
             rml:languageMap [
                 fnml:functionValue [
                     rr:predicateObjectMap [

@@ -1917,6 +1917,7 @@ tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-NonEsubmission a rr:Tri
         [
             # Differences across versions have no functional effect on this mapping
             # VERINFO: SDK v1.8+ from 1.3-1.7 contain only stylistic XPath changes (removing redundant predicate), along with introduction of List attribute and other mapping-irrelevant changes
+            # VERINFO: SDK v1.12+ from 1.8-1.11 is an interesting case whereby the XPath has been reverted to its pre-1.8 incarnation
             rdfs:label "BT-19-Lot";
             rdfs:comment "Submission Nonelectronic Justification of MG-SubmissionTerm under ND-NonEsubmission";
             rr:predicate epo:hasNonElectronicSubmissionJustification ;
@@ -1930,10 +1931,10 @@ tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-NonEsubmission a rr:Tri
                     ] ;
                 ] ;
         ];
+    # VERINFO: BT-745-Lot language-only TriplesMap is in versioned files
+    # the commented out code below is here for reference in case the dedicated language-only TriplesMap is ever reverted
     # rr:predicateObjectMap
     #     [
-    #         # Differences across versions have no functional effect on this mapping
-    #         # VERINFO: SDK v1.8+ from 1.3-1.7 contain only node name change, along with introduction of Language attribute and other mapping-irrelevant changes
     #         rdfs:label "BT-745-Lot";
     #         rdfs:comment "Submission Nonelectronic Description of MG-SubmissionTerm under ND-NonEsubmission (v1.8+), ND-NoESubmission (v1.3-1.7)";
     #         rr:predicate epo:hasNonElectronicSubmissionDescription ;
@@ -2121,6 +2122,8 @@ tedm:MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SelectionCriteri
         ] ;
     rr:predicateObjectMap
         [
+            tedm:minSDKVersion "1.3" ;
+            tedm:maxSDKVersion "1.11" ;
             rdfs:label "BT-747-Lot";
             rdfs:comment "Selection Criteria Type of MG-SelectionCriterion under ND-SelectionCriteria";
             rr:predicate epo:hasSelectionCriterionType ;
@@ -2130,6 +2133,22 @@ tedm:MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SelectionCriteri
                     rr:parentTriplesMap tedm:selection-criterion ;
                     rr:joinCondition [
                         rr:child "cbc:CriterionTypeCode[@listName='selection-criterion']" ;
+                        rr:parent "code.value"
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            tedm:minSDKVersion "1.12" ;
+            rdfs:label "BT-809-Lot" ;
+            rdfs:comment "Selection Criteria of MG-SelectionCriterion under ND-SelectionCriteria";
+            rr:predicate epo:hasSelectionCriterionType ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:selection-criterion" ;
+                    rr:parentTriplesMap tedm:selection-criterion ;
+                    rr:joinCondition [
+                        rr:child "cbc:TendererRequirementTypeCode" ;
                         rr:parent "code.value"
                     ];
                 ] ;
@@ -2708,39 +2727,14 @@ tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LateTendererInformation
 
 tedm:MG-ParticipationCondition-specifiesProcurementCriterion-Lot_ND-LotReservedParticipation a rr:TriplesMap ;
     rdfs:label "MG-ParticipationCondition";
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:TendererQualificationRequest[not(cbc:CompanyLegalFormCode)][not(cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode[@listName='missing-info-submission'])]/cac:SpecificTendererRequirement[cbc:TendererRequirementTypeCode/@listName='reserved-procurement']";
-            rml:referenceFormulation ql:XPath
-        ];
     rr:subjectMap
         [
             rdfs:label  "ND-LotReservedParticipation";
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ParticipationCondition_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
             rr:class epo:ParticipationCondition
         ] ;
-    rr:predicateObjectMap
-        [
-            # Differences across versions are practically superficial and have little to no functional effect on this mapping even though different iterators can be interpreted
-            # VERINFO: SDK v1.4-1.7 from v1.3 contains only node change with stylistic XPath changes yielding the same effective XPaths, along with repeatable=false
-            # VERINFO: SDK v1.8+ contains only stylistic XPath changes yielding the same effective XPaths, along with introduction of List attribute
-            rdfs:label "BT-71-Lot";
-            rdfs:comment "Reserved Participation of MG-ParticipationCondition under ND-LotReservedProcurement (v1.4+), ND-LotReservedParticipation (v1.3)";
-            rr:predicate epo:hasReservedProcurement ;
-
-            rr:objectMap
-                [
-                    tedm:minSDKVersion "1.8" ;
-                    rdfs:label "at-voc:reserved-procurement" ;
-                    rr:parentTriplesMap tedm:reserved-procurement ;
-                    rr:joinCondition [
-                        rr:child "cbc:TendererRequirementTypeCode";
-                        rr:parent "code.value" ;
-                    ] ;
-                ] ;
-        ];
-  .
+        # VERINFO: BT-71-Lot is in versioned files
+.
 
 tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingTerms a rr:TriplesMap ;
     rdfs:label "MG-SubmissionTerm";
@@ -3722,31 +3716,14 @@ rdfs:label  "MG-StrategicProcurement";
 .
 
 tedm:MG-GreenProcurement-fulfillsStrategicProcurement-Lot_ND-StrategicProcurementLot a rr:TriplesMap;
-rdfs:label  "MG-GreenProcurement";
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:StrategicProcurement";
-            rml:referenceFormulation ql:XPath
-        ];
+    rdfs:label "MG-GreenProcurement";
     rr:subjectMap
         [
             rdfs:label "ND-StrategicProcurementLot";
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_GreenProcurement_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:GreenProcurement
         ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-717-Lot";
-            rdfs:comment "CleanVehiclesDirective of MG-GreenProcurement under ND-StrategicProcurementLot";
-            rr:predicate epo:usesCleanVehicleDirective ;
-            rr:objectMap
-                [
-                    tedm:minSDKVersion "1.9.1" ;
-                    rml:reference "efbc:ApplicableLegalBasis";
-                    rr:datatype xsd:boolean
-                ] ;
-        ]
+        # VERINFO: BT-717-Lot is in versioned files
 .
 
 tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotECatalog a rr:TriplesMap ;
@@ -4766,7 +4743,7 @@ tedm:MG-langString-description-AwardCriterion-specifiesProcurementCriterion-Lot_
   rr:predicateObjectMap [
     rr:predicate dct:description ;
     rr:objectMap [
-      rml:reference "if(not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-des']) and ./text() = 'unpublished' )) then . else null" ;
+      rml:reference "if((exists(@languageID)) and (not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-des']) and ./text() = 'unpublished' ))) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -4803,7 +4780,7 @@ tedm:MG-langString-description-EAuctionTechnique-usesTechnique-Lot_ND-AuctionTer
   rr:predicateObjectMap [
     rr:predicate dct:description ;
     rr:objectMap [
-      rml:reference "." ;
+      rml:reference "if(exists(@languageID)) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -4840,7 +4817,7 @@ tedm:MG-langString-description-ExclusionGround-specifiesProcurementCriterion-Lot
   rr:predicateObjectMap [
     rr:predicate dct:description ;
     rr:objectMap [
-      rml:reference "." ;
+      rml:reference "if(exists(@languageID)) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -4878,7 +4855,7 @@ tedm:MG-langString-description-Fund-isFundedBy-Lot_ND-Funding a rr:TriplesMap ;
     rr:predicate dct:description ;
     rr:objectMap [
       tedm:minSDKVersion "1.9.1" ;
-      rml:reference "." ;
+      rml:reference "if(exists(@languageID)) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -4915,7 +4892,7 @@ tedm:MG-langString-description-Lot_ND-LotProcurementScope a rr:TriplesMap ;
   rr:predicateObjectMap [
     rr:predicate dct:description ;
     rr:objectMap [
-      rml:reference "." ;
+      rml:reference "if(exists(@languageID)) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -4953,7 +4930,7 @@ tedm:MG-langString-description-NonDisclosureAgreementTerm-isSubjectToLotSpecific
     rr:predicate dct:description ;
     rr:objectMap [
       tedm:minSDKVersion "1.5.12" ;
-      rml:reference "." ;
+      rml:reference "if(exists(@languageID)) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -4990,7 +4967,7 @@ tedm:MG-langString-description-SecurityClearanceTerm-isSubjectToLotSpecificTerm-
   rr:predicateObjectMap [
     rr:predicate dct:description ;
     rr:objectMap [
-      rml:reference "." ;
+      rml:reference "if(exists(@languageID)) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -5027,7 +5004,7 @@ tedm:MG-langString-description-SelectionCriterion-specifiesProcurementCriterion-
   rr:predicateObjectMap [
     rr:predicate dct:description ;
     rr:objectMap [
-      rml:reference "." ;
+      rml:reference "if(exists(@languageID)) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -5064,7 +5041,7 @@ tedm:MG-langString-fullAddress-Address-definesOpeningPlace-OpeningTerm-isSubject
   rr:predicateObjectMap [
     rr:predicate locn:fullAddress ;
     rr:objectMap [
-      rml:reference "." ;
+      rml:reference "if(exists(@languageID)) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -5101,7 +5078,7 @@ tedm:MG-langString-hasAdditionalInformation-Lot_ND-LotProcurementScope a rr:Trip
   rr:predicateObjectMap [
     rr:predicate epo-not:hasAdditionalInformation ;
     rr:objectMap [
-      rml:reference "." ;
+      rml:reference "if(exists(@languageID)) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -5138,7 +5115,7 @@ tedm:MG-langString-hasAwardCriteriaEvaluationFormula-AwardEvaluationTerm-isSubje
   rr:predicateObjectMap [
     rr:predicate epo-not:hasAwardCriteriaEvaluationFormula ;
     rr:objectMap [
-      rml:reference "if(not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-com']) and ./text() = 'unpublished' )) then . else null" ;
+      rml:reference "if((exists(@languageID)) and (not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-com']) and ./text() = 'unpublished' ))) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -5175,7 +5152,7 @@ tedm:MG-langString-hasAwardCriteriaOrderJustification-AwardEvaluationTerm-isSubj
   rr:predicateObjectMap [
     rr:predicate epo-not:hasAwardCriteriaOrderJustification ;
     rr:objectMap [
-      rml:reference "if(not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-ord']) and ./text() = 'unpublished' )) then . else null" ;
+      rml:reference "if((exists(@languageID)) and (not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-ord']) and ./text() = 'unpublished' ))) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -5212,7 +5189,7 @@ tedm:MG-langString-hasBuyerCategoryDescription-FrameworkAgreementTerm-isSubjectT
   rr:predicateObjectMap [
     rr:predicate epo-not:hasBuyerCategoryDescription ;
     rr:objectMap [
-      rml:reference "." ;
+      rml:reference "if(exists(@languageID)) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -5249,7 +5226,7 @@ tedm:MG-langString-hasDurationExtensionJustification-FrameworkAgreementTerm-isSu
   rr:predicateObjectMap [
     rr:predicate epo-not:hasDurationExtensionJustification ;
     rr:objectMap [
-      rml:reference "." ;
+      rml:reference "if(exists(@languageID)) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -5286,7 +5263,7 @@ tedm:MG-langString-hasLegalFormRequirement-ContractTerm-foreseesContractSpecific
   rr:predicateObjectMap [
     rr:predicate epo-not:hasLegalFormRequirement ;
     rr:objectMap [
-      rml:reference "if (../cbc:CompanyLegalFormCode[@listName='required' and text()='true']) then . else null" ;
+      rml:reference "if((exists(@languageID)) and  (../cbc:CompanyLegalFormCode[@listName='required' and text()='true'])) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -5323,7 +5300,7 @@ tedm:MG-langString-hasNonAccessibilityCriterionJustification-StrategicProcuremen
   rr:predicateObjectMap [
     rr:predicate epo-not:hasNonAccessibilityCriterionJustification ;
     rr:objectMap [
-      rml:reference "." ;
+      rml:reference "if(exists(@languageID)) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -5346,43 +5323,6 @@ tedm:MG-langString-hasNonAccessibilityCriterionJustification-StrategicProcuremen
   ] ;
   rdfs:label "MG-StrategicProcurement" .
 
-tedm:MG-langString-hasNonElectronicSubmissionDescription-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-NonEsubmission a rr:TriplesMap ;
-  rml:logicalSource [
-    rml:source "data/source.xml" ;
-    rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:ProcessJustification/cbc:Description" ;
-    rml:referenceFormulation ql:XPath ;
-  ] ;
-  rr:subjectMap [
-    rr:class epo-not:SubmissionTerm ;
-    rdfs:label "ND-NonEsubmission" ;
-    rml:reference "'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_SubmissionTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../../..)) || '?response_type=raw')" ;
-  ] ;
-  rr:predicateObjectMap [
-    rr:predicate epo-not:hasNonElectronicSubmissionDescription ;
-    rr:objectMap [
-      rml:reference "." ;
-      rml:languageMap [
-        fnml:functionValue [
-          rr:predicateObjectMap [
-            rr:predicate idlab-fn:str ;
-            rr:objectMap [
-              rml:reference "@languageID" ;
-            ] ;
-          ] ;
-          rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
-          rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
-          rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
-          rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
-        ] ;
-      ] ;
-      rdfs:comment "Language of Submission Nonelectronic Description of MG-SubmissionTerm under ND-NonEsubmission" ;
-      rdfs:label "BT-745-Lot-Language" ;
-    ] ;
-    rdfs:comment "Submission Nonelectronic Description of MG-SubmissionTerm under ND-NonEsubmission (v1.8+), ND-NoESubmission (v1.3-1.7)" ;
-    rdfs:label "BT-745-Lot" ;
-  ] ;
-  rdfs:label "MG-SubmissionTerm" .
-
 tedm:MG-langString-hasOpeningDescription-OpeningTerm-isSubjectToLotSpecificTerm-Lot_ND-PublicOpening a rr:TriplesMap ;
   rml:logicalSource [
     rml:source "data/source.xml" ;
@@ -5397,7 +5337,7 @@ tedm:MG-langString-hasOpeningDescription-OpeningTerm-isSubjectToLotSpecificTerm-
   rr:predicateObjectMap [
     rr:predicate epo-not:hasOpeningDescription ;
     rr:objectMap [
-      rml:reference "." ;
+      rml:reference "if(exists(@languageID)) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -5434,7 +5374,7 @@ tedm:MG-langString-hasOptionsDescription-ContractTerm-foreseesContractSpecificTe
   rr:predicateObjectMap [
     rr:predicate epo-not:hasOptionsDescription ;
     rr:objectMap [
-      rml:reference "." ;
+      rml:reference "if(exists(@languageID)) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -5471,7 +5411,7 @@ tedm:MG-langString-hasPaymentArrangement-ContractTerm-foreseesContractSpecificTe
   rr:predicateObjectMap [
     rr:predicate epo-not:hasPaymentArrangement ;
     rr:objectMap [
-      rml:reference "." ;
+      rml:reference "if(exists(@languageID)) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -5509,7 +5449,7 @@ tedm:MG-langString-hasPerformanceConditions-ContractTerm-foreseesContractSpecifi
     rr:predicate epo-not:hasPerformanceConditions ;
     rr:objectMap [
       tedm:minSDKVersion "1.9.1" ;
-      rml:reference "." ;
+      rml:reference "if(exists(@languageID)) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -5546,7 +5486,7 @@ tedm:MG-langString-hasPlaceOfPerformanceAdditionalInformation-ContractTerm-fores
   rr:predicateObjectMap [
     rr:predicate epo-not:hasPlaceOfPerformanceAdditionalInformation ;
     rr:objectMap [
-      rml:reference "." ;
+      rml:reference "if(exists(@languageID)) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -5583,7 +5523,7 @@ tedm:MG-langString-hasRecurrenceDescription-Lot_ND-LotTenderingTerms a rr:Triple
   rr:predicateObjectMap [
     rr:predicate epo-not:hasRecurrenceDescription ;
     rr:objectMap [
-      rml:reference "." ;
+      rml:reference "if(exists(@languageID)) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -5620,7 +5560,7 @@ tedm:MG-langString-hasRenewalDescription-ContractTerm-foreseesContractSpecificTe
   rr:predicateObjectMap [
     rr:predicate epo-not:hasRenewalDescription ;
     rr:objectMap [
-      rml:reference "." ;
+      rml:reference "if(exists(@languageID)) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -5657,7 +5597,7 @@ tedm:MG-langString-hasReviewDeadlineInformation-ReviewTerm-isSubjectToLotSpecifi
   rr:predicateObjectMap [
     rr:predicate epo-not:hasReviewDeadlineInformation ;
     rr:objectMap [
-      rml:reference "." ;
+      rml:reference "if(exists(@languageID)) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -5694,7 +5634,7 @@ tedm:MG-langString-hasStrategicProcurementDescription-StrategicProcurement-fulfi
   rr:predicateObjectMap [
     rr:predicate epo-not:hasStrategicProcurementDescription ;
     rr:objectMap [
-      rml:reference "." ;
+      rml:reference "if(exists(@languageID)) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -5731,7 +5671,7 @@ tedm:MG-langString-prefLabel-AwardCriterion-specifiesProcurementCriterion-Lot_ND
   rr:predicateObjectMap [
     rr:predicate skos:prefLabel ;
     rr:objectMap [
-      rml:reference "if(not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-nam']) and ./text() = 'unpublished' )) then . else null" ;
+      rml:reference "if((exists(@languageID)) and (not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-nam']) and ./text() = 'unpublished' ))) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -5768,7 +5708,7 @@ tedm:MG-langString-prefLabel-SelectionCriterion-specifiesProcurementCriterion-Lo
   rr:predicateObjectMap [
     rr:predicate skos:prefLabel ;
     rr:objectMap [
-      rml:reference "." ;
+      rml:reference "if(exists(@languageID)) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -5805,7 +5745,7 @@ tedm:MG-langString-title-Lot_ND-LotProcurementScope a rr:TriplesMap ;
   rr:predicateObjectMap [
     rr:predicate dct:title ;
     rr:objectMap [
-      rml:reference "." ;
+      rml:reference "if(exists(@languageID)) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
