@@ -16,8 +16,7 @@ This repository provides mappings between [eForms SDK](https://github.com/OP-TED
 The artefacts provided in this repository are used by the [TED-SWS system](https://docs.ted.europa.eu/ODS/latest/index.html). They are provided in the [mappings](./mappings) folder and are organised in packages called [Mapping Suites](https://docs.ted.europa.eu/ODS/latest/mapping_eforms/package_structure.html).
 
 This project is under development. The current scope of this project includes the mapping of:
-- all **Competition Notices (CNs)**, including **eForms subtypes 10-24** according to **eForms SDK versions 1.3 to 1.10**
-- **Contract Award Notices (CANs)** of **eForms subtype 29** according to **eForms SDK versions 1.3 to 1.1**0, **_excluding_** the information **encoded in privacy fields** (represented by BT IDs `BT-195`, `BT-196`, `BT-197` and `BT-198`), and those that are **masked by such privacy fields**
+- all notice subtypes except X01 and X02, according to **eForms SDK versions 1.3 to 1.13**0, **_excluding_** the information **encoded in privacy fields** (represented by BT IDs `BT-195`, `BT-196`, `BT-197` and `BT-198`)
 
 The official documentation of this project [is available here](http://docs.ted.europa.eu/ted-rdf-mapping-eforms/index.html) and will be integrated into the [TED Semantic Web Service Project Documentation](https://docs.ted.europa.eu/ODS/latest/).
 
@@ -26,12 +25,13 @@ The official documentation of this project [is available here](http://docs.ted.e
 Users need only to install the following external software tools, libraries
 and/or runtimes if developing and testing the RML mapping:
 
-- Java 11+ (tested up to 17)
+- Java 11+ (tested up to 21)
 - RMLMapper-Java==v6.2.2
 
-RMLMapper is currently tied to v6.2.2 because of an [issue with conditional
-instantiation](https://github.com/RMLio/rmlmapper-java/issues/236) (currently
-fixed but yet unreleased).
+RMLMapper is currently tied to v6.2.2 because of an
+[issue with conditional
+instantiation](https://github.com/RMLio/rmlmapper-java/issues/236) (which was later
+[fixed](https://github.com/RMLio/rmlmapper-java/blob/144f9b4cb1ca3c7174f9453f28ec626996c19020/CHANGELOG.md)) and incompatibility of our rules with later versions.
 
 ## RDF URI Scheme
 
