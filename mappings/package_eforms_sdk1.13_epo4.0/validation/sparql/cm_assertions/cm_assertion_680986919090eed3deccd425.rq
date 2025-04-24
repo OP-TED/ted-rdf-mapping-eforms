@@ -1,0 +1,11 @@
+#title: BT-795-Review
+#description: The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation/cbc:FeeAmount. The expected ontology instances are epo: epo:ReviewRequest / epo:MonetaryValue / xsd:decimal .
+#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation/cbc:FeeAmount
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+	?this rdf:type epo:ReviewRequest .
+	?this epo:hasReviewRequestFee / epo:hasAmountValue ?value . 
+}

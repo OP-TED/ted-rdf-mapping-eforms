@@ -1,0 +1,12 @@
+#title: BT-200-Contract
+#description: The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:ContractModification/efac:ChangeReason/cbc:ReasonCode. The expected ontology instances are epo: epo-con:ContractModificationInformation  / at-voc:modification-justification .
+#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:ContractModification/efac:ChangeReason/cbc:ReasonCode
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX epo-con: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+	?this rdf:type epo-con:ContractModificationInformation  .
+	?this epo:hasModificationJustification ?value 
+}

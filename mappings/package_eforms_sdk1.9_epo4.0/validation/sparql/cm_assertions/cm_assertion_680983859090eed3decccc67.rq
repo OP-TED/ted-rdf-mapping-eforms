@@ -1,0 +1,12 @@
+#title: ND-PartPerformanceAddress
+#description: The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:ProcurementProject/cac:RealizedLocation/cac:Address. The expected ontology instances are epo: epo:PlannedProcurementPart / epo:ProcurementObject / epo:ContractTerm / dct:Location / locn:Address .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:ProcurementProject/cac:RealizedLocation/cac:Address
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+	?this rdf:type epo:PlannedProcurementPart .
+	?this epo:foreseesProcurementObject / epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address ?value . 
+}

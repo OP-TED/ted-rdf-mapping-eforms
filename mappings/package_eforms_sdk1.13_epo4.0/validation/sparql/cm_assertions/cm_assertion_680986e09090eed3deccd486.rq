@@ -1,0 +1,13 @@
+#title: BT-808-Review-Scheme
+#description: The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation/efac:AppealingParty/cac:Party/cac:PartyIdentification/cbc:ID/@schemeName. The expected ontology instances are epo: epo-not:ResultNotice / epo:ReviewRequester / org:Organization / adms:Identifier / rdf:PlainLiteral .
+#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation/efac:AppealingParty/cac:Party/cac:PartyIdentification/cbc:ID/@schemeName
+
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX epo-not: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+	?this rdf:type epo-not:ResultNotice .
+	?this epo:announcesRole / epo:playedBy / adms:identifier / epo:hasScheme ?value . 
+}

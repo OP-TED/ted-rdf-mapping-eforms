@@ -1,0 +1,11 @@
+#title: BT-782-Tender
+#description: The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender/efac:AggregatedAmounts/efbc:PenaltiesAmount. The expected ontology instances are epo: epo:ContractLotCompletionInformation / epo:MonetaryValue / xsd:decimal .
+#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender/efac:AggregatedAmounts/efbc:PenaltiesAmount
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+	?this rdf:type epo:ContractLotCompletionInformation .
+	?this epo:providesContractTotalPenaltyValue / epo:hasAmountValue ?value . 
+}

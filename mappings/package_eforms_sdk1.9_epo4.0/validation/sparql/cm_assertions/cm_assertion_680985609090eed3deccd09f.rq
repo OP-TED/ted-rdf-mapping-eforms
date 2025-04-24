@@ -1,0 +1,11 @@
+#title: BT-5071-Part-List
+#description: The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:ProcurementProject/cac:RealizedLocation/cac:Address/cbc:CountrySubentityCode/@listName. The expected ontology instances are epo: epo:PlannedProcurementPart / epo:ProcurementObject / epo:ContractTerm / dct:Location / at-voc:nuts .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:ProcurementProject/cac:RealizedLocation/cac:Address/cbc:CountrySubentityCode/@listName
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+	?this rdf:type epo:PlannedProcurementPart .
+	?this epo:foreseesProcurementObject / epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / epo:hasNutsCode ?value .   FILTER ( ISIRI(?value) && CONTAINS(str(?value), 'europa.eu/') ) 
+}
