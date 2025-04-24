@@ -24,12 +24,11 @@
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix idlab-fn: <http://example.com/idlab/function/> .
 @prefix person: <http://www.w3.org/ns/person#> .
-# to be copied in the appropriate mapping suite, together with all related imports, if it is the case.
-tedm:technical_mapping_cn_v19
+
+tedm:technical_mapping_cn
   a owl:Ontology ;
-  #owl:imports 	tedm:contracting_authority, tedm:object, tedm:procedure, tedm:award_of_contract, tedm:complementary_information, tedm:annexe_d1, tedm:notice;
-  dct:description "This module provides the mapping definitions for the eForm subtypes 10-24 for SDK v1.9 against ePO 4.0.0"@en ;
-  rdfs:label "TED-SWS mapping of eForm subtypes 10-24 SDK v1.9 ePO 4.0.0"@en ;
+  dct:description "This module provides the mapping definitions for the eForm subtypes 10-24, CEI and E3 against ePO 4.0.0"@en ;
+  rdfs:label "TED-SWS mapping of CN eForm ePO 4.0.0"@en ;
   dct:date "2024-02-15"^^xsd:date
 .
 
@@ -40,7 +39,7 @@ tedm:MG-CompetitionNotice_ND-Root
         [
             rml:source "data/source.xml" ;
             # this is an example of a complex multi-element condition for instantiation of a subject not suitable as a condition below the iterator
-            rml:iterator "if(/*/cbc:NoticeTypeCode/@listName='competition' or /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode=('10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24') or exists(/ContractNotice)) then /* else null" ;
+            rml:iterator "if(/*/cbc:NoticeTypeCode/@listName='competition' or (/*/cbc:NoticeTypeCode/@listName='change' and exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 CEI', text())]))) then /* else null" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -420,6 +419,19 @@ tedm:MG-Notice_ND-Root
                     rr:parentTriplesMap tedm:MG-Lot_ND-Lot
                 ] ;
         ] ;
+#    rr:predicateObjectMap
+#        [
+#            rdfs:comment "Future Notice for MG-ProcessPlanningTerm under ND-Root" ;
+#            rr:predicate epo:refersToProcedure  ;
+#            rr:objectMap
+#               [
+#                   rr:parentTriplesMap tedm:MG-Procedure-refersToProcedure-Notice_ND-Root ;
+#                    rr:joinCondition [
+#                        rr:child "path(.)" ;
+#                        rr:parent "path(.)" ;
+#                    ] ;
+#                ] ;
+#        ] ;
 .
 
 # this is an example of a composition instance

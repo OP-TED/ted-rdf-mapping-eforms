@@ -1,4 +1,4 @@
-#--- Authority table vocabularies (at-voc) ---
+#--- MG-Lot version-specific SDK v1.7+ ---
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -23,3 +23,22 @@
 @prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix idlab-fn: <http://example.com/idlab/function/> .
+
+tedm:MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotProcurementDocument a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-707-Lot";
+            rdfs:comment "Documents Restricted Justification of MG-AccessTerm under ND-LotProcurementDocument";
+            rr:predicate epo:hasDocumentRestrictionJustification  ;
+            rr:objectMap
+                [
+                    tedm:minSDKVersion "1.7" ;
+                    rdfs:label "at-voc:communication-justification" ;
+                    rr:parentTriplesMap tedm:communication-justification ;
+                    rr:joinCondition [
+                        rr:child "cbc:DocumentTypeCode";
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+.
