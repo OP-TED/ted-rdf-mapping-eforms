@@ -1,0 +1,11 @@
+#title: BT-790-Review-List
+#description: The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation/efac:AppealDecision/efbc:DecisionTypeCode/@listName. The expected ontology instances are epo: epo:ReviewDecision /  at-voc:review-decision-type .
+#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation/efac:AppealDecision/efbc:DecisionTypeCode/@listName
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+	?this rdf:type epo:ReviewDecision .
+	?this  epo:hasReviewDecisionType ?value .   FILTER ( ISIRI(?value) && CONTAINS(str(?value), 'europa.eu/') ) 
+}

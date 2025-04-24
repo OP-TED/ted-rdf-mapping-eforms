@@ -1,0 +1,11 @@
+#title: BT-797-Review
+#description: The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation/efbc:WithdrawnAppealDate. The expected ontology instances are epo: epo:ReviewRequest / xsd:date .
+#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation/efbc:WithdrawnAppealDate
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+	?this rdf:type epo:ReviewRequest .
+	?this epo:hasWithdrawalDate ?value . 
+}

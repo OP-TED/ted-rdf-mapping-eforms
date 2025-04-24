@@ -1,0 +1,11 @@
+#title: BT-793-Review-Currency
+#description: The corresponding XML element is /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation/efbc:AppealRemedyValue/@currencyID. The expected ontology instances are epo: epo:ReviewDecision / epo:MonetaryValue / at-voc:currency .
+#xpath: /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation/efbc:AppealRemedyValue/@currencyID
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+	?this rdf:type epo:ReviewDecision .
+	?this epo:hasRemedyValue / epo:hasCurrency ?value . 
+}

@@ -1,0 +1,12 @@
+#title: ND-PartMainClassification
+#description: The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:ProcurementProject/cac:MainCommodityClassification. The expected ontology instances are epo: epo:PlannedProcurementPart / epo:ProcurementObject / epo:Purpose .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:ProcurementProject/cac:MainCommodityClassification
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+	?this rdf:type epo:PlannedProcurementPart .
+	?this epo:foreseesProcurementObject  / epo:hasPurpose ?value .
+ 
+}

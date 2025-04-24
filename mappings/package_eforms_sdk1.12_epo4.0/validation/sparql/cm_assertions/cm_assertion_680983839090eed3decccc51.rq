@@ -1,0 +1,13 @@
+#title: BT-137-Part
+#description: The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cbc:ID. The expected ontology instances are epo: epo:PlannedProcurementPart / adms:Identifier / rdf:PlainLiteral .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cbc:ID
+
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+ASK WHERE { 
+	?this rdf:type epo:PlannedProcurementPart .
+	?this adms:identifier / skos:notation ?value . 
+}

@@ -1,0 +1,11 @@
+#title: BT-736-Part
+#description: The corresponding XML element is /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:ContractExecutionRequirement/cbc:ExecutionRequirementCode[@listName='reserved-execution']. The expected ontology instances are epo: epo:PlannedProcurementPart / epo:ProcurementObject / epo:ContractTerm / at-voc:applicability .
+#xpath: /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:ContractExecutionRequirement/cbc:ExecutionRequirementCode[@listName='reserved-execution']
+
+PREFIX epo: <http://data.europa.eu/a4g/ontology#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+ASK WHERE { 
+	?this rdf:type epo:PlannedProcurementPart .
+	?this epo:foreseesProcurementObject / epo:foreseesContractSpecificTerm / epo:hasReservedExecution ?value . 
+}
