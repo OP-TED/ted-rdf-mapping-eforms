@@ -432,8 +432,9 @@ tedm:MG-MonetaryValue-hasApproximateFrameworkAgreementValue-NoticeAwardInformati
         ] ;
 .
 
-tedm:MG-ResultNotice_ND-LotResult a rr:TriplesMap ;
-    rdfs:label "MG-ResultNotice" ;
+# these properties are shared among other CAN types such as DAP and cont-modif based on certain conditions
+tedm:MG-Notice_ND-LotResult a rr:TriplesMap ;
+    rdfs:label "MG-Notice" ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -442,26 +443,39 @@ tedm:MG-ResultNotice_ND-LotResult a rr:TriplesMap ;
         ] ;
     rr:subjectMap
         [
-            rdfs:label "LotResult" ;
+            rdfs:label "ND-LotResult" ;
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Notice" ;
-            # these properties are shared among other CAN types such as DAP and cont-modif
             rr:class epo:Notice
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "ND-LotResult" ;
-            rdfs:comment "AwardDecision of MG-ResultNotice under ND-LotResult" ;
+            rdfs:label "ND-LotResult (announcesAwardDecision)" ;
+            rdfs:comment "AwardDecision of MG-AwardDecision-announcesAwardDecision-Notice under ND-LotResult" ;
             rr:predicate epo:announcesAwardDecision ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:MG-AwardDecision_ND-LotResult ;
                     rr:joinCondition [
-                            rr:child "path(.)" ;
-                            rr:parent "path(.)" ;
+                    rr:child "if (/*/cbc:NoticeTypeCode/@listName = 'dir-awa-pre' or /*/cbc:NoticeTypeCode/@listName = 'result' or (/*/cbc:NoticeTypeCode/@listName = 'change' and exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('25 26 27 28 29 30 31 32 33 34 35 36 37 T02', text())]))) then path(.) else null";
+                    rr:parent "path(.)" ;
                     ] ;
                 ] ;
         ] ;
-   .
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-LotResult (refersToAwardDecision)" ;
+            rdfs:comment "AwardDecision of MG-AwardDecision-refersToAwardDecision-Notice under ND-LotResult" ;
+            rr:predicate epo:refersToAwardDecision ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-AwardDecision_ND-LotResult ;
+                    rr:joinCondition [
+                    rr:child "if (/*/cbc:NoticeTypeCode/@listName = 'cont-modif' or /*/cbc:NoticeTypeCode/@listName = 'completion' or ( */cbc:NoticeTypeCode/@listName = 'change' and exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('38 39 40', text())]))) then path(.) else null ";
+                    rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ] ;
+.
 
 tedm:MG-Subcontractor-announcesRole-ResultNotice_ND-SubContractor a rr:TriplesMap ;
     rdfs:label "MG-Subcontractor" ;
