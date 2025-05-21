@@ -90,7 +90,7 @@ tedm:MG-ChangeInformation_ND-ChangeReason  a rr:TriplesMap ;
                         rr:parent "path(.)";
                     ];
                 ] ;
-        ]  ;
+        ]   ;
 .
 
 tedm:MG-ChangeInformation_ND-Change a rr:TriplesMap ;
@@ -105,7 +105,7 @@ tedm:MG-ChangeInformation_ND-Change a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-Change";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ChangeInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(if(exists(../efac:Change[2])) then path() else path(..)) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ChangeInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
             rr:class epo:ChangeInformation
         ] ;
     # rr:predicateObjectMap
@@ -153,29 +153,7 @@ tedm:MG-ChangeInformation_ND-Change a rr:TriplesMap ;
                     rml:reference "efbc:ProcurementDocumentsChangeDate";
                     rr:datatype xsd:date ;
                 ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "ND-Changes";
-            rr:predicate epo:concernsNotice ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-Notice_ND-Root ;
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-758-notice";
-            rr:predicate epo:refersToPreviousNotice    ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-Notice-refersToPreviousNotice-ChangeInformation_ND-Changes ;
-                    rr:joinCondition [
-                        rr:child "path(..)";
-                        rr:parent "path(.)";
-                    ];
-                ] ;
-        ]   ;
+        ]
 .
 
 tedm:MG-Identifier-identifier-Notice-refersToPreviousNotice-ChangeInformation_ND-Changes a rr:TriplesMap ;
@@ -202,16 +180,16 @@ tedm:MG-Identifier-identifier-Notice-refersToPreviousNotice-ChangeInformation_ND
                     rml:reference "efbc:ChangedNoticeIdentifier";
                 ] ;
         ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-758-notice";
-            rdfs:comment "Scheme of MG-Identifier under ND-Changes";
-            rr:predicate epo:hasScheme ;
-            rr:objectMap
-                [
-                    rml:reference "efbc:ChangedNoticeIdentifier/cbc:ID/@schemeName";
-                ] ;
-        ] ;
+    # rr:predicateObjectMap
+    #     [
+    #         rdfs:label "BT-758-notice";
+    #         rdfs:comment "Scheme of MG-Identifier under ND-Changes";
+    #         rr:predicate epo:hasScheme ;
+    #         rr:objectMap
+    #             [
+    #                 rml:reference "efbc:ChangedNoticeIdentifier/@schemeName";
+    #             ] ;
+    #     ] ;
 .
 
 tedm:MG-Notice-concernsNotice-ChangeInformation_ND-Changes a rr:TriplesMap ;
@@ -273,7 +251,7 @@ tedm:MG-langString-hasChangeDescription-ChangeInformation_ND-Change a rr:Triples
   rr:subjectMap [
     rr:class epo-not:ChangeInformation ;
     rdfs:label "ND-Change" ;
-    rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ChangeInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(if(exists(../../efac:Change[2])) then path(..) else path(../..)) || '?response_type=raw')}" ;
+    rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ChangeInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
   ] ;
   rr:predicateObjectMap [
     rr:predicate epo-not:hasChangeDescription ;
