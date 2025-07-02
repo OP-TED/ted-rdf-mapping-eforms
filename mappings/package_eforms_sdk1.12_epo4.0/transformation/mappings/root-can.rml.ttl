@@ -204,8 +204,8 @@ tedm:MG-AgentInRole-refersToRole-Notice_ND-Root_CAN a rr:TriplesMap ;
         ] ;
 .
 
-tedm:MG-ResultNotice_ND-NoticeResult a rr:TriplesMap ;
-    rdfs:label "MG-ResultNotice";
+tedm:MG-Notice_ND-NoticeResult a rr:TriplesMap ;
+    rdfs:label "MG-Notice";
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -216,20 +216,33 @@ tedm:MG-ResultNotice_ND-NoticeResult a rr:TriplesMap ;
         [
             rdfs:label "NoticeResult" ;
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Notice" ;
-            # these properties are shared among other CAN types such as DAP and cont-modif
+            # these properties are shared among other CAN types such as DAP, cont-modif and compl based on certain conditions
             rr:class epo:Notice
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-161-NoticeResult,  BT-1118-NoticeResult and BT-118-NoticeResult" ;
-            rr:predicate epo-not:announcesNoticeAwardInformation  ;
+            rdfs:label "BT-161-NoticeResult, BT-1118-NoticeResult and BT-118-NoticeResult (announcesNoticeAwardInformation [result and DAP])" ;
+            rr:predicate epo:announcesNoticeAwardInformation ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-NoticeAwardInformation-announcesNoticeAwardInformation-ResultNotice;
-                         rr:joinCondition [
-                              rr:child "path(.)";
-                              rr:parent "path(.)";
-                     ] ;
+                    rr:parentTriplesMap tedm:MG-NoticeAwardInformation_ND-NoticeResult ;
+                    rr:joinCondition [
+                        rr:child "if(/*/cbc:NoticeTypeCode/@listName='result' or /*/cbc:NoticeTypeCode/@listName='dir-awa-pre' or (/*/cbc:NoticeTypeCode/@listName='change' and exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('29 30 31 32 33 34 35 36 37 T02   25 26 27 28', text())]))) then path(.) else null" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-161-NoticeResult, BT-1118-NoticeResult and BT-118-NoticeResult (refersToNoticeAwardInformation [compl and cont-modif])" ;
+            rr:predicate epo:refersToNoticeAwardInformation ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-NoticeAwardInformation_ND-NoticeResult ;
+                    rr:joinCondition [
+                        rr:child "if(/*/cbc:NoticeTypeCode/@listName='completion' or /*/cbc:NoticeTypeCode/@listName='cont-modif' or (/*/cbc:NoticeTypeCode/@listName='change' and exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('38 39 40', text())]))) then path(.) else null" ;
+                        rr:parent "path(.)" ;
+                    ] ;
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -248,7 +261,7 @@ tedm:MG-ResultNotice_ND-NoticeResult a rr:TriplesMap ;
         ] ;
 .
 
-tedm:MG-MonetaryValue-hasTotalAwardedValue-NoticeAwardInformation-announcesNoticeAwardInformation-ResultNotice a rr:TriplesMap ;
+tedm:MG-MonetaryValue-hasTotalAwardedValue-NoticeAwardInformation_ND-ResultNotice a rr:TriplesMap ;
     rdfs:label "MG-MonetaryValue";
     rml:logicalSource
         [
@@ -290,7 +303,7 @@ tedm:MG-MonetaryValue-hasTotalAwardedValue-NoticeAwardInformation-announcesNotic
         ] ;
 .
 
-tedm:MG-NoticeAwardInformation-announcesNoticeAwardInformation-ResultNotice a rr:TriplesMap ;
+tedm:MG-NoticeAwardInformation_ND-NoticeResult a rr:TriplesMap ;
     rdfs:label "MG-NoticeAwardInformation";
     rml:logicalSource
         [
@@ -301,54 +314,54 @@ tedm:MG-NoticeAwardInformation-announcesNoticeAwardInformation-ResultNotice a rr
     rr:subjectMap
         [
             rdfs:label "ND-NoticeResult" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_NoticeAwardInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rml:reference "if(exists(cbc:TotalAmount) or exists(efbc:OverallMaximumFrameworkContractsAmount) or exists(efbc:OverallApproximateFrameworkContractsAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_NoticeAwardInformation_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:NoticeAwardInformation
         ] ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-161-NoticeResult" ;
-            rdfs:comment "NoticeValue of NoticeAwardInformation under ND-NoticeResult" ;
-            rr:predicate  epo:hasTotalAwardedValue   ;
+            rdfs:comment "Notice Value of NoticeAwardInformation under ND-NoticeResult" ;
+            rr:predicate epo:hasTotalAwardedValue ;
             rr:objectMap
                 [
-               rr:parentTriplesMap tedm:MG-MonetaryValue-hasTotalAwardedValue-NoticeAwardInformation-announcesNoticeAwardInformation-ResultNotice;
+                    rr:parentTriplesMap tedm:MG-MonetaryValue-hasTotalAwardedValue-NoticeAwardInformation_ND-ResultNotice ;
                     rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(.)";
-                     ] ;
-                 ] ;
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ] ;
         ] ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-118-NoticeResult" ;
-            rdfs:comment "NoticeValue of NoticeAwardInformation under ND-NoticeResult" ;
-            rr:predicate  epo:hasMaximumFrameworkAgreementAwardedValue   ;
+            rdfs:comment "Notice Framework Maximum Value of NoticeAwardInformation under ND-NoticeResult" ;
+            rr:predicate epo:hasMaximumFrameworkAgreementAwardedValue ;
             rr:objectMap
                 [
-               rr:parentTriplesMap tedm:MG-MonetaryValue-hasMaximumFrameworkAgreementAwardedValue-NoticeAwardInformation-announcesNoticeAwardInformation-ResultNotice;
+                    rr:parentTriplesMap tedm:MG-MonetaryValue-hasMaximumFrameworkAgreementAwardedValue-NoticeAwardInformation_ND-ResultNotice ;
                     rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(.)";
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
                      ] ;
-                 ] ;
+                ] ;
         ] ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-1118-NoticeResult" ;
             rdfs:comment "NoticeFrameworkApproximateValue of NoticeAwardInformation under ND-NoticeResult" ;
-            rr:predicate  epo:hasApproximateFrameworkAgreementValue    ;
+            rr:predicate epo:hasApproximateFrameworkAgreementValue ;
             rr:objectMap
                 [
-               rr:parentTriplesMap tedm:MG-MonetaryValue-hasApproximateFrameworkAgreementValue-NoticeAwardInformation-announcesNoticeAwardInformation-ResultNotice;
+                    rr:parentTriplesMap tedm:MG-MonetaryValue-hasApproximateFrameworkAgreementValue-NoticeAwardInformation_ND-ResultNotice ;
                     rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(.)";
-                     ] ;
-                 ] ;
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ] ;
         ] ;
 .
 
-tedm:MG-MonetaryValue-hasMaximumFrameworkAgreementAwardedValue-NoticeAwardInformation-announcesNoticeAwardInformation-ResultNotice a rr:TriplesMap ;
+tedm:MG-MonetaryValue-hasMaximumFrameworkAgreementAwardedValue-NoticeAwardInformation_ND-ResultNotice a rr:TriplesMap ;
     rdfs:label "MG-MonetaryValue";
     rml:logicalSource
         [
@@ -365,18 +378,18 @@ tedm:MG-MonetaryValue-hasMaximumFrameworkAgreementAwardedValue-NoticeAwardInform
     rr:predicateObjectMap
         [
             rdfs:label "BT-118-NoticeResult" ;
-            rdfs:comment "Notice Framework Maximum Value of MonetaryValue under ND-NoticeResult" ;
-            rr:predicate  epo:hasAmountValue   ;
+            rdfs:comment "Notice Framework Maximum Value (v1.6+), Notice Framework Value (up to v1.5) of MonetaryValue under ND-NoticeResult" ;
+            rr:predicate epo:hasAmountValue ;
             rr:objectMap
                 [
-               rml:reference "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='not-max-val']) and efbc:OverallMaximumFrameworkContractsAmount/text() = '-1' )) then efbc:OverallMaximumFrameworkContractsAmount else null";
-               rr:datatype xsd:decimal;
+                    rml:reference "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='not-max-val']) and efbc:OverallMaximumFrameworkContractsAmount/text() = '-1' )) then efbc:OverallMaximumFrameworkContractsAmount else null" ;
+                    rr:datatype xsd:decimal ;
                 ] ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-118-NoticeResult-Currency";
-            rdfs:comment "Currency of Notice Framework Maximum Value of MonetaryValue under ND-NoticeResult";
+            rdfs:label "BT-118-NoticeResult-Currency" ;
+            rdfs:comment "Currency of Notice Framework Maximum Value (v1.6+), Notice Framework Value (up to v1.5) of MonetaryValue under ND-NoticeResult" ;
             rr:predicate epo:hasCurrency ;
             rr:objectMap
                 [
@@ -390,7 +403,7 @@ tedm:MG-MonetaryValue-hasMaximumFrameworkAgreementAwardedValue-NoticeAwardInform
         ] ;
 .
 
-tedm:MG-MonetaryValue-hasApproximateFrameworkAgreementValue-NoticeAwardInformation-announcesNoticeAwardInformation-ResultNotice a rr:TriplesMap ;
+tedm:MG-MonetaryValue-hasApproximateFrameworkAgreementValue-NoticeAwardInformation_ND-ResultNotice a rr:TriplesMap ;
     rdfs:label "MG-MonetaryValue";
     rml:logicalSource
         [
