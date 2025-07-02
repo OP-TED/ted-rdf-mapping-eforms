@@ -3861,24 +3861,8 @@ tedm:MG-ExclusionGround-specifiesProcurementCriterion-Lot_ND-ExclusionGrounds a 
             rdfs:label "ND-ExclusionGrounds";
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ExclusionGround_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:ExclusionGround
-
         ] ;
-   rr:predicateObjectMap
-        [
-            rdfs:label "BT-67(a)-Procedure";
-            rdfs:comment "Exclusion Grounds of MG-ExclusionGround under ND-ExclusionGrounds";
-            rr:predicate dct:type;
-            rr:objectMap
-                [
-                    rml:reference "cbc:TendererRequirementTypeCode[@listName='exclusion-ground']";
-                    rdfs:label "at-voc:criterion" ;
-                     rr:parentTriplesMap tedm:criterion ;
-                     rr:joinCondition [
-                         rr:child "cbc:TendererRequirementTypeCode[@listName='exclusion-ground']" ;
-                         rr:parent "code.value" ;
-                     ] ;
-                ] ;
-        ] ;
+# BT-67(a)-Procedure is in versioned files due to different vocabulary resource files (criterion vs. exclusion-ground v1.12+)
 #    rr:predicateObjectMap
 #         [
 #             rdfs:label "BT-67(b)-Procedure";

@@ -1,4 +1,4 @@
-#--- MG-Lot version-specific SDK v1.8-1.11 ---
+#--- MG-Lot version-specific SDK v1.12+ ---
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -182,3 +182,23 @@ tedm:MG-langString-hasLateSubmissionInformationDescription-SubmissionTerm-isSubj
         rdfs:comment "Late Tenderer Information of MG-SubmissionTerm under ND-LateTendererInformation" ;
         rdfs:label "BT-772-Lot" ;
     ] .
+
+tedm:MG-ExclusionGround-specifiesProcurementCriterion-Lot_ND-ExclusionGrounds a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-67(a)-Procedure" ;
+            rdfs:comment "Exclusion Grounds of MG-ExclusionGround under ND-ExclusionGrounds" ;
+            rr:predicate dct:type ;
+            rr:objectMap
+                [
+                    tedm:minSDKVersion "1.12" ;
+                    rml:reference "cbc:TendererRequirementTypeCode[@listName='exclusion-ground']" ;
+                    rdfs:label "at-voc:exclusion-ground" ;
+                    rr:parentTriplesMap tedm:exclusion-ground ;
+                    rr:joinCondition [
+                        rr:child "cbc:TendererRequirementTypeCode[@listName='exclusion-ground']" ;
+                        rr:parent "code.value" ;
+                     ] ;
+                ] ;
+        ] ;
+.
