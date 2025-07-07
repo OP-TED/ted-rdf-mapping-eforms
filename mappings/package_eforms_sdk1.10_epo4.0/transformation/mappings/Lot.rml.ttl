@@ -3862,7 +3862,7 @@ tedm:MG-ExclusionGround-specifiesProcurementCriterion-Lot_ND-ExclusionGrounds a 
             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ExclusionGround_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
             rr:class epo:ExclusionGround
         ] ;
-# BT-67(a)-Procedure is in versioned files due to different vocabulary resource files (criterion vs. exclusion-ground v1.12+)
+# BT-67(a)-Procedure and the lang TMap for (b) below are in versioned files due to different vocabulary resource files (criterion vs. exclusion-ground v1.12+) and changed XPath
 #    rr:predicateObjectMap
 #         [
 #             rdfs:label "BT-67(b)-Procedure";
@@ -4786,43 +4786,6 @@ tedm:MG-langString-description-EAuctionTechnique-usesTechnique-Lot_ND-AuctionTer
     rdfs:label "BT-122-Lot" ;
   ] ;
   rdfs:label "MG-EAuctionTechnique" .
-
-tedm:MG-langString-description-ExclusionGround-specifiesProcurementCriterion-Lot_ND-ExclusionGrounds a rr:TriplesMap ;
-  rml:logicalSource [
-    rml:source "data/source.xml" ;
-    rml:iterator "/*/cac:TenderingTerms/cac:TendererQualificationRequest/cac:SpecificTendererRequirement/cbc:Description" ;
-    rml:referenceFormulation ql:XPath ;
-  ] ;
-  rr:subjectMap [
-    rr:class epo-not:ExclusionGround ;
-    rdfs:label "ND-ExclusionGrounds" ;
-    rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ExclusionGround_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
-  ] ;
-  rr:predicateObjectMap [
-    rr:predicate dct:description ;
-    rr:objectMap [
-      rml:reference "." ;
-      rml:languageMap [
-        fnml:functionValue [
-          rr:predicateObjectMap [
-            rr:predicate idlab-fn:str ;
-            rr:objectMap [
-              rml:reference "@languageID" ;
-            ] ;
-          ] ;
-          rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
-          rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
-          rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
-          rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
-        ] ;
-      ] ;
-      rdfs:comment "Language of Exclusion Grounds of MG-ExclusionGround under ND-ExclusionGrounds" ;
-      rdfs:label "BT-67(b)-Procedure-Language" ;
-    ] ;
-    rdfs:comment "Exclusion Grounds of MG-ExclusionGround under ND-ExclusionGrounds" ;
-    rdfs:label "BT-67(b)-Procedure" ;
-  ] ;
-  rdfs:label "MG-ExclusionGround" .
 
 tedm:MG-langString-description-Fund-isFundedBy-Lot_ND-Funding a rr:TriplesMap ;
   rml:logicalSource [
