@@ -3847,48 +3847,6 @@ tedm:MG-ReviewTerm-isSubjectToLotSpecificTerm-Lot_ND-LotReviewTerms a rr:Triples
          ] ;
 .
 
-# this is an example of an object referred to by multiple top-level subjects (all Lots) at orthogonal XPaths
-tedm:MG-ExclusionGround-specifiesProcurementCriterion-Lot_ND-ExclusionGrounds a rr:TriplesMap ;
-    rdfs:label "MG-ExclusionGround";
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:TenderingTerms/cac:TendererQualificationRequest/cac:SpecificTendererRequirement";
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-ExclusionGrounds";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ExclusionGround_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
-            rr:class epo:ExclusionGround
-        ] ;
-# BT-67(a)-Procedure and the lang TMap for (b) below are in versioned files due to different vocabulary resource files (criterion vs. exclusion-ground v1.12+) and changed XPath
-#    rr:predicateObjectMap
-#         [
-#             rdfs:label "BT-67(b)-Procedure";
-#             rdfs:comment "Exclusion Grounds of MG-ExclusionGround under ND-ExclusionGrounds";
-#             rr:predicate dct:description;
-#             rr:objectMap
-#                 [
-#                     rdfs:label "BT-67(b)-Procedure-Language";
-#                     rdfs:comment "Language of Exclusion Grounds of MG-ExclusionGround under ND-ExclusionGrounds";
-#                     rml:reference "cbc:Description";
-#                     rml:languageMap [
-#                         fnml:functionValue [
-#                             rr:predicateObjectMap [
-#                                 rr:predicate idlab-fn:str ;
-#                                 rr:objectMap [ rml:reference "cbc:Description/@languageID" ]
-#                             ] ,
-#                             tedm:idlab-fn_executes_lookup ,
-#                             tedm:idlab-fn_inputFile_language ,
-#                             tedm:idlab-fn_fromColumn_code ,
-#                             tedm:idlab-fn_toColumn_code
-#                         ]
-#                     ] ;
-#                 ] ;
-#         ] ;
-.
-
 tedm:MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotContractAdditionalNature a rr:TriplesMap ;
     rdfs:label "MG-ContractTerm";
         rml:logicalSource

@@ -184,23 +184,60 @@ tedm:MG-langString-hasLateSubmissionInformationDescription-SubmissionTerm-isSubj
     ] .
 
 tedm:MG-ExclusionGround-specifiesProcurementCriterion-Lot_ND-ExclusionGrounds a rr:TriplesMap ;
+    rdfs:label "MG-ExclusionGround" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:TenderingTerms/cac:TendererQualificationRequest[cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode/@listName='exclusion-ground']/cac:SpecificTendererRequirement" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ExclusionGrounds" ;
+            rml:reference "if(exists(cbc:Description) or exists(cbc:TendererRequirementTypeCode)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ExclusionGround_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:ExclusionGround
+        ] ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-67(a)-Procedure" ;
-            rdfs:comment "Exclusion Grounds of MG-ExclusionGround under ND-ExclusionGrounds" ;
+            rdfs:comment "Exclusion Ground of MG-ExclusionGround under ND-ExclusionGrounds" ;
             rr:predicate dct:type ;
             rr:objectMap
                 [
                     tedm:minSDKVersion "1.12" ;
-                    rml:reference "cbc:TendererRequirementTypeCode[@listName='exclusion-ground']" ;
                     rdfs:label "at-voc:exclusion-ground" ;
                     rr:parentTriplesMap tedm:exclusion-ground ;
                     rr:joinCondition [
-                        rr:child "cbc:TendererRequirementTypeCode[@listName='exclusion-ground']" ;
+                        rr:child "cbc:TendererRequirementTypeCode" ;
                         rr:parent "code.value" ;
                      ] ;
                 ] ;
         ] ;
+# BT-67(b)-Procedure is in dedicated language TMap
+#    rr:predicateObjectMap
+#         [
+#             rdfs:label "BT-67(b)-Procedure";
+#             rdfs:comment "Exclusion Ground of MG-ExclusionGround under ND-ExclusionGrounds";
+#             rr:predicate dct:description;
+#             rr:objectMap
+#                 [
+#                     rdfs:label "BT-67(b)-Procedure-Language";
+#                     rdfs:comment "Language of Exclusion Ground of MG-ExclusionGround under ND-ExclusionGrounds";
+#                     rml:reference "cbc:Description";
+#                     rml:languageMap [
+#                         fnml:functionValue [
+#                             rr:predicateObjectMap [
+#                                 rr:predicate idlab-fn:str ;
+#                                 rr:objectMap [ rml:reference "cbc:Description/@languageID" ]
+#                             ] ,
+#                             tedm:idlab-fn_executes_lookup ,
+#                             tedm:idlab-fn_inputFile_language ,
+#                             tedm:idlab-fn_fromColumn_code ,
+#                             tedm:idlab-fn_toColumn_code
+#                         ]
+#                     ] ;
+#                 ] ;
+#         ] ;
 .
 
 tedm:MG-langString-description-ExclusionGround-specifiesProcurementCriterion-Lot_ND-ExclusionGrounds a rr:TriplesMap ;
@@ -232,10 +269,10 @@ tedm:MG-langString-description-ExclusionGround-specifiesProcurementCriterion-Lot
           rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
         ] ;
       ] ;
-      rdfs:comment "Language of Exclusion Grounds of MG-ExclusionGround under ND-ExclusionGrounds" ;
+      rdfs:comment "Language of Exclusion Ground of MG-ExclusionGround under ND-ExclusionGrounds" ;
       rdfs:label "BT-67(b)-Procedure-Language" ;
     ] ;
-    rdfs:comment "Exclusion Grounds of MG-ExclusionGround under ND-ExclusionGrounds" ;
+    rdfs:comment "Exclusion Ground of MG-ExclusionGround under ND-ExclusionGrounds" ;
     rdfs:label "BT-67(b)-Procedure" ;
   ] ;
   rdfs:label "MG-ExclusionGround" .
