@@ -24,6 +24,21 @@
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix idlab-fn: <http://example.com/idlab/function/> .
 
+tedm:MG-Lot_ND-Lot a rr:TriplesMap ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-7532-Lot and BT-752-Lot-ThresholdNumber";
+            rr:predicate epo:specifiesProcurementCriterion;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SecondStageCriterionParameter ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(../../../../../../..)" ;
+                    ] ;
+                ] ;
+        ] ;
+.
 tedm:MG-SubcontractTerm-foreseesContractSpecificTerm-Lot_ND-SubcontractingObligation a rr:TriplesMap ;
     rml:logicalSource
         [
@@ -75,8 +90,21 @@ tedm:MG-SubcontractTerm-foreseesContractSpecificTerm-Lot_ND-SubcontractingObliga
         ]
 .
 
-tedm:MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SelectionCriteria a rr:TriplesMap ;
-     rr:predicateObjectMap
+tedm:MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SecondStageCriterionParameter a rr:TriplesMap ;
+    rdfs:label "MG-SelectionCriterion" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:SelectionCriteria/efac:CriterionParameter" ;
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-SecondStageCriterionParameter" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SelectionCriterion_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:class epo:SelectionCriterion
+        ] ;
+    rr:predicateObjectMap
         [
             rdfs:label "BT-7532-Lot, BT-752-Lot (threshold)";
             rr:predicate epo:hasConstraint ;
@@ -85,7 +113,7 @@ tedm:MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SelectionCriteri
                     rr:parentTriplesMap tedm:MG-Constraint-hasConstraint-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SecondStageCriterionParameter ;
                     rr:joinCondition [
                         rr:child "path(.)";
-                        rr:parent "path(..)";
+                        rr:parent "path(.)";
                     ];
                 ] ;
         ];
@@ -98,7 +126,7 @@ tedm:MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SelectionCriteri
                 [
                     tedm:minSDKVersion "1.3" ;
                     tedm:maxSDKVersion "1.8" ;
-                    rdfs:label ":at-voc:number-weight" ;
+                    rdfs:label "at-voc:number-weight" ;
                     rr:parentTriplesMap tedm:number-weight ;
                     rr:joinCondition [
                         rr:child "efbc:ParameterCode[@listName='number-weight']" ;
