@@ -1451,7 +1451,8 @@ tedm:MG-DynamicPurchaseSystemTechnique-usesTechnique-Lot_ND-LotTenderingProcess 
     rr:subjectMap
         [
             rdfs:label "ND-LotTenderingProcess";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_DynamicPurchaseSystemTechnicalUsage_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            # INFO: forbidden in subtypes 1-6, 14-15, 19, 23-24, 28, 32, 35-40, CEI, E1-E2, E6, T01-T02
+            rml:reference "if (exists(cac:ContractingSystem/cbc:ContractingSystemTypeCode)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_DynamicPurchaseSystemTechnicalUsage_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class epo:DynamicPurchaseSystemTechnique
         ] ;
     rr:predicateObjectMap
