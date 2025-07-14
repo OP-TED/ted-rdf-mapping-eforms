@@ -108,7 +108,7 @@ tedm:AccessTerm_ND-PartTenderingTerms a rr:TriplesMap ;
         [
             rdfs:label "ND-PartTenderingTerms" ;
             rr:class epo:AccessTerm ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_AccessTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rml:reference "if(exists(cac:AdditionalInformationParty/cac:PartyIdentification/cbc:ID) or exists(cac:DocumentProviderParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_AccessTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
         ] ;
     rr:predicateObjectMap
         [
@@ -117,8 +117,8 @@ tedm:AccessTerm_ND-PartTenderingTerms a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:MG-PlannedProcurementPart-refersToPlannedPart-AccessTerm_ND-PartTenderingTerms ;
                     rr:joinCondition [
-                        rr:child "path(../..)" ;
-                        rr:parent "path(../..)" ;
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
                     ] ;
                 ] ;
         ] ;
