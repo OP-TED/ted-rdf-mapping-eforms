@@ -321,7 +321,7 @@ tedm:MG-langString-title-PlannedProcurementPart_ND-PartProcurementScope a rr:Tri
   ] ;
   rr:subjectMap [
     rr:class epo:PlannedProcurementPart ;
-    rdfs:label "ND-LotProcurementScope" ;
+    rdfs:label "ND-PartProcurementScope" ;
     rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_PlannedProcurementPart_{../../cbc:ID}" ;
   ] ;
   rr:predicateObjectMap [
@@ -359,7 +359,7 @@ tedm:MG-langString-description-PlannedProcurementPart_ND-PartProcurementScope a 
   ] ;
   rr:subjectMap [
     rr:class epo:PlannedProcurementPart ;
-    rdfs:label "ND-LotProcurementScope" ;
+    rdfs:label "ND-PartProcurementScope" ;
     rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_PlannedProcurementPart_{../../cbc:ID}" ;
   ] ;
   rr:predicateObjectMap [
@@ -398,7 +398,7 @@ tedm:MG-MonetaryValue-hasEstimatedValue-PlannedProcurementPart_ND-PartValueEstim
         ];
     rr:subjectMap
         [
-            rdfs:label "ND-LotValueEstimate ";
+            rdfs:label "ND-PartValueEstimate ";
             rml:reference "if (exists(cbc:EstimatedOverallContractAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MonetaryValuePart_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(.)) || '?response_type=raw') else null" ;
             rr:class epo:MonetaryValue;
         ] ;
@@ -407,7 +407,7 @@ tedm:MG-MonetaryValue-hasEstimatedValue-PlannedProcurementPart_ND-PartValueEstim
             rr:predicate epo:hasAmountValue ;
             rr:objectMap
                 [
-                    rdfs:label  "BT-27-Lot";
+                    rdfs:label  "BT-27-Part";
                     rdfs:comment "Estimated Value of MG-MonetaryValue under ND-PartValueEstimate" ;
                     rml:reference "cbc:EstimatedOverallContractAmount";
                     rr:datatype xsd:decimal;
@@ -415,7 +415,7 @@ tedm:MG-MonetaryValue-hasEstimatedValue-PlannedProcurementPart_ND-PartValueEstim
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-27-Lot-Currency" ;
+            rdfs:label "BT-27-Part-Currency" ;
             rdfs:comment "Currency of Estimated Value of MG-MonetaryValue under ND-PartValueEstimate" ;
             rr:predicate epo:hasCurrency ;
             rr:objectMap
@@ -449,7 +449,7 @@ tedm:MG-Purpose-hasPurpose-ProcurementObject-foreseesProcurementObject-PlannedPr
             rr:predicate epo:hasMainClassification ;
             rr:objectMap
                 [
-                    rdfs:label "BT-262-Lot";
+                    rdfs:label "BT-262-Part";
                     rdfs:comment "Main Classification Code of MG-Purpose under ND-PartMainClassification";
                     rdfs:label "at-voc:cpv";
                     rr:parentTriplesMap tedm:cpv ;
@@ -681,7 +681,7 @@ tedm:MG-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContract
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-5101(a|b|c)-Part, BT-5131-Lot, BT-5121-Lot " ;
+            rdfs:label "BT-5101(a|b|c)-Part, BT-5131-Part, BT-5121-Part" ;
             rr:predicate locn:address ;
             rr:objectMap
                 [
@@ -694,7 +694,7 @@ tedm:MG-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContract
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-5071-Lot" ;
+            rdfs:label "BT-5071-Part" ;
             rdfs:comment "Place Performance Country Subdivision of MG-Location under ND-PartPerformanceAddress " ;
             rr:predicate epo:hasNutsCode ;
             rr:objectMap
@@ -708,7 +708,7 @@ tedm:MG-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContract
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-5141-Lot" ;
+            rdfs:label "BT-5141-Part" ;
             rdfs:comment "Place Performance Country Code of MG-Location under ND-PartPerformanceAddress" ;
             rr:predicate epo:hasCountryCode ;
             rr:objectMap
@@ -814,7 +814,7 @@ tedm:MG-ContractTerm-foreseesContractSpecificTerm-ProcurementObject-foreseesProc
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-5101(a)-Lot, BT-5101(b)-Lot, BT-5101(c)-Part, BT-5131-Part, BT-5121-Part, BT-5071-Part, BT-5141-Part " ;
+            rdfs:label "BT-5101(a)-Part, BT-5101(b)-Part, BT-5101(c)-Part, BT-5131-Part, BT-5121-Part, BT-5071-Part, BT-5141-Part " ;
             rr:predicate epo:definesSpecificPlaceOfPerformance ;
             rr:objectMap
                 [
