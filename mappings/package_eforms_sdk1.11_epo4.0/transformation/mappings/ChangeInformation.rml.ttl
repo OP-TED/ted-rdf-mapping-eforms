@@ -78,19 +78,6 @@ tedm:MG-ChangeInformation_ND-ChangeReason  a rr:TriplesMap ;
     #                 ] ;
     #             ] ;
     #     ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-758-notice";
-            rr:predicate epo:refersToPreviousNotice    ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-Notice-refersToPreviousNotice-ChangeInformation_ND-Changes ;
-                    rr:joinCondition [
-                        rr:child "path(..)";
-                        rr:parent "path(.)";
-                    ];
-                ] ;
-        ]   ;
 .
 
 tedm:MG-ChangeInformation_ND-Change a rr:TriplesMap ;
@@ -214,7 +201,20 @@ tedm:MG-Notice-concernsNotice-ChangeInformation_ND-Changes a rr:TriplesMap ;
                 [
                     rr:parentTriplesMap tedm:MG-Notice_ND-Root ;
                 ] ;
-        ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-758-notice" ;
+            rr:predicate epo:refersToPreviousNotice ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Notice-refersToPreviousNotice-ChangeInformation_ND-Changes ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ];
+                ] ;
+        ] ;
 .
 
 tedm:MG-Notice-refersToPreviousNotice-ChangeInformation_ND-Changes a rr:TriplesMap ;
