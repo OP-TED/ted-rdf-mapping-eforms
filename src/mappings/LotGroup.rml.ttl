@@ -130,7 +130,7 @@ tedm:MG-LotGroup_ND-LotsGroup a rr:TriplesMap ;
      rr:predicateObjectMap
         [
             rdfs:label "BT-5421-LotsGroup-FixedNumber";
-            rr:predicate epo:specifiesProcurementCriterion   ;
+            rr:predicate epo:specifiesProcurementCriterion ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:MG-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardFixedCriterionParameter ;
@@ -142,11 +142,11 @@ tedm:MG-LotGroup_ND-LotsGroup a rr:TriplesMap ;
         ]   ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-5423-LotsGroup, BT-541-LotsGroup-ThresholdNumber";
-            rr:predicate epo:hasConstraint ;
+            rdfs:label "BT-5423-LotsGroup and BT-541-LotsGroup-ThresholdNumber" ;
+            rr:predicate epo:specifiesProcurementCriterion ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-Constraint-hasConstraint-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardThresholdCriterionParameter;
+                    rr:parentTriplesMap tedm:MG-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardThresholdCriterionParameter ;
                     rr:joinCondition [
                         rr:child "path(.)";
                         rr:parent "path(../../../../../../../../..)";
@@ -583,6 +583,35 @@ tedm:MG-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardW
                     rr:joinCondition [
                         rr:child "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-wei']) and efbc:ParameterCode/text() = 'unpublished') and exists(efbc:ParameterNumeric)) then efbc:ParameterCode else null" ;
                         rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardThresholdCriterionParameter a rr:TriplesMap ;
+    rdfs:label "MG-AwardCriterion" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='LotsGroup']/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter[efbc:ParameterCode/@listName='number-threshold']" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label  "ND-LotsGroupAwardThresholdCriterionParameter" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotGroupAwardCriterion_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../../../../..)) || '?response_type=raw')}" ;
+            rr:class epo:AwardCriterion
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5423-LotsGroup and BT-541-LotsGroup-ThresholdNumber" ;
+            rr:predicate epo:hasConstraint ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Constraint-hasConstraint-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardThresholdCriterionParameter ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
                     ] ;
                 ] ;
         ] ;
