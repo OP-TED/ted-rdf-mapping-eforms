@@ -196,6 +196,19 @@ tedm:MG-Procedure_ND-LocalLegalBasisWithID a rr:TriplesMap ;
     #                 rml:reference "cbc:ID";
     #             ] ;
     #     ];
+    # this is a workaround for the ID not being mappable as an ID, and rather repurposed as the description
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-01(c)-Procedure" ;
+            rdfs:comment "Procedure Legal Basis (ID) as Procedure Legal Basis (Description) of MG-Procedure under ND-LocalLegalBasisWithID " ;
+            rr:predicate epo:hasLegalBasisDescription ;
+            rr:objectMap
+                [
+                    rdfs:label "BT-01(c)-Procedure" ;
+                    rdfs:comment "Language of Procedure Legal Basis (Description) of MG-Procedure under ND-LocalLegalBasisWithID" ;
+                    rml:reference "if(not(exists(cbc:DocumentDescription))) then cbc:ID else null" ;
+                ] ;
+        ] ;
     # rr:predicateObjectMap
     #     [
     #         rdfs:label "BT-01(d)-Procedure";
