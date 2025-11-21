@@ -3059,19 +3059,6 @@ tedm:MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotProcurementScope a r
                     ] ;
                 ] ;
         ];
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-5101(a)-Lot, BT-5101(b)-Lot, BT-5101(s)-Lot, BT-5131-Lot, BT-5121-Lot, BT-5071-Lot, BT-5141-Lot ";
-            rr:predicate epo:definesSpecificPlaceOfPerformance ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotPerformanceAddress ;
-                    rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(../..)";
-                    ];
-                ] ;
-        ] ;
      rr:predicateObjectMap
         [
             rdfs:label "BT-36-Lot (object)";
@@ -4228,7 +4215,7 @@ tedm:MG-StrategicProcurement-fulfillsStrategicProcurement-Lot-Lot_ND-Accessibili
 .
 
 tedm:MG-Address-address-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotPerformanceAddress a rr:TriplesMap ;
- rdfs:label "MG-Address" ;
+    rdfs:label "MG-Address" ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -4238,7 +4225,7 @@ tedm:MG-Address-address-Location-definesSpecificPlaceOfPerformance-ContractTerm-
     rr:subjectMap
         [
             rdfs:comment "ND-LotPerformanceAddress";
-            rml:reference "if(exists(cbc:StreetName) or exists(cbc:AdditionalStreetName) or exists(cac:AddressLine/cbc:Line) or exists(cbc:CityName) or exists(cbc:PostalZone) or exists(cac:Country/cbc:IdentificationCode)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ContractLocationAddress_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if(not(exists(cbc:Region)) and (exists(cbc:StreetName) or exists(cbc:AdditionalStreetName) or exists(cac:AddressLine/cbc:Line) or exists(cbc:CityName) or exists(cbc:PostalZone) or exists(cac:Country/cbc:IdentificationCode))) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ContractLocationAddress_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class locn:Address
         ] ;
     rr:predicateObjectMap
@@ -4313,8 +4300,8 @@ tedm:MG-Address-address-Location-definesSpecificPlaceOfPerformance-ContractTerm-
         ] ;
 .
 
-tedm:Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotPerformanceAddress a rr:TriplesMap ;
- rdfs:label  "MG-Location" ;
+tedm:MG-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotPerformanceAddress a rr:TriplesMap ;
+    rdfs:label  "MG-Location" ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -4324,7 +4311,8 @@ tedm:Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpe
     rr:subjectMap
         [
             rdfs:label  "ND-LotPerformanceAddress" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractLocation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            # we check for the elements of a linked Address as otherwise this Location should not be instantiated either
+            rml:reference "if(exists(cbc:StreetName) or exists(cbc:AdditionalStreetName) or exists(cac:AddressLine/cbc:Line) or exists(cbc:CityName) or exists(cbc:PostalZone) or exists(cac:Country/cbc:IdentificationCode)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ContractLocation_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
             rr:class dct:Location
         ];
     rr:predicateObjectMap
@@ -4382,7 +4370,7 @@ tedm:MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotPerformanceAddress a
     rr:subjectMap
         [
             rdfs:label "ND-LotPerformanceAddress";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../../..)) || '?response_type=raw')}";
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}";
             rr:class epo:ContractTerm
         ] ;
     rr:predicateObjectMap
@@ -4402,6 +4390,19 @@ tedm:MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotPerformanceAddress a
                     ] ;
                 ] ;
         ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5101(a)-Lot, BT-5101(b)-Lot, BT-5101(s)-Lot, BT-5131-Lot, BT-5121-Lot, BT-5071-Lot, BT-5141-Lot " ;
+            rr:predicate epo:definesSpecificPlaceOfPerformance ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotPerformanceAddress ;
+                    rr:joinCondition [
+                        rr:child "path()" ;
+                        rr:parent "path()" ;
+                    ] ;
+                ] ;
+        ] ;
 .
 
 tedm:MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotPlacePerformance a rr:TriplesMap ;
@@ -5393,7 +5394,7 @@ tedm:MG-langString-hasPlaceOfPerformanceAdditionalInformation-ContractTerm-fores
   rr:subjectMap [
     rr:class epo-not:ContractTerm ;
     rdfs:label "ND-LotProcurementScope" ;
-    rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../../..)) || '?response_type=raw')}" ;
+    rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
   ] ;
   rr:predicateObjectMap [
     rr:predicate epo-not:hasPlaceOfPerformanceAdditionalInformation ;
