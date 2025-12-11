@@ -37,6 +37,7 @@ epd:id_207074fb-2ebf-42d4-b20b-ca5f3895d1bd_AuctionTerms_h8hgikxAY3BGCvpBi6x4FY 
 epd:id_207074fb-2ebf-42d4-b20b-ca5f3895d1bd_AwardCriterion_M3ABHWyJDyj8yxDZZ2sJeg
   a epo:AwardCriterion;
   epo:hasAwardCriterionType <http://publications.europa.eu/resource/authority/award-criterion-type/quality>;
+  epo:hasConstraint epd:id_207074fb-2ebf-42d4-b20b-ca5f3895d1bd_LotConstraint_M3ABHWyJDyj8yxDZZ2sJeg;
   epo:hasFixedValue 1000.0;
   epo:hasFixedValueType <http://publications.europa.eu/resource/authority/number-fixed/fix-unit>;
   epo:hasWeightValueType <http://publications.europa.eu/resource/authority/number-weight/per-exa>;
@@ -107,14 +108,9 @@ epd:id_207074fb-2ebf-42d4-b20b-ca5f3895d1bd_CompanyContactPoint_boyhsCP9AduPpEce
   cccev:email "janecampbell@bakertillymm.co.uk";
   cccev:telephone "02890323466" .
 
-epd:id_207074fb-2ebf-42d4-b20b-ca5f3895d1bd_ContractLocationAddress_5zVCW3b2MSxAnzMuZRbDZB
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/IRL> .
-
 epd:id_207074fb-2ebf-42d4-b20b-ca5f3895d1bd_ContractLocation_5zVCW3b2MSxAnzMuZRbDZB
   a dct:Location;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/IRL>;
-  locn:address epd:id_207074fb-2ebf-42d4-b20b-ca5f3895d1bd_ContractLocationAddress_5zVCW3b2MSxAnzMuZRbDZB .
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/IRL> .
 
 epd:id_207074fb-2ebf-42d4-b20b-ca5f3895d1bd_ContractLocation_Ts6NbgWz9wKHX3CqwnxxzK
   a dct:Location;
@@ -125,11 +121,14 @@ epd:id_207074fb-2ebf-42d4-b20b-ca5f3895d1bd_ContractPeriod_4TghaR9Riayv2Hb6XHyc6
   a epo:Period;
   epo:hasTimePeriod <http://publications.europa.eu/resource/authority/timeperiod/UNLIMITED> .
 
+epd:id_207074fb-2ebf-42d4-b20b-ca5f3895d1bd_ContractTerm_P24wvVmaGggz3wQLy5GuUS a
+    epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_207074fb-2ebf-42d4-b20b-ca5f3895d1bd_ContractLocation_5zVCW3b2MSxAnzMuZRbDZB;
+  epo:hasBroadPlaceOfPerformance <http://publications.europa.eu/resource/authority/other-place-service/anyw-cou> .
+
 epd:id_207074fb-2ebf-42d4-b20b-ca5f3895d1bd_ContractTerm_jucn4erQJnXcty2wPoNNzB a
     epo:ContractTerm;
   epo:definesContractPeriod epd:id_207074fb-2ebf-42d4-b20b-ca5f3895d1bd_ContractPeriod_4TghaR9Riayv2Hb6XHyc6D;
-  epo:definesSpecificPlaceOfPerformance epd:id_207074fb-2ebf-42d4-b20b-ca5f3895d1bd_ContractLocation_5zVCW3b2MSxAnzMuZRbDZB;
-  epo:hasBroadPlaceOfPerformance <http://publications.europa.eu/resource/authority/other-place-service/anyw-cou>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasOptionsDescription "contract for 1 year"@en;
   epo:hasRenewalDescription "with a maximum of 2 such extension or extensions on the same terms and conditions "@en .
@@ -198,7 +197,8 @@ epd:id_207074fb-2ebf-42d4-b20b-ca5f3895d1bd_LotPurpose_4mnqZ7PF3sxbwYtmUHUyS6 a 
   epo:hasTotalQuantity epd:id_207074fb-2ebf-42d4-b20b-ca5f3895d1bd_Quantity_4mnqZ7PF3sxbwYtmUHUyS6 .
 
 epd:id_207074fb-2ebf-42d4-b20b-ca5f3895d1bd_Lot_LOT-0001 a epo:Lot;
-  epo:foreseesContractSpecificTerm epd:id_207074fb-2ebf-42d4-b20b-ca5f3895d1bd_ContractTerm_jucn4erQJnXcty2wPoNNzB;
+  epo:foreseesContractSpecificTerm epd:id_207074fb-2ebf-42d4-b20b-ca5f3895d1bd_ContractTerm_P24wvVmaGggz3wQLy5GuUS,
+    epd:id_207074fb-2ebf-42d4-b20b-ca5f3895d1bd_ContractTerm_jucn4erQJnXcty2wPoNNzB;
   epo:fulfillsStrategicProcurement epd:id_207074fb-2ebf-42d4-b20b-ca5f3895d1bd_GreenProcurement_FbxiobiJYxNCgQAMtdKfL3,
     epd:id_207074fb-2ebf-42d4-b20b-ca5f3895d1bd_GreenProcurement_JjoLqo82mjXWZziw3JBn45,
     epd:id_207074fb-2ebf-42d4-b20b-ca5f3895d1bd_GreenProcurement_ZxZ96itnghU3vVzhCPCB7Y,
