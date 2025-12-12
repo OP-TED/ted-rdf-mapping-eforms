@@ -36,7 +36,7 @@ tedm:MG-ContractTerm-isSubjectToContractSpecificTerm-Contract_ND-PayerParty  a r
         [
             rdfs:label "ND-PayerParty" ;
             rdfs:comment "LotResultTechnicalIdentifier of MG-LotAwardOutcome under ND-LotResult" ;
-            rml:reference "if (exists(../../efac:SettledContract/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ContractTerm_' || encode-for-uri(path()) else null" ;
+            rml:reference "if (exists(../../efac:SettledContract/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ContractTerm_' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:ContractTerm
         ] ;
     rr:predicateObjectMap

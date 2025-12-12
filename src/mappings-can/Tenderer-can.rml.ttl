@@ -106,7 +106,7 @@ tedm:MG-OrganisationGroup-playedBy-Tenderer_ND-TenderingParty a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-TenderingParty" ;
-            rml:reference "if(exists(efac:Tenderer[2])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_OrganisationGroup_' || encode-for-uri(path()) else null" ;
+            rml:reference "if(exists(efac:Tenderer[2])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_OrganisationGroup_' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:OrganisationGroup
         ] ;
      rr:predicateObjectMap

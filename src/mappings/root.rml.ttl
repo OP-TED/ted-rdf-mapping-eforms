@@ -642,7 +642,7 @@ tedm:MG-Identifier-identifier-Notice_ND-Root a rr:TriplesMap ;
         [
             rdfs:label "BT-701-notice" ;
             # TODO can this become a template since the iterator is already on the required element?
-            rml:reference "if (exists(/*/cbc:ID[@schemeName='notice-id'])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_NoticeIdentifier_' || encode-for-uri(path()) else null" ;
+            rml:reference "if (exists(/*/cbc:ID[@schemeName='notice-id'])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_NoticeIdentifier_' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -677,7 +677,7 @@ tedm:MG-Person-playedBy-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTe
     rr:subjectMap
         [
             rdfs:label "ND-AwardingTermsJuryMember" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Person_{encode-for-uri(path(..))}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Person_{replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class person:Person;
 
         ] ;
@@ -706,7 +706,7 @@ tedm:MG-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember a 
     rr:subjectMap
         [
             rdfs:label "ND-AwardingTermsJuryMember" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_JuryMember_{encode-for-uri(path(..))}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_JuryMember_{replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class epo:JuryMember;
 
         ] ;

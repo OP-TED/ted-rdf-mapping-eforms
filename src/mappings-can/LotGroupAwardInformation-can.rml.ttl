@@ -35,7 +35,7 @@ tedm:MG-MonetaryValue-hasGroupFrameworkAgreementMaximumValue-LotGroupAwardInform
    rr:subjectMap
         [
             rdfs:label "ND-NoticeResultGroupFA";
-            rml:reference "if (exists(efbc:GroupFrameworkMaximumValueAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MonetaryValue_' || encode-for-uri(path(.)) else null" ;
+            rml:reference "if (exists(efbc:GroupFrameworkMaximumValueAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MonetaryValue_' || replace(replace(replace(path(.), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:MonetaryValue
         ] ;
    rr:predicateObjectMap
@@ -77,7 +77,7 @@ tedm:MG-LotGroupAwardInformation_ND-NoticeResultGroupFA a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-LotsGroupFA";
-              rml:reference "if (exists(efbc:GroupFrameworkMaximumValueAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_LotGroupAwardInformation_' || encode-for-uri(path(.)) else null" ;
+              rml:reference "if (exists(efbc:GroupFrameworkMaximumValueAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_LotGroupAwardInformation_' || replace(replace(replace(path(.), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:LotGroupAwardInformation
         ] ;
     rr:predicateObjectMap

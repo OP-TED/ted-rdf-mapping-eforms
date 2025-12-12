@@ -130,7 +130,7 @@ tedm:MG-VehicleInformation_ND-StrategicProcurementInformationLotResult a rr:Trip
     rr:subjectMap
         [
             rdfs:label "ND-StrategicProcurementInformationLotResult" ;
-            rml:reference "if (exists(efbc:ProcurementCategoryCode)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_VehicleInformation_' || encode-for-uri(path()) else null" ;
+            rml:reference "if (exists(efbc:ProcurementCategoryCode)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_VehicleInformation_' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:VehicleInformation
         ] ;
     rr:predicateObjectMap

@@ -282,7 +282,7 @@ tedm:MG-MonetaryValue-hasTotalAwardedValue-NoticeAwardInformation_ND-ResultNotic
     rr:subjectMap
         [
             rdfs:label "ND-NoticeResult" ;
-            rml:reference "if (exists(cbc:TotalAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MonetaryValueNoticeAwardInformation_' || encode-for-uri(path()) else null" ;
+            rml:reference "if (exists(cbc:TotalAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MonetaryValueNoticeAwardInformation_' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:MonetaryValue
         ] ;
     rr:predicateObjectMap
@@ -324,7 +324,7 @@ tedm:MG-NoticeAwardInformation_ND-NoticeResult a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-NoticeResult" ;
-            rml:reference "if(exists(cbc:TotalAmount) or exists(efbc:OverallMaximumFrameworkContractsAmount) or exists(efbc:OverallApproximateFrameworkContractsAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_NoticeAwardInformation_' || encode-for-uri(path()) else null" ;
+            rml:reference "if(exists(cbc:TotalAmount) or exists(efbc:OverallMaximumFrameworkContractsAmount) or exists(efbc:OverallApproximateFrameworkContractsAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_NoticeAwardInformation_' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:NoticeAwardInformation
         ] ;
     rr:predicateObjectMap
@@ -382,7 +382,7 @@ tedm:MG-MonetaryValue-hasMaximumFrameworkAgreementAwardedValue-NoticeAwardInform
     rr:subjectMap
         [
             rdfs:label "ND-NoticeResult" ;
-            rml:reference "if (exists(efbc:OverallMaximumFrameworkContractsAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MaximumFrameworkAgreementAwardedMonetaryValueLot_' || encode-for-uri(path()) else null" ;
+            rml:reference "if (exists(efbc:OverallMaximumFrameworkContractsAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MaximumFrameworkAgreementAwardedMonetaryValueLot_' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:MonetaryValue
         ] ;
     rr:predicateObjectMap
@@ -424,7 +424,7 @@ tedm:MG-MonetaryValue-hasApproximateFrameworkAgreementValue-NoticeAwardInformati
     rr:subjectMap
         [
             rdfs:label "ND-NoticeResult" ;
-            rml:reference "if (exists(efbc:OverallApproximateFrameworkContractsAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ApproximateFrameworkAgreementMonetaryValueLot_' || encode-for-uri(path()) else null" ;
+            rml:reference "if (exists(efbc:OverallApproximateFrameworkContractsAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ApproximateFrameworkAgreementMonetaryValueLot_' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:MonetaryValue
         ] ;
     rr:predicateObjectMap
