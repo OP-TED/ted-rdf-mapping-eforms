@@ -739,7 +739,7 @@ tedm:MG-Notice-refersToPrevious-Notice_ND-PreviousNoticeReference a rr:TriplesMa
     rr:subjectMap
         [
             rdfs:label "ND-PreviousNoticeReference" ;
-            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(cbc:ID, ' ', '-' ), '/' , '-')}/Notice" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Notice/{encode-for-uri(cbc:ID)}" ;
             rr:class epo:Notice
         ] ;
     rr:predicateObjectMap
@@ -770,7 +770,7 @@ tedm:MG-Identifier-identifier-Notice-refersToPrevious-Notice_ND-PreviousNoticeRe
     rr:subjectMap
         [
             rdfs:label "ND-PreviousNoticeReference" ;
-            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(cbc:ID, ' ', '-' ), '/' , '-') || '/PreviousNoticeIdentifier/' || encode-for-uri(cbc:ID) else null" ;
+            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Notice/' || encode-for-uri(cbc:ID) || '/Identifier/' || encode-for-uri(cbc:ID) else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap

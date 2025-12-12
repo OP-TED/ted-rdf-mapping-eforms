@@ -466,7 +466,7 @@ tedm:MG-Identifier-identifier-Notice_ND-SettledContract  a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-SettledContract" ;
-            rml:reference "if (exists(cac:NoticeDocumentReference/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(cac:NoticeDocumentReference/cbc:ID, ' ', '-' ), '/' , '-') || '/FrameworkAgreementNoticeIdentifier/' || encode-for-uri(cac:NoticeDocumentReference/cbc:ID) else null" ;
+            rml:reference "if (exists(cac:NoticeDocumentReference/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Notice/' || encode-for-uri(cac:NoticeDocumentReference/cbc:ID) || '/Identifier/' || encode-for-uri(cac:NoticeDocumentReference/cbc:ID) else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -542,17 +542,19 @@ tedm:MG-FrameworkAgreement-announcesContract-Notice_ND-SettledContract a rr:Trip
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
+            # TODO: shouldn't this be at the NoticeDocumentReference level?
             rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:SettledContract" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
         [
             rdfs:label "ND-SettledContract" ;
-            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(cac:NoticeDocumentReference/cbc:ID, ' ', '-' ), '/' , '-')}_ProxyFrameworkAgreement" ;
+            rml:reference "if (exists(cac:NoticeDocumentReference/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Notice/' || encode-for-uri(cac:NoticeDocumentReference/cbc:ID) || '/FrameworkAgreement' else null" ;
             rr:class epo:FrameworkAgreement
         ] ;
 .
 
+# this is a proxy for a cited resource that does not have information (an epo:FrameworkAgreement instance that is defined in a different notice)
 tedm:MG-FrameworkAgreement-followsRulesSetBy-PurchaseContract_ND-SettledContract  a rr:TriplesMap ;
     rdfs:label "MG-FrameworkAgreement" ;
     rml:logicalSource
@@ -564,7 +566,8 @@ tedm:MG-FrameworkAgreement-followsRulesSetBy-PurchaseContract_ND-SettledContract
     rr:subjectMap
         [
             rdfs:label "ND-SettledContract" ;
-            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(cac:NoticeDocumentReference/cbc:ID, ' ', '-' ), '/' , '-')}_ProxyFrameworkAgreement" ;
+            # TODO: if it is a PurchaseContract, then can we even rely on the NoticeDocumentReference being present? that is, do both announcesContract and followsRulesSetBy require an external notice context?
+            rml:reference "if (exists(cac:NoticeDocumentReference/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Notice/' || encode-for-uri(cac:NoticeDocumentReference/cbc:ID) || '/FrameworkAgreement' else null" ;
             rr:class epo:FrameworkAgreement
         ] ;
 .

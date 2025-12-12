@@ -154,7 +154,7 @@ tedm:MG-Identifier-identifier-Notice-refersToPreviousNotice-ChangeInformation_ND
     rr:subjectMap
         [
             rdfs:label "ND-Changes";
-            rml:reference "if (exists(efbc:ChangedNoticeIdentifier)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/NoticeIdentifier$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(efbc:ChangedNoticeIdentifier)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Notice/' || encode-for-uri(efbc:ChangedNoticeIdentifier) || '/Identifier/' || encode-for-uri(efbc:ChangedNoticeIdentifier) else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -228,7 +228,7 @@ tedm:MG-Notice-refersToPreviousNotice-ChangeInformation_ND-Changes a rr:TriplesM
     rr:subjectMap
         [
             rdfs:label "ND-Changes";
-            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(efbc:ChangedNoticeIdentifier, ' ', '-' ), '/' , '-')}/Notice" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Notice/{encode-for-uri(efbc:ChangedNoticeIdentifier)}" ;
             rr:class epo:Notice
         ] ;
     rr:predicateObjectMap

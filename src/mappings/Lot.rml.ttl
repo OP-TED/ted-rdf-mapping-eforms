@@ -1121,7 +1121,7 @@ tedm:MG-Identifier-identifier-PlanningNotice-refersToPrevious-Notice_ND-LotPrevi
         [
             rdfs:label "ND-LotPreviousPlanning";
             # this is an example of an IRI component hashing on an explicit element to prevent unwanted instances (owing to an iterator that has repeating elements)
-            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(cbc:ID, ' ', '-' ), '/' , '-') || '/PlanningNoticeIdentifier/' || encode-for-uri(cbc:ID) else null" ;
+            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Notice/' || encode-for-uri(cbc:ID) || '/Identifier/' || encode-for-uri(cbc:ID) else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -1159,7 +1159,7 @@ tedm:MG-PlanningNotice-refersToPrevious-Notice_ND-LotPreviousPlanning a rr:Tripl
         [
             rdfs:label "ND-LotPreviousPlanning";
             # we use the ID at this level to create an IRI with the pattern of a Notice
-            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(cbc:ID, ' ', '-' ), '/' , '-') || '/Notice' else null" ;
+            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Notice/' || encode-for-uri(cbc:ID) else null" ;
             rr:class epo-not:PlanningNotice
         ] ;
     rr:predicateObjectMap
@@ -1234,7 +1234,7 @@ tedm:MG-Identifier-identifier-PlannedProcurementPart-announcesPlannedProcurement
     rr:subjectMap
         [
             rdfs:label "ND-LotPreviousPlanning";
-            rml:reference "if (exists(cbc:ReferencedDocumentInternalAddress)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(cbc:ID, ' ', '-' ), '/' , '-') || '/PlannedProcurementPartIdentifier/' || encode-for-uri(cbc:ID) else null" ;
+            rml:reference "if (exists(cbc:ReferencedDocumentInternalAddress)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Notice/' || encode-for-uri(cbc:ID) || '/Identifier/' || encode-for-uri(cbc:ReferencedDocumentInternalAddress) else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -1261,7 +1261,7 @@ tedm:MG-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice-re
     rr:subjectMap
         [
             rdfs:label "ND-LotPreviousPlanning";
-            rml:reference "if (exists(cbc:ReferencedDocumentInternalAddress)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(cbc:ID, ' ', '-' ), '/' , '-') || '/PlannedProcurementPart/' || encode-for-uri(cbc:ID) else null" ;
+            rml:reference "if (exists(cbc:ReferencedDocumentInternalAddress)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Notice/' || encode-for-uri(cbc:ID) || '/PlannedProcurementPart/' || encode-for-uri(cbc:ReferencedDocumentInternalAddress) else null" ;
             rr:class epo:PlannedProcurementPart
         ] ;
     rr:predicateObjectMap
