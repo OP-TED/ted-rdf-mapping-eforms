@@ -36,7 +36,7 @@ tedm:MG-MonetaryValue-providesContractTotalPaymentValue-ContractLotCompletionInf
     rr:subjectMap
         [
             rdfs:label "ND-TenderAggregatedAmounts" ;
-            rml:reference "if (exists(efbc:PenaltiesAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ContractTotalPaymentMonetaryValue_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(efbc:PenaltiesAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ContractTotalPaymentMonetaryValue_' || encode-for-uri(path()) else null" ;
             rr:class epo:MonetaryValue
         ] ;
     rr:predicateObjectMap
@@ -79,7 +79,7 @@ tedm:MG-MonetaryValue-providesContractTotalPenaltyValue-ContractLotCompletionInf
     rr:subjectMap
         [
             rdfs:label "ND-TenderAggregatedAmounts" ;
-            rml:reference "if (exists(efbc:PenaltiesAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ContractTotalPenaltyMonetaryValue_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(efbc:PenaltiesAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ContractTotalPenaltyMonetaryValue_' || encode-for-uri(path()) else null" ;
             rr:class epo:MonetaryValue
         ] ;
     rr:predicateObjectMap
@@ -122,7 +122,7 @@ tedm:MG-ContractLotCompletionInformation_ND-TenderAggregatedAmounts a rr:Triples
     rr:subjectMap
         [
             rdfs:label "ND-TenderAggregatedAmounts" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractLotCompletionInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractLotCompletionInformation_{encode-for-uri(path())}" ;
             rr:class epo:ContractLotCompletionInformation
         ] ;
     rr:predicateObjectMap
@@ -193,7 +193,7 @@ tedm:MG-langString-hasPaymentValueDiscrepancyJustification-ContractLotCompletion
     rr:subjectMap [
         rr:class epo:ContractLotCompletionInformation ;
         rdfs:label "ND-TenderAggregatedAmounts" ;
-        rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractLotCompletionInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+        rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractLotCompletionInformation_{encode-for-uri(path(..))}" ;
     ] ;
     rr:predicateObjectMap [
         rr:predicate   epo:hasPaymentValueDiscrepancyJustification  ;

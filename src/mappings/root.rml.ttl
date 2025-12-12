@@ -642,7 +642,7 @@ tedm:MG-Identifier-identifier-Notice_ND-Root a rr:TriplesMap ;
         [
             rdfs:label "BT-701-notice" ;
             # TODO can this become a template since the iterator is already on the required element?
-            rml:reference "if (exists(/*/cbc:ID[@schemeName='notice-id'])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_NoticeIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(/*/cbc:ID[@schemeName='notice-id'])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_NoticeIdentifier_' || encode-for-uri(path()) else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -677,7 +677,7 @@ tedm:MG-Person-playedBy-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTe
     rr:subjectMap
         [
             rdfs:label "ND-AwardingTermsJuryMember" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Person_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Person_{encode-for-uri(path(..))}" ;
             rr:class person:Person;
 
         ] ;
@@ -706,7 +706,7 @@ tedm:MG-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember a 
     rr:subjectMap
         [
             rdfs:label "ND-AwardingTermsJuryMember" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_JuryMember_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_JuryMember_{encode-for-uri(path(..))}" ;
             rr:class epo:JuryMember;
 
         ] ;
@@ -770,7 +770,7 @@ tedm:MG-Identifier-identifier-Notice-refersToPrevious-Notice_ND-PreviousNoticeRe
     rr:subjectMap
         [
             rdfs:label "ND-PreviousNoticeReference" ;
-            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(cbc:ID, ' ', '-' ), '/' , '-') || '_PreviousNoticeIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(cbc:ID) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(cbc:ID, ' ', '-' ), '/' , '-') || '_PreviousNoticeIdentifier_' || encode-for-uri(cbc:ID) else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap

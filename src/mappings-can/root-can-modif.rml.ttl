@@ -159,7 +159,7 @@ tedm:MG-Identifier-identifier-Notice-refersToPrevious-ContractModificationNotice
     rr:subjectMap
         [
             rdfs:label "ND-ContractModification" ;
-            rml:reference "if (exists(efbc:ChangedNoticeIdentifier)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(efbc:ChangedNoticeIdentifier, ' ', '-' ), '/' , '-') || '_NoticeIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(efbc:ChangedNoticeIdentifier)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(efbc:ChangedNoticeIdentifier, ' ', '-' ), '/' , '-') || '_NoticeIdentifier_' || encode-for-uri(path()) else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -195,7 +195,7 @@ tedm:MG-ContractAmendment-announcesContractAmendment-ContractModificationNotice_
     rr:subjectMap
         [
             rdfs:label "ND-ContractModification" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractAmendment_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(.)) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractAmendment_{encode-for-uri(path(.))}" ;
             rr:class epo-con:ContractAmendment
         ] ;
 .
@@ -211,7 +211,7 @@ tedm:MG-ContractAmendment_ND-ContractModification a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-ContractModification" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractAmendment_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractAmendment_{encode-for-uri(path(..))}" ;
             rr:class epo-con:ContractAmendment
         ] ;
      rr:predicateObjectMap

@@ -28,7 +28,7 @@ tedm:MG-ProcurementDocument-involvesProcurementDocument-AccessTerm-isSubjectToLo
     rr:subjectMap
         [
             rdfs:label "ND-LotDocOfficialLanguage";
-            rml:reference "if (exists(cbc:LanguageID[../cbc:DocumentStatusCode/text()='official'])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcurementDocument_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(concat(path(..), cbc:ID/text())) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(cbc:LanguageID[../cbc:DocumentStatusCode/text()='official'])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcurementDocument_' || encode-for-uri(concat(path(..), cbc:ID/text())) else null" ;
             rr:class epo:ProcurementDocument
         ] ;
     rml:logicalSource

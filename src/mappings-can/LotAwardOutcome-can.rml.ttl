@@ -123,7 +123,7 @@ tedm:MG-MonetaryValue-hasApproximateFrameworkAgreementValue-LotAwardOutcome_ND-L
    rr:subjectMap
         [
             rdfs:label "ND-LotResultFAValues";
-            rml:reference "if (exists(efbc:ReestimatedValueAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MonetaryValue_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(.)) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(efbc:ReestimatedValueAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MonetaryValue_' || encode-for-uri(path(.)) else null" ;
             rr:class epo:MonetaryValue
         ] ;
    rr:predicateObjectMap
@@ -168,7 +168,7 @@ tedm:MG-MonetaryValue-hasFrameworkAgreementMaximumValue-LotAwardOutcome_ND-LotRe
     rr:subjectMap
         [
             rdfs:label "ND-LotResultFAValues";
-            rml:reference "if (exists(cbc:MaximumValueAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_FrameworkAgreementMaximumMonetaryValue_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(.)) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(cbc:MaximumValueAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_FrameworkAgreementMaximumMonetaryValue_' || encode-for-uri(path(.)) else null" ;
             rr:class epo:MonetaryValue
         ] ;
     rr:predicateObjectMap

@@ -66,7 +66,7 @@ tedm:MG-ContractModificationInformation_ND-Modification a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-Modification" ;
-            rml:reference "if (exists(efbc:ChangedSectionIdentifier)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ContractModificationInformation_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(efbc:ChangedSectionIdentifier)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ContractModificationInformation_' || encode-for-uri(path(..)) else null" ;
             rr:class epo-con:ContractModificationInformation
         ] ;
     rr:predicateObjectMap
@@ -97,7 +97,7 @@ tedm:MG-ContractAmendment_ND-Modification a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-Modification" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractAmendment_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractAmendment_{encode-for-uri(path(..))}" ;
             rr:class epo-con:ContractAmendment
         ] ;
     rr:predicateObjectMap
@@ -128,7 +128,7 @@ tedm:MG-Identifier-relatesToEFormSectionIdentifier-ContractModificationInformati
     rr:subjectMap
         [
             rdfs:label "ND-Modification" ;
-            rml:reference "'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ModifiedSectionIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')" ;
+            rml:reference "'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ModifiedSectionIdentifier_' || encode-for-uri(path())" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap

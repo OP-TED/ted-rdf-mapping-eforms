@@ -70,7 +70,7 @@ tedm:MG-LotGroup-describesLotGroup-LotGroupAwardInformation_ND-NoticeResultGroup
 #     rr:subjectMap
 #         [
 #             rdfs:label "ND-NoticeResultGroupFA";
-#             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotIdentifier_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(efac:TenderLot/cbc:ID) || '?response_type=raw')}" ;
+#             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotIdentifier_{encode-for-uri(efac:TenderLot/cbc:ID)}" ;
 #             rr:class adms:Identifier
 #         ] ;
 #    rr:predicateObjectMap
@@ -173,7 +173,7 @@ tedm:MG-LotGroup_ND-NoticeResultGroupFA  a rr:TriplesMap ;
 #    rr:subjectMap
 #        [
 #            rdfs:label "ND-NoticeResultGroupFA";
-#            rml:reference "if (exists(efbc:GroupFrameworkReestimatedValueAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MonetaryValue_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+#            rml:reference "if (exists(efbc:GroupFrameworkReestimatedValueAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MonetaryValue_' || encode-for-uri(path()) else null" ;
 #            rr:class epo:MonetaryValue
 #        ] ;
 #   rr:predicateObjectMap

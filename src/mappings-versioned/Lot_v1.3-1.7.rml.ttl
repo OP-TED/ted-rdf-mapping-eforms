@@ -79,7 +79,7 @@ tedm:MG-ProcurementDocument-involvesProcurementDocument-AccessTerm-isSubjectToLo
     rr:subjectMap
         [
             rdfs:label "ND-LotDocOfficialLanguage";
-            rml:reference "if (exists(cbc:LanguageID[not(../cbc:DocumentStatusCode/text()='non-official')])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcurementDocument_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(concat(path(..), cbc:ID/text())) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(cbc:LanguageID[not(../cbc:DocumentStatusCode/text()='non-official')])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcurementDocument_' || encode-for-uri(concat(path(..), cbc:ID/text())) else null" ;
             rr:class epo:ProcurementDocument
         ] ;
     rml:logicalSource
@@ -116,7 +116,7 @@ tedm:MG-langString-hasLateSubmissionInformationDescription-SubmissionTerm-isSubj
     ] ;
     rr:subjectMap [
             rdfs:label "ND-LateTendererInformation";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SubmissionTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../../../..)) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SubmissionTerm_{encode-for-uri(path(../../../..))}" ;
             rr:class epo:SubmissionTerm
     ] ;
     rr:predicateObjectMap [

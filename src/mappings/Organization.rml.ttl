@@ -171,7 +171,7 @@ tedm:MG-Identifier-hasLegalIdentifier-Organization_ND-Company a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-Company" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_OrganisationIdentifier_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(cbc:CompanyID)) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_OrganisationIdentifier_{encode-for-uri(path(cbc:CompanyID))}" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -197,7 +197,7 @@ tedm:MG-Address-registeredAddress-Organization_ND-CompanyAddress a rr:TriplesMap
         [
             rdfs:label "ND-CompanyAddress" ;
             rdfs:comment "Primary type declaration for Address-registeredAddress-Organization under ND-CompanyAddress" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_CompanyAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_CompanyAddress_{encode-for-uri(path())}" ;
             rr:class locn:Address
 
         ] ;
@@ -270,7 +270,7 @@ tedm:MG-ContactPoint-hasPrimaryContactPoint-Organization_ND-CompanyContact a rr:
         [
             rdfs:label "ND-CompanyContact" ;
             rdfs:comment "Primary type declaration for MG-ContactPoint-hasPrimaryContactPoint-Organization under ND-CompanyContact" ;
-            rml:reference "if(exists(cbc:Name) or exists(cbc:ElectronicMail) or exists(cbc:Telephone) or exists(cbc:Telefax)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_CompanyContactPoint_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if(exists(cbc:Name) or exists(cbc:ElectronicMail) or exists(cbc:Telephone) or exists(cbc:Telefax)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_CompanyContactPoint_' || encode-for-uri(path()) else null" ;
             rr:class cpov:ContactPoint
 
         ] ;
