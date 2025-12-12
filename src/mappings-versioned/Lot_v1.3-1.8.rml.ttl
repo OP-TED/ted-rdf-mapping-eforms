@@ -101,7 +101,7 @@ tedm:MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SecondStageCrite
     rr:subjectMap
         [
             rdfs:label "ND-SecondStageCriterionParameter" ;
-            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/SelectionCriterion/{replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/SelectionCriterion${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class epo:SelectionCriterion
         ] ;
     rr:predicateObjectMap
@@ -160,7 +160,7 @@ tedm:MG-Constraint-hasConstraint-SelectionCriterion-specifiesProcurementCriterio
     rr:subjectMap
         [
             rdfs:label "ND-SecondStageThresholdCriterionParameter";
-            rml:reference "if (exists(efbc:ParameterCode[@listName='number-threshold'])) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/Constraint/' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(efbc:ParameterCode[@listName='number-threshold'])) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/Constraint$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class cccev:Constraint
         ] ;
     rr:predicateObjectMap
@@ -237,7 +237,7 @@ tedm:MG-ProcurementDocument-involvesProcurementDocument-AccessTerm-isSubjectToLo
     rr:subjectMap
         [
             rdfs:label "ND-LotDocAllNonOfficialLanguages";
-            rml:reference "if (exists(cbc:LanguageID[../cbc:DocumentStatusCode/text()='non-official'])) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/ProcurementDocument/' || replace(replace(replace(concat(path(..), cbc:ID/text()), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(cbc:LanguageID[../cbc:DocumentStatusCode/text()='non-official'])) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/ProcurementDocument$' || replace(replace(replace(concat(path(..), cbc:ID/text()), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:ProcurementDocument
         ] ;
     rr:predicateObjectMap

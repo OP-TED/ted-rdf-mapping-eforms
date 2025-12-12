@@ -35,7 +35,7 @@ tedm:MG-Identifier-identifier-Tender_ND-LotTender  a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-LotTender" ;
-            rml:reference "if (exists(efac:TenderReference/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/TenderIdentifier/' || replace(replace(replace(path(.), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(efac:TenderReference/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/TenderIdentifier$' || replace(replace(replace(path(.), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -251,7 +251,7 @@ tedm:MG-MonetaryValue-hasFinancialOfferValue-Tender_ND-LotTender  a rr:TriplesMa
     rr:subjectMap
         [
             rdfs:label "ND-LotTender" ;
-            rml:reference "if (exists(cac:LegalMonetaryTotal/cbc:PayableAmount)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/TenderMonetaryValue/' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(cac:LegalMonetaryTotal/cbc:PayableAmount)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/TenderMonetaryValue$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:MonetaryValue
         ] ;
     rr:predicateObjectMap
@@ -309,7 +309,7 @@ tedm:MG-SubcontractingEstimate-foreseesSubcontracting-Tender_ND-LotTender  a rr:
     rr:subjectMap
         [
             rdfs:label "ND-LotTender" ;
-            rml:reference "if (exists(efac:SubcontractingTerm[efbc:TermCode/@listName='applicability']/efbc:TermAmount)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/SubcontractingEstimate/' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(efac:SubcontractingTerm[efbc:TermCode/@listName='applicability']/efbc:TermAmount)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/SubcontractingEstimate$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:SubcontractingEstimate
         ] ;
      rr:predicateObjectMap
@@ -558,7 +558,7 @@ tedm:MG-ConcessionEstimate-foreseesConcession-Tender_ND-ConcessionRevenue a rr:T
     rr:subjectMap
         [
             rdfs:label "ND-ConcessionRevenue" ;
-            rml:reference "if (exists(efbc:RevenueBuyerAmount) or exists(efbc:RevenueUserAmount)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/ConcessionEstimate/' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(efbc:RevenueBuyerAmount) or exists(efbc:RevenueUserAmount)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/ConcessionEstimate$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:ConcessionEstimate
         ] ;
     rr:predicateObjectMap
@@ -602,7 +602,7 @@ tedm:MG-MonetaryValue-hasEstimatedBuyerConcessionRevenue-ConcessionEstimate-fore
     rr:subjectMap
         [
             rdfs:label "ND-ConcessionRevenue" ;
-            rml:reference "if (exists(efbc:RevenueBuyerAmount)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/MonetaryValue/' || replace(replace(replace(path(efbc:RevenueBuyerAmount), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(efbc:RevenueBuyerAmount)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/MonetaryValue$' || replace(replace(replace(path(efbc:RevenueBuyerAmount), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:MonetaryValue
         ] ;
     rr:predicateObjectMap
@@ -644,7 +644,7 @@ tedm:MG-MonetaryValue-hasEstimatedUserConcessionRevenue-ConcessionEstimate-fores
     rr:subjectMap
         [
             rdfs:label "ND-ConcessionRevenue" ;
-            rml:reference "if (exists(efbc:RevenueUserAmount)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/MonetaryValue/' || replace(replace(replace(path(efbc:RevenueUserAmount), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(efbc:RevenueUserAmount)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/MonetaryValue$' || replace(replace(replace(path(efbc:RevenueUserAmount), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:MonetaryValue
         ] ;
     rr:predicateObjectMap
@@ -686,7 +686,7 @@ tedm:MG-langString-hasCalculationMethod-ConcessionEstimate-foreseesConcession-Te
     rr:subjectMap
         [
             rdfs:label "ND-ConcessionRevenue" ;
-            rml:reference "'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/ConcessionEstimate/' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_')" ;
+            rml:reference "'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/ConcessionEstimate$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_')" ;
             rr:class epo:ConcessionEstimate
         ] ;
      rr:predicateObjectMap

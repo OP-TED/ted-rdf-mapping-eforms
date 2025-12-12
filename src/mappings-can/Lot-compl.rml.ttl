@@ -35,7 +35,7 @@ tedm:MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotDuration a rr:Triple
     rr:subjectMap
         [
             rdfs:label "ND-LotDuration";
-            rml:reference "if (exists(cbc:Description)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/ContractTerm/' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(cbc:Description)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/ContractTerm$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:ContractTerm
         ] ;
 .
@@ -81,7 +81,7 @@ tedm:MG-langString-hasExceedingDurationJustification-ContractTerm_ND-LotDuration
     rr:subjectMap [
         rr:class epo:ContractTerm ;
         rdfs:label "ND-LotDuration" ;
-        rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/ContractTerm/{replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/ContractTerm${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
     ] ;
     rr:predicateObjectMap [
         rr:predicate   epo:hasExceedingDurationJustification  ;

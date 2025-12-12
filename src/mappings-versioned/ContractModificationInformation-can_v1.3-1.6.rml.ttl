@@ -66,7 +66,7 @@ tedm:MG-ContractModificationInformation_ND-Modification a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-Modification" ;
-            rml:reference "if (exists(efbc:ChangedSectionIdentifier)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/ContractModificationInformation/' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(efbc:ChangedSectionIdentifier)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/ContractModificationInformation$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo-con:ContractModificationInformation
         ] ;
     rr:predicateObjectMap
@@ -97,7 +97,7 @@ tedm:MG-ContractAmendment_ND-Modification a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-Modification" ;
-            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/ContractAmendment/{replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/ContractAmendment${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class epo-con:ContractAmendment
         ] ;
     rr:predicateObjectMap
@@ -128,7 +128,7 @@ tedm:MG-Identifier-relatesToEFormSectionIdentifier-ContractModificationInformati
     rr:subjectMap
         [
             rdfs:label "ND-Modification" ;
-            rml:reference "'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/ModifiedSectionIdentifier/' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_')" ;
+            rml:reference "'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/ModifiedSectionIdentifier$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_')" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
