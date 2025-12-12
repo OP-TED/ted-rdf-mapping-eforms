@@ -641,8 +641,7 @@ tedm:MG-Identifier-identifier-Notice_ND-Root a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "BT-701-notice" ;
-            # TODO can this become a template since the iterator is already on the required element?
-            rml:reference "if (exists(/*/cbc:ID[@schemeName='notice-id'])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/NoticeIdentifier$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Identifier/{encode-for-uri(.)}" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap

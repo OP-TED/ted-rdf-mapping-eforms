@@ -1048,7 +1048,7 @@ tedm:MG-Identifier-identifier-Lot_ND-Lot a rr:TriplesMap ;
         ];
     rr:subjectMap
         [
-            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/LotIdentifier$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Identifier/' || encode-for-uri(cbc:ID) else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -1083,7 +1083,7 @@ tedm:MG-Identifier-hasInternalIdentifier-Lot_ND-LotProcurementScope a rr:Triples
     rr:subjectMap
         [
             rdfs:label  "ND-LotProcurementScope";
-            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/LotInternalIdentifier$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Lot/Identifier/' || encode-for-uri(cbc:ID) else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -2082,7 +2082,7 @@ tedm:MG-Identifier-identifier-Fund-isFundedBy-Lot_ND-Funding a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-Funding";
-            rml:reference "if (exists(efbc:FinancingIdentifier)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/FundIdentifier$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(efbc:FinancingIdentifier)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Fund/Identifier/' || encode-for-uri(efbc:FinancingIdentifier) else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap

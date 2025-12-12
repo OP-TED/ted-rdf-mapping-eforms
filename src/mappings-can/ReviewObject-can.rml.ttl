@@ -70,7 +70,7 @@ tedm:MG-Identifier-identifier-ReviewDecision_ND-ReviewStatus a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-ReviewStatus" ;
-            rml:reference "if(efbc:AppealStageCode='dec') then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ReviewDecisionIdentifier$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if(efbc:AppealStageCode='dec' and exists(efbc:AppealID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ReviewDecision/Identifier/' || encode-for-uri(efbc:AppealID) else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -190,7 +190,7 @@ tedm:MG-Identifier-identifier-ReviewRequest_ND-ReviewStatus a rr:TriplesMap ;
         [
             tedm:minSDKVersion "1.13" ;
             rdfs:label "ND-ReviewStatus" ;
-            rml:reference "if(efbc:AppealStageCode='req') then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ReviewRequestIdentifier$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if(efbc:AppealStageCode='req' and exists(efbc:AppealID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ReviewRequest/Identifier/' || encode-for-uri(efbc:AppealID) else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap

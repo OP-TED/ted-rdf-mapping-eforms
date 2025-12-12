@@ -35,7 +35,7 @@ tedm:MG-Identifier-identifier-Contract_ND-SettledContract  a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-SettledContract" ;
-            rml:reference "if (exists(efac:ContractReference/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/SettledContractIdentifier$' || replace(replace(replace(path(.), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(efac:ContractReference/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Contract/Identifier/' || encode-for-uri(efac:ContractReference/cbc:ID) else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -263,7 +263,7 @@ tedm:MG-Identifier-identifier-Fund-isFundedBy-Contract_ND-ContractEUFunds a rr:T
     rr:subjectMap
         [
             rdfs:label "ND-ContractEUFunds" ;
-            rml:reference "if (exists(efbc:FinancingIdentifier)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractFundIdentifier$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(efbc:FinancingIdentifier)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Fund/Identifier/' || encode-for-uri(efbc:FinancingIdentifier) else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
