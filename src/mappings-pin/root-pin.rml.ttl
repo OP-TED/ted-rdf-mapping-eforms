@@ -321,7 +321,7 @@ tedm:MG-Identifier-identifier-Notice-refersToPrevious-PlanningNotice_ND-PartPrev
     rr:subjectMap
         [
             rdfs:label "ND-PartPreviousPlanning" ;
-            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Notice/' || encode-for-uri(cbc:ID) || '/Identifier/' || encode-for-uri(cbc:ID) else null" ;
+            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Notice/' || encode-for-uri(cbc:ID) || '/Identifier' else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -357,7 +357,7 @@ tedm:MG-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice-re
     rr:subjectMap
         [
             rdfs:label "ND-PartPreviousPlanning" ;
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Notice/{cbc:ID}/PlannedProcurementPart/{cbc:ReferencedDocumentInternalAddress}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Notice/{cbc:ID}/PlannedProcurementPart${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class epo:PlannedProcurementPart
         ] ;
     rr:predicateObjectMap
@@ -387,7 +387,7 @@ tedm:MG-Identifier-identifier-PlannedProcurementPart-announcesPlannedProcurement
     rr:subjectMap
         [
             rdfs:label "ND-PartPreviousPlanning" ;
-            rml:reference "if (exists(cbc:ReferencedDocumentInternalAddress)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Notice/' || encode-for-uri(cbc:ID) || '/Identifier/' || encode-for-uri(cbc:ReferencedDocumentInternalAddress) else null" ;
+            rml:reference "if (exists(cbc:ReferencedDocumentInternalAddress)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Notice/' || encode-for-uri(cbc:ID) || '/PlannedProcurementPart/Identifier$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap

@@ -1120,8 +1120,7 @@ tedm:MG-Identifier-identifier-PlanningNotice-refersToPrevious-Notice_ND-LotPrevi
     rr:subjectMap
         [
             rdfs:label "ND-LotPreviousPlanning";
-            # this is an example of an IRI component hashing on an explicit element to prevent unwanted instances (owing to an iterator that has repeating elements)
-            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Notice/' || encode-for-uri(cbc:ID) || '/Identifier/' || encode-for-uri(cbc:ID) else null" ;
+            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Notice/' || encode-for-uri(cbc:ID) || '/Identifier' else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -1234,7 +1233,7 @@ tedm:MG-Identifier-identifier-PlannedProcurementPart-announcesPlannedProcurement
     rr:subjectMap
         [
             rdfs:label "ND-LotPreviousPlanning";
-            rml:reference "if (exists(cbc:ReferencedDocumentInternalAddress)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Notice/' || encode-for-uri(cbc:ID) || '/Identifier/' || encode-for-uri(cbc:ReferencedDocumentInternalAddress) else null" ;
+            rml:reference "if (exists(cbc:ReferencedDocumentInternalAddress)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Notice/' || encode-for-uri(cbc:ID) || '/Identifier$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -1261,7 +1260,7 @@ tedm:MG-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice-re
     rr:subjectMap
         [
             rdfs:label "ND-LotPreviousPlanning";
-            rml:reference "if (exists(cbc:ReferencedDocumentInternalAddress)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Notice/' || encode-for-uri(cbc:ID) || '/PlannedProcurementPart/' || encode-for-uri(cbc:ReferencedDocumentInternalAddress) else null" ;
+            rml:reference "if (exists(cbc:ReferencedDocumentInternalAddress)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Notice/' || encode-for-uri(cbc:ID) || '/PlannedProcurementPart$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:PlannedProcurementPart
         ] ;
     rr:predicateObjectMap
@@ -2011,7 +2010,7 @@ tedm:MG-Fund-isFundedBy-Lot_ND-Funding a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-Funding";
-            rml:reference "if (exists(efbc:FinancingIdentifier)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/LotFund$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(efbc:FinancingIdentifier)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Fund$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:Fund
         ] ;
     rr:predicateObjectMap
@@ -2082,7 +2081,7 @@ tedm:MG-Identifier-identifier-Fund-isFundedBy-Lot_ND-Funding a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-Funding";
-            rml:reference "if (exists(efbc:FinancingIdentifier)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Fund/Identifier/' || encode-for-uri(efbc:FinancingIdentifier) else null" ;
+            rml:reference "if (exists(efbc:FinancingIdentifier)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Fund/Identifier/$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -4762,7 +4761,7 @@ tedm:MG-langString-description-Fund-isFundedBy-Lot_ND-Funding a rr:TriplesMap ;
   rr:subjectMap [
     rr:class epo-not:Fund ;
     rdfs:label "ND-Funding" ;
-    rml:reference "if (exists(../efbc:FinancingIdentifier)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/LotFund$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+    rml:reference "if (exists(../efbc:FinancingIdentifier)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Fund$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
   ] ;
   rr:predicateObjectMap [
     rr:predicate dct:description ;
