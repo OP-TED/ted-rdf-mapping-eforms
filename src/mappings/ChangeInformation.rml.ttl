@@ -35,7 +35,7 @@ tedm:MG-ChangeInformation_ND-ChangeReason  a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-ChangeReason";
-            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/ChangeInformation/{replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ChangeInformation_{replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class epo:ChangeInformation
         ] ;
     rr:predicateObjectMap
@@ -92,7 +92,7 @@ tedm:MG-ChangeInformation_ND-Change a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-Change";
-            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/ChangeInformation/{replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ChangeInformation_{replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class epo:ChangeInformation
         ] ;
     # rr:predicateObjectMap
@@ -154,7 +154,7 @@ tedm:MG-Identifier-identifier-Notice-refersToPreviousNotice-ChangeInformation_ND
     rr:subjectMap
         [
             rdfs:label "ND-Changes";
-            rml:reference "if (exists(efbc:ChangedNoticeIdentifier)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/' || 'NoticeIdentifier' || '/' || replace(replace(replace(path(), 'Q\{[^}]+\}', ''), '\[([0-9]+)\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(efbc:ChangedNoticeIdentifier)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_NoticeIdentifier_' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -190,7 +190,7 @@ tedm:MG-Notice-concernsNotice-ChangeInformation_ND-Changes a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-Change";
-            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/ChangeInformation/{replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ChangeInformation_{replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class epo:ChangeInformation
         ] ;
     rr:predicateObjectMap
@@ -228,7 +228,7 @@ tedm:MG-Notice-refersToPreviousNotice-ChangeInformation_ND-Changes a rr:TriplesM
     rr:subjectMap
         [
             rdfs:label "ND-Changes";
-            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(efbc:ChangedNoticeIdentifier, ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/Notice" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(efbc:ChangedNoticeIdentifier, ' ', '-' ), '/' , '-')}_Notice" ;
             rr:class epo:Notice
         ] ;
     rr:predicateObjectMap
@@ -251,7 +251,7 @@ tedm:MG-langString-hasChangeDescription-ChangeInformation_ND-Change a rr:Triples
   rr:subjectMap [
     rr:class epo-not:ChangeInformation ;
     rdfs:label "ND-Change" ;
-    rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/ChangeInformation/{replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+    rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ChangeInformation_{replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
   ] ;
   rr:predicateObjectMap [
     rr:predicate epo-not:hasChangeDescription ;
@@ -288,7 +288,7 @@ tedm:MG-langString-hasChangeReasonDescription-ChangeInformation_ND-ChangeReason 
   rr:subjectMap [
     rr:class epo-not:ChangeInformation ;
     rdfs:label "ND-ChangeReason" ;
-    rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/ChangeInformation/{replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+    rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ChangeInformation_{replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
   ] ;
   rr:predicateObjectMap [
     rr:predicate epo-not:hasChangeReasonDescription ;

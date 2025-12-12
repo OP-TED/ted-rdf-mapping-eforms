@@ -44,7 +44,7 @@ tedm:MG-EmploymentInformationProvider_ND-LotEmploymentLegislation a rr:TriplesMa
         rr:objectMap [
             rdfs:label "TPO (playedBy)" ;
             rdfs:comment "Connection where IssuerParty is a TouchPoint" ;
-            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/Organization/{cac:IssuerParty/cac:PartyIdentification/cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Organization_{cac:IssuerParty/cac:PartyIdentification/cbc:ID}" ;
         ] ;
         rr:objectMap [
             rdfs:label "ORG (playedBy)" ;
@@ -60,6 +60,6 @@ tedm:MG-EmploymentInformationProvider_ND-LotEmploymentLegislation a rr:TriplesMa
     rr:subjectMap [
         rdfs:label "ND-LotEmploymentLegislation" ;
         rr:class epo:EmploymentInformationProvider ;
-        rml:reference "if(exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/' || 'EmploymentInformationProvider' || '/' || encode-for-uri(concat(cac:IssuerParty/cac:PartyIdentification/cbc:ID, cac:IssuerParty/cac:PartyIdentification/cbc:ID/@schemeName)) else null";
+        rml:reference "if(exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_EmploymentInformationProvider_' || encode-for-uri(concat(cac:IssuerParty/cac:PartyIdentification/cbc:ID, cac:IssuerParty/cac:PartyIdentification/cbc:ID/@schemeName)) else null";
     ] ;
     tedm:minSDKVersion "1.5.12" .

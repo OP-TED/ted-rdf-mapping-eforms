@@ -33,7 +33,7 @@ tedm:MG-OfflineAccessProvider_ND-LotTenderingTerms a rr:TriplesMap ;
         rr:objectMap [
             rdfs:label "TPO (playedBy)" ;
             rdfs:comment "Connection where DocumentProviderParty is a TouchPoint" ;
-            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/Organization/{cac:DocumentProviderParty/cac:PartyIdentification/cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Organization_{cac:DocumentProviderParty/cac:PartyIdentification/cbc:ID}" ;
         ] ;
         rr:objectMap [
             rdfs:label "ORG (playedBy)" ;
@@ -60,6 +60,6 @@ tedm:MG-OfflineAccessProvider_ND-LotTenderingTerms a rr:TriplesMap ;
     rr:subjectMap [
         rdfs:label "ND-LotTenderingTerms" ;
         rr:class epo:OfflineAccessProvider ;
-        rml:reference "if(exists(cac:DocumentProviderParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/' || 'OfflineAccessProvider' || '/' || encode-for-uri(concat(cac:DocumentProviderParty/cac:PartyIdentification/cbc:ID, cac:DocumentProviderParty/cac:PartyIdentification/cbc:ID/@schemeName)) else null";
+        rml:reference "if(exists(cac:DocumentProviderParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_OfflineAccessProvider_' || encode-for-uri(concat(cac:DocumentProviderParty/cac:PartyIdentification/cbc:ID, cac:DocumentProviderParty/cac:PartyIdentification/cbc:ID/@schemeName)) else null";
     ]
 .

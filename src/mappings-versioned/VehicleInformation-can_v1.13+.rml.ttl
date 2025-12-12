@@ -35,7 +35,7 @@ tedm:MG-VehicleInformation_ND-ProcurementDetailsLotResult a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-ProcurementDetailsLotResult" ;
-            rml:reference "'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/' || 'VehicleInformation' || '/' || encode-for-uri(if (exists(../efac:ProcurementDetails[2])) then replace(replace(replace(path(), 'Q\{[^}]+\}', ''), '\[([0-9]+)\]', '$1'), '/', '_') else replace(replace(replace(path(..), 'Q\{[^}]+\}', ''), '\[([0-9]+)\]', '$1'), '/', '_'))" ;
+            rml:reference "'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_VehicleInformation_' || encode-for-uri(if (exists(../efac:ProcurementDetails[2])) then replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_'))" ;
             rr:class epo:VehicleInformation
         ] ;
     rr:predicateObjectMap
@@ -80,7 +80,7 @@ tedm:MG-VehicleInformation_ND-ProcurementStatistics a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-ProcurementStatistics" ;
-            rml:reference "'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/' || 'VehicleInformation' || '/' || encode-for-uri(if (exists(../../efac:ProcurementDetails[2])) then replace(replace(replace(path(..), 'Q\{[^}]+\}', ''), '\[([0-9]+)\]', '$1'), '/', '_') else replace(replace(replace(path(../..), 'Q\{[^}]+\}', ''), '\[([0-9]+)\]', '$1'), '/', '_'))" ;
+            rml:reference "'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_VehicleInformation_' || encode-for-uri(if (exists(../../efac:ProcurementDetails[2])) then replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else replace(replace(replace(path(../..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_'))" ;
             rr:class epo:VehicleInformation
         ] ;
     rr:predicateObjectMap
@@ -130,7 +130,7 @@ tedm:MG-VehicleInformation_ND-StrategicProcurementInformationLotResult a rr:Trip
     rr:subjectMap
         [
             rdfs:label "ND-StrategicProcurementInformationLotResult" ;
-            rml:reference "if (exists(efbc:ProcurementCategoryCode)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/' || 'VehicleInformation' || '/' || replace(replace(replace(path(), 'Q\{[^}]+\}', ''), '\[([0-9]+)\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(efbc:ProcurementCategoryCode)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_VehicleInformation_' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:VehicleInformation
         ] ;
     rr:predicateObjectMap

@@ -36,7 +36,7 @@ tedm:MG-MonetaryValue-providesContractTotalPaymentValue-ContractLotCompletionInf
     rr:subjectMap
         [
             rdfs:label "ND-TenderAggregatedAmounts" ;
-            rml:reference "if (exists(efbc:PenaltiesAmount)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/' || 'ContractTotalPaymentMonetaryValue' || '/' || replace(replace(replace(path(), 'Q\{[^}]+\}', ''), '\[([0-9]+)\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(efbc:PenaltiesAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ContractTotalPaymentMonetaryValue_' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:MonetaryValue
         ] ;
     rr:predicateObjectMap
@@ -79,7 +79,7 @@ tedm:MG-MonetaryValue-providesContractTotalPenaltyValue-ContractLotCompletionInf
     rr:subjectMap
         [
             rdfs:label "ND-TenderAggregatedAmounts" ;
-            rml:reference "if (exists(efbc:PenaltiesAmount)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/' || 'ContractTotalPenaltyMonetaryValue' || '/' || replace(replace(replace(path(), 'Q\{[^}]+\}', ''), '\[([0-9]+)\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(efbc:PenaltiesAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ContractTotalPenaltyMonetaryValue_' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:MonetaryValue
         ] ;
     rr:predicateObjectMap
@@ -122,7 +122,7 @@ tedm:MG-ContractLotCompletionInformation_ND-TenderAggregatedAmounts a rr:Triples
     rr:subjectMap
         [
             rdfs:label "ND-TenderAggregatedAmounts" ;
-            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/ContractLotCompletionInformation/{replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractLotCompletionInformation_{replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class epo:ContractLotCompletionInformation
         ] ;
     rr:predicateObjectMap
@@ -193,7 +193,7 @@ tedm:MG-langString-hasPaymentValueDiscrepancyJustification-ContractLotCompletion
     rr:subjectMap [
         rr:class epo:ContractLotCompletionInformation ;
         rdfs:label "ND-TenderAggregatedAmounts" ;
-        rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/ContractLotCompletionInformation/{replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractLotCompletionInformation_{replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
     ] ;
     rr:predicateObjectMap [
         rr:predicate   epo:hasPaymentValueDiscrepancyJustification  ;
@@ -234,7 +234,7 @@ tedm:MG-Lot-describesLotCompletion-ContractLotCompletionInformation_ND-TenderAgg
         [
             tedm:minSDKVersion "1.13" ;
             rdfs:label "ND-TenderAggregatedAmounts" ;
-            rml:reference "if (exists(../efac:TenderLot/cbc:ID[text() = /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cbc:ID/text()]) or starts-with(efac:TenderLot/cbc:ID, 'LOT')) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/' || 'Lot' || '/' || ../efac:TenderLot/cbc:ID else null";
+            rml:reference "if (exists(../efac:TenderLot/cbc:ID[text() = /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cbc:ID/text()]) or starts-with(efac:TenderLot/cbc:ID, 'LOT')) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Lot_' || ../efac:TenderLot/cbc:ID else null";
             rr:class epo:Lot
         ] ;
 .
@@ -251,7 +251,7 @@ tedm:MG-LotGroup-seeAlso-ContractLotCompletionInformation_ND-TenderAggregatedAmo
         [
             tedm:minSDKVersion "1.13" ;
             rdfs:label "ND-TenderAggregatedAmounts" ;
-            rml:reference " if (exists(../efac:TenderLot/cbc:ID[text() = /*/cac:TenderingTerms/cac:LotDistribution/cac:LotsGroup/cbc:LotsGroupID/text()]) or starts-with(efac:TenderLot/cbc:ID, 'GLO')) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/' || 'LotGroup' || '/' || ../efac:TenderLot/cbc:ID else null";
+            rml:reference " if (exists(../efac:TenderLot/cbc:ID[text() = /*/cac:TenderingTerms/cac:LotDistribution/cac:LotsGroup/cbc:LotsGroupID/text()]) or starts-with(efac:TenderLot/cbc:ID, 'GLO')) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_LotGroup_' || ../efac:TenderLot/cbc:ID else null";
             rr:class epo:LotGroup
         ] ;
 .

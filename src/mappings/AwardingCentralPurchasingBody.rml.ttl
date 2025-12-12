@@ -35,7 +35,7 @@ tedm:MG-AwardingCentralPurchasingBody_ND-Organization a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-Organization" ;
-            rml:reference "if(efbc:AwardingCPBIndicator/text()='true') then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/' || 'AwardingCentralPurchasingBody' || '/' || replace(replace(replace(path(), 'Q\{[^}]+\}', ''), '\[([0-9]+)\]', '$1'), '/', '_') else null";
+            rml:reference "if(efbc:AwardingCPBIndicator/text()='true') then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_AwardingCentralPurchasingBody_' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null";
             rr:class epo:AwardingCentralPurchasingBody
         ] ;
     rr:predicateObjectMap
@@ -68,7 +68,7 @@ tedm:MG-Organization-playedBy-AwardingCentralPurchasingBody_ND-Organization a rr
         [
             rdfs:label "ND-Organization" ;
             rdfs:comment "Primary type declaration for MG-Organization-playedBy-AwardingCentralPurchasingBody under ND-Organization" ;
-            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/Organization/{cac:PartyIdentification/cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Organization_{cac:PartyIdentification/cbc:ID}" ;
             rr:class org:Organization
         ] ;
 .

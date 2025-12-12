@@ -38,7 +38,7 @@ tedm:MG-AwardDecision_ND-SettledContract a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-SettledContract" ;
-            rml:reference "if(exists(cbc:AwardDate)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/' || 'AwardDecision' || '/' || encode-for-uri(cbc:AwardDate) else null" ;
+            rml:reference "if(exists(cbc:AwardDate)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_AwardDecision_' || encode-for-uri(cbc:AwardDate) else null" ;
             rr:class epo:AwardDecision
         ] ;
     rr:predicateObjectMap
@@ -79,7 +79,7 @@ tedm:MG-AwardDecision_ND-LotResult a rr:TriplesMap ;
             #
             # ASSUMPTION: all SettledContract AwardDates under the LotResult
             # are the same date
-            rml:reference "'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/' || 'AwardDecision' || '/' || (if(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:SettledContract[cbc:ID/text() = //efac:SettledContract/cbc:ID/text()]/cbc:AwardDate)) then encode-for-uri((/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:SettledContract[cbc:ID/text() = //efac:SettledContract/cbc:ID/text()]/cbc:AwardDate)[1]) else if (exists(efac:SettledContract/cbc:ID) and not(exists(efac:SettledContract[2]/cbc:ID))) then encode-for-uri(efac:SettledContract/cbc:ID) else encode-for-uri(cbc:ID))" ;
+            rml:reference "'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_AwardDecision_' || (if(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:SettledContract[cbc:ID/text() = //efac:SettledContract/cbc:ID/text()]/cbc:AwardDate)) then encode-for-uri((/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:SettledContract[cbc:ID/text() = //efac:SettledContract/cbc:ID/text()]/cbc:AwardDate)[1]) else if (exists(efac:SettledContract/cbc:ID) and not(exists(efac:SettledContract[2]/cbc:ID))) then encode-for-uri(efac:SettledContract/cbc:ID) else encode-for-uri(cbc:ID))" ;
             rr:class epo:AwardDecision
         ] ;
     rr:predicateObjectMap
