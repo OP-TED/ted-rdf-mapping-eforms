@@ -37,7 +37,7 @@ tedm:X-ContactPoint-Organization a rr:TriplesMap ;
             rdfs:label "Placeholder TouchPoint Organization" ;
             rdfs:comment "Supporting instance for connection between Agent and Organization" ;
             rdfs:comment "Primary type declaration for MG-ContactPoint under ND-Touchpoint" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Organization_{cac:PartyIdentification/cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Organization/{cac:PartyIdentification/cbc:ID}" ;
             rr:class org:Organization
         ] ;
     rr:predicateObjectMap
@@ -47,7 +47,7 @@ tedm:X-ContactPoint-Organization a rr:TriplesMap ;
             rr:predicate owl:sameAs ;
             rr:objectMap
                 [
-                    rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Organization_{../efac:Company/cac:PartyIdentification/cbc:ID}" ;
+                    rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Organization/{../efac:Company/cac:PartyIdentification/cbc:ID}" ;
                 ]
         ] ;
 .
@@ -64,7 +64,7 @@ tedm:MG-ContactPoint_ND-Touchpoint a rr:TriplesMap ;
         [
             rdfs:label "ND-Touchpoint" ;
             rdfs:comment "Primary type declaration for MG-ContactPoint under ND-Touchpoint" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_TouchPoint_{cac:PartyIdentification/cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/TouchPoint/{cac:PartyIdentification/cbc:ID}" ;
             rr:class cpov:ContactPoint
         ] ;
     # rr:predicateObjectMap
@@ -127,7 +127,7 @@ tedm:MG-Address-address-ContactPoint_ND-TouchpointAddress a rr:TriplesMap ;
         [
             rdfs:label "ND-TouchpointAddress" ;
             rdfs:comment "Primary type declaration for MG-Address-address-ContactPoint under ND-TouchpointAddress" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_TouchPointAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/TouchPointAddress${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class locn:Address
         ] ;
     rr:predicateObjectMap
@@ -204,7 +204,7 @@ tedm:MG-ContactPoint_ND-TouchpointContact a rr:TriplesMap ;
         [
             rdfs:label "ND-TouchpointContact" ;
             rdfs:comment "Primary type declaration for MG-ContactPoint under ND-TouchpointContact" ;
-            rml:reference "if(exists(cbc:Name) or exists(cbc:ElectronicMail) or exists(cbc:Telephone) or exists(cbc:Telefax)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_TouchPoint_' || ../cac:PartyIdentification/cbc:ID else null" ;
+            rml:reference "if(exists(cbc:Name) or exists(cbc:ElectronicMail) or exists(cbc:Telephone) or exists(cbc:Telefax)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/TouchPoint/' || ../cac:PartyIdentification/cbc:ID else null" ;
             rr:class cpov:ContactPoint
         ] ;
     rr:predicateObjectMap
@@ -259,7 +259,7 @@ tedm:MG-langString-description-ContactPoint_ND-Touchpoint a rr:TriplesMap ;
     rr:class cccev:ContactPoint ;
     rdfs:comment "Primary type declaration for MG-ContactPoint under ND-Touchpoint" ;
     rdfs:label "ND-Touchpoint" ;
-    rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_TouchPoint_{../../cac:PartyIdentification/cbc:ID}" ;
+    rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/TouchPoint/{../../cac:PartyIdentification/cbc:ID}" ;
   ] ;
   rr:predicateObjectMap [
     rr:predicate dct:description ;
