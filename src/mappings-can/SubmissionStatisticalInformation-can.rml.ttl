@@ -35,7 +35,7 @@ tedm:MG-SubmissionStatisticalInformation_ND-ReceivedSubmissions a rr:TriplesMap 
     rr:subjectMap
         [
             rdfs:label "ND-ReceivedSubmissions" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SubmissionStatisticalInformation_{replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/SubmissionStatisticalInformation/{replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class epo:SubmissionStatisticalInformation
         ] ;
     rr:predicateObjectMap
@@ -211,7 +211,7 @@ tedm:MG-SubmissionStatisticalInformation_ND-LotResult a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-LotResult" ;
-            rml:reference "if(exists(cbc:LowerTenderAmount) or exists(cbc:HigherTenderAmount) or exists(efac:ReceivedSubmissionsStatistics)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_SubmissionStatisticalInformation_' || replace(replace(replace(path(.), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if(exists(cbc:LowerTenderAmount) or exists(cbc:HigherTenderAmount) or exists(efac:ReceivedSubmissionsStatistics)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/' || 'SubmissionStatisticalInformation' || '/' || replace(replace(replace(path(.), 'Q\{[^}]+\}', ''), '\[([0-9]+)\]', '$1'), '/', '_') else null" ;
             rr:class epo:SubmissionStatisticalInformation
         ] ;
     rr:predicateObjectMap
@@ -240,7 +240,7 @@ tedm:MG-MonetaryValue-hasHighestReceivedTenderValue-SubmissionStatisticalInforma
     rr:subjectMap
         [
             rdfs:label "ND-LotResult" ;
-            rml:reference "if (exists(cbc:HigherTenderAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MonetaryValue_' || replace(replace(replace(path(.), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(cbc:HigherTenderAmount)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/' || 'MonetaryValue' || '/' || replace(replace(replace(path(.), 'Q\{[^}]+\}', ''), '\[([0-9]+)\]', '$1'), '/', '_') else null" ;
             rr:class epo:MonetaryValue
         ] ;
     rr:predicateObjectMap
@@ -282,7 +282,7 @@ tedm:MG-MonetaryValue-hasLowestReceivedTenderValue-SubmissionStatisticalInformat
     rr:subjectMap
         [
             rdfs:label "ND-LotResult" ;
-            rml:reference "if (exists(cbc:LowerTenderAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MonetaryValueLowestReceivedTenderValue_' || replace(replace(replace(path(.), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(cbc:LowerTenderAmount)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/' || 'MonetaryValueLowestReceivedTenderValue' || '/' || replace(replace(replace(path(.), 'Q\{[^}]+\}', ''), '\[([0-9]+)\]', '$1'), '/', '_') else null" ;
             rr:class epo:MonetaryValue
         ] ;
     rr:predicateObjectMap

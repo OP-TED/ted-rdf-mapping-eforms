@@ -37,7 +37,7 @@ tedm:MG-ProcurementServiceProvider_ND-ServiceProviderParty a rr:TriplesMap ;
         [
             rdfs:label "ND-ServiceProviderParty" ;
             rdfs:comment "Primary type declaration for MG-ProcurementServiceProvider under ND-ServiceProviderParty" ;
-            rml:reference "if(exists(cac:Party/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcurementServiceProvider_' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null";
+            rml:reference "if(exists(cac:Party/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/' || 'ProcurementServiceProvider' || '/' || replace(replace(replace(path(), 'Q\{[^}]+\}', ''), '\[([0-9]+)\]', '$1'), '/', '_') else null";
             rr:class epo:ProcurementServiceProvider
         ] ;
     rr:predicateObjectMap
@@ -53,7 +53,7 @@ tedm:MG-ProcurementServiceProvider_ND-ServiceProviderParty a rr:TriplesMap ;
                         rr:parent "cac:PartyIdentification/cbc:ID" ;
                     ] ;
                     # alternative: associated object linked through explicit template with deterministic IRI
-                    # rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Organization_{cac:Party/cac:PartyIdentification/cbc:ID}" ;
+                    # rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/Organization/{cac:Party/cac:PartyIdentification/cbc:ID}" ;
                     # rr:termType rr:IRI ;
                 ] ;
         ] ;

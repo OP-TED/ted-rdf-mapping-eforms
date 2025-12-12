@@ -44,7 +44,7 @@ tedm:MG-ContractModificationNotice_ND-Root
         [
             rdfs:label "ND-Root" ;
             rdfs:comment "Primary type declaration for MG-ContractModificationNotice under ND-Root" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Notice" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/Notice" ;
             rr:class epo-not:ContractModificationNotice
         ] ;
     rr:predicateObjectMap
@@ -70,7 +70,7 @@ tedm:MG-ContractModificationNotice_ND-ContractModification a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-ContractModification" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Notice" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/Notice" ;
             rr:class epo-not:ContractModificationNotice
         ] ;
      rr:predicateObjectMap
@@ -129,7 +129,7 @@ tedm:MG-Notice-refersToPrevious-ContractModificationNotice_ND-ContractModificati
     rr:subjectMap
         [
             rdfs:label "ND-ContractModification" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(efbc:ChangedNoticeIdentifier, ' ', '-' ), '/' , '-')}_Notice" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(efbc:ChangedNoticeIdentifier, ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/Notice" ;
             rr:class epo:Notice
         ] ;
      rr:predicateObjectMap
@@ -159,7 +159,7 @@ tedm:MG-Identifier-identifier-Notice-refersToPrevious-ContractModificationNotice
     rr:subjectMap
         [
             rdfs:label "ND-ContractModification" ;
-            rml:reference "if (exists(efbc:ChangedNoticeIdentifier)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(efbc:ChangedNoticeIdentifier, ' ', '-' ), '/' , '-') || '_NoticeIdentifier_' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(efbc:ChangedNoticeIdentifier)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(efbc:ChangedNoticeIdentifier, ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/' || 'NoticeIdentifier' || '/' || replace(replace(replace(path(), 'Q\{[^}]+\}', ''), '\[([0-9]+)\]', '$1'), '/', '_') else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -195,7 +195,7 @@ tedm:MG-ContractAmendment-announcesContractAmendment-ContractModificationNotice_
     rr:subjectMap
         [
             rdfs:label "ND-ContractModification" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractAmendment_{replace(translate(path(.), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/ContractAmendment/{replace(translate(path(.), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class epo-con:ContractAmendment
         ] ;
 .
@@ -211,7 +211,7 @@ tedm:MG-ContractAmendment_ND-ContractModification a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-ContractModification" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ContractAmendment_{replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/ContractAmendment/{replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class epo-con:ContractAmendment
         ] ;
      rr:predicateObjectMap
@@ -242,7 +242,7 @@ tedm:MG-Contract-amendsContract-ContractAmendment_ND-ContractModification a rr:T
     rr:subjectMap
         [
             rdfs:label "ND-ContractModification" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SettledContract_{efbc:ModifiedContractIdentifier}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/SettledContract/{efbc:ModifiedContractIdentifier}" ;
             rr:class epo:Contract
         ] ;
 .
@@ -257,7 +257,7 @@ tedm:MG-Contract-refersToContractToBeModified-ContractModificationNotice_ND-Cont
     rr:subjectMap
         [
             rdfs:label "ND-ContractModification" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SettledContract_{efbc:ModifiedContractIdentifier}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/SettledContract/{efbc:ModifiedContractIdentifier}" ;
             rr:class epo:Contract
         ] ;
 .

@@ -83,7 +83,7 @@ tedm:MG-langString-hasNonElectronicSubmissionDescription-SubmissionTerm-isSubjec
   rr:subjectMap [
     rr:class epo-not:SubmissionTerm ;
     rdfs:label "ND-NonEsubmission" ;
-    rml:reference "'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_SubmissionTerm_' || replace(replace(replace(path(../../..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_')" ;
+    rml:reference "'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/' || 'SubmissionTerm' || '/' || replace(replace(replace(path(../../..), 'Q\{[^}]+\}', ''), '\[([0-9]+)\]', '$1'), '/', '_')" ;
   ] ;
   rr:predicateObjectMap [
     rr:predicate epo-not:hasNonElectronicSubmissionDescription ;
@@ -154,7 +154,7 @@ tedm:MG-langString-hasLateSubmissionInformationDescription-SubmissionTerm-isSubj
     ] ;
     rr:subjectMap [
         rdfs:label "ND-LateTendererInformation";
-        rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SubmissionTerm_{replace(translate(path(../../../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/SubmissionTerm/{replace(translate(path(../../../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
         rr:class epo:SubmissionTerm
     ] ;
     rr:predicateObjectMap [
@@ -194,7 +194,7 @@ tedm:MG-ExclusionGround-specifiesProcurementCriterion-Lot_ND-ExclusionGrounds a 
     rr:subjectMap
         [
             rdfs:label "ND-ExclusionGrounds" ;
-            rml:reference "if(exists(cbc:Description) or exists(cbc:TendererRequirementTypeCode)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ExclusionGround_' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if(exists(cbc:Description) or exists(cbc:TendererRequirementTypeCode)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/' || 'ExclusionGround' || '/' || replace(replace(replace(path(), 'Q\{[^}]+\}', ''), '\[([0-9]+)\]', '$1'), '/', '_') else null" ;
             rr:class epo:ExclusionGround
         ] ;
     rr:predicateObjectMap
@@ -249,7 +249,7 @@ tedm:MG-langString-description-ExclusionGround-specifiesProcurementCriterion-Lot
   rr:subjectMap [
     rr:class epo-not:ExclusionGround ;
     rdfs:label "ND-ExclusionGrounds" ;
-    rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ExclusionGround_{replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+    rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/ExclusionGround/{replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
   ] ;
   rr:predicateObjectMap [
     rr:predicate dct:description ;

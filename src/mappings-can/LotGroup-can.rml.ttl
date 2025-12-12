@@ -37,7 +37,7 @@
 #         [
 #             # TODO Not in the source
 #             rdfs:label  "ND-NoticeResult";
-#             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotGroup_{../cbc:ID}" ;
+#             rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/LotGroup/{../cbc:ID}" ;
 #             rr:class epo:LotGroup
 #         ] ;
 # .
@@ -53,7 +53,7 @@ tedm:MG-LotGroup-describesLotGroup-LotGroupAwardInformation_ND-NoticeResultGroup
     rr:subjectMap
         [
             rdfs:label  "ND-NoticeResultGroupFA";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotGroup_{efac:TenderLot/cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/LotGroup/{efac:TenderLot/cbc:ID}" ;
             rr:class epo:LotGroup
         ] ;
 .
@@ -70,7 +70,7 @@ tedm:MG-LotGroup-describesLotGroup-LotGroupAwardInformation_ND-NoticeResultGroup
 #     rr:subjectMap
 #         [
 #             rdfs:label "ND-NoticeResultGroupFA";
-#             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotIdentifier_{encode-for-uri(efac:TenderLot/cbc:ID)}" ;
+#             rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/LotIdentifier/{encode-for-uri(efac:TenderLot/cbc:ID)}" ;
 #             rr:class adms:Identifier
 #         ] ;
 #    rr:predicateObjectMap
@@ -96,7 +96,7 @@ tedm:MG-LotGroup-describesLotGroup-LotGroupAwardInformation_ND-NoticeResultGroup
 #     rr:subjectMap
 #         [
 #             rdfs:label "ND-NoticeResultGroupFA";
-#             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Lot_{efac:TenderLot/cbc:ID}" ;
+#             rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/Lot/{efac:TenderLot/cbc:ID}" ;
 #             rr:class epo:Lot
 #         ] ;
 #    rr:predicateObjectMap
@@ -126,7 +126,7 @@ tedm:MG-LotGroup_ND-NoticeResultGroupFA  a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-NoticeResultGroupFA";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotGroup_{efac:TenderLot/cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/LotGroup/{efac:TenderLot/cbc:ID}" ;
             rr:class epo:LotGroup
         ] ;
 # remove this after confirmed by OP that CM is wrong
@@ -173,7 +173,7 @@ tedm:MG-LotGroup_ND-NoticeResultGroupFA  a rr:TriplesMap ;
 #    rr:subjectMap
 #        [
 #            rdfs:label "ND-NoticeResultGroupFA";
-#            rml:reference "if (exists(efbc:GroupFrameworkReestimatedValueAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MonetaryValue_' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+#            rml:reference "if (exists(efbc:GroupFrameworkReestimatedValueAmount)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/' || 'MonetaryValue' || '/' || replace(replace(replace(path(), 'Q\{[^}]+\}', ''), '\[([0-9]+)\]', '$1'), '/', '_') else null" ;
 #            rr:class epo:MonetaryValue
 #        ] ;
 #   rr:predicateObjectMap

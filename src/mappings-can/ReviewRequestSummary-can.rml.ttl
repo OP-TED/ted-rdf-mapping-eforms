@@ -35,7 +35,7 @@ tedm:MG-ReviewIrregularitySummary-hasReviewIrregularitySummary-ReviewRequestSumm
     rr:subjectMap
         [
             rdfs:label "ND-ReviewRequestsStatistics";
-            rml:reference "if (exists(efbc:StatisticsCode) or exists(efbc:StatisticsNumeric)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ReviewIrregularitySummary_' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(efbc:StatisticsCode) or exists(efbc:StatisticsNumeric)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/' || 'ReviewIrregularitySummary' || '/' || replace(replace(replace(path(), 'Q\{[^}]+\}', ''), '\[([0-9]+)\]', '$1'), '/', '_') else null" ;
             rr:class epo:ReviewIrregularitySummary
         ] ;
      rr:predicateObjectMap
@@ -78,7 +78,7 @@ tedm:MG-ReviewRequestSummary_ND-ReviewRequestsStatistics  a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-ReviewRequestsStatistics";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ReviewRequestSummary_{replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/ReviewRequestSummary/{replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class epo:ReviewRequestSummary
         ] ;
     rr:predicateObjectMap
@@ -106,7 +106,7 @@ tedm:MG-Lot-concernsReviewSummaryForLot-ReviewRequestSummary_ND-LotResult  a rr:
     rr:subjectMap
         [
             rdfs:label "ND-LotResult";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Lot_{efac:TenderLot/cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/Lot/{efac:TenderLot/cbc:ID}" ;
             rr:class epo:Lot
         ] ;
     .
@@ -122,7 +122,7 @@ tedm:MG-ReviewRequestSummary_ND-LotResult  a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-BuyerReviewComplainants";
-            rml:reference "if (exists( efac:AppealRequestsStatistics[efbc:StatisticsCode/@listName='irregularity-type'] ) or exists( efac:AppealRequestsStatistics[efbc:StatisticsCode/@listName='review-type'] )) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ReviewRequestSummary_' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists( efac:AppealRequestsStatistics[efbc:StatisticsCode/@listName='irregularity-type'] ) or exists( efac:AppealRequestsStatistics[efbc:StatisticsCode/@listName='review-type'] )) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/' || 'ReviewRequestSummary' || '/' || replace(replace(replace(path(), 'Q\{[^}]+\}', ''), '\[([0-9]+)\]', '$1'), '/', '_') else null" ;
             rr:class epo:ReviewRequestSummary
         ] ;
     rr:predicateObjectMap
@@ -160,7 +160,7 @@ tedm:MG-ReviewRequestSummary-seeAlso-LotAwardOutcome_ND-BuyerReviewComplainants 
     rr:subjectMap
         [
             rdfs:label "ND-BuyerReviewComplainants";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ReviewRequestSummary_{replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/ReviewRequestSummary/{replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class epo:ReviewRequestSummary
         ] ;
     .
@@ -176,7 +176,7 @@ tedm:MG-ReviewRequestSummary_ND-BuyerReviewComplainants  a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-BuyerReviewComplainants";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ReviewRequestSummary_{replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/ReviewRequestSummary/{replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class epo:ReviewRequestSummary
         ] ;
     rr:predicateObjectMap

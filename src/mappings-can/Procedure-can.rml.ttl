@@ -35,7 +35,7 @@ tedm:MG-Procedure_ND-DirectAward a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-DirectAward";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Procedure_{replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/Procedure/{replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class epo:Procedure
         ] ;
 
@@ -65,7 +65,7 @@ tedm:MG-DirectAwardTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-DirectAwar
         [
             # VERINFO: SDK v1.10 onwards this becomes repeatable
             rdfs:label "ND-DirectAward";
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_DirectAwardTerm_{replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/DirectAwardTerm/{replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class epo:DirectAwardTerm
         ] ;
      rr:predicateObjectMap
@@ -132,7 +132,7 @@ tedm:MG-Procedure-refersToPreviousProcedure-DirectAwardTerm-isSubjectToProcedure
     rr:subjectMap
         [
             rdfs:label "ND-DirectAward";
-            rml:reference "if (exists(cbc:Description)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Procedure_' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(cbc:Description)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/' || 'Procedure' || '/' || replace(replace(replace(path(), 'Q\{[^}]+\}', ''), '\[([0-9]+)\]', '$1'), '/', '_') else null" ;
             rr:class epo:Procedure
         ] ;
 
@@ -161,7 +161,7 @@ tedm:MG-Identifier-identifier-Procedure-refersToPreviousProcedure-DirectAwardTer
     rr:subjectMap
         [
             rdfs:label "ND-DirectAward" ;
-            rml:reference "if (exists(cbc:Description)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_PreviousProcedureIdentifier_' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(cbc:Description)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/' || 'PreviousProcedureIdentifier' || '/' || replace(replace(replace(path(), 'Q\{[^}]+\}', ''), '\[([0-9]+)\]', '$1'), '/', '_') else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -196,7 +196,7 @@ tedm:MG-langString-hasJustification-DirectAwardTerm-isSubjectToProcedureSpecific
     rr:subjectMap [
         rr:class epo-not:DirectAwardTerm ;
         rdfs:label "ND-DirectAward" ;
-        rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_DirectAwardTerm_{replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/DirectAwardTerm/{replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
     ] ;
     rr:predicateObjectMap [
         rr:predicate epo-not:hasJustification ;
