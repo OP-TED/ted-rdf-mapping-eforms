@@ -37,7 +37,7 @@ tedm:MG-Buyer_ND-ContractingParty a rr:TriplesMap ;
         [
             rdfs:label "ND-ContractingParty" ;
             rdfs:comment "Primary type declaration for MG-Buyer under ND-ContractingParty" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Buyer_{encode-for-uri(concat(cac:Party/cac:PartyIdentification/cbc:ID, cac:Party/cac:PartyIdentification/cbc:ID/@schemeName))}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/Buyer/{encode-for-uri(concat(cac:Party/cac:PartyIdentification/cbc:ID, cac:Party/cac:PartyIdentification/cbc:ID/@schemeName))}" ;
             rr:class epo:Buyer
         ] ;
     # this is an example of an association to an independent resource (role to organization)
@@ -107,7 +107,7 @@ tedm:MG-Organization-playedBy-Buyer_ND-ServiceProvider a rr:TriplesMap ;
         [
             rdfs:label "ND-ServiceProvider" ; # ND-Buyer in v1.10+
             rdfs:comment "Primary type declaration for MG-Organization-playedBy-Buyer under ND-ServiceProvider (v1.3-1.9), ND-Buyer (v1.10+)" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Organization_{cac:PartyIdentification/cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/Organization/{cac:PartyIdentification/cbc:ID}" ;
             rr:class org:Organization
         ] ;
     rr:predicateObjectMap

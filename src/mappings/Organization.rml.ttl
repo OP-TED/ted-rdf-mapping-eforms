@@ -37,7 +37,7 @@ tedm:MG-Organization_ND-Company a rr:TriplesMap ;
         [
             rdfs:label "ND-Company" ;
             rdfs:comment "Primary type declaration for MG-Organization under ND-Company" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Organization_{cac:PartyIdentification/cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/Organization/{cac:PartyIdentification/cbc:ID}" ;
             rr:class org:Organization
         ] ;
     rr:predicateObjectMap
@@ -135,7 +135,7 @@ tedm:MG-Identifier-identifier-Organization_ND-Company a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-Company" ;
-            rml:reference "if (exists(cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Identifier_' || cac:PartyIdentification/cbc:ID else null" ;
+            rml:reference "if (exists(cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/Identifier/' || cac:PartyIdentification/cbc:ID else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -171,7 +171,7 @@ tedm:MG-Identifier-hasLegalIdentifier-Organization_ND-Company a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-Company" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_OrganisationIdentifier_{replace(translate(path(cbc:CompanyID), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/OrganisationIdentifier/{replace(translate(path(cbc:CompanyID), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -197,7 +197,7 @@ tedm:MG-Address-registeredAddress-Organization_ND-CompanyAddress a rr:TriplesMap
         [
             rdfs:label "ND-CompanyAddress" ;
             rdfs:comment "Primary type declaration for Address-registeredAddress-Organization under ND-CompanyAddress" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_CompanyAddress_{replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/CompanyAddress/{replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class locn:Address
 
         ] ;
@@ -270,7 +270,7 @@ tedm:MG-ContactPoint-hasPrimaryContactPoint-Organization_ND-CompanyContact a rr:
         [
             rdfs:label "ND-CompanyContact" ;
             rdfs:comment "Primary type declaration for MG-ContactPoint-hasPrimaryContactPoint-Organization under ND-CompanyContact" ;
-            rml:reference "if(exists(cbc:Name) or exists(cbc:ElectronicMail) or exists(cbc:Telephone) or exists(cbc:Telefax)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_CompanyContactPoint_' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if(exists(cbc:Name) or exists(cbc:ElectronicMail) or exists(cbc:Telephone) or exists(cbc:Telefax)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/CompanyContactPoint/' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class cpov:ContactPoint
 
         ] ;
@@ -333,7 +333,7 @@ tedm:MG-langString-hasLegalName-Organization_ND-Company a rr:TriplesMap ;
         rr:class org:Organization ;
         rdfs:comment "Primary type declaration for MG-Organization under ND-Company" ;
         rdfs:label "ND-Company" ;
-        rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Organization_{../../cac:PartyIdentification/cbc:ID}" ;
+        rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/Organization/{../../cac:PartyIdentification/cbc:ID}" ;
     ] ;
     rr:predicateObjectMap [
         rr:predicate epo-not:hasLegalName ;

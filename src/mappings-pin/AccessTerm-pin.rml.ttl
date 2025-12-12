@@ -35,7 +35,7 @@ tedm:MG-AccessTerm_ND-PartInfoRequestPeriod a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-PartInfoRequestPeriod" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_AccessTerm_{replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/AccessTerm/{replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class epo:AccessTerm ;
         ] ;
     rr:predicateObjectMap
@@ -75,7 +75,7 @@ tedm:MG-PlannedProcurementPart-refersToPlannedPart-AccessTerm_ND-PartInfoRequest
     rr:subjectMap
         [
             rdfs:label "ND-PartInfoRequestPeriod " ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_PlannedProcurementPart_{../../cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/PlannedProcurementPart/{../../cbc:ID}" ;
             rr:class epo:PlannedProcurementPart ;
         ] ;
 .
@@ -91,7 +91,7 @@ tedm:MG-PlannedProcurementPart-refersToPlannedPart-AccessTerm_ND-PartProcurement
     rr:subjectMap
         [
             rdfs:label "ND-PartInfoRequestPeriod " ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_PlannedProcurementPart_{../../cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/PlannedProcurementPart/{../../cbc:ID}" ;
             rr:class epo:PlannedProcurementPart ;
         ] ;
 .
@@ -108,7 +108,7 @@ tedm:AccessTerm_ND-PartTenderingTerms a rr:TriplesMap ;
         [
             rdfs:label "ND-PartTenderingTerms" ;
             rr:class epo:AccessTerm ;
-            rml:reference "if(exists(cac:AdditionalInformationParty/cac:PartyIdentification/cbc:ID) or exists(cac:DocumentProviderParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_AccessTerm_' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if(exists(cac:AdditionalInformationParty/cac:PartyIdentification/cbc:ID) or exists(cac:DocumentProviderParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/AccessTerm/' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
         ] ;
     rr:predicateObjectMap
         [
@@ -161,7 +161,7 @@ tedm:MG-PlannedProcurementPart-refersToPlannedPart-AccessTerm_ND-PartTenderingTe
     rr:subjectMap
         [
             rdfs:label "ND-PartInfoRequestPeriod " ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_PlannedProcurementPart_{../cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/PlannedProcurementPart/{../cbc:ID}" ;
             rr:class epo:PlannedProcurementPart ;
         ] ;
 .

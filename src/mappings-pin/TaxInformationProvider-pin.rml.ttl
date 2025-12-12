@@ -35,7 +35,7 @@ tedm:MG-TaxInformationProvider_ND-PartFiscalLegislation a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-PartFiscalLegislation" ;
-            rml:reference "if(exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_TaxInformationProvider_' || encode-for-uri(concat(cac:IssuerParty/cac:PartyIdentification/cbc:ID, cac:IssuerParty/cac:PartyIdentification/cbc:ID/@schemeName)) else null";
+            rml:reference "if(exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/TaxInformationProvider/' || encode-for-uri(concat(cac:IssuerParty/cac:PartyIdentification/cbc:ID, cac:IssuerParty/cac:PartyIdentification/cbc:ID/@schemeName)) else null";
             rr:class epo:TaxInformationProvider
         ] ;
     rr:predicateObjectMap
@@ -58,7 +58,7 @@ tedm:MG-TaxInformationProvider_ND-PartFiscalLegislation a rr:TriplesMap ;
                     rdfs:label "TPO (playedBy)" ;
                     rdfs:comment "Connection where IssuerParty is a TouchPoint" ;
                     # we create a deterministic IRI which is the same as that instantiated alongside the ContactPoint and rely on the sameAs link
-                    rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Organization_{cac:IssuerParty/cac:PartyIdentification/cbc:ID}" ;
+                    rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/Organization/{cac:IssuerParty/cac:PartyIdentification/cbc:ID}" ;
                 ] ;
         ] ;
     rr:predicateObjectMap

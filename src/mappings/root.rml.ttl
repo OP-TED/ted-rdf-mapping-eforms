@@ -46,7 +46,7 @@ tedm:MG-CompetitionNotice_ND-Root
         [
             rdfs:label "ND-Root" ;
             rdfs:comment "Primary type declaration for MG-Notice under ND-Root" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Notice" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/Notice" ;
             rr:class epo-not:CompetitionNotice
         ] ;
     rr:predicateObjectMap
@@ -102,7 +102,7 @@ tedm:MG-AgentInRole-announcesRole-Notice_ND-Root a rr:TriplesMap ;
         [
             rdfs:label "ND-Root" ;
             rdfs:comment "Primary type declaration for MG-Notice under ND-Root" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Notice" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/Notice" ;
             rr:class epo:Notice
         ] ;
     # this is an example of a (backpropagated) association that is not represented by a BT/field
@@ -270,7 +270,7 @@ tedm:MG-AgentInRole-refersToRole-Notice_ND-Root a rr:TriplesMap ;
         [
             rdfs:label "ND-Root" ;
             rdfs:comment "Primary type declaration for MG-Notice under ND-Root" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Notice" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/Notice" ;
             rr:class epo:Notice
         ] ;
     rr:predicateObjectMap
@@ -438,7 +438,7 @@ tedm:MG-Notice_ND-Root
         [
             rdfs:label "ND-Root" ;
             rdfs:comment "Primary type declaration for MG-Notice under ND-Root" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Notice" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/Notice" ;
             rr:class epo:Notice
         ] ;
     rr:predicateObjectMap
@@ -642,7 +642,7 @@ tedm:MG-Identifier-identifier-Notice_ND-Root a rr:TriplesMap ;
         [
             rdfs:label "BT-701-notice" ;
             # TODO can this become a template since the iterator is already on the required element?
-            rml:reference "if (exists(/*/cbc:ID[@schemeName='notice-id'])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_NoticeIdentifier_' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(/*/cbc:ID[@schemeName='notice-id'])) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/NoticeIdentifier/' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -677,7 +677,7 @@ tedm:MG-Person-playedBy-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTe
     rr:subjectMap
         [
             rdfs:label "ND-AwardingTermsJuryMember" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Person_{replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/Person/{replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class person:Person;
 
         ] ;
@@ -706,7 +706,7 @@ tedm:MG-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember a 
     rr:subjectMap
         [
             rdfs:label "ND-AwardingTermsJuryMember" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_JuryMember_{replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/JuryMember/{replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class epo:JuryMember;
 
         ] ;
@@ -739,7 +739,7 @@ tedm:MG-Notice-refersToPrevious-Notice_ND-PreviousNoticeReference a rr:TriplesMa
     rr:subjectMap
         [
             rdfs:label "ND-PreviousNoticeReference" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(cbc:ID, ' ', '-' ), '/' , '-')}_Notice" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(cbc:ID, ' ', '-' ), '/' , '-')}/Notice" ;
             rr:class epo:Notice
         ] ;
     rr:predicateObjectMap
@@ -770,7 +770,7 @@ tedm:MG-Identifier-identifier-Notice-refersToPrevious-Notice_ND-PreviousNoticeRe
     rr:subjectMap
         [
             rdfs:label "ND-PreviousNoticeReference" ;
-            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(cbc:ID, ' ', '-' ), '/' , '-') || '_PreviousNoticeIdentifier_' || encode-for-uri(cbc:ID) else null" ;
+            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(cbc:ID, ' ', '-' ), '/' , '-') || '/PreviousNoticeIdentifier/' || encode-for-uri(cbc:ID) else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap

@@ -36,7 +36,7 @@ tedm:MG-ReviewProcedureInformationProvider_ND-PartReviewTerms a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-PartReviewTerms" ;
-            rml:reference "if(exists(cac:AppealInformationParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ReviewProcedureInformationProvider_' || encode-for-uri(concat(cac:AppealInformationParty/cac:PartyIdentification/cbc:ID, cac:AppealInformationParty/cac:PartyIdentification/cbc:ID/@schemeName)) else null";
+            rml:reference "if(exists(cac:AppealInformationParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/ReviewProcedureInformationProvider/' || encode-for-uri(concat(cac:AppealInformationParty/cac:PartyIdentification/cbc:ID, cac:AppealInformationParty/cac:PartyIdentification/cbc:ID/@schemeName)) else null";
             rr:class epo:ReviewProcedureInformationProvider
         ] ;
     rr:predicateObjectMap
@@ -59,7 +59,7 @@ tedm:MG-ReviewProcedureInformationProvider_ND-PartReviewTerms a rr:TriplesMap ;
                     rdfs:label "TPO (playedBy)" ;
                     rdfs:comment "Connection where AppealInformationParty is a TouchPoint" ;
                     # we create a deterministic IRI which is the same as that instantiated alongside the ContactPoint and rely on the sameAs link
-                    rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Organization_{cac:AppealInformationParty/cac:PartyIdentification/cbc:ID}" ;
+                    rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/Organization/{cac:AppealInformationParty/cac:PartyIdentification/cbc:ID}" ;
                 ] ;
         ] ;
     rr:predicateObjectMap

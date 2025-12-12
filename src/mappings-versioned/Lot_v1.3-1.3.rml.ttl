@@ -33,7 +33,7 @@ tedm:MG-langString-hasGuaranteeDescription-SubmissionTerm-isSubjectToLotSpecific
     rr:subjectMap [
         rr:class epo-not:SubmissionTerm ;
         rdfs:label "ND-FinancialGuarantee" ;
-        rml:reference "if (exists(../cbc:GuaranteeTypeCode[@listName='tender-guarantee-required'])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_SubmissionTerm_' || replace(replace(replace(path(../../..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+        rml:reference "if (exists(../cbc:GuaranteeTypeCode[@listName='tender-guarantee-required'])) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/SubmissionTerm/' || replace(replace(replace(path(../../..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
     ] ;
     rr:predicateObjectMap [
         rr:predicate epo-not:hasGuaranteeDescription ;

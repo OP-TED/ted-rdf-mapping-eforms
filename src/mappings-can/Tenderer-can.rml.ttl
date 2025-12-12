@@ -35,7 +35,7 @@ tedm:MG-Tenderer_ND-TenderingParty a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-TenderingParty" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Tenderer_{cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/Tenderer/{cbc:ID}" ;
             rr:class epo:Tenderer
         ] ;
     rr:predicateObjectMap
@@ -90,7 +90,7 @@ tedm:MG-Tenderer-announcesRole-ResultNotice_ND-TenderingParty a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-TenderingParty" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Tenderer_{cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/Tenderer/{cbc:ID}" ;
             rr:class epo:Tenderer
         ] ;
 .
@@ -106,7 +106,7 @@ tedm:MG-OrganisationGroup-playedBy-Tenderer_ND-TenderingParty a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-TenderingParty" ;
-            rml:reference "if(exists(efac:Tenderer[2])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_OrganisationGroup_' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if(exists(efac:Tenderer[2])) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/OrganisationGroup/' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:OrganisationGroup
         ] ;
      rr:predicateObjectMap
@@ -150,7 +150,7 @@ tedm:MG-Organization-playedBy-Tenderer_ND-Tenderer a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-Tenderer" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Organization_{cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/Organization/{cbc:ID}" ;
             rr:class org:Organization
         ] ;
     rr:predicateObjectMap
@@ -176,7 +176,7 @@ tedm:MG-Organization-hasMember-OrganisationGroup-playedBy-Tenderer_ND-Tenderer a
     rr:subjectMap
         [
             rdfs:label "ND-Tenderer" ;
-            rml:reference "if(exists(../efac:Tenderer[2])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Organization_' || cbc:ID else null" ;
+            rml:reference "if(exists(../efac:Tenderer[2])) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/Organization/' || cbc:ID else null" ;
             rr:class org:Organization
         ] ;
  .
@@ -192,7 +192,7 @@ tedm:MG-Organization-leadBy-OrganisationGroup-playedBy-Tenderer_ND-Tenderer a rr
     rr:subjectMap
         [
             rdfs:label "ND-Tenderer" ;
-            rml:reference "if(exists(../efac:Tenderer[2]) and efbc:GroupLeadIndicator='true') then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Organization_' || cbc:ID else null" ;
+            rml:reference "if(exists(../efac:Tenderer[2]) and efbc:GroupLeadIndicator='true') then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/Organization/' || cbc:ID else null" ;
             rr:class org:Organization
         ] ;
  .
