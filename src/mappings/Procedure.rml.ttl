@@ -35,7 +35,7 @@ tedm:MG-Procedure_ND-Root a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-Root";
-            rml:reference "if (not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E1 E2', text())]))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Procedure$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E1 E2', text())]))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Procedure/' || encode-for-uri(/*/cbc:ContractFolderID) else null" ;
             rr:class epo:Procedure
         ] ;
     rr:predicateObjectMap
@@ -179,7 +179,7 @@ tedm:MG-Procedure_ND-LocalLegalBasisWithID a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-LocalLegalBasisWithID";
-            rml:reference "if (not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E1 E2', text())]))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Procedure$' || replace(replace(replace(path(../..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E1 E2', text())]))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Procedure/' || encode-for-uri(/*/cbc:ContractFolderID) else null" ;
             rr:class epo:Procedure
         ] ;
     # currently unmappable according to feedback and instead combined in the next one BT-01(d)-Procedure
@@ -246,7 +246,7 @@ tedm:MG-Procedure_ND-LocalLegalBasisNoID a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-LocalLegalBasisNoID";
-            rml:reference "if (not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E1 E2', text())]))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Procedure$' || replace(replace(replace(path(../..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E1 E2', text())]))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Procedure/' || encode-for-uri(/*/cbc:ContractFolderID) else null" ;
             rr:class epo:Procedure
         ] ;
     # currently unmappable according to feedback but makes no sense with the next one mapped
@@ -301,7 +301,7 @@ tedm:MG-Procedure_ND-CrossBorderLaw a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-CrossBorderLaw";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Procedure${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Procedure/{encode-for-uri(/*/cbc:ContractFolderID)}" ;
             rr:class epo:Procedure
         ] ;
     rr:predicateObjectMap
@@ -351,7 +351,7 @@ tedm:MG-Procedure_ND-LotDistribution a rr:TriplesMap ;
         [
             rdfs:label "ND-LotDistribution";
             rdfs:comment "Primary type declaration of MG-Procedure under ND-LotDistribution";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Procedure${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Procedure/{encode-for-uri(/*/cbc:ContractFolderID)}" ;
             rr:class epo:Procedure
         ] ;
     rr:predicateObjectMap
@@ -495,7 +495,7 @@ tedm:MG-Procedure_ND-ProcedureProcurementScope a rr:TriplesMap ;
         [
             rdfs:label "ND-ProcedureProcurementScope" ;
             rdfs:comment "Primary type declaration for MG-Procedure under ND-ProcedureProcurementScope" ;
-            rml:reference "if (not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E1 E2', text())]))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Procedure$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;            
+            rml:reference "if (not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E1 E2', text())]))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Procedure/' || encode-for-uri(/*/cbc:ContractFolderID) else null" ;
             rr:class epo:Procedure
         ] ;
     rr:predicateObjectMap
@@ -726,7 +726,7 @@ tedm:MG-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedureContract
         [
             rdfs:label "ND-ProcedureProcurementScope" ;
             rdfs:comment "Primary type declaration for MG-ContractTerm under ND-ProcedureProcurementScope" ;
-            rml:reference "if (not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E1 E2', text())]))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ProcurementProjectContractTerm$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;            
+            rml:reference "if (not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E1 E2', text())]))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ProcurementProjectContractTerm$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:ContractTerm
         ] ;
 .
@@ -782,7 +782,7 @@ tedm:MG-Procedure_ND-ProcedureTenderingProcess a rr:TriplesMap ;
             # this is an example of a template/IRI that hashes on the parent path
             rdfs:label "ND-ProcedureTenderingProcess" ;
             rdfs:comment "Type declaration for MG-Procedure under ND-ProcedureTenderingProcess" ;
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Procedure${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Procedure/{encode-for-uri(/*/cbc:ContractFolderID)}" ;
             rr:class epo:Procedure
         ] ;
     # rr:predicateObjectMap
@@ -854,7 +854,7 @@ tedm:MG-Procedure_ND-AcceleratedProcedure a rr:TriplesMap ;
             # this is an example of a subject IRI with a hash on the grandparent
             rdfs:label "ND-AcceleratedProcedure" ;
             rdfs:comment "Type declaration for MG-Procedure under ND-AcceleratedProcedure" ;
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Procedure${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Procedure/{encode-for-uri(/*/cbc:ContractFolderID)}" ;
             rr:class epo:Procedure
         ] ;
     rr:predicateObjectMap
@@ -1320,7 +1320,7 @@ tedm:MG-langString-description-Procedure_ND-ProcedureProcurementScope a rr:Tripl
         rr:class epo-not:Procedure ;
         rdfs:comment "Primary type declaration for MG-Procedure under ND-ProcedureProcurementScope" ;
         rdfs:label "ND-ProcedureProcurementScope" ;
-        rml:reference "if (not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E1 E2', text())]))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Procedure$' || replace(replace(replace(path(../..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+        rml:reference "if (not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E1 E2', text())]))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Procedure/' || encode-for-uri(/*/cbc:ContractFolderID) else null" ;
     ] ;
     rr:predicateObjectMap [
         rr:predicate dct:description ;
@@ -1358,7 +1358,7 @@ tedm:MG-langString-hasAcceleratedProcedureJustification-Procedure_ND-Accelerated
         rr:class epo-not:Procedure ;
         rdfs:comment "Type declaration for MG-Procedure under ND-AcceleratedProcedure" ;
         rdfs:label "ND-AcceleratedProcedure" ;
-        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Procedure${replace(translate(path(../../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Procedure/{encode-for-uri(/*/cbc:ContractFolderID)}" ;
     ] ;
     rr:predicateObjectMap [
         rr:predicate epo-not:hasAcceleratedProcedureJustification ;
@@ -1396,7 +1396,7 @@ tedm:MG-langString-hasAdditionalInformation-Procedure_ND-ProcedureProcurementSco
         rr:class epo-not:Procedure ;
         rdfs:comment "Primary type declaration for MG-Procedure under ND-ProcedureProcurementScope" ;
         rdfs:label "ND-ProcedureProcurementScope" ;
-        rml:reference "if (not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E1 E2', text())]))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Procedure$' || replace(replace(replace(path(../..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+        rml:reference "if (not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E1 E2', text())]))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Procedure/' || encode-for-uri(/*/cbc:ContractFolderID) else null" ;
     ] ;
     rr:predicateObjectMap [
         rr:predicate epo-not:hasAdditionalInformation ;
@@ -1471,7 +1471,7 @@ tedm:MG-langString-hasLegalBasisDescription-Procedure_ND-LocalLegalBasisNoID a r
     rr:subjectMap [
         rr:class epo-not:Procedure ;
         rdfs:label "ND-LocalLegalBasisNoID" ;
-        rml:reference "if (not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E1 E2', text())]))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Procedure$' || replace(replace(replace(path(../../..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+        rml:reference "if (not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E1 E2', text())]))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Procedure/' || encode-for-uri(/*/cbc:ContractFolderID) else null" ;
     ] ;
     rr:predicateObjectMap [
         rr:predicate epo-not:hasLegalBasisDescription ;
@@ -1509,7 +1509,7 @@ tedm:MG-langString-hasLegalBasisDescription-Procedure_ND-LocalLegalBasisWithID a
     rr:subjectMap [
         rr:class epo-not:Procedure ;
         rdfs:label "ND-LocalLegalBasisWithID" ;
-        rml:reference "if (not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E1 E2', text())]))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Procedure$' || replace(replace(replace(path(../../..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+        rml:reference "if (not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E1 E2', text())]))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Procedure/' || encode-for-uri(/*/cbc:ContractFolderID) else null" ;
     ] ;
     rr:predicateObjectMap [
         rr:predicate epo-not:hasLegalBasisDescription ;
@@ -1547,7 +1547,7 @@ tedm:MG-langString-hasMainFeature-Procedure_ND-ProcedureTenderingProcess a rr:Tr
         rr:class epo-not:Procedure ;
         rdfs:comment "Type declaration for MG-Procedure under ND-ProcedureTenderingProcess" ;
         rdfs:label "ND-ProcedureTenderingProcess" ;
-        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Procedure${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Procedure/{encode-for-uri(/*/cbc:ContractFolderID)}" ;
     ] ;
     rr:predicateObjectMap [
         rr:predicate epo-not:hasMainFeature ;
@@ -1622,7 +1622,7 @@ tedm:MG-langString-title-Procedure_ND-ProcedureProcurementScope a rr:TriplesMap 
         rr:class epo-not:Procedure ;
         rdfs:comment "Primary type declaration for MG-Procedure under ND-ProcedureProcurementScope" ;
         rdfs:label "ND-ProcedureProcurementScope" ;
-        rml:reference "if (not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E1 E2', text())]))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Procedure$' || replace(replace(replace(path(../..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+        rml:reference "if (not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E1 E2', text())]))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Procedure/' || encode-for-uri(/*/cbc:ContractFolderID) else null" ;
     ] ;
     rr:predicateObjectMap [
         rr:predicate dct:title ;
