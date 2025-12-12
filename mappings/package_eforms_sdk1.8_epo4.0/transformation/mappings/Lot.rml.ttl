@@ -287,19 +287,6 @@ tedm:MG-Lot_ND-Lot a rr:TriplesMap ;
         ];
     rr:predicateObjectMap
         [
-            rdfs:label "BT-133-Lot";
-            rr:predicate epo:isSubjectToLotSpecificTerm ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-Address-definesOpeningPlace-OpeningTerm-isSubjectToLotSpecificTerm-Lot_ND-PublicOpeningPlace;
-                    rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(../../.)";
-                    ];
-                ] ;
-        ];
-    rr:predicateObjectMap
-        [
             rdfs:label "BT-17-Lot";
             rr:predicate epo:isSubjectToLotSpecificTerm ;
             rr:objectMap
@@ -454,7 +441,7 @@ tedm:MG-Lot_ND-Lot a rr:TriplesMap ;
         ];
     rr:predicateObjectMap
         [
-            rdfs:label "BT-5421 and BT-541";
+            rdfs:label "BT-5421-Lot and BT-541-Lot-WeightNumber";
             rr:predicate epo:specifiesProcurementCriterion;
             rr:objectMap
                 [
@@ -467,11 +454,24 @@ tedm:MG-Lot_ND-Lot a rr:TriplesMap ;
         ];
     rr:predicateObjectMap
         [
+            rdfs:label "BT-5423-Lot and BT-541-Lot-ThresholdNumber";
+            rr:predicate epo:specifiesProcurementCriterion;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardThresholdCriterionParameter;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../../../../../../../../..)";
+                    ];
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
             rdfs:label "BT-5422-Lot and BT-541-Lot-FixedNumber";
             rr:predicate epo:specifiesProcurementCriterion;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardWeightCriterionParameter;
+                    rr:parentTriplesMap tedm:MG-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardFixedCriterionParameter;
                     rr:joinCondition [
                         rr:child "path(.)";
                         rr:parent "path(../../../../../../../../..)";
@@ -2217,20 +2217,6 @@ tedm:MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SelectionCriteri
                     rr:datatype xsd:boolean;
                 ] ;
         ];
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-5423-Lot,BT-541-Lot-ThresholdNumber" ;
-            rr:predicate epo:hasConstraint ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-Constraint-hasConstraint-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardThresholdCriterionParameter ;
-                    rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(../../../../../../../../..)" ;
-                    ];
-                ] ;
-        ]
-
 .
 
 tedm:MG-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardCriterion a rr:TriplesMap ;
@@ -2357,6 +2343,35 @@ tedm:MG-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardWeightCriter
                     ] ;
                ] ;
         ] ;
+.
+
+tedm:MG-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardThresholdCriterionParameter a rr:TriplesMap ;
+    rdfs:label "MG-AwardCriterion";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter[efbc:ParameterCode/@listName='number-threshold']";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotAwardThresholdCriterionParameter";
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_AwardCriterion_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../../../../..)) || '?response_type=raw')}" ;
+            rr:class epo:AwardCriterion
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5423-Lot,BT-541-Lot-ThresholdNumber" ;
+            rr:predicate epo:hasConstraint ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Constraint-hasConstraint-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardThresholdCriterionParameter ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(.)" ;
+                    ];
+                ] ;
+        ];
 .
 
 tedm:MG-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardFixedCriterionParameter a rr:TriplesMap ;
