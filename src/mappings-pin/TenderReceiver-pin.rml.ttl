@@ -36,7 +36,7 @@ tedm:MG-TenderReceiver_ND-PartTenderingTerms a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-PartTenderingTerms" ;
-            rml:reference "if(exists(cac:TenderRecipientParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/TenderReceiver/' || encode-for-uri(concat(cac:TenderRecipientParty/cac:PartyIdentification/cbc:ID, cac:TenderRecipientParty/cac:PartyIdentification/cbc:ID/@schemeName)) else null";
+            rml:reference "if(exists(cac:TenderRecipientParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/TenderReceiver/' || encode-for-uri(concat(cac:TenderRecipientParty/cac:PartyIdentification/cbc:ID, cac:TenderRecipientParty/cac:PartyIdentification/cbc:ID/@schemeName)) else null";
             rr:class epo:TenderReceiver
         ] ;
     rr:predicateObjectMap
@@ -59,7 +59,7 @@ tedm:MG-TenderReceiver_ND-PartTenderingTerms a rr:TriplesMap ;
                     rdfs:label "TPO (playedBy)" ;
                     rdfs:comment "Connection where this TenderRecipientParty is a TouchPoint" ;
                     # we create a deterministic IRI which is the same as that instantiated alongside the ContactPoint and rely on the sameAs link
-                    rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/Organization/{cac:PartyIdentification/cbc:ID}" ;
+                    rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Organization/{cac:PartyIdentification/cbc:ID}" ;
                 ] ;
         ] ;
     rr:predicateObjectMap

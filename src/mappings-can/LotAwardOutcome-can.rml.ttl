@@ -37,7 +37,7 @@ tedm:MG-LotAwardOutcome_ND-LotResult  a rr:TriplesMap ;
             rdfs:label "ND-LotResult" ;
             rdfs:label " OPT-322-LotResult ";
             rdfs:comment "LotResultTechnicalIdentifier of MG-LotAwardOutcome under ND-LotResult" ;
-            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/LotAwardOutcome/{cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/LotAwardOutcome/{cbc:ID}" ;
             rr:class epo:LotAwardOutcome
         ] ;
     rr:predicateObjectMap
@@ -123,7 +123,7 @@ tedm:MG-MonetaryValue-hasApproximateFrameworkAgreementValue-LotAwardOutcome_ND-L
    rr:subjectMap
         [
             rdfs:label "ND-LotResultFAValues";
-            rml:reference "if (exists(efbc:ReestimatedValueAmount)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/MonetaryValue$' || replace(replace(replace(path(.), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(efbc:ReestimatedValueAmount)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/MonetaryValue$' || replace(replace(replace(path(.), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:MonetaryValue
         ] ;
    rr:predicateObjectMap
@@ -168,7 +168,7 @@ tedm:MG-MonetaryValue-hasFrameworkAgreementMaximumValue-LotAwardOutcome_ND-LotRe
     rr:subjectMap
         [
             rdfs:label "ND-LotResultFAValues";
-            rml:reference "if (exists(cbc:MaximumValueAmount)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/FrameworkAgreementMaximumMonetaryValue$' || replace(replace(replace(path(.), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(cbc:MaximumValueAmount)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/FrameworkAgreementMaximumMonetaryValue$' || replace(replace(replace(path(.), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:MonetaryValue
         ] ;
     rr:predicateObjectMap
@@ -210,7 +210,7 @@ tedm:MG-LotAwardOutcome-summarisesInformationForAwardOutcome-SubmissionStatistic
     rr:subjectMap
         [
             rdfs:label "ND-LotResult" ;
-            rml:reference "if(exists(cbc:LowerTenderAmount) or exists(cbc:HigherTenderAmount) or exists(efac:ReceivedSubmissionsStatistics)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/LotAwardOutcome/' || cbc:ID else null";
+            rml:reference "if(exists(cbc:LowerTenderAmount) or exists(cbc:HigherTenderAmount) or exists(efac:ReceivedSubmissionsStatistics)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/LotAwardOutcome/' || cbc:ID else null";
             rr:class epo:LotAwardOutcome
         ] ;
 .
@@ -226,7 +226,7 @@ tedm:MG-LotAwardOutcome_ND-LotResultTenderReference  a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-LotResultTenderReference" ;
-            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/LotAwardOutcome/{../cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/LotAwardOutcome/{../cbc:ID}" ;
             rr:class epo:LotAwardOutcome
         ] ;
     rr:predicateObjectMap
@@ -258,7 +258,7 @@ tedm:MG-LotAwardOutcome_ND-StrategicProcurementLotResult a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-StrategicProcurementInformationLotResult" ;
-            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/LotAwardOutcome/{../../cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/LotAwardOutcome/{../../cbc:ID}" ;
             rr:class epo:LotAwardOutcome
         ] ;
      rr:predicateObjectMap
@@ -287,7 +287,7 @@ tedm:MG-LotAwardOutcome_ND-ProcurementDetailsLotResult a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-ProcurementDetailsLotResult" ;
-            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/LotAwardOutcome/{../../../cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/LotAwardOutcome/{../../../cbc:ID}" ;
             rr:class epo:LotAwardOutcome
         ] ;
      rr:predicateObjectMap
@@ -316,7 +316,7 @@ tedm:MG-LotAwardOutcome_ND-FinancingParty  a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-FinancingParty" ;
-            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/LotAwardOutcome/{../cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/LotAwardOutcome/{../cbc:ID}" ;
             rr:class epo:LotAwardOutcome
         ] ;
     rr:predicateObjectMap
@@ -345,7 +345,7 @@ tedm:MG-LotAwardOutcome_ND-BuyerReviewComplainants  a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-BuyerReviewComplainants";
-            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/LotAwardOutcome/{../cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/LotAwardOutcome/{../cbc:ID}" ;
             rr:class epo:LotAwardOutcome
         ] ;
      rr:predicateObjectMap
@@ -373,7 +373,7 @@ tedm:MG-LotAwardOutcome-comprisesAwardOutcome-AwardDecision-LotResult a rr:Tripl
     rr:subjectMap
         [
             rdfs:label "ND-LotResult" ;
-            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/LotAwardOutcome/{cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/LotAwardOutcome/{cbc:ID}" ;
             rr:class epo:LotAwardOutcome
         ] ;
 .
@@ -389,7 +389,7 @@ tedm:MG-LotAwardOutcome_ND-PayerParty a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-PayerParty" ;
-            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/LotAwardOutcome/{../cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/LotAwardOutcome/{../cbc:ID}" ;
             rr:class epo:LotAwardOutcome
         ] ;
     rr:predicateObjectMap

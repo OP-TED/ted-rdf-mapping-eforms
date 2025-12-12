@@ -53,13 +53,13 @@ tedm:MG-Mediator_ND-LotReviewTerms a rr:TriplesMap ;
         rr:objectMap [
             rdfs:label "TPO (playedBy)" ;
             rdfs:comment "Connection where MediationParty is a TouchPoint" ;
-            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/Organization/{cac:MediationParty/cac:PartyIdentification/cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Organization/{cac:MediationParty/cac:PartyIdentification/cbc:ID}" ;
         ] ;
         rr:predicate epo:playedBy ;
     ] ;
     rr:subjectMap [
         rdfs:label "ND-LotReviewTerms" ;
         rr:class epo:Mediator ;
-        rml:reference "if(exists(cac:MediationParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/Mediator/' || encode-for-uri(concat(cac:MediationParty/cac:PartyIdentification/cbc:ID, cac:MediationParty/cac:PartyIdentification/cbc:ID/@schemeName)) else null";
+        rml:reference "if(exists(cac:MediationParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Mediator/' || encode-for-uri(concat(cac:MediationParty/cac:PartyIdentification/cbc:ID, cac:MediationParty/cac:PartyIdentification/cbc:ID/@schemeName)) else null";
     ]
 .

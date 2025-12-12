@@ -35,7 +35,7 @@
 #    rr:subjectMap
 #        [
 #            rdfs:label "ND-LotsGroupFA";
-#            rr:template "http://data.europa.eu/a4g/resource/{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}-{/*/cbc:VersionID}/LotGroupAwardInformation${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+#            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/LotGroupAwardInformation${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
 #            rr:class epo:LotGroupAwardInformation
 #        ] ;
 #    rr:predicateObjectMap
@@ -77,7 +77,7 @@
 #   rr:subjectMap
 #        [
 #            rdfs:label "ND-LotsGroupFA";
-#            rml:reference "if (exists(cbc:EstimatedMaximumValueAmount)) then 'http://data.europa.eu/a4g/resource/' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '-' || /*/cbc:VersionID || '/ND-LotsGroupFA/' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+#            rml:reference "if (exists(cbc:EstimatedMaximumValueAmount)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ND-LotsGroupFA/' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
 #            rr:class epo:MonetaryValue
 #        ] ;
 #   rr:predicateObjectMap
