@@ -196,6 +196,19 @@ tedm:MG-Procedure_ND-LocalLegalBasisWithID a rr:TriplesMap ;
     #                 rml:reference "cbc:ID";
     #             ] ;
     #     ];
+    # this is a workaround for the ID not being mappable as an ID, and rather repurposed as the description
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-01(c)-Procedure" ;
+            rdfs:comment "Procedure Legal Basis (ID) as Procedure Legal Basis (Description) of MG-Procedure under ND-LocalLegalBasisWithID " ;
+            rr:predicate epo:hasLegalBasisDescription ;
+            rr:objectMap
+                [
+                    rdfs:label "BT-01(c)-Procedure" ;
+                    rdfs:comment "Language of Procedure Legal Basis (Description) of MG-Procedure under ND-LocalLegalBasisWithID" ;
+                    rml:reference "if(not(exists(cbc:DocumentDescription))) then cbc:ID else null" ;
+                ] ;
+        ] ;
     # rr:predicateObjectMap
     #     [
     #         rdfs:label "BT-01(d)-Procedure";
@@ -434,6 +447,23 @@ tedm:MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-LotDistribut
                     rr:datatype xsd:integer
                 ] ;
         ] ;
+.
+
+tedm:MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-GroupComposition a rr:TriplesMap ;
+    rdfs:label "MG-ProcedureTerm";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:TenderingTerms/cac:LotDistribution/cac:LotsGroup";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotDistribution";
+            rdfs:comment "Primary type declaration of MG-ProcedureTerm under ND-LotDistribution";
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ProcedureTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:class epo:ProcedureTerm
+        ] ;
     rr:predicateObjectMap
         [
             # VERINFO: across SDK versions only introduction of Scheme attribute and mapping-irrelevant changes
@@ -446,7 +476,7 @@ tedm:MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-LotDistribut
                     rr:parentTriplesMap tedm:MG-LotGroup-definesLotGroup-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-GroupComposition ;
                     # this is an example of a joinCondition with a child element that is a descendant
                     rr:joinCondition [
-                        rr:child "cac:LotsGroup/cbc:LotsGroupID";
+                        rr:child "cbc:LotsGroupID";
                         rr:parent "../cbc:LotsGroupID";
                     ];
                 ] ;
