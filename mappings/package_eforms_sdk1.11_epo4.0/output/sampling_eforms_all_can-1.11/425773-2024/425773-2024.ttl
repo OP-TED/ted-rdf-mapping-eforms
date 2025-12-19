@@ -63,14 +63,9 @@ epd:id_58bf998b-d1aa-4459-9539-da0b10884650_ContractAmendment_QDVw9P5vNjDmtQprjJ
   a epo:ContractAmendment;
   epo:amendsContract epd:id_58bf998b-d1aa-4459-9539-da0b10884650_SettledContract_CON-0001 .
 
-epd:id_58bf998b-d1aa-4459-9539-da0b10884650_ContractLocationAddress_5zVCW3b2MSxAnzMuZRbDZB
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NLD> .
-
 epd:id_58bf998b-d1aa-4459-9539-da0b10884650_ContractLocation_5zVCW3b2MSxAnzMuZRbDZB
   a dct:Location;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NLD>;
-  locn:address epd:id_58bf998b-d1aa-4459-9539-da0b10884650_ContractLocationAddress_5zVCW3b2MSxAnzMuZRbDZB .
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NLD> .
 
 epd:id_58bf998b-d1aa-4459-9539-da0b10884650_ContractLocation_Ts6NbgWz9wKHX3CqwnxxzK
   a dct:Location;
@@ -90,11 +85,15 @@ epd:id_58bf998b-d1aa-4459-9539-da0b10884650_ContractPeriod_4TghaR9Riayv2Hb6XHyc6
   epo:hasBeginning "2017-01-01+01:00"^^xsd:date;
   epo:hasEnd "2027-11-01+01:00"^^xsd:date .
 
+epd:id_58bf998b-d1aa-4459-9539-da0b10884650_ContractTerm_P24wvVmaGggz3wQLy5GuUS a
+    epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_58bf998b-d1aa-4459-9539-da0b10884650_ContractLocation_5zVCW3b2MSxAnzMuZRbDZB;
+  epo:hasBroadPlaceOfPerformance <http://publications.europa.eu/resource/authority/other-place-service/anyw-cou>;
+  epo:hasPlaceOfPerformanceAdditionalInformation "Spijk en Nijmegen"@nl .
+
 epd:id_58bf998b-d1aa-4459-9539-da0b10884650_ContractTerm_jucn4erQJnXcty2wPoNNzB a
     epo:ContractTerm;
   epo:definesContractPeriod epd:id_58bf998b-d1aa-4459-9539-da0b10884650_ContractPeriod_4TghaR9Riayv2Hb6XHyc6D;
-  epo:definesSpecificPlaceOfPerformance epd:id_58bf998b-d1aa-4459-9539-da0b10884650_ContractLocation_5zVCW3b2MSxAnzMuZRbDZB;
-  epo:hasBroadPlaceOfPerformance <http://publications.europa.eu/resource/authority/other-place-service/anyw-cou>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/not-allowed>;
   epo:hasEOrdering false;
@@ -102,7 +101,6 @@ epd:id_58bf998b-d1aa-4459-9539-da0b10884650_ContractTerm_jucn4erQJnXcty2wPoNNzB 
   epo:hasLegalFormRequirement "Vereiste rechtsvorm combinatie (III.1.3)"@nl;
   epo:hasMaximumNumberOfRenewals 2;
   epo:hasOptionsDescription "herhaling van soortgelijke diensten"@nl;
-  epo:hasPlaceOfPerformanceAdditionalInformation "Spijk en Nijmegen"@nl;
   epo:hasRenewalDescription "Aantal mogelijke verlengingen: 2. Geraamd tijdsbestek voor verdere opdrachten (vanaf de gunning van de opdracht) : 12 maanden."@nl;
   epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
 
@@ -145,7 +143,8 @@ epd:id_58bf998b-d1aa-4459-9539-da0b10884650_LotPurpose_4mnqZ7PF3sxbwYtmUHUyS6 a 
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/50000000> .
 
 epd:id_58bf998b-d1aa-4459-9539-da0b10884650_Lot_LOT-0000 a epo:Lot;
-  epo:foreseesContractSpecificTerm epd:id_58bf998b-d1aa-4459-9539-da0b10884650_ContractTerm_jucn4erQJnXcty2wPoNNzB;
+  epo:foreseesContractSpecificTerm epd:id_58bf998b-d1aa-4459-9539-da0b10884650_ContractTerm_P24wvVmaGggz3wQLy5GuUS,
+    epd:id_58bf998b-d1aa-4459-9539-da0b10884650_ContractTerm_jucn4erQJnXcty2wPoNNzB;
   epo:hasInternalIdentifier epd:id_58bf998b-d1aa-4459-9539-da0b10884650_LotInternalIdentifier_4mnqZ7PF3sxbwYtmUHUyS6;
   epo:hasPurpose epd:id_58bf998b-d1aa-4459-9539-da0b10884650_LotPurpose_4mnqZ7PF3sxbwYtmUHUyS6;
   epo:isCoveredByGPA true;

@@ -68,14 +68,9 @@ epd:id_5f1b1802-6462-455a-9999-0a11cc519e46_CompanyContactPoint_boyhsCP9AduPpEce
   cccev:email "rolf.thingvold@visma.com";
   cccev:telephone "+4791551125" .
 
-epd:id_5f1b1802-6462-455a-9999-0a11cc519e46_ContractLocationAddress_5zVCW3b2MSxAnzMuZRbDZB
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NOR> .
-
 epd:id_5f1b1802-6462-455a-9999-0a11cc519e46_ContractLocation_5zVCW3b2MSxAnzMuZRbDZB
   a dct:Location;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NOR>;
-  locn:address epd:id_5f1b1802-6462-455a-9999-0a11cc519e46_ContractLocationAddress_5zVCW3b2MSxAnzMuZRbDZB .
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NOR> .
 
 epd:id_5f1b1802-6462-455a-9999-0a11cc519e46_ContractLocation_Ts6NbgWz9wKHX3CqwnxxzK
   a dct:Location;
@@ -86,11 +81,14 @@ epd:id_5f1b1802-6462-455a-9999-0a11cc519e46_ContractPeriod_4TghaR9Riayv2Hb6XHyc6
   a epo:Period;
   epo:hasTimePeriod <http://publications.europa.eu/resource/authority/timeperiod/UNLIMITED> .
 
+epd:id_5f1b1802-6462-455a-9999-0a11cc519e46_ContractTerm_P24wvVmaGggz3wQLy5GuUS a
+    epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance epd:id_5f1b1802-6462-455a-9999-0a11cc519e46_ContractLocation_5zVCW3b2MSxAnzMuZRbDZB;
+  epo:hasBroadPlaceOfPerformance <http://publications.europa.eu/resource/authority/other-place-service/anyw-cou> .
+
 epd:id_5f1b1802-6462-455a-9999-0a11cc519e46_ContractTerm_jucn4erQJnXcty2wPoNNzB a
     epo:ContractTerm;
   epo:definesContractPeriod epd:id_5f1b1802-6462-455a-9999-0a11cc519e46_ContractPeriod_4TghaR9Riayv2Hb6XHyc6D;
-  epo:definesSpecificPlaceOfPerformance epd:id_5f1b1802-6462-455a-9999-0a11cc519e46_ContractLocation_5zVCW3b2MSxAnzMuZRbDZB;
-  epo:hasBroadPlaceOfPerformance <http://publications.europa.eu/resource/authority/other-place-service/anyw-cou>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies> .
 
 epd:id_5f1b1802-6462-455a-9999-0a11cc519e46_DirectAwardTerm_DDmVKAr2D9d2R9YAz7bPSt
@@ -148,7 +146,8 @@ epd:id_5f1b1802-6462-455a-9999-0a11cc519e46_LotPurpose_4mnqZ7PF3sxbwYtmUHUyS6 a 
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/48000000> .
 
 epd:id_5f1b1802-6462-455a-9999-0a11cc519e46_Lot_LOT-0001 a epo:Lot;
-  epo:foreseesContractSpecificTerm epd:id_5f1b1802-6462-455a-9999-0a11cc519e46_ContractTerm_jucn4erQJnXcty2wPoNNzB;
+  epo:foreseesContractSpecificTerm epd:id_5f1b1802-6462-455a-9999-0a11cc519e46_ContractTerm_P24wvVmaGggz3wQLy5GuUS,
+    epd:id_5f1b1802-6462-455a-9999-0a11cc519e46_ContractTerm_jucn4erQJnXcty2wPoNNzB;
   epo:hasInternalIdentifier epd:id_5f1b1802-6462-455a-9999-0a11cc519e46_LotInternalIdentifier_4mnqZ7PF3sxbwYtmUHUyS6;
   epo:hasPurpose epd:id_5f1b1802-6462-455a-9999-0a11cc519e46_LotPurpose_4mnqZ7PF3sxbwYtmUHUyS6;
   epo:isCoveredByGPA true;
@@ -245,7 +244,8 @@ epd:id_5f1b1802-6462-455a-9999-0a11cc519e46_Procedure_6dcsBnuV4FTNoRpTZHckqN a e
     epd:id_5f1b1802-6462-455a-9999-0a11cc519e46_ProcurementProjectContractTerm_Hu2nD8nFQkA5CPSQ43KMRD;
   epo:hasInternalIdentifier epd:id_5f1b1802-6462-455a-9999-0a11cc519e46_ProcedureIdentifier_Hu2nD8nFQkA5CPSQ43KMRD;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
-  epo:hasLegalBasisDescription "Forskrift om offentlige anskaffelser § 13-4 (1) b og c [ELI] / The procurement is carried out as a direct award without competition as only one supplier can deliver due to technical reasons and to protect exclusive rights. SySIKT intends to enter into an agreement with Visma AS for the transition from Visma Enterprise on-premise to Visma cloud solution due to the \"end-of-life\" of the current solution and the need for service continuity."@en;
+  epo:hasLegalBasisDescription "Forskrift om offentlige anskaffelser § 13-4 (1) b og c [ELI] / The procurement is carried out as a direct award without competition as only one supplier can deliver due to technical reasons and to protect exclusive rights. SySIKT intends to enter into an agreement with Visma AS for the transition from Visma Enterprise on-premise to Visma cloud solution due to the \"end-of-life\" of the current solution and the need for service continuity."@en,
+    "Anskaffelsesforskriften";
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot epd:id_5f1b1802-6462-455a-9999-0a11cc519e46_Lot_LOT-0001;
   epo:hasPurpose epd:id_5f1b1802-6462-455a-9999-0a11cc519e46_ProcedurePurpose_Hu2nD8nFQkA5CPSQ43KMRD;
