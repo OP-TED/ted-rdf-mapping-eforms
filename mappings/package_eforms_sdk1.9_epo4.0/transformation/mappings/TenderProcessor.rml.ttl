@@ -36,7 +36,7 @@ tedm:MG-TenderProcessor_ND-LotTenderingTerms a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-LotTenderingTerms" ;
-            rml:reference "if(exists(cac:TenderEvaluationParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_TenderProcessor_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(concat(cac:TenderEvaluationParty/cac:PartyIdentification/cbc:ID, cac:TenderEvaluationParty/cac:PartyIdentification/cbc:ID/@schemeName)) || '?response_type=raw') else null";
+            rml:reference "if(exists(cac:TenderEvaluationParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/TenderProcessor/' || encode-for-uri(concat(cac:TenderEvaluationParty/cac:PartyIdentification/cbc:ID, cac:TenderEvaluationParty/cac:PartyIdentification/cbc:ID/@schemeName)) else null";
             rr:class epo:TenderProcessor
         ] ;
     rr:predicateObjectMap
@@ -59,7 +59,7 @@ tedm:MG-TenderProcessor_ND-LotTenderingTerms a rr:TriplesMap ;
                     rdfs:label "TPO (playedBy)" ;
                     rdfs:comment "Connection where TenderEvaluationParty is a TouchPoint" ;
                     # we create a deterministic IRI which is the same as that instantiated alongside the ContactPoint and rely on the sameAs link
-                    rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Organization_{cac:TenderEvaluationParty/cac:PartyIdentification/cbc:ID}" ;
+                    rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Organization/{cac:TenderEvaluationParty/cac:PartyIdentification/cbc:ID}" ;
                 ] ;
         ] ;
     rr:predicateObjectMap

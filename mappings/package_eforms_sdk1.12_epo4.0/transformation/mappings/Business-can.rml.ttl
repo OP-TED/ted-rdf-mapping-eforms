@@ -36,7 +36,7 @@ tedm:MG-Business_ND-OrganizationUboReference a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-OrganizationUboReference" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Organization_{../efac:Company/cac:PartyIdentification/cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Organization/{../efac:Company/cac:PartyIdentification/cbc:ID}" ;
             rr:class epo:Business
         ] ;
     rr:predicateObjectMap
@@ -70,7 +70,7 @@ tedm:MG-Person-hasBeneficialOwner-Business_ND-OrganizationUboReference a rr:Trip
             rdfs:label "ND-OrganizationUboReference" ;
             rdfs:label "OPT-302-Organization" ;
             rdfs:comment "Beneficial Owner Reference of MG-Person under ND-OrganizationUboReference" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Person_{cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Person/{cbc:ID}" ;
             rr:class person:Person
         ] ;
     .
@@ -86,7 +86,7 @@ tedm:MG-Business_ND-Organization a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-Organization" ;
-            rml:reference "if(exists(efbc:ListedOnRegulatedMarketIndicator)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Organization_' || efac:Company/cac:PartyIdentification/cbc:ID else null";
+            rml:reference "if(exists(efbc:ListedOnRegulatedMarketIndicator)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Organization/' || efac:Company/cac:PartyIdentification/cbc:ID else null";
             rr:class epo:Business
         ] ;
      rr:predicateObjectMap
@@ -113,7 +113,7 @@ tedm:MG-Identifier-identifier-Person_ND-UBO a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-UBO" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_BeneficialOwnerTechnicalIdentifier_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Identifier/{cbc:ID}" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -149,7 +149,7 @@ tedm:MG-Person_ND-UBO a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-UBO" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Person_{cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Person/{cbc:ID}" ;
             rr:class person:Person
         ] ;
     rr:predicateObjectMap
@@ -213,7 +213,7 @@ tedm:MG-Address-registeredAddress-Person_ND-UBOAddress a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-UBOAddress" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_UBOAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/UBOAddress${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class locn:Address
         ] ;
      rr:predicateObjectMap
@@ -286,7 +286,7 @@ tedm:MG-Person_ND-UBONationality a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-UBONationality" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Person_{../cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Person/{../cbc:ID}" ;
             rr:class person:Person
         ] ;
      rr:predicateObjectMap

@@ -36,7 +36,7 @@ tedm:MG-Identifier-identifier-Organization-playedBy-ReviewRequester_ND-Appealing
     rr:subjectMap
         [
             rdfs:label "ND-AppealingParty" ;
-            rml:reference "if (exists(cac:Party/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Identifier_' || cac:Party/cac:PartyIdentification/cbc:ID else null" ;
+            rml:reference "if (exists(cac:Party/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Identifier/' || cac:Party/cac:PartyIdentification/cbc:ID else null" ;
             rr:class adms:Identifier ;
         ] ;
     rr:predicateObjectMap
@@ -73,7 +73,7 @@ tedm:MG-Organization-playedBy-ReviewRequester_ND-AppealingParty a rr:TriplesMap 
     rr:subjectMap
         [
             rdfs:label "ND-ReviewStatus" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Organization_{cac:Party/cac:PartyIdentification/cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Organization/{cac:Party/cac:PartyIdentification/cbc:ID}" ;
             rr:class org:Organization ;
         ] ;
     rr:predicateObjectMap
@@ -104,7 +104,7 @@ tedm:MG-ReviewRequester_ND-AppealingParty a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-ReviewStatus" ;
-            rml:reference "if (exists(cac:Party/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ReviewRequester_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(cac:Party/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ReviewRequester$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:ReviewRequester ;
         ] ;
      rr:predicateObjectMap
