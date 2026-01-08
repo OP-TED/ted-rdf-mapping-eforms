@@ -89,75 +89,42 @@ The TriplesMaps in the various RML modules, especially those that represent vers
 [[ref:uri-scheme]]
 === RDF URI Scheme
 
-The eForms RML mappings use the following URI scheme for the representing ePO ontology instances:
+= eForms RML Mappings URI Scheme
 
-```
-{ns}id_{notice-id}_{concept}_{trailer}
-```
+The eForms RML mappings use the URI scheme:
 
-, where:
+`{ns}/{notice}/{concept}/{trailer}`
 
-* `{ns}` is a base namespace, in this case
-`http://data.europa.eu/a4g/resource/`
-* `{concept}` is either (i) an ontology fragment label or (ii) source
-element label, with a suffix or prefix
-* `{trailer}` is either (i) an ID value (if the resource has one) or
-(ii) an _online_ computed, deterministic hash
-* Root concepts such as `epo:Notice` end up to only the `{concept}`
+where:
 
-Expanding on some of the components for further clarity:
+* `{ns}` is a base namespace, in this case `http://data.europa.eu/a4g/resource/` (prefixed `epd:`)
+* `{notice}` is the shared context for all entities in the document, composed of two parts `{notice-id}-{notice-version}`; together with `{ns}` it forms the base `ns-notice` or _notice segment_ of the URI, e.g. `epd:14549263-b47b-4e59-96a1-2d0d13e19343-01`
+* `{concept}` is either:
+** (i) an ontology fragment label, i.e. the class name, or
+** (ii) a source element label, i.e. the XML element name (without any prefix), depending on which provides better context for the resource being represented
+* `{trailer}` is either:
+** (i) an ID value (if the resource has one), or
+** (ii) a re-encoded and normalized XPath (to ensure uniqueness within the document), in which case it is preceded by a dollar symbol (`$`) and not slash (`/`) (to facilitate future rewriting or hashing), resulting in the scheme `{ns-notice}/{concept}${reencoded-xpath}`, e.g. `epd:af0b8395-7498-4d0e-b5eb-3d1a4636eb1a-01/Procedure$_ContractAwardNotice1_TenderingProcess1_ProcessJustification1`
+* Root concepts such as `epo:Notice` end at the `{concept}`, and their identifier simply appends `/Identifier`, resulting in the scheme `{ns-notice}/Notice/Identifier` (to avoid redundant repetition of the ID value which is already represented in the notice segment)
+* Identifier instances, if not _technical identifiers_ with recognizable ID patterns according to the https://docs.ted.europa.eu/eforms/latest/schema/identifiers.html[eForms specification] (e.g. `LOT-XXX`), may be preceded by the parent class and followed by the ID value, resulting in the scheme `{ns}/{notice}/{parent-class}/Identifier/{id-value}`
+* In some cases, the `{trailer}` may be an aggregate of multiple values to produce uniqueness, e.g. when the ID is combined with its `schemeName`
+* In the case of externally referenced resources (e.g. a referenced notice or a child entity thereof), the notice segment is extended with the context of the referred notice, resulting in the scheme `{ns-notice}/Notice/{external-notice-id}/{concept}/{trailer}`
 
-* Whether a `concept` is an ontology fragment or source element label,
-and whether this label has a suffix (rarely) or prefix, depends on the
-subjective (human) evaluation of whether only having the class name is
-sufficient hint of what the URI represents.
-* The trailer, when a hash, is computed (seeded) with the XPath named
-element (e.g. `cbc:ID`) or (often relative) path (e.g. `path(cbc:ID)`)
-of what is being mapped, and therefore lends a unique identity to the
-URI. This yields reproducible URIs across RML TripleMaps, in case a
-resource needed to be instantiated at different XPaths, for whatever
-purpose.
-** A Lot or any other resource with an inherent ID, would simply have
-its `cbc:ID` value as the trailer, for
-e.g. `epd:id_14549263-b47b-4e59-96a1-2d0d13e19343_Lot_LOT-0001`, which
-is very useful for linking purposes at orthogonal XPaths (e.g. wherever
-an `id-ref` is concerned, that ID could simply be used to produce a
-linkable URI without having to navigate XPaths).
-** Any other resource where there is no inherent ID would have a hash
-that is unique to the XPath it represents, e.g. an `epo:Purpose`
-instance, if instantiated at different XPaths for associating different
-attributes, would have the same URI across those instantiations,
-resulting in one unique instance and no duplication due to multiple
-mappings.
-*** The `adms:Identifier`, although having an ID, may still get a hash
-instead of ID in its trailer, as it may not have a short ID that is
-sensible to use/read (however we may not have enforced this rule
-strongly)
-
-There are exceptions to this policy, namely in the _trailer_ segment, as that
-is what lends uniqueness to a resource, and determines whether instances being
-created from subject URI templates in the technical RML rules are correct. The
-following are such exceptions:
+The following are some examples of exceptions to the rule:
 
 1. `epo:AgentInRole` instances, which
 https://github.com/OP-TED/ted-rdf-mapping-eforms/issues/31[require a carefully
 constructed URI] seeded with information about the related party (a
 `foaf:Agent`).
 
-2. `epo:AwardDecision` instances, which are hashed on the `cbc:AwardDate` to
-yield the same instance for awards on the same date across possibly repeating
-elements.
+2. `epo:AwardDecision` instances, which have a trailer based on the `cbc:AwardDate` to yield the same instance for awards on the same date across possibly repeating elements.
 
-3. External notices that are referred to, whose base IRI involves the ID of the
-respective notice, not the current one in scope.
+3. External resources that cannot be identified, such as the Framework
+Agreement contract representing `OPT-100-Contract Framework Notice Identifier`, for whom a proxy `epo:FrameworkAgreement` is created _without_ a trailer.
 
-4. External resources that cannot be identified, such as the Framework
-Agreement contract representing `OPT-100-Contract Framework Notice Identifier`,
-for whom a proxy `epo:FrameworkAgreement` is created _without_ a trailer.
-
-**Note:** Wherever _URI_ is mentioned,
+[NOTE]
+====
+Wherever _URI_ is mentioned,
 https://www.w3.org/2001/Talks/0912-IUC-IRI/paper.html#:~:text=In%20principle%2C%20the%20definition%20of,us%2Dascii%20characters%20in%20URIs[IRI]
-is meant. Also, the generation of hashes is done _online_ against a
-remote HTTP web API endpoint offering this function, during
-transformation (which can otherwise be an offline process).
-
+is meant.
+====

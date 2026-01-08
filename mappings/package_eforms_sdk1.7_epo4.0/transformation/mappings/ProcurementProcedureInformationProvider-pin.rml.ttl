@@ -20,7 +20,7 @@ tedm:MG-ProcurementProcedureInformationProvider_ND-PartTenderingTerms a rr:Tripl
     [
         rdfs:label "ND-PartTenderingTerms" ;
         rr:class epo:ProcurementProcedureInformationProvider ;
-        rml:reference "if(exists(cac:AdditionalInformationParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcurementProcedureInformationProvider_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(concat(cac:AdditionalInformationParty/cac:PartyIdentification/cbc:ID, cac:AdditionalInformationParty/cac:PartyIdentification/cbc:ID/@schemeName)) || '?response_type=raw') else null";
+        rml:reference "if(exists(cac:AdditionalInformationParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ProcurementProcedureInformationProvider/' || encode-for-uri(concat(cac:AdditionalInformationParty/cac:PartyIdentification/cbc:ID, cac:AdditionalInformationParty/cac:PartyIdentification/cbc:ID/@schemeName)) else null";
     ] ;
     rr:predicateObjectMap
     [
@@ -46,7 +46,7 @@ tedm:MG-ProcurementProcedureInformationProvider_ND-PartTenderingTerms a rr:Tripl
         [
             rdfs:label "TPO (playedBy)" ;
             rdfs:comment "Connection where AdditionalInformationParty is a TouchPoint" ;
-            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Organization_{cac:AdditionalInformationParty/cac:PartyIdentification/cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Organization/{cac:AdditionalInformationParty/cac:PartyIdentification/cbc:ID}" ;
         ] ;
         rr:objectMap
         [

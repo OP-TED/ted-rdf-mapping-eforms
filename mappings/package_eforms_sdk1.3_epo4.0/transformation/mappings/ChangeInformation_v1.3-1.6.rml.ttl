@@ -52,7 +52,7 @@ tedm:MG-Identifier-relatesToEFormSectionIdentifier-ChangeInformation_ND-ChangedS
     rr:subjectMap
         [
             rdfs:label "ND-Changes";
-            rml:reference "if (exists(efbc:ChangedSectionIdentifier)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(../efbc:ChangedNoticeIdentifier, ' ', '-' ), '/' , '-') || '_ChangedSectionIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rml:reference "if (exists(efbc:ChangedSectionIdentifier)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Notice/' || encode-for-uri(../efbc:ChangedNoticeIdentifier) || '/Identifier/' || encode-for-uri(efbc:ChangedSectionIdentifier) else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
