@@ -140,7 +140,7 @@ tedm:MG-ReviewDecision_ND-ReviewStatus a rr:TriplesMap ;
             tedm:minSDKVersion "1.13" ;
             rdfs:label "BT-787-Review" ;
             rdfs:comment "Review Date of MG-ReviewDecision under ND-ReviewStatus" ;
-            rr:predicate epo:hasDecisionDate    ;
+            rr:predicate dct:issued   ;
              rr:objectMap
                 [
                    rml:reference "cbc:Date";
@@ -174,6 +174,30 @@ tedm:MG-ReviewDecision_ND-ReviewStatus a rr:TriplesMap ;
                         rr:child "path(.)" ;
                         rr:parent "path(.)" ;
                     ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            tedm:minSDKVersion "1.13" ;
+            rdfs:label "BT-796-Review" ;
+            rdfs:comment "Review Request Withdrawn of MG-ReviewDecision under ND-ReviewStatus" ;
+            rr:predicate epo:isWithdrawn  ;
+             rr:objectMap
+                [
+                   rml:reference "efbc:WithdrawnAppealIndicator";
+                   rr:datatype xsd:boolean   ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            tedm:minSDKVersion "1.13" ;
+            rdfs:label "BT-797-Review" ;
+            rdfs:comment "Review Request Withdrawn Date of MG-ReviewDecision under ND-ReviewStatus" ;
+            rr:predicate epo:hasWithdrawalDate   ;
+             rr:objectMap
+                [
+                   rml:reference "efbc:WithdrawnAppealDate";
+                   rr:datatype xsd:date   ;
                 ] ;
         ] ;
 .
@@ -259,23 +283,11 @@ tedm:MG-ReviewRequest_ND-ReviewStatus a rr:TriplesMap ;
             tedm:minSDKVersion "1.13" ;
             rdfs:label "BT-787-Review" ;
             rdfs:comment "Review Date of MG-ReviewRequest under ND-ReviewStatus" ;
-            rr:predicate epo:hasRequestDate   ;
+            rr:predicate dct:issued   ;
              rr:objectMap
                 [
                    rml:reference "cbc:Date";
                    rr:datatype xsd:date   ;
-                ] ;
-        ] ;
-     rr:predicateObjectMap
-        [
-            tedm:minSDKVersion "1.13" ;
-            rdfs:label "BT-796-Review" ;
-            rdfs:comment "Review Request Withdrawn of MG-ReviewRequest under ND-ReviewStatus" ;
-            rr:predicate epo:isWithdrawn  ;
-             rr:objectMap
-                [
-                   rml:reference "efbc:WithdrawnAppealIndicator";
-                   rr:datatype xsd:boolean   ;
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -286,18 +298,6 @@ tedm:MG-ReviewRequest_ND-ReviewStatus a rr:TriplesMap ;
              rr:objectMap
                 [
                    rml:reference "cbc:Date";
-                   rr:datatype xsd:date   ;
-                ] ;
-        ] ;
-     rr:predicateObjectMap
-        [
-            tedm:minSDKVersion "1.13" ;
-            rdfs:label "BT-797-Review" ;
-            rdfs:comment "Review Request Withdrawn Date of MG-ReviewRequest under ND-ReviewStatus" ;
-            rr:predicate epo:hasWithdrawalDate   ;
-             rr:objectMap
-                [
-                   rml:reference "efbc:WithdrawnAppealDate";
                    rr:datatype xsd:date   ;
                 ] ;
         ] ;
@@ -900,7 +900,7 @@ tedm:MG-ReviewDecision_ND-AppealDecision a rr:TriplesMap ;
         ] ;
 .
 
-tedm:MG-langString-hasWithdrawalReason-ReviewRequest_ND-ReviewStatus a rr:TriplesMap ;
+tedm:MG-langString-hasWithdrawalReason-ReviewDecision_ND-ReviewStatus a rr:TriplesMap ;
    rdfs:label "MG-ReviewRequest" ;
     rml:logicalSource [
         rml:source "data/source.xml" ;
@@ -908,9 +908,9 @@ tedm:MG-langString-hasWithdrawalReason-ReviewRequest_ND-ReviewStatus a rr:Triple
         rml:referenceFormulation ql:XPath ;
     ] ;
     rr:subjectMap [
-        rr:class epo:ReviewRequest ;
+        rr:class epo:ReviewDecision ;
         rdfs:label "ND-ReviewStatus" ;
-        rml:reference "if (../efbc:AppealStageCode='req') then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ReviewRequest$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+        rml:reference "if (../efbc:AppealStageCode='dec') then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ReviewDecision$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
     ] ;
     rr:predicateObjectMap [
         rr:predicate   epo:hasWithdrawalReason ;
@@ -930,10 +930,10 @@ tedm:MG-langString-hasWithdrawalReason-ReviewRequest_ND-ReviewStatus a rr:Triple
                     rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
                 ] ;
             ] ;
-            rdfs:comment "Language of Review Request Withdrawn Reasons of MG-ReviewRequest under ND-ReviewStatus" ;
+            rdfs:comment "Language of Review Request Withdrawn Reasons of MG-ReviewDecision under ND-ReviewStatus" ;
             rdfs:label "BT-798-Review-Language" ;
         ] ;
-        rdfs:comment "Review Request Withdrawn Reasons of MG-Reviewrequest under ND-ReviewStatus" ;
+        rdfs:comment "Review Request Withdrawn Reasons of MG-ReviewDecision under ND-ReviewStatus" ;
         rdfs:label "BT-798-Review" ;
         tedm:minSDKVersion "1.13" ;
     ] ;
