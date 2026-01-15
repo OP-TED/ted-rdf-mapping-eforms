@@ -49,36 +49,36 @@ tedm:MG-GreenProcurement-fulfillsStrategicProcurement-Lot_ND-StrategicProcuremen
 .
 
 # this is an example of an object referred to by multiple top-level subjects (all Lots) at orthogonal XPaths
-tedm:MG-ExclusionGround-specifiesProcurementCriterion-Lot_ND-ExclusionGrounds a rr:TriplesMap ;
-    rdfs:label "MG-ExclusionGround" ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:TenderingTerms/cac:TendererQualificationRequest/cac:SpecificTendererRequirement" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-ExclusionGrounds" ;
-            rml:reference "if(exists(cbc:Description) or exists(cbc:TendererRequirementTypeCode[@listName='exclusion-ground'])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ExclusionGround$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
-            rr:class epo:ExclusionGround
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-67(a)-Procedure" ;
-            rdfs:comment "Exclusion Grounds of MG-ExclusionGround under ND-ExclusionGrounds" ;
-            rr:predicate dct:type ;
-            rr:objectMap
-                [
-                    tedm:maxSDKVersion "1.11" ;
-                    rdfs:label "at-voc:criterion" ;
-                    rr:parentTriplesMap tedm:criterion ;
-                    rr:joinCondition [
-                        rr:child "cbc:TendererRequirementTypeCode[@listName='exclusion-ground']" ;
-                        rr:parent "code.value" ;
-                     ] ;
-                ] ;
-        ] ;
+#tedm:MG-ExclusionGround-specifiesProcurementCriterion-Lot_ND-ExclusionGrounds a rr:TriplesMap ;
+#    rdfs:label "MG-ExclusionGround" ;
+#    rml:logicalSource
+#        [
+#            rml:source "data/source.xml" ;
+#            rml:iterator "/*/cac:TenderingTerms/cac:TendererQualificationRequest/cac:SpecificTendererRequirement" ;
+#            rml:referenceFormulation ql:XPath
+#        ] ;
+#    rr:subjectMap
+#        [
+#            rdfs:label "ND-ExclusionGrounds" ;
+#            rml:reference "if(exists(cbc:Description) or exists(cbc:TendererRequirementTypeCode[@listName='exclusion-ground'])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ExclusionGround$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+#            rr:class epo:ExclusionGround
+#        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rdfs:label "BT-67(a)-Procedure" ;
+#            rdfs:comment "Exclusion Grounds of MG-ExclusionGround under ND-ExclusionGrounds" ;
+#            rr:predicate dct:type ;
+#            rr:objectMap
+#                [
+#                    tedm:maxSDKVersion "1.11" ;
+#                    rdfs:label "at-voc:criterion" ;
+#                    rr:parentTriplesMap tedm:criterion ;
+#                    rr:joinCondition [
+#                        rr:child "cbc:TendererRequirementTypeCode[@listName='exclusion-ground']" ;
+#                        rr:parent "code.value" ;
+#                     ] ;
+#                ] ;
+#        ] ;
 # BT-67(b)-Procedure is in dedicated language TMap
 #    rr:predicateObjectMap
 #         [
@@ -104,7 +104,7 @@ tedm:MG-ExclusionGround-specifiesProcurementCriterion-Lot_ND-ExclusionGrounds a 
 #                     ] ;
 #                 ] ;
 #         ] ;
-.
+#.
 
 tedm:MG-langString-description-ExclusionGround-specifiesProcurementCriterion-Lot_ND-ExclusionGrounds a rr:TriplesMap ;
   rml:logicalSource [

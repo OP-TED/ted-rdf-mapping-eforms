@@ -48,3 +48,20 @@ tedm:MG-ContractTerm-foreseesTerm-Procedure_ND-ProcedureContractAdditionalNature
                 ]
         ] ;
 .
+
+#tedm:MG-ExclusionGround-specifiesProcurementCriterion-Procedure_ND-ExclusionGrounds a rr:TriplesMap ;
+#    rdfs:label "MG-ExclusionGround" ;
+#    rml:logicalSource
+#        [
+#            rml:source "data/source.xml" ;
+#            rml:iterator "/*/cac:TenderingTerms/cac:TendererQualificationRequest[cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode/@listName='exclusion-ground']/cac:SpecificTendererRequirement" ;
+#            rml:referenceFormulation ql:XPath
+#        ] ;
+#    rr:subjectMap
+#        [
+#            rdfs:label "ND-ExclusionGrounds" ;
+#            rml:reference "if (not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E1 E2', text())]))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ProcurementProjectContractTerm$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+#            rr:class epo:ExclusionGround
+#        ] ;
+#
+#    .
