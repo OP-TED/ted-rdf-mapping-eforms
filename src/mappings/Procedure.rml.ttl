@@ -1046,7 +1046,7 @@ tedm:MG-Purpose-hasPurpose-Procedure_ND-ProcedureAdditionalCommodityClassificati
         ] ;
 .
 
-tedm:MG-Address-address-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformance a rr:TriplesMap ;
+tedm:MG-Address-address-Location_ND-ProcedurePlacePerformance a rr:TriplesMap ;
     rdfs:label "MG-Address";
     rml:logicalSource
         [
@@ -1122,7 +1122,7 @@ tedm:MG-Address-address-Location-definesSpecificPlaceOfPerformance-ContractTerm-
         ] ;
 .
 
-tedm:MG-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformance a rr:TriplesMap ;
+tedm:MG-Location_ND-ProcedurePlacePerformance a rr:TriplesMap ;
     rdfs:label "MG-Location";
     rdfs:comment "This is an iterator for the location it has the same xpath with the ND-ProcedurePlacePerformanceAdditionalInformation as this one goes through the ContractTerm";
     rml:logicalSource
@@ -1144,7 +1144,7 @@ tedm:MG-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContract
             rr:predicate locn:address ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-Address-address-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformance;
+                    rr:parentTriplesMap tedm:MG-Address-address-Location_ND-ProcedurePlacePerformance;
                     # WARNING this does not work in conjunction w/ the parent's conditional reference in rmlmapper v6.3+
                     rr:joinCondition [
                         rr:child "path(.)";
@@ -1198,20 +1198,20 @@ tedm:MG-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePer
             rml:reference "if (not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E1 E2', text())]))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ProcurementProjectContractTerm$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:ContractTerm;
         ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-5101(a|b|c)-, BT-5131-, BT-5121-Procedure";
-            rdfs:comment "Location of ContractTerm";
-            rr:predicate epo:definesSpecificPlaceOfPerformance ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformance;
-                    rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(.)";
-                    ];
-                ]
-        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rdfs:label "BT-5101(a|b|c)-, BT-5131-, BT-5121-Procedure";
+#            rdfs:comment "Location of ContractTerm";
+#            rr:predicate epo:definesSpecificPlaceOfPerformance ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:MG-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformance;
+#                    rr:joinCondition [
+#                        rr:child "path(.)";
+#                        rr:parent "path(.)";
+#                    ];
+#                ]
+#        ] ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-727-Procedure";
