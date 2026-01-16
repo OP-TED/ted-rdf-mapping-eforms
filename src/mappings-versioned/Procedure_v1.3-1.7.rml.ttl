@@ -50,6 +50,32 @@ tedm:MG-ContractTerm-foreseesTerm-Procedure_ND-ProcedureContractAdditionalNature
                 ]
         ] ;
 .
+tedm:MG-ContractTerm-foreseesTerm-PlannedProcurement_ND-ProcedureContractAdditionalNature a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            # keep the iterator intact to be compatible with parent (forward-compatible)
+            rml:iterator "/*/cac:ProcurementProject/cac:ProcurementAdditionalType[exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E1 E2', text())])]" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-531-PlannedProcurement (value)" ;
+            rdfs:comment "Additional Nature (different from Main) of MG-ContractTerm under ND-ProcedureContractAdditionalNature" ;
+            rr:predicate epo:hasAdditionalContractNature ;
+            rr:objectMap
+                [
+                    tedm:minSDKVersion "1.3" ;
+                    tedm:maxSDKVersion "1.7" ;
+                    rdfs:label "at-voc:contract-nature" ;
+                    rr:parentTriplesMap tedm:contract-nature ;
+                    rr:joinCondition [
+                        rr:child "cbc:ProcurementTypeCode[not(@listName='transport-service')]" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ]
+        ] ;
+.
 #tedm:MG-ExclusionGround-specifiesProcurementCriterion-Procedure_ND-ExclusionGrounds a rr:TriplesMap ;
 #    rdfs:label "MG-ExclusionGround" ;
 #    rml:logicalSource
