@@ -1012,6 +1012,20 @@ tedm:MG-Lot_ND-LotProcurementScope a rr:TriplesMap ;
                     ];
                 ] ;
         ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-EEDLot";
+            rdfs:comment "Connection of MG-Lot to MG-GreenProcurement under ND-EEDLot";
+            rr:predicate epo:fulfillsStrategicProcurement ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-GreenProcurement-concernsGreenProcurement-EnergyEfficiencyInformation_ND-EEDInformationLot ;
+                    rr:joinCondition [
+                        rr:child "path(..)" ;
+                        rr:parent "path(../../../../../../..)" ;
+                    ] ;
+                ] ;
+        ] ;
     # rr:predicateObjectMap
     #     [
     #         rdfs:label "BT-300-Lot";
@@ -1036,7 +1050,7 @@ tedm:MG-Lot_ND-LotProcurementScope a rr:TriplesMap ;
     #                 ] ;
     #             ] ;
     #     ] ;
- .
+.
 
 tedm:MG-Identifier-identifier-Lot_ND-Lot a rr:TriplesMap ;
     rdfs:label "BT-137-Lot";
@@ -4229,6 +4243,104 @@ tedm:MG-GreenProcurement-fulfillsStrategicProcurement-Lot_ND-LotGreenCriteria a 
                         rr:parent "code.value" ;
                     ] ;
                 ] ;
+        ] ;
+.
+
+tedm:MG-EnergyEfficiencyInformation_ND-EEDProcurementDetailsLot a rr:TriplesMap ;
+    rdfs:label "MG-EnergyEfficiencyInformation" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:StrategicProcurement[efbc:ApplicableLegalBasis/@listName='eed-scope']/efac:StrategicProcurementInformation/efac:ProcurementDetails" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-EEDProcurementDetailsLot" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/EnergyEfficiencyInformation${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:class epo:EnergyEfficiencyInformation
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-811-EnergyEfficiencyInformation-LegalFramework" ;
+            rdfs:comment "Legal Framework Code of MG-EnergyEfficiencyInformation under ND-EEDProcurementDetailsLot" ;
+            rr:predicate epo:hasCalculationBasedOn ;
+            rr:objectMap
+                [
+                    rr:template "http://publications.europa.eu/resource/authority/energy-efficiency-basis/{efbc:LegalFrameworkCode}" ;
+                    rr:termType rr:IRI ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-811-EnergyEfficiencyInformation-AssetCategory" ;
+            rdfs:comment "Asset Category Code of MG-EnergyEfficiencyInformation under ND-EEDProcurementDetailsLot" ;
+            rr:predicate epo:concernsEnergyEfficiencyItemCategory ;
+            rr:objectMap
+                [
+                    rr:template "http://publications.europa.eu/resource/authority/energy-efficiency-item/{efbc:AssetCategoryCode}" ;
+                    rr:termType rr:IRI ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-EEDInformationLot" ;
+            rdfs:comment "Connection of MG-EnergyEfficiencyInformation to MG-GreenProcurement under ND-EEDInformationLot" ;
+            rr:predicate epo:concernsGreenProcurement ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-GreenProcurement-concernsGreenProcurement-EnergyEfficiencyInformation_ND-EEDInformationLot ;
+                    rr:joinCondition [
+                        rr:child "path(..)" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-EnergyEfficiencyInformation_ND-NonUBLTenderingTerms a rr:TriplesMap ;
+    rdfs:label "MG-EnergyEfficiencyInformation" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:StrategicProcurement[efbc:ApplicableLegalBasis/@listName='eed-scope']" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-NonUBLTenderingTerms" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/EnergyEfficiencyInformation${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:class epo:EnergyEfficiencyInformation
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-EEDInformationLot" ;
+            rdfs:comment "Connection of MG-EnergyEfficiencyInformation to MG-GreenProcurement under ND-NonUBLTenderingTerms" ;
+            rr:predicate epo:concernsGreenProcurement ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-GreenProcurement-concernsGreenProcurement-EnergyEfficiencyInformation_ND-EEDInformationLot ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(..)" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-GreenProcurement-concernsGreenProcurement-EnergyEfficiencyInformation_ND-EEDInformationLot a rr:TriplesMap ;
+    rdfs:label "MG-GreenProcurement" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:StrategicProcurement[efbc:ApplicableLegalBasis/@listName='eed-scope']/efac:StrategicProcurementInformation" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-EEDInformationLot" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/GreenProcurement${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:class epo:GreenProcurement
         ] ;
 .
 
