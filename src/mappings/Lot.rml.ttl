@@ -493,6 +493,20 @@ tedm:MG-Lot_ND-Lot a rr:TriplesMap ;
         ];
     rr:predicateObjectMap
         [
+            rdfs:label "ND-SelectionCriteriaSources";
+            rdfs:comment "Connection of MG-Lot to MG-SelectionCriterion under ND-SelectionCriteriaSources";
+            rr:predicate epo:specifiesProcurementCriterion;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SelectionCriteriaSources;
+                    rr:joinCondition [
+                        rr:child "cbc:ID";
+                        rr:parent "../../../cbc:ID";
+                    ];
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
             rdfs:label "BT-733-Lot, BT-543-Lot" ;
             rr:predicate epo:isSubjectToLotSpecificTerm ;
             rr:objectMap
@@ -2226,6 +2240,55 @@ tedm:MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SelectionCriteri
                     rr:datatype xsd:boolean;
                 ] ;
         ];
+.
+
+tedm:MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SelectionCriteriaSources a rr:TriplesMap ;
+    rdfs:label "MG-SelectionCriterion";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:TendererQualificationRequest[not(cbc:CompanyLegalFormCode)][not(cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode[@listName='missing-info-submission'])][not(cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode[@listName='reserved-procurement'])]/cac:SpecificTendererRequirement[cbc:TendererRequirementTypeCode/@listName='selection-criteria-source']" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-SelectionCriteriaSources" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/SelectionCriterion${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:class epo:SelectionCriterion
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-821-SelectionCriterion-epo-notice" ;
+            rdfs:comment "Qualification Criteria Stated In Notice of MG-SelectionCriterion under ND-SelectionCriteriaSources" ;
+            rr:predicate epo:hasQualificationCriteriaStatedInNotice ;
+            rr:objectMap
+                [
+                    rml:reference "if(cbc:TendererRequirementTypeCode/text()='epo-notice') then 'true' else null" ;
+                    rr:datatype xsd:boolean ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-821-SelectionCriterion-epo-sub-espd" ;
+            rdfs:comment "Qualification Criteria Stated In ESPD Request of MG-SelectionCriterion under ND-SelectionCriteriaSources" ;
+            rr:predicate epo:hasQualificationCriteriaStatedInESPDRequest ;
+            rr:objectMap
+                [
+                    rml:reference "if(cbc:TendererRequirementTypeCode/text()='epo-sub-espd') then 'true' else null" ;
+                    rr:datatype xsd:boolean ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-821-SelectionCriterion-epo-procurement-document" ;
+            rdfs:comment "Qualification Criteria Stated In Procurement Documents of MG-SelectionCriterion under ND-SelectionCriteriaSources" ;
+            rr:predicate epo:hasQualificationCriteriaStatedInProcurementDocuments ;
+            rr:objectMap
+                [
+                    rml:reference "if(cbc:TendererRequirementTypeCode/text()='epo-procurement-document') then 'true' else null" ;
+                    rr:datatype xsd:boolean ;
+                ] ;
+        ] ;
 .
 
 tedm:MG-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardCriterion a rr:TriplesMap ;

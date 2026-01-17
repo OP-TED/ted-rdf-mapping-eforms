@@ -89,6 +89,16 @@ tedm:MG-CompetitionNotice_ND-Root
                     rr:parentTriplesMap tedm:MG-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember;
                 ] ;
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-Participants" ;
+            rdfs:comment "Connection of MG-CompetitionNotice to MG-Candidate under ND-Participants" ;
+            rr:predicate epo:announcesRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Candidate-announcesRole-CompetitionNotice_ND-Participants;
+                ] ;
+        ] ;
 .
 
 tedm:MG-AgentInRole-announcesRole-Notice_ND-Root a rr:TriplesMap ;
@@ -721,6 +731,73 @@ tedm:MG-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember a 
                         rr:child "path(.)";
                         rr:parent "path(.)";
                     ];
+                ] ;
+        ] ;
+.
+
+tedm:MG-Candidate-announcesRole-CompetitionNotice_ND-Participants a rr:TriplesMap ;
+    rdfs:label "MG-Candidate" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:EconomicOperatorShortList/cac:PreSelectedParty" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Participants" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Candidate${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:class epo:Candidate
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-47-Candidate" ;
+            rdfs:comment "Name of MG-Candidate under ND-Participants" ;
+            rr:predicate dct:title ;
+            rr:objectMap
+                [
+                    rml:reference "cac:PartyName/cbc:Name" ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-Lot-contextualisedBy-Candidate_ND-Participants a rr:TriplesMap ;
+    rdfs:label "MG-Candidate" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:EconomicOperatorShortList/cac:PreSelectedParty" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Participants" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Candidate${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:class epo:Candidate
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-Participants" ;
+            rdfs:comment "Connection of MG-Candidate to MG-Lot under ND-Participants" ;
+            rr:predicate epo:contextualisedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Lot_ND-Lot ;
+                    rr:joinCondition
+                        [
+                            rr:child "../../cbc:ID" ;
+                            rr:parent "cbc:ID" ;
+                        ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-47-Candidate" ;
+            rdfs:comment "Name of MG-Candidate under ND-Participants" ;
+            rr:predicate dct:title ;
+            rr:objectMap
+                [
+                    rml:reference "cac:PartyName/cbc:Name" ;
                 ] ;
         ] ;
 .

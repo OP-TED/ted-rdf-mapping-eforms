@@ -777,3 +777,30 @@ tedm:MG-ContractTerm-describesAsset-ContractTerm_ND-ExtendedDurationJustificatio
                 ] ;
         ] ;
 .
+
+tedm:MG-EnergyEfficiencyInformation_ND-EEDAssetQuantity a rr:TriplesMap ;
+    rdfs:label "MG-EnergyEfficiencyInformation" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:StrategicProcurement[efac:StrategicProcurementInformation/efac:ProcurementDetails/efbc:AssetCategoryCode/@listName='energy-efficiency-item']/efac:StrategicProcurementInformation/efac:ProcurementDetails/efac:StrategicProcurementStatistics/efbc:StatisticsNumeric" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-EEDAssetQuantity" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/EnergyEfficiencyInformation${replace(translate(path(../../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:class epo:EnergyEfficiencyInformation
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-815-EnergyEfficiencyInformation" ;
+            rdfs:comment "Total Items of MG-EnergyEfficiencyInformation under ND-EEDAssetQuantity" ;
+            rr:predicate epo:concernsTotalItems ;
+            rr:objectMap
+                [
+                    rml:reference "efbc:StatisticsNumeric" ;
+                    rr:datatype xsd:decimal ;
+                ] ;
+        ] ;
+.
