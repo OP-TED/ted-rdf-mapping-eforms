@@ -809,7 +809,7 @@ tedm:MG-Lot_ND-Lot a rr:TriplesMap ;
             rr:predicate epo:fulfillsStrategicProcurement ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-StrategicProcurement-fulfillsStrategicProcurement-Lot-Lot_ND-AccessibilityJustification ;
+                    rr:parentTriplesMap tedm:MG-SocialProcurement-fulfillsStrategicProcurement-Lot-Lot_ND-AccessibilityJustification ;
                     rr:joinCondition [
                         rr:child "path(.)";
                         rr:parent "path(../..)";
@@ -4137,24 +4137,24 @@ tedm:MG-GreenProcurement-fulfillsStrategicProcurement-Lot_ND-LotGreenCriteria a 
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-805-Lot";
+            rdfs:label "BT-805-Lot" ;
             rdfs:comment "GreenProcurementCriteria of MG-GreenProcurement under ND-LotGreenCriteria";
             rr:predicate epo:fulfillsRequirement ;
             rr:objectMap
                 [
                     tedm:minSDKVersion "1.9.1" ;
-                    rdfs:label "at-voc:green-public-procurement-criteria";
+                    rdfs:label "at-voc:green-public-procurement-criteria" ;
                     rr:parentTriplesMap tedm:green-public-procurement-criteria ;
                     rr:joinCondition [
-                        rr:child  "cbc:ProcurementTypeCode";
+                        rr:child  "cbc:ProcurementTypeCode" ;
                         rr:parent "code.value" ;
                     ] ;
                 ] ;
         ] ;
 .
 
-tedm:MG-StrategicProcurement-fulfillsStrategicProcurement-Lot-Lot_ND-AccessibilityJustification a rr:TriplesMap ;
-    rdfs:label "MG-StrategicProcurement";
+tedm:MG-SocialProcurement-fulfillsStrategicProcurement-Lot-Lot_ND-AccessibilityJustification a rr:TriplesMap ;
+    rdfs:label "MG-StrategicProcurement" ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -4164,14 +4164,14 @@ tedm:MG-StrategicProcurement-fulfillsStrategicProcurement-Lot-Lot_ND-Accessibili
     rr:subjectMap
         [
             rdfs:label "ND-AccessibilityJustification ";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/StrategicProcurement${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
-            rr:class epo:StrategicProcurement;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/SocialProcurement${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:class epo:SocialProcurement ;
         ] ;
     rr:predicateObjectMap
         [
             # VERINFO: SDK v1.5-1.7 from 1.4 contain only node change with stylistic XPath changes yielding the same effective XPaths, along with repeatable=false
             # VERINFO: SDK v1.8+ contain only stylistic XPath changes yielding the same effective XPaths, along with introduction of List attribute
-            rdfs:label "BT-754-Lot";
+            rdfs:label "BT-754-Lot" ;
             rdfs:comment "Accessibility of MG-StrategicProcurement under ND-AccessibilityJustification (v1.5+), ND-LotProcurementScope (v1.3-1.4)";
             rr:predicate epo:includesAccessibilityCriterion ;
             rr:objectMap
@@ -5196,16 +5196,16 @@ tedm:MG-langString-hasLegalFormRequirement-ContractTerm-foreseesTerm-Lot_ND-Tend
   ] ;
   rdfs:label "MG-ContractTerm" .
 
-tedm:MG-langString-hasNonAccessibilityCriterionJustification-StrategicProcurement-fulfillsStrategicProcurement-Lot-Lot_ND-AccessibilityJustification a rr:TriplesMap ;
+tedm:MG-langString-hasNonAccessibilityCriterionJustification-SocialProcurement-fulfillsStrategicProcurement-Lot-Lot_ND-AccessibilityJustification a rr:TriplesMap ;
   rml:logicalSource [
     rml:source "data/source.xml" ;
     rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject/cac:ProcurementAdditionalType[cbc:ProcurementTypeCode/@listName='accessibility']/cbc:ProcurementType" ;
     rml:referenceFormulation ql:XPath ;
   ] ;
   rr:subjectMap [
-    rr:class epo-not:StrategicProcurement ;
+    rr:class epo-not:SocialProcurement ;
     rdfs:label "ND-AccessibilityJustification " ;
-    rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/StrategicProcurement${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+    rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/SocialProcurement${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
   ] ;
   rr:predicateObjectMap [
     rr:predicate epo-not:hasNonAccessibilityCriterionJustification ;
@@ -5225,13 +5225,13 @@ tedm:MG-langString-hasNonAccessibilityCriterionJustification-StrategicProcuremen
           rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
         ] ;
       ] ;
-      rdfs:comment "Language of Accessibility Justification of MG-StrategicProcurement under ND-AccessibilityJustification" ;
+      rdfs:comment "Language of Accessibility Justification of MG-SocialProcurement under ND-AccessibilityJustification" ;
       rdfs:label "BT-755-Lot-Language" ;
     ] ;
-    rdfs:comment "Accessibility Justification of MG-StrategicProcurement under ND-AccessibilityJustification" ;
+    rdfs:comment "Accessibility Justification of MG-SocialProcurement under ND-AccessibilityJustification" ;
     rdfs:label "BT-755-Lot" ;
   ] ;
-  rdfs:label "MG-StrategicProcurement" .
+  rdfs:label "MG-SocialProcurement" .
 
 tedm:MG-langString-hasOpeningDescription-OpeningTerm-isSubjectToLotSpecificTerm-Lot_ND-PublicOpening a rr:TriplesMap ;
   rml:logicalSource [
