@@ -3069,17 +3069,30 @@ tedm:MG-ContractTerm-foreseesTerm-Lot_ND-LotProcurementScope a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-536-Lot, BT-537-Lot and BT-538-Lot";
+            rdfs:label "BT-536-Lot, BT-537-Lot ";
             rr:predicate epo:definesContractPeriod ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-Period-definesContractPeriod-ContractTerm-foreseesTerm-Lot_ND-LotDuration ;
+                    rr:parentTriplesMap tedm:MG-Interval-definesContractPeriod-ContractTerm-foreseesTerm-Lot_ND-LotDuration  ;
                     rr:joinCondition[
                         rr:child "path(.)";
-                        rr:parent "path(..)"
+                        rr:parent "path(..)" ;
                     ];
                 ] ;
         ] ;
+     rr:predicateObjectMap
+        [
+            # VERINFO: across versions only mapping-irrelevant changes, and introduction of List attribute from 1.9+
+            rdfs:label "BT-538-Lot";
+            rdfs:comment "Duration Other of MG-SpecificDuration under ND-LotDuration" ;
+            rr:predicate epo:hasUnknownDuration ;
+            rr:objectMap
+                [
+                    rml:reference "if (cbc:DescriptionCode/text()='UNKNOWN') then 'true' else 'false'" ;
+                    rr:datatype xsd:boolean ;
+
+                ] ;
+        ]
 .
 
 tedm:MG-Quantity-hasTotalQuantity-Purpose-hasPurpose-Lot_ND-LotProcurementScope a rr:TriplesMap ;
@@ -4485,7 +4498,7 @@ tedm:MG-SpecificDuration-definesContractDuration-ContractTerm-foreseesTerm-Lot_N
         ] ;
 .
 
-tedm:MG-Period-definesContractPeriod-ContractTerm-foreseesTerm-Lot_ND-LotDuration a rr:TriplesMap ;
+tedm:MG-Instant-hasBeginning-Interval-definesContractPeriod-ContractTerm-foreseesTerm-Lot_ND-LotDuration a rr:TriplesMap ;
     rdfs:label "MG-Period";
     rml:logicalSource
         [
@@ -4497,47 +4510,74 @@ tedm:MG-Period-definesContractPeriod-ContractTerm-foreseesTerm-Lot_ND-LotDuratio
         [
             rdfs:label "ND-LotDuration";
             rml:reference "if (exists(cbc:StartDate) or exists(cbc:EndDate) or exists(cbc:DescriptionCode)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractPeriod$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
-            rr:class epo:Period
+            rr:class time:Instant
         ] ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-536-Lot";
-            rdfs:comment "Duration Start Date of MG-Period under ND-LotDuration";
-            rr:predicate epo:hasBeginning;
+            rdfs:comment "Duration Start Date of MG-Instant under ND-LotDuration" ;
+            rr:predicate  time:inXSDDate;
             rr:objectMap
                 [
-                    rml:reference "cbc:StartDate";
+                    rml:reference "cbc:StartDate" ;
                     rr:datatype xsd:date;
                 ] ;
         ] ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-537-Lot";
-             rdfs:comment "Duration Start Date of MG-Period under ND-LotDuration";
-            rr:predicate epo:hasEnd;
+             rdfs:comment "Duration Start Date of MG-Period under ND-LotDuration" ;
+            rr:predicate time:inXSDDate ;
             rr:objectMap
                 [
-                    rml:reference "cbc:EndDate";
+                    rml:reference "cbc:EndDate" ;
                     rr:datatype xsd:date;
                 ] ;
         ];
+.
+tedm:MG-Interval-definesContractPeriod-ContractTerm-foreseesTerm-Lot_ND-LotDuration a rr:TriplesMap ;
+    rdfs:label "MG-Period";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject/cac:PlannedPeriod";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotDuration";
+            rml:reference "if (exists(cbc:StartDate) or exists(cbc:EndDate)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Interval$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class time:Interval
+        ] ;
     rr:predicateObjectMap
         [
-            # VERINFO: across versions only mapping-irrelevant changes, and introduction of List attribute from 1.9+
-            rdfs:label "BT-538-Lot";
-            rdfs:comment "Duration Other of MG-SpecificDuration under ND-LotDuration";
-            rr:predicate epo:hasTimePeriod;
+            rdfs:label "BT-536-Lot";
+            rdfs:comment "Duration Start Date of MG-interval under ND-LotDuration" ;
+            rr:predicate epo:hasBeginning ;
             rr:objectMap
                 [
-                    rdfs:label "at-voc:timeperiod";
-                    rr:parentTriplesMap tedm:timeperiod ;
+                    rr:parentTriplesMap tedm:MG-Instant-hasBeginning-Interval-definesContractPeriod-ContractTerm-foreseesTerm-Lot_ND-LotDuration ;
                     rr:joinCondition [
-                        rr:child "cbc:DescriptionCode" ;
-                        rr:parent "code.value" ;
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-537-Lot";
+             rdfs:comment "Duration Start Date of MG-Period under ND-LotDuration";
+            rr:predicate epo:hasEnd ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Instant-hasBeginning-Interval-definesContractPeriod-ContractTerm-foreseesTerm-Lot_ND-LotDuration ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
                     ] ;
                 ] ;
-        ]
-.
+        ];
+ .
 
 tedm:MG-ContractTerm-foreseesTerm-Lot_ND-OptionsAndRenewals a rr:TriplesMap ;
     rdfs:label "MG-ContractTerm";
