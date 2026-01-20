@@ -4509,7 +4509,7 @@ tedm:MG-Instant-hasBeginning-Interval-definesContractPeriod-ContractTerm-foresee
     rr:subjectMap
         [
             rdfs:label "ND-LotDuration";
-            rml:reference "if (exists(cbc:StartDate) or exists(cbc:EndDate) or exists(cbc:DescriptionCode)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractPeriod$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(cbc:StartDate)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractBeginningPeriod$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class time:Instant
         ] ;
     rr:predicateObjectMap
@@ -4522,6 +4522,21 @@ tedm:MG-Instant-hasBeginning-Interval-definesContractPeriod-ContractTerm-foresee
                     rml:reference "cbc:StartDate" ;
                     rr:datatype xsd:date;
                 ] ;
+        ] ;
+.
+tedm:MG-Instant-hasEnd-Interval-definesContractPeriod-ContractTerm-foreseesTerm-Lot_ND-LotDuration a rr:TriplesMap ;
+    rdfs:label "MG-Period";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject/cac:PlannedPeriod";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotDuration";
+            rml:reference "if (exists(cbc:EndDate)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractEndPeriod$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class time:Instant
         ] ;
     rr:predicateObjectMap
         [
@@ -4570,7 +4585,7 @@ tedm:MG-Interval-definesContractPeriod-ContractTerm-foreseesTerm-Lot_ND-LotDurat
             rr:predicate epo:hasEnd ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-Instant-hasBeginning-Interval-definesContractPeriod-ContractTerm-foreseesTerm-Lot_ND-LotDuration ;
+                    rr:parentTriplesMap tedm:MG-Instant-hasEnd-Interval-definesContractPeriod-ContractTerm-foreseesTerm-Lot_ND-LotDuration ;
                     rr:joinCondition [
                         rr:child "path(.)" ;
                         rr:parent "path(.)" ;
