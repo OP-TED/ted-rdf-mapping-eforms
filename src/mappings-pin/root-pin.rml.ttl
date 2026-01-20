@@ -47,7 +47,16 @@ tedm:MG-PlanningNotice_ND-Root
             rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Notice" ;
             rr:class epo-not:PlanningNotice
         ] ;
-.
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-04-notice" ;
+            rdfs:comment "Connection of MG-PlanningNotice to MG-PlannedProcurement under ND-Root" ;
+            rr:predicate epo:announcesPlannedProcurement ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-PlannedProcurement_ND-ProcedureProcurementScope ;
+                ] ;
+        ] .
 
 tedm:MG-PlanningNotice_ND-Part a rr:TriplesMap ;
     rdfs:label "MG-PlanningNotice" ;

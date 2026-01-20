@@ -622,6 +622,26 @@ tedm:MG-Notice_ND-Root
                     rr:parentTriplesMap tedm:MG-Lot_ND-Lot
                 ] ;
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-001-notice" ;
+            rdfs:comment "Connection of MG-Notice to MG-SpecificationInformation via hasSourceVersionSpecification under ND-Root" ;
+            rr:predicate epo:hasSpecificationInformation ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-SpecificationInformation-hasSourceVersionSpecification-Notice_ND-Root ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-002-notice" ;
+            rdfs:comment "Connection of MG-Notice to MG-SpecificationInformation via hasSourceSpecificationCustomisation under ND-Root" ;
+            rr:predicate epo:hasSpecificationInformation ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-SpecificationInformation-hasSourceSpecificationCustomisation-Notice_ND-Root ;
+                ] ;
+        ] ;
 #    rr:predicateObjectMap
 #        [
 #            rdfs:comment "Future Notice for MG-ProcessPlanningTerm under ND-Root" ;
@@ -671,6 +691,110 @@ tedm:MG-Identifier-identifier-Notice_ND-Root a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "./@schemeName";
+                ] ;
+        ] ;
+.
+
+tedm:MG-SpecificationInformation-hasSourceVersionSpecification-Notice_ND-Root a rr:TriplesMap ;
+    rdfs:label "MG-SpecificationInformation" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cbc:UBLVersionID" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Root" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Notice/SpecificationInformation/Version" ;
+            rr:class epo:SpecificationInformation
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-001-notice" ;
+            rdfs:comment "Connection of MG-SpecificationInformation to MG-Identifier via hasSourceVersionSpecification under ND-Root" ;
+            rr:predicate epo:hasSourceVersionSpecification ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Identifier-hasSourceVersionSpecification-SpecificationInformation-hasSpecificationInformation-Notice_ND-Root ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-Identifier-hasSourceVersionSpecification-SpecificationInformation-hasSpecificationInformation-Notice_ND-Root a rr:TriplesMap ;
+    rdfs:label "MG-Identifier" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cbc:UBLVersionID" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Root" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Notice/SpecificationInformation/Version/Identifier" ;
+            rr:class adms:Identifier
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-001-notice" ;
+            rdfs:comment "Notation of MG-Identifier for MG-SpecificationInformation under ND-Root" ;
+            rr:predicate skos:notation ;
+            rr:objectMap
+                [
+                    rml:reference "." ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-SpecificationInformation-hasSourceSpecificationCustomisation-Notice_ND-Root a rr:TriplesMap ;
+    rdfs:label "MG-SpecificationInformation" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cbc:CustomizationID" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Root" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Notice/SpecificationInformation/Customisation" ;
+            rr:class epo:SpecificationInformation
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-002-notice" ;
+            rdfs:comment "Connection of MG-SpecificationInformation to MG-Identifier via hasSourceSpecificationCustomisation under ND-Root" ;
+            rr:predicate epo:hasSourceSpecificationCustomisation ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Identifier-hasSourceSpecificationCustomisation-SpecificationInformation-hasSpecificationInformation-Notice_ND-Root ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-Identifier-hasSourceSpecificationCustomisation-SpecificationInformation-hasSpecificationInformation-Notice_ND-Root a rr:TriplesMap ;
+    rdfs:label "MG-Identifier" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cbc:CustomizationID" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Root" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Notice/SpecificationInformation/Customisation/Identifier" ;
+            rr:class adms:Identifier
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-002-notice" ;
+            rdfs:comment "Notation of MG-Identifier for MG-SpecificationInformation under ND-Root" ;
+            rr:predicate skos:notation ;
+            rr:objectMap
+                [
+                    rml:reference "." ;
                 ] ;
         ] ;
 .
