@@ -89,4 +89,45 @@ tedm:MG-TaxInformationProvider_ND-LotFiscalLegislation a rr:TriplesMap ;
                     ] ;
                 ] ;
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-110-Lot-FiscalLegis" ;
+            rdfs:comment "Connection of MG-TaxInformationProvider to MG-TaxDocumentation under ND-LotFiscalLegislation" ;
+            rr:predicate epo:providesDocumentation ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-TaxDocumentation-providesDocumentation-TaxInformationProvider_ND-LotFiscalLegislation ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(../../..)" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-TaxDocumentation-providesDocumentation-TaxInformationProvider_ND-LotFiscalLegislation a rr:TriplesMap ;
+    rdfs:label "MG-TaxDocumentation" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:FiscalLegislationDocumentReference/cac:Attachment/cac:ExternalReference/cbc:URI" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotFiscalLegislation" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/TaxDocumentation${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:class epo:TaxDocumentation
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-110-Lot-FiscalLegis" ;
+            rdfs:comment "Address URL of MG-TaxDocumentation under ND-LotFiscalLegislation" ;
+            rr:predicate epo:hasAddressURL ;
+            rr:objectMap
+                [
+                    rml:reference "." ;
+                    rr:datatype xsd:anyURI
+                ] ;
+        ] ;
 .

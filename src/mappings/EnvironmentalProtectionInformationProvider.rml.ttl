@@ -62,5 +62,40 @@ tedm:MG-EnvironmentalProtectionInformationProvider_ND-LotEnvironmentalLegislatio
         ] ;
         rr:predicate epo:contextualisedBy ;
     ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPT-120-Lot-EnvironLegis" ;
+        rdfs:comment "Connection of MG-EnvironmentalProtectionInformationProvider to MG-EnvironmentalDocumentation under ND-LotEnvironmentalLegislation" ;
+        rr:predicate epo:providesDocumentation ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-EnvironmentalDocumentation-providesDocumentation-EnvironmentalProtectionInformationProvider_ND-LotEnvironmentalLegislation ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(../../..)" ;
+            ] ;
+        ] ;
+    ] ;
     tedm:minSDKVersion "1.5.12"
+.
+
+tedm:MG-EnvironmentalDocumentation-providesDocumentation-EnvironmentalProtectionInformationProvider_ND-LotEnvironmentalLegislation a rr:TriplesMap ;
+    rdfs:label "MG-EnvironmentalDocumentation" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:EnvironmentalLegislationDocumentReference/cac:Attachment/cac:ExternalReference/cbc:URI" ;
+        rml:referenceFormulation ql:XPath
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-LotEnvironmentalLegislation" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/EnvironmentalDocumentation${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:EnvironmentalDocumentation
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPT-120-Lot-EnvironLegis" ;
+        rdfs:comment "Address URL of MG-EnvironmentalDocumentation under ND-LotEnvironmentalLegislation" ;
+        rr:predicate epo:hasAddressURL ;
+        rr:objectMap [
+            rml:reference "." ;
+            rr:datatype xsd:anyURI
+        ] ;
+    ] ;
 .

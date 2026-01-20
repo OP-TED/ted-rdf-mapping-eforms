@@ -2992,6 +2992,17 @@ tedm:MG-Lot_ND-LotTenderingTerms a rr:TriplesMap ;
                     rr:datatype xsd:boolean
                 ] ;
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-681-Lot";
+            rdfs:comment "Foreign Subsidies Regulation of MG-Lot under ND-LotTenderingTerms";
+            rr:predicate epo:appliesForeignSubsidiesRegulation;
+            rr:objectMap
+                [
+                    rml:reference "if(cac:TenderingTerms/cac:ContractExecutionRequirement[cbc:ExecutionRequirementCode/@listName='fsr']/cbc:ExecutionRequirementCode/text()='true') then 'true' else null";
+                    rr:datatype xsd:boolean
+                ] ;
+        ] ;
 .
 
 tedm:MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotReservedExecution a rr:TriplesMap ;
