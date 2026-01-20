@@ -3057,10 +3057,10 @@ tedm:MG-ContractTerm-foreseesTerm-Lot_ND-LotProcurementScope a rr:TriplesMap ;
      rr:predicateObjectMap
         [
             rdfs:label "BT-36-Lot (object)";
-            rr:predicate epo:definesContractDuration ;
+            rr:predicate epo:definesEstimatedContractDuration ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-SpecificDuration-definesContractDuration-ContractTerm-foreseesTerm-Lot_ND-LotDuration ;
+                    rr:parentTriplesMap tedm:MG-Duration-definesEstimatedContractDuration-ContractTerm-foreseesTerm-Lot_ND-LotDuration ;
                     rr:joinCondition[
                         rr:child "path(.)";
                         rr:parent "path(..)"
@@ -4455,7 +4455,7 @@ tedm:MG-ContractTerm-foreseesTerm-Lot_ND-LotPlacePerformance a rr:TriplesMap ;
     #     ] ;
 .
 
-tedm:MG-SpecificDuration-definesContractDuration-ContractTerm-foreseesTerm-Lot_ND-LotDuration a rr:TriplesMap ;
+tedm:MG-Duration-definesEstimatedContractDuration-ContractTerm-foreseesTerm-Lot_ND-LotDuration a rr:TriplesMap ;
     rdfs:label "MG-SpecificDuration";
     rml:logicalSource
         [
@@ -4467,13 +4467,13 @@ tedm:MG-SpecificDuration-definesContractDuration-ContractTerm-foreseesTerm-Lot_N
         [
             rdfs:label "ND-LotDuration";
             rml:reference "if (exists(cbc:DurationMeasure)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractDuration$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
-            rr:class epo:SpecificDuration
+            rr:class  time:Duration
         ] ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-36-Lot (value)";
             rdfs:comment "Duration Period of MG-SpecificDuration under ND-LotDuration";
-            rr:predicate time:numericDuration;
+            rr:predicate time:numericDuration ;
             rr:objectMap
                 [
                     rml:reference "cbc:DurationMeasure";
@@ -4483,12 +4483,12 @@ tedm:MG-SpecificDuration-definesContractDuration-ContractTerm-foreseesTerm-Lot_N
     rr:predicateObjectMap
         [
             rdfs:label "BT-36-Lot (unit)";
-            rdfs:comment "Duration Period of MG-SpecificDuration under ND-LotDuration";
-            rr:predicate time:unitType ;
+            rdfs:comment "Duration Period of MG-Duration under ND-LotDuration";
+            rr:predicate  time:TemporalUnit ;
             rr:objectMap
                 [
                     rdfs:label "BT-36-Lot-Unit (time:TemporalUnit)" ;
-                    rdfs:comment "Unit of Duration Period of MG-SpecificDuration under ND-LotDuration";
+                    rdfs:comment "Unit of Duration Period of MG-Duration under ND-LotDuration";
                     rr:parentTriplesMap tedm:temporal_unit ;
                     rr:joinCondition [
                         rr:child "cbc:DurationMeasure/@unitCode" ;
