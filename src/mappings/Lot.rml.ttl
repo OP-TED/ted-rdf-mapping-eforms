@@ -780,6 +780,19 @@ tedm:MG-Lot_ND-Lot a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rdfs:label "BT-684-Lot";
+            rr:predicate epo:isSubjectToLotSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-InternationalProcurementInstrumentMeasuresInformation-isSubjectToLotSpecificTerm-Lot_ND-IPILot;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../../../../../../..)";
+                    ];
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
             rdfs:label "BT-79-Lot";
             rr:predicate epo:specifiesProcurementCriterion ;
             rr:objectMap
@@ -5942,3 +5955,18 @@ tedm:MG-langString-title-Lot_ND-LotProcurementScope a rr:TriplesMap ;
     rdfs:label "BT-21-Lot" ;
   ] ;
   rdfs:label "MG-Lot" .
+
+tedm:MG-InternationalProcurementInstrumentMeasuresInformation-isSubjectToLotSpecificTerm-Lot_ND-IPILot a rr:TriplesMap ;
+    rdfs:label "MG-InternationalProcurementInstrumentMeasuresInformation" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:StrategicProcurement[efbc:ApplicableLegalBasis/@listName='ipi-scope']/efbc:ApplicableLegalBasis" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-IPILot" ;
+            rml:reference "if (exists(.)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/InternationalProcurementInstrumentMeasuresInformation$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class epo:InternationalProcurementInstrumentMeasuresInformation
+        ] .
