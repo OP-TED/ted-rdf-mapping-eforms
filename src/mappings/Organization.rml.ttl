@@ -121,6 +121,20 @@ tedm:MG-Organization_ND-Company a rr:TriplesMap ;
                     ] ;
                 ]
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-509-Organization-Company" ;
+            rdfs:comment "Endpoint ID of MG-Channel-exposesChannel-Organization under ND-Company" ;
+            rr:predicate epo:exposesChannel ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Channel-exposesChannel-Organization_ND-Company ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(../.)" ;
+                    ] ;
+                ]
+        ] ;
 .
 
 tedm:MG-Identifier-identifier-Organization_ND-Company a rr:TriplesMap ;
@@ -360,3 +374,30 @@ tedm:MG-langString-hasLegalName-Organization_ND-Company a rr:TriplesMap ;
         rdfs:label "BT-500-Organization-Company" ;
     ] ;
     rdfs:label "MG-Organization" .
+
+tedm:MG-Channel-exposesChannel-Organization_ND-Company a rr:TriplesMap ;
+    rdfs:label "MG-Channel" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cbc:EndpointID" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Company" ;
+            rdfs:comment "Primary type declaration for MG-Channel-exposesChannel-Organization under ND-Company" ;
+            rml:reference "if (exists(.)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Channel$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class cv:Channel
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-509-Organization-Company" ;
+            rdfs:comment "Endpoint ID of MG-Channel-exposesChannel-Organization under ND-Company" ;
+            rr:predicate epo:hasAddressURL ;
+            rr:objectMap
+                [
+                    rml:reference "." ;
+                    rr:datatype xsd:anyURI
+                ] ;
+        ] .

@@ -113,6 +113,20 @@ tedm:MG-ContactPoint_ND-Touchpoint a rr:TriplesMap ;
                     rr:datatype xsd:anyURI ;
                 ] ;
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-509-Organization-TouchPoint" ;
+            rdfs:comment "Endpoint ID of MG-Channel-exposesChannel-OrganizationalUnit under ND-Touchpoint" ;
+            rr:predicate epo:exposesChannel ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Channel-exposesChannel-OrganizationalUnit_ND-Touchpoint ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(../.)" ;
+                    ] ;
+                ]
+        ] ;
 .
 
 tedm:MG-Address-address-ContactPoint_ND-TouchpointAddress a rr:TriplesMap ;
@@ -286,3 +300,30 @@ tedm:MG-langString-description-ContactPoint_ND-Touchpoint a rr:TriplesMap ;
     rdfs:label "BT-500-Organization-TouchPoint" ;
   ] ;
   rdfs:label "MG-ContactPoint" .
+
+tedm:MG-Channel-exposesChannel-OrganizationalUnit_ND-Touchpoint a rr:TriplesMap ;
+    rdfs:label "MG-Channel" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:TouchPoint/cbc:EndpointID" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Touchpoint" ;
+            rdfs:comment "Primary type declaration for MG-Channel-exposesChannel-OrganizationalUnit under ND-Touchpoint" ;
+            rml:reference "if (exists(.)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Channel$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class cv:Channel
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-509-Organization-TouchPoint" ;
+            rdfs:comment "Endpoint ID of MG-Channel-exposesChannel-OrganizationalUnit under ND-Touchpoint" ;
+            rr:predicate epo:hasAddressURL ;
+            rr:objectMap
+                [
+                    rml:reference "." ;
+                    rr:datatype xsd:anyURI
+                ] ;
+        ] .
