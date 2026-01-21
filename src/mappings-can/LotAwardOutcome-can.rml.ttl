@@ -110,6 +110,20 @@ tedm:MG-LotAwardOutcome_ND-LotResult  a rr:TriplesMap ;
                     ];
                 ] ;
         ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "MG-GreenProcurement-fulfillsStrategicProcurement-LotAwardOutcome" ;
+            rdfs:comment "Connection of MG-LotAwardOutcome to MG-GreenProcurement under ND-LotResult" ;
+            rr:predicate epo:fulfillsStrategicProcurement ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-GreenProcurement-concernsGreenProcurement-EnergyEfficiencyInformation_ND-StrategicProcurementLotResult ;
+                    rr:joinCondition [
+                        rr:child "path(efac:StrategicProcurement[efac:StrategicProcurementInformation/efac:ProcurementDetails/efbc:AssetCategoryCode/@listName='energy-efficiency-item'])" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ] ;
 .
 
 tedm:MG-MonetaryValue-hasApproximateFrameworkAgreementValue-LotAwardOutcome_ND-LotResultFAValues  a rr:TriplesMap ;
