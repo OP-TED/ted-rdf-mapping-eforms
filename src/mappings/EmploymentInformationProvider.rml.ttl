@@ -7,6 +7,8 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix fnml: <http://semweb.mmlab.be/ns/fnml#> .
+@prefix idlab-fn: <http://example.com/idlab/function/> .
 
 tedm:MG-EmploymentInformationProvider_ND-LotEmploymentLegislation a rr:TriplesMap ;
     rdfs:label "MG-EmploymentInformationProvider" ;
@@ -610,5 +612,375 @@ tedm:MG-AccessTerm-isSubjectToTerm-PlannedProcurementPart_ND-PartProcurementDocu
                 rr:child "." ;
                 rr:parent "op_code" ;
             ] ;
+        ] ;
+    ] .
+
+# OPT-070: Reserved Execution Justification (Lot) - Variant 1 (ND-LotReservedExecution)
+tedm:MG-Lot-isSubjectToTerm-ContractTerm_ND-LotReservedExecution_v1 a rr:TriplesMap ;
+    rdfs:label "MG-Lot" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:ContractExecutionRequirement[cbc:ExecutionRequirementCode/@listName='reserved-execution']/cbc:Description" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Lot" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Lot/{../../../../cbc:ID}" ;
+        rr:class epo:Lot
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPT-070-Lot (isSubjectToTerm)" ;
+        rdfs:comment "Connection from Lot to ContractTerm" ;
+        rr:predicate epo:isSubjectToTerm ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-ContractTerm-isSubjectToTerm-Lot_ND-LotReservedExecution_v1 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-ContractTerm-isSubjectToTerm-Lot_ND-LotReservedExecution_v1 a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm-isSubjectToTerm-Lot" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:ContractExecutionRequirement[cbc:ExecutionRequirementCode/@listName='reserved-execution']/cbc:Description" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-LotReservedExecution" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTerm${replace(translate(path(../../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:ContractTerm
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPT-070-Lot" ;
+        rdfs:comment "Reserved Execution Justification for Lot (variant 1)" ;
+        rr:predicate epo:hasReservedExecutionJustification ;
+        rr:objectMap [
+            rml:reference "." ;
+            rml:languageMap [
+                fnml:functionValue [
+                    rr:predicateObjectMap [
+                        rr:predicate idlab-fn:str ;
+                        rr:objectMap [ rml:reference "./@languageID" ]
+                    ] ,
+                    tedm:idlab-fn_executes_lookup ,
+                    tedm:idlab-fn_inputFile_language ,
+                    tedm:idlab-fn_fromColumn_code ,
+                    tedm:idlab-fn_toColumn_code
+                ]
+            ] ;
+        ] ;
+    ] .
+
+# OPT-070: Reserved Execution Justification (Lot) - Variant 2 (ND-ReservedExecution)
+tedm:MG-Lot-isSubjectToTerm-ContractTerm_ND-ReservedExecution_v2 a rr:TriplesMap ;
+    rdfs:label "MG-Lot" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:ContractExecutionRequirement[cbc:ExecutionRequirementCode/@listName='reserved-execution']/cbc:Description" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Lot" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Lot/{../../../../cbc:ID}" ;
+        rr:class epo:Lot
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPT-070-Lot (isSubjectToTerm)" ;
+        rdfs:comment "Connection from Lot to ContractTerm" ;
+        rr:predicate epo:isSubjectToTerm ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-ContractTerm-isSubjectToTerm-Lot_ND-ReservedExecution_v2 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-ContractTerm-isSubjectToTerm-Lot_ND-ReservedExecution_v2 a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm-isSubjectToTerm-Lot" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:ContractExecutionRequirement[cbc:ExecutionRequirementCode/@listName='reserved-execution']/cbc:Description" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-ReservedExecution" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTerm${replace(translate(path(../../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:ContractTerm
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPT-070-Lot" ;
+        rdfs:comment "Reserved Execution Justification for Lot (variant 2)" ;
+        rr:predicate epo:hasReservedExecutionJustification ;
+        rr:objectMap [
+            rml:reference "." ;
+            rml:languageMap [
+                fnml:functionValue [
+                    rr:predicateObjectMap [
+                        rr:predicate idlab-fn:str ;
+                        rr:objectMap [ rml:reference "./@languageID" ]
+                    ] ,
+                    tedm:idlab-fn_executes_lookup ,
+                    tedm:idlab-fn_inputFile_language ,
+                    tedm:idlab-fn_fromColumn_code ,
+                    tedm:idlab-fn_toColumn_code
+                ]
+            ] ;
+        ] ;
+    ] .
+
+# OPP-040: Transport Service Type (Procedure) - Variant 1 (ND-ProcedureTransportServiceType)
+tedm:MG-Procedure-isSubjectToTerm-ContractTerm_ND-ProcedureTransportServiceType_v1 a rr:TriplesMap ;
+    rdfs:label "MG-Procedure" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProject/cac:ProcurementAdditionalType[cbc:ProcurementTypeCode/@listName='transport-service']/cbc:ProcurementTypeCode" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Procedure" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Procedure" ;
+        rr:class epo:Procedure
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPP-040-Procedure (isSubjectToTerm)" ;
+        rdfs:comment "Connection from Procedure to ContractTerm" ;
+        rr:predicate epo:isSubjectToTerm ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-ContractTerm-isSubjectToTerm-Procedure_ND-ProcedureTransportServiceType_v1 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-ContractTerm-isSubjectToTerm-Procedure_ND-ProcedureTransportServiceType_v1 a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm-isSubjectToTerm-Procedure" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProject/cac:ProcurementAdditionalType[cbc:ProcurementTypeCode/@listName='transport-service']/cbc:ProcurementTypeCode" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-ProcedureTransportServiceType" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTerm${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:ContractTerm
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPP-040-Procedure" ;
+        rdfs:comment "Transport Service Type for Procedure (variant 1)" ;
+        rr:predicate epo:hasTransportServiceType ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:transport-service ;
+            rr:joinCondition [
+                rr:child "." ;
+                rr:parent "code.value" ;
+            ] ;
+        ] ;
+    ] .
+
+# OPP-040: Transport Service Type (Procedure) - Variant 2 (ND-ProcedureProcurementScope)
+tedm:MG-Procedure-isSubjectToTerm-ContractTerm_ND-ProcedureProcurementScope_v2 a rr:TriplesMap ;
+    rdfs:label "MG-Procedure" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProject/cac:ProcurementAdditionalType/cbc:ProcurementTypeCode[@listName='transport-service']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Procedure" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Procedure" ;
+        rr:class epo:Procedure
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPP-040-Procedure (isSubjectToTerm)" ;
+        rdfs:comment "Connection from Procedure to ContractTerm" ;
+        rr:predicate epo:isSubjectToTerm ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-ContractTerm-isSubjectToTerm-Procedure_ND-ProcedureProcurementScope_v2 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-ContractTerm-isSubjectToTerm-Procedure_ND-ProcedureProcurementScope_v2 a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm-isSubjectToTerm-Procedure" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProject/cac:ProcurementAdditionalType/cbc:ProcurementTypeCode[@listName='transport-service']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-ProcedureProcurementScope" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTerm${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:ContractTerm
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPP-040-Procedure" ;
+        rdfs:comment "Transport Service Type for Procedure (variant 2)" ;
+        rr:predicate epo:hasTransportServiceType ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:transport-service ;
+            rr:joinCondition [
+                rr:child "." ;
+                rr:parent "code.value" ;
+            ] ;
+        ] ;
+    ] .
+
+# BT-127: Estimated Contract Notice Publication Date - Variant 1 (PlannedProcurement)
+# Chain: PlanningNotice -> PlannedProcurement -> ProcessPlanningTerm -> date
+
+tedm:MG-PlanningNotice-announcesPlannedProcurement-PlannedProcurement_BT127_v1 a rr:TriplesMap ;
+    rdfs:label "MG-PlanningNotice" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cbc:PlannedDate[exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('4 5 6 E2', text())])]" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Root" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PlanningNotice" ;
+        rr:class epo-not:PlanningNotice
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-127 (announcesPlannedProcurement)" ;
+        rdfs:comment "Connection from PlanningNotice to PlannedProcurement" ;
+        rr:predicate epo:announcesPlannedProcurement ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-PlannedProcurement-isSubjectToTerm-ProcessPlanningTerm_BT127_v1 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-PlannedProcurement-isSubjectToTerm-ProcessPlanningTerm_BT127_v1 a rr:TriplesMap ;
+    rdfs:label "MG-PlannedProcurement" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cbc:PlannedDate[exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('4 5 6 E2', text())])]" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Root" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PlannedProcurement" ;
+        rr:class epo:PlannedProcurement
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-127 (isSubjectToTerm)" ;
+        rdfs:comment "Connection from PlannedProcurement to ProcessPlanningTerm" ;
+        rr:predicate epo:isSubjectToTerm ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-ProcessPlanningTerm-foreseesTerm-PlannedProcurement_BT127_v1 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-ProcessPlanningTerm-foreseesTerm-PlannedProcurement_BT127_v1 a rr:TriplesMap ;
+    rdfs:label "MG-ProcessPlanningTerm-foreseesTerm-PlannedProcurement-announcesPlannedProcurement-PlanningNotice" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cbc:PlannedDate[exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('4 5 6 E2', text())])]" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Root" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ProcessPlanningTerm" ;
+        rr:class epo:ProcessPlanningTerm
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-127" ;
+        rdfs:comment "Estimated Contract Notice Publication Date for PlannedProcurement" ;
+        rr:predicate epo:hasEstimatedContractNoticePublicationDate ;
+        rr:objectMap [
+            rml:reference "." ;
+            rr:datatype xsd:date
+        ] ;
+    ] .
+
+# BT-127: Estimated Contract Notice Publication Date - Variant 2 (Procedure)
+# Chain: PlanningNotice -> Procedure -> ProcessPlanningTerm -> date
+
+tedm:MG-PlanningNotice-announcesProcedure-Procedure_BT127_v2 a rr:TriplesMap ;
+    rdfs:label "MG-PlanningNotice" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cbc:PlannedDate[exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('7 8 9', text())])]" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Root" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PlanningNotice" ;
+        rr:class epo-not:PlanningNotice
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-127 (announcesProcedure)" ;
+        rdfs:comment "Connection from PlanningNotice to Procedure" ;
+        rr:predicate epo:announcesProcedure ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-Procedure-isSubjectToTerm-ProcessPlanningTerm_BT127_v2 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-Procedure-isSubjectToTerm-ProcessPlanningTerm_BT127_v2 a rr:TriplesMap ;
+    rdfs:label "MG-Procedure" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cbc:PlannedDate[exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('7 8 9', text())])]" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Root" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Procedure" ;
+        rr:class epo:Procedure
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-127 (isSubjectToTerm)" ;
+        rdfs:comment "Connection from Procedure to ProcessPlanningTerm" ;
+        rr:predicate epo:isSubjectToTerm ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-ProcessPlanningTerm-foreseesTerm-Procedure_BT127_v2 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-ProcessPlanningTerm-foreseesTerm-Procedure_BT127_v2 a rr:TriplesMap ;
+    rdfs:label "MG-ProcessPlanningTerm-foreseesTerm-Procedure-announcesProcedure-PlanningNotice" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cbc:PlannedDate[exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('7 8 9', text())])]" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Root" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ProcessPlanningTerm" ;
+        rr:class epo:ProcessPlanningTerm
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-127" ;
+        rdfs:comment "Estimated Contract Notice Publication Date for Procedure" ;
+        rr:predicate epo:hasEstimatedContractNoticePublicationDate ;
+        rr:objectMap [
+            rml:reference "." ;
+            rr:datatype xsd:date
         ] ;
     ] .
