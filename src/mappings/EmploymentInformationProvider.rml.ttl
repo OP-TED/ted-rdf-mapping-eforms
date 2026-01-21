@@ -15,6 +15,11 @@ tedm:MG-EmploymentInformationProvider_ND-LotEmploymentLegislation a rr:TriplesMa
         rml:referenceFormulation ql:XPath ;
         rml:source "data/source.xml" ;
     ] ;
+    rr:subjectMap [
+        rdfs:label "ND-LotEmploymentLegislation" ;
+        rr:class epo:EmploymentInformationProvider ;
+        rml:reference "if(exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/EmploymentInformationProvider/' || encode-for-uri(concat(cac:IssuerParty/cac:PartyIdentification/cbc:ID, cac:IssuerParty/cac:PartyIdentification/cbc:ID/@schemeName)) else null";
+    ] ;
     rr:predicateObjectMap [
         rdfs:label "OPT-301-Lot-EmployLegis TPO (hasContactPointInRole)" ;
         rdfs:comment "Connection where IssuerParty is a TouchPoint" ;
@@ -57,11 +62,6 @@ tedm:MG-EmploymentInformationProvider_ND-LotEmploymentLegislation a rr:TriplesMa
         ] ;
         rr:predicate epo:playedBy ;
     ] ;
-    rr:subjectMap [
-        rdfs:label "ND-LotEmploymentLegislation" ;
-        rr:class epo:EmploymentInformationProvider ;
-        rml:reference "if(exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/EmploymentInformationProvider/' || encode-for-uri(concat(cac:IssuerParty/cac:PartyIdentification/cbc:ID, cac:IssuerParty/cac:PartyIdentification/cbc:ID/@schemeName)) else null";
-    ] ;
     rr:predicateObjectMap [
         rdfs:label "OPT-130-Lot-EmployLegis" ;
         rdfs:comment "Connection of MG-EmploymentInformationProvider to MG-EmploymentDocumentation under ND-LotEmploymentLegislation" ;
@@ -96,5 +96,114 @@ tedm:MG-EmploymentDocumentation-providesDocumentation-EmploymentInformationProvi
             rml:reference "." ;
             rr:datatype xsd:anyURI
         ] ;
+    ] .
+
+tedm:MG-TaxDocumentation-providesDocumentation-TaxInformationProvider_ND-PartFiscalLegislation a rr:TriplesMap ;
+    rdfs:label "MG-TaxDocumentation" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:FiscalLegislationDocumentReference/cac:Attachment/cac:ExternalReference/cbc:URI" ;
+        rml:referenceFormulation ql:XPath ;
     ] ;
-.
+    rr:subjectMap [
+        rdfs:label "ND-PartFiscalLegislation" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/TaxDocumentation${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:TaxDocumentation
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPT-110-Part-FiscalLegis" ;
+        rdfs:comment "Address URL of MG-TaxDocumentation under ND-PartFiscalLegislation" ;
+        rr:predicate epo:hasAddressURL ;
+        rr:objectMap [
+            rml:reference "." ;
+            rr:datatype xsd:anyURI
+        ] ;
+    ] .
+
+tedm:MG-EnvironmentalDocumentation-providesDocumentation-EnvironmentalProtectionInformationProvider_ND-PartEnvironmentalLegislation a rr:TriplesMap ;
+    rdfs:label "MG-EnvironmentalDocumentation" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:EnvironmentalLegislationDocumentReference/cac:Attachment/cac:ExternalReference/cbc:URI" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-PartEnvironmentalLegislation" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/EnvironmentalDocumentation${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:EnvironmentalDocumentation
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPT-120-Part-EnvironmentalLegis" ;
+        rdfs:comment "Address URL of MG-EnvironmentalDocumentation under ND-PartEnvironmentalLegislation" ;
+        rr:predicate epo:hasAddressURL ;
+        rr:objectMap [
+            rml:reference "." ;
+            rr:datatype xsd:anyURI
+        ] ;
+    ] .
+
+tedm:MG-EmploymentDocumentation-providesDocumentation-EmploymentInformationProvider_ND-PartEmploymentLegislation a rr:TriplesMap ;
+    rdfs:label "MG-EmploymentDocumentation" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:EmploymentLegislationDocumentReference/cac:Attachment/cac:ExternalReference/cbc:URI" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-PartEmploymentLegislation" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/EmploymentDocumentation${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:EmploymentDocumentation
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPT-130-Part-EmployLegis" ;
+        rdfs:comment "Address URL of MG-EmploymentDocumentation under ND-PartEmploymentLegislation" ;
+        rr:predicate epo:hasAddressURL ;
+        rr:objectMap [
+            rml:reference "." ;
+            rr:datatype xsd:anyURI
+        ] ;
+    ] .
+
+tedm:MG-ProcessPlanningTerm-foreseesTerm-PlannedProcurement-announcesPlannedProcurement-PlanningNotice_ND-Root a rr:TriplesMap ;
+    rdfs:label "MG-ProcessPlanningTerm-foreseesTerm-PlannedProcurement-announcesPlannedProcurement-PlanningNotice" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cbc:PlannedDate[exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('4 5 6 E2', text())])]" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Root" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ProcessPlanningTerm" ;
+        rr:class epo:ProcessPlanningTerm
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-127" ;
+        rdfs:comment "Estimated Contract Notice Publication Date for PlannedProcurement" ;
+        rr:predicate epo:hasEstimatedContractNoticePublicationDate ;
+        rr:objectMap [
+            rml:reference "." ;
+            rr:datatype xsd:date
+        ] ;
+    ] .
+
+tedm:MG-ProcessPlanningTerm-foreseesTerm-Procedure-announcesProcedure-PlanningNotice_ND-Root a rr:TriplesMap ;
+    rdfs:label "MG-ProcessPlanningTerm-foreseesTerm-Procedure-announcesProcedure-PlanningNotice" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cbc:PlannedDate[exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('7 8 9', text())])]" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Root" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ProcessPlanningTerm" ;
+        rr:class epo:ProcessPlanningTerm
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-127" ;
+        rdfs:comment "Estimated Contract Notice Publication Date for Procedure" ;
+        rr:predicate epo:hasEstimatedContractNoticePublicationDate ;
+        rr:objectMap [
+            rml:reference "." ;
+            rr:datatype xsd:date
+        ] ;
+    ] .
