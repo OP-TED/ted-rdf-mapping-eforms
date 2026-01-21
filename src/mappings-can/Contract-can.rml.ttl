@@ -958,3 +958,75 @@ tedm:MG-Quantity-hasItemConsumption-EnergyEfficiencyInformation_ND-EEDConsumptio
                 ] ;
         ] ;
 .
+
+tedm:MG-EnergyEfficiencyInformation_ND-EEDSavings a rr:TriplesMap ;
+    rdfs:label "MG-EnergyEfficiencyInformation" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:StrategicProcurement[efac:StrategicProcurementInformation/efac:ProcurementDetails/efbc:AssetCategoryCode/@listName='energy-efficiency-item']/efac:StrategicProcurementInformation/efac:ProcurementDetails/efac:AssetMetric[efbc:AssetMetricCode/text()='nrg-sav-yr']" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-EEDSavings" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/EnergyEfficiencyInformation${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:class epo:EnergyEfficiencyInformation
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-814-EnergyEfficiencyInformation" ;
+            rdfs:comment "Item Consumption Savings of MG-EnergyEfficiencyInformation under ND-EEDSavings" ;
+            rr:predicate epo:hasItemConsumptionSavings ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Quantity-hasItemConsumptionSavings-EnergyEfficiencyInformation_ND-EEDSavings ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(..)" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-Quantity-hasItemConsumptionSavings-EnergyEfficiencyInformation_ND-EEDSavings a rr:TriplesMap ;
+    rdfs:label "MG-Quantity" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:StrategicProcurement[efac:StrategicProcurementInformation/efac:ProcurementDetails/efbc:AssetCategoryCode/@listName='energy-efficiency-item']/efac:StrategicProcurementInformation/efac:ProcurementDetails/efac:AssetMetric[efbc:AssetMetricCode/text()='nrg-sav-yr']/efbc:AssetMetricNumeric" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-EEDSavings" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Quantity${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:class epo:Quantity
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-814-EnergyEfficiencyInformation" ;
+            rdfs:comment "Quantity Value of MG-Quantity for MG-EnergyEfficiencyInformation under ND-EEDSavings" ;
+            rr:predicate epo:hasQuantityValue ;
+            rr:objectMap
+                [
+                    rml:reference "." ;
+                    rr:datatype xsd:decimal ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-081-EnergyEfficiencyInformation" ;
+            rdfs:comment "Unit Code of MG-Quantity for MG-EnergyEfficiencyInformation under ND-EEDSavings" ;
+            rr:predicate epo:hasUnitCode ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:measurement-unit" ;
+                    rr:parentTriplesMap tedm:measurement-unit ;
+                    rr:joinCondition [
+                        rr:child "../efbc:AssetMetricCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+.
