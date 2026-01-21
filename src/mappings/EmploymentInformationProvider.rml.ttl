@@ -1276,3 +1276,450 @@ tedm:MG-PlannedProcurement-hasAdditionalInformation_ND-ProcedureProcurementScope
             ] ;
         ] ;
     ] .
+
+# GR-Lot: Lot related information covering Tendering Terms
+
+# Variant 1: PlanningNotice announces Lot
+tedm:MG-PlanningNotice-announcesLot-Lot_ND-Root a rr:TriplesMap ;
+    rdfs:label "MG-PlanningNotice" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot'][/*/cbc:NoticeTypeCode/@listName='planning' or (/*/cbc:NoticeTypeCode/@listName='change' and exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 7 8 9 T01', text())]))]" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Root" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PlanningNotice" ;
+        rr:class epo-not:PlanningNotice
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "GR-Lot (announcesLot)" ;
+        rdfs:comment "PlanningNotice announces Lot" ;
+        rr:predicate epo:announcesLot ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-Lot_ND-Lot_v1 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-Lot_ND-Lot_v1 a rr:TriplesMap ;
+    rdfs:label "MG-Lot" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot'][/*/cbc:NoticeTypeCode/@listName='planning' or (/*/cbc:NoticeTypeCode/@listName='change' and exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 7 8 9 T01', text())]))]" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Lot" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Lot/{cbc:ID}" ;
+        rr:class epo:Lot
+    ] .
+
+# Variant 2: PreMarketConsultationNotice prepares for potential Lot
+tedm:MG-PreMarketConsultationNotice-preparesForPotentialProcurementObject-Lot_ND-Root a rr:TriplesMap ;
+    rdfs:label "MG-PreMarketConsultationNotice" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot'][/*/cbc:NoticeTypeCode/@listName='consultation']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Root" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PreMarketConsultationNotice" ;
+        rr:class epo-not:PreMarketConsultationNotice
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "GR-Lot (preparesForPotentialProcurementObject)" ;
+        rdfs:comment "PreMarketConsultationNotice prepares for potential Lot" ;
+        rr:predicate epo:preparesForPotentialProcurementObject ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-Lot_ND-Lot_v2 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-Lot_ND-Lot_v2 a rr:TriplesMap ;
+    rdfs:label "MG-Lot" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot'][/*/cbc:NoticeTypeCode/@listName='consultation']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Lot" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Lot/{cbc:ID}" ;
+        rr:class epo:Lot
+    ] .
+
+# BT-36: Dynamic Purchase System Duration - 5 variants
+
+# Variant 1: Lot → usesTechnique → DynamicPurchaseSystemTechnique
+tedm:MG-Lot-usesTechnique-DynamicPurchaseSystemTechnique_BT36_v1 a rr:TriplesMap ;
+    rdfs:label "MG-Lot" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot'][cac:TenderingProcess/cac:ContractingSystem[cbc:ContractingSystemTypeCode/@listName='dps-usage']]/cac:ProcurementProject/cac:PlannedPeriod/cbc:DurationMeasure" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-LotDuration" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Lot/{../../cbc:ID}" ;
+        rr:class epo:Lot
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-36 (usesTechnique)" ;
+        rdfs:comment "Lot uses DynamicPurchaseSystemTechnique" ;
+        rr:predicate epo:usesTechnique ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-DynamicPurchaseSystemTechnique-hasEstimatedDuration-Duration_BT36_v1 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+# DynamicPurchaseSystemTechnique → hasEstimatedDuration → Duration
+tedm:MG-DynamicPurchaseSystemTechnique-hasEstimatedDuration-Duration_BT36_v1 a rr:TriplesMap ;
+    rdfs:label "MG-DynamicPurchaseSystemTechnique" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot'][cac:TenderingProcess/cac:ContractingSystem[cbc:ContractingSystemTypeCode/@listName='dps-usage']]/cac:ProcurementProject/cac:PlannedPeriod/cbc:DurationMeasure" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-LotDuration" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/DynamicPurchaseSystemTechnique/{../../cbc:ID}" ;
+        rr:class epo:DynamicPurchaseSystemTechnique
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-36 (hasEstimatedDuration)" ;
+        rdfs:comment "DPS has estimated duration" ;
+        rr:predicate epo:hasEstimatedDuration ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-Duration_BT36_v1 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+# Duration with numericDuration
+tedm:MG-Duration_BT36_v1 a rr:TriplesMap ;
+    rdfs:label "MG-Duration" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot'][cac:TenderingProcess/cac:ContractingSystem[cbc:ContractingSystemTypeCode/@listName='dps-usage']]/cac:ProcurementProject/cac:PlannedPeriod/cbc:DurationMeasure" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-LotDuration" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Duration/{../../cbc:ID}" ;
+        rr:class time:Duration
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-36 (numericDuration)" ;
+        rdfs:comment "Duration numeric value" ;
+        rr:predicate time:numericDuration ;
+        rr:objectMap [
+            rml:reference "." ;
+            rr:datatype xsd:decimal
+        ] ;
+    ] .
+
+# Variants 2-5: Duration → unitType with ContractTerm chain
+
+# Variant 2: Lot → foreseesTerm → ContractTerm (for DAY)
+tedm:MG-Lot-foreseesTerm-ContractTerm_BT36_v2 a rr:TriplesMap ;
+    rdfs:label "MG-Lot" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot'][cac:TenderingProcess/cac:ContractingSystem[cbc:ContractingSystemTypeCode/@listName='dps-usage']]/cac:ProcurementProject/cac:PlannedPeriod/cbc:DurationMeasure[@unitCode='DAY']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-LotDuration" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Lot/{../../cbc:ID}" ;
+        rr:class epo:Lot
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-36 (foreseesTerm)" ;
+        rdfs:comment "Lot foresees ContractTerm" ;
+        rr:predicate epo:foreseesTerm ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-ContractTerm-definesEstimatedContractDuration-Duration_BT36_v2 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-ContractTerm-definesEstimatedContractDuration-Duration_BT36_v2 a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot'][cac:TenderingProcess/cac:ContractingSystem[cbc:ContractingSystemTypeCode/@listName='dps-usage']]/cac:ProcurementProject/cac:PlannedPeriod/cbc:DurationMeasure[@unitCode='DAY']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-LotDuration" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTerm/{../../cbc:ID}" ;
+        rr:class epo:ContractTerm
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-36 (definesEstimatedContractDuration)" ;
+        rdfs:comment "ContractTerm defines estimated duration" ;
+        rr:predicate epo:definesEstimatedContractDuration ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-Duration-unitType-Day_BT36_v2 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-Duration-unitType-Day_BT36_v2 a rr:TriplesMap ;
+    rdfs:label "MG-Duration" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot'][cac:TenderingProcess/cac:ContractingSystem[cbc:ContractingSystemTypeCode/@listName='dps-usage']]/cac:ProcurementProject/cac:PlannedPeriod/cbc:DurationMeasure[@unitCode='DAY']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-LotDuration" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Duration/{../../cbc:ID}" ;
+        rr:class time:Duration
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-36 (unitType Day)" ;
+        rdfs:comment "Duration unit type: Day" ;
+        rr:predicate time:unitType ;
+        rr:objectMap [
+            rr:constant time:unitDay
+        ] ;
+    ] .
+
+# Variant 3: Lot → foreseesTerm → ContractTerm (for WEEK)
+tedm:MG-Lot-foreseesTerm-ContractTerm_BT36_v3 a rr:TriplesMap ;
+    rdfs:label "MG-Lot" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot'][cac:TenderingProcess/cac:ContractingSystem[cbc:ContractingSystemTypeCode/@listName='dps-usage']]/cac:ProcurementProject/cac:PlannedPeriod/cbc:DurationMeasure[@unitCode='WEEK']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-LotDuration" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Lot/{../../cbc:ID}" ;
+        rr:class epo:Lot
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-36 (foreseesTerm)" ;
+        rdfs:comment "Lot foresees ContractTerm" ;
+        rr:predicate epo:foreseesTerm ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-ContractTerm-definesEstimatedContractDuration-Duration_BT36_v3 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-ContractTerm-definesEstimatedContractDuration-Duration_BT36_v3 a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot'][cac:TenderingProcess/cac:ContractingSystem[cbc:ContractingSystemTypeCode/@listName='dps-usage']]/cac:ProcurementProject/cac:PlannedPeriod/cbc:DurationMeasure[@unitCode='WEEK']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-LotDuration" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTerm/{../../cbc:ID}" ;
+        rr:class epo:ContractTerm
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-36 (definesEstimatedContractDuration)" ;
+        rdfs:comment "ContractTerm defines estimated duration" ;
+        rr:predicate epo:definesEstimatedContractDuration ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-Duration-unitType-Week_BT36_v3 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-Duration-unitType-Week_BT36_v3 a rr:TriplesMap ;
+    rdfs:label "MG-Duration" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot'][cac:TenderingProcess/cac:ContractingSystem[cbc:ContractingSystemTypeCode/@listName='dps-usage']]/cac:ProcurementProject/cac:PlannedPeriod/cbc:DurationMeasure[@unitCode='WEEK']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-LotDuration" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Duration/{../../cbc:ID}" ;
+        rr:class time:Duration
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-36 (unitType Week)" ;
+        rdfs:comment "Duration unit type: Week" ;
+        rr:predicate time:unitType ;
+        rr:objectMap [
+            rr:constant time:unitWeek
+        ] ;
+    ] .
+
+# Variant 4: Lot → foreseesTerm → ContractTerm (for MONTH)
+tedm:MG-Lot-foreseesTerm-ContractTerm_BT36_v4 a rr:TriplesMap ;
+    rdfs:label "MG-Lot" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot'][cac:TenderingProcess/cac:ContractingSystem[cbc:ContractingSystemTypeCode/@listName='dps-usage']]/cac:ProcurementProject/cac:PlannedPeriod/cbc:DurationMeasure[@unitCode='MONTH']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-LotDuration" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Lot/{../../cbc:ID}" ;
+        rr:class epo:Lot
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-36 (foreseesTerm)" ;
+        rdfs:comment "Lot foresees ContractTerm" ;
+        rr:predicate epo:foreseesTerm ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-ContractTerm-definesEstimatedContractDuration-Duration_BT36_v4 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-ContractTerm-definesEstimatedContractDuration-Duration_BT36_v4 a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot'][cac:TenderingProcess/cac:ContractingSystem[cbc:ContractingSystemTypeCode/@listName='dps-usage']]/cac:ProcurementProject/cac:PlannedPeriod/cbc:DurationMeasure[@unitCode='MONTH']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-LotDuration" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTerm/{../../cbc:ID}" ;
+        rr:class epo:ContractTerm
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-36 (definesEstimatedContractDuration)" ;
+        rdfs:comment "ContractTerm defines estimated duration" ;
+        rr:predicate epo:definesEstimatedContractDuration ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-Duration-unitType-Month_BT36_v4 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-Duration-unitType-Month_BT36_v4 a rr:TriplesMap ;
+    rdfs:label "MG-Duration" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot'][cac:TenderingProcess/cac:ContractingSystem[cbc:ContractingSystemTypeCode/@listName='dps-usage']]/cac:ProcurementProject/cac:PlannedPeriod/cbc:DurationMeasure[@unitCode='MONTH']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-LotDuration" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Duration/{../../cbc:ID}" ;
+        rr:class time:Duration
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-36 (unitType Month)" ;
+        rdfs:comment "Duration unit type: Month" ;
+        rr:predicate time:unitType ;
+        rr:objectMap [
+            rr:constant time:unitMonth
+        ] ;
+    ] .
+
+# Variant 5: Lot → foreseesTerm → ContractTerm (for YEAR)
+tedm:MG-Lot-foreseesTerm-ContractTerm_BT36_v5 a rr:TriplesMap ;
+    rdfs:label "MG-Lot" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot'][cac:TenderingProcess/cac:ContractingSystem[cbc:ContractingSystemTypeCode/@listName='dps-usage']]/cac:ProcurementProject/cac:PlannedPeriod/cbc:DurationMeasure[@unitCode='YEAR']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-LotDuration" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Lot/{../../cbc:ID}" ;
+        rr:class epo:Lot
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-36 (foreseesTerm)" ;
+        rdfs:comment "Lot foresees ContractTerm" ;
+        rr:predicate epo:foreseesTerm ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-ContractTerm-definesEstimatedContractDuration-Duration_BT36_v5 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-ContractTerm-definesEstimatedContractDuration-Duration_BT36_v5 a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot'][cac:TenderingProcess/cac:ContractingSystem[cbc:ContractingSystemTypeCode/@listName='dps-usage']]/cac:ProcurementProject/cac:PlannedPeriod/cbc:DurationMeasure[@unitCode='YEAR']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-LotDuration" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTerm/{../../cbc:ID}" ;
+        rr:class epo:ContractTerm
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-36 (definesEstimatedContractDuration)" ;
+        rdfs:comment "ContractTerm defines estimated duration" ;
+        rr:predicate epo:definesEstimatedContractDuration ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-Duration-unitType-Year_BT36_v5 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-Duration-unitType-Year_BT36_v5 a rr:TriplesMap ;
+    rdfs:label "MG-Duration" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot'][cac:TenderingProcess/cac:ContractingSystem[cbc:ContractingSystemTypeCode/@listName='dps-usage']]/cac:ProcurementProject/cac:PlannedPeriod/cbc:DurationMeasure[@unitCode='YEAR']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-LotDuration" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Duration/{../../cbc:ID}" ;
+        rr:class time:Duration
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-36 (unitType Year)" ;
+        rdfs:comment "Duration unit type: Year" ;
+        rr:predicate time:unitType ;
+        rr:objectMap [
+            rr:constant time:unitYear
+        ] ;
+    ] .
