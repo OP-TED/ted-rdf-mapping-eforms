@@ -278,7 +278,7 @@ tedm:MG-Lot_ND-Lot a rr:TriplesMap ;
             rr:predicate epo:isSubjectToTerm ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-OpeningTerm-isSubjectToTerm-Lot_ND-PublicOpening ;
+                    rr:parentTriplesMap tedm:MG-langString-OpeningTerm-isSubjectToTerm-Lot_ND-PublicOpeningPlace ;
                     rr:joinCondition [
                         rr:child "path(.)";
                         rr:parent "path(../..)";
@@ -1793,20 +1793,20 @@ tedm:MG-OpeningTerm-isSubjectToTerm-Lot_ND-PublicOpening a rr:TriplesMap ;
                     rr:datatype xsd:dateTime;
                 ] ;
         ];
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-133-Lot";
-            rdfs:comment "Public Opening Place of MG-OpeningTerm under ND-PublicOpeningPlace (v1.4+), ND-PublicOpening (v1.3-1.3)";
-            rr:predicate epo:definesOpeningPlace ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-Address-definesOpeningPlace-OpeningTerm-isSubjectToTerm-Lot_ND-PublicOpeningPlace ;
-                    rr:joinCondition[
-                        rr:child "path()";
-                        rr:parent "path(..)"
-                    ];
-                ] ;
-        ]
+#    rr:predicateObjectMap
+#        [
+#            rdfs:label "BT-133-Lot";
+#            rdfs:comment "Public Opening Place of MG-OpeningTerm under ND-PublicOpeningPlace (v1.4+), ND-PublicOpening (v1.3-1.3)";
+#            rr:predicate epo:definesOpeningPlace ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:MG-Address-definesOpeningPlace-OpeningTerm-isSubjectToTerm-Lot_ND-PublicOpeningPlace ;
+#                    rr:joinCondition[
+#                        rr:child "path()";
+#                        rr:parent "path(..)"
+#                    ];
+#                ] ;
+#        ]
 .
 
 tedm:MG-Address-definesOpeningPlace-OpeningTerm-isSubjectToTerm-Lot_ND-PublicOpeningPlace a rr:TriplesMap ;
@@ -4992,19 +4992,19 @@ tedm:MG-langString-description-SelectionCriterion-specifiesProcurementCriterion-
   ] ;
   rdfs:label "MG-SelectionCriterion" .
 
-tedm:MG-langString-fullAddress-Address-definesOpeningPlace-OpeningTerm-isSubjectToTerm-Lot_ND-PublicOpeningPlace a rr:TriplesMap ;
+tedm:MG-langString-OpeningTerm-isSubjectToTerm-Lot_ND-PublicOpeningPlace a rr:TriplesMap ;
   rml:logicalSource [
     rml:source "data/source.xml" ;
     rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:OpenTenderEvent/cac:OccurenceLocation/cbc:Description" ;
     rml:referenceFormulation ql:XPath ;
   ] ;
   rr:subjectMap [
-    rr:class locn:Address ;
+    rr:class epo:OpeningTerm ;
     rdfs:label "ND-PublicOpeningPlace" ;
     rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/OpenTenderEventPlace${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
   ] ;
   rr:predicateObjectMap [
-    rr:predicate locn:fullAddress ;
+    rr:predicate epo:hasOpeningPlace  ;
     rr:objectMap [
       rml:reference "." ;
       rml:languageMap [
@@ -5027,7 +5027,7 @@ tedm:MG-langString-fullAddress-Address-definesOpeningPlace-OpeningTerm-isSubject
     rdfs:comment "Public Opening Place of MG-Address under ND-PublicOpeningPlace (v1.4+), ND-PublicOpening (v1.3-1.3)" ;
     rdfs:label "BT-133-Lot" ;
   ] ;
-  rdfs:label "MG-Address" .
+  rdfs:label "MG-OpeningTerm" .
 
 tedm:MG-langString-hasAdditionalInformation-Lot_ND-LotProcurementScope a rr:TriplesMap ;
   rml:logicalSource [
