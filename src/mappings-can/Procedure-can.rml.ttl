@@ -35,7 +35,7 @@ tedm:MG-Procedure_ND-DirectAward a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-DirectAward";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Procedure/{/*/cbc:ContractFolderID}" ;
+            rml:reference "'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Procedure/' || (if (exists(/*/cbc:ContractFolderID)) then encode-for-uri(/*/cbc:ContractFolderID) else '0000000-0000-4000-8000-000000000000') else null" ;
             rr:class epo:Procedure
         ] ;
 
