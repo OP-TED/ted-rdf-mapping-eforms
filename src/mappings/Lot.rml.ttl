@@ -3040,7 +3040,7 @@ tedm:MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotProcurementScope a r
     rr:subjectMap
         [
             rdfs:label "ND-LotProcurementScope";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTerm${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}";
+            rml:reference "if (exists(cbc:ProcurementTypeCode[not(@listName) or @listName='contract-nature']) or exists(cac:PlannedPeriod/cbc:StartDate) or exists(cac:PlannedPeriod/cbc:EndDate) or exists(cac:PlannedPeriod/cbc:DurationMeasure)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractTerm$' || replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '') else null";
             rr:class epo:ContractTerm
         ] ;
     rr:predicateObjectMap
@@ -3053,7 +3053,7 @@ tedm:MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotProcurementScope a r
                     rdfs:label "at-voc:contract-nature" ;
                     rr:parentTriplesMap tedm:contract-nature ;
                     rr:joinCondition [
-                        rr:child "cbc:ProcurementTypeCode[@listName='contract-nature']";
+                        rr:child "cbc:ProcurementTypeCode[not(@listName) or @listName='contract-nature']";
                         rr:parent "code.value" ;
                     ] ;
                 ] ;
@@ -4415,7 +4415,7 @@ tedm:MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotPlacePerformance a r
     rr:subjectMap
         [
             rdfs:label "ND-LotProcurementScope";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTerm${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}";
+            rml:reference "if (false()) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractTerm$' || replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '') else null" ;
             rr:class epo:ContractTerm
         ] ;
     # rr:predicateObjectMap
