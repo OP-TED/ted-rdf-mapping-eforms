@@ -3702,7 +3702,8 @@ rdfs:label  "MG-StrategicProcurement";
                 ] ;
             rr:objectMap
                 [
-                    rml:reference "if (cbc:ProcurementTypeCode/text()='soc-obj') then 'http://data.europa.eu/a4g/ontology#SocialProcurement' else null" ;
+                    # NOTE: Avoid generating type-only SocialProcurement (details come from BT-775 via social-objective mapping)
+                    rml:reference "if (false()) then 'http://data.europa.eu/a4g/ontology#SocialProcurement' else null" ;
                     rr:termType rr:IRI ;
                 ] ;
         ]
