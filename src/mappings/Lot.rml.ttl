@@ -3566,7 +3566,7 @@ tedm:MG-ProcurementDocument-involvesProcurementDocument-AccessTerm-isSubjectToTe
 .
 
 tedm:MG-AccessTerm-isSubjectToTerm-Lot_ND-LotProcurementDocument a rr:TriplesMap ;
-    # some predicate mappings are in versioned files (various)
+    # subjectMap and some predicate mappings are in versioned files (various)
     rdfs:label "MG-AccessTerm" ;
     rml:logicalSource
         [
@@ -3574,12 +3574,6 @@ tedm:MG-AccessTerm-isSubjectToTerm-Lot_ND-LotProcurementDocument a rr:TriplesMap
             rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:CallForTendersDocumentReference";
             rml:referenceFormulation ql:XPath
         ];
-    rr:subjectMap
-        [
-            rdfs:label "ND-LotProcurementDocument";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/AccessTerm${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
-            rr:class epo:AccessTerm
-        ] ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-14-Lot";

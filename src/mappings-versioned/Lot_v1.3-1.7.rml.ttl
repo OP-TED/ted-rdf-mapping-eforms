@@ -75,12 +75,12 @@ tedm:MG-SubmissionTerm-isSubjectToTerm-Lot_ND-LateTendererInformation a rr:Tripl
         ]
 .
 
-tedm:MG-ProcurementDocument-involvesProcurementDocument-AccessTerm-isSubjectToTerm-Lot_ND-LotDocOfficialLanguage a rr:TriplesMap ;
+tedm:MG-AccessTerm-isSubjectToTerm-Lot_ND-LotDocOfficialLanguage a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-LotDocOfficialLanguage";
-            rml:reference "if (exists(cbc:LanguageID[not(../cbc:DocumentStatusCode/text()='non-official')])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ProcurementDocument$' || concat(replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_'), encode-for-uri(cbc:ID/text())) else null" ;
-            rr:class epo:ProcurementDocument
+            rml:reference "if (exists(cbc:LanguageID[not(../cbc:DocumentStatusCode/text()='non-official')])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || 'AccessTerm$' || concat(replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_'), encode-for-uri(cbc:ID/text())) else null" ;
+            rr:class epo:AccessTerm
         ] ;
     rml:logicalSource
         [
@@ -92,7 +92,7 @@ tedm:MG-ProcurementDocument-involvesProcurementDocument-AccessTerm-isSubjectToTe
         [
             rdfs:label "BT-708-Lot (value)";
             rdfs:comment "Documents Official Language of MG-ProcurementDocument under ND-LotProcurementDocument";
-            rr:predicate epo:hasOfficialLanguage  ;
+            rr:predicate epo:providesProcurementDocumentsInOfficialLanguage ;
             rr:objectMap
                 [
                     tedm:minSDKVersion "1.3" ;
