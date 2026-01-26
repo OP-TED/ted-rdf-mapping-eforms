@@ -70,7 +70,10 @@ tedm:MG-Contract_ND-SettledContract  a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-SettledContract" ;
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Contract/{cbc:ID}" ;
+            # Avoid type-only epo:Contract: only instantiate when at least one mapped value exists.
+            # Mapped values in this TriplesMap come from: ContractReference, IssueDate, URI, ContractFrameworkIndicator, Funding,
+            # SettledContractTenderReference, SignatoryParty.
+            rml:reference "if (exists(cbc:ID) and (exists(efac:ContractReference/cbc:ID) or exists(cbc:IssueDate) or exists(cbc:URI) or exists(efbc:ContractFrameworkIndicator) or exists(efac:Funding) or exists(efac:SettledContractTenderReference) or exists(cac:SignatoryParty))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Contract/' || cbc:ID else null" ;
             rr:class epo:Contract
         ] ;
      rr:predicateObjectMap
@@ -404,7 +407,8 @@ tedm:MG-Contract_ND-LotResultContractReference  a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-SettledContract" ;
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Contract/{cbc:ID}" ;
+            # Avoid type-only epo:Contract: this TriplesMap only maps epo:hasLotReference, so require a TenderLot ID.
+            rml:reference "if (exists(cbc:ID) and exists(../efac:TenderLot/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Contract/' || cbc:ID else null" ;
             rr:class epo:Contract
         ] ;
      rr:predicateObjectMap
