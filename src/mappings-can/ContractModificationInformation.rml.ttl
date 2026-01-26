@@ -81,7 +81,10 @@ tedm:MG-ContractAmendment-concernsContractAmendment-ContractModificationInformat
     rr:subjectMap
         [
             rdfs:label "ND-ModificationReason" ;
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractAmendment${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            # Avoid creating a type-only epo:ContractAmendment proxy.
+            # Enable ONLY when this TriplesMap also maps at least one real ContractAmendment predicate.
+            # (When you add such predicates, replace `false()` with `exists(<source field(s)>)`.)
+            rml:reference "if (false()) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractAmendment$' || replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '') else null" ;
             rr:class epo-con:ContractAmendment
         ] ;
 .
