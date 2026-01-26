@@ -3688,7 +3688,9 @@ rdfs:label  "MG-StrategicProcurement";
             rr:predicate rdf:type ;
             rr:objectMap
                 [
-                    rml:reference "if (cbc:ProcurementTypeCode/text()='env-imp') then 'http://data.europa.eu/a4g/ontology#GreenProcurement' else null" ;
+                    # NOTE: Avoid generating type-only GreenProcurement on StrategicProcurement.
+                    # Details come from BT-774 via environmental-impact mapping (GreenProcurement fulfillsRequirement).
+                    rml:reference "if (false()) then 'http://data.europa.eu/a4g/ontology#GreenProcurement' else null" ;
                     rr:termType rr:IRI ;
                 ] ;
             rr:objectMap
