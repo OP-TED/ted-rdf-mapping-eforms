@@ -282,7 +282,9 @@ tedm:MG-MonetaryValue-hasTotalAwardedValue-NoticeAwardInformation_ND-ResultNotic
     rr:subjectMap
         [
             rdfs:label "ND-NoticeResult" ;
-            rml:reference "if (exists(cbc:TotalAmount)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/MonetaryValueNoticeAwardInformation$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            # Avoid type-only epo:MonetaryValue:
+            # Only instantiate when at least one mapped value will exist (amount and/or currency).
+            rml:reference "if (exists(cbc:TotalAmount) and (not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='not-val']) and cbc:TotalAmount/text() = '-1') or (exists(cbc:TotalAmount/@currencyID) and cbc:TotalAmount/@currencyID != 'unpublished'))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/MonetaryValueNoticeAwardInformation$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:MonetaryValue
         ] ;
     rr:predicateObjectMap
@@ -324,7 +326,9 @@ tedm:MG-NoticeAwardInformation_ND-NoticeResult a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-NoticeResult" ;
-            rml:reference "if(exists(cbc:TotalAmount) or exists(efbc:OverallMaximumFrameworkContractsAmount) or exists(efbc:OverallApproximateFrameworkContractsAmount)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/NoticeAwardInformation$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            # Avoid type-only epo:NoticeAwardInformation:
+            # Only instantiate when at least one of the monetary values it links to will be created.
+            rml:reference "if ((exists(cbc:TotalAmount) and (not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='not-val']) and cbc:TotalAmount/text() = '-1') or (exists(cbc:TotalAmount/@currencyID) and cbc:TotalAmount/@currencyID != 'unpublished'))) or (exists(efbc:OverallMaximumFrameworkContractsAmount) and (not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='not-max-val']) and efbc:OverallMaximumFrameworkContractsAmount/text() = '-1') or (exists(efbc:OverallMaximumFrameworkContractsAmount/@currencyID) and efbc:OverallMaximumFrameworkContractsAmount/@currencyID != 'unpublished'))) or (exists(efbc:OverallApproximateFrameworkContractsAmount) and (not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='not-app-val']) and efbc:OverallApproximateFrameworkContractsAmount/text() = '-1') or (exists(efbc:OverallApproximateFrameworkContractsAmount/@currencyID) and efbc:OverallApproximateFrameworkContractsAmount/@currencyID != 'unpublished')))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/NoticeAwardInformation$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:NoticeAwardInformation
         ] ;
     rr:predicateObjectMap
@@ -382,7 +386,9 @@ tedm:MG-MonetaryValue-hasMaximumFrameworkAgreementAwardedValue-NoticeAwardInform
     rr:subjectMap
         [
             rdfs:label "ND-NoticeResult" ;
-            rml:reference "if (exists(efbc:OverallMaximumFrameworkContractsAmount)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/MaximumFrameworkAgreementAwardedMonetaryValueLot$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            # Avoid type-only epo:MonetaryValue:
+            # Only instantiate when at least one mapped value will exist (amount and/or currency).
+            rml:reference "if (exists(efbc:OverallMaximumFrameworkContractsAmount) and (not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='not-max-val']) and efbc:OverallMaximumFrameworkContractsAmount/text() = '-1') or (exists(efbc:OverallMaximumFrameworkContractsAmount/@currencyID) and efbc:OverallMaximumFrameworkContractsAmount/@currencyID != 'unpublished'))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/MaximumFrameworkAgreementAwardedMonetaryValueLot$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:MonetaryValue
         ] ;
     rr:predicateObjectMap
@@ -424,7 +430,9 @@ tedm:MG-MonetaryValue-hasApproximateFrameworkAgreementValue-NoticeAwardInformati
     rr:subjectMap
         [
             rdfs:label "ND-NoticeResult" ;
-            rml:reference "if (exists(efbc:OverallApproximateFrameworkContractsAmount)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ApproximateFrameworkAgreementMonetaryValueLot$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            # Avoid type-only epo:MonetaryValue:
+            # Only instantiate when at least one mapped value will exist (amount and/or currency).
+            rml:reference "if (exists(efbc:OverallApproximateFrameworkContractsAmount) and (not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='not-app-val']) and efbc:OverallApproximateFrameworkContractsAmount/text() = '-1') or (exists(efbc:OverallApproximateFrameworkContractsAmount/@currencyID) and efbc:OverallApproximateFrameworkContractsAmount/@currencyID != 'unpublished'))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ApproximateFrameworkAgreementMonetaryValueLot$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:MonetaryValue
         ] ;
     rr:predicateObjectMap
