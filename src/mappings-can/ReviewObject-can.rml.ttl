@@ -25,7 +25,24 @@
 @prefix idlab-fn: <http://example.com/idlab/function/> .
 @prefix person: <http://www.w3.org/ns/person#> .
 
-tedm:MG-ReviewDecision-announcesReviewObject-CompletionNotice_ND-ReviewStatus a rr:TriplesMap ;
+tedm:MG-ReviewDecision-announcesReviewDecision-ResultNotice_ND-ReviewStatus a rr:TriplesMap ;
+    rdfs:label "MG-ReviewDecision" ;
+    rml:logicalSource
+        [
+            tedm:minSDKVersion "1.13" ;
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ReviewStatus" ;
+            rml:reference "if (/*/cbc:NoticeTypeCode/@listName='result' and efbc:AppealStageCode='dec') then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ReviewDecision$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class epo:ReviewDecision
+        ] ;
+.
+
+tedm:MG-ReviewDecision-refersToReviewDecision-CompletionNotice_ND-ReviewStatus a rr:TriplesMap ;
     rdfs:label "MG-ReviewDecision" ;
     rml:logicalSource
         [
@@ -42,7 +59,7 @@ tedm:MG-ReviewDecision-announcesReviewObject-CompletionNotice_ND-ReviewStatus a 
         ] ;
 .
 
-tedm:MG-ReviewRequest-announcesReviewObject-CompletionNotice_ND-ReviewStatus a rr:TriplesMap ;
+tedm:MG-ReviewRequest-refersToReviewRequest-CompletionNotice_ND-ReviewStatus a rr:TriplesMap ;
     rdfs:label "MG-ReviewRequest" ;
     rml:logicalSource
         [
@@ -55,6 +72,21 @@ tedm:MG-ReviewRequest-announcesReviewObject-CompletionNotice_ND-ReviewStatus a r
             tedm:minSDKVersion "1.13" ;
             rdfs:label "ND-ReviewStatus" ;
             rml:reference "if (/*/cbc:NoticeTypeCode/@listName='completion' and efbc:AppealStageCode='req') then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ReviewRequest$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class epo:ReviewRequest
+        ] ;
+.
+tedm:MG-ReviewRequest-answersReviewRequest-ReviewDecision_ND-ReviewStatus a rr:TriplesMap ;
+    rdfs:label "MG-ReviewRequest" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ReviewStatus" ;
+            rml:reference "if ((efbc:AppealStageCode='req')) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ReviewRequest$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:ReviewRequest
         ] ;
 .
@@ -166,10 +198,10 @@ tedm:MG-ReviewDecision_ND-ReviewStatus a rr:TriplesMap ;
         [
             rdfs:label "BT-785-Review" ;
             rdfs:comment "Review Previous Identifier of MG-ReviewDecision under ND-ReviewStatus" ;
-            rr:predicate epo:refersToPreviousReview ;
+            rr:predicate epo:refersToPrevious ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-ReviewObject-refersToPreviousReview-ReviewDecision_ND-ReviewStatus ;
+                    rr:parentTriplesMap tedm:MG-ReviewRequest-refersToPrevious-ReviewDecision_ND-ReviewStatus ;
                      rr:joinCondition [
                         rr:child "path(.)" ;
                         rr:parent "path(.)" ;
@@ -198,6 +230,16 @@ tedm:MG-ReviewDecision_ND-ReviewStatus a rr:TriplesMap ;
                 [
                    rml:reference "efbc:WithdrawnAppealDate";
                    rr:datatype xsd:date   ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ReviewStatus of MG-ReviewDecision under ND-ReviewStatus" ;
+            rdfs:comment "Connection between ReviewDecision and ReviewDecision under ND-Root" ;
+            rr:predicate epo:answersReviewRequest ;
+            rr:objectMap
+                [
+                   rr:parentTriplesMap tedm:MG-ReviewRequest-answersReviewRequest-ReviewDecision_ND-ReviewStatus ;
                 ] ;
         ] ;
 .
@@ -305,10 +347,10 @@ tedm:MG-ReviewRequest_ND-ReviewStatus a rr:TriplesMap ;
         [
             rdfs:label "BT-785-Review" ;
             rdfs:comment "Review Previous Identifier of MG-ReviewRequest under ND-ReviewStatus" ;
-            rr:predicate epo:refersToPreviousReview ;
+            rr:predicate epo:refersToPrevious ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-ReviewObject-refersToPreviousReview-ReviewRequest_ND-ReviewStatus ;
+                    rr:parentTriplesMap tedm:MG-ReviewDecision-refersToPrevious-ReviewRequest_ND-ReviewStatus ;
                      rr:joinCondition [
                         rr:child "path(.)" ;
                         rr:parent "path(.)" ;
@@ -348,7 +390,7 @@ tedm:MG-ReviewDecision-seeAlso-ResultNotice_ND-ReviewStatus a rr:TriplesMap ;
         ] ;
 .
 
-tedm:MG-ReviewRequest-seeAlso-ResultNotice_ND-ReviewStatus a rr:TriplesMap ;
+tedm:MG-ReviewRequest-announcesReviewRequest-ResultNotice_ND-ReviewStatus a rr:TriplesMap ;
     rdfs:label "MG-ReviewDecision" ;
     rml:logicalSource
         [
@@ -607,7 +649,7 @@ tedm:MG-langString-title-ReviewRequest_ND-ReviewStatus a rr:TriplesMap ;
     ] ;
 .
 
-tedm:MG-Identifier-identifier-ReviewObject-refersToPreviousReview-ReviewDecision_ND-ReviewStatus a rr:TriplesMap ;
+tedm:MG-Identifier-identifier-ReviewRequest-refersToPrevious-ReviewDecision_ND-ReviewStatus a rr:TriplesMap ;
     rdfs:label "MG-Identifier" ;
     rml:logicalSource
         [
@@ -619,7 +661,7 @@ tedm:MG-Identifier-identifier-ReviewObject-refersToPreviousReview-ReviewDecision
         [
             tedm:minSDKVersion "1.13" ;
             rdfs:label "ND-ReviewStatus" ;
-            rml:reference "if (efbc:AppealStageCode='dec') then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ReviewObject/Identifier$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (efbc:AppealStageCode='dec') then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ReviewRequest/Identifier$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -643,8 +685,8 @@ tedm:MG-Identifier-identifier-ReviewObject-refersToPreviousReview-ReviewDecision
         ] ;
 .
 
-tedm:MG-ReviewObject-refersToPreviousReview-ReviewDecision_ND-ReviewStatus a rr:TriplesMap ;
-    rdfs:label "MG-ReviewObject" ;
+tedm:MG-ReviewRequest-refersToPrevious-ReviewDecision_ND-ReviewStatus a rr:TriplesMap ;
+    rdfs:label "MG-ReviewRequest" ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -654,8 +696,8 @@ tedm:MG-ReviewObject-refersToPreviousReview-ReviewDecision_ND-ReviewStatus a rr:
     rr:subjectMap
         [
             rdfs:label "ND-ReviewStatus" ;
-            rml:reference "if ((efbc:AppealStageCode='dec') and exists(efbc:PreviousAppealID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ReviewObject$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
-            rr:class epo:ReviewObject
+            rml:reference "if ((efbc:AppealStageCode='dec') and exists(efbc:PreviousAppealID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ReviewRequest$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class epo:ReviewRequest
         ] ;
      rr:predicateObjectMap
         [
@@ -664,7 +706,7 @@ tedm:MG-ReviewObject-refersToPreviousReview-ReviewDecision_ND-ReviewStatus a rr:
             rr:predicate adms:identifier ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-Identifier-identifier-ReviewObject-refersToPreviousReview-ReviewDecision_ND-ReviewStatus ;
+                    rr:parentTriplesMap tedm:MG-Identifier-identifier-ReviewRequest-refersToPrevious-ReviewDecision_ND-ReviewStatus ;
                      rr:joinCondition [
                         rr:child "path(.)" ;
                         rr:parent "path(.)" ;
@@ -673,7 +715,7 @@ tedm:MG-ReviewObject-refersToPreviousReview-ReviewDecision_ND-ReviewStatus a rr:
         ] ;
 .
 
-tedm:MG-Identifier-identifier-ReviewObject-refersToPreviousReview-ReviewRequest_ND-ReviewStatus a rr:TriplesMap ;
+tedm:MG-Identifier-identifier-ReviewDecision-refersToPrevious-ReviewRequest_ND-ReviewStatus a rr:TriplesMap ;
     rdfs:label "MG-Identifier" ;
     rml:logicalSource
         [
@@ -685,7 +727,7 @@ tedm:MG-Identifier-identifier-ReviewObject-refersToPreviousReview-ReviewRequest_
         [
             tedm:minSDKVersion "1.13" ;
             rdfs:label "ND-ReviewStatus" ;
-            rml:reference "if ((efbc:AppealStageCode='req')and exists(efbc:PreviousAppealID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ReviewObject/Identifier$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if ((efbc:AppealStageCode='req')and exists(efbc:PreviousAppealID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ReviewDecision/Identifier$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -709,8 +751,8 @@ tedm:MG-Identifier-identifier-ReviewObject-refersToPreviousReview-ReviewRequest_
         ] ;
 .
 
-tedm:MG-ReviewObject-refersToPreviousReview-ReviewRequest_ND-ReviewStatus a rr:TriplesMap ;
-    rdfs:label "MG-ReviewObject" ;
+tedm:MG-ReviewDecision-refersToPrevious-ReviewRequest_ND-ReviewStatus a rr:TriplesMap ;
+    rdfs:label "MG-ReviewDecision" ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -721,7 +763,7 @@ tedm:MG-ReviewObject-refersToPreviousReview-ReviewRequest_ND-ReviewStatus a rr:T
         [
             rdfs:label "ND-ReviewStatus" ;
             rml:reference "if ((efbc:AppealStageCode='req') and exists(efbc:PreviousAppealID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ReviewObject$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
-            rr:class epo:ReviewObject
+            rr:class epo:ReviewDecision
         ] ;
      rr:predicateObjectMap
         [
@@ -730,7 +772,7 @@ tedm:MG-ReviewObject-refersToPreviousReview-ReviewRequest_ND-ReviewStatus a rr:T
             rr:predicate adms:identifier ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-Identifier-identifier-ReviewObject-refersToPreviousReview-ReviewRequest_ND-ReviewStatus ;
+                    rr:parentTriplesMap tedm:MG-Identifier-identifier-ReviewDecision-refersToPrevious-ReviewRequest_ND-ReviewStatus ;
                      rr:joinCondition [
                         rr:child "path(.)" ;
                         rr:parent "path(.)" ;

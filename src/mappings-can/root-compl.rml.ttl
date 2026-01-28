@@ -47,24 +47,14 @@ tedm:MG-CompletionNotice_ND-Root
             rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Notice" ;
             rr:class epo-not:CompletionNotice
         ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "ReviewDecision of MG-CompletionNotice under ND-Root" ;
-            rdfs:comment "Connection between CompletionNotice and ReviewDecision under ND-Root" ;
-            rr:predicate epo:announcesReviewObject ;
-            rr:objectMap
-                [
-                   rr:parentTriplesMap tedm:MG-ReviewDecision-announcesReviewObject-CompletionNotice_ND-ReviewStatus ;
-                ] ;
-        ] ;
      rr:predicateObjectMap
         [
             rdfs:label "ND-ReviewStatus" ;
             rdfs:comment "Connection between CompletionNotice and ReviewRequest under ND-ReviewStatus" ;
-            rr:predicate epo:announcesReviewObject ;
+            rr:predicate epo:refersToReviewRequest ;
             rr:objectMap
                 [
-                   rr:parentTriplesMap tedm:MG-ReviewRequest-announcesReviewObject-CompletionNotice_ND-ReviewStatus ;
+                   rr:parentTriplesMap tedm:MG-ReviewRequest-refersToReviewRequest-CompletionNotice_ND-ReviewStatus ;
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -95,6 +85,16 @@ tedm:MG-CompletionNotice_ND-Root
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:MG-LotGroup_ND-LotsGroup
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ReviewDecision of MG-ResultNotice under ND-Root" ;
+            rdfs:comment "Connection between ResultNotice and ReviewDecision under ND-Root" ;
+            rr:predicate epo:refersToReviewDecision ;
+            rr:objectMap
+                [
+                   rr:parentTriplesMap tedm:MG-ReviewDecision-refersToReviewDecision-CompletionNotice_ND-ReviewStatus;
                 ] ;
         ] ;
 .
