@@ -59,6 +59,40 @@ tedm:MG-ReviewDecision-refersToReviewDecision-CompletionNotice_ND-ReviewStatus a
         ] ;
 .
 
+tedm:MG-Reviewer-specifiesReviewer-ReviewRequest_ND-AppealProcessingParty a rr:TriplesMap ;
+    rdfs:label "MG-Reviewer" ;
+    rml:logicalSource
+        [
+            tedm:minSDKVersion "1.13" ;
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation/efac:AppealProcessingParty" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-AppealProcessingParty" ;
+            rml:reference "if (../efbc:AppealStageCode='req') then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Reviewer$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class epo:Reviewer
+        ] ;
+.
+
+tedm:MG-Reviewer-specifiesReviewer-ReviewDecision_ND-AppealProcessingParty a rr:TriplesMap ;
+    rdfs:label "MG-Reviewer" ;
+    rml:logicalSource
+        [
+            tedm:minSDKVersion "1.13" ;
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation/efac:AppealProcessingParty" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-AppealProcessingParty" ;
+            rml:reference "if (../efbc:AppealStageCode='dec') then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Reviewer$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class epo:Reviewer
+        ] ;
+.
+
 tedm:MG-ReviewRequest-refersToReviewRequest-CompletionNotice_ND-ReviewStatus a rr:TriplesMap ;
     rdfs:label "MG-ReviewRequest" ;
     rml:logicalSource
@@ -242,6 +276,20 @@ tedm:MG-ReviewDecision_ND-ReviewStatus a rr:TriplesMap ;
                    rr:parentTriplesMap tedm:MG-ReviewRequest-answersReviewRequest-ReviewDecision_ND-ReviewStatus ;
                 ] ;
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-785-Review" ;
+            rdfs:comment "ND-AppealProcessingParty of MG-ReviewDecision under ND-ReviewStatus" ;
+            rr:predicate epo:specifiesReviewer ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Reviewer-specifiesReviewer-ReviewDecision_ND-AppealProcessingParty ;
+                     rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(..)" ;
+                    ] ;
+                ] ;
+        ] ;
 .
 
 tedm:MG-Identifier-identifier-ReviewRequest_ND-ReviewStatus a rr:TriplesMap ;
@@ -369,6 +417,20 @@ tedm:MG-ReviewRequest_ND-ReviewStatus a rr:TriplesMap ;
                      rr:joinCondition [
                         rr:child "path(.)" ;
                         rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-785-Review" ;
+            rdfs:comment "ND-AppealProcessingParty of MG-ReviewRequest under ND-ReviewStatus" ;
+            rr:predicate epo:specifiesReviewer ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Reviewer-specifiesReviewer-ReviewRequest_ND-AppealProcessingParty ;
+                     rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(..)" ;
                     ] ;
                 ] ;
         ] ;
