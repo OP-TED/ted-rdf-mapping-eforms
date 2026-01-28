@@ -443,8 +443,8 @@ tedm:MG-ProcurementObject-contextualisedBy-EnvironmentalProtectionInformationPro
         ] ;
 .
 
-tedm:MG-ProcurementObject-contextualisedBy-EmploymentInformationProvider-announcesRole-PlanningNotice_ND-PartEmploymentLegislation a rr:TriplesMap ;
-    rdfs:label "MG-ProcurementObject" ;
+tedm:MG-PlannedProcurementPart-contextualisedBy-EmploymentInformationProvider-announcesRole-PlanningNotice_ND-PartEmploymentLegislation a rr:TriplesMap ;
+    rdfs:label "MG-PlannedProcurementPart" ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -453,8 +453,9 @@ tedm:MG-ProcurementObject-contextualisedBy-EmploymentInformationProvider-announc
         ] ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PartProcurementObject${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
-            rr:class epo:ProcurementObject
+#            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PlannedProcurementPart${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PlannedProcurementPart/{../../cbc:ID}" ;
+            rr:class epo:PlannedProcurementPart
         ] ;
 .
 
