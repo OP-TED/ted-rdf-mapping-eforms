@@ -36,7 +36,7 @@ tedm:MG-Reviewer_ND-PartReviewTerms a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-PartReviewTerms" ;
-            rml:reference "if(exists(cac:AppealReceiverParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Reviewer_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(concat(cac:AppealReceiverParty/cac:PartyIdentification/cbc:ID, cac:AppealReceiverParty/cac:PartyIdentification/cbc:ID/@schemeName)) || '?response_type=raw') else null";
+            rml:reference "if(exists(cac:AppealReceiverParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Reviewer/' || encode-for-uri(concat(cac:AppealReceiverParty/cac:PartyIdentification/cbc:ID, cac:AppealReceiverParty/cac:PartyIdentification/cbc:ID/@schemeName)) else null";
             rr:class epo:Reviewer
         ] ;
     rr:predicateObjectMap
@@ -59,7 +59,7 @@ tedm:MG-Reviewer_ND-PartReviewTerms a rr:TriplesMap ;
                     rdfs:label "TPO (playedBy)" ;
                     rdfs:comment "Connection where AppealReceiverParty is a TouchPoint" ;
                     # we create a deterministic IRI which is the same as that instantiated alongside the ContactPoint and rely on the sameAs link
-                    rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Organization_{cac:AppealReceiverParty/cac:PartyIdentification/cbc:ID}" ;
+                    rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Organization/{cac:AppealReceiverParty/cac:PartyIdentification/cbc:ID}" ;
                 ] ;
         ] ;
     rr:predicateObjectMap
