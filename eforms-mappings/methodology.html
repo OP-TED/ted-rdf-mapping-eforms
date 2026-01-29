@@ -205,92 +205,70 @@ The TriplesMaps in the various RML modules, especially those that represent vers
 </div>
 <div class="sect2">
 <h3 id="ref:uri-scheme"><a class="anchor" href="#ref:uri-scheme"></a>RDF URI Scheme</h3>
+
+</div>
+</div>
+</div>
+<h1 id="_eforms_rml_mappings_uri_scheme" class="sect0"><a class="anchor" href="#_eforms_rml_mappings_uri_scheme"></a>eForms RML Mappings URI Scheme</h1>
 <div class="paragraph">
-<p>The eForms RML mappings use the following URI scheme for the representing ePO ontology instances:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">{ns}id_{notice-id}_{concept}_{trailer}</code></pre>
-</div>
+<p>The eForms RML mappings use the URI scheme:</p>
 </div>
 <div class="paragraph">
-<p>, where:</p>
+<p><code>{ns}/{notice}/{concept}/{trailer}</code></p>
+</div>
+<div class="paragraph">
+<p>where:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>{ns}</code> is a base namespace, in this case
-<code><a href="http://data.europa.eu/a4g/resource/" class="bare">http://data.europa.eu/a4g/resource/</a></code></p>
+<p><code>{ns}</code> is a base namespace, in this case <code><a href="http://data.europa.eu/a4g/resource/" class="bare">http://data.europa.eu/a4g/resource/</a></code> (prefixed <code>epd:</code>)</p>
 </li>
 <li>
-<p><code>{concept}</code> is either (i) an ontology fragment label or (ii) source
-element label, with a suffix or prefix</p>
+<p><code>{notice}</code> is the shared context for all entities in the document, composed of two parts <code>{notice-id}-{notice-version}</code>; together with <code>{ns}</code> it forms the base <code>ns-notice</code> or <em>notice segment</em> of the URI, e.g. <code>epd:14549263-b47b-4e59-96a1-2d0d13e19343-01</code></p>
 </li>
 <li>
-<p><code>{trailer}</code> is either (i) an ID value (if the resource has one) or
-(ii) an <em>online</em> computed, deterministic hash</p>
+<p><code>{concept}</code> is either:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>(i) an ontology fragment label, i.e. the class name, or</p>
 </li>
 <li>
-<p>Root concepts such as <code>epo:Notice</code> end up to only the <code>{concept}</code></p>
+<p>(ii) a source element label, i.e. the XML element name (without any prefix), depending on which provides better context for the resource being represented</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>{trailer}</code> is either:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>(i) an ID value (if the resource has one), or</p>
+</li>
+<li>
+<p>(ii) a re-encoded and normalized XPath (to ensure uniqueness within the document), in which case it is preceded by a dollar symbol (<code>$</code>) and not slash (<code>/</code>) (to facilitate future rewriting or hashing), resulting in the scheme <code>{ns-notice}/{concept}${reencoded-xpath}</code>, e.g. <code>epd:af0b8395-7498-4d0e-b5eb-3d1a4636eb1a-01/Procedure$_ContractAwardNotice1_TenderingProcess1_ProcessJustification1</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Root concepts such as <code>epo:Notice</code> end at the <code>{concept}</code>, and their identifier simply appends <code>/Identifier</code>, resulting in the scheme <code>{ns-notice}/Notice/Identifier</code> (to avoid redundant repetition of the ID value which is already represented in the notice segment)</p>
+</li>
+<li>
+<p>Identifier instances, if not <em>technical identifiers</em> with recognizable ID patterns according to the <a href="https://docs.ted.europa.eu/eforms/latest/schema/identifiers.html">eForms specification</a> (e.g. <code>LOT-XXX</code>), may be preceded by the parent class and followed by the ID value, resulting in the scheme <code>{ns}/{notice}/{parent-class}/Identifier/{id-value}</code></p>
+</li>
+<li>
+<p>In some cases, the <code>{trailer}</code> may be an aggregate of multiple values to produce uniqueness, e.g. when the ID is combined with its <code>schemeName</code></p>
+</li>
+<li>
+<p>In the case of externally referenced resources (e.g. a referenced notice or a child entity thereof), the notice segment is extended with the context of the referred notice, resulting in the scheme <code>{ns-notice}/Notice/{external-notice-id}/{concept}/{trailer}</code></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Expanding on some of the components for further clarity:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Whether a <code>concept</code> is an ontology fragment or source element label,
-and whether this label has a suffix (rarely) or prefix, depends on the
-subjective (human) evaluation of whether only having the class name is
-sufficient hint of what the URI represents.</p>
-</li>
-<li>
-<p>The trailer, when a hash, is computed (seeded) with the XPath named
-element (e.g. <code>cbc:ID</code>) or (often relative) path (e.g. <code>path(cbc:ID)</code>)
-of what is being mapped, and therefore lends a unique identity to the
-URI. This yields reproducible URIs across RML TripleMaps, in case a
-resource needed to be instantiated at different XPaths, for whatever
-purpose.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>A Lot or any other resource with an inherent ID, would simply have
-its <code>cbc:ID</code> value as the trailer, for
-e.g. <code>epd:id_14549263-b47b-4e59-96a1-2d0d13e19343_Lot_LOT-0001</code>, which
-is very useful for linking purposes at orthogonal XPaths (e.g. wherever
-an <code>id-ref</code> is concerned, that ID could simply be used to produce a
-linkable URI without having to navigate XPaths).</p>
-</li>
-<li>
-<p>Any other resource where there is no inherent ID would have a hash
-that is unique to the XPath it represents, e.g. an <code>epo:Purpose</code>
-instance, if instantiated at different XPaths for associating different
-attributes, would have the same URI across those instantiations,
-resulting in one unique instance and no duplication due to multiple
-mappings.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The <code>adms:Identifier</code>, although having an ID, may still get a hash
-instead of ID in its trailer, as it may not have a short ID that is
-sensible to use/read (however we may not have enforced this rule
-strongly)</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>There are exceptions to this policy, namely in the <em>trailer</em> segment, as that
-is what lends uniqueness to a resource, and determines whether instances being
-created from subject URI templates in the technical RML rules are correct. The
-following are such exceptions:</p>
+<p>The following are some examples of exceptions to the rule:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -301,30 +279,29 @@ constructed URI</a> seeded with information about the related party (a
 <code>foaf:Agent</code>).</p>
 </li>
 <li>
-<p><code>epo:AwardDecision</code> instances, which are hashed on the <code>cbc:AwardDate</code> to
-yield the same instance for awards on the same date across possibly repeating
-elements.</p>
-</li>
-<li>
-<p>External notices that are referred to, whose base IRI involves the ID of the
-respective notice, not the current one in scope.</p>
+<p><code>epo:AwardDecision</code> instances, which have a trailer based on the <code>cbc:AwardDate</code> to yield the same instance for awards on the same date across possibly repeating elements.</p>
 </li>
 <li>
 <p>External resources that cannot be identified, such as the Framework
-Agreement contract representing <code>OPT-100-Contract Framework Notice Identifier</code>,
-for whom a proxy <code>epo:FrameworkAgreement</code> is created <em>without</em> a trailer.</p>
+Agreement contract representing <code>OPT-100-Contract Framework Notice Identifier</code>, for whom a proxy <code>epo:FrameworkAgreement</code> is created <em>without</em> a trailer.</p>
 </li>
 </ol>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p><strong>Note:</strong> Wherever <em>URI</em> is mentioned,
+<p>Wherever <em>URI</em> is mentioned,
 <a href="https://www.w3.org/2001/Talks/0912-IUC-IRI/paper.html#:~:text=In%20principle%2C%20the%20definition%20of,us%2Dascii%20characters%20in%20URIs">IRI</a>
-is meant. Also, the generation of hashes is done <em>online</em> against a
-remote HTTP web API endpoint offering this function, during
-transformation (which can otherwise be an offline process).</p>
+is meant.</p>
 </div>
-</div>
-</div>
+</td>
+</tr>
+</table>
 </div>
 </article>
   </div>
