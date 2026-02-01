@@ -195,10 +195,7 @@ tedm:MG-ContractAmendment-announcesContractAmendment-ContractModificationNotice_
     rr:subjectMap
         [
             rdfs:label "ND-ContractModification" ;
-            # Avoid creating a type-only epo:ContractAmendment proxy.
-            # Enable ONLY when this TriplesMap also maps at least one real ContractAmendment predicate.
-            # (When you add such predicates, replace `false()` with `exists(<source field(s)>)`.)
-            rml:reference "if (false()) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractAmendment$' || replace(translate(path(.), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '') else null" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractAmendment${replace(translate(path(.), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class epo-con:ContractAmendment
         ] ;
 .
@@ -208,9 +205,7 @@ tedm:MG-ContractAmendment_ND-ContractModification a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            # This mapping only produces a real predicate (epo:amendsContract) from SDK v1.11 onwards.
-            # Prevent type-only ContractAmendment instances by not iterating for earlier SDKs.
-            rml:iterator "if (xs:decimal(substring-after(/*/cbc:CustomizationID, 'eforms-sdk-')) >= 1.11) then /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:ContractModification/efbc:ModifiedContractIdentifier else null" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:ContractModification/efbc:ModifiedContractIdentifier" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
