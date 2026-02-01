@@ -97,10 +97,7 @@ tedm:MG-ContractAmendment_ND-Modification a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-Modification" ;
-            # Avoid type-only epo:ContractAmendment:
-            # In SDK v1.3-1.6 this TriplesMap only produces epo:amendsContract, and only when the changed section identifier
-            # starts with "CON". If it doesn't, we must not instantiate the subject.
-            rml:reference "if (exists(efbc:ChangedSectionIdentifier) and starts-with(normalize-space(efbc:ChangedSectionIdentifier), 'CON')) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractAmendment$' || replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '') else null" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractAmendment${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class epo-con:ContractAmendment
         ] ;
     rr:predicateObjectMap
