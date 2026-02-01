@@ -1293,7 +1293,7 @@ tedm:MG-EAuctionTechnique-usesTechnique-Lot_ND-AuctionTerms a rr:TriplesMap ;
             # Avoid type-only epo:EAuctionTechnique:
             # Only instantiate when we can also emit at least one predicate (currently: epo:hasUsage).
             # Here: create only when the auction is actually used (true/1).
-            rml:reference "if (normalize-space(cbc:AuctionConstraintIndicator) = ('true','1')) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/AuctionTerms$' || replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '') else null" ;
+            rml:reference "if (lower-case(normalize-space(cbc:AuctionConstraintIndicator)) = ('true','1')) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/AuctionTerms$' || replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '') else null" ;
             rr:class epo:EAuctionTechnique ;
         ] ;
     rr:predicateObjectMap
@@ -1305,7 +1305,7 @@ tedm:MG-EAuctionTechnique-usesTechnique-Lot_ND-AuctionTerms a rr:TriplesMap ;
                 [
                     rdfs:label "at-voc:usage";
                     rdfs:comment "translation of 'true' to at-voc:usage:used";
-                    rml:reference "if (normalize-space(cbc:AuctionConstraintIndicator) = ('true','1')) then 'http://publications.europa.eu/resource/authority/usage/used' else null";
+                    rml:reference "if (lower-case(normalize-space(cbc:AuctionConstraintIndicator)) = ('true','1')) then 'http://publications.europa.eu/resource/authority/usage/used' else null";
                     rr:termType rr:IRI
                 ] ;
         ] ;
