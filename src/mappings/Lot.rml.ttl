@@ -3655,7 +3655,7 @@ rdfs:label  "MG-StrategicProcurement";
     rr:subjectMap
         [
             rdfs:label "ND-StrategicProcurementType";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/StrategicProcurement${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rml:reference "if (cbc:ProcurementTypeCode/text()!='none') then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/StrategicProcurement$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:StrategicProcurement
         ] ;
     # rr:predicateObjectMap
