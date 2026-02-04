@@ -70,10 +70,9 @@ tedm:MG-Contract_ND-SettledContract  a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-SettledContract" ;
-            # Avoid type-only epo:Contract: only instantiate when at least one mapped value exists.
-            # Mapped values in this TriplesMap come from: ContractReference, IssueDate, URI, ContractFrameworkIndicator, Funding,
-            # SettledContractTenderReference, SignatoryParty.
-            rml:reference "if (exists(cbc:ID) and (exists(efac:ContractReference/cbc:ID) or exists(cbc:IssueDate) or exists(cbc:Title) or exists(cbc:URI) or exists(efbc:ContractFrameworkIndicator) or exists(efac:Funding) or exists(efac:LotTender) or exists(cac:SignatoryParty))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Contract/' || cbc:ID else null" ;
+            # some data apparently do not have ContractReference -- we can guard against that to avoid an empty resource in such cases, but we choose to have that be empty for now
+            #rml:reference "if (exists(cbc:ID) and (exists(efac:ContractReference/cbc:ID) or exists(cbc:IssueDate) or exists(cbc:Title) or exists(cbc:URI) or exists(efbc:ContractFrameworkIndicator) or exists(efac:Funding) or exists(efac:LotTender) or exists(cac:SignatoryParty))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Contract/' || cbc:ID else null" ;
+            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Contract/' || cbc:ID else null" ;
             rr:class epo:Contract
         ] ;
      rr:predicateObjectMap
