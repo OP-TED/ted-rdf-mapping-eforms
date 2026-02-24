@@ -753,7 +753,7 @@ tedm:MG-Lot_ND-Lot a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-651-Lot ";
+            rdfs:label "ND-SubcontractingIndication";
             rr:predicate epo:isSubjectToTerm ;
             rr:objectMap
                 [
@@ -3407,6 +3407,21 @@ tedm:MG-ContractTerm-foreseesTerm-Lot_ND-PostAwardProcess a rr:TriplesMap ;
 .
 
 tedm:MG-SubmissionTerm-isSubjectToTerm-Lot_ND-SubcontractingIndication a rr:TriplesMap ;
+    rdfs:label "MG-SubmissionTerm";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:TenderSubcontractingRequirements";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-SubcontractingIndication";
+            rml:reference "if (exists(efac:TenderSubcontractingRequirements)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/SubmissionTerm$' || replace(replace(replace(path(../../../../../..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class epo:SubmissionTerm
+        ] ;
+.
+tedm:MG-SubmissionTerm_ND-SubcontractingIndication a rr:TriplesMap ;
     rdfs:label "MG-SubmissionTerm";
     rml:logicalSource
         [
