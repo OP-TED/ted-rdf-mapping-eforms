@@ -3212,17 +3212,18 @@ tedm:MG-SecurityClearanceTerm-isSubjectToTerm-Lot_ND-LotTenderingTerms a rr:Trip
             rml:reference "if (exists(cbc:LatestSecurityClearanceDate)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/SecurityClearanceTerm$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:SecurityClearanceTerm
         ] ;
-      rr:predicateObjectMap
+       rr:predicateObjectMap
         [
             rdfs:label "BT-78-Lot";
-            rdfs:comment "Performing Staff Qualification of MG-SecurityClearanceTerm under ND-LotTenderingTerms";
-            rr:predicate epo:hasDeadline   ;
+            rr:predicate epo:hasSecurityClearanceDeadline ;
             rr:objectMap
                 [
-                    rml:reference "cbc:LatestSecurityClearanceDate";
-                    rr:datatype xsd:date;
-
-                ] ;
+                    rr:parentTriplesMap tedm:MG-Instant-hasSecurityClearanceDeadline-SecurityClearanceTerm-isSubjectToTerm-Lot_ND-LotTenderingTerms;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(.)";
+                    ];
+                ]
         ] ;
 .
 
@@ -5726,3 +5727,31 @@ tedm:MG-langString-title-Lot_ND-LotProcurementScope a rr:TriplesMap ;
     rdfs:label "BT-21-Lot" ;
   ] ;
   rdfs:label "MG-Lot" .
+
+tedm:MG-Instant-hasSecurityClearanceDeadline-SecurityClearanceTerm-isSubjectToTerm-Lot_ND-LotTenderingTerms a rr:TriplesMap ;
+    rdfs:label "MG-Instant";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+             rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotTenderingTerms";
+            rml:reference "if (exists(cbc:LatestSecurityClearanceDate)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Instant$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class time:Instant
+        ] ;
+      rr:predicateObjectMap
+        [
+            rdfs:label "BT-78-Lot";
+            rdfs:comment "Performing Staff Qualification of MG-Instant under ND-LotTenderingTerms";
+            rr:predicate time:inXSDDate ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:LatestSecurityClearanceDate";
+                    rr:datatype xsd:date;
+
+                ] ;
+        ] ;
+.
