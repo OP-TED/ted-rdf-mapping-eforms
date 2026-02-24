@@ -688,7 +688,7 @@ tedm:MG-Lot_ND-Lot a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-65-Lot, BT-64-Lot and BT-729-Lot";
+            rdfs:label "BT-65-Lot";
             rr:predicate epo:foreseesTerm ;
             rr:objectMap
                 [
@@ -3455,6 +3455,19 @@ tedm:MG-SubmissionTerm_ND-SubcontractingIndication a rr:TriplesMap ;
 .
 
 tedm:MG-SubcontractTerm-foreseesTerm-Lot_ND-SubcontractingObligation a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm";
+    # the logicalSource/iterator along with corresponding predicateObjectMaps can be found in the version-specific derivatives of this RML file
+    # Versioned mappings:
+    # - v1.3-1.8
+    # - v1.9+
+    rr:subjectMap
+        [
+            rdfs:label "ND-SubcontractingObligation";
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/SubcontractTerm${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}";
+            rr:class epo:SubcontractTerm
+        ] ;
+.
+tedm:MG-SubcontractTerm_ND-SubcontractingObligation a rr:TriplesMap ;
     rdfs:label "MG-ContractTerm";
     # the logicalSource/iterator along with corresponding predicateObjectMaps can be found in the version-specific derivatives of this RML file
     # Versioned mappings:
