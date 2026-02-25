@@ -163,3 +163,18 @@ tedm:MG-VehicleInformation_ND-StrategicProcurementInformationLotResult a rr:Trip
                 ] ;
         ] ;
 .
+tedm:MG-GreenProcurement-fulfillsStrategicProcurement-LotAwardOutcome_ND-StrategicProcurementLotResult  a rr:TriplesMap ;
+  rdfs:label "MG-GreenProcurement";
+       rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:StrategicProcurement[efac:StrategicProcurementInformation/efbc:ProcurementCategoryCode/@listName='cvd-contract-type']" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-StrategicProcurementInformationLotResult" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/GreenProcurement${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:class epo:GreenProcurement
+        ] ;
+    .
