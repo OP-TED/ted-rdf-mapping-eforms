@@ -143,10 +143,10 @@ tedm:MG-ContractLotCompletionInformation_ND-TenderAggregatedAmounts a rr:Triples
         [
             rdfs:label "ND-TenderAggregatedAmounts";
             rdfs:comment " Connection between ContractLotCompletionInformation and Lot under ND-TenderAggregatedAmounts";
-            rr:predicate epo:describesLotCompletion  ;
+            rr:predicate epo:concernsLot   ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-Lot-describesLotCompletion-ContractLotCompletionInformation_ND-TenderAggregatedAmounts;
+                    rr:parentTriplesMap tedm:MG-Lot-concernsLot-ContractLotCompletionInformation_ND-TenderAggregatedAmounts;
                      rr:joinCondition [
                         rr:child "path(.)" ;
                         rr:parent "path(.)" ;
@@ -157,10 +157,10 @@ tedm:MG-ContractLotCompletionInformation_ND-TenderAggregatedAmounts a rr:Triples
         [
             rdfs:label "ND-TenderAggregatedAmounts";
             rdfs:comment " Connection between ContractLotCompletionInformation and LotGroup under ND-TenderAggregatedAmounts";
-            rr:predicate  rdfs:seeAlso  ;
+            rr:predicate  epo:concernsLotGroup  ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-LotGroup-seeAlso-ContractLotCompletionInformation_ND-TenderAggregatedAmounts;
+                    rr:parentTriplesMap tedm:MG-LotGroup-concernsLotGroup-ContractLotCompletionInformation_ND-TenderAggregatedAmounts;
                      rr:joinCondition [
                         rr:child "path(.)" ;
                         rr:parent "path(.)" ;
@@ -175,6 +175,20 @@ tedm:MG-ContractLotCompletionInformation_ND-TenderAggregatedAmounts a rr:Triples
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:MG-MonetaryValue-providesContractTotalPenaltyValue-ContractLotCompletionInformation_ND-TenderAggregatedAmounts;
+                     rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ];
+     rr:predicateObjectMap
+        [
+            rdfs:label "ND-TenderAggregatedAmounts";
+            rdfs:comment " Connection between ContractLotCompletionInformation and LotGroup under ND-TenderAggregatedAmounts";
+            rr:predicate  epo:refersToContract  ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Contract-refersToContract-ContractLotCompletionInformation_ND-TenderAggregatedAmounts;
                      rr:joinCondition [
                         rr:child "path(.)" ;
                         rr:parent "path(.)" ;
@@ -222,7 +236,7 @@ tedm:MG-langString-hasPaymentValueDiscrepancyJustification-ContractLotCompletion
     ] ;
 .
 
-tedm:MG-Lot-describesLotCompletion-ContractLotCompletionInformation_ND-TenderAggregatedAmounts a rr:TriplesMap ;
+tedm:MG-Lot-concernsLot-ContractLotCompletionInformation_ND-TenderAggregatedAmounts a rr:TriplesMap ;
   rdfs:label "MG-Lot";
        rml:logicalSource
         [
@@ -239,7 +253,7 @@ tedm:MG-Lot-describesLotCompletion-ContractLotCompletionInformation_ND-TenderAgg
         ] ;
 .
 
-tedm:MG-LotGroup-seeAlso-ContractLotCompletionInformation_ND-TenderAggregatedAmounts a rr:TriplesMap ;
+tedm:MG-LotGroup-concernsLotGroup-ContractLotCompletionInformation_ND-TenderAggregatedAmounts a rr:TriplesMap ;
   rdfs:label "MG-LotGroup";
        rml:logicalSource
         [
@@ -255,3 +269,19 @@ tedm:MG-LotGroup-seeAlso-ContractLotCompletionInformation_ND-TenderAggregatedAmo
             rr:class epo:LotGroup
         ] ;
 .
+tedm:MG-Contract-refersToContract-ContractLotCompletionInformation_ND-TenderAggregatedAmounts a rr:TriplesMap ;
+  rdfs:label "MG-Contract";
+       rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender/efac:AggregatedAmounts" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            tedm:minSDKVersion "1.13" ;
+            rdfs:label "ND-TenderAggregatedAmounts" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Contract/{../../efac:SettledContract/cbc:ID}";
+            rr:class epo:Contract
+        ] ;
+    .
