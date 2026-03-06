@@ -286,11 +286,11 @@ tedm:MG-PlannedProcurementPart_ND-PartProcurementScope a rr:TriplesMap ;
         ];
      rr:predicateObjectMap
         [
-             rdfs:label "BT-262-Part" ;
-            rr:predicate epo:foreseesProcurementObject ;
+             rdfs:label "PartMainClassification" ;
+            rr:predicate epo:hasPurpose ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartMainClassification ;
+                    rr:parentTriplesMap tedm:MG-Purpose-hasPurpose-PlannedProcurementPart_ND-PartMainClassification ;
                     rr:joinCondition [
                         rr:child "path(.)" ;
                         rr:parent "path(..)" ;
@@ -494,7 +494,37 @@ tedm:MG-MonetaryValue-hasEstimatedValue-PlannedProcurementPart_ND-PartValueEstim
         ] ;
 .
 
-tedm:MG-Purpose-hasPurpose-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartMainClassification a rr:TriplesMap ;
+tedm:MG-Purpose-hasPurpose-PlannedProcurementPart_ND-PartMainClassification a rr:TriplesMap ;
+    rdfs:label "MG-Purpose";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:ProcurementProject/cac:MainCommodityClassification";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-PartMainClassification ";
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PartPurpose${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:class epo:Purpose ;
+        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasMainClassification ;
+#            rr:objectMap
+#                [
+#                    rdfs:label "BT-262-Part";
+#                    rdfs:comment "Main Classification Code of MG-Purpose under ND-PartMainClassification";
+#                    rdfs:label "at-voc:cpv";
+#                    rr:parentTriplesMap tedm:cpv ;
+#                    rr:joinCondition [
+#                        rr:child  "if (cbc:ItemClassificationCode[@listName='cpv']) then cbc:ItemClassificationCode else null";
+#                        rr:parent "code.value" ;
+#                    ] ;
+#                ] ;
+#        ] ;
+.
+tedm:MG-Purpose_ND-PartMainClassification a rr:TriplesMap ;
     rdfs:label "MG-Purpose";
     rml:logicalSource
         [
@@ -525,34 +555,6 @@ tedm:MG-Purpose-hasPurpose-ProcurementObject-foreseesProcurementObject-PlannedPr
         ] ;
 .
 
-tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartMainClassification a rr:TriplesMap ;
-    rdfs:label "MG-ProcurementObject";
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:ProcurementProject/cac:MainCommodityClassification";
-            rml:referenceFormulation ql:XPath
-        ];
-    rr:subjectMap
-        [
-            rdfs:label "ND-PartMainClassification ";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PartProcurementObject${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
-            rr:class epo:ProcurementObject ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-262-Part" ;
-            rr:predicate epo:hasPurpose ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-Purpose-hasPurpose-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartMainClassification ;
-                    rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(.)";
-                    ];
-                ] ;
-        ] ;
-.
 
 tedm:MG-Purpose-hasPurpose-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartAdditionalClassification a rr:TriplesMap ;
     rdfs:label "MG-Purpose";
