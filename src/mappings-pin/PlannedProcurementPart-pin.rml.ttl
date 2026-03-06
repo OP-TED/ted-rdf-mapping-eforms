@@ -312,7 +312,7 @@ tedm:MG-PlannedProcurementPart_ND-PartProcurementScope a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-5101(a|b|c)-Part, BT-5131-Part, BT-5121-Part, BT-5071-Part, BT-5141-Part, BT-727-Part, BT-531-Part, BT-726-Part";
+            rdfs:label "BT-5101(a|b|c)-Part, BT-5131-Part, BT-5121-Part, BT-5071-Part, BT-5141-Part, BT-727-Part, BT-531-Part";
             rr:predicate epo:foreseesTerm ;
             rr:objectMap
                 [
@@ -360,6 +360,18 @@ tedm:MG-PlannedProcurementPart_ND-PartProcurementScope a rr:TriplesMap ;
                         rr:child "path(.)" ;
                         rr:parent "path(..)" ;
                     ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-726-Part";
+            rdfs:comment "Suitable For SMEs of MG-ProcurementObject under ND-PartProcurementScope";
+            rr:predicate epo:isSMESuitable  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:SMESuitableIndicator";
+                    rr:datatype xsd:boolean ;
+
                 ] ;
         ] ;
 .
@@ -598,34 +610,6 @@ tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-Pa
                         rr:child "path(.)";
                         rr:parent "path(.)";
                     ];
-                ] ;
-        ] ;
-.
-
-tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartProcurementScope a rr:TriplesMap ;
-    rdfs:label "MG-ProcurementObject" ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:ProcurementProject";
-            rml:referenceFormulation ql:XPath
-        ];
-    rr:subjectMap
-        [
-            rdfs:label "ND-PartProcurementScope";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PartProcurementObject${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}";
-            rr:class epo:ProcurementObject
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-726-Part";
-            rdfs:comment "Suitable For SMEs of MG-ProcurementObject under ND-PartProcurementScope";
-            rr:predicate epo:isSMESuitable  ;
-            rr:objectMap
-                [
-                    rml:reference "cbc:SMESuitableIndicator";
-                    rr:datatype xsd:boolean ;
-
                 ] ;
         ] ;
 .
