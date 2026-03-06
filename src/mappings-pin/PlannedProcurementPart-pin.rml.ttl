@@ -133,16 +133,29 @@ tedm:MG-PlannedProcurementPart_ND-Part a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rdfs:label "OPT-301-Part-ReviewOrg" ;
-            rr:predicate epo:foreseesProcurementObject ;
+            rr:predicate epo:isSubjectToTerm ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartReviewTerms ;
+                    rr:parentTriplesMap tedm:MG-ReviewTerm_ND-PartReviewTerms ;
                     rr:joinCondition [
-                        rr:child "path(.)" ;
-                        rr:parent "path(../..)" ;
+                                rr:child "path(.)" ;
+                                rr:parent "path(../..)" ;
                     ];
                 ] ;
         ] ;
+#    rr:predicateObjectMap
+#        [
+#            rdfs:label "OPT-301-Part-ReviewOrg" ;
+#            rr:predicate epo:foreseesProcurementObject ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartReviewTerms ;
+#                    rr:joinCondition [
+#                        rr:child "path(.)" ;
+#                        rr:parent "path(../..)" ;
+#                    ];
+#                ] ;
+#        ] ;
      rr:predicateObjectMap
         [
       rdfs:label "BT-538-Part" ;
@@ -1328,31 +1341,31 @@ tedm:MG-AdHocChannel-usesChannel-PlannedProcurementPart_ND-PartTenderingProcess 
         ] ;
 .
 
-tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartReviewTerms a rr:TriplesMap ;
-    rdfs:label "MG-ProcurementObject" ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:AppealTerms" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-PartReviewTerms" ;
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PartProcurementObject${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}";
-            rr:class epo:ProcurementObject
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "OPT-301-Part-ReviewOrg" ;
-            rr:predicate epo:isSubjectToTerm ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-ReviewTerm_ND-PartReviewTerms ;
-                    rr:joinCondition [
-                                rr:child "path(.)" ;
-                                rr:parent "path(.)" ;
-                    ];
-                ] ;
-        ] ;
-.
+#tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartReviewTerms a rr:TriplesMap ;
+#    rdfs:label "MG-ProcurementObject" ;
+#    rml:logicalSource
+#        [
+#            rml:source "data/source.xml" ;
+#            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:AppealTerms" ;
+#            rml:referenceFormulation ql:XPath
+#        ] ;
+#    rr:subjectMap
+#        [
+#            rdfs:label "ND-PartReviewTerms" ;
+#            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PartProcurementObject${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}";
+#            rr:class epo:ProcurementObject
+#        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rdfs:label "OPT-301-Part-ReviewOrg" ;
+#            rr:predicate epo:isSubjectToTerm ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:MG-ReviewTerm_ND-PartReviewTerms ;
+#                    rr:joinCondition [
+#                                rr:child "path(.)" ;
+#                                rr:parent "path(.)" ;
+#                    ];
+#                ] ;
+#        ] ;
+#.
