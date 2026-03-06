@@ -2589,6 +2589,50 @@ tedm:MG-ContractTerm-foreseesTerm-Lot_ND-TendererLegalForm a rr:TriplesMap ;
     #             ] ;
     #     ] ;
 .
+tedm:MG-ContractTerm-isSubjectToTerm-Lot_ND-ExtendedDurationJustification a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:SettledContract/efac:DurationJustification";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label  "ND-TendererLegalForm";
+            rml:reference "if(efbc:ExtendedDurationIndicator/text()='true') then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractTerm$' || replace(replace(replace(path(../..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class epo:ContractTerm
+        ] ;
+ .
+tedm:MG-Lot_ND-ExtendedDurationJustification a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:SettledContract/efac:DurationJustification";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label  "ND-TendererLegalForm";
+#            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Lot/{../../efac:TenderLot/cbc:ID}" ;
+             rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Lot/{../../efac:LotTender/efac:TenderLot/cbc:ID}" ;            rr:class epo:Lot
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "ND-ExtendedDurationJustification" ;
+            rdfs:comment " of MG-Contract under ND-SettledContract" ;
+            rr:predicate  epo:isSubjectToTerm ;
+             rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ContractTerm-isSubjectToTerm-Lot_ND-ExtendedDurationJustification ;
+                    rr:joinCondition[
+                        rr:child "path(.)";
+                        rr:parent "path(.)"
+                    ];
+                ] ;
+        ] ;
+ .
 
 tedm:MG-DesignContestRegimeTerm-isSubjectToTerm-Lot_ND-AwardingTerms a rr:TriplesMap ;
     rdfs:label "MG-DesignContestRegimeTerm";
