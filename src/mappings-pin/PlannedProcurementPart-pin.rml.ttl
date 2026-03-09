@@ -52,19 +52,6 @@ tedm:MG-PlannedProcurementPart_ND-Part a rr:TriplesMap ;
                     ];
                 ] ;
         ] ;
-     rr:predicateObjectMap
-        [
-            rdfs:label "BT-115-Part" ;
-            rr:predicate epo:foreseesProcurementObject ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartTenderingProcess;
-                    rr:joinCondition [
-                        rr:child "path(.)" ;
-                        rr:parent "path(..)" ;
-                    ];
-                ] ;
-        ];
          rr:predicateObjectMap
         [
             rdfs:label "BT-765-Part" ;
@@ -297,19 +284,20 @@ tedm:MG-PlannedProcurementPart_ND-PartProcurementScope a rr:TriplesMap ;
                     ];
                 ] ;
         ] ;
-     rr:predicateObjectMap
+    rr:predicateObjectMap
         [
-             rdfs:label "BT-263-Part" ;
-            rr:predicate epo:foreseesProcurementObject ;
+             rdfs:label "PartAdditionalClassification" ;
+            rr:predicate epo:hasPurpose ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartAdditionalClassification ;
+                    rr:parentTriplesMap tedm:MG-Purpose-hasPurpose-PlannedProcurementPart_ND-PartAdditionalClassification ;
                     rr:joinCondition [
                         rr:child "path(.)" ;
                         rr:parent "path(..)" ;
                     ];
                 ] ;
         ] ;
+
     rr:predicateObjectMap
         [
             rdfs:label "BT-5101(a|b|c)-Part, BT-5131-Part, BT-5121-Part, BT-5071-Part, BT-5141-Part, BT-727-Part, BT-531-Part";
@@ -494,6 +482,22 @@ tedm:MG-MonetaryValue-hasEstimatedValue-PlannedProcurementPart_ND-PartValueEstim
         ] ;
 .
 
+tedm:MG-Purpose-hasPurpose-PlannedProcurementPart_ND-PartAdditionalClassification a rr:TriplesMap ;
+    rdfs:label "MG-Purpose";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:ProcurementProject/cac:AdditionalCommodityClassification";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-PartAdditionalClassification ";
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PartPurpose${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:class epo:Purpose ;
+        ] ;
+.
+
 tedm:MG-Purpose-hasPurpose-PlannedProcurementPart_ND-PartMainClassification a rr:TriplesMap ;
     rdfs:label "MG-Purpose";
     rml:logicalSource
@@ -555,8 +559,7 @@ tedm:MG-Purpose_ND-PartMainClassification a rr:TriplesMap ;
         ] ;
 .
 
-
-tedm:MG-Purpose-hasPurpose-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartAdditionalClassification a rr:TriplesMap ;
+tedm:MG-Purpose_ND-PartAdditionalClassification a rr:TriplesMap ;
     rdfs:label "MG-Purpose";
     rml:logicalSource
         [
@@ -568,7 +571,7 @@ tedm:MG-Purpose-hasPurpose-ProcurementObject-foreseesProcurementObject-PlannedPr
         [
             rdfs:label "ND-PartAdditionalClassification ";
             rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PartPurpose${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
-            rr:class epo:Purpose;
+            rr:class epo:Purpose ;
         ] ;
     rr:predicateObjectMap
         [
@@ -583,35 +586,6 @@ tedm:MG-Purpose-hasPurpose-ProcurementObject-foreseesProcurementObject-PlannedPr
                         rr:child "if (cbc:ItemClassificationCode[@listName='cpv']) then cbc:ItemClassificationCode else null";
                         rr:parent "code.value" ;
                     ] ;
-                ] ;
-        ] ;
-.
-
-tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartAdditionalClassification a rr:TriplesMap ;
-    rdfs:label "MG-ProcurementObject";
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:ProcurementProject/cac:AdditionalCommodityClassification";
-            rml:referenceFormulation ql:XPath
-        ];
-    rr:subjectMap
-        [
-            rdfs:label "ND-PartAdditionalClassification ";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PartProcurementObject${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
-            rr:class epo:ProcurementObject ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-263-Part" ;
-            rr:predicate epo:hasPurpose ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-Purpose-hasPurpose-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartAdditionalClassification;
-                    rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(.)";
-                    ];
                 ] ;
         ] ;
 .
@@ -1091,24 +1065,24 @@ tedm:MG-Duration-hasPlannedDuration-PlannedProcurementPart_ND-PartDuration a rr:
         ] ;
 .
 
-tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartTenderingProcess a rr:TriplesMap ;
-    rdfs:label "MG-ProcurementObject" ;
+tedm:MG-PlannedProcurementPart_ND-PartTenderingProcess a rr:TriplesMap ;
+    rdfs:label "MG-PlannedProcurementPart" ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
             rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingProcess";
             rml:referenceFormulation ql:XPath
-        ];
+        ] ;
     rr:subjectMap
         [
-            rdfs:label "ND-PartTenderingProcess";
-            rml:reference "if (exists(cbc:GovernmentAgreementConstraintIndicator) or exists(cac:ContractingSystem)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/PartProcurementObject$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
-            rr:class epo:ProcurementObject
+            rdfs:label "ND-PartProcurementScope" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PlannedProcurementPart/{../cbc:ID}" ;
+            rr:class epo:PlannedProcurementPart
         ] ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-115-Part";
-            rdfs:comment "GPA Coverage of MG-ProcurementObject under ND-PartTenderingProcess";
+            rdfs:comment "GPA Coverage of MG-PlannedProcurementPart under ND-PartTenderingProcess";
             rr:predicate epo:isCoveredByGPA   ;
             rr:objectMap
                 [
