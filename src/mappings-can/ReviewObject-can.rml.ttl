@@ -1042,3 +1042,35 @@ tedm:MG-langString-hasWithdrawalReason-ReviewDecision_ND-ReviewStatus a rr:Tripl
         tedm:minSDKVersion "1.13" ;
     ] ;
 .
+
+tedm:MG-ReviewRequester-announcesRole-ResultNotice_ND-AppealingParty a rr:TriplesMap ;
+    rdfs:label "MG-ReviewRequester" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation/efac:AppealingParty" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ReviewStatus" ;
+            rml:reference "if (exists(/*/cbc:NoticeTypeCode/@listName='result')) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ReviewRequester$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class epo:ReviewRequester ;
+        ] ;
+.
+
+tedm:MG-ReviewRequester-announcesRole-CompletionNotice_ND-AppealingParty a rr:TriplesMap ;
+    rdfs:label "MG-ReviewRequester" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation/efac:AppealingParty" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ReviewStatus" ;
+            rml:reference "if (exists(/*/cbc:NoticeTypeCode/@listName='completion')) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ReviewRequester$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class epo:ReviewRequester ;
+        ] ;
+.
