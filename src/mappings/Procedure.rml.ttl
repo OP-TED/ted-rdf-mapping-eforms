@@ -147,6 +147,38 @@ tedm:MG-Procedure_ND-Root a rr:TriplesMap ;
 
 .
 
+tedm:MG-Procedure-announcesProcedure-PlanningNotice_ND-Root a rr:TriplesMap ;
+    rdfs:label "MG-Procedure";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Root";
+            rml:reference "if (exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('7 8 9', text())])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Procedure/' || (if (exists(/*/cbc:ContractFolderID)) then encode-for-uri(/*/cbc:ContractFolderID) else '0000000-0000-4000-8000-000000000000') else null" ;
+            rr:class epo:Procedure
+        ] ;
+  .
+
+tedm:MG-PlannedProcurement-announcesPlannedProcurement-PlanningNotice_ND-Root a rr:TriplesMap ;
+    rdfs:label "MG-Procedure";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Root";
+            rml:reference "if (exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E2', text())])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/PlannedProcurement$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class epo:PlannedProcurement
+        ] ;
+  .
+
 tedm:MG-Identifier-identifier-Procedure-refersToProcedure-Notice_ND-Root a rr:TriplesMap ;
     rdfs:comment "The identifier of a procedure" ;
     rml:logicalSource
