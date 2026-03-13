@@ -747,3 +747,33 @@ tedm:MG-Asset_ND-AssetList a rr:TriplesMap ;
                 ] ;
         ] ;
 .
+
+tedm:MG-ContractTerm-describesAsset-ContractTerm_ND-ExtendedDurationJustification a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:SettledContract/efac:DurationJustification[exists(efbc:ExtendedDurationIndicator)]" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ExtendedDurationJustification" ;
+            rml:reference "if (exists(efbc:ExtendedDurationIndicator)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractTerm$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class epo:ContractTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPP-020-ContractTerm" ;
+            rdfs:comment "Extended Duration Indicator linking MG-ContractTerm to MG-Asset under ND-ExtendedDurationJustification" ;
+            rr:predicate epo:describesAsset ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Asset_ND-AssetList ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(../..)" ;
+                    ] ;
+                ] ;
+        ] ;
+.
