@@ -415,7 +415,7 @@ tedm:MG-Lot_ND-Lot a rr:TriplesMap ;
         ];
     rr:predicateObjectMap
         [
-            rdfs:label "BT-747-Lot, BT-749-Lot, BT-748-Lot, BT-40-Lot and BT-750-Lot ";
+            rdfs:label "BT-749-Lot, BT-748-Lot, BT-40-Lot and BT-750-Lot ";
             rr:predicate epo:specifiesProcurementCriterion;
             rr:objectMap
                 [
@@ -2134,6 +2134,56 @@ tedm:MG-Identifier-identifier-Fund-isFundedBy-Lot_ND-Funding a rr:TriplesMap ;
         ];
 .
 
+tedm:MG-Lot_ND-SelectionCriteria a rr:TriplesMap ;
+    rdfs:label "MG-Lot";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:SelectionCriteria";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-SelectionCriteria";
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Lot/{../../../../../../cbc:ID}" ;
+            rr:class epo:Lot
+        ] ;
+    rr:predicateObjectMap
+        [
+            tedm:minSDKVersion "1.3" ;
+            tedm:maxSDKVersion "1.11" ;
+            rdfs:label "BT-747-Lot";
+            rdfs:comment "Selection Criteria Type of MG-Lot under ND-SelectionCriteria";
+            rr:predicate epo:doesNotRequireSelectionCriterionType  ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:selection-criterion" ;
+                    rr:parentTriplesMap tedm:selection-criterion ;
+                    rr:joinCondition [
+                        rr:child "if (cbc:CalculationExpressionCode[@listName='usage']/text()='n-used') then cbc:CriterionTypeCode[@listName='selection-criterion'] else null";
+                        rr:parent "code.value"
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            tedm:minSDKVersion "1.3" ;
+            tedm:maxSDKVersion "1.11" ;
+            rdfs:label "BT-747-Lot";
+            rdfs:comment "Selection Criteria Type of MG-SelectionCriterion under ND-SelectionCriteria";
+            rr:predicate epo:hasUnknownUsageOfSelectionCriterionType  ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:selection-criterion" ;
+                    rr:parentTriplesMap tedm:selection-criterion ;
+                    rr:joinCondition [
+                        rr:child "if (cbc:CalculationExpressionCode[@listName='usage']/text()='nyk') then cbc:CriterionTypeCode[@listName='selection-criterion'] else null";
+                        rr:parent "code.value"
+                    ];
+                ] ;
+        ] ;
+  .
+
 tedm:MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SelectionCriteria a rr:TriplesMap ;
     rdfs:label "MG-SelectionCriterion";
     rml:logicalSource
@@ -2147,23 +2197,6 @@ tedm:MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SelectionCriteri
             rdfs:label "ND-SelectionCriteria";
             rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/SelectionCriterion${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class epo:SelectionCriterion
-        ] ;
-    rr:predicateObjectMap
-        [
-            tedm:minSDKVersion "1.3" ;
-            tedm:maxSDKVersion "1.11" ;
-            rdfs:label "BT-747-Lot";
-            rdfs:comment "Selection Criteria Type of MG-SelectionCriterion under ND-SelectionCriteria";
-            rr:predicate epo:hasSelectionCriterionType ;
-            rr:objectMap
-                [
-                    rdfs:label "at-voc:selection-criterion" ;
-                    rr:parentTriplesMap tedm:selection-criterion ;
-                    rr:joinCondition [
-                        rr:child "cbc:CriterionTypeCode[@listName='selection-criterion']" ;
-                        rr:parent "code.value"
-                    ];
-                ] ;
         ] ;
     rr:predicateObjectMap
         [
