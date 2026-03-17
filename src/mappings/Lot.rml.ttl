@@ -300,7 +300,7 @@ tedm:MG-Lot_ND-Lot a rr:TriplesMap ;
         ];
     rr:predicateObjectMap
         [
-            rdfs:label "BT-44-Lot, BT-644-Lot, BT-41-Lot and BT-45-Lot";
+            rdfs:label "BT-41-Lot and BT-45-Lot";
             rr:predicate epo:isSubjectToLotSpecificTerm ;
             rr:objectMap
                 [
@@ -308,6 +308,19 @@ tedm:MG-Lot_ND-Lot a rr:TriplesMap ;
                     rr:joinCondition [
                         rr:child "path(.)";
                         rr:parent "path(../..)";
+                    ];
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-44-Lot, BT-644-Lot";
+            rr:predicate epo:isSubjectToTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ProcedureTerm-isSubjectToTerm-Lot_ND-Prize;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../../..)";
                     ];
                 ] ;
         ];
@@ -2798,23 +2811,9 @@ tedm:MG-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lot_ND-AwardingTerms 
                     rr:datatype xsd:boolean;
                 ] ;
         ];
-     rr:predicateObjectMap
-        [
-            rdfs:label "BT-44-Lot";
-            rdfs:comment "Prize rank of MG-DesignContestRegimeTerm under ND-AwardingTerms";
-            rr:predicate epo:definesPrize ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-Prize-definesPrize-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lot_ND-Prize ;
-                    rr:joinCondition[
-                        rr:child "path(.)";
-                        rr:parent "path(..)"
-                    ];
-                ] ;
-        ];
 .
 
-tedm:MG-Prize-definesPrize-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lot_ND-Prize a rr:TriplesMap ;
+tedm:MG-Prize-definesPrize-ProcedureTerm-isSubjectToTerm-Lot_ND-Prize a rr:TriplesMap ;
     rdfs:label "MG-Prize";
     rml:logicalSource
         [
@@ -2825,7 +2824,7 @@ tedm:MG-Prize-definesPrize-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lo
     rr:subjectMap
         [
             rdfs:label  "ND-Prize";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Prize${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rml:reference "if(not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('23 24', text())])))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Prize$' || replace(replace(replace(path(.), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:Prize
         ] ;
     rr:predicateObjectMap
@@ -2846,7 +2845,7 @@ tedm:MG-Prize-definesPrize-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lo
             rr:predicate epo:hasPrizeValue ;
             rr:objectMap
                 [
-                   rr:parentTriplesMap tedm:MG-MonetaryValue-hasPrizeValue-Prize-definesPrize-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lot_ND-Prize ;
+                   rr:parentTriplesMap tedm:MG-MonetaryValue-hasPrizeValue-Prize-definesPrize-ProcedureTerm-isSubjectToTerm-Lot_ND-Prize ;
                     rr:joinCondition [
                         rr:child "path(.)";
                         rr:parent "path(.)";
@@ -2855,8 +2854,8 @@ tedm:MG-Prize-definesPrize-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lo
         ];
 .
 
-tedm:MG-MonetaryValue-hasPrizeValue-Prize-definesPrize-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lot_ND-Prize a rr:TriplesMap ;
-    rdfs:label "MG-MonetaryValue";
+tedm:MG-Prize-definesPrize-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lot_ND-Prize a rr:TriplesMap ;
+    rdfs:label "MG-Prize";
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -2866,20 +2865,9 @@ tedm:MG-MonetaryValue-hasPrizeValue-Prize-definesPrize-DesignContestRegimeTerm-i
     rr:subjectMap
         [
             rdfs:label  "ND-Prize";
-            rml:reference "if (exists(cbc:ValueAmount)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/MonetaryValue$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
-            rr:class epo:MonetaryValue
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Prize${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:class epo:Prize
         ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-644-Lot";
-            rdfs:comment "PrizeValue of MG-MonetaryValue under ND-Prize";
-            rr:predicate epo:hasAmountValue ;
-            rr:objectMap
-                [
-                   rml:reference "cbc:ValueAmount";
-                   rr:datatype xsd:decimal;
-                ] ;
-        ];
 .
 
 tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LateTendererInformation a rr:TriplesMap ;
@@ -6131,3 +6119,39 @@ tedm:MG-InternationalProcurementInstrumentMeasuresInformation_ND-IPIMeasureStati
                     rr:datatype xsd:integer
                 ] ;
         ] .
+tedm:MG-langString-hasFollowupContractInformation-DesignContestRegimeTerm-isSubjectToTerm-Lot_ND-Prize a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/source.xml" ;
+    rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AwardingTerms/cac:Prize/cbc:Description" ;
+    rml:referenceFormulation ql:XPath ;
+  ] ;
+  rr:subjectMap [
+    rr:class epo-not:DesignContestRegimeTerm ;
+    rdfs:label "ND-Prize" ;
+    rml:reference "if(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('23 24', text())])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/DesignContestRegimeTerm$' || replace(replace(replace(path(../..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate epo:hasFollowupContractInformation ;
+    rr:objectMap [
+      rml:reference "." ;
+      rml:languageMap [
+        fnml:functionValue [
+          rr:predicateObjectMap [
+            rr:predicate idlab-fn:str ;
+            rr:objectMap [
+              rml:reference "@languageID" ;
+            ] ;
+          ] ;
+          rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+          rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+          rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+          rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+        ] ;
+      ] ;
+      rdfs:comment "Language of Rewards of MG-DesignContestRegimeTerm under ND-Prize" ;
+      rdfs:label "BT-45-Lot-Language" ;
+    ] ;
+    rdfs:comment "Rewards of MG-DesignContestRegimeTerm under ND-Prize" ;
+    rdfs:label "BT-45-Lot" ;
+  ] ;
+  rdfs:label "MG-DesignContestRegimeTerm" .
