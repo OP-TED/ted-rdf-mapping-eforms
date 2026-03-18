@@ -1,0 +1,103 @@
+name: Release Lightweight Packages
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run — upload ZIPs as workflow artefacts instead of release assets'
+        required: false
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+      mssdk_ref:
+        description: 'MSSDK branch or tag to install (e.g. develop, main, 0.3.0-rc.1)'
+        required: false
+        default: 'develop'
+        type: string
+      from_version:
+        description: 'Source mapping package version passed to mssdk convert --from-version'
+        required: false
+        default: 'v2'
+        type: string
+      to_version:
+        description: 'Target mapping package version passed to mssdk convert --to-version (v3 or v3L)'
+        required: false
+        default: 'v3L'
+        type: string
+      mappings_folder:
+        description: 'Folder containing the mapping packages to convert'
+        required: false
+        default: 'mappings/'
+        type: string
+
+env:
+  # Resolved values — workflow_dispatch inputs take precedence; release runs use defaults
+  MSSDK_REF: ${{ inputs.mssdk_ref || 'develop' }}
+  FROM_VERSION: ${{ inputs.from_version || 'v2' }}
+  TO_VERSION: ${{ inputs.to_version || 'v3L' }}
+  MAPPINGS_FOLDER: ${{ inputs.mappings_folder || 'mappings/' }}
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-attach-lightweight-packages:
+    name: Build and attach lightweight packages
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install MSSDK
+        run: |
+          pip install git+https://github.com/meaningfy-ws/mapping-suite-sdk.git@${{ env.MSSDK_REF }}
+
+      - name: Convert mapping packages
+        run: |
+          mssdk convert \
+            --from-version ${{ env.FROM_VERSION }} \
+            --to-version ${{ env.TO_VERSION }} \
+            from-folder ${{ env.MAPPINGS_FOLDER }}
+
+      - name: Zip each mapping package
+        run: |
+          mkdir -p dist/
+          for pkg_dir in ${{ env.MAPPINGS_FOLDER }}*/; do
+            metadata="${pkg_dir}metadata.json"
+            if [ -f "$metadata" ]; then
+              pkg_name=$(python3 -c "import json; print(json.load(open('${metadata}'))['identifier'])")
+            else
+              pkg_name=$(basename "$pkg_dir")
+            fi
+            zip -r "dist/${pkg_name}.zip" "$pkg_dir"
+            echo "Zipped: dist/${pkg_name}.zip"
+          done
+
+      - name: List produced ZIP files
+        run: ls -lh dist/
+
+      - name: Upload ZIPs as release assets
+        if: ${{ github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && inputs.dry_run == 'false') }}
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload ZIPs as workflow artefacts (dry run)
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: lightweight-packages-dry-run
+          path: dist/*.zip
+          retention-days: 7
