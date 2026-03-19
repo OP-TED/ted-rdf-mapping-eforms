@@ -152,7 +152,21 @@ tedm:MG-LotGroup_ND-LotsGroup a rr:TriplesMap ;
                         rr:parent "path(../../../../../../../../..)";
                     ];
                 ] ;
-        ]
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-733-LotsGroup";
+            rr:predicate epo:isSubjectToTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-AwardEvaluationTerm-isSubjectToTerm-LotGroup_ND-LotsGroupAwardCriteria ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../../..)";
+                    ];
+                ] ;
+        ]   ;
+
 .
 
 tedm:MG-Identifier-identifier-LotGroup_ND-LotsGroup a rr:TriplesMap ;
@@ -820,3 +834,55 @@ tedm:MG-langString-title-LotGroup_ND-LotsGroupProcurementScope a rr:TriplesMap ;
         rdfs:label "BT-21-LotsGroup" ;
     ] ;
     rdfs:label "MG-LotGroup" .
+tedm:MG-langString-hasAwardCriteriaOrderJustification-AwardEvaluationTerm-isSubjectToTerm-LotGroup_ND-LotsGroupAwardCriteria a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/source.xml" ;
+    rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='LotsGroup']/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cbc:Description" ;
+    rml:referenceFormulation ql:XPath ;
+  ] ;
+  rr:subjectMap [
+    rr:class epo-not:AwardEvaluationTerm ;
+    rdfs:label "ND-LotAwardCriteria" ;
+    rml:reference "if((exists(../cbc:Description)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/AwardEvaluationTerm$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate epo-not:hasAwardCriteriaOrderJustification ;
+    rr:objectMap [
+      rml:reference "if(not( exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-ord']) and cbc:Description/text() = 'unpublished' )) then . else null" ;
+      rml:languageMap [
+        fnml:functionValue [
+          rr:predicateObjectMap [
+            rr:predicate idlab-fn:str ;
+            rr:objectMap [
+              rml:reference "@languageID" ;
+            ] ;
+          ] ;
+          rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+          rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+          rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+          rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+        ] ;
+      ] ;
+      rdfs:comment "Language of Award Criteria Order Justification of MG-AwardEvaluationTerm under ND-LotAwardCriteria" ;
+      rdfs:label "BT-733-LotGroup-Language" ;
+    ] ;
+    rdfs:comment "Award Criteria Order Justification of MG-AwardEvaluationTerm under ND-LotAwardCriteria" ;
+    rdfs:label "BT-733-LotGroup" ;
+  ] ;
+  rdfs:label "MG-AwardEvaluationTerm" .
+
+tedm:MG-AwardEvaluationTerm-isSubjectToTerm-LotGroup_ND-LotsGroupAwardCriteria a rr:TriplesMap ;
+    rdfs:label "MG-AwardEvaluationTerm";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+    rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='LotsGroup']/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion" ;
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotsGroupAwardCriteria";
+            rml:reference "if(not( exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-ord']) and cbc:Description/text() = 'unpublished' )) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/AwardEvaluationTerm$' || replace(replace(replace(path(.), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class epo:AwardEvaluationTerm
+        ] ;
+    .
