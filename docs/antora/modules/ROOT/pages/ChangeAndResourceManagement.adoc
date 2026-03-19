@@ -1,0 +1,131 @@
+= Change and Resource Management
+
+//We need to document a policy on what constitutes patch, minor and major.
+
+== RML Mappings Versioning rules
+In this section, we outline the versioning rules for the eForms RML mappings, specifically focusing on when to increment major, minor, and patch versions. Understanding these rules is essential for effectively managing and updating RML mappings, as well as maintaining compatibility with SPARQL queries. By adhering to these guidelines, developers and maintainers can ensure smooth transitions between different versions and minimise potential disruptions to dependent systems.
+
+=== Semantic versioning in a nutshell
+“Dependency hell” plagues software management and impacts models, architecture and documentation. As a project expands, the complexity of changes and dependencies increase, complicating the release of new work packages. Version lock and version promiscuity impede progress, making it difficult to move projects forward safely and efficiently.
+
+Semantic Versioning (https://semver.org/) offers a solution by providing a set of rules for assigning and incrementing version numbers. It clearly communicates changes in artefacts through version number increments and change notes using the `X.Y.Z` (Major.Minor.Patch) format:
+
+* Bug fixes increment the patch version,
+
+* Backwards-compatible changes increment the minor version, and
+
+* Backwards-incompatible changes increment the major version.
+
+A specific version of the RML Mappings is dependent on two main sources:
+
+* *ePO version*: The version of the eProcurement Ontology being used to generate the output .rdf files.
+* *SDK version*: The version of the eForms SDK used to create the input .xml files that will be converted.
+
+=== Major version increment
+The following case requires a major version increment:
+
+* *Major ePO version update*
+* *Mappings Package structure update*
+
+*Implications:* Applications must be aware of major releases and should not use them unless specifically designed to support them.
+
+=== Minor version increment
+The following cases require a minor version increment:
+
+* *Minor ePO version update*
+* *Minor or major SDK version update* ( it remains to be seen if a major SDK version update should be handled by the current repository, or if a new repository should be created).
+
+*Implications:* Applications can continue using the current mappings, but will not be able to utilise the new features.
+
+=== Patch version increment
+Any other modification, such as bug fixes, which are done on the *same set of major and minor versions of ePO and eForms SDK*.
+
+== Metadata Versions
+
+The new approach implemented for version `2.0.0` of the eForms mappings defines the Standard Forms package metadata model as “v1”, the one used for eForms mappings version `1.0.0` as “v2”, the unified metadata model (used currenlty by version `2.0.0`) as “v3”, and the lightweight variant of it as “v3L”.
+
+It is expected that metadata versions v1 and v2 will be decomissioned for new mappings in the future.
+
+=== Metadata fields on different versions
+
+In order to avoid confusion, we showcase the difference of the main metadata properties of the different metadata versions in the tables below:
+
+==== Mapping Package Type
+[cols="3*", options="header"]
+|===
+|Metadata version|Property|Example value
+|v3|project_identifier|eforms
+|v2|mapping_type|eforms
+|v1|-|-
+|===
+
+==== Mapping Version
+[cols="3*", options="header"]
+|===
+|Metadata version|Property|Example value
+|v3|mapping_version|2.0.0
+|v2|mapping_version|1.1.0
+|v1|version|2.1.1
+|===
+
+==== ePO Version
+[cols="3*", options="header"]
+|===
+|Metadata version|Property|Example value
+|v3|model_version|5.2.0
+|v2|ontology_version|4.0.0
+|v1|ontology_version|3.1.0
+|===
+
+For information on the specific metadata fields see the Mapping Package Structure page xref:package_structure.adoc[here]
+
+
+== Resource Management: Mapping Resources
+
+The eForms mappings make use of certain mapping resources that provide correpondences between XML values and their representation in RDF. Most of these are based on external EU vocabularies that are defined outside of the ted-rdf-mapping-eforms repository. Currently, the mapping resources based on these vocabularies are stored in the ted-rdf-mapping-eforms repository in the form of JSON and CSV files (with `.json` and `.csv` file extensions, respectively). The files for version `2.0.0` of the eForms mappings can be found https://github.com/OP-TED/ted-rdf-mapping-eforms/tree/develop/src/transformation/resources[here].
+
+Each of the files are generated manually by querying CELLAR with a specific SPARQL query designed for a particular vocabulary. The queries used for version `2.0.0` of the eForms mappings resources can be found https://github.com/OP-TED/ted-rdf-mapping-eforms/tree/develop/src/resource-queries[here].
+
+
+
+=== Policy for updating the vocabulary files
+
+The following procedures must be folowed depending on the version of the eForms mappings update:
+
+* For a major/minor version update:
+** Add missing vocabulary files
+** Delete unused vocabulary files
+** Update existing vocabulary files
+
+* For a patch version update:
+** Update existing vocabulary files
+
+**Note:** It is both possible and recommended to establish some automated workflows to monitor changes in external vocabularies (e.g., with a monthly frequency). As part of this workflow, in case there are changes detected in any of the relevant vocabularies, the corresponding resources could be updated and a new patch version of the mapping packages could be generated, which would incorporate the latest updates.
+
+=== Procedures
+* *Add missing vocabulary files*: If the mappings make use of an EU vocabulary that does not currently exist in the ted-rdf-mapping-eforms repository, a new SPARQL query will be created and run in CELLAR in order to manually generate a new JSON or CSV file with the same name as that of the vocabulary
+
+* *Delete unused vocabulary files*: If there are no mappings that make use of an existing vocabulary file, the corresponding mapping file should be deleted from the resources.
+
+* *Update existing vocabulary files*: For each of the already existing JSON and CSV files run the apropriate query in CELLAR and update the file as needed. Be aware of any change to the vocabulary files that might affect the RML mappings or XPath conditions.
+
+
+
+== Resource Management: Normalisation Resources
+
+Normalisation Resources are CSV files (with `.csv` file extension) containing notice metadata that are used by package processing software, such as the TED-SWS pipeline. In case of eForms mapping packages the content of the normalisation resources are based on the https://github.com/OP-TED/eForms-SDK/blob/develop/notice-types/notice-types.json[notice-types.json] file of the eForms SDK.
+
+These CSV files should be updated whenever a new eForms SDK version that introduces new notice subtypes is added to the Mapping Suite. For example, to create mapping package for eForms SDK 1.13, which introduced the notice subtypes (E1-E6), the `src/normalisation/eforms_mapping.csv` file had to be updated in order for the mapping package to work also on these new notice subtypes.
+
+== Communicating updates and changes to stakeholders clearly and reliably
+
+In order to communicate Mapping updates and changes to stakeholders, we propose the following steps, for each minor/ major release of the TED-RDF Mapping Suites for eForms Notices
+
+
+- updates and changes on the Technical Mappings should ideally be tracked by the commits.
+    Each TM commit should describe which fields and nodes are added or modified and should include, besides the changes in the RML files, an example input file containing these fields and nodes, as well as the generated `.ttl` output files showcasing the changes for the specific fields and nodes.
+
+- `REDAME.MD` files
+
+- Release and change notes similar to those of https://docs.ted.europa.eu/EPO/latest/release-notes.html[ePO] with release notes containing links to all the tickets and issues fixed, and change notes showing the difference of the new CMs to the CM of the immediate previous version.
+
