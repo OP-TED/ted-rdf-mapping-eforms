@@ -100,6 +100,16 @@ tedm:MG-ResultNotice_ND-Root
                     rr:parentTriplesMap tedm:MG-LotGroup_ND-LotsGroup
                 ] ;
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "MG-LotGroupAwardInformation-announcesLotGroupAwardInformation-ResultNotice" ;
+            rdfs:comment "Connection between ResultNotice and LotGroupAwardInformation (GroupFramework)" ;
+            rr:predicate epo:announcesLotGroupAwardInformation ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-LotGroupAwardInformation_ND-NoticeResultGroupFA ;
+                ] ;
+        ] ;
 .
 
 tedm:MG-AgentInRole-announcesRole-Notice_ND-Root_CAN a rr:TriplesMap ;
@@ -253,20 +263,6 @@ tedm:MG-Notice_ND-NoticeResult a rr:TriplesMap ;
                         rr:child "if(/*/cbc:NoticeTypeCode/@listName='completion' or /*/cbc:NoticeTypeCode/@listName='cont-modif' or (/*/cbc:NoticeTypeCode/@listName='change' and exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('38 39 40', text())]))) then path(.) else null" ;
                         rr:parent "path(.)" ;
                     ] ;
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "ND-NoticeResultGroupFA";
-            rdfs:comment "ND-NoticeResultGroupFA of MG-LotGroupAwardInformation under ND-NoticeResult";
-            rr:predicate epo:announcesLotGroupAwardInformation   ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-LotGroupAwardInformation_ND-NoticeResultGroupFA ;
-                    rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(..)";
-                    ];
                 ] ;
         ] ;
 .
