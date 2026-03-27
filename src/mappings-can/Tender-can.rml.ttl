@@ -468,35 +468,6 @@ tedm:MG-TenderAwardOutcome-comprisesTenderAwardOutcome-LotAwardOutcome_ND-LotRes
         ] ;
 .
 
-tedm:MG-Tender_ND-SubContractor  a rr:TriplesMap ;
-    rdfs:label "MG-Tender" ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            # Note that the iterator in this case is over the ND-LotTender, not over ND-SubContractor, which is suggested by the name of the TriplesMap
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-SubContractor";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Tender/{cbc:ID}" ;
-            rr:class epo:Tender
-        ] ;
-     rr:predicateObjectMap
-        [
-            rdfs:label "ND-SubContractor" ;
-            rr:predicate epo:specifiesSubcontractors   ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-Subcontractor-specifiesSubcontractors-Tender_ND-SubContractor ;
-                    rr:joinCondition[
-                        rr:child "efac:TenderingParty/cbc:ID";
-                        rr:parent "../cbc:ID"
-                    ];
-                ] ;
-        ] ;
-.
 
 tedm:MG-Tender_ND-LotTenderOriginCountry a rr:TriplesMap ;
     rdfs:label "MG-Tender" ;

@@ -40,19 +40,6 @@ tedm:MG-Lot_ND-Lot a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-767-Lot and BT-122-Lot ";
-            rr:predicate epo:usesTechnique ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-EAuctionTechnique-usesTechnique-Lot_ND-AuctionTerms ;
-                    rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(../../.)";
-                    ];
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
             rdfs:label "BT-766-Lot ";
             rr:predicate epo:usesTechnique ;
             rr:objectMap
@@ -1333,61 +1320,6 @@ tedm:MG-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice-re
         ]
 .
 
-tedm:MG-EAuctionTechnique-usesTechnique-Lot_ND-AuctionTerms a rr:TriplesMap ;
-    rdfs:label "MG-EAuctionTechnique";
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:AuctionTerms";
-            rml:referenceFormulation ql:XPath
-        ];
-    rr:subjectMap
-        [
-            rdfs:label "ND-AuctionTerms";
-            # Avoid type-only epo:EAuctionTechnique:
-            # Only instantiate when we can also emit at least one predicate (currently: epo:hasUsage).
-            # Here: create only when the auction is actually used (true/1).
-            rml:reference "if (lower-case(cbc:AuctionConstraintIndicator) = ('true','1')) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/AuctionTerms$' || replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '') else null" ;
-            rr:class epo:EAuctionTechnique ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-767-Lot";
-            rdfs:comment "Electronic Auction of MG-EAuctionTechnique under ND-AuctionTerms ";
-            rr:predicate epo:hasUsage ;
-            rr:objectMap
-                [
-                    rdfs:label "at-voc:usage";
-                    rdfs:comment "translation of 'true' to at-voc:usage:used";
-                    rml:reference "if (lower-case(cbc:AuctionConstraintIndicator) = ('true','1')) then 'http://publications.europa.eu/resource/authority/usage/used' else null";
-                    rr:termType rr:IRI
-                ] ;
-        ] ;
-    # rr:predicateObjectMap
-    #     [
-    #         rdfs:label "BT-122-Lot";
-    #         rdfs:comment "Electronic Auction Description of MG-EAuctionTechnique under ND-AuctionTerms ";
-    #         rr:predicate dct:description;
-    #         rr:objectMap
-    #             [
-    #                 rdfs:label "BT-122-Lot-Language";
-    #                 rdfs:comment "Language of Electronic Auction Description of MG-EAuctionTechnique under ND-AuctionTerms ";
-    #                 rml:reference "cbc:Description";
-    #                 rml:languageMap [
-    #                     fnml:functionValue [
-    #                         rr:predicateObjectMap [
-    #                             rr:predicate idlab-fn:str ;
-    #                             rr:objectMap [ rml:reference "cbc:Description/@languageID" ]
-    #                         ] ,
-    #                         tedm:idlab-fn_executes_lookup ,
-    #                         tedm:idlab-fn_inputFile_language ,
-    #                         tedm:idlab-fn_fromColumn_code ,
-    #                         tedm:idlab-fn_toColumn_code
-    #                     ]
-    #                 ] ;
-    #             ] ;
-    #     ] ;
-.
 
 tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-AuctionTerms a rr:TriplesMap ;
     rdfs:label "MG-SubmissionTerm";
