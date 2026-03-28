@@ -1439,6 +1439,20 @@ tedm:MG-DynamicPurchaseSystemTechnique-usesTechnique-Lot_ND-LotTenderingProcess 
                         rr:parent "code.value" ;
                     ] ;
                 ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-36-Lot" ;
+            rdfs:comment "Estimated duration of Dynamic Purchasing System under ND-LotTenderingProcess" ;
+            rr:predicate epo:hasEstimatedDuration ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Duration-hasEstimatedDuration-DynamicPurchaseSystemTechnique-usesTechnique-Lot_ND-LotDuration ;
+                    rr:joinCondition [
+                        rr:child "path(..)" ;
+                        rr:parent "path(../../..)" ;
+                    ] ;
+                ] ;
         ]
 .
 
@@ -4733,7 +4747,7 @@ tedm:MG-SpecificDuration-definesContractDuration-ContractTerm-foreseesContractSp
     rr:subjectMap
         [
             rdfs:label "ND-LotDuration";
-            rml:reference "if (exists(cbc:DurationMeasure)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractDuration$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(cbc:DurationMeasure) and not(exists(../../cac:TenderingProcess/cac:ContractingSystem/cbc:ContractingSystemTypeCode[@listName='dps-usage']))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractDuration$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:SpecificDuration
         ] ;
     rr:predicateObjectMap
@@ -4759,6 +4773,48 @@ tedm:MG-SpecificDuration-definesContractDuration-ContractTerm-foreseesContractSp
                     rr:parentTriplesMap tedm:temporal_unit ;
                     rr:joinCondition [
                         rr:child "cbc:DurationMeasure/@unitCode" ;
+                        rr:parent "xmlElement" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-Duration-hasEstimatedDuration-DynamicPurchaseSystemTechnique-usesTechnique-Lot_ND-LotDuration a rr:TriplesMap ;
+    rdfs:label "MG-Duration" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot'][cac:TenderingProcess/cac:ContractingSystem/cbc:ContractingSystemTypeCode[@listName='dps-usage']]/cac:ProcurementProject/cac:PlannedPeriod/cbc:DurationMeasure" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotDuration" ;
+            rml:reference "if (exists(.)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Duration$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class time:Duration
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-36-Lot (value)" ;
+            rdfs:comment "Duration Period of MG-Duration under ND-LotDuration" ;
+            rr:predicate time:numericDuration ;
+            rr:objectMap
+                [
+                    rml:reference "." ;
+                    rr:datatype xsd:decimal ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-36-Lot (unit)" ;
+            rdfs:comment "Unit of Duration Period of MG-Duration under ND-LotDuration" ;
+            rr:predicate time:unitType ;
+            rr:objectMap
+                [
+                    rdfs:label "BT-36-Lot-Unit (time:TemporalUnit)" ;
+                    rr:parentTriplesMap tedm:temporal_unit ;
+                    rr:joinCondition [
+                        rr:child "@unitCode" ;
                         rr:parent "xmlElement" ;
                     ] ;
                 ] ;
