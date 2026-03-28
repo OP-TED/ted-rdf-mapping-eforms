@@ -659,6 +659,10 @@ tedm:MG-Procedure_ND-ProcedureProcurementScope a rr:TriplesMap ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:MG-ContractTerm-foreseesTerm-Procedure_ND-ProcedureProcurementScope ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(../.)" ;
+                    ] ;
                 ]
         ] ;
     rr:predicateObjectMap
@@ -780,6 +784,10 @@ tedm:MG-PlannedProcurement_ND-ProcedureProcurementScope a rr:TriplesMap ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:MG-ContractTerm-foreseesTerm-PlannedProcurement_ND-ProcedureProcurementScope ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(../.)" ;
+                    ] ;
                 ]
         ] ;
     rr:predicateObjectMap
@@ -858,14 +866,14 @@ tedm:MG-ContractTerm-foreseesTerm-Procedure_ND-ProcedureProcurementScope a rr:Tr
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProject" ;
+            rml:iterator "/*/cac:ProcurementProject/cac:RealizedLocation" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
         [
             rdfs:label "ND-ProcedureProcurementScope" ;
             rdfs:comment "Primary type declaration for MG-ContractTerm under ND-ProcedureProcurementScope" ;
-            rml:reference "if (exists(cbc:ProcurementTypeCode) and not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E2', text())]))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ProcurementProjectContractTerm$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E2', text())]))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ProcurementProjectContractTerm$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:ContractTerm
         ] ;
     rr:predicateObjectMap
@@ -889,14 +897,14 @@ tedm:MG-ContractTerm-foreseesTerm-PlannedProcurement_ND-ProcedureProcurementScop
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProject[exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E1 E2', text())])]" ;
+            rml:iterator "/*/cac:ProcurementProject/cac:RealizedLocation" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
         [
             rdfs:label "ND-ProcedureProcurementScope" ;
             rdfs:comment "Primary type declaration for MG-ContractTerm under ND-ProcedureProcurementScope" ;
-            rml:reference "if (exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E1 E2', text())])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ProcurementProjectContractTerm$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E2', text())])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ProcurementProjectContractTerm$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:ContractTerm
         ] ;
     rr:predicateObjectMap
