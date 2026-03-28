@@ -6102,6 +6102,16 @@ tedm:MG-ContractTerm-isSubjectToTerm-Lot_ND-RevenueAllocation a rr:TriplesMap ;
             rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTerm${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}";
             rr:class epo:ContractTerm
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "RevenueAllocation" ;
+            rr:predicate epo:hasTicketsSalesRevenueAllocation ;
+            rr:objectMap
+                [
+                    rml:reference "efbc:TermPercent" ;
+                    rr:datatype xsd:decimal ;
+                ] ;
+        ] ;
     .
 
 tedm:MG-Lot_ND-RevenueAllocation a rr:TriplesMap ;
@@ -6146,6 +6156,27 @@ tedm:MG-ContractTerm-isSubjectToTerm-Lot_ND-RewardsPenalties a rr:TriplesMap ;
             rdfs:label "ND-RevenueAllocation";
             rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTerm${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}";
             rr:class epo:ContractTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "RewardsPenaltiesDescription" ;
+            rr:predicate epo:hasPenaltiesAndRewardsDescription ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Description" ;
+                    rml:languageMap [
+                        fnml:functionValue [
+                            rr:predicateObjectMap [
+                                rr:predicate idlab-fn:str ;
+                                rr:objectMap [ rml:reference "cbc:Description/@languageID" ]
+                            ] ,
+                            tedm:idlab-fn_executes_lookup ,
+                            tedm:idlab-fn_inputFile_language ,
+                            tedm:idlab-fn_fromColumn_code ,
+                            tedm:idlab-fn_toColumn_code
+                        ]
+                    ] ;
+                ] ;
         ] ;
     .
 tedm:MG-Lot_ND-RewardsPenalties a rr:TriplesMap ;
