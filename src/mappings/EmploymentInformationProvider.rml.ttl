@@ -985,12 +985,12 @@ tedm:MG-InternationalProcurementInstrumentMeasuresInformation_ND-IPILotResult a 
     rdfs:label "MG-InternationalProcurementInstrumentMeasuresInformation" ;
     rml:logicalSource [
         rml:source "data/source.xml" ;
-        rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:StrategicProcurement[efac:StrategicProcurementInformation/efac:AppliedMeasure/efbc:MeasureCode/@listName='international-procurement-instrument-measure']/efac:StrategicProcurementInformation" ;
+        rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:StrategicProcurement[efac:StrategicProcurementInformation/efac:AppliedMeasure/efbc:MeasureCode/@listName='international-procurement-instrument-measure']/efac:StrategicProcurementInformation/efac:AppliedMeasure" ;
         rml:referenceFormulation ql:XPath ;
     ] ;
     rr:subjectMap [
         rdfs:label "ND-IPILotResult" ;
-        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/InternationalProcurementInstrumentMeasuresInformation${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/InternationalProcurementInstrumentMeasuresInformation${replace(translate(path(../../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
         rr:class epo:InternationalProcurementInstrumentMeasuresInformation
     ] ;
     rr:predicateObjectMap [
@@ -1000,9 +1000,19 @@ tedm:MG-InternationalProcurementInstrumentMeasuresInformation_ND-IPILotResult a 
         rr:objectMap [
             rr:parentTriplesMap tedm:MG-LotAwardOutcome_ND-LotResult ;
             rr:joinCondition [
-                rr:child "path(../../..)" ;
+                rr:child "path(../../../.)" ;
                 rr:parent "path(.)" ;
             ] ;
+        ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "concernsInternationalProcurementInstrumentMeasure" ;
+        rdfs:comment "Connection from InternationalProcurementInstrumentMeasuresInformation to the IPI measure code" ;
+        rr:predicate epo:concernsInternationalProcurementInstrumentMeasure ;
+        rr:objectMap [
+            rdfs:label "at-voc:international-procurement-instrument-measure" ;
+            rr:template "http://publications.europa.eu/resource/authority/international-procurement-instrument-measure/{efbc:MeasureCode}" ;
+            rr:termType rr:IRI ;
         ] ;
     ] .
 
