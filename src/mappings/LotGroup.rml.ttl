@@ -834,6 +834,43 @@ tedm:MG-langString-title-LotGroup_ND-LotsGroupProcurementScope a rr:TriplesMap ;
         rdfs:label "BT-21-LotsGroup" ;
     ] ;
     rdfs:label "MG-LotGroup" .
+tedm:MG-langString-hasAwardCriteriaEvaluationFormula-AwardEvaluationTerm-isSubjectToTerm-LotGroup_ND-LotsGroupAwardCriteria a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/source.xml" ;
+    rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='LotsGroup']/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cbc:CalculationExpression" ;
+    rml:referenceFormulation ql:XPath ;
+  ] ;
+  rr:subjectMap [
+    rr:class epo:AwardEvaluationTerm ;
+    rdfs:label "ND-LotsGroupAwardCriteria" ;
+    rml:reference "if(((exists(../cbc:Description)) and not(exists(../ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-ord']) and ../cbc:Description/text() = 'unpublished')) or ((exists(../cbc:CalculationExpression)) and not(exists(../ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-com']) and ../cbc:CalculationExpression/text() = 'unpublished'))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/AwardEvaluationTerm$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate epo:hasAwardCriteriaEvaluationFormula ;
+    rr:objectMap [
+      rml:reference "if(not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-com']) and ./text() = 'unpublished' )) then . else null" ;
+      rml:languageMap [
+        fnml:functionValue [
+          rr:predicateObjectMap [
+            rr:predicate idlab-fn:str ;
+            rr:objectMap [
+              rml:reference "@languageID" ;
+            ] ;
+          ] ;
+          rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+          rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+          rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+          rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+        ] ;
+      ] ;
+      rdfs:comment "Language of Award Criteria Evaluation Formula of MG-AwardEvaluationTerm under ND-LotsGroupAwardCriteria" ;
+      rdfs:label "BT-543-LotsGroup-Language" ;
+    ] ;
+    rdfs:comment "Award Criteria Evaluation Formula of MG-AwardEvaluationTerm under ND-LotsGroupAwardCriteria" ;
+    rdfs:label "BT-543-LotsGroup" ;
+  ] ;
+  rdfs:label "MG-AwardEvaluationTerm" .
+
 tedm:MG-langString-hasAwardCriteriaOrderJustification-AwardEvaluationTerm-isSubjectToTerm-LotGroup_ND-LotsGroupAwardCriteria a rr:TriplesMap ;
   rml:logicalSource [
     rml:source "data/source.xml" ;
@@ -841,12 +878,12 @@ tedm:MG-langString-hasAwardCriteriaOrderJustification-AwardEvaluationTerm-isSubj
     rml:referenceFormulation ql:XPath ;
   ] ;
   rr:subjectMap [
-    rr:class epo-not:AwardEvaluationTerm ;
-    rdfs:label "ND-LotAwardCriteria" ;
-    rml:reference "if((exists(../cbc:Description)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/AwardEvaluationTerm$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+    rr:class epo:AwardEvaluationTerm ;
+    rdfs:label "ND-LotsGroupAwardCriteria" ;
+    rml:reference "if(((exists(../cbc:Description)) and not(exists(../ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-ord']) and ../cbc:Description/text() = 'unpublished')) or ((exists(../cbc:CalculationExpression)) and not(exists(../ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-com']) and ../cbc:CalculationExpression/text() = 'unpublished'))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/AwardEvaluationTerm$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
   ] ;
   rr:predicateObjectMap [
-    rr:predicate epo-not:hasAwardCriteriaOrderJustification ;
+    rr:predicate epo:hasAwardCriteriaOrderJustification ;
     rr:objectMap [
       rml:reference "if(not( exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-ord']) and cbc:Description/text() = 'unpublished' )) then . else null" ;
       rml:languageMap [
@@ -882,7 +919,7 @@ tedm:MG-AwardEvaluationTerm-isSubjectToTerm-LotGroup_ND-LotsGroupAwardCriteria a
     rr:subjectMap
         [
             rdfs:label "ND-LotsGroupAwardCriteria";
-            rml:reference "if(not( exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-ord']) and cbc:Description/text() = 'unpublished' )) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/AwardEvaluationTerm$' || replace(replace(replace(path(.), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if(((exists(cbc:Description)) and not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-ord']) and cbc:Description/text() = 'unpublished')) or ((exists(cbc:CalculationExpression)) and not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-com']) and cbc:CalculationExpression/text() = 'unpublished'))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/AwardEvaluationTerm$' || replace(replace(replace(path(.), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:AwardEvaluationTerm
         ] ;
     .
