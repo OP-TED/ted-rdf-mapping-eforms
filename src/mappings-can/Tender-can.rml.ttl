@@ -387,6 +387,77 @@ tedm:MG-Lot-isSubmittedForLot-Tender_ND-LotTender  a rr:TriplesMap ;
              rml:reference "if (exists( efac:TenderLot/cbc:ID[text() = /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cbc:ID/text()] )) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Lot/' || efac:TenderLot/cbc:ID else null" ;
              rr:class epo:Lot
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-LotTender" ;
+            rdfs:comment "Connection of MG-Lot to MG-ContractTerm under ND-LotTender" ;
+            rr:predicate epo:isSubjectToTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ContractTerm-isSubjectToTerm-Lot_ND-LotTender ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ] ;
+    .
+
+tedm:MG-ContractTerm-isSubjectToTerm-Lot_ND-LotTender a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender[efbc:PublicTransportationCumulatedDistance]" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotTender" ;
+            rml:reference "if (exists(efbc:PublicTransportationCumulatedDistance)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractTerm$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class epo:ContractTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-LotTender" ;
+            rdfs:comment "Connection of MG-ContractTerm to MG-Quantity under ND-LotTender" ;
+            rr:predicate epo:definesPublicTransportationKilometers ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Quantity-definesPublicTransportationKilometers-ContractTerm-isSubjectToTerm-Lot_ND-LotTender ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ] ;
+    .
+
+tedm:MG-Quantity-definesPublicTransportationKilometers-ContractTerm-isSubjectToTerm-Lot_ND-LotTender a rr:TriplesMap ;
+    rdfs:label "MG-Quantity" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender[efbc:PublicTransportationCumulatedDistance]" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotTender" ;
+            rml:reference "if (exists(efbc:PublicTransportationCumulatedDistance)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Quantity$' || replace(replace(replace(path(efbc:PublicTransportationCumulatedDistance), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class epo:Quantity
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-727-Tender" ;
+            rdfs:comment "Public Transportation Cumulated Distance of MG-Quantity under ND-LotTender" ;
+            rr:predicate epo:hasQuantityValue ;
+            rr:objectMap
+                [
+                    rml:reference "efbc:PublicTransportationCumulatedDistance" ;
+                    rr:datatype xsd:decimal ;
+                ] ;
+        ] ;
     .
 tedm:MG-LotGroup-isSubjectToGrouping-Tender_ND-LotTender  a rr:TriplesMap ;
   rdfs:label "MG-LotGroup";
