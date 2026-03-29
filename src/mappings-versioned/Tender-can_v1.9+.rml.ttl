@@ -78,7 +78,7 @@ tedm:MG-SubcontractingEstimate-foreseesSubcontracting-Tender_ND-SubcontractedCon
     rr:subjectMap
         [
             rdfs:label "ND-SubcontractedContract" ;
-            rml:reference "if (exists(efbc:TermDescription) or exists(efbc:TermPercent) or exists(efbc:PercentageKnownIndicator)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/SubcontractingEstimate$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(efbc:TermDescription) or exists(efbc:TermPercent) or exists(efbc:PercentageKnownIndicator) or exists(efbc:ValueKnownIndicator)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/SubcontractingEstimate$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:SubcontractingEstimate ;
         ] ;
     #  rr:predicateObjectMap
@@ -127,6 +127,18 @@ tedm:MG-SubcontractingEstimate-foreseesSubcontracting-Tender_ND-SubcontractedCon
             rr:objectMap
                 [
                     rml:reference "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='sub-per-kno']) and efbc:PercentageKnownIndicator/text() = '0' )) then efbc:PercentageKnownIndicator else null" ;
+                    rr:datatype xsd:boolean ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            tedm:minSDKVersion "1.9" ;
+            rdfs:label "BT-730-Tender" ;
+            rdfs:comment "Subcontracting Value Known of MG-SubcontractingEstimate under ND-SubcontractedContract" ;
+            rr:predicate epo:isSubcontractingValueKnown ;
+            rr:objectMap
+                [
+                    rml:reference "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='sub-val-kno']) and efbc:ValueKnownIndicator/text() = '0' )) then efbc:ValueKnownIndicator else null" ;
                     rr:datatype xsd:boolean ;
                 ] ;
         ] ;
