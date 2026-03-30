@@ -1,0 +1,148 @@
+#--- ND-ProcedureAcceleratedUnpublish ---
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
+@prefix cv: <http://data.europa.eu/m8g/> .
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix cpov: <http://data.europa.eu/m8g/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix idlab-fn: <http://example.com/idlab/function/> .
+
+tedm:MG-NonPublishedInformation_ND-ProcedureAcceleratedUnpublish a rr:TriplesMap ;
+    rdfs:label "MG-NonPublishedInformation";
+	rdfs:comment "Triplesmap 1 of 2 for MG-NonPublishedInformation_ND-ProcedureAcceleratedUnpublish"; 
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:TenderingProcess/cac:ProcessJustification[cbc:ProcessReasonCode/@listName='accelerated-procedure']/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='pro-acc']";
+            rml:referenceFormulation ql:XPath
+        ] ;
+	rr:subjectMap
+        [
+            rdfs:label "ND-ProcedureAcceleratedUnpublish";
+            rml:reference "if (exists(efbc:FieldIdentifierCode/text() = 'pro-acc')) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/NonPublishedInformation$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class epo:NonPublishedInformation
+        ] ;
+    rr:predicateObjectMap
+        [
+			rdfs:label "MG-Procedure_ND-Root";
+			rdfs:comment "here we link to the main procedure of the notice";
+            rr:predicate epo:concernsMaskedObject ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Procedure_ND-Root ;
+                ] ;
+        ] ;
+		
+	rr:predicateObjectMap
+        [
+    		rdfs:label "MG-Notice_ND-Root";
+    		rdfs:comment "here we link to the notice";
+            rr:predicate epo:concernsNotice ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Notice_ND-Root ;
+                ] ;
+        ] ;
+		 
+	rr:predicateObjectMap
+        [
+			rdfs:label "BT-195(BT-106)-Procedure";
+    		rdfs:comment "in BT-195(BT-106)-Procedure, we indicate the masked URI";
+            rr:predicate epo:hasMaskableProperty ;
+            rr:objectMap
+                [
+                    rr:datatype <http://data.europa.eu/a4g/ontology#isAccelerated>;
+                ] ;
+        ] ;					  
+     # BT-195(BT-106)-Procedure-List Not needed. 
+			
+	rr:predicateObjectMap
+        [
+          rdfs:label "BT-197(BT-106)-Procedure";
+		  rdfs:comment "In BT-197(BT-106)-Procedure, we link to the at-voc:non-publication-justification controlled list";
+		  rr:predicate epo:hasNonPublicationJustification ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:non-publication-justification";
+                    rr:parentTriplesMap tedm:non-publication-justification ;
+					
+                    rr:joinCondition [
+                        rr:child  "cbc:ReasonCode";
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+		
+		
+	rr:predicateObjectMap
+        [
+          
+            rdfs:label "BT-198(BT-106)-Procedure";
+            rdfs:comment"Although there are 2 different versions of BT-198(BT-106)-Procedure, the only changes are in the name description  			
+            rr:predicate epo:hasAccessibilityDate ;
+            rr:objectMap
+                [
+                    rml:reference "efbc:PublicationDate";
+                    rr:datatype xsd:date ;
+                ] ;
+        ]
+		
+    ].
+   
+
+tedm:MG-langString-hasConfidentialityJustification-NonPublishedInformation_ND-ProcedureAcceleratedUnpublish a rr:TriplesMap ;
+	rdfs:comment "Triplesmap 2 of 2 for MG-NonPublishedInformation_ND-ProcedureAcceleratedUnpublish"; 
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:TenderingProcess/cac:ProcessJustification[cbc:ProcessReasonCode/@listName='accelerated-procedure']/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='pro-acc']/efbc:ReasonDescription" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rr:class epo:NonPublishedInformation ;
+        rdfs:comment "Unpublished Justification Description for MG-NonPublishedInformation under ND-ProcedureAcceleratedUnpublish" ;
+        rdfs:label "ND-ProcedureAcceleratedUnpublish" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/NonPublishedInformation${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate epo:hasConfidentialityJustification ;
+        rr:objectMap [
+            rml:reference "." ;
+            rml:languageMap [
+                fnml:functionValue [
+                    rr:predicateObjectMap [
+                        rr:predicate idlab-fn:str ;
+                        rr:objectMap [
+                            rml:reference "@languageID" ;
+                        ] ;
+                    ] ;
+                    rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+                    rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+                    rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+                    rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+                ] ;
+            ] ;
+            rdfs:comment "Language of Unpublished Justification Description of MG-NonPublishedInformation under ND-ProcedureAcceleratedUnpublish" ;
+            rdfs:label "BT-196(BT-106)-Procedure-Language" ;
+        ] ;
+        rdfs:comment "Unpublished Justification Description of MG-NonPublishedInformation under ND-ProcedureAcceleratedUnpublish" ;
+        rdfs:label "BT-196(BT-106)-Procedure" ;
+    ] ;
+    rdfs:label "MG-NonPublishedInformation" .
+
