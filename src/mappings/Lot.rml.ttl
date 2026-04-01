@@ -2800,6 +2800,33 @@ tedm:MG-Prize-definesPrize-ProcedureTerm-isSubjectToTerm-Lot_ND-Prize a rr:Tripl
         ];
 .
 
+tedm:MG-MonetaryValue-hasPrizeValue-Prize-definesPrize-ProcedureTerm-isSubjectToTerm-Lot_ND-Prize a rr:TriplesMap ;
+    rdfs:label "MG-MonetaryValue";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AwardingTerms/cac:Prize";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label  "ND-Prize";
+            rml:reference "if (exists(cbc:ValueAmount) and not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('23 24', text())]))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/MonetaryValue$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class epo:MonetaryValue
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-644-Lot";
+            rdfs:comment "PrizeValue of MG-MonetaryValue under ND-Prize";
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                   rml:reference "cbc:ValueAmount";
+                   rr:datatype xsd:decimal;
+                ] ;
+        ];
+.
+
 tedm:MG-Prize-definesPrize-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lot_ND-Prize a rr:TriplesMap ;
     rdfs:label "MG-Prize";
     rml:logicalSource
