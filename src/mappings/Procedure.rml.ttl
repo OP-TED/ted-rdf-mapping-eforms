@@ -1994,7 +1994,7 @@ tedm:MG-langString-hasLegalBasisDescription-Procedure_ND-LocalLegalBasisWithID a
     rr:predicateObjectMap [
         rr:predicate epo-not:hasLegalBasisDescription ;
         rr:objectMap [
-            rml:reference "if(exists(.)) then (if(exists(../cbc:ID)) then ../cbc:ID || (if(exists(../cbc:ID/@schemeName)) then ' [' || ../cbc:ID/@schemeName || ']' else '') || ' / ' else '') || . else null" ;
+            rml:reference "if(exists(@languageID)) then (if(exists(../cbc:ID)) then ../cbc:ID || (if(exists(../cbc:ID/@schemeName)) then ' [' || ../cbc:ID/@schemeName || ']' else '') || ' / ' else '') || . else null" ;
             rml:languageMap [
                 fnml:functionValue [
                     rr:predicateObjectMap [
@@ -2161,7 +2161,7 @@ tedm:MG-langString-title-PlannedProcurement_ND-ProcedureProcurementScope a rr:Tr
     rr:predicateObjectMap [
         rr:predicate dct:title ;
         rr:objectMap [
-            rml:reference "." ;
+            rml:reference "if(exists(@languageID)) then . else null" ;
             rml:languageMap [
                 fnml:functionValue [
                     rr:predicateObjectMap [
@@ -2199,7 +2199,7 @@ tedm:MG-langString-description-PlannedProcurement_ND-ProcedureProcurementScope a
     rr:predicateObjectMap [
         rr:predicate dct:description ;
         rr:objectMap [
-            rml:reference "." ;
+            rml:reference "if(exists(@languageID)) then . else null" ;
             rml:languageMap [
                 fnml:functionValue [
                     rr:predicateObjectMap [

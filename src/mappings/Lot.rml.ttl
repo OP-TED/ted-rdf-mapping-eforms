@@ -3200,7 +3200,7 @@ tedm:MG-QualityTargetInformation-concernsContractTerm-ContractTerm_ND-LotTenderi
             rr:predicate epo:hasQualityTargetDescription ;
             rr:objectMap
                 [
-                    rml:reference "cbc:Description" ;
+                    rml:reference "if(exists(@languageID)) then cbc:Description else null" ;
                     rml:languageMap [
                         fnml:functionValue [
                             rr:predicateObjectMap [
@@ -6074,7 +6074,7 @@ tedm:MG-InternationalProcurementInstrumentMeasuresInformation_ND-IPIMeasureExcep
             rr:predicate epo:hasPublicInterestExceptionJustification ;
             rr:objectMap
                 [
-                    rml:reference "if(not(exists(../../../../efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='pub-int-exc-jus']) and efbc:ExceptionDescription/text() = 'unpublished' )) then efbc:ExceptionDescription else null" ;
+                    rml:reference "if(exists(@languageID) and not(exists(../../../../efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='pub-int-exc-jus']) and efbc:ExceptionDescription/text() = 'unpublished' )) then efbc:ExceptionDescription else null" ;
                     rml:languageMap [
                         fnml:functionValue [
                             rr:predicateObjectMap [
@@ -6133,7 +6133,7 @@ tedm:MG-langString-hasFollowupContractInformation-DesignContestRegimeTerm-isSubj
   rr:predicateObjectMap [
     rr:predicate epo:hasFollowupContractInformation ;
     rr:objectMap [
-      rml:reference "." ;
+      rml:reference "if(exists(@languageID)) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -6231,7 +6231,7 @@ tedm:MG-ContractTerm-isSubjectToTerm-Lot_ND-RewardsPenalties a rr:TriplesMap ;
             rr:predicate epo:hasPenaltiesAndRewardsDescription ;
             rr:objectMap
                 [
-                    rml:reference "cbc:Description" ;
+                    rml:reference "if(exists(@languageID)) then cbc:Description else null" ;
                     rml:languageMap [
                         fnml:functionValue [
                             rr:predicateObjectMap [
