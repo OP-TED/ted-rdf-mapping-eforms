@@ -40,36 +40,38 @@ tedm:MG-ResultNotice_ND-Root
             # this is an example of a complex multi-element condition for instantiation of a subject not suitable as a condition below the iterator
             rml:iterator "if(/*/cbc:NoticeTypeCode/@listName='result' or (/*/cbc:NoticeTypeCode/@listName='change' and exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('29 30 31 32 33 34 35 36 37 T02', text())]))) then /* else null" ;
             rml:referenceFormulation ql:XPath
-        ] ;
+#        ] ;
     rr:subjectMap
         [
             rdfs:label "ND-Root" ;
             rdfs:comment "Primary type declaration for MG-ResultNotice under ND-Root" ;
             rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Notice" ;
             rr:class epo-not:ResultNotice
-        ] ;
-    rr:predicateObjectMap
-        [
-            tedm:minSDKVersion "1.13" ;
-            rdfs:label "MG-ReviewRequest-seeAlso-ResultNotice" ;
-            rdfs:comment "the relation between MG-ReviewDecision and ResultNotice under ND-Root" ;
-            rr:predicate rdfs:seeAlso ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-ReviewRequest-seeAlso-ResultNotice_ND-ReviewStatus
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            tedm:minSDKVersion "1.13" ;
-            rdfs:label "MG-ReviewDecision-seeAlso-ResultNotice" ;
-            rdfs:comment "the relation between MG-ReviewDecision and ResultNotice under ND-Root" ;
-            rr:predicate rdfs:seeAlso ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-ReviewDecision-seeAlso-ResultNotice_ND-ReviewStatus
-                ] ;
-        ] ;
+#        ] ;
+# Commented out for the removal of rdfs:seeAlso
+#    rr:predicateObjectMap
+#        [
+#            tedm:minSDKVersion "1.13" ;
+#            rdfs:label "MG-ReviewRequest-seeAlso-ResultNotice" ;
+#            rdfs:comment "the relation between MG-ReviewDecision and ResultNotice under ND-Root" ;
+#            rr:predicate rdfs:seeAlso ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:MG-ReviewRequest-seeAlso-ResultNotice_ND-ReviewStatus
+#                ] ;
+#        ] ;
+# Commented out for the removal of rdfs:seeAlso
+#    rr:predicateObjectMap
+#        [
+#            tedm:minSDKVersion "1.13" ;
+#            rdfs:label "MG-ReviewDecision-seeAlso-ResultNotice" ;
+#            rdfs:comment "the relation between MG-ReviewDecision and ResultNotice under ND-Root" ;
+#            rr:predicate rdfs:seeAlso ;
+#            rr:objectMap
+#                [
+#                    rr:parentTriplesMap tedm:MG-ReviewDecision-seeAlso-ResultNotice_ND-ReviewStatus
+#                ] ;
+#        ] ;
      rr:predicateObjectMap
         [
             rdfs:label "MG-Reviewer-announcesRole-ResultNotice" ;

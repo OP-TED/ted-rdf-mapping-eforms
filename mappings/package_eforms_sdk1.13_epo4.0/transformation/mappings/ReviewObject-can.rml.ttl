@@ -332,37 +332,39 @@ tedm:MG-ReviewRequest_ND-ReviewStatus a rr:TriplesMap ;
         ] ;
 .
 
-tedm:MG-ReviewDecision-seeAlso-ResultNotice_ND-ReviewStatus a rr:TriplesMap ;
-    rdfs:label "MG-ReviewDecision" ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-ReviewStatus" ;
-            rml:reference "if (/*/cbc:NoticeTypeCode/@listName='result' and efbc:AppealStageCode='dec') then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ReviewDecision$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
-            rr:class epo:ReviewDecision
-        ] ;
-.
+# Commented out for removal of rdfs:seeAlso
+#tedm:MG-ReviewDecision-seeAlso-ResultNotice_ND-ReviewStatus a rr:TriplesMap ;
+#    rdfs:label "MG-ReviewDecision" ;
+#    rml:logicalSource
+#        [
+#            rml:source "data/source.xml" ;
+#            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation" ;
+#            rml:referenceFormulation ql:XPath
+#        ] ;
+#   rr:subjectMap
+#        [
+#            rdfs:label "ND-ReviewStatus" ;
+#            rml:reference "if (/*/cbc:NoticeTypeCode/@listName='result' and efbc:AppealStageCode='dec') then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ReviewDecision$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+#            rr:class epo:ReviewDecision
+#        ] ;
+#.
 
-tedm:MG-ReviewRequest-seeAlso-ResultNotice_ND-ReviewStatus a rr:TriplesMap ;
-    rdfs:label "MG-ReviewDecision" ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-ReviewStatus" ;
-            rml:reference "if (/*/cbc:NoticeTypeCode/@listName='result' and efbc:AppealStageCode='req')  then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ReviewRequest$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
-            rr:class epo:ReviewRequest
-        ] ;
-.
+# Commented out for removal of rdfs:seeAlso
+#tedm:MG-ReviewRequest-seeAlso-ResultNotice_ND-ReviewStatus a rr:TriplesMap ;
+#    rdfs:label "MG-ReviewDecision" ;
+#    rml:logicalSource
+#        [
+#            rml:source "data/source.xml" ;
+#            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation" ;
+#            rml:referenceFormulation ql:XPath
+#        ] ;
+#    rr:subjectMap
+#        [
+#            rdfs:label "ND-ReviewStatus" ;
+#            rml:reference "if (/*/cbc:NoticeTypeCode/@listName='result' and efbc:AppealStageCode='req')  then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ReviewRequest$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+#            rr:class epo:ReviewRequest
+#        ] ;
+#.
 
 tedm:MG-MonetaryValue-hasRemedyValue-ReviewDecision_ND-ReviewStatus a rr:TriplesMap ;
     rdfs:label "MG-MonetaryValue" ;

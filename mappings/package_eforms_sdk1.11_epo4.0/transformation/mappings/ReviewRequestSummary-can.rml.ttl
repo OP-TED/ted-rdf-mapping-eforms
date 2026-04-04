@@ -149,21 +149,23 @@ tedm:MG-ReviewRequestSummary_ND-LotResult  a rr:TriplesMap ;
                 ] ;
         ];
     .
-tedm:MG-ReviewRequestSummary-seeAlso-LotAwardOutcome_ND-BuyerReviewComplainants  a rr:TriplesMap ;
-    rdfs:label "MG-ReviewRequestSummary" ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:AppealRequestsStatistics[efbc:StatisticsCode/@listName='review-type']" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-BuyerReviewComplainants";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ReviewRequestSummary${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
-            rr:class epo:ReviewRequestSummary
-        ] ;
-    .
+
+# Commented out for the removal of rdfs:seeAlso
+#tedm:MG-ReviewRequestSummary-seeAlso-LotAwardOutcome_ND-BuyerReviewComplainants  a rr:TriplesMap ;
+#    rdfs:label "MG-ReviewRequestSummary" ;
+#    rml:logicalSource
+#       [
+#            rml:source "data/source.xml" ;
+#            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:AppealRequestsStatistics[efbc:StatisticsCode/@listName='review-type']" ;
+#            rml:referenceFormulation ql:XPath
+#        ] ;
+#    rr:subjectMap
+#        [
+#            rdfs:label "ND-BuyerReviewComplainants";
+#            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ReviewRequestSummary${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+#            rr:class epo:ReviewRequestSummary
+#        ] ;
+#    .
 
 tedm:MG-ReviewRequestSummary_ND-BuyerReviewComplainants  a rr:TriplesMap ;
     rdfs:label "MG-ReviewRequestSummary" ;
