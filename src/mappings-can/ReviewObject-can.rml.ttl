@@ -356,6 +356,21 @@ tedm:MG-ReviewRequest_ND-ReviewStatus a rr:TriplesMap ;
                     rr:parentTriplesMap tedm:MG-MonetaryValue-hasReviewRequestFee-ReviewDecision_ND-ReviewStatus  ;
                 ] ;
         ] ;
+    rr:predicateObjectMap
+        [
+            tedm:minSDKVersion "1.13" ;
+            rdfs:label "AppealProcessingParty" ;
+            rdfs:comment "Reviewer of MG-ReviewRequest under ND-ReviewStatus" ;
+            rr:predicate epo:specifiesReviewer ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Reviewer_ND-AppealProcessingParty ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(..)" ;
+                    ] ;
+                ] ;
+        ] ;
 .
 
 tedm:MG-ReviewDecision-seeAlso-ResultNotice_ND-ReviewStatus a rr:TriplesMap ;
