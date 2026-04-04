@@ -2757,8 +2757,50 @@ tedm:MG-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lot_ND-AwardingTerms 
                     rr:datatype xsd:boolean;
                 ] ;
         ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-44-Lot";
+            rdfs:comment "Prize rank of MG-DesignContestRegimeTerm under ND-AwardingTerms";
+            rr:predicate epo:definesPrize ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Prize-definesPrize-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lot_ND-Prize ;
+                    rr:joinCondition[
+                        rr:child "path(.)";
+                        rr:parent "path(..)"
+                    ];
+                ] ;
+        ];
 .
 
+tedm:MG-Prize-definesPrize-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lot_ND-Prize a rr:TriplesMap ;
+    rdfs:label "MG-Prize";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AwardingTerms/cac:Prize";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label  "ND-Prize";
+            rml:reference "if(exists(cbc:RankCode) and exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('23 24', text())])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Prize$' || replace(replace(replace(path(.), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class epo:Prize
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-44-Lot";
+            rdfs:comment "PrizeRank of MG-Prize under ND-Prize";
+            rr:predicate epo:hasPrizeRank;
+            rr:objectMap
+                [
+                    rml:reference "cbc:RankCode";
+                    rr:datatype xsd:integer;
+                ] ;
+        ];
+.
+
+# EPO 5.3.0 Mapping
 #tedm:MG-Prize-definesPrize-ProcedureTerm-isSubjectToTerm-Lot_ND-Prize a rr:TriplesMap ;
 #    rdfs:label "MG-Prize";
 #    rml:logicalSource
@@ -2800,6 +2842,7 @@ tedm:MG-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lot_ND-AwardingTerms 
 #        ];
 #.
 
+# EPO 5.3.0 Mapping
 #tedm:MG-MonetaryValue-hasPrizeValue-Prize-definesPrize-ProcedureTerm-isSubjectToTerm-Lot_ND-Prize a rr:TriplesMap ;
 #    rdfs:label "MG-MonetaryValue";
 #    rml:logicalSource
