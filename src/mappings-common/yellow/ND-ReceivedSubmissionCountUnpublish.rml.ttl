@@ -1,0 +1,260 @@
+#--- ND-ReceivedSubmissionCountUnpublish ---
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
+@prefix cv: <http://data.europa.eu/m8g/> .
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix cpov: <http://data.europa.eu/m8g/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix idlab-fn: <http://example.com/idlab/function/> .
+# Yellow (sheet): continuation rows — multiple rr:predicateObjectMap blocks for
+# epo:hasMaskableProperty (BT-195) on the same TriplesMap as the anchor row (bright yellow / gray text).
+
+tedm:MG-NonPublishedInformation_ND-ReceivedSubmissionCountUnpublish a rr:TriplesMap ;
+    rdfs:label "MG-NonPublishedInformation" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:ReceivedSubmissionsStatistics/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='rec-sub-cou']" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+	rr:subjectMap
+        [
+            rdfs:label "ND-ReceivedSubmissionCountUnpublish" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/NonPublishedInformation${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:class epo:NonPublishedInformation
+        ] ;
+    rr:predicateObjectMap
+        [
+			rdfs:label "ND-ReceivedSubmissionCountUnpublish (concernsMaskedObject)" ;
+			rdfs:comment "Connection from NonPublishedInformation to LotAwardOutcome under MG-LotAwardOutcome-summarisesInformationForAwardOutcome-SubmissionStatisticalInformation_ND-ReceivedSubmissions" ;
+            rr:predicate epo:concernsMaskedObject ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-SubmissionStatisticalInformation_ND-ReceivedSubmissions ;
+                ] ;
+        ] ;
+	rr:predicateObjectMap
+        [
+    		rdfs:label "ND-ReceivedSubmissionCountUnpublish (concernsNotice)" ;
+    		rdfs:comment "Connection from NonPublishedInformation to Notice under MG-Notice_ND-Root" ;
+            rr:predicate epo:concernsNotice ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Notice_ND-Root ;
+                ] ;
+        ] ;
+	rr:predicateObjectMap
+        [
+			rdfs:label "BT-195(BT-759)-LotResult" ;
+    		rdfs:comment "The field BT-195(BT-759)-LotResult, Unpublished Identifier, specifies information to generate the URI of the masked property" ;
+            rr:predicate epo:hasMaskableProperty ;
+            rr:objectMap
+                [
+                    rml:reference "if (exists(efbc:FieldIdentifierCode/text()='rec-sub-cou' and ../efbc:StatisticsCode/text() = 'tenders')) then 'http://data.europa.eu/a4g/ontology#hasReceivedTenders' else null" ;
+                    rr:termType rr:IRI ;
+                ] ;
+        ] ;
+	rr:predicateObjectMap
+        [
+			rdfs:label "BT-195(BT-759)-LotResult" ;
+    		rdfs:comment "The field BT-195(BT-759)-LotResult, Unpublished Identifier, specifies information to generate the URI of the masked property" ;
+            rr:predicate epo:hasMaskableProperty ;
+            rr:objectMap
+                [
+                    rml:reference "if (exists(efbc:FieldIdentifierCode/text()='rec-sub-cou' and ../efbc:StatisticsCode/text() = 'part-req')) then 'http://data.europa.eu/a4g/ontology#hasReceivedParticipationRequests' else null" ;
+                    rr:termType rr:IRI ;
+                ] ;
+        ] ;
+	rr:predicateObjectMap
+        [
+			rdfs:label "BT-195(BT-759)-LotResult" ;
+    		rdfs:comment "The field BT-195(BT-759)-LotResult, Unpublished Identifier, specifies information to generate the URI of the masked property" ;
+            rr:predicate epo:hasMaskableProperty ;
+            rr:objectMap
+                [
+                    rml:reference "if (exists(efbc:FieldIdentifierCode/text()='rec-sub-cou' and ../efbc:StatisticsCode/text() = 't-esubm')) then 'http://data.europa.eu/a4g/ontology#hasElectronicTenders' else null" ;
+                    rr:termType rr:IRI ;
+                ] ;
+        ] ;
+	rr:predicateObjectMap
+        [
+			rdfs:label "BT-195(BT-759)-LotResult" ;
+    		rdfs:comment "The field BT-195(BT-759)-LotResult, Unpublished Identifier, specifies information to generate the URI of the masked property" ;
+            rr:predicate epo:hasMaskableProperty ;
+            rr:objectMap
+                [
+                    rml:reference "if (exists(efbc:FieldIdentifierCode/text()='rec-sub-cou' and ../efbc:StatisticsCode/text() = 't-med')) then 'http://data.europa.eu/a4g/ontology#hasMediumTenderPerLots' else null" ;
+                    rr:termType rr:IRI ;
+                ] ;
+        ] ;
+	rr:predicateObjectMap
+        [
+			rdfs:label "BT-195(BT-759)-LotResult" ;
+    		rdfs:comment "The field BT-195(BT-759)-LotResult, Unpublished Identifier, specifies information to generate the URI of the masked property" ;
+            rr:predicate epo:hasMaskableProperty ;
+            rr:objectMap
+                [
+                    rml:reference "if (exists(efbc:FieldIdentifierCode/text()='rec-sub-cou' and ../efbc:StatisticsCode/text() = 't-micro')) then 'http://data.europa.eu/a4g/ontology#hasReceivedMicroTenders' else null" ;
+                    rr:termType rr:IRI ;
+                ] ;
+        ] ;
+	rr:predicateObjectMap
+        [
+			rdfs:label "BT-195(BT-759)-LotResult" ;
+    		rdfs:comment "The field BT-195(BT-759)-LotResult, Unpublished Identifier, specifies information to generate the URI of the masked property" ;
+            rr:predicate epo:hasMaskableProperty ;
+            rr:objectMap
+                [
+                    rml:reference "if (exists(efbc:FieldIdentifierCode/text()='rec-sub-cou' and ../efbc:StatisticsCode/text() = 't-no-eea')) then 'http://data.europa.eu/a4g/ontology#hasNonEEAReceivedTenders' else null" ;
+                    rr:termType rr:IRI ;
+                ] ;
+        ] ;
+	rr:predicateObjectMap
+        [
+			rdfs:label "BT-195(BT-759)-LotResult" ;
+    		rdfs:comment "The field BT-195(BT-759)-LotResult, Unpublished Identifier, specifies information to generate the URI of the masked property" ;
+            rr:predicate epo:hasMaskableProperty ;
+            rr:objectMap
+                [
+                    rml:reference "if (exists(efbc:FieldIdentifierCode/text()='rec-sub-cou' and ../efbc:StatisticsCode/text() = 't-no-verif')) then 'http://data.europa.eu/a4g/ontology#hasUnverifiedTenders' else null" ;
+                    rr:termType rr:IRI ;
+                ] ;
+        ] ;
+	rr:predicateObjectMap
+        [
+			rdfs:label "BT-195(BT-759)-LotResult" ;
+    		rdfs:comment "The field BT-195(BT-759)-LotResult, Unpublished Identifier, specifies information to generate the URI of the masked property" ;
+            rr:predicate epo:hasMaskableProperty ;
+            rr:objectMap
+                [
+                    rml:reference "if (exists(efbc:FieldIdentifierCode/text()='rec-sub-cou' and ../efbc:StatisticsCode/text() = 't-oth-eea')) then 'http://data.europa.eu/a4g/ontology#hasEEAReceivedTenders' else null" ;
+                    rr:termType rr:IRI ;
+                ] ;
+        ] ;
+	rr:predicateObjectMap
+        [
+			rdfs:label "BT-195(BT-759)-LotResult" ;
+    		rdfs:comment "The field BT-195(BT-759)-LotResult, Unpublished Identifier, specifies information to generate the URI of the masked property" ;
+            rr:predicate epo:hasMaskableProperty ;
+            rr:objectMap
+                [
+                    rml:reference "if (exists(efbc:FieldIdentifierCode/text()='rec-sub-cou' and ../efbc:StatisticsCode/text() = 't-small')) then 'http://data.europa.eu/a4g/ontology#hasReceivedSmallTenders' else null" ;
+                    rr:termType rr:IRI ;
+                ] ;
+        ] ;
+	rr:predicateObjectMap
+        [
+			rdfs:label "BT-195(BT-759)-LotResult" ;
+    		rdfs:comment "The field BT-195(BT-759)-LotResult, Unpublished Identifier, specifies information to generate the URI of the masked property" ;
+            rr:predicate epo:hasMaskableProperty ;
+            rr:objectMap
+                [
+                    rml:reference "if (exists(efbc:FieldIdentifierCode/text()='rec-sub-cou' and ../efbc:StatisticsCode/text() = 't-sme')) then 'http://data.europa.eu/a4g/ontology#hasSMEReceivedTenders' else null" ;
+                    rr:termType rr:IRI ;
+                ] ;
+        ] ;
+	rr:predicateObjectMap
+        [
+			rdfs:label "BT-195(BT-759)-LotResult" ;
+    		rdfs:comment "The field BT-195(BT-759)-LotResult, Unpublished Identifier, specifies information to generate the URI of the masked property" ;
+            rr:predicate epo:hasMaskableProperty ;
+            rr:objectMap
+                [
+                    rml:reference "if (exists(efbc:FieldIdentifierCode/text()='rec-sub-cou' and ../efbc:StatisticsCode/text() = 't-verif-inad')) then 'http://data.europa.eu/a4g/ontology#hasInadmissibleTenders' else null" ;
+                    rr:termType rr:IRI ;
+                ] ;
+        ] ;
+	rr:predicateObjectMap
+        [
+			rdfs:label "BT-195(BT-759)-LotResult" ;
+    		rdfs:comment "The field BT-195(BT-759)-LotResult, Unpublished Identifier, specifies information to generate the URI of the masked property" ;
+            rr:predicate epo:hasMaskableProperty ;
+            rr:objectMap
+                [
+                    rml:reference "if (exists(efbc:FieldIdentifierCode/text()='rec-sub-cou' and ../efbc:StatisticsCode/text() = 't-verif-inad-low')) then 'http://data.europa.eu/a4g/ontology#hasAbnormallyLowTenders' else null" ;
+                    rr:termType rr:IRI ;
+                ] ;
+        ] ;
+    # BT-195(BT-759)-LotResult-List Not needed.
+	rr:predicateObjectMap
+        [
+          rdfs:label "BT-197(BT-759)-LotResult" ;
+		  rdfs:comment "In BT-197(BT-759)-LotResult, Unpublished Justification Code, we link to the at-voc:non-publication-justification controlled list" ;
+		  rr:predicate epo:hasNonPublicationJustification ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:non-publication-justification" ;
+                    rr:parentTriplesMap tedm:non-publication-justification ;
+                    rr:joinCondition [
+                        rr:child  ".." ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+	rr:predicateObjectMap
+        [
+
+            rdfs:label "BT-198(BT-759)-LotResult" ;
+            rdfs:comment "Unpublished Accessibility Date (Unpublished Access Date below SDK 1.6)" ;
+            rr:predicate epo:hasAccessibilityDate ;
+            rr:objectMap
+                [
+                    rml:reference "efbc:PublicationDate" ;
+                    rr:datatype xsd:date ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-langString-hasConfidentialityJustification-NonPublishedInformation_ND-ReceivedSubmissionCountUnpublish a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:ReceivedSubmissionsStatistics/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='rec-sub-cou']/efbc:ReasonDescription" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rr:class epo:NonPublishedInformation ;
+        rdfs:label "ND-ReceivedSubmissionCountUnpublish" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/NonPublishedInformation${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate epo:hasConfidentialityJustification ;
+        rr:objectMap [
+            rml:reference "if(exists(@languageID)) then . else null" ;
+            rml:languageMap [
+                fnml:functionValue [
+                    rr:predicateObjectMap [
+                        rr:predicate idlab-fn:str ;
+                        rr:objectMap [
+                            rml:reference "@languageID" ;
+                        ] ;
+                    ] ;
+                    rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+                    rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+                    rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+                    rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+                ] ;
+            ] ;
+            rdfs:comment "Language of Unpublished Justification Description of MG-NonPublishedInformation under ND-ReceivedSubmissionCountUnpublish" ;
+            rdfs:label "BT-196(BT-759)-LotResult-Language" ;
+        ] ;
+        rdfs:comment "Unpublished Justification Description of MG-NonPublishedInformation under ND-ReceivedSubmissionCountUnpublish" ;
+        rdfs:label "BT-196(BT-759)-LotResult" ;
+    ] ;
+    rdfs:label "MG-NonPublishedInformation" .
