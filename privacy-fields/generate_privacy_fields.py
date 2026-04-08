@@ -9,6 +9,13 @@ Generate privacy-fields-field RML (.rml.ttl) from "Export for TM Input" for **gr
   ``epo:hasMaskableProperty`` (BT-195) POMs on the **same** TriplesMap as the anchor row (anchor
   = first row in the File Name run with a non-empty Iterator, often the green line above).
 
+**Masked object (sheet columns, current layout):** ``L``–``M`` (MG / node hints) are not emitted yet;
+``N``–``O`` label/comment for ``epo:concernsMaskedObject`` POM; ``P`` = ``rr:parentTriplesMap`` local name;
+``Q`` simplified XPath (documentation); ``R`` = ``joinCondition child`` — when non-empty, the
+``concernsMaskedObject`` ``rr:objectMap`` gets ``rr:joinCondition`` with ``rr:parent "."`` and
+``rr:child`` from ``R`` (BT-197 still defaults ``rr:child`` to ``cbc:ReasonCode`` when ``R`` is empty).
+``AG`` = ``TriplesMap Masked Object alt name`` — overrides ``P`` for the parent TriplesMap IRI when set.
+
 Defaults: ``src/mappings-common/green``, ``amber``, ``yellow``. Use ``--no-green`` / ``--no-amber``
 / ``--no-yellow`` to skip.
 
@@ -124,9 +131,18 @@ def masked_parent_triples_map(row: dict[str, object]) -> str:
 
 
 def join_child(row: dict[str, object]) -> str:
+    """BT-197 code-list join: default ``cbc:ReasonCode`` when ``joinCondition child`` is blank."""
     jc = row.get(H_JOIN_CHILD)
     if jc is None or str(jc).strip() == "":
         return "cbc:ReasonCode"
+    return str(jc).strip()
+
+
+def masked_object_join_child_if_present(row: dict[str, object]) -> str | None:
+    """If ``joinCondition child`` (column R) is set, value for ``epo:concernsMaskedObject`` join; else None."""
+    jc = row.get(H_JOIN_CHILD)
+    if jc is None or str(jc).strip() == "":
+        return None
     return str(jc).strip()
 
 
@@ -312,6 +328,7 @@ def render_rml(
     bt196_ll = str(anchor[H_BT196_LANG_LABEL])
     bt196_lc = str(anchor[H_BT196_LANG_COMMENT])
     jc = join_child(anchor)
+    mask_join_child = masked_object_join_child_if_present(anchor)
     bt195_l = str(anchor[H_BT195_LABEL])
 
     notice_pom_label = f"{subj_label} (concernsNotice)"
@@ -325,6 +342,13 @@ def render_rml(
     if omit_concerns_masked_object:
         concerns_masked_block = f"    {AMBER_PARTIAL_TTL_COMMENT}\n"
     else:
+        mask_join_ttl = ""
+        if mask_join_child is not None:
+            mask_join_ttl = f"""
+                    rr:joinCondition [
+                        rr:parent {ttl_str(".")} ;
+                        rr:child {ttl_str(mask_join_child)} ;
+                    ] ;"""
         concerns_masked_block = f"""    rr:predicateObjectMap
         [
 			rdfs:label {ttl_str(pom_mask_l)} ;
@@ -332,7 +356,7 @@ def render_rml(
             rr:predicate epo:concernsMaskedObject ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap {parent_masked} ;
+                    rr:parentTriplesMap {parent_masked} ;{mask_join_ttl}
                 ] ;
         ] ;
 """
