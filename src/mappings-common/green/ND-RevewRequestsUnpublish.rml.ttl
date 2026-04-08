@@ -38,7 +38,16 @@ tedm:MG-NonPublishedInformation_ND-RevewRequestsUnpublish a rr:TriplesMap ;
             rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/NonPublishedInformation${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class epo:NonPublishedInformation
         ] ;
-    # Amber (partial): epo:concernsMaskedObject omitted — CM does not provide enough information to resolve rr:parentTriplesMap for the masked object (dark yellow/orange row).
+    rr:predicateObjectMap
+        [
+			rdfs:label "ND-RevewRequestsUnpublish (concernsMaskedObject)" ;
+			rdfs:comment "Connection from NonPublishedInformation to ReviewRequestSummary under MG-ReviewRequestSummary ND-BuyerReviewComplainants" ;
+            rr:predicate epo:concernsMaskedObject ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ReviewRequestSummary_ND-LotResult ;
+                ] ;
+        ] ;
 	rr:predicateObjectMap
         [
     		rdfs:label "ND-RevewRequestsUnpublish (concernsNotice)" ;

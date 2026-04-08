@@ -1,4 +1,4 @@
-#--- ND-SubcontractingUnpublish_v1.3-1.8 ---
+#--- ND-NotAwardedReasonUnpublish ---
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -24,24 +24,33 @@
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix idlab-fn: <http://example.com/idlab/function/> .
 
-tedm:MG-NonPublishedInformation_ND-SubcontractingUnpublish a rr:TriplesMap ;
+tedm:MG-NonPublishedInformation_ND-NotAwardedReasonUnpublish a rr:TriplesMap ;
     rdfs:label "MG-NonPublishedInformation" ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender/efac:SubcontractingTerm/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='sub-con']" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:DecisionReason/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='no-awa-rea']" ;
             rml:referenceFormulation ql:XPath
         ] ;
 	rr:subjectMap
         [
-            rdfs:label "ND-SubcontractingUnpublish" ;
+            rdfs:label "ND-NotAwardedReasonUnpublish" ;
             rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/NonPublishedInformation${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class epo:NonPublishedInformation
         ] ;
-    # Amber (partial): epo:concernsMaskedObject omitted — CM does not provide enough information to resolve rr:parentTriplesMap for the masked object (dark yellow/orange row).
+    rr:predicateObjectMap
+        [
+			rdfs:label "ND-NotAwardedReasonUnpublish (concernsMaskedObject)" ;
+			rdfs:comment "Connection from NonPublishedInformation to epo:LotAwardOutcome under MG-LotAwardOutcome_ND-LotResult" ;
+            rr:predicate epo:concernsMaskedObject ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-LotAwardOutcome_ND-LotResult ;
+                ] ;
+        ] ;
 	rr:predicateObjectMap
         [
-    		rdfs:label "ND-SubcontractingUnpublish (concernsNotice)" ;
+    		rdfs:label "ND-NotAwardedReasonUnpublish (concernsNotice)" ;
     		rdfs:comment "Connection from NonPublishedInformation to Notice under MG-Notice_ND-Root" ;
             rr:predicate epo:concernsNotice ;
             rr:objectMap
@@ -51,20 +60,20 @@ tedm:MG-NonPublishedInformation_ND-SubcontractingUnpublish a rr:TriplesMap ;
         ] ;
 	rr:predicateObjectMap
         [
-			rdfs:label "BT-195(BT-773)-Tender" ;
-    		rdfs:comment "The field BT-195(BT-773)-Tender, Unpublished Identifier, specifies information to generate the URI of the masked property" ;
+			rdfs:label "BT-195(BT-144)-LotResult" ;
+    		rdfs:comment "The field BT-195(BT-144)-LotResult, Unpublished Identifier, specifies information to generate the URI of the masked property" ;
             rr:predicate epo:hasMaskableProperty ;
             rr:objectMap
                 [
-                    rml:reference "if (exists(efbc:FieldIdentifierCode/text() = 'sub-con')) then 'http://data.europa.eu/a4g/ontology#hasSubcontracting' else null" ;
+                    rml:reference "if (exists(efbc:FieldIdentifierCode/text() = 'no-awa-rea')) then 'http://data.europa.eu/a4g/ontology#hasNonAwardJustification' else null" ;
                     rr:termType rr:IRI ;
                 ] ;
         ] ;
-    # BT-195(BT-773)-Tender-List Not needed.
+    # BT-195(BT-144)-LotResult-List Not needed.
 	rr:predicateObjectMap
         [
-          rdfs:label "BT-197(BT-773)-Tender" ;
-		  rdfs:comment "In BT-197(BT-773)-Tender, Unpublished Justification Code, we link to the at-voc:non-publication-justification controlled list" ;
+          rdfs:label "BT-197(BT-144)-LotResult" ;
+		  rdfs:comment "In BT-197(BT-144)-LotResult, Unpublished Justification Code, we link to the at-voc:non-publication-justification controlled list" ;
 		  rr:predicate epo:hasNonPublicationJustification ;
             rr:objectMap
                 [
@@ -79,7 +88,7 @@ tedm:MG-NonPublishedInformation_ND-SubcontractingUnpublish a rr:TriplesMap ;
 	rr:predicateObjectMap
         [
 
-            rdfs:label "BT-198(BT-773)-Tender" ;
+            rdfs:label "BT-198(BT-144)-LotResult" ;
             rdfs:comment "Unpublished Accessibility Date (Unpublished Access Date below SDK 1.6)" ;
             rr:predicate epo:hasAccessibilityDate ;
             rr:objectMap
@@ -90,15 +99,15 @@ tedm:MG-NonPublishedInformation_ND-SubcontractingUnpublish a rr:TriplesMap ;
         ] ;
 .
 
-tedm:MG-langString-hasConfidentialityJustification-NonPublishedInformation_ND-SubcontractingUnpublish a rr:TriplesMap ;
+tedm:MG-langString-hasConfidentialityJustification-NonPublishedInformation_ND-NotAwardedReasonUnpublish a rr:TriplesMap ;
     rml:logicalSource [
         rml:source "data/source.xml" ;
-        rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender/efac:SubcontractingTerm/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='sub-con']/efbc:ReasonDescription" ;
+        rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:DecisionReason/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='no-awa-rea']/efbc:ReasonDescription" ;
         rml:referenceFormulation ql:XPath ;
     ] ;
     rr:subjectMap [
         rr:class epo:NonPublishedInformation ;
-        rdfs:label "ND-SubcontractingUnpublish" ;
+        rdfs:label "ND-NotAwardedReasonUnpublish" ;
         rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/NonPublishedInformation${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
     ] ;
     rr:predicateObjectMap [
@@ -119,10 +128,10 @@ tedm:MG-langString-hasConfidentialityJustification-NonPublishedInformation_ND-Su
                     rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
                 ] ;
             ] ;
-            rdfs:comment "Language of Unpublished Justification Description of MG-NonPublishedInformation under ND-SubcontractingUnpublish" ;
-            rdfs:label "BT-196(BT-773)-Tender-Language" ;
+            rdfs:comment "Language of Unpublished Justification Description of MG-NonPublishedInformation under ND-NotAwardedReasonUnpublish" ;
+            rdfs:label "BT-196(BT-144)-LotResult-Language" ;
         ] ;
-        rdfs:comment "Unpublished Justification Description of MG-NonPublishedInformation under ND-SubcontractingUnpublish" ;
-        rdfs:label "BT-196(BT-773)-Tender" ;
+        rdfs:comment "Unpublished Justification Description of MG-NonPublishedInformation under ND-NotAwardedReasonUnpublish" ;
+        rdfs:label "BT-196(BT-144)-LotResult" ;
     ] ;
     rdfs:label "MG-NonPublishedInformation" .
