@@ -1290,7 +1290,10 @@ tedm:MG-EAuctionTechnique-usesTechnique-Lot_ND-AuctionTerms a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-AuctionTerms";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/AuctionTerms${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            # Avoid type-only epo:EAuctionTechnique:
+            # Only instantiate when we can also emit at least one predicate (currently: epo:hasUsage).
+            # Here: create only when the auction is actually used (true/1).
+            rml:reference "if (lower-case(cbc:AuctionConstraintIndicator) = ('true','1')) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/AuctionTerms$' || replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '') else null" ;
             rr:class epo:EAuctionTechnique ;
         ] ;
     rr:predicateObjectMap
@@ -1302,14 +1305,7 @@ tedm:MG-EAuctionTechnique-usesTechnique-Lot_ND-AuctionTerms a rr:TriplesMap ;
                 [
                     rdfs:label "at-voc:usage";
                     rdfs:comment "translation of 'true' to at-voc:usage:used";
-                    rml:reference "if(cbc:AuctionConstraintIndicator/text()='true') then 'http://publications.europa.eu/resource/authority/usage/used' else null";
-                    rr:termType rr:IRI
-                ] ;
-            rr:objectMap
-                [
-                    rdfs:label "at-voc:usage";
-                    rdfs:comment "translation of 'false' to at-voc:usage:n-used";
-                    rml:reference "if(cbc:AuctionConstraintIndicator/text()='false') then 'http://publications.europa.eu/resource/authority/usage/n-used' else null";
+                    rml:reference "if (lower-case(cbc:AuctionConstraintIndicator) = ('true','1')) then 'http://publications.europa.eu/resource/authority/usage/used' else null";
                     rr:termType rr:IRI
                 ] ;
         ] ;
@@ -1438,7 +1434,7 @@ tedm:MG-DynamicPurchaseSystemTechnique-usesTechnique-Lot_ND-LotTenderingProcess 
         [
             rdfs:label "ND-LotTenderingProcess";
             # INFO: forbidden in subtypes 1-6, 14-15, 19, 23-24, 28, 32, 35-40, CEI, E1-E2, E6, T01-T02
-            rml:reference "if (exists(cac:ContractingSystem/cbc:ContractingSystemTypeCode)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/DynamicPurchaseSystemTechnicalUsage$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(cac:ContractingSystem/cbc:ContractingSystemTypeCode[@listName='dps-usage'])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/DynamicPurchaseSystemTechnicalUsage$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:DynamicPurchaseSystemTechnique
         ] ;
     rr:predicateObjectMap
@@ -1613,7 +1609,7 @@ tedm:MG-MultipleStageProcedureTerm-isSubjectToLotSpecificTerm-Lot_ND-SecondStage
     rr:subjectMap
         [
             rdfs:label "ND-SecondStage";
-            rml:reference "if (exists(cbc:LimitationDescription) or exists(cbc:MaximumQuantity) or exists(cbc:MinimumQuantity)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/MultipleStageProcedureTerm$' || replace(replace(replace(path(../..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(cbc:MaximumQuantity) or exists(cbc:MinimumQuantity)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/MultipleStageProcedureTerm$' || replace(replace(replace(path(../..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:MultipleStageProcedureTerm
         ] ;
     rr:predicateObjectMap
@@ -3040,7 +3036,7 @@ tedm:MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotProcurementScope a r
     rr:subjectMap
         [
             rdfs:label "ND-LotProcurementScope";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTerm${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}";
+            rml:reference "if (exists(cbc:ProcurementTypeCode[@listName='contract-nature']) or exists(cac:PlannedPeriod/cbc:DurationMeasure) or exists(cac:PlannedPeriod/cbc:StartDate) or exists(cac:PlannedPeriod/cbc:EndDate) or exists(cac:PlannedPeriod/cbc:DescriptionCode)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractTerm$' || replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '') else null";
             rr:class epo:ContractTerm
         ] ;
     rr:predicateObjectMap
@@ -3655,7 +3651,7 @@ rdfs:label  "MG-StrategicProcurement";
     rr:subjectMap
         [
             rdfs:label "ND-StrategicProcurementType";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/StrategicProcurement${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rml:reference "if (cbc:ProcurementTypeCode/text()!='none') then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/StrategicProcurement$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:StrategicProcurement
         ] ;
     # rr:predicateObjectMap
@@ -3692,7 +3688,9 @@ rdfs:label  "MG-StrategicProcurement";
             rr:predicate rdf:type ;
             rr:objectMap
                 [
-                    rml:reference "if (cbc:ProcurementTypeCode/text()='env-imp') then 'http://data.europa.eu/a4g/ontology#GreenProcurement' else null" ;
+                    # NOTE: Avoid generating type-only GreenProcurement on StrategicProcurement.
+                    # Details come from BT-774 via environmental-impact mapping (GreenProcurement fulfillsRequirement).
+                    rml:reference "if (false()) then 'http://data.europa.eu/a4g/ontology#GreenProcurement' else null" ;
                     rr:termType rr:IRI ;
                 ] ;
             rr:objectMap
@@ -4415,7 +4413,7 @@ tedm:MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotPlacePerformance a r
     rr:subjectMap
         [
             rdfs:label "ND-LotProcurementScope";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTerm${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}";
+            rml:reference "if (exists(cbc:Description)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractTerm$' || replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '') else null" ;
             rr:class epo:ContractTerm
         ] ;
     # rr:predicateObjectMap
