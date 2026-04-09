@@ -275,6 +275,19 @@ tedm:MG-LotAwardOutcome_ND-StrategicProcurementLotResult a rr:TriplesMap ;
             rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/LotAwardOutcome/{../../cbc:ID}" ;
             rr:class epo:LotAwardOutcome
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-StrategicProcurementInformationLotResult" ;
+            rr:predicate epo:fulfillsStrategicProcurement ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-GreenProcurement-fulfillsStrategicProcurement-LotAwardOutcome_ND-StrategicProcurementLotResult ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(.)"
+                    ];
+                ] ;
+        ] ;
 .
 
 tedm:MG-LotAwardOutcome_ND-ProcurementDetailsLotResult a rr:TriplesMap ;

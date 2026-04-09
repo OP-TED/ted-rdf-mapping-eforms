@@ -574,37 +574,6 @@ tedm:MG-FrameworkAgreement-followsRulesSetBy-PurchaseContract_ND-SettledContract
         ] ;
 .
 
-tedm:MG-Contract_ND-PayerParty  a rr:TriplesMap ;
-  rdfs:label "MG-Contract";
-       rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/cac:PayerParty" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-PayerParty" ;
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Contract/{../../efac:SettledContract/cbc:ID}" ;
-            rr:class epo:Contract
-        ] ;
-    rr:predicateObjectMap
-        [
-            # TODO min sdk 1.8
-            tedm:minSDKVersion "1.8" ;
-            rr:predicate epo:isSubjectToContractSpecificTerm ;
-            rr:objectMap
-                [
-                   rr:parentTriplesMap tedm:MG-ContractTerm-isSubjectToContractSpecificTerm-Contract_ND-PayerParty ;
-                   rr:joinCondition
-                      [
-                        rr:child "path(.)" ;
-                        rr:parent "path(.)" ;
-                      ] ;
-                ] ;
-        ] ;
-    .
-
 tedm:MG-langString-description-Fund-isFundedBy-Contract_ND-ContractEUFunds a rr:TriplesMap ;
     rml:logicalSource [
         rml:source "data/source.xml" ;

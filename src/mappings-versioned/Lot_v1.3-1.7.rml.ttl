@@ -24,7 +24,7 @@
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix idlab-fn: <http://example.com/idlab/function/> .
 
-tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LateTendererInformation a rr:TriplesMap ;
+tedm:MG-SubmissionTerm-isSubjectToTerm-Lot_ND-LateTendererInformation a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -75,12 +75,12 @@ tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LateTendererInformation
         ]
 .
 
-tedm:MG-ProcurementDocument-involvesProcurementDocument-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotDocOfficialLanguage a rr:TriplesMap ;
+tedm:MG-AccessTerm-isSubjectToTerm-Lot_ND-LotDocOfficialLanguage a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-LotDocOfficialLanguage";
-            rml:reference "if (exists(cbc:LanguageID[not(../cbc:DocumentStatusCode/text()='non-official')])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ProcurementDocument$' || concat(replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_'), encode-for-uri(cbc:ID/text())) else null" ;
-            rr:class epo:ProcurementDocument
+            rml:reference "if (exists(cbc:LanguageID[not(../cbc:DocumentStatusCode/text()='non-official')])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || 'AccessTerm$' || concat(replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_'), encode-for-uri(cbc:ID/text())) else null" ;
+            rr:class epo:AccessTerm
         ] ;
     rml:logicalSource
         [
@@ -92,7 +92,7 @@ tedm:MG-ProcurementDocument-involvesProcurementDocument-AccessTerm-isSubjectToLo
         [
             rdfs:label "BT-708-Lot (value)";
             rdfs:comment "Documents Official Language of MG-ProcurementDocument under ND-LotProcurementDocument";
-            rr:predicate epo:hasOfficialLanguage  ;
+            rr:predicate epo:providesProcurementDocumentsInOfficialLanguage ;
             rr:objectMap
                 [
                     tedm:minSDKVersion "1.3" ;
@@ -108,7 +108,7 @@ tedm:MG-ProcurementDocument-involvesProcurementDocument-AccessTerm-isSubjectToLo
         ] ;
 .
 
-tedm:MG-langString-hasLateSubmissionInformationDescription-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LateTendererInformation a rr:TriplesMap ;
+tedm:MG-langString-hasLateSubmissionInformationDescription-SubmissionTerm-isSubjectToTerm-Lot_ND-LateTendererInformation a rr:TriplesMap ;
     rml:logicalSource [
         rml:source "data/source.xml" ;
         rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:TendererQualificationRequest[not(cbc:CompanyLegalFormCode)]/cac:SpecificTendererRequirement[not(cbc:TendererRequirementTypeCode[@listName='reserved-procurement'])]/cbc:Description" ;

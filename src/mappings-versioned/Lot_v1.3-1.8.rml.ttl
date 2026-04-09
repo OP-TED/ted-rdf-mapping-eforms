@@ -39,7 +39,7 @@ tedm:MG-Lot_ND-Lot a rr:TriplesMap ;
                 ] ;
         ] ;
 .
-tedm:MG-SubcontractTerm-foreseesContractSpecificTerm-Lot_ND-SubcontractingObligation a rr:TriplesMap ;
+tedm:MG-SubcontractTerm-foreseesTerm-Lot_ND-SubcontractingObligation a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -62,32 +62,6 @@ tedm:MG-SubcontractTerm-foreseesContractSpecificTerm-Lot_ND-SubcontractingObliga
                     ] ;
                 ] ;
         ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-729-Lot";
-            rdfs:comment "SubcontractingObligationMaximum of MG-SubcontractTerm under ND-SubcontractingObligation";
-            rr:predicate epo:hasSubcontractorsProposedAboveObligation  ;
-            rr:objectMap
-                [
-                    tedm:minSDKVersion "1.3" ;
-                    tedm:maxSDKVersion "1.8" ;
-                    rml:reference "cbc:MaximumPercent";
-                    rr:datatype xsd:decimal ;
-                ] ;
-        ];
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-64-Lot";
-            rdfs:comment "SubcontractingObligationMaximum of MG-SubcontractTerm under ND-SubcontractingObligation";
-            rr:predicate epo:hasMinimumSubcontractorsProposedObligation   ;
-            rr:objectMap
-                [
-                    tedm:minSDKVersion "1.3" ;
-                    tedm:maxSDKVersion "1.8" ;
-                    rml:reference "cbc:MinimumPercent";
-                    rr:datatype xsd:decimal ;
-                ] ;
-        ]
 .
 
 tedm:MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SecondStageCriterionParameter a rr:TriplesMap ;
@@ -195,39 +169,8 @@ tedm:MG-Constraint-hasConstraint-SelectionCriterion-specifiesProcurementCriterio
         ] ;
 .
 
-tedm:MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotProcurementDocument a rr:TriplesMap ;
+tedm:MG-AccessTerm-isSubjectToTerm-Lot_ND-LotProcurementDocument a rr:TriplesMap ;
     rdfs:label "MG-AccessTerm";
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-708-Lot (object)";
-            rdfs:comment "Documents Official Language of MG-AccessTerm under ND-LotProcurementDocument";
-            rr:predicate epo:involvesProcurementDocument;
-            rr:objectMap
-                [
-                   rr:parentTriplesMap tedm:MG-ProcurementDocument-involvesProcurementDocument-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotDocOfficialLanguage ;
-                    rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(.)";
-                    ];
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-737-Lot (object)";
-            rdfs:comment "Documents Unofficial Language of MG-AccessTerm under ND-LotDocAllOfficialLanguages";
-            rr:predicate epo:involvesProcurementDocument;
-            rr:objectMap
-                [
-                   rr:parentTriplesMap tedm:MG-ProcurementDocument-involvesProcurementDocument-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotDocAllNonOfficialLanguages ;
-                    rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(.)";
-                    ];
-                ] ;
-        ] ;
-.
-
-tedm:MG-ProcurementDocument-involvesProcurementDocument-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotDocAllNonOfficialLanguages a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -237,14 +180,14 @@ tedm:MG-ProcurementDocument-involvesProcurementDocument-AccessTerm-isSubjectToLo
     rr:subjectMap
         [
             rdfs:label "ND-LotDocAllNonOfficialLanguages";
-            rml:reference "if (exists(cbc:LanguageID[../cbc:DocumentStatusCode/text()='non-official'])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ProcurementDocument$' || concat(replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_'), encode-for-uri(cbc:ID/text())) else null" ;
-            rr:class epo:ProcurementDocument
+            rml:reference "if (exists(cbc:LanguageID[../cbc:DocumentStatusCode/text()='non-official'])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || 'AccessTerm$' || concat(replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_'), encode-for-uri(cbc:ID/text())) else null" ;
+            rr:class epo:AccessTerm
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-737-Lot";
-            rdfs:comment "Documents Unofficial Language of MG-ProcurementDocument under ND-LotProcurementDocument";
-            rr:predicate epo:hasUnofficialLanguage  ;
+            rdfs:label "BT-737-Lot (value)";
+            rdfs:comment "Documents Unofficial Language of MG-AccessTerm under ND-LotProcurementDocument";
+            rr:predicate epo:providesProcurementDocumentsInUnofficialLanguage ;
             rr:objectMap
                 [
                     tedm:minSDKVersion "1.3" ;
@@ -257,4 +200,39 @@ tedm:MG-ProcurementDocument-involvesProcurementDocument-AccessTerm-isSubjectToLo
                     ] ;
                 ] ;
         ] ;
+.
+tedm:MG-SubcontractTerm_ND-SubcontractingObligation a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AllowedSubcontractTerms";
+            rml:referenceFormulation ql:XPath
+        ];
+
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-729-Lot";
+            rdfs:comment "SubcontractingObligationMaximum of MG-SubcontractTerm under ND-SubcontractingObligation";
+            rr:predicate epo:hasSubcontractorsProposedAboveObligation  ;
+            rr:objectMap
+                [
+                    tedm:minSDKVersion "1.3" ;
+                    tedm:maxSDKVersion "1.8" ;
+                    rml:reference "cbc:MaximumPercent";
+                    rr:datatype xsd:decimal ;
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-64-Lot";
+            rdfs:comment "SubcontractingObligationMaximum of MG-SubcontractTerm under ND-SubcontractingObligation";
+            rr:predicate epo:hasMinimumSubcontractorsProposedObligation   ;
+            rr:objectMap
+                [
+                    tedm:minSDKVersion "1.3" ;
+                    tedm:maxSDKVersion "1.8" ;
+                    rml:reference "cbc:MinimumPercent";
+                    rr:datatype xsd:decimal ;
+                ] ;
+        ]
 .

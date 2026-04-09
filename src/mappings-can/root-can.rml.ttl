@@ -72,6 +72,40 @@ tedm:MG-ResultNotice_ND-Root
 #                    rr:parentTriplesMap tedm:MG-ReviewDecision-seeAlso-ResultNotice_ND-ReviewStatus
 #               ] ;
 #        ] ;
+    rr:predicateObjectMap
+        [
+            tedm:minSDKVersion "1.13" ;
+            rdfs:label "MG-ReviewRequester-announcesRole-ResultNotice" ;
+            rdfs:comment "the relation between MG-ReviewRequester and ResultNotice under ND-Root" ;
+            rr:predicate epo:announcesRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ReviewRequester-announcesRole-ResultNotice_ND-AppealingParty ;
+                ] ;
+        ] ;
+    # this is for epo 5.3.0 -- see related parent (referenced) in ReviewObject-can
+    #  rr:predicateObjectMap
+    #     [
+    #         rdfs:label "ReviewDecision of MG-ResultNotice under ND-Root" ;
+    #         rdfs:comment "Connection between ResultNotice and ReviewDecision under ND-Root" ;
+    #         rr:predicate epo:announcesReviewDecision ;
+    #         rr:objectMap
+    #             [
+    #                rr:parentTriplesMap tedm:MG-ReviewDecision-announcesReviewDecision-ResultNotice_ND-ReviewStatus ;
+    #             ] ;
+    #     ] ;
+    # TODO to be removed with the child mapping in ReviewObject-can as part of purging of rdfs:seeAlso
+    # rr:predicateObjectMap
+    #     [
+    #         tedm:minSDKVersion "1.13" ;
+    #         rdfs:label "MG-ReviewDecision-seeAlso-ResultNotice" ;
+    #         rdfs:comment "the relation between MG-ReviewDecision and ResultNotice under ND-Root" ;
+    #         rr:predicate rdfs:seeAlso ;
+    #         rr:objectMap
+    #             [
+    #                 rr:parentTriplesMap tedm:MG-ReviewDecision-seeAlso-ResultNotice_ND-ReviewStatus
+    #             ] ;
+    #     ] ;
      rr:predicateObjectMap
         [
             rdfs:label "MG-Reviewer-announcesRole-ResultNotice" ;
@@ -89,7 +123,7 @@ tedm:MG-ResultNotice_ND-Root
             rr:predicate epo:announcesRole  ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-ReviewRequester_ND-AppealingParty;
+                    rr:parentTriplesMap tedm:MG-ReviewRequester-announcesRole-ResultNotice_ND-AppealingParty;
                 ] ;
         ] ;
     rr:predicateObjectMap
