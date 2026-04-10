@@ -943,7 +943,7 @@ tedm:MG-ContractTerm-foreseesTerm-PlannedProcurement_ND-ProcedureProcurementScop
 .
 
 tedm:MG-ContractTerm-foreseesTerm-Procedure_ND-ProcedureContractAdditionalNature a rr:TriplesMap ;
-    # predicate mappings are in versioned files (Procedure_v1.3-1.7|1.8+)
+    # logical source specification (iterator) and predicate mappings are in versioned files (Procedure_v1.3-1.7|1.8+)
     rdfs:label "MG-ContractTerm" ;
     rr:subjectMap
         [
@@ -954,14 +954,18 @@ tedm:MG-ContractTerm-foreseesTerm-Procedure_ND-ProcedureContractAdditionalNature
         ] ;
 .
 tedm:MG-ContractTerm-foreseesTerm-PlannedProcurement_ND-ProcedureContractAdditionalNature a rr:TriplesMap ;
-    # predicate mappings are in versioned files (Procedure_v1.3-1.7|1.8+)
+    # logical source specification (iterator) and predicate mappings are in versioned files (Procedure_v1.3-1.7|1.8+)
     rdfs:label "MG-ContractTerm" ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProject/cac:ProcurementAdditionalType[exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E1 E2', text())])]" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
+    # rml:logicalSource
+    #     [
+    #         rml:source "data/source.xml" ;
+    #         # The iterator corresponding to node ND-ProcedureContractAdditionalNature, which was introduced in SDK 1.8, would be 
+    #         # "/*/cac:ProcurementProject/cac:ProcurementAdditionalType[cbc:ProcurementTypeCode/@listName='contract-nature']"
+    #         # but we generalized it, so that it works for the mapping of BT-531-Procedure field in earlier SDK versions as well, 
+    #         # where the parent node was ND-ProcedureProcurementScope
+    #         rml:iterator "/*/cac:ProcurementProject/cac:ProcurementAdditionalType" ;
+    #         rml:referenceFormulation ql:XPath
+    #     ] ;
     rr:subjectMap
         [
             rdfs:label "ND-ProcedureProcurementScope" ;
@@ -1219,7 +1223,7 @@ tedm:MG-MonetaryValue-hasEstimatedValue-PlannedProcurement_ND-ProcedureValueEsti
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProject/cac:RequestedTenderTotal[exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E1 E2', text())])]";
+            rml:iterator "/*/cac:ProcurementProject/cac:RequestedTenderTotal";
             rml:referenceFormulation ql:XPath
         ];
     rr:subjectMap
@@ -1334,7 +1338,7 @@ tedm:MG-Purpose-hasPurpose-PlannedProcurement_ND-ProcedureMainClassificationCode
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProject/cac:MainCommodityClassification[exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E1 E2', text())])]";
+            rml:iterator "/*/cac:ProcurementProject/cac:MainCommodityClassification";
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
@@ -1364,7 +1368,7 @@ tedm:MG-Purpose-hasPurpose-PlannedProcurement_ND-ProcedureAdditionalCommodityCla
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProject/cac:AdditionalCommodityClassification[exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E1 E2', text())])]";
+            rml:iterator "/*/cac:ProcurementProject/cac:AdditionalCommodityClassification";
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
