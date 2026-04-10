@@ -4,7 +4,7 @@ Generate privacy-fields-field RML (.rml.ttl) from "Export for TM Input" for **gr
 **yellow** rows.
 
 - **Green** — ``Type of Match`` = ``green``.
-- **Amber** — ``Type of Match`` = ``amber`` (partial ``concernsMaskedObject`` when O/alt empty).
+- **Amber** — ``Type of Match`` = ``amber`` (partial ``concernsMaskedObject`` when masked parent unresolved).
 - **Yellow** — ``Type of Match`` = ``yellow``: bright-yellow continuation lines — extra
   ``epo:hasMaskableProperty`` (BT-195) POMs on the **same** TriplesMap as the anchor row (anchor
   = first row in the File Name run with a non-empty Iterator, often the green line above).
@@ -15,8 +15,12 @@ Generate privacy-fields-field RML (.rml.ttl) from "Export for TM Input" for **gr
 ``concernsMaskedObject`` ``rr:objectMap`` gets ``rr:joinCondition`` with ``rr:parent "."`` and
 ``rr:child`` from ``R`` (BT-197 still defaults ``rr:child`` to ``cbc:ReasonCode`` when ``R`` is empty).
 ``AG`` = ``TriplesMap Masked Object alt name`` — overrides ``P`` for the parent TriplesMap IRI when set.
+When ``AG`` is set (**alternative masked object**), ``AH``–``AJ`` replace ``N``, ``O``, and ``R`` for the
+``concernsMaskedObject`` POM (and join child for BT-197): ``Alt. POM Masked Object Label``,
+``Alt. POM Masked Object Comment``, ``Alt. joinCondition child``. If an alt cell is empty, the
+corresponding primary column (``N``/``O``/``R``) is still used.
 
-Defaults: ``src/mappings-common/green``, ``amber``, ``yellow``. Use ``--no-green`` / ``--no-amber``
+Defaults: ``src/mappings-unpublished/green``, ``amber``, ``yellow``. Use ``--no-green`` / ``--no-amber``
 / ``--no-yellow`` to skip.
 
 Usage:
@@ -37,9 +41,9 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_XLSX = REPO_ROOT / "privacy-fields" / "Privacy Field Mappings Helper Sheet.xlsx"
-DEFAULT_GREEN_DIR = REPO_ROOT / "src" / "mappings-common" / "green"
-DEFAULT_AMBER_DIR = REPO_ROOT / "src" / "mappings-common" / "amber"
-DEFAULT_YELLOW_DIR = REPO_ROOT / "src" / "mappings-common" / "yellow"
+DEFAULT_GREEN_DIR = REPO_ROOT / "src" / "mappings-unpublished" / "green"
+DEFAULT_AMBER_DIR = REPO_ROOT / "src" / "mappings-unpublished" / "amber"
+DEFAULT_YELLOW_DIR = REPO_ROOT / "src" / "mappings-unpublished" / "yellow"
 SHEET_NAME = "Export for TM Input"
 
 # Sheet legend: bright yellow + gray font — several BT-195 PredicateObjectMaps on one TriplesMap.
@@ -64,6 +68,9 @@ H_POM_MASK_LABEL = "POM Masked Object Label"
 H_POM_MASK_COMMENT = "POM Masked Object Comment"
 H_TM_MASKED = "TriplesMap Masked Object"
 H_TM_MASKED_ALT = "TriplesMap Masked Object alt name"
+H_POM_MASK_LABEL_ALT = "Alt. POM Masked Object Label"
+H_POM_MASK_COMMENT_ALT = "Alt. POM Masked Object Comment"
+H_JOIN_CHILD_ALT = "Alt. joinCondition child"
 H_JOIN_CHILD = "joinCondition child"
 H_BT195_LABEL = "POM BT-195 Label"
 H_BT195_COMMENT = "POM BT-195 Comment"
@@ -130,20 +137,50 @@ def masked_parent_triples_map(row: dict[str, object]) -> str:
     return full_tedm(str(chosen))
 
 
-def join_child(row: dict[str, object]) -> str:
-    """BT-197 code-list join: default ``cbc:ReasonCode`` when ``joinCondition child`` is blank."""
+def uses_alternative_masked_object(row: dict[str, object]) -> bool:
+    """True when ``TriplesMap Masked Object alt name`` is set — alt label/comment/join columns apply."""
+    v = row.get(H_TM_MASKED_ALT)
+    return v is not None and str(v).strip() != ""
+
+
+def effective_pom_mask_label(row: dict[str, object]) -> str:
+    if uses_alternative_masked_object(row):
+        alt = row.get(H_POM_MASK_LABEL_ALT)
+        if alt is not None and str(alt).strip():
+            return str(alt).strip()
+    base = row.get(H_POM_MASK_LABEL)
+    return str(base) if base is not None else ""
+
+
+def effective_pom_mask_comment(row: dict[str, object]) -> str:
+    if uses_alternative_masked_object(row):
+        alt = row.get(H_POM_MASK_COMMENT_ALT)
+        if alt is not None and str(alt).strip():
+            return str(alt).strip()
+    base = row.get(H_POM_MASK_COMMENT)
+    return str(base) if base is not None else ""
+
+
+def join_condition_child_raw(row: dict[str, object]) -> str | None:
+    """Join child for masked-object POM and BT-197: ``AJ`` then ``R`` when alternative parent (AG); else ``R``."""
+    if uses_alternative_masked_object(row):
+        aj = row.get(H_JOIN_CHILD_ALT)
+        if aj is not None and str(aj).strip():
+            return str(aj).strip()
     jc = row.get(H_JOIN_CHILD)
-    if jc is None or str(jc).strip() == "":
-        return "cbc:ReasonCode"
-    return str(jc).strip()
+    if jc is not None and str(jc).strip():
+        return str(jc).strip()
+    return None
+
+
+def join_child(row: dict[str, object]) -> str:
+    """BT-197 code-list join: default ``cbc:ReasonCode`` when join child is blank."""
+    return join_condition_child_raw(row) or "cbc:ReasonCode"
 
 
 def masked_object_join_child_if_present(row: dict[str, object]) -> str | None:
-    """If ``joinCondition child`` (column R) is set, value for ``epo:concernsMaskedObject`` join; else None."""
-    jc = row.get(H_JOIN_CHILD)
-    if jc is None or str(jc).strip() == "":
-        return None
-    return str(jc).strip()
+    """Non-empty join child for ``epo:concernsMaskedObject`` ``rr:joinCondition``, if any."""
+    return join_condition_child_raw(row)
 
 
 def bt195_rml_reference(cond: str, iri: str) -> str:
@@ -315,8 +352,8 @@ def render_rml(
     tm_label = str(anchor[H_TM_LABEL])
     subj_label = str(anchor[H_SUBJECT_LABEL])
     iterator = str(anchor[H_ITERATOR])
-    pom_mask_l = str(anchor[H_POM_MASK_LABEL])
-    pom_mask_c = str(anchor[H_POM_MASK_COMMENT])
+    pom_mask_l = effective_pom_mask_label(anchor)
+    pom_mask_c = effective_pom_mask_comment(anchor)
     parent_masked = masked_parent_triples_map(anchor)
     bt197_l = str(anchor[H_BT197_LABEL])
     bt197_c = str(anchor[H_BT197_COMMENT])
