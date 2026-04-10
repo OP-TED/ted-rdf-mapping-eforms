@@ -11,14 +11,13 @@ Generate privacy-fields-field RML (.rml.ttl) from "Export for TM Input" for **gr
 
 **Masked object (sheet columns, current layout):** ``L``–``M`` (MG / node hints) are not emitted yet;
 ``N``–``O`` label/comment for ``epo:concernsMaskedObject`` POM; ``P`` = ``rr:parentTriplesMap`` local name;
-``Q`` simplified XPath (documentation); ``R`` = ``joinCondition child`` — when non-empty, the
-``concernsMaskedObject`` ``rr:objectMap`` gets ``rr:joinCondition`` with ``rr:parent "."`` and
-``rr:child`` from ``R`` (BT-197 still defaults ``rr:child`` to ``cbc:ReasonCode`` when ``R`` is empty).
+``Q`` simplified XPath (documentation); ``R`` = ``joinCondition child`` — used **only** for the
+``epo:concernsMaskedObject`` parent link (``rr:parent "."`` + ``rr:child`` from ``R``; ``AJ`` overrides
+``R`` when ``AG`` is set). **BT-197** (non-publication justification → code list) always uses
+``rr:child`` ``cbc:ReasonCode`` — column ``R`` does **not** apply there.
 ``AG`` = ``TriplesMap Masked Object alt name`` — overrides ``P`` for the parent TriplesMap IRI when set.
-When ``AG`` is set (**alternative masked object**), ``AH``–``AJ`` replace ``N``, ``O``, and ``R`` for the
-``concernsMaskedObject`` POM (and join child for BT-197): ``Alt. POM Masked Object Label``,
-``Alt. POM Masked Object Comment``, ``Alt. joinCondition child``. If an alt cell is empty, the
-corresponding primary column (``N``/``O``/``R``) is still used.
+When ``AG`` is set, ``AH``/``AI`` replace ``N``/``O`` for the masked-object POM labels (with fallback to
+``N``/``O`` when an alt cell is empty).
 
 Defaults: ``src/mappings-unpublished/green``, ``amber``, ``yellow``. Use ``--no-green`` / ``--no-amber``
 / ``--no-yellow`` to skip.
@@ -161,8 +160,13 @@ def effective_pom_mask_comment(row: dict[str, object]) -> str:
     return str(base) if base is not None else ""
 
 
-def join_condition_child_raw(row: dict[str, object]) -> str | None:
-    """Join child for masked-object POM and BT-197: ``AJ`` then ``R`` when alternative parent (AG); else ``R``."""
+def bt197_join_child(_row: dict[str, object]) -> str:
+    """BT-197 → ``tedm:non-publication-justification``: ``rr:child`` is always ``cbc:ReasonCode`` (never ``R``/``AJ``)."""
+    return "cbc:ReasonCode"
+
+
+def masked_object_join_child_if_present(row: dict[str, object]) -> str | None:
+    """Join child for ``epo:concernsMaskedObject`` only: ``AJ`` then ``R`` when ``AG`` set; else ``R``."""
     if uses_alternative_masked_object(row):
         aj = row.get(H_JOIN_CHILD_ALT)
         if aj is not None and str(aj).strip():
@@ -171,16 +175,6 @@ def join_condition_child_raw(row: dict[str, object]) -> str | None:
     if jc is not None and str(jc).strip():
         return str(jc).strip()
     return None
-
-
-def join_child(row: dict[str, object]) -> str:
-    """BT-197 code-list join: default ``cbc:ReasonCode`` when join child is blank."""
-    return join_condition_child_raw(row) or "cbc:ReasonCode"
-
-
-def masked_object_join_child_if_present(row: dict[str, object]) -> str | None:
-    """Non-empty join child for ``epo:concernsMaskedObject`` ``rr:joinCondition``, if any."""
-    return join_condition_child_raw(row)
 
 
 def bt195_rml_reference(cond: str, iri: str) -> str:
@@ -364,7 +358,7 @@ def render_rml(
     bt196_c = str(anchor[H_BT196_COMMENT])
     bt196_ll = str(anchor[H_BT196_LANG_LABEL])
     bt196_lc = str(anchor[H_BT196_LANG_COMMENT])
-    jc = join_child(anchor)
+    jc = bt197_join_child(anchor)
     mask_join_child = masked_object_join_child_if_present(anchor)
     bt195_l = str(anchor[H_BT195_LABEL])
 
