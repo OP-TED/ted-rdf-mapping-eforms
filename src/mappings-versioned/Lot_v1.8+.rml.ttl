@@ -34,12 +34,13 @@ tedm:MG-AccessTerm-isSubjectToTerm-Lot_ND-LotProcurementDocument a rr:TriplesMap
     rr:subjectMap
         [
             rdfs:label "ND-LotProcurementDocument";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/AccessTerm${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            # this guard covers fields BT-737 and BT-708 (DocumentStatusCode), BT-707 (DocumentTypeCode), BT-14, BT-15 and BT-615 (DocumentType)
+            rml:reference "if (exists(cbc:LanguageID[../cbc:DocumentStatusCode/text()='official']) or exists(cbc:LanguageID[../cbc:DocumentStatusCode/text()='non-official']) or exists(cbc:DocumentTypeCode) or cbc:DocumentType/text()='restricted-document' or cbc:DocumentType/text()='non-restricted-document') then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/AccessTerm$' || concat(replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_'), encode-for-uri(cbc:ID/text())) else null" ;
             rr:class epo:AccessTerm
-        ] ;            
+        ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-15-Lot";
+            rdfs:label "BT-15-Lot (value)";
             rdfs:comment "Documents URL of MG-AccessTerm under ND-LotProcurementDocument";
             rr:predicate epo:hasPublicAccessURL  ;
             rr:objectMap

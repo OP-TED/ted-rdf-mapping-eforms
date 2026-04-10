@@ -177,12 +177,7 @@ tedm:MG-AccessTerm-isSubjectToTerm-Lot_ND-LotProcurementDocument a rr:TriplesMap
             rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:CallForTendersDocumentReference";
             rml:referenceFormulation ql:XPath
         ];
-    rr:subjectMap
-        [
-            rdfs:label "ND-LotDocAllNonOfficialLanguages";
-            rml:reference "if (exists(cbc:LanguageID[../cbc:DocumentStatusCode/text()='non-official'])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || 'AccessTerm$' || concat(replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_'), encode-for-uri(cbc:ID/text())) else null" ;
-            rr:class epo:AccessTerm
-        ] ;
+    # different subjectMaps are facilitated in both v1.3-1.7 and v1.8-1.8
     rr:predicateObjectMap
         [
             rdfs:label "BT-737-Lot (value)";

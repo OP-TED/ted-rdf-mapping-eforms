@@ -75,19 +75,16 @@ tedm:MG-SubmissionTerm-isSubjectToTerm-Lot_ND-LateTendererInformation a rr:Tripl
         ]
 .
 
-tedm:MG-AccessTerm-isSubjectToTerm-Lot_ND-LotDocOfficialLanguage a rr:TriplesMap ;
+tedm:MG-AccessTerm-isSubjectToTerm-Lot_ND-LotProcurementDocument a rr:TriplesMap ;
     rr:subjectMap
         [
-            rdfs:label "ND-LotDocOfficialLanguage";
-            rml:reference "if (exists(cbc:LanguageID[not(../cbc:DocumentStatusCode/text()='non-official')])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || 'AccessTerm$' || concat(replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_'), encode-for-uri(cbc:ID/text())) else null" ;
+            rdfs:label "ND-LotProcurementDocument";
+            # VERINFO: up to v1.7, BT-737 and BT-708 cover any code value because BT-708 works with anything NOT non-official
+            # additionally this guard covers also BT-707 (DocumentTypeCode), BT-14, BT-15 and BT-615 (DocumentType and Attachment)
+            rml:reference "if ((exists(cbc:LanguageID) and exists(cbc:DocumentStatusCode)) or exists(cbc:DocumentTypeCode) or cbc:DocumentType/text()='restricted-document' or cbc:DocumentType/text()='non-restricted-document' or exists(cac:Attachment)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || 'AccessTerm$' || concat(replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_'), encode-for-uri(cbc:ID/text())) else null" ;
             rr:class epo:AccessTerm
         ] ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:CallForTendersDocumentReference";
-            rml:referenceFormulation ql:XPath
-        ];
+    # logicalSource is defined in v1.3-1.8
     rr:predicateObjectMap
         [
             rdfs:label "BT-708-Lot (value)";

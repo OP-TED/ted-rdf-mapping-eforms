@@ -24,19 +24,9 @@
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix idlab-fn: <http://example.com/idlab/function/> .
 
-tedm:MG-AccessTerm-isSubjectToTerm-Lot_ND-LotDocOfficialLanguage a rr:TriplesMap ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-LotDocOfficialLanguage";
-            rml:reference "if (exists(cbc:LanguageID[../cbc:DocumentStatusCode/text()='official'])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/AccessTerm$' || concat(replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_'), encode-for-uri(cbc:ID/text())) else null" ;
-            rr:class epo:AccessTerm
-        ] ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:CallForTendersDocumentReference";
-            rml:referenceFormulation ql:XPath
-        ];
+tedm:MG-AccessTerm-isSubjectToTerm-Lot_ND-LotProcurementDocument a rr:TriplesMap ;
+    # subjectMap is defined in v1.8+
+    # logicalSource is defined in v1.3-1.8
     rr:predicateObjectMap
         [
             rdfs:label "BT-708-Lot (value)";
