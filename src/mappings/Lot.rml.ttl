@@ -3148,17 +3148,6 @@ tedm:MG-Lot_ND-LotTenderingTerms a rr:TriplesMap ;
                     rr:datatype xsd:boolean
                 ] ;
         ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-681-Lot";
-            rdfs:comment "Foreign Subsidies Regulation of MG-Lot under ND-LotTenderingTerms";
-            rr:predicate epo:appliesForeignSubsidiesRegulation;
-            rr:objectMap
-                [
-                    rml:reference "if(cac:TenderingTerms/cac:ContractExecutionRequirement[cbc:ExecutionRequirementCode/@listName='fsr']/cbc:ExecutionRequirementCode/text()='true') then 'true' else null";
-                    rr:datatype xsd:boolean
-                ] ;
-        ] ;
 .
 
 tedm:MG-ContractTerm-foreseesTerm-Lot_ND-LotReservedExecution a rr:TriplesMap ;
@@ -6509,6 +6498,34 @@ tedm:MG-Lot_ND-OtherContractExecutionConditions a rr:TriplesMap ;
                     ];
                 ] ;
         ];
+.
+
+tedm:MG-Lot_ND-FSR a rr:TriplesMap ;
+    rdfs:label "MG-Lot";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:ContractExecutionRequirement[cbc:ExecutionRequirementCode/@listName='fsr']";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:comment "ND-FSR";
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Lot/{../../cbc:ID}" ;
+            rr:class epo:Lot
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-681-Lot";
+            rdfs:comment "Foreign Subsidies Regulation of MG-Lot under ND-FSR";
+            rr:predicate epo:appliesForeignSubsidiesRegulation;
+            rr:objectMap
+                [
+                    # there might be other code values so we are explicitly checking for the value 'true'
+                    rml:reference "if(cbc:ExecutionRequirementCode/text()='true') then 'true' else 'false'";
+                    rr:datatype xsd:boolean
+                ] ;
+        ] ;
 .
 
 # this is for epo 5.3.0
