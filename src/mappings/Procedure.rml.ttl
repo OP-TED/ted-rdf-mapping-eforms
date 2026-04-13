@@ -648,10 +648,6 @@ tedm:MG-Procedure_ND-ProcedureProcurementScope a rr:TriplesMap ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:MG-ContractTerm-foreseesTerm-Procedure_ND-ProcedureProcurementScope ;
-                    rr:joinCondition [
-                        rr:child "path(.)" ;
-                        rr:parent "path(../.)" ;
-                    ] ;
                 ]
         ] ;
     rr:predicateObjectMap
@@ -750,6 +746,7 @@ rr:predicateObjectMap
 #                ]
 #        ]
 .
+
 tedm:MG-PlannedProcurement_ND-ProcedureProcurementScope a rr:TriplesMap ;
     rdfs:label "MG-PlannedProcurement" ;
     rml:logicalSource
@@ -767,21 +764,17 @@ tedm:MG-PlannedProcurement_ND-ProcedureProcurementScope a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-23-PlannedProcurement (object)" ;
+            rdfs:label "BT-23-Procedure (object; PIN notices)" ;
             rdfs:comment "Connection of MG-PlannedProcurement to MG-ContractTerm under ND-ProcedureProcurementScope" ;
             rr:predicate epo:foreseesTerm ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:MG-ContractTerm-foreseesTerm-PlannedProcurement_ND-ProcedureProcurementScope ;
-                    rr:joinCondition [
-                        rr:child "path(.)" ;
-                        rr:parent "path(../.)" ;
-                    ] ;
                 ]
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-531-PlannedProcurement (object)" ;
+            rdfs:label "BT-531-Procedure (object; PIN notices)" ;
             rdfs:comment "Connection of MG-PlannedProcurement to MG-ContractTerm under ND-ProcedureContractAdditionalNature" ;
             rr:predicate epo:foreseesTerm ;
             rr:objectMap
@@ -795,7 +788,7 @@ tedm:MG-PlannedProcurement_ND-ProcedureProcurementScope a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-27-PlannedProcurement";
+            rdfs:label "BT-27-Procedure (object)";
             rr:predicate epo:hasEstimatedValue ;
             rr:objectMap
                 [
@@ -808,7 +801,7 @@ tedm:MG-PlannedProcurement_ND-ProcedureProcurementScope a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-262-PlannedProcurement";
+            rdfs:label "BT-262-Procedure (object)";
             rdfs:comment "Main Classification Code of MG-Purpose under ND-ProcedureMainClassificationCode";
             rr:predicate epo:hasPurpose ;
             rr:objectMap
@@ -822,7 +815,7 @@ tedm:MG-PlannedProcurement_ND-ProcedureProcurementScope a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-263-PlannedProcurement";
+            rdfs:label "BT-263-Procedure (object)";
             rdfs:comment "Additional Classification Code of MG-Purpose under ND-ProcedureAdditionalCommodityClassification";
             rr:predicate epo:hasPurpose ;
             rr:objectMap
@@ -895,6 +888,7 @@ tedm:MG-ContractTerm-foreseesTerm-Procedure_ND-ProcedureProcurementScope a rr:Tr
                 ] ;
         ]
 .
+
 tedm:MG-ContractTerm-foreseesTerm-PlannedProcurement_ND-ProcedureProcurementScope a rr:TriplesMap ;
     rdfs:label "MG-ContractTerm" ;
     rml:logicalSource
@@ -912,7 +906,7 @@ tedm:MG-ContractTerm-foreseesTerm-PlannedProcurement_ND-ProcedureProcurementScop
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-23-PlannedProcurement (value)" ;
+            rdfs:label "BT-23-Procedure (value; PIN notices)" ;
             rdfs:comment "Main Nature of MG-ContractTerm under ND-ProcedureProcurementScope" ;
             rr:predicate epo:hasContractNatureType ;
             rr:objectMap
@@ -925,21 +919,6 @@ tedm:MG-ContractTerm-foreseesTerm-PlannedProcurement_ND-ProcedureProcurementScop
                     ] ;
                 ] ;
         ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-531-PlannedProcurement (value)" ;
-            rdfs:comment "Additional Nature of MG-ContractTerm under ND-ProcedureProcurementScope" ;
-            rr:predicate epo:hasAdditionalContractNature ;
-            rr:objectMap
-                [
-                    rdfs:label "at-voc:contract-nature" ;
-                    rr:parentTriplesMap tedm:contract-nature ;
-                    rr:joinCondition [
-                        rr:child "cac:ProcurementAdditionalType/cbc:ProcurementTypeCode[not(@listName='transport-service')]" ;
-                        rr:parent "code.value" ;
-                    ] ;
-                ] ;
-        ]
 .
 
 tedm:MG-ContractTerm-foreseesTerm-Procedure_ND-ProcedureContractAdditionalNature a rr:TriplesMap ;
@@ -953,19 +932,15 @@ tedm:MG-ContractTerm-foreseesTerm-Procedure_ND-ProcedureContractAdditionalNature
             rr:class epo:ContractTerm
         ] ;
 .
+
+# The iterator corresponding to node ND-ProcedureContractAdditionalNature, which was introduced in SDK 1.8, would be
+# "/*/cac:ProcurementProject/cac:ProcurementAdditionalType[cbc:ProcurementTypeCode/@listName='contract-nature']"
+# but we generalized it, so that it works for the mapping of BT-531-Procedure field in earlier SDK versions as well,
+# where the parent node was ND-ProcedureProcurementScope
+
 tedm:MG-ContractTerm-foreseesTerm-PlannedProcurement_ND-ProcedureContractAdditionalNature a rr:TriplesMap ;
     # logical source specification (iterator) and predicate mappings are in versioned files (Procedure_v1.3-1.7|1.8+)
     rdfs:label "MG-ContractTerm" ;
-    # rml:logicalSource
-    #     [
-    #         rml:source "data/source.xml" ;
-    #         # The iterator corresponding to node ND-ProcedureContractAdditionalNature, which was introduced in SDK 1.8, would be 
-    #         # "/*/cac:ProcurementProject/cac:ProcurementAdditionalType[cbc:ProcurementTypeCode/@listName='contract-nature']"
-    #         # but we generalized it, so that it works for the mapping of BT-531-Procedure field in earlier SDK versions as well, 
-    #         # where the parent node was ND-ProcedureProcurementScope
-    #         rml:iterator "/*/cac:ProcurementProject/cac:ProcurementAdditionalType" ;
-    #         rml:referenceFormulation ql:XPath
-    #     ] ;
     rr:subjectMap
         [
             rdfs:label "ND-ProcedureProcurementScope" ;
