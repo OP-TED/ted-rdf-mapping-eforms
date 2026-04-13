@@ -1017,6 +1017,37 @@ tedm:MG-Identifier-identifier-Notice-refersToPrevious-Notice_ND-PreviousNoticeRe
         ] ;
 .
 
+tedm:MG-Notice_ND-RootExtension
+    a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Root" ;
+            rdfs:comment "Primary type declaration for MG-Notice under ND-Root" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Notice" ;
+            rr:class epo:Notice
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-803(d)-notice and BT-803(t)-notice" ;
+            rdfs:comment "Notice Dispatch Date eSender and Notice Dispatch Time eSender of MG-Notice under ND-Root" ;
+            rr:predicate epo:hasESenderDispatchDate ;
+            rr:objectMap
+                [
+                    # here we combine values across (relative) XPaths/fields stripping out the time zone from the first
+                    # it handles the case where there is no time zone indicated in the date time, just in case validation failed on a notice
+                    # however, it won't handle the case if there are other malformations
+                    rml:reference "if(exists(efbc:TransmissionDate) and exists(efbc:TransmissionTime) and matches(efbc:TransmissionDate, '[+\\-]\\d\\d:\\d\\d|Z')) then replace(efbc:TransmissionDate, '...:..|Z', '') || 'T' || efbc:TransmissionTime else if(exists(efbc:TransmissionDate) and exists(efbc:TransmissionTime)) then efbc:TransmissionDate || 'T' || efbc:TransmissionTime else if(exists(efbc:TransmissionDate)) then efbc:TransmissionDate else null" ;
+                    rr:datatype xsd:dateTime ;
+                ] ;
+        ] ;
+.
+
 ##--- Function Parameters ---
 
 tedm:idlab-fn_executes_lookup rr:predicate fno:executes ; rr:objectMap [ rr:constant idlab-fn:lookup ] .
