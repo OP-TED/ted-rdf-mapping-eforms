@@ -135,6 +135,20 @@ tedm:MG-Organization_ND-Company a rr:TriplesMap ;
                     ] ;
                 ]
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-Touchpoint (org:hasUnit)" ;
+            rdfs:comment "Connection between Organization and OrganizationalUnit under ND-Touchpoint" ;
+            rr:predicate org:hasUnit ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-OrganizationalUnit_ND-Touchpoint ;
+                    rr:joinCondition [
+                        rr:child "path(..)" ;
+                        rr:parent "path(..)" ;
+                    ] ;
+                ]
+        ] ;
 .
 
 
@@ -440,54 +454,6 @@ tedm:MG-Identifier-identifier-OrganizationalUnit_ND-Touchpoint a rr:TriplesMap ;
                 ] ;
         ] ;
 .
-tedm:MG-Organization-Touchpoint a rr:TriplesMap ;
-    rdfs:label "MG-Organization" ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:TouchPoint" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-Company" ;
-            rdfs:comment "Touchpoint of MG-Organization under ND-Touchpoint" ;
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Organization/{cac:PartyIdentification/cbc:ID}" ;
-            rr:class org:Organization
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "ND-Touchpoint" ;
-            rr:predicate org:hasUnit ;
-            rr:objectMap
-                [
-                    rdfs:label "ND-Touchpoint" ;
-                    rr:parentTriplesMap tedm:MG-OrganizationalUnit-hasUnit-Organization_ND-Touchpoint ;
-                    rr:joinCondition [
-                        rr:child "path(.)" ;
-                        rr:parent "path(.)" ;
-                    ] ;
-                ]
-        ] ;
-
-.
-
-tedm:MG-OrganizationalUnit-hasUnit-Organization_ND-Touchpoint a rr:TriplesMap ;
-    rdfs:label "MG-Organization" ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:TouchPoint" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-Touchpoint" ;
-            rdfs:comment "Touchpoint of  MG-Organization under ND-Touchpoint" ;
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Organization/efac:TouchPoint/{cac:PartyIdentification/cbc:ID}" ;
-            rr:class org:OrganizationalUnit
-        ] ;
-.
 
 tedm:MG-OrganizationalUnit_ND-Touchpoint a rr:TriplesMap ;
     rdfs:label "MG-OrganizationalUnit" ;
@@ -501,10 +467,9 @@ tedm:MG-OrganizationalUnit_ND-Touchpoint a rr:TriplesMap ;
         [
             rdfs:label "ND-Touchpoint" ;
             rdfs:comment "Touchpoint of  MG-Organization under ND-Touchpoint" ;
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Organization/efac:TouchPoint/{cac:PartyIdentification/cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/OrganizationalUnit/{cac:PartyIdentification/cbc:ID}" ;
             rr:class org:OrganizationalUnit
         ] ;
-
     rr:predicateObjectMap
         [
             rdfs:label "OPT-201-Organization-TouchPoint" ;
@@ -544,7 +509,7 @@ tedm:MG-langString-title-OrganizationalUnit_ND-Touchpoint a rr:TriplesMap ;
         rr:class org:OrganizationalUnit ;
         rdfs:comment "Name for MG-OrganizationalUnit under ND-Touchpoint" ;
         rdfs:label "ND-Touchpoint" ;
-        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Organization/efac:TouchPoint/{../../cac:PartyIdentification/cbc:ID}" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/OrganizationalUnit/{../../cac:PartyIdentification/cbc:ID}" ;
     ] ;
     rr:predicateObjectMap [
         rr:predicate dct:title ;

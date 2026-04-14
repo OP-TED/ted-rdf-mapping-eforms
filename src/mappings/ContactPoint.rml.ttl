@@ -24,34 +24,6 @@
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix idlab-fn: <http://example.com/idlab/function/> .
 
-tedm:X-ContactPoint-Organization a rr:TriplesMap ;
-    rdfs:label "X-Organization" ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:TouchPoint";
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "Placeholder TouchPoint Organization" ;
-            rdfs:comment "Supporting instance for connection between Agent and Organization" ;
-            rdfs:comment "Primary type declaration for MG-ContactPoint under ND-Touchpoint" ;
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Organization/{cac:PartyIdentification/cbc:ID}" ;
-            rr:class org:Organization
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "Same Organization" ;
-            rdfs:comment "Supporting link for connection between Agent and Organization" ;
-            rr:predicate owl:sameAs ;
-            rr:objectMap
-                [
-                    rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Organization/{../efac:Company/cac:PartyIdentification/cbc:ID}" ;
-                ]
-        ] ;
-.
-
 tedm:MG-ContactPoint_ND-Touchpoint a rr:TriplesMap ;
     rdfs:label "MG-ContactPoint" ;
     rml:logicalSource
