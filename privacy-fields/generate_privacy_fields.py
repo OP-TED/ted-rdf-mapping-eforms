@@ -15,9 +15,9 @@ Generate privacy-fields-field RML (.rml.ttl) from "Export for TM Input" for **gr
 ``epo:concernsMaskedObject`` parent link (``rr:parent "."`` + ``rr:child`` from ``R``; ``AJ`` overrides
 ``R`` when ``AG`` is set). **BT-197** (non-publication justification → code list) always uses
 ``rr:child`` ``cbc:ReasonCode`` — column ``R`` does **not** apply there.
-``AG`` = ``TriplesMap Masked Object alt name`` — overrides ``P`` for the parent TriplesMap IRI when set.
-When ``AG`` is set, ``AH``/``AI`` replace ``N``/``O`` for the masked-object POM labels (with fallback to
-``N``/``O`` when an alt cell is empty).
+``AG`` = ``Alt. TriplesMap Masked Object`` — alternative ``rr:parentTriplesMap`` (overrides ``P``). When
+``AG`` is set: ``AH``/``AI``/``AJ`` replace ``N``/``O``/``R`` for the masked-object POM (with fallback to
+``N``/``O``/``R`` when an alt cell is empty); see sheet column comments on ``AG``–``AJ``.
 
 Defaults: ``src/mappings-unpublished/green``, ``amber``, ``yellow``. Use ``--no-green`` / ``--no-amber``
 / ``--no-yellow`` to skip.
@@ -66,7 +66,7 @@ H_ITERATOR = "Iterator"
 H_POM_MASK_LABEL = "POM Masked Object Label"
 H_POM_MASK_COMMENT = "POM Masked Object Comment"
 H_TM_MASKED = "TriplesMap Masked Object"
-H_TM_MASKED_ALT = "TriplesMap Masked Object alt name"
+H_TM_MASKED_ALT = "Alt. TriplesMap Masked Object"
 H_POM_MASK_LABEL_ALT = "Alt. POM Masked Object Label"
 H_POM_MASK_COMMENT_ALT = "Alt. POM Masked Object Comment"
 H_JOIN_CHILD_ALT = "Alt. joinCondition child"
@@ -119,7 +119,7 @@ def full_tedm(local_or_prefixed: str) -> str:
 
 
 def has_resolved_masked_parent(row: dict[str, object]) -> bool:
-    """True if TriplesMap Masked Object or alt name is non-empty in the sheet."""
+    """True if ``TriplesMap Masked Object`` (P) or ``Alt. TriplesMap Masked Object`` (AG) is non-empty."""
     alt = row.get(H_TM_MASKED_ALT)
     if alt is not None and str(alt).strip():
         return True
@@ -137,7 +137,7 @@ def masked_parent_triples_map(row: dict[str, object]) -> str:
 
 
 def uses_alternative_masked_object(row: dict[str, object]) -> bool:
-    """True when ``TriplesMap Masked Object alt name`` is set — alt label/comment/join columns apply."""
+    """True when ``Alt. TriplesMap Masked Object`` (AG) is set — alt label/comment/join columns apply."""
     v = row.get(H_TM_MASKED_ALT)
     return v is not None and str(v).strip() != ""
 
