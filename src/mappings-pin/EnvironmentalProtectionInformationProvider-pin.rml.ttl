@@ -22,11 +22,15 @@ tedm:MG-EnvironmentalProtectionInformationProvider_ND-PartEnvironmentalLegislati
     ] ;
     rr:predicateObjectMap [
         rdfs:label "OPT-301-Part-EnvironLegis" ;
-        rdfs:comment "Connection between AgentInRole and Organization OR ContactPoint" ;
+        rdfs:comment "Connection between AgentInRole and Organization OR OrganizationalUnit" ;
         rr:objectMap [
             rdfs:label "TPO (playedBy)" ;
-            rdfs:comment "Connection where IssuerParty is a TouchPoint" ;
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Organization/{cac:IssuerParty/cac:PartyIdentification/cbc:ID}" ;
+            rdfs:comment "Connection where IssuerParty is an OrganizationalUnit" ;
+            rr:joinCondition [
+                rr:child "if(cac:IssuerParty/cac:PartyIdentification/cbc:ID/@schemeName='touchpoint' or exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID[starts-with(text(), 'TPO-')])) then cac:IssuerParty/cac:PartyIdentification/cbc:ID else null" ;
+                rr:parent "cac:PartyIdentification/cbc:ID" ;
+            ] ;
+            rr:parentTriplesMap tedm:MG-OrganizationalUnit_ND-Touchpoint ;
         ] ;
         rr:objectMap [
             rdfs:label "ORG (playedBy)" ;
@@ -41,7 +45,7 @@ tedm:MG-EnvironmentalProtectionInformationProvider_ND-PartEnvironmentalLegislati
     ] ;
     rr:predicateObjectMap [
         rdfs:label "OPT-301-Part-EnvironLegis TPO (hasContactPointInRole)" ;
-        rdfs:comment "Connection where IssuerParty is a TouchPoint" ;
+        rdfs:comment "Connection where IssuerParty is an OrganizationalUnit" ;
         rr:objectMap [
             rr:joinCondition [
                 rr:child "if(cac:IssuerParty/cac:PartyIdentification/cbc:ID/@schemeName='touchpoint' or exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID[starts-with(text(), 'TPO-')])) then cac:IssuerParty/cac:PartyIdentification/cbc:ID else null" ;

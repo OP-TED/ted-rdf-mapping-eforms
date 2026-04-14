@@ -25,7 +25,7 @@ tedm:MG-ProcurementProcedureInformationProvider_ND-PartTenderingTerms a rr:Tripl
     rr:predicateObjectMap
     [
         rdfs:label "OPT-301-Part-AddInfo TPO (hasContactPointInRole)" ;
-        rdfs:comment "Connection where AdditionalInformationParty is a TouchPoint" ;
+        rdfs:comment "Connection where AdditionalInformationParty is an OrganizationalUnit" ;
         rr:predicate epo:hasContactPointInRole ;
         rr:objectMap
           [
@@ -40,13 +40,17 @@ tedm:MG-ProcurementProcedureInformationProvider_ND-PartTenderingTerms a rr:Tripl
     rr:predicateObjectMap
      [
         rdfs:label "OPT-301-Part-AddInfo" ;
-        rdfs:comment "Connection between AgentInRole and Organization OR ContactPoint" ;
+        rdfs:comment "Connection between AgentInRole and Organization OR OrganizationalUnit" ;
         rr:predicate epo:playedBy ;
         rr:objectMap
         [
             rdfs:label "TPO (playedBy)" ;
-            rdfs:comment "Connection where AdditionalInformationParty is a TouchPoint" ;
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Organization/{cac:AdditionalInformationParty/cac:PartyIdentification/cbc:ID}" ;
+            rdfs:comment "Connection where AdditionalInformationParty is an OrganizationalUnit" ;
+            rr:joinCondition [
+                rr:child "if(cac:AdditionalInformationParty/cac:PartyIdentification/cbc:ID/@schemeName='touchpoint' or exists(cac:AdditionalInformationParty/cac:PartyIdentification/cbc:ID[starts-with(text(), 'TPO-')])) then cac:AdditionalInformationParty/cac:PartyIdentification/cbc:ID else null" ;
+                rr:parent "cac:PartyIdentification/cbc:ID" ;
+            ] ;
+            rr:parentTriplesMap tedm:MG-OrganizationalUnit_ND-Touchpoint ;
         ] ;
         rr:objectMap
         [
