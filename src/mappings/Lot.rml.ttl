@@ -4033,7 +4033,7 @@ tedm:MG-ReviewTerm-isSubjectToTerm-Lot_ND-ReviewPresentationPeriod a rr:TriplesM
 .
 
 tedm:MG-StrategicProcurement-fulfillsStrategicProcurement-Lot_ND-StrategicProcurementType a rr:TriplesMap;
-rdfs:label  "MG-StrategicProcurement";
+    rdfs:label  "MG-StrategicProcurement";
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -4080,9 +4080,7 @@ rdfs:label  "MG-StrategicProcurement";
             rr:predicate rdf:type ;
             rr:objectMap
                 [
-                    # NOTE: Avoid generating type-only GreenProcurement on StrategicProcurement.
-                    # Details come from BT-774 via environmental-impact mapping (GreenProcurement fulfillsRequirement).
-                    rml:reference "if (false()) then 'http://data.europa.eu/a4g/ontology#GreenProcurement' else null" ;
+                    rml:reference "if (cbc:ProcurementTypeCode/text()='env-imp') then 'http://data.europa.eu/a4g/ontology#GreenProcurement' else null" ;
                     rr:termType rr:IRI ;
                 ] ;
             rr:objectMap
