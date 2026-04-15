@@ -56,7 +56,7 @@ tedm:MG-PlanningNotice_ND-Root
                 [
                     rr:parentTriplesMap tedm:MG-PlannedProcurement_ND-ProcedureProcurementScope ;
                 ] ;
-        ] ;
+        ] ;        
     rr:predicateObjectMap
         [
             rdfs:label "MG-LotGroup-announcesLotGroup-PlanningNotice" ;
@@ -74,13 +74,23 @@ tedm:MG-PlanningNotice_ND-Root
             rr:predicate epo:announcesProcedure  ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-Procedure-announcesProcedure-PlanningNotice_ND-Root ;
+                    rr:parentTriplesMap tedm:MG-Procedure_ND-Root ;
                 ] ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-01-notice" ;
-            rdfs:comment "Procedure Identifier of MG-PlannedProcurement-announcesPlannedProcurement-PlanningNotice under ND-Root" ;
+            rdfs:label "BT-127-notice (Procedure)" ;
+            rdfs:comment "Connection between PlanningNotice and Procedure under ND-Root" ;
+            rr:predicate epo:announcesProcedure ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Procedure-announcesProcedure-PlanningNotice_ND-Root ;
+                ] ;
+        ] ;        
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-127-notice (PlannedProcurement)" ;
+            rdfs:comment "Connection between PlanningNotice and PlannedProcurement under ND-Root" ;
             rr:predicate epo:announcesPlannedProcurement ;
             rr:objectMap
                 [
@@ -561,62 +571,6 @@ tedm:MG-PlannedProcurementPart-contextualisedBy-OfflineAccessProvider-announcesR
         ] ;
 .
 
-#tedm:MG-Procedure-refersToProcedure-Notice_ND-Root a rr:TriplesMap ;
-#    rdfs:label "MG-Procedure" ;
-#    rml:logicalSource
-#        [
-#            rml:source "data/source.xml" ;
-#            rml:iterator "/*" ;
-#            rml:referenceFormulation ql:XPath
-#        ] ;
-#    rr:subjectMap
-#        [
-#            rdfs:label "ND-Root" ;
-#            rml:reference "if (exists(cbc:PlannedDate)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ProcedureTerm/' || (if (exists(/*/cbc:ContractFolderID)) then encode-for-uri(/*/cbc:ContractFolderID) else '0000000-0000-4000-8000-000000000000') else null" ;
-#            rr:class epo:Procedure
-#        ] ;
-#    rr:predicateObjectMap
-#        [
-#            rdfs:comment "Future Notice for MG-ProcessPlanningTerm under ND-Root" ;
-#            rr:predicate epo:isSubjectToProcedureSpecificTerm ;
-#            rr:objectMap
-#               [
-#                    rr:parentTriplesMap tedm:MG-ProcessPlanningTerm-isSubjectToProcedureSpecificTerm-Procedure-refersToProcedure-Notice_ND-Root ;
-#                        rr:joinCondition [
-#                            rr:child "path(.)" ;
-#                            rr:parent "path(.)" ;
-#                        ] ;
-#                ] ;
-#        ] ;
-#.
-
-#tedm:MG-ProcessPlanningTerm-isSubjectToProcedureSpecificTerm-Procedure-refersToProcedure-Notice_ND-Root a rr:TriplesMap ;
-#    rdfs:label "MG-ProcessPlanningTerm" ;
-#    rml:logicalSource
-#        [
-#            rml:source "data/source.xml" ;
-#            rml:iterator "/*" ;
-#            rml:referenceFormulation ql:XPath
-#        ] ;
-#    rr:subjectMap
-#        [
-#            rdfs:label "ND-Root" ;
-#            rml:reference "if (exists(cbc:PlannedDate)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ProcedureTerm$' || replace(replace(replace(path(.), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
-#            rr:class epo:ProcessPlanningTerm
-#        ] ;
-#    rr:predicateObjectMap
-#        [
-#
-#            rdfs:label "BT-127-notice" ;
-#            rdfs:comment "Future Notice for MG-ProcessPlanningTerm under ND-Root" ;
-#            rr:predicate epo:hasEstimatedContractNoticePublicationDate ;
-#            rr:objectMap
-#                [
-#                   rml:reference "cbc:PlannedDate";
-#                   rr:datatype xsd:date ;
-#                ] ;
-#        ] ;
-#.
 ##--- Function Parameters ---
 
 tedm:idlab-fn_executes_lookup rr:predicate fno:executes ; rr:objectMap [ rr:constant idlab-fn:lookup ] .
