@@ -8,7 +8,7 @@
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
@@ -46,6 +46,56 @@ tedm:MG-PlanningNotice_ND-Root
             rdfs:comment "Primary type declaration for MG-PlanningNotice under ND-Root" ;
             rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Notice" ;
             rr:class epo-not:PlanningNotice
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-04-notice" ;
+            rdfs:comment "Procedure Identifier of MG-PlannedProcurement-announcesPlannedProcurement-PlanningNotice under ND-Root" ;
+            rr:predicate epo:announcesPlannedProcurement ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-PlannedProcurement_ND-ProcedureProcurementScope ;
+                ] ;
+        ] ;        
+    rr:predicateObjectMap
+        [
+            rdfs:label "MG-LotGroup-announcesLotGroup-PlanningNotice" ;
+            rdfs:comment "MG-LotGroup-announcesLotGroup-PlanningNotice of MG-CompetitionNotice under ND-Root" ;
+            rr:predicate epo:announcesLotGroup ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-LotGroup_ND-LotsGroup
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-01-notice" ;
+            rdfs:comment "Connection of MG-PlanningNotice to MG-Procedure under ND-Root" ;
+            rr:predicate epo:announcesProcedure  ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Procedure_ND-Root ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-127-notice (Procedure)" ;
+            rdfs:comment "Connection between PlanningNotice and Procedure under ND-Root" ;
+            rr:predicate epo:announcesProcedure ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Procedure-announcesProcedure-PlanningNotice_ND-Root ;
+                ] ;
+        ] ;        
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-127-notice (PlannedProcurement)" ;
+            rdfs:comment "Connection between PlanningNotice and PlannedProcurement under ND-Root" ;
+            rr:predicate epo:announcesPlannedProcurement ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-PlannedProcurement-announcesPlannedProcurement-PlanningNotice_ND-Root ;
+                ] ;
         ] ;
 .
 
@@ -412,9 +462,10 @@ tedm:MG-Identifier-identifier-PlannedProcurementPart-announcesPlannedProcurement
         ] ;
 .
 
-tedm:MG-ProcurementObject-contextualisedBy-TaxInformationProvider-announcesRole-PlanningNotice_ND-PartFiscalLegislation a rr:TriplesMap ;
-    rdfs:label "MG-ProcurementObject" ;
+tedm:MG-PlannedProcurementPart-contextualisedBy-TaxInformationProvider-announcesRole-PlanningNotice_ND-PartFiscalLegislation a rr:TriplesMap ;
+    rdfs:label "MG-PlannedProcurementPart" ;
     tedm:minSDKVersion "1.6.1" ;
+    tedm:maxSDKVersion "1.5" ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -423,13 +474,15 @@ tedm:MG-ProcurementObject-contextualisedBy-TaxInformationProvider-announcesRole-
         ] ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PartProcurementObject${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
-            rr:class epo:ProcurementObject
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PlannedProcurementPart/{../../cbc:ID}" ;
+            rr:class epo:PlannedProcurementPart
         ] ;
 .
 
-tedm:MG-ProcurementObject-contextualisedBy-EnvironmentalProtectionInformationProvider-announcesRole-PlanningNotice_ND-PartEnvironmentalLegislation a rr:TriplesMap ;
-    rdfs:label "MG-ProcurementObject" ;
+tedm:MG-PlannedProcurementPart-contextualisedBy-EnvironmentalProtectionInformationProvider-announcesRole-PlanningNotice_ND-PartEnvironmentalLegislation a rr:TriplesMap ;
+    rdfs:label "MG-PlannedProcurementPart" ;
+    tedm:minSDKVersion "1.6" ;
+    tedm:maxSDKVersion "1.5" ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -438,13 +491,13 @@ tedm:MG-ProcurementObject-contextualisedBy-EnvironmentalProtectionInformationPro
         ] ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PartProcurementObject${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
-            rr:class epo:ProcurementObject
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PlannedProcurementPart/{../../cbc:ID}" ;
+            rr:class epo:PlannedProcurementPart
         ] ;
 .
 
-tedm:MG-ProcurementObject-contextualisedBy-EmploymentInformationProvider-announcesRole-PlanningNotice_ND-PartEmploymentLegislation a rr:TriplesMap ;
-    rdfs:label "MG-ProcurementObject" ;
+tedm:MG-PlannedProcurementPart-contextualisedBy-EmploymentInformationProvider-announcesRole-PlanningNotice_ND-PartEmploymentLegislation a rr:TriplesMap ;
+    rdfs:label "MG-PlannedProcurementPart" ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -453,12 +506,12 @@ tedm:MG-ProcurementObject-contextualisedBy-EmploymentInformationProvider-announc
         ] ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PartProcurementObject${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
-            rr:class epo:ProcurementObject
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PlannedProcurementPart/{../../cbc:ID}" ;
+            rr:class epo:PlannedProcurementPart
         ] ;
 .
 
-tedm:MG-ProcurementObject-contextualisedBy-TenderReceiver-announcesRole-PlanningNotice_ND-PartTenderingTerms a rr:TriplesMap ;
+tedm:MG-PlannedProcurementPart-contextualisedBy-TenderReceiver-announcesRole-PlanningNotice_ND-PartTenderingTerms a rr:TriplesMap ;
     rdfs:label "MG-ProcurementObject" ;
     rml:logicalSource
         [
@@ -468,12 +521,12 @@ tedm:MG-ProcurementObject-contextualisedBy-TenderReceiver-announcesRole-Planning
         ] ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PartProcurementObject${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
-            rr:class epo:ProcurementObject
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PlannedProcurementPart/{../cbc:ID}" ;
+            rr:class epo:PlannedProcurementPart
         ] ;
 .
 
-tedm:MG-ProcurementObject-contextualisedBy-TenderProcessor-announcesRole-PlanningNotice_ND-PartTenderingTerms a rr:TriplesMap ;
+tedm:MG-PlannedProcurementPart-contextualisedBy-TenderProcessor-announcesRole-PlanningNotice_ND-PartTenderingTerms a rr:TriplesMap ;
     rdfs:label "MG-ProcurementObject" ;
     rml:logicalSource
         [
@@ -483,12 +536,12 @@ tedm:MG-ProcurementObject-contextualisedBy-TenderProcessor-announcesRole-Plannin
         ] ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PartProcurementObject${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
-            rr:class epo:ProcurementObject
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PlannedProcurementPart/{../cbc:ID}" ;
+            rr:class epo:PlannedProcurementPart
         ] ;
-.
+   .
 
-tedm:MG-ProcurementObject-contextualisedBy-ProcurementProcedureInformationProvider-announcesRole-PlanningNotice_ND-PartTenderingTerms a rr:TriplesMap ;
+tedm:MG-PlannedProcurementPart-contextualisedBy-ProcurementProcedureInformationProvider-announcesRole-PlanningNotice_ND-PartTenderingTerms a rr:TriplesMap ;
     rdfs:label "MG-ProcurementObject" ;
     rml:logicalSource
         [
@@ -498,12 +551,12 @@ tedm:MG-ProcurementObject-contextualisedBy-ProcurementProcedureInformationProvid
         ] ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PartProcurementObject${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
-            rr:class epo:ProcurementObject
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PlannedProcurementPart/{../cbc:ID}" ;
+            rr:class epo:PlannedProcurementPart
         ] ;
 .
 
-tedm:MG-ProcurementObject-contextualisedBy-OfflineAccessProvider-announcesRole-PlanningNotice_ND-PartTenderingTerms a rr:TriplesMap ;
+tedm:MG-PlannedProcurementPart-contextualisedBy-OfflineAccessProvider-announcesRole-PlanningNotice_ND-PartTenderingTerms a rr:TriplesMap ;
     rdfs:label "MG-ProcurementObject" ;
     rml:logicalSource
         [
@@ -513,67 +566,10 @@ tedm:MG-ProcurementObject-contextualisedBy-OfflineAccessProvider-announcesRole-P
         ] ;
     rr:subjectMap
         [
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PartProcurementObject${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
-            rr:class epo:ProcurementObject
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PlannedProcurementPart/{../cbc:ID}" ;
+            rr:class epo:PlannedProcurementPart
         ] ;
 .
-
-#tedm:MG-Procedure-refersToProcedure-Notice_ND-Root a rr:TriplesMap ;
-#    rdfs:label "MG-Procedure" ;
-#    rml:logicalSource
-#        [
-#            rml:source "data/source.xml" ;
-#            rml:iterator "/*" ;
-#            rml:referenceFormulation ql:XPath
-#        ] ;
-#    rr:subjectMap
-#        [
-#            rdfs:label "ND-Root" ;
-#            rml:reference "if (exists(cbc:PlannedDate)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ProcedureTerm/' || (if (exists(/*/cbc:ContractFolderID)) then encode-for-uri(/*/cbc:ContractFolderID) else '0000000-0000-4000-8000-000000000000') else null" ;
-#            rr:class epo:Procedure
-#        ] ;
-#    rr:predicateObjectMap
-#        [
-#            rdfs:comment "Future Notice for MG-ProcessPlanningTerm under ND-Root" ;
-#            rr:predicate epo:isSubjectToProcedureSpecificTerm ;
-#            rr:objectMap
-#               [
-#                    rr:parentTriplesMap tedm:MG-ProcessPlanningTerm-isSubjectToProcedureSpecificTerm-Procedure-refersToProcedure-Notice_ND-Root ;
-#                        rr:joinCondition [
-#                            rr:child "path(.)" ;
-#                            rr:parent "path(.)" ;
-#                        ] ;
-#                ] ;
-#        ] ;
-#.
-
-#tedm:MG-ProcessPlanningTerm-isSubjectToProcedureSpecificTerm-Procedure-refersToProcedure-Notice_ND-Root a rr:TriplesMap ;
-#    rdfs:label "MG-ProcessPlanningTerm" ;
-#    rml:logicalSource
-#        [
-#            rml:source "data/source.xml" ;
-#            rml:iterator "/*" ;
-#            rml:referenceFormulation ql:XPath
-#        ] ;
-#    rr:subjectMap
-#        [
-#            rdfs:label "ND-Root" ;
-#            rml:reference "if (exists(cbc:PlannedDate)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ProcedureTerm$' || replace(replace(replace(path(.), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
-#            rr:class epo:ProcessPlanningTerm
-#        ] ;
-#    rr:predicateObjectMap
-#        [
-#
-#            rdfs:label "BT-127-notice" ;
-#            rdfs:comment "Future Notice for MG-ProcessPlanningTerm under ND-Root" ;
-#            rr:predicate epo:hasEstimatedContractNoticePublicationDate ;
-#            rr:objectMap
-#                [
-#                   rml:reference "cbc:PlannedDate";
-#                   rr:datatype xsd:date ;
-#                ] ;
-#        ] ;
-#.
 
 ##--- Function Parameters ---
 

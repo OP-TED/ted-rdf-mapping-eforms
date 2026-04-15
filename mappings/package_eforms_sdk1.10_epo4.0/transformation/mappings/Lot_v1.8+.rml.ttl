@@ -8,7 +8,7 @@
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
@@ -24,16 +24,23 @@
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix idlab-fn: <http://example.com/idlab/function/> .
 
-tedm:MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotProcurementDocument a rr:TriplesMap ;
+tedm:MG-AccessTerm-isSubjectToTerm-Lot_ND-LotProcurementDocument a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
             rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:CallForTendersDocumentReference";
             rml:referenceFormulation ql:XPath
         ];
-     rr:predicateObjectMap
+    rr:subjectMap
         [
-            rdfs:label "BT-15-Lot";
+            rdfs:label "ND-LotProcurementDocument";
+            # this guard covers fields BT-737 and BT-708 (DocumentStatusCode), BT-707 (DocumentTypeCode), BT-14, BT-15 and BT-615 (DocumentType)
+            rml:reference "if (exists(cbc:LanguageID[../cbc:DocumentStatusCode/text()='official']) or exists(cbc:LanguageID[../cbc:DocumentStatusCode/text()='non-official']) or exists(cbc:DocumentTypeCode) or cbc:DocumentType/text()='restricted-document' or cbc:DocumentType/text()='non-restricted-document') then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/AccessTerm$' || concat(replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_'), encode-for-uri(cbc:ID/text())) else null" ;
+            rr:class epo:AccessTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-15-Lot (value)";
             rdfs:comment "Documents URL of MG-AccessTerm under ND-LotProcurementDocument";
             rr:predicate epo:hasPublicAccessURL  ;
             rr:objectMap

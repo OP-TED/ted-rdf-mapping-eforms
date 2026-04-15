@@ -22,7 +22,7 @@
 @prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix idlab-fn: <http://example.com/idlab/function/> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 
 tedm:MG-LotAwardOutcome_ND-LotResult  a rr:TriplesMap ;
     rdfs:label "MG-LotAwardOutcome";
@@ -110,6 +110,20 @@ tedm:MG-LotAwardOutcome_ND-LotResult  a rr:TriplesMap ;
                     ];
                 ] ;
         ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "MG-GreenProcurement-fulfillsStrategicProcurement-LotAwardOutcome" ;
+            rdfs:comment "Connection of MG-LotAwardOutcome to MG-GreenProcurement under ND-LotResult" ;
+            rr:predicate epo:fulfillsStrategicProcurement ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-GreenProcurement-concernsGreenProcurement-CleanVehicleDirectiveInformation_ND-StrategicProcurementLotResult ;
+                    rr:joinCondition [
+                        rr:child "path(efac:StrategicProcurement/efac:StrategicProcurementInformation[efac:ProcurementDetails/efbc:AssetCategoryCode/@listName='energy-efficiency-item'])" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ] ;
 .
 
 tedm:MG-MonetaryValue-hasApproximateFrameworkAgreementValue-LotAwardOutcome_ND-LotResultFAValues  a rr:TriplesMap ;
@@ -261,20 +275,19 @@ tedm:MG-LotAwardOutcome_ND-StrategicProcurementLotResult a rr:TriplesMap ;
             rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/LotAwardOutcome/{../../cbc:ID}" ;
             rr:class epo:LotAwardOutcome
         ] ;
-# Commented out for removal of rdfs:seeAlso
-#     rr:predicateObjectMap
-#        [
-#            rdfs:label "ND-StrategicProcurementInformationLotResult" ;
-#            rr:predicate rdfs:seeAlso ;
-#            rr:objectMap
-#               [
-#                    rr:parentTriplesMap tedm:MG-VehicleInformation_ND-StrategicProcurementInformationLotResult ;
-#                    rr:joinCondition [
-#                        rr:child "path(.)";
-#                        rr:parent "path(.)"
-#                    ];
-#               ] ;
-#        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-StrategicProcurementInformationLotResult" ;
+            rr:predicate epo:fulfillsStrategicProcurement ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-GreenProcurement-fulfillsStrategicProcurement-LotAwardOutcome_ND-StrategicProcurementLotResult ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(.)"
+                    ];
+                ] ;
+        ] ;
 .
 
 tedm:MG-LotAwardOutcome_ND-ProcurementDetailsLotResult a rr:TriplesMap ;
@@ -291,20 +304,6 @@ tedm:MG-LotAwardOutcome_ND-ProcurementDetailsLotResult a rr:TriplesMap ;
             rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/LotAwardOutcome/{../../../cbc:ID}" ;
             rr:class epo:LotAwardOutcome
         ] ;
-# Commented out for removal of rdfs:seeAlso
-#     rr:predicateObjectMap
-#        [
-#            rdfs:label "ND-ProcurementDetailsLotResult" ;
-#            rr:predicate rdfs:seeAlso ;
-#            rr:objectMap
-#                [
-#                    rr:parentTriplesMap tedm:MG-VehicleInformation_ND-ProcurementDetailsLotResult ;
-#                    rr:joinCondition [
-#                        rr:child "path(.)";
-#                        rr:parent "path(.)"
-#                    ];
-#                ] ;
-#        ] ;
 .
 
 tedm:MG-LotAwardOutcome_ND-FinancingParty  a rr:TriplesMap ;
@@ -321,7 +320,7 @@ tedm:MG-LotAwardOutcome_ND-FinancingParty  a rr:TriplesMap ;
             rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/LotAwardOutcome/{../cbc:ID}" ;
             rr:class epo:LotAwardOutcome
         ] ;
-# Commented out for removal of rdfs:seeAlso
+# Commented out for the removal of rdfs:seeAlso
 #    rr:predicateObjectMap
 #        [
 #            rdfs:comment "ND-FinancingParty of MG-LotAwardOutcome, this relationship will be represented differently in future EPO versions" ;
@@ -351,12 +350,13 @@ tedm:MG-LotAwardOutcome_ND-BuyerReviewComplainants  a rr:TriplesMap ;
             rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/LotAwardOutcome/{../cbc:ID}" ;
             rr:class epo:LotAwardOutcome
         ] ;
-# Commented out for removal of rdfs:seeAlso
+
+# Commented out for the removal of rdfs:seeAlso
 #     rr:predicateObjectMap
 #        [
 #            rr:predicate rdfs:seeAlso ;
 #            rr:objectMap
-#               [
+#                [
 #                   rr:parentTriplesMap tedm:MG-ReviewRequestSummary-seeAlso-LotAwardOutcome_ND-BuyerReviewComplainants ;
 #                    rr:joinCondition [
 #                        rr:child "path(.)";
@@ -396,7 +396,7 @@ tedm:MG-LotAwardOutcome_ND-PayerParty a rr:TriplesMap ;
             rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/LotAwardOutcome/{../cbc:ID}" ;
             rr:class epo:LotAwardOutcome
         ] ;
-# Commented out for removal of rdfs:seeAlso
+# Commented out for the removal of rdf:seeAlso
 #    rr:predicateObjectMap
 #        [
 #            rr:predicate rdfs:seeAlso ;

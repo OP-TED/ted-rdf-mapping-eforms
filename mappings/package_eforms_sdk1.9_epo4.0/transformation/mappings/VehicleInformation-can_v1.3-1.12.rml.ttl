@@ -8,7 +8,7 @@
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
@@ -24,8 +24,8 @@
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix idlab-fn: <http://example.com/idlab/function/> .
 
-tedm:MG-VehicleInformation_ND-ProcurementDetailsLotResult a rr:TriplesMap ;
-    rdfs:label "MG-VehicleInformation" ;
+tedm:MG-CleanVehicleDirectiveInformation_ND-ProcurementDetailsLotResult a rr:TriplesMap ;
+    rdfs:label "MG-CleanVehicleDirectiveInformation" ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -36,7 +36,7 @@ tedm:MG-VehicleInformation_ND-ProcurementDetailsLotResult a rr:TriplesMap ;
         [
             rdfs:label "ND-ProcurementDetailsLotResult" ;
             rml:reference "'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/VehicleInformation/' || encode-for-uri(if (exists(../efac:ProcurementDetails[2])) then replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_'))" ;
-            rr:class epo:VehicleInformation
+            rr:class epo:CleanVehicleDirectiveInformation
         ] ;
     rr:predicateObjectMap
         [
@@ -44,7 +44,7 @@ tedm:MG-VehicleInformation_ND-ProcurementDetailsLotResult a rr:TriplesMap ;
             rr:predicate epo:concernsGreenProcurement ;
             rr:objectMap
                 [
-                   rr:parentTriplesMap tedm:MG-GreenProcurement-concernsGreenProcurement-VehicleInformation_ND-StrategicProcurementLotResult ;
+                   rr:parentTriplesMap tedm:MG-GreenProcurement-concernsGreenProcurement-CleanVehicleDirectiveInformation_ND-StrategicProcurementLotResult ;
                    rr:joinCondition [
                         rr:child "path(..)";
                         rr:parent "path(.)";
@@ -72,7 +72,7 @@ tedm:MG-VehicleInformation_ND-ProcurementDetailsLotResult a rr:TriplesMap ;
         ] ;
 .
 
-tedm:MG-VehicleInformation_ND-ProcurementStatistics a rr:TriplesMap ;
+tedm:MG-CleanVehicleDirectiveInformation_ND-ProcurementStatistics a rr:TriplesMap ;
     rdfs:label "MG-VehicleInformation" ;
     rml:logicalSource
         [
@@ -84,7 +84,7 @@ tedm:MG-VehicleInformation_ND-ProcurementStatistics a rr:TriplesMap ;
         [
             rdfs:label "ND-ProcurementStatistics" ;
             rml:reference "'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/VehicleInformation/' || encode-for-uri(if (exists(../../efac:ProcurementDetails[2])) then replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else replace(replace(replace(path(../..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_'))" ;
-            rr:class epo:VehicleInformation
+            rr:class epo:CleanVehicleDirectiveInformation
         ] ;
     rr:predicateObjectMap
         [
@@ -122,7 +122,7 @@ tedm:MG-VehicleInformation_ND-ProcurementStatistics a rr:TriplesMap ;
         ];
 .
 
-tedm:MG-VehicleInformation_ND-StrategicProcurementInformationLotResult a rr:TriplesMap ;
+tedm:MG-CleanVehicleDirectiveInformation_ND-StrategicProcurementInformationLotResult a rr:TriplesMap ;
     rdfs:label "MG-VehicleInformation" ;
     rml:logicalSource
         [
@@ -134,7 +134,7 @@ tedm:MG-VehicleInformation_ND-StrategicProcurementInformationLotResult a rr:Trip
         [
             rdfs:label "ND-StrategicProcurementInformationLotResult" ;
             rml:reference "if (exists(efbc:ProcurementCategoryCode)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/VehicleInformation$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
-            rr:class epo:VehicleInformation
+            rr:class epo:CleanVehicleDirectiveInformation
         ] ;
     rr:predicateObjectMap
         [
@@ -158,7 +158,7 @@ tedm:MG-VehicleInformation_ND-StrategicProcurementInformationLotResult a rr:Trip
             rr:predicate epo:concernsGreenProcurement ;
             rr:objectMap
                 [
-                   rr:parentTriplesMap tedm:MG-GreenProcurement-concernsGreenProcurement-VehicleInformation_ND-StrategicProcurementLotResult ;
+                   rr:parentTriplesMap tedm:MG-GreenProcurement-concernsGreenProcurement-CleanVehicleDirectiveInformation_ND-StrategicProcurementLotResult ;
                    rr:joinCondition [
                         rr:child "path(.)";
                         rr:parent "path(.)";
@@ -166,3 +166,18 @@ tedm:MG-VehicleInformation_ND-StrategicProcurementInformationLotResult a rr:Trip
                 ] ;
         ] ;
 .
+tedm:MG-GreenProcurement-fulfillsStrategicProcurement-LotAwardOutcome_ND-StrategicProcurementLotResult  a rr:TriplesMap ;
+  rdfs:label "MG-GreenProcurement";
+       rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:StrategicProcurement/efac:StrategicProcurementInformation" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-StrategicProcurementInformationLotResult" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/GreenProcurement${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:class epo:GreenProcurement
+        ] ;
+    .

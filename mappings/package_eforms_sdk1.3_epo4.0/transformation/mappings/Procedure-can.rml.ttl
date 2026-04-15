@@ -22,7 +22,7 @@
 @prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix idlab-fn: <http://example.com/idlab/function/> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 
 tedm:MG-Procedure_ND-DirectAward a rr:TriplesMap ;
     rdfs:label "MG-Procedure";
@@ -41,19 +41,31 @@ tedm:MG-Procedure_ND-DirectAward a rr:TriplesMap ;
 
     rr:predicateObjectMap
         [
-            rr:predicate epo:isSubjectToProcedureSpecificTerm  ;
+            rr:predicate epo:isSubjectToTerm  ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-DirectAwardTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-DirectAward ;
+                    rr:parentTriplesMap tedm:MG-DirectAwardTerm-isSubjectToTerm-Procedure_ND-DirectAward ;
                     rr:joinCondition [
                         rr:child  "path(.)" ;
                         rr:parent "path(.)" ;
                     ] ;
                 ]
         ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:isSubjectToTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-langString-hasJustification-DirectAwardTerm-isSubjectToTerm-Procedure_ND-DirectAward ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(..)" ;
+                    ] ;
+                ]
+        ] ;
     .
 
-tedm:MG-DirectAwardTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-DirectAward a rr:TriplesMap ;
+tedm:MG-DirectAwardTerm-isSubjectToTerm-Procedure_ND-DirectAward a rr:TriplesMap ;
     rdfs:label "MG-DirectAwardTerm";
     rml:logicalSource
         [
@@ -112,7 +124,7 @@ tedm:MG-DirectAwardTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-DirectAwar
             rr:predicate epo:refersToPreviousProcedure  ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-Procedure-refersToPreviousProcedure-DirectAwardTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-DirectAward ;
+                    rr:parentTriplesMap tedm:MG-Procedure-refersToPreviousProcedure-DirectAwardTerm-isSubjectToTerm-Procedure_ND-DirectAward ;
                     rr:joinCondition [
                         rr:child  "path(.)" ;
                         rr:parent "path(.)" ;
@@ -121,7 +133,7 @@ tedm:MG-DirectAwardTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-DirectAwar
         ] ;
     .
 
-tedm:MG-Procedure-refersToPreviousProcedure-DirectAwardTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-DirectAward a rr:TriplesMap ;
+tedm:MG-Procedure-refersToPreviousProcedure-DirectAwardTerm-isSubjectToTerm-Procedure_ND-DirectAward a rr:TriplesMap ;
     rdfs:label "MG-Procedure";
     rml:logicalSource
         [
@@ -141,7 +153,7 @@ tedm:MG-Procedure-refersToPreviousProcedure-DirectAwardTerm-isSubjectToProcedure
             rr:predicate adms:identifier  ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-Identifier-identifier-Procedure-refersToPreviousProcedure-DirectAwardTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-DirectAward ;
+                    rr:parentTriplesMap tedm:MG-Identifier-identifier-Procedure-refersToPreviousProcedure-DirectAwardTerm-isSubjectToTerm-Procedure_ND-DirectAward ;
                     rr:joinCondition [
                         rr:child  "path(.)" ;
                         rr:parent "path(.)" ;
@@ -150,7 +162,7 @@ tedm:MG-Procedure-refersToPreviousProcedure-DirectAwardTerm-isSubjectToProcedure
         ] ;
     .
 
-tedm:MG-Identifier-identifier-Procedure-refersToPreviousProcedure-DirectAwardTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-DirectAward a rr:TriplesMap ;
+tedm:MG-Identifier-identifier-Procedure-refersToPreviousProcedure-DirectAwardTerm-isSubjectToTerm-Procedure_ND-DirectAward a rr:TriplesMap ;
     rdfs:label "MG-Identifier" ;
     rml:logicalSource
         [
@@ -187,21 +199,21 @@ tedm:MG-Identifier-identifier-Procedure-refersToPreviousProcedure-DirectAwardTer
         ];
     .
 
-tedm:MG-langString-hasJustification-DirectAwardTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-DirectAward a rr:TriplesMap ;
+tedm:MG-langString-hasJustification-DirectAwardTerm-isSubjectToTerm-Procedure_ND-DirectAward a rr:TriplesMap ;
     rml:logicalSource [
         rml:source "data/source.xml" ;
         rml:iterator "/*/cac:TenderingProcess/cac:ProcessJustification[cbc:ProcessReasonCode/@listName='direct-award-justification']/cbc:ProcessReason" ;
         rml:referenceFormulation ql:XPath ;
     ] ;
     rr:subjectMap [
-        rr:class epo-not:DirectAwardTerm ;
+        rr:class epo:DirectAwardTerm ;
         rdfs:label "ND-DirectAward" ;
         rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/DirectAwardTerm${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
     ] ;
     rr:predicateObjectMap [
-        rr:predicate epo-not:hasJustification ;
+        rr:predicate epo:hasJustification ;
         rr:objectMap [
-            rml:reference "if(not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='dir-awa-tex']) and ./text() = 'unpublished')) then . else null" ;
+            rml:reference "if((exists(@languageID)) and  (not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='dir-awa-tex']) and ./text() = 'unpublished'))) then . else null" ;
             rml:languageMap [
                 fnml:functionValue [
                     rr:predicateObjectMap [

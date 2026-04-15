@@ -8,7 +8,7 @@
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
@@ -87,6 +87,16 @@ tedm:MG-CompetitionNotice_ND-Root
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:MG-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-Participants" ;
+            rdfs:comment "Connection of MG-CompetitionNotice to MG-Candidate under ND-Participants" ;
+            rr:predicate epo:announcesRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Candidate-announcesRole-CompetitionNotice_ND-Participants;
                 ] ;
         ] ;
 .
@@ -550,7 +560,7 @@ tedm:MG-Notice_ND-Root
         [
             rdfs:label "BT-05(a)-notice and BT-05(b)-notice" ;
             rdfs:comment "Notice Dispatch Date and Notice Dispatch Time of MG-Notice under ND-Root" ;
-            rr:predicate epo:hasESenderDispatchDate ;
+            rr:predicate epo:hasDispatchDate ;
             rr:objectMap
                 [
                     # here we combine values across (relative) XPaths/fields stripping out the time zone from the first
@@ -588,7 +598,8 @@ tedm:MG-Notice_ND-Root
             rr:predicate epo:hasOJSIssueNumber ;
             rr:objectMap
                 [
-                    rml:reference "ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Publication/efbc:GazetteID[@schemeName='ojs-id']" ;
+                    rml:reference "if(contains(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Publication/efbc:GazetteID[@schemeName='ojs-id'], '/')) then substring-before(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Publication/efbc:GazetteID[@schemeName='ojs-id'], '/') else ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Publication/efbc:GazetteID[@schemeName='ojs-id']" ;
+                    rr:datatype xsd:integer ;
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -610,6 +621,26 @@ tedm:MG-Notice_ND-Root
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:MG-Lot_ND-Lot
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-001-notice" ;
+            rdfs:comment "Connection of MG-Notice to MG-SpecificationInformation via hasSourceVersionSpecification under ND-Root" ;
+            rr:predicate epo:hasSpecificationInformation ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-SpecificationInformation-hasSourceVersionSpecification-Notice_ND-Root ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-002-notice" ;
+            rdfs:comment "Connection of MG-Notice to MG-SpecificationInformation via hasSourceSpecificationCustomisation under ND-Root" ;
+            rr:predicate epo:hasSpecificationInformation ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-SpecificationInformation-hasSourceSpecificationCustomisation-Notice_ND-Root ;
                 ] ;
         ] ;
 #    rr:predicateObjectMap
@@ -661,6 +692,130 @@ tedm:MG-Identifier-identifier-Notice_ND-Root a rr:TriplesMap ;
             rr:objectMap
                 [
                     rml:reference "./@schemeName";
+                ] ;
+        ] ;
+.
+
+tedm:MG-SpecificationInformation-hasSourceVersionSpecification-Notice_ND-Root a rr:TriplesMap ;
+    rdfs:label "MG-SpecificationInformation" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cbc:UBLVersionID" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Root" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Notice/SpecificationInformation/Version" ;
+            rr:class epo:SpecificationInformation
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-001-notice" ;
+            rdfs:comment "UBL version ID (UBL) of MG-Identifier-hasSourceVersionSpecification-SpecificationInformation-hasSpecificationInformation-Notice under ND-Root" ;
+            rr:predicate epo:hasSourceVersionSpecification ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Identifier-hasSourceVersionSpecification-SpecificationInformation-hasSpecificationInformation-Notice_ND-Root ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-Identifier-hasSourceVersionSpecification-SpecificationInformation-hasSpecificationInformation-Notice_ND-Root a rr:TriplesMap ;
+    rdfs:label "MG-Identifier" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cbc:UBLVersionID" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Root" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Notice/SpecificationInformation/Version/Identifier" ;
+            rr:class adms:Identifier
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-001-notice" ;
+            rdfs:comment "UBL version ID (UBL) of MG-Identifier-hasSourceVersionSpecification-SpecificationInformation-hasSpecificationInformation-Notice under ND-Root" ;
+            rr:predicate skos:notation ;
+            rr:objectMap
+                [
+                    rml:reference "." ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-001-notice-Scheme" ;
+            rdfs:comment "OPT-001-notice-Scheme of MG-CompetitionNotice under ND-Root" ;
+            rr:predicate epo:hasScheme ;
+            rr:objectMap
+                [
+                    rml:reference "@schemeName" ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-SpecificationInformation-hasSourceSpecificationCustomisation-Notice_ND-Root a rr:TriplesMap ;
+    rdfs:label "MG-SpecificationInformation" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cbc:CustomizationID" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Root" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Notice/SpecificationInformation/Customisation" ;
+            rr:class epo:SpecificationInformation
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-002-notice" ;
+            rdfs:comment "Customization ID (UBL) of MG-Identifier-hasSourceSpecificationCustomisation-SpecificationInformation-hasSpecificationInformation-Notice under ND-Root" ;
+            rr:predicate epo:hasSourceSpecificationCustomisation ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Identifier-hasSourceSpecificationCustomisation-SpecificationInformation-hasSpecificationInformation-Notice_ND-Root ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-Identifier-hasSourceSpecificationCustomisation-SpecificationInformation-hasSpecificationInformation-Notice_ND-Root a rr:TriplesMap ;
+    rdfs:label "MG-Identifier" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cbc:CustomizationID" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Root" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Notice/SpecificationInformation/Customisation/Identifier" ;
+            rr:class adms:Identifier
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-002-notice" ;
+            rdfs:comment "Customization ID (UBL) of MG-Identifier-hasSourceSpecificationCustomisation-SpecificationInformation-hasSpecificationInformation-Notice under ND-Root" ;
+            rr:predicate skos:notation ;
+            rr:objectMap
+                [
+                    rml:reference "." ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-002-notice-Scheme" ;
+            rdfs:comment "OPT-002-notice-Scheme of MG-CompetitionNotice under ND-Root" ;
+            rr:predicate epo:hasScheme ;
+            rr:objectMap
+                [
+                    rml:reference "@schemeName" ;
                 ] ;
         ] ;
 .
@@ -721,6 +876,73 @@ tedm:MG-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember a 
                         rr:child "path(.)";
                         rr:parent "path(.)";
                     ];
+                ] ;
+        ] ;
+.
+
+tedm:MG-Candidate-announcesRole-CompetitionNotice_ND-Participants a rr:TriplesMap ;
+    rdfs:label "MG-Candidate" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:EconomicOperatorShortList/cac:PreSelectedParty" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Participants" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Candidate${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:class epo:Candidate
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-47-Candidate" ;
+            rdfs:comment "Name of MG-Candidate under ND-Participants" ;
+            rr:predicate dct:title ;
+            rr:objectMap
+                [
+                    rml:reference "cac:PartyName/cbc:Name" ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-Lot-contextualisedBy-Candidate_ND-Participants a rr:TriplesMap ;
+    rdfs:label "MG-Candidate" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:EconomicOperatorShortList/cac:PreSelectedParty" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Participants" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Candidate${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:class epo:Candidate
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-Participants" ;
+            rdfs:comment "Connection of MG-Candidate to MG-Lot under ND-Participants" ;
+            rr:predicate epo:contextualisedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Lot_ND-Lot ;
+                    rr:joinCondition
+                        [
+                            rr:child "../../cbc:ID" ;
+                            rr:parent "cbc:ID" ;
+                        ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-47-Candidate" ;
+            rdfs:comment "Name of MG-Candidate under ND-Participants" ;
+            rr:predicate dct:title ;
+            rr:objectMap
+                [
+                    rml:reference "cac:PartyName/cbc:Name" ;
                 ] ;
         ] ;
 .
@@ -792,6 +1014,37 @@ tedm:MG-Identifier-identifier-Notice-refersToPrevious-Notice_ND-PreviousNoticeRe
             rr:objectMap
                 [
                     rml:reference "cbc:ID/@schemeName" ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-Notice_ND-RootExtension
+    a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Root" ;
+            rdfs:comment "Primary type declaration for MG-Notice under ND-Root" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Notice" ;
+            rr:class epo:Notice
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-803(d)-notice and BT-803(t)-notice" ;
+            rdfs:comment "Notice Dispatch Date eSender and Notice Dispatch Time eSender of MG-Notice under ND-Root" ;
+            rr:predicate epo:hasESenderDispatchDate ;
+            rr:objectMap
+                [
+                    # here we combine values across (relative) XPaths/fields stripping out the time zone from the first
+                    # it handles the case where there is no time zone indicated in the date time, just in case validation failed on a notice
+                    # however, it won't handle the case if there are other malformations
+                    rml:reference "if(exists(efbc:TransmissionDate) and exists(efbc:TransmissionTime) and matches(efbc:TransmissionDate, '[+\\-]\\d\\d:\\d\\d|Z')) then replace(efbc:TransmissionDate, '...:..|Z', '') || 'T' || efbc:TransmissionTime else if(exists(efbc:TransmissionDate) and exists(efbc:TransmissionTime)) then efbc:TransmissionDate || 'T' || efbc:TransmissionTime else if(exists(efbc:TransmissionDate)) then efbc:TransmissionDate else null" ;
+                    rr:datatype xsd:dateTime ;
                 ] ;
         ] ;
 .

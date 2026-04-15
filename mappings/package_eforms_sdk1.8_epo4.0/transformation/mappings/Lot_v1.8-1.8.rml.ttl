@@ -8,7 +8,7 @@
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
@@ -24,30 +24,20 @@
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix idlab-fn: <http://example.com/idlab/function/> .
 
-tedm:MG-ProcurementDocument-involvesProcurementDocument-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotDocOfficialLanguage a rr:TriplesMap ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-LotDocOfficialLanguage";
-            rml:reference "if (exists(cbc:LanguageID[../cbc:DocumentStatusCode/text()='official'])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ProcurementDocument$' || concat(replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_'), encode-for-uri(cbc:ID/text())) else null" ;
-            rr:class epo:ProcurementDocument
-        ] ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:CallForTendersDocumentReference";
-            rml:referenceFormulation ql:XPath
-        ];
+tedm:MG-AccessTerm-isSubjectToTerm-Lot_ND-LotProcurementDocument a rr:TriplesMap ;
+    # subjectMap is defined in v1.8+
+    # logicalSource is defined in v1.3-1.8
     rr:predicateObjectMap
         [
             rdfs:label "BT-708-Lot (value)";
-            rdfs:comment "Documents Official Language of MG-ProcurementDocument under ND-LotProcurementDocument";
-            rr:predicate epo:hasOfficialLanguage  ;
+            rdfs:comment "Documents Official Language of MG-AccessTerm under ND-LotProcurementDocument";
+            rr:predicate epo:providesProcurementDocumentsInOfficialLanguage ;
             rr:objectMap
                 [
                     tedm:minSDKVersion "1.8" ;
                     tedm:maxSDKVersion "1.8" ;
                     rdfs:label "at-voc:language" ;
-                    rdfs:comment "Documents Official Language of MG-ProcurementDocument under ND-LotProcurementDocument";
+                    rdfs:comment "Documents Official Language of MG-AccessTerm under ND-LotProcurementDocument";
                     rr:parentTriplesMap tedm:languageJSON ;
                     rr:joinCondition [
                         rr:child "cbc:LanguageID[../cbc:DocumentStatusCode/text()='official']" ;
@@ -56,4 +46,3 @@ tedm:MG-ProcurementDocument-involvesProcurementDocument-AccessTerm-isSubjectToLo
                 ] ;
         ] ;
 .
-

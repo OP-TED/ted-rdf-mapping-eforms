@@ -22,9 +22,9 @@
 @prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix idlab-fn: <http://example.com/idlab/function/> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 
-tedm:MG-ContractTerm-isSubjectToContractSpecificTerm-Contract_ND-PayerParty  a rr:TriplesMap ;
+tedm:MG-ContractTerm-foreseesTerm-Lot_ND-PayerParty a rr:TriplesMap ;
   rdfs:label "MG-ContractTerm";
        rml:logicalSource
         [
@@ -44,7 +44,7 @@ tedm:MG-ContractTerm-isSubjectToContractSpecificTerm-Contract_ND-PayerParty  a r
             rr:predicate epo:definesPaymentExecutor ;
             rr:objectMap
                 [
-                   rr:parentTriplesMap tedm:MG-PaymentExecutor-definesPaymentExecutor-ContractTerm-isSubjectToContractSpecificTerm-Contract_ND-PayerParty ;
+                   rr:parentTriplesMap tedm:MG-PaymentExecutor-definesPaymentExecutor-ContractTerm-foreseesTerm-Lot_ND-PayerParty ;
                    rr:joinCondition
                       [
                         rr:child "path(.)" ;
@@ -54,7 +54,7 @@ tedm:MG-ContractTerm-isSubjectToContractSpecificTerm-Contract_ND-PayerParty  a r
         ] ;
     .
 
-tedm:MG-PaymentExecutor-definesPaymentExecutor-ContractTerm-isSubjectToContractSpecificTerm-Contract_ND-PayerParty a rr:TriplesMap ;
+tedm:MG-PaymentExecutor-definesPaymentExecutor-ContractTerm-foreseesTerm-Lot_ND-PayerParty a rr:TriplesMap ;
   rdfs:label "MG-PaymentExecutor";
        rml:logicalSource
         [
@@ -132,12 +132,12 @@ tedm:MG-Organization-playedBy-PaymentExecutor_ND-PayerParty a rr:TriplesMap ;
         ] ;
     .
 
-# Commented out for removal of rdfs:seeAlso
+# Commented out for the removal of rdf:seeAlso
 #tedm:MG-PaymentExecutor-seeAlso-LotAwardOutcome_ND-PayerParty a rr:TriplesMap ;
 #  rdfs:label "MG-PaymentExecutor";
 #       rml:logicalSource
 #        [
-#           rml:source "data/source.xml" ;
+#            rml:source "data/source.xml" ;
 #            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/cac:PayerParty" ;
 #            rml:referenceFormulation ql:XPath
 #        ] ;

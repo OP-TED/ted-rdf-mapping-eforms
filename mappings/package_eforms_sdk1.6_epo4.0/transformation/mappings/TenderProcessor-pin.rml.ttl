@@ -8,7 +8,7 @@
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
@@ -42,7 +42,7 @@ tedm:MG-TenderProcessor_ND-PartTenderingTerms a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rdfs:label "OPT-301-Part-TenderEval" ;
-            rdfs:comment "Connection between AgentInRole and Organization OR ContactPoint" ;
+            rdfs:comment "Connection between AgentInRole and Organization OR OrganizationalUnit" ;
             rr:predicate epo:playedBy ;
             rr:objectMap
                 [
@@ -57,15 +57,18 @@ tedm:MG-TenderProcessor_ND-PartTenderingTerms a rr:TriplesMap ;
                 ,
                 [
                     rdfs:label "TPO (playedBy)" ;
-                    rdfs:comment "Connection where TenderEvaluationParty is a TouchPoint" ;
-                    # we create a deterministic IRI which is the same as that instantiated alongside the ContactPoint and rely on the sameAs link
-                    rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Organization/{cac:TenderEvaluationParty/cac:PartyIdentification/cbc:ID}" ;
+                    rdfs:comment "Connection where TenderEvaluationParty is an OrganizationalUnit" ;
+                    rr:joinCondition [
+                        rr:child "if(cac:TenderEvaluationParty/cac:PartyIdentification/cbc:ID/@schemeName='touchpoint' or exists(cac:TenderEvaluationParty/cac:PartyIdentification/cbc:ID[starts-with(text(), 'TPO-')])) then cac:TenderEvaluationParty/cac:PartyIdentification/cbc:ID else null" ;
+                        rr:parent "cac:PartyIdentification/cbc:ID" ;
+                    ] ;
+                    rr:parentTriplesMap tedm:MG-OrganizationalUnit_ND-Touchpoint ;
                 ] ;
         ] ;
     rr:predicateObjectMap
         [
             rdfs:label "OPT-301-Part-TenderEval TPO (hasContactPointInRole)" ;
-            rdfs:comment "Connection where TenderEvaluationParty is a TouchPoint" ;
+            rdfs:comment "Connection where TenderEvaluationParty is an OrganizationalUnit" ;
             rr:predicate epo:hasContactPointInRole ;
             rr:objectMap
                 [
@@ -82,7 +85,7 @@ tedm:MG-TenderProcessor_ND-PartTenderingTerms a rr:TriplesMap ;
             rr:predicate epo:contextualisedBy ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-ProcurementObject-contextualisedBy-TenderProcessor-announcesRole-PlanningNotice_ND-PartTenderingTerms ;
+                    rr:parentTriplesMap tedm:MG-PlannedProcurementPart-contextualisedBy-TenderProcessor-announcesRole-PlanningNotice_ND-PartTenderingTerms ;
                     rr:joinCondition [
                         rr:child "path(.)" ;
                         rr:parent "path(.)" ;

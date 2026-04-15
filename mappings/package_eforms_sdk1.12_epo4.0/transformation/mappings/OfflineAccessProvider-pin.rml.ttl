@@ -6,7 +6,7 @@
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 
 tedm:MG-OfflineAccessProvider_ND-PartTenderingTerms a rr:TriplesMap ;
     rdfs:label "MG-OfflineAccessProvider" ;
@@ -22,7 +22,7 @@ tedm:MG-OfflineAccessProvider_ND-PartTenderingTerms a rr:TriplesMap ;
     ] ;
     rr:predicateObjectMap [
         rdfs:label "OPT-301-Part-DocProvider TPO (hasContactPointInRole)" ;
-        rdfs:comment "Connection where DocumentProviderParty is a TouchPoint" ;
+        rdfs:comment "Connection where DocumentProviderParty is an OrganizationalUnit" ;
         rr:predicate epo:hasContactPointInRole ;
         rr:objectMap [
             rr:parentTriplesMap tedm:MG-ContactPoint_ND-Touchpoint ;
@@ -34,12 +34,16 @@ tedm:MG-OfflineAccessProvider_ND-PartTenderingTerms a rr:TriplesMap ;
     ] ;
     rr:predicateObjectMap [
         rdfs:label "OPT-301-Part-DocProvider" ;
-        rdfs:comment "Connection between AgentInRole and Organization OR ContactPoint" ;
+        rdfs:comment "Connection between AgentInRole and Organization OR OrganizationalUnit" ;
         rr:predicate epo:playedBy ;
         rr:objectMap [
             rdfs:label "TPO (playedBy)" ;
-            rdfs:comment "Connection where DocumentProviderParty is a TouchPoint" ;
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Organization/{cac:DocumentProviderParty/cac:PartyIdentification/cbc:ID}" ;
+            rdfs:comment "Connection where DocumentProviderParty is an OrganizationalUnit" ;
+            rr:joinCondition [
+                rr:child "if(cac:DocumentProviderParty/cac:PartyIdentification/cbc:ID/@schemeName='touchpoint' or exists(cac:DocumentProviderParty/cac:PartyIdentification/cbc:ID[starts-with(text(), 'TPO-')])) then cac:DocumentProviderParty/cac:PartyIdentification/cbc:ID else null" ;
+                rr:parent "cac:PartyIdentification/cbc:ID" ;
+            ] ;
+            rr:parentTriplesMap tedm:MG-OrganizationalUnit_ND-Touchpoint ;
         ] ;
         rr:objectMap [
             rdfs:label "ORG (playedBy)" ;
@@ -57,7 +61,7 @@ tedm:MG-OfflineAccessProvider_ND-PartTenderingTerms a rr:TriplesMap ;
             rr:predicate epo:contextualisedBy ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-ProcurementObject-contextualisedBy-OfflineAccessProvider-announcesRole-PlanningNotice_ND-PartTenderingTerms ;
+                    rr:parentTriplesMap tedm:MG-PlannedProcurementPart-contextualisedBy-OfflineAccessProvider-announcesRole-PlanningNotice_ND-PartTenderingTerms ;
                     rr:joinCondition [
                         rr:child "path(.)" ;
                         rr:parent "path(.)" ;

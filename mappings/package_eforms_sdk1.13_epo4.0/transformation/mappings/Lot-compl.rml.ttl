@@ -22,9 +22,9 @@
 @prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix idlab-fn: <http://example.com/idlab/function/> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 
-tedm:MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotDuration a rr:TriplesMap ;
+tedm:MG-ContractTerm-foreseesTerm-Lot_ND-LotDuration a rr:TriplesMap ;
     rdfs:label "MG-ContractTerm";
         rml:logicalSource
         [
@@ -59,10 +59,10 @@ tedm:MG-Lot_ND-LotDuration a rr:TriplesMap ;
             tedm:minSDKVersion "1.13" ;
             rdfs:label "BT-781-Lot";
             rdfs:comment "Duration Additional Information of MG-Lot under LotDuration ";
-            rr:predicate epo:foreseesContractSpecificTerm ;
+            rr:predicate epo:foreseesTerm ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotDuration ;
+                    rr:parentTriplesMap tedm:MG-ContractTerm-foreseesTerm-Lot_ND-LotDuration ;
                     rr:joinCondition [
                         rr:child "path(.)";
                         rr:parent "path(.)";
@@ -71,7 +71,7 @@ tedm:MG-Lot_ND-LotDuration a rr:TriplesMap ;
         ];
 .
 
-tedm:MG-langString-hasExceedingDurationJustification-ContractTerm_ND-LotDuration a rr:TriplesMap ;
+tedm:MG-langString-hasDurationAdditionalInformation-ContractTerm_ND-LotDuration a rr:TriplesMap ;
    rdfs:label "MG-ContractLotCompletionInformation" ;
     rml:logicalSource [
         rml:source "data/source.xml" ;
@@ -84,9 +84,9 @@ tedm:MG-langString-hasExceedingDurationJustification-ContractTerm_ND-LotDuration
         rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTerm${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
     ] ;
     rr:predicateObjectMap [
-        rr:predicate   epo:hasExceedingDurationJustification  ;
+        rr:predicate   epo:hasDurationAdditionalInformation ;
         rr:objectMap [
-            rml:reference "." ;
+            rml:reference "if(exists(@languageID)) then . else null" ;
             rml:languageMap [
                     fnml:functionValue [
                     rr:predicateObjectMap [

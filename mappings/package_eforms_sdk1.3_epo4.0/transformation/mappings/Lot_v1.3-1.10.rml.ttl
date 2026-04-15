@@ -8,7 +8,7 @@
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
@@ -53,7 +53,7 @@ tedm:MG-ParticipationCondition-specifiesProcurementCriterion-Lot_ND-LotReservedP
         ];
 .
 
-tedm:MG-langString-hasNonElectronicSubmissionDescription-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-NonEsubmission a rr:TriplesMap ;
+tedm:MG-langString-hasNonElectronicSubmissionDescription-SubmissionTerm-isSubjectToTerm-Lot_ND-NonEsubmission a rr:TriplesMap ;
   # VERINFO: SDK v1.8-1.11 from 1.3-1.7 contain only node name change, along with introduction of Language attribute and other mapping-irrelevant changes
   # VERINFO: the iterator of this mapping is actually wrong up to v1.11, but old mappings are to be untouched (a v1.11 is created separately for this)
   rml:logicalSource [
@@ -69,7 +69,7 @@ tedm:MG-langString-hasNonElectronicSubmissionDescription-SubmissionTerm-isSubjec
   rr:predicateObjectMap [
     rr:predicate epo-not:hasNonElectronicSubmissionDescription ;
     rr:objectMap [
-      rml:reference "." ;
+      rml:reference "if(exists(@languageID)) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [

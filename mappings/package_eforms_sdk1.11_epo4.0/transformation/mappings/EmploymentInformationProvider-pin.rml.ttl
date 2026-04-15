@@ -6,7 +6,7 @@
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 
 tedm:MG-EmploymentInformationProvider_ND-PartEmploymentLegislation a rr:TriplesMap ;
     rdfs:label "MG-EmploymentInformationProvider" ;
@@ -17,7 +17,7 @@ tedm:MG-EmploymentInformationProvider_ND-PartEmploymentLegislation a rr:TriplesM
     ] ;
     rr:predicateObjectMap [
         rdfs:label "OPT-301-Part-EmployLegis TPO (hasContactPointInRole)" ;
-        rdfs:comment "Connection where IssuerParty is a TouchPoint" ;
+        rdfs:comment "Connection where IssuerParty is an OrganizationalUnit" ;
         rr:predicate epo:hasContactPointInRole ;
         rr:objectMap [
             rr:parentTriplesMap tedm:MG-ContactPoint_ND-Touchpoint ;
@@ -31,11 +31,15 @@ tedm:MG-EmploymentInformationProvider_ND-PartEmploymentLegislation a rr:TriplesM
     ] ;
        rr:predicateObjectMap [
         rdfs:label "OPT-301-Part-EmployLegis" ;
-        rdfs:comment "Connection between AgentInRole and Organization OR ContactPoint" ;
+        rdfs:comment "Connection between AgentInRole and Organization OR OrganizationalUnit" ;
         rr:objectMap [
             rdfs:label "TPO (playedBy)" ;
-            rdfs:comment "Connection where IssuerParty is a TouchPoint" ;
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Organization/{cac:IssuerParty/cac:PartyIdentification/cbc:ID}" ;
+            rdfs:comment "Connection where IssuerParty is an OrganizationalUnit" ;
+            rr:joinCondition [
+                rr:child "if(cac:IssuerParty/cac:PartyIdentification/cbc:ID/@schemeName='touchpoint' or exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID[starts-with(text(), 'TPO-')])) then cac:IssuerParty/cac:PartyIdentification/cbc:ID else null" ;
+                rr:parent "cac:PartyIdentification/cbc:ID" ;
+            ] ;
+            rr:parentTriplesMap tedm:MG-OrganizationalUnit_ND-Touchpoint ;
         ] ;
         rr:objectMap [
             rdfs:label "ORG (playedBy)" ;
@@ -54,7 +58,7 @@ tedm:MG-EmploymentInformationProvider_ND-PartEmploymentLegislation a rr:TriplesM
             rr:predicate epo:contextualisedBy ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-ProcurementObject-contextualisedBy-EmploymentInformationProvider-announcesRole-PlanningNotice_ND-PartEmploymentLegislation ;
+                    rr:parentTriplesMap tedm:MG-PlannedProcurementPart-contextualisedBy-EmploymentInformationProvider-announcesRole-PlanningNotice_ND-PartEmploymentLegislation ;
                     rr:joinCondition [
                         rr:child "path(.)" ;
                         rr:parent "path(.)" ;

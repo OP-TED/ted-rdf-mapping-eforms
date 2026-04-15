@@ -8,7 +8,7 @@
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
@@ -69,9 +69,43 @@ tedm:MG-ResultNotice_ND-Root
 #            rr:predicate rdfs:seeAlso ;
 #            rr:objectMap
 #                [
-#                   rr:parentTriplesMap tedm:MG-ReviewDecision-seeAlso-ResultNotice_ND-ReviewStatus
+#                    rr:parentTriplesMap tedm:MG-ReviewDecision-seeAlso-ResultNotice_ND-ReviewStatus
 #               ] ;
 #        ] ;
+    rr:predicateObjectMap
+        [
+            tedm:minSDKVersion "1.13" ;
+            rdfs:label "MG-ReviewRequester-announcesRole-ResultNotice" ;
+            rdfs:comment "the relation between MG-ReviewRequester and ResultNotice under ND-Root" ;
+            rr:predicate epo:announcesRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ReviewRequester-announcesRole-ResultNotice_ND-AppealingParty ;
+                ] ;
+        ] ;
+    # this is for epo 5.3.0 -- see related parent (referenced) in ReviewObject-can
+    #  rr:predicateObjectMap
+    #     [
+    #         rdfs:label "ReviewDecision of MG-ResultNotice under ND-Root" ;
+    #         rdfs:comment "Connection between ResultNotice and ReviewDecision under ND-Root" ;
+    #         rr:predicate epo:announcesReviewDecision ;
+    #         rr:objectMap
+    #             [
+    #                rr:parentTriplesMap tedm:MG-ReviewDecision-announcesReviewDecision-ResultNotice_ND-ReviewStatus ;
+    #             ] ;
+    #     ] ;
+    # TODO to be removed with the child mapping in ReviewObject-can as part of purging of rdfs:seeAlso
+    # rr:predicateObjectMap
+    #     [
+    #         tedm:minSDKVersion "1.13" ;
+    #         rdfs:label "MG-ReviewDecision-seeAlso-ResultNotice" ;
+    #         rdfs:comment "the relation between MG-ReviewDecision and ResultNotice under ND-Root" ;
+    #         rr:predicate rdfs:seeAlso ;
+    #         rr:objectMap
+    #             [
+    #                 rr:parentTriplesMap tedm:MG-ReviewDecision-seeAlso-ResultNotice_ND-ReviewStatus
+    #             ] ;
+    #     ] ;
      rr:predicateObjectMap
         [
             rdfs:label "MG-Reviewer-announcesRole-ResultNotice" ;
@@ -89,7 +123,7 @@ tedm:MG-ResultNotice_ND-Root
             rr:predicate epo:announcesRole  ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-ReviewRequester_ND-AppealingParty;
+                    rr:parentTriplesMap tedm:MG-ReviewRequester-announcesRole-ResultNotice_ND-AppealingParty;
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -100,6 +134,26 @@ tedm:MG-ResultNotice_ND-Root
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:MG-LotGroup_ND-LotsGroup
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "MG-LotGroupAwardInformation-announcesLotGroupAwardInformation-ResultNotice" ;
+            rdfs:comment "Connection between ResultNotice and LotGroupAwardInformation (GroupFramework)" ;
+            rr:predicate epo:announcesLotGroupAwardInformation ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-LotGroupAwardInformation_ND-NoticeResultGroupFA ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "MG-Contract-announcesContract-ResultNotice" ;
+            rdfs:comment "Connection between ResultNotice and Contract" ;
+            rr:predicate epo:announcesContract ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Contract_ND-SettledContract ;
                 ] ;
         ] ;
 .
@@ -257,23 +311,9 @@ tedm:MG-Notice_ND-NoticeResult a rr:TriplesMap ;
                     ] ;
                 ] ;
         ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "ND-NoticeResultGroupFA";
-            rdfs:comment "ND-NoticeResultGroupFA of MG-LotGroupAwardInformation under ND-NoticeResult";
-            rr:predicate epo:announcesLotGroupAwardInformation   ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-LotGroupAwardInformation_ND-NoticeResultGroupFA ;
-                    rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(..)";
-                    ];
-                ] ;
-        ] ;
 .
 
-tedm:MG-MonetaryValue-hasTotalAwardedValue-NoticeAwardInformation_ND-ResultNotice a rr:TriplesMap ;
+tedm:MG-MonetaryValue-hasTotalAwardedValue-NoticeAwardInformation_ND-NoticeResult a rr:TriplesMap ;
     rdfs:label "MG-MonetaryValue";
     rml:logicalSource
         [
@@ -336,7 +376,7 @@ tedm:MG-NoticeAwardInformation_ND-NoticeResult a rr:TriplesMap ;
             rr:predicate epo:hasTotalAwardedValue ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-MonetaryValue-hasTotalAwardedValue-NoticeAwardInformation_ND-ResultNotice ;
+                    rr:parentTriplesMap tedm:MG-MonetaryValue-hasTotalAwardedValue-NoticeAwardInformation_ND-NoticeResult ;
                     rr:joinCondition [
                         rr:child "path(.)" ;
                         rr:parent "path(.)" ;
@@ -350,7 +390,7 @@ tedm:MG-NoticeAwardInformation_ND-NoticeResult a rr:TriplesMap ;
             rr:predicate epo:hasMaximumFrameworkAgreementAwardedValue ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-MonetaryValue-hasMaximumFrameworkAgreementAwardedValue-NoticeAwardInformation_ND-ResultNotice ;
+                    rr:parentTriplesMap tedm:MG-MonetaryValue-hasMaximumFrameworkAgreementAwardedValue-NoticeAwardInformation_ND-NoticeResult ;
                     rr:joinCondition [
                         rr:child "path(.)" ;
                         rr:parent "path(.)" ;
@@ -364,7 +404,7 @@ tedm:MG-NoticeAwardInformation_ND-NoticeResult a rr:TriplesMap ;
             rr:predicate epo:hasApproximateFrameworkAgreementValue ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-MonetaryValue-hasApproximateFrameworkAgreementValue-NoticeAwardInformation_ND-ResultNotice ;
+                    rr:parentTriplesMap tedm:MG-MonetaryValue-hasApproximateFrameworkAgreementValue-NoticeAwardInformation_ND-NoticeResult ;
                     rr:joinCondition [
                         rr:child "path(.)" ;
                         rr:parent "path(.)" ;
@@ -373,7 +413,7 @@ tedm:MG-NoticeAwardInformation_ND-NoticeResult a rr:TriplesMap ;
         ] ;
 .
 
-tedm:MG-MonetaryValue-hasMaximumFrameworkAgreementAwardedValue-NoticeAwardInformation_ND-ResultNotice a rr:TriplesMap ;
+tedm:MG-MonetaryValue-hasMaximumFrameworkAgreementAwardedValue-NoticeAwardInformation_ND-NoticeResult a rr:TriplesMap ;
     rdfs:label "MG-MonetaryValue";
     rml:logicalSource
         [
@@ -415,7 +455,7 @@ tedm:MG-MonetaryValue-hasMaximumFrameworkAgreementAwardedValue-NoticeAwardInform
         ] ;
 .
 
-tedm:MG-MonetaryValue-hasApproximateFrameworkAgreementValue-NoticeAwardInformation_ND-ResultNotice a rr:TriplesMap ;
+tedm:MG-MonetaryValue-hasApproximateFrameworkAgreementValue-NoticeAwardInformation_ND-NoticeResult a rr:TriplesMap ;
     rdfs:label "MG-MonetaryValue";
     rml:logicalSource
         [

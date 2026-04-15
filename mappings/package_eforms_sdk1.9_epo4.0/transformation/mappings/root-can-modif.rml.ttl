@@ -22,7 +22,7 @@
 @prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix idlab-fn: <http://example.com/idlab/function/> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix epo-con: <http://data.europa.eu/a4g/ontology#> .
 
 tedm:technical_mapping_can-modif
@@ -55,6 +55,16 @@ tedm:MG-ContractModificationNotice_ND-Root
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:MG-LotGroup_ND-LotsGroup
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "MG-LotGroupAwardInformation-refersToLotGroupAwardInformation-ContractModificationNotice" ;
+            rdfs:comment "MG-LotGroupAwardInformation-refersToLotGroupAwardInformation-ContractModificationNotice under ND-NoticeResultGroupFA" ;
+            rr:predicate epo:refersToLotGroupAwardInformation ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-LotGroupAwardInformation-refersToLotGroupAwardInformation-ContractModificationNotice_ND-NoticeResultGroupFA ;
                 ] ;
         ] ;
 .
@@ -182,7 +192,7 @@ tedm:MG-Identifier-identifier-Notice-refersToPrevious-ContractModificationNotice
                     rml:reference "efbc:ChangedNoticeIdentifier/@schemeName" ;
                 ] ;
         ] ;
-  .
+.
 
 tedm:MG-ContractAmendment-announcesContractAmendment-ContractModificationNotice_ND-ContractModification a rr:TriplesMap ;
     rdfs:label "MG-ContractAmendment" ;
@@ -246,6 +256,7 @@ tedm:MG-Contract-amendsContract-ContractAmendment_ND-ContractModification a rr:T
             rr:class epo:Contract
         ] ;
 .
+
 tedm:MG-Contract-refersToContractToBeModified-ContractModificationNotice_ND-ContractModification a rr:TriplesMap ;
     rdfs:label "MG-Contract" ;
     rml:logicalSource

@@ -6,7 +6,9 @@
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
+@prefix fnml: <http://semweb.mmlab.be/ns/fnml#> .
+@prefix idlab-fn: <http://example.com/idlab/function/> .
 
 tedm:MG-EmploymentInformationProvider_ND-LotEmploymentLegislation a rr:TriplesMap ;
     rdfs:label "MG-EmploymentInformationProvider" ;
@@ -15,9 +17,14 @@ tedm:MG-EmploymentInformationProvider_ND-LotEmploymentLegislation a rr:TriplesMa
         rml:referenceFormulation ql:XPath ;
         rml:source "data/source.xml" ;
     ] ;
+    rr:subjectMap [
+        rdfs:label "ND-LotEmploymentLegislation" ;
+        rr:class epo:EmploymentInformationProvider ;
+        rml:reference "if(exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/EmploymentInformationProvider/' || encode-for-uri(concat(cac:IssuerParty/cac:PartyIdentification/cbc:ID, cac:IssuerParty/cac:PartyIdentification/cbc:ID/@schemeName)) else null";
+    ] ;
     rr:predicateObjectMap [
         rdfs:label "OPT-301-Lot-EmployLegis TPO (hasContactPointInRole)" ;
-        rdfs:comment "Connection where IssuerParty is a TouchPoint" ;
+        rdfs:comment "Connection where IssuerParty is an OrganizationalUnit" ;
         rr:objectMap [
             rr:joinCondition [
                 rr:child "if(cac:IssuerParty/cac:PartyIdentification/cbc:ID/@schemeName='touchpoint' or exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID[starts-with(text(), 'TPO-')])) then cac:IssuerParty/cac:PartyIdentification/cbc:ID else null" ;
@@ -40,10 +47,19 @@ tedm:MG-EmploymentInformationProvider_ND-LotEmploymentLegislation a rr:TriplesMa
     ] ;
     rr:predicateObjectMap [
         rdfs:label "OPT-301-Lot-EmployLegis" ;
-        rdfs:comment "Connection between AgentInRole and Organization OR ContactPoint" ;
+        rdfs:comment "Connection between AgentInRole and Organization OR OrganizationalUnit" ;
         rr:objectMap [
             rdfs:label "TPO (playedBy)" ;
-            rdfs:comment "Connection where IssuerParty is a TouchPoint" ;
+            rdfs:comment "Connection where IssuerParty is an OrganizationalUnit" ;
+            rr:joinCondition [
+                rr:child "if(cac:IssuerParty/cac:PartyIdentification/cbc:ID/@schemeName='touchpoint' or exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID[starts-with(text(), 'TPO-')])) then cac:IssuerParty/cac:PartyIdentification/cbc:ID else null" ;
+                rr:parent "cac:PartyIdentification/cbc:ID" ;
+            ] ;
+            rr:parentTriplesMap tedm:MG-OrganizationalUnit_ND-Touchpoint ;
+        ] ;
+        rr:objectMap [
+            rdfs:label "TPO (playedBy)" ;
+            rdfs:comment "Connection where IssuerParty is an OrganizationalUnit" ;
             rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Organization/{cac:IssuerParty/cac:PartyIdentification/cbc:ID}" ;
         ] ;
         rr:objectMap [
@@ -57,9 +73,1222 @@ tedm:MG-EmploymentInformationProvider_ND-LotEmploymentLegislation a rr:TriplesMa
         ] ;
         rr:predicate epo:playedBy ;
     ] ;
-    rr:subjectMap [
-        rdfs:label "ND-LotEmploymentLegislation" ;
-        rr:class epo:EmploymentInformationProvider ;
-        rml:reference "if(exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/EmploymentInformationProvider/' || encode-for-uri(concat(cac:IssuerParty/cac:PartyIdentification/cbc:ID, cac:IssuerParty/cac:PartyIdentification/cbc:ID/@schemeName)) else null";
+    rr:predicateObjectMap [
+        rdfs:label "OPT-130-Lot-EmployLegis" ;
+        rdfs:comment "Connection of MG-EmploymentInformationProvider to MG-EmploymentDocumentation under ND-LotEmploymentLegislation" ;
+        rr:predicate epo:providesDocumentation ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-EmploymentDocumentation-providesDocumentation-EmploymentInformationProvider_ND-LotEmploymentLegislation ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(../../..)" ;
+            ] ;
+        ] ;
     ] ;
     tedm:minSDKVersion "1.5.12" .
+
+tedm:MG-EmploymentDocumentation-providesDocumentation-EmploymentInformationProvider_ND-LotEmploymentLegislation a rr:TriplesMap ;
+    rdfs:label "MG-EmploymentDocumentation" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:EmploymentLegislationDocumentReference/cac:Attachment/cac:ExternalReference/cbc:URI" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-LotEmploymentLegislation" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/EmploymentDocumentation${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:EmploymentDocumentation
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPT-130-Lot-EmployLegis" ;
+        rdfs:comment "URL to Employment Legislation of MG-EmploymentDocumentation-providesDocumentation-EmploymentInformationProvider under ND-LotEmploymentLegislation" ;
+        rr:predicate epo:hasAddressURL ;
+        rr:objectMap [
+            rml:reference "." ;
+            rr:datatype xsd:anyURI
+        ] ;
+    ] .
+
+tedm:MG-TaxDocumentation-providesDocumentation-TaxInformationProvider_ND-PartFiscalLegislation a rr:TriplesMap ;
+    rdfs:label "MG-TaxDocumentation" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:FiscalLegislationDocumentReference/cac:Attachment/cac:ExternalReference/cbc:URI" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-PartFiscalLegislation" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/TaxDocumentation${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:TaxDocumentation
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPT-110-Part-FiscalLegis" ;
+        rdfs:comment "Address URL of MG-TaxDocumentation under ND-PartFiscalLegislation" ;
+        rr:predicate epo:hasAddressURL ;
+        rr:objectMap [
+            rml:reference "." ;
+            rr:datatype xsd:anyURI
+        ] ;
+    ] .
+
+tedm:MG-EnvironmentalDocumentation-providesDocumentation-EnvironmentalProtectionInformationProvider_ND-PartEnvironmentalLegislation a rr:TriplesMap ;
+    rdfs:label "MG-EnvironmentalDocumentation" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:EnvironmentalLegislationDocumentReference/cac:Attachment/cac:ExternalReference/cbc:URI" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-PartEnvironmentalLegislation" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/EnvironmentalDocumentation${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:EnvironmentalDocumentation
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPT-120-Part-EnvironmentalLegis" ;
+        rdfs:comment "Address URL of MG-EnvironmentalDocumentation under ND-PartEnvironmentalLegislation" ;
+        rr:predicate epo:hasAddressURL ;
+        rr:objectMap [
+            rml:reference "." ;
+            rr:datatype xsd:anyURI
+        ] ;
+    ] .
+
+tedm:MG-EmploymentDocumentation-providesDocumentation-EmploymentInformationProvider_ND-PartEmploymentLegislation a rr:TriplesMap ;
+    rdfs:label "MG-EmploymentDocumentation" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:EmploymentLegislationDocumentReference/cac:Attachment/cac:ExternalReference/cbc:URI" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-PartEmploymentLegislation" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/EmploymentDocumentation${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:EmploymentDocumentation
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPT-130-Part-EmployLegis" ;
+        rdfs:comment "Address URL of MG-EmploymentDocumentation under ND-PartEmploymentLegislation" ;
+        rr:predicate epo:hasAddressURL ;
+        rr:objectMap [
+            rml:reference "." ;
+            rr:datatype xsd:anyURI
+        ] ;
+    ] .
+
+tedm:MG-PlannedProcurementPart-specifiesProcurementCriterion-ParticipationCondition_ND-PartReservedProcurement_v1 a rr:TriplesMap ;
+    rdfs:label "MG-PlannedProcurementPart" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:TendererQualificationRequest[not(cbc:CompanyLegalFormCode)][not(cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode[@listName='missing-info-submission'])]/cac:SpecificTendererRequirement[cbc:TendererRequirementTypeCode/@listName='reserved-procurement']/cbc:TendererRequirementTypeCode[@listName='reserved-procurement']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Part" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PlannedProcurementPart/{../../../../../cbc:ID}" ;
+        rr:class epo:PlannedProcurementPart
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-71-Part (specifiesProcurementCriterion)" ;
+        rdfs:comment "Connection from PlannedProcurementPart to ParticipationCondition" ;
+        rr:predicate epo:specifiesProcurementCriterion ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-ParticipationCondition-specifiesProcurementCriterion-PlannedProcurementPart_ND-PartReservedProcurement_v1 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-ParticipationCondition-specifiesProcurementCriterion-PlannedProcurementPart_ND-PartReservedProcurement_v1 a rr:TriplesMap ;
+    rdfs:label "MG-ParticipationCondition-specifiesProcurementCriterion-PlannedProcurementPart" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:TendererQualificationRequest[not(cbc:CompanyLegalFormCode)][not(cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode[@listName='missing-info-submission'])]/cac:SpecificTendererRequirement[cbc:TendererRequirementTypeCode/@listName='reserved-procurement']/cbc:TendererRequirementTypeCode[@listName='reserved-procurement']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-PartReservedProcurement" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ParticipationCondition${replace(translate(path(../../../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:ParticipationCondition
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-71-Part" ;
+        rdfs:comment "Reserved Procurement for Part" ;
+        rr:predicate epo:hasReservedProcurement ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:reserved-procurement ;
+            rr:joinCondition [
+                rr:child "." ;
+                rr:parent "code.value" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-PlannedProcurementPart-specifiesProcurementCriterion-ParticipationCondition_ND-PartReservedProcurement_v2 a rr:TriplesMap ;
+    rdfs:label "MG-PlannedProcurementPart" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:TendererQualificationRequest[not(cbc:CompanyLegalFormCode)][not(cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode[@listName='missing-info-submission'])]/cac:SpecificTendererRequirement[cbc:TendererRequirementTypeCode/@listName='reserved-procurement']/cbc:TendererRequirementTypeCode" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Part" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PlannedProcurementPart/{../../../../../cbc:ID}" ;
+        rr:class epo:PlannedProcurementPart
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-71-Part (specifiesProcurementCriterion)" ;
+        rdfs:comment "Connection from PlannedProcurementPart to ParticipationCondition (variant 2)" ;
+        rr:predicate epo:specifiesProcurementCriterion ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-ParticipationCondition-specifiesProcurementCriterion-PlannedProcurementPart_ND-PartReservedProcurement_v2 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-ParticipationCondition-specifiesProcurementCriterion-PlannedProcurementPart_ND-PartReservedProcurement_v2 a rr:TriplesMap ;
+    rdfs:label "MG-ParticipationCondition-specifiesProcurementCriterion-PlannedProcurementPart" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:TendererQualificationRequest[not(cbc:CompanyLegalFormCode)][not(cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode[@listName='missing-info-submission'])]/cac:SpecificTendererRequirement[cbc:TendererRequirementTypeCode/@listName='reserved-procurement']/cbc:TendererRequirementTypeCode" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-PartReservedProcurement" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ParticipationCondition${replace(translate(path(../../../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:ParticipationCondition
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-71-Part" ;
+        rdfs:comment "Reserved Procurement for Part (variant 2)" ;
+        rr:predicate epo:hasReservedProcurement ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:reserved-procurement ;
+            rr:joinCondition [
+                rr:child "." ;
+                rr:parent "code.value" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-PlannedProcurementPart-specifiesProcurementCriterion-ParticipationCondition_ND-PartReservedProcurement_v3 a rr:TriplesMap ;
+    rdfs:label "MG-PlannedProcurementPart" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:TendererQualificationRequest[not(cbc:CompanyLegalFormCode)][not(cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode[@listName='missing-info-submission'])][not(cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode[@listName='selection-criteria-source'])]/cac:SpecificTendererRequirement[cbc:TendererRequirementTypeCode/@listName='reserved-procurement']/cbc:TendererRequirementTypeCode" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Part" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PlannedProcurementPart/{../../../../../cbc:ID}" ;
+        rr:class epo:PlannedProcurementPart
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-71-Part (specifiesProcurementCriterion)" ;
+        rdfs:comment "Connection from PlannedProcurementPart to ParticipationCondition (variant 3)" ;
+        rr:predicate epo:specifiesProcurementCriterion ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-ParticipationCondition-specifiesProcurementCriterion-PlannedProcurementPart_ND-PartReservedProcurement_v3 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-ParticipationCondition-specifiesProcurementCriterion-PlannedProcurementPart_ND-PartReservedProcurement_v3 a rr:TriplesMap ;
+    rdfs:label "MG-ParticipationCondition-specifiesProcurementCriterion-PlannedProcurementPart" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:TendererQualificationRequest[not(cbc:CompanyLegalFormCode)][not(cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode[@listName='missing-info-submission'])][not(cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode[@listName='selection-criteria-source'])]/cac:SpecificTendererRequirement[cbc:TendererRequirementTypeCode/@listName='reserved-procurement']/cbc:TendererRequirementTypeCode" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-PartReservedProcurement" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ParticipationCondition${replace(translate(path(../../../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:ParticipationCondition
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-71-Part" ;
+        rdfs:comment "Reserved Procurement for Part (variant 3)" ;
+        rr:predicate epo:hasReservedProcurement ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:reserved-procurement ;
+            rr:joinCondition [
+                rr:child "." ;
+                rr:parent "code.value" ;
+            ] ;
+        ] ;
+    ] .
+
+# BT-708: Documents Official Language (Part) - Variant 1 (ND-PartDocOfficialLanguage)
+tedm:MG-PlannedProcurementPart-isSubjectToTerm-AccessTerm_ND-PartDocOfficialLanguage_v1 a rr:TriplesMap ;
+    rdfs:label "MG-PlannedProcurementPart" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:CallForTendersDocumentReference/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:OfficialLanguages/cac:Language/cbc:ID" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Part" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PlannedProcurementPart/{../../../../../../../../../../cbc:ID}" ;
+        rr:class epo:PlannedProcurementPart
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-708-Part (isSubjectToTerm)" ;
+        rdfs:comment "Connection from PlannedProcurementPart to AccessTerm" ;
+        rr:predicate epo:isSubjectToTerm ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-AccessTerm-isSubjectToTerm-PlannedProcurementPart_ND-PartDocOfficialLanguage_v1 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-AccessTerm-isSubjectToTerm-PlannedProcurementPart_ND-PartDocOfficialLanguage_v1 a rr:TriplesMap ;
+    rdfs:label "MG-AccessTerm-isSubjectToTerm-PlannedProcurementPart" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:CallForTendersDocumentReference/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:OfficialLanguages/cac:Language/cbc:ID" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-PartDocOfficialLanguage" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/AccessTerm${replace(translate(path(../../../../../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:AccessTerm
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-708-Part" ;
+        rdfs:comment "Documents Official Language for Part (variant 1)" ;
+        rr:predicate epo:providesProcurementDocumentsInOfficialLanguage ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:language ;
+            rr:joinCondition [
+                rr:child "." ;
+                rr:parent "op_code" ;
+            ] ;
+        ] ;
+    ] .
+
+# BT-708: Documents Official Language (Part) - Variant 2 (ND-PartProcurementDocument, official)
+tedm:MG-PlannedProcurementPart-isSubjectToTerm-AccessTerm_ND-PartProcurementDocument_v2 a rr:TriplesMap ;
+    rdfs:label "MG-PlannedProcurementPart" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:CallForTendersDocumentReference/cbc:LanguageID[../cbc:DocumentStatusCode/text()='official']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Part" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PlannedProcurementPart/{../../../../cbc:ID}" ;
+        rr:class epo:PlannedProcurementPart
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-708-Part (isSubjectToTerm)" ;
+        rdfs:comment "Connection from PlannedProcurementPart to AccessTerm" ;
+        rr:predicate epo:isSubjectToTerm ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-AccessTerm-isSubjectToTerm-PlannedProcurementPart_ND-PartProcurementDocument_v2 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-AccessTerm-isSubjectToTerm-PlannedProcurementPart_ND-PartProcurementDocument_v2 a rr:TriplesMap ;
+    rdfs:label "MG-AccessTerm-isSubjectToTerm-PlannedProcurementPart" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:CallForTendersDocumentReference/cbc:LanguageID[../cbc:DocumentStatusCode/text()='official']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-PartProcurementDocument" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/AccessTerm${replace(translate(path(../../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:AccessTerm
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-708-Part" ;
+        rdfs:comment "Documents Official Language for Part (variant 2)" ;
+        rr:predicate epo:providesProcurementDocumentsInOfficialLanguage ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:language ;
+            rr:joinCondition [
+                rr:child "." ;
+                rr:parent "op_code" ;
+            ] ;
+        ] ;
+    ] .
+
+# BT-708: Documents Official Language (Part) - Variant 3 (ND-PartProcurementDocument, not non-official)
+tedm:MG-PlannedProcurementPart-isSubjectToTerm-AccessTerm_ND-PartProcurementDocument_v3 a rr:TriplesMap ;
+    rdfs:label "MG-PlannedProcurementPart" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:CallForTendersDocumentReference/cbc:LanguageID[not(../cbc:DocumentStatusCode/text()='non-official')]" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Part" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PlannedProcurementPart/{../../../../cbc:ID}" ;
+        rr:class epo:PlannedProcurementPart
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-708-Part (isSubjectToTerm)" ;
+        rdfs:comment "Connection from PlannedProcurementPart to AccessTerm" ;
+        rr:predicate epo:isSubjectToTerm ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-AccessTerm-isSubjectToTerm-PlannedProcurementPart_ND-PartProcurementDocument_v3 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-AccessTerm-isSubjectToTerm-PlannedProcurementPart_ND-PartProcurementDocument_v3 a rr:TriplesMap ;
+    rdfs:label "MG-AccessTerm-isSubjectToTerm-PlannedProcurementPart" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:CallForTendersDocumentReference/cbc:LanguageID[not(../cbc:DocumentStatusCode/text()='non-official')]" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-PartProcurementDocument" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/AccessTerm${replace(translate(path(../../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:AccessTerm
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-708-Part" ;
+        rdfs:comment "Documents Official Language for Part (variant 3)" ;
+        rr:predicate epo:providesProcurementDocumentsInOfficialLanguage ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:language ;
+            rr:joinCondition [
+                rr:child "." ;
+                rr:parent "op_code" ;
+            ] ;
+        ] ;
+    ] .
+
+# BT-737: Documents Unofficial Language (Part) - Variant 1 (ND-PartDocNonOfficialLanguage)
+tedm:MG-PlannedProcurementPart-isSubjectToTerm-AccessTerm_ND-PartDocNonOfficialLanguage_v1 a rr:TriplesMap ;
+    rdfs:label "MG-PlannedProcurementPart" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:CallForTendersDocumentReference/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NonOfficialLanguages/cac:Language/cbc:ID" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Part" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PlannedProcurementPart/{../../../../../../../../../../cbc:ID}" ;
+        rr:class epo:PlannedProcurementPart
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-737-Part (isSubjectToTerm)" ;
+        rdfs:comment "Connection from PlannedProcurementPart to AccessTerm" ;
+        rr:predicate epo:isSubjectToTerm ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-AccessTerm-isSubjectToTerm-PlannedProcurementPart_ND-PartDocNonOfficialLanguage_v1 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-AccessTerm-isSubjectToTerm-PlannedProcurementPart_ND-PartDocNonOfficialLanguage_v1 a rr:TriplesMap ;
+    rdfs:label "MG-AccessTerm-isSubjectToTerm-PlannedProcurementPart" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:CallForTendersDocumentReference/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NonOfficialLanguages/cac:Language/cbc:ID" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-PartDocNonOfficialLanguage" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/AccessTerm${replace(translate(path(../../../../../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:AccessTerm
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-737-Part" ;
+        rdfs:comment "Documents Unofficial Language for Part (variant 1)" ;
+        rr:predicate epo:providesProcurementDocumentsInUnofficialLanguage ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:language ;
+            rr:joinCondition [
+                rr:child "." ;
+                rr:parent "op_code" ;
+            ] ;
+        ] ;
+    ] .
+
+# BT-737: Documents Unofficial Language (Part) - Variant 2 (ND-PartProcurementDocument, non-official)
+tedm:MG-PlannedProcurementPart-isSubjectToTerm-AccessTerm_ND-PartProcurementDocument_BT737_v2 a rr:TriplesMap ;
+    rdfs:label "MG-PlannedProcurementPart" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:CallForTendersDocumentReference/cbc:LanguageID[../cbc:DocumentStatusCode/text()='non-official']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Part" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PlannedProcurementPart/{../../../../cbc:ID}" ;
+        rr:class epo:PlannedProcurementPart
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-737-Part (isSubjectToTerm)" ;
+        rdfs:comment "Connection from PlannedProcurementPart to AccessTerm" ;
+        rr:predicate epo:isSubjectToTerm ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-AccessTerm-isSubjectToTerm-PlannedProcurementPart_ND-PartProcurementDocument_BT737_v2 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-AccessTerm-isSubjectToTerm-PlannedProcurementPart_ND-PartProcurementDocument_BT737_v2 a rr:TriplesMap ;
+    rdfs:label "MG-AccessTerm-isSubjectToTerm-PlannedProcurementPart" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:CallForTendersDocumentReference/cbc:LanguageID[../cbc:DocumentStatusCode/text()='non-official']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-PartProcurementDocument" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/AccessTerm${replace(translate(path(../../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:AccessTerm
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-737-Part" ;
+        rdfs:comment "Documents Unofficial Language for Part (variant 2)" ;
+        rr:predicate epo:providesProcurementDocumentsInUnofficialLanguage ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:language ;
+            rr:joinCondition [
+                rr:child "." ;
+                rr:parent "op_code" ;
+            ] ;
+        ] ;
+    ] .
+
+# OPT-070: Reserved Execution Justification (Lot) - Variant 1 (ND-LotReservedExecution)
+tedm:MG-Lot-isSubjectToTerm-ContractTerm_ND-LotReservedExecution_v1 a rr:TriplesMap ;
+    rdfs:label "MG-Lot" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:ContractExecutionRequirement[cbc:ExecutionRequirementCode/@listName='reserved-execution']/cbc:Description" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Lot" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Lot/{../../../../cbc:ID}" ;
+        rr:class epo:Lot
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPT-070-Lot (isSubjectToTerm)" ;
+        rdfs:comment "Connection from Lot to ContractTerm" ;
+        rr:predicate epo:isSubjectToTerm ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-ContractTerm-isSubjectToTerm-Lot_ND-LotReservedExecution_v1 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-ContractTerm-isSubjectToTerm-Lot_ND-LotReservedExecution_v1 a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm-isSubjectToTerm-Lot" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:ContractExecutionRequirement[cbc:ExecutionRequirementCode/@listName='reserved-execution']/cbc:Description" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-LotReservedExecution" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTerm${replace(translate(path(../../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:ContractTerm
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPT-070-Lot" ;
+        rdfs:comment "Reserved Execution Justification for Lot (variant 1)" ;
+        rr:predicate epo:hasReservedExecutionJustification ;
+        rr:objectMap [
+            rml:reference "if(exists(@languageID)) then . else null" ;
+            rml:languageMap [
+                fnml:functionValue [
+                    rr:predicateObjectMap [
+                        rr:predicate idlab-fn:str ;
+                        rr:objectMap [ rml:reference "./@languageID" ]
+                    ] ,
+                    tedm:idlab-fn_executes_lookup ,
+                    tedm:idlab-fn_inputFile_language ,
+                    tedm:idlab-fn_fromColumn_code ,
+                    tedm:idlab-fn_toColumn_code
+                ]
+            ] ;
+        ] ;
+    ] .
+
+# OPT-070: Reserved Execution Justification (Lot) - Variant 2 (ND-ReservedExecution)
+tedm:MG-Lot-isSubjectToTerm-ContractTerm_ND-ReservedExecution_v2 a rr:TriplesMap ;
+    rdfs:label "MG-Lot" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:ContractExecutionRequirement[cbc:ExecutionRequirementCode/@listName='reserved-execution']/cbc:Description" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Lot" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Lot/{../../../../cbc:ID}" ;
+        rr:class epo:Lot
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPT-070-Lot (isSubjectToTerm)" ;
+        rdfs:comment "Connection from Lot to ContractTerm" ;
+        rr:predicate epo:isSubjectToTerm ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-ContractTerm-isSubjectToTerm-Lot_ND-ReservedExecution_v2 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-ContractTerm-isSubjectToTerm-Lot_ND-ReservedExecution_v2 a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm-isSubjectToTerm-Lot" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:ContractExecutionRequirement[cbc:ExecutionRequirementCode/@listName='reserved-execution']/cbc:Description" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-ReservedExecution" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTerm${replace(translate(path(../../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:ContractTerm
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPT-070-Lot" ;
+        rdfs:comment "Reserved Execution Justification for Lot (variant 2)" ;
+        rr:predicate epo:hasReservedExecutionJustification ;
+        rr:objectMap [
+            rml:reference "if(exists(@languageID)) then . else null" ;
+            rml:languageMap [
+                fnml:functionValue [
+                    rr:predicateObjectMap [
+                        rr:predicate idlab-fn:str ;
+                        rr:objectMap [ rml:reference "./@languageID" ]
+                    ] ,
+                    tedm:idlab-fn_executes_lookup ,
+                    tedm:idlab-fn_inputFile_language ,
+                    tedm:idlab-fn_fromColumn_code ,
+                    tedm:idlab-fn_toColumn_code
+                ]
+            ] ;
+        ] ;
+    ] .
+
+# OPP-040: Transport Service Type (Procedure) - Variant 1 (ND-ProcedureTransportServiceType)
+tedm:MG-Procedure-isSubjectToTerm-ContractTerm_ND-ProcedureTransportServiceType_v1 a rr:TriplesMap ;
+    rdfs:label "MG-Procedure" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProject/cac:ProcurementAdditionalType[cbc:ProcurementTypeCode/@listName='transport-service']/cbc:ProcurementTypeCode" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Procedure" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Procedure" ;
+        rr:class epo:Procedure
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPP-040-Procedure (isSubjectToTerm)" ;
+        rdfs:comment "Connection from Procedure to ContractTerm" ;
+        rr:predicate epo:isSubjectToTerm ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-ContractTerm-isSubjectToTerm-Procedure_ND-ProcedureTransportServiceType_v1 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-ContractTerm-isSubjectToTerm-Procedure_ND-ProcedureTransportServiceType_v1 a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm-isSubjectToTerm-Procedure" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProject/cac:ProcurementAdditionalType[cbc:ProcurementTypeCode/@listName='transport-service']/cbc:ProcurementTypeCode" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-ProcedureTransportServiceType" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTerm${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:ContractTerm
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPP-040-Procedure" ;
+        rdfs:comment "Transport Service Type for Procedure (variant 1)" ;
+        rr:predicate epo:hasTransportServiceType ;
+        rr:objectMap [
+            rml:reference "if (exists(.)) then 'http://publications.europa.eu/resource/authority/transport-service/' || encode-for-uri(.) else null" ;
+            rr:termType rr:IRI ;
+        ] ;
+    ] .
+
+# OPP-040: Transport Service Type (Procedure) - Variant 2 (ND-ProcedureProcurementScope)
+tedm:MG-Procedure-isSubjectToTerm-ContractTerm_ND-ProcedureProcurementScope_v2 a rr:TriplesMap ;
+    rdfs:label "MG-Procedure" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProject/cac:ProcurementAdditionalType/cbc:ProcurementTypeCode[@listName='transport-service']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Procedure" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Procedure" ;
+        rr:class epo:Procedure
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPP-040-Procedure (isSubjectToTerm)" ;
+        rdfs:comment "Connection from Procedure to ContractTerm" ;
+        rr:predicate epo:isSubjectToTerm ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-ContractTerm-isSubjectToTerm-Procedure_ND-ProcedureProcurementScope_v2 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-ContractTerm-isSubjectToTerm-Procedure_ND-ProcedureProcurementScope_v2 a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm-isSubjectToTerm-Procedure" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProject/cac:ProcurementAdditionalType/cbc:ProcurementTypeCode[@listName='transport-service']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-ProcedureProcurementScope" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTerm${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:ContractTerm
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPP-040-Procedure" ;
+        rdfs:comment "Transport Service Type for Procedure (variant 2)" ;
+        rr:predicate epo:hasTransportServiceType ;
+        rr:objectMap [
+            rml:reference "if (exists(.)) then 'http://publications.europa.eu/resource/authority/transport-service/' || encode-for-uri(.) else null" ;
+            rr:termType rr:IRI ;
+        ] ;
+    ] .
+
+# International Procurement Instrument Measures Information
+# Mapping 1: Create InternationalProcurementInstrumentMeasuresInformation entity
+tedm:MG-InternationalProcurementInstrumentMeasuresInformation_ND-IPILotResult a rr:TriplesMap ;
+    rdfs:label "MG-InternationalProcurementInstrumentMeasuresInformation" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:StrategicProcurement[efac:StrategicProcurementInformation/efac:AppliedMeasure/efbc:MeasureCode/@listName='international-procurement-instrument-measure']/efac:StrategicProcurementInformation/efac:AppliedMeasure" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-IPILotResult" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/InternationalProcurementInstrumentMeasuresInformation${replace(translate(path(../../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:InternationalProcurementInstrumentMeasuresInformation
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "concernsLotAwardOutcome" ;
+        rdfs:comment "Connection from InternationalProcurementInstrumentMeasuresInformation to LotAwardOutcome" ;
+        rr:predicate epo:concernsLotAwardOutcome ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-LotAwardOutcome_ND-LotResult ;
+            rr:joinCondition [
+                rr:child "path(../../../.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "concernsInternationalProcurementInstrumentMeasure" ;
+        rdfs:comment "concernsInternationalProcurementInstrumentMeasure of MG-InternationalProcurementInstrumentMeasuresInformation under ND-IPILotResult" ;
+        rr:predicate epo:concernsInternationalProcurementInstrumentMeasure ;
+        rr:objectMap [
+            rdfs:label "at-voc:international-procurement-instrument-measure" ;
+            rr:template "http://publications.europa.eu/resource/authority/international-procurement-instrument-measure/{efbc:MeasureCode}" ;
+            rr:termType rr:IRI ;
+        ] ;
+    ] .
+
+# Exclusion Grounds Source mappings
+
+# Variant 1: Procedure specifies ExclusionGround (non-planning notices)
+tedm:MG-Procedure-specifiesProcurementCriterion-ExclusionGround_ND-TendererQualificationRequestSources_v1 a rr:TriplesMap ;
+    rdfs:label "MG-Procedure" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:TenderingTerms/cac:TendererQualificationRequest[cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode/@listName='exclusion-grounds-source']/cac:SpecificTendererRequirement[not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E2', text())]))]" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-TendererQualificationRequestSources" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Procedure" ;
+        rr:class epo:Procedure
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "Exclusion Grounds (specifiesProcurementCriterion)" ;
+        rdfs:comment "Procedure specifies ExclusionGround criterion" ;
+        rr:predicate epo:specifiesProcurementCriterion ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-ExclusionGround_ND-TendererQualificationRequestSources_v1 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-ExclusionGround_ND-TendererQualificationRequestSources_v1 a rr:TriplesMap ;
+    rdfs:label "MG-ExclusionGround" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:TenderingTerms/cac:TendererQualificationRequest[cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode/@listName='exclusion-grounds-source']/cac:SpecificTendererRequirement[not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E2', text())]))]" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-TendererQualificationRequestSources" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ExclusionGround${replace(translate(path(.), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:ExclusionGround
+    ] .
+
+# Variant 2: PlannedProcurement specifies ExclusionGround (planning notices)
+tedm:MG-PlannedProcurement-specifiesProcurementCriterion-ExclusionGround_ND-TendererQualificationRequestSources_v2 a rr:TriplesMap ;
+    rdfs:label "MG-PlannedProcurement" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:TenderingTerms/cac:TendererQualificationRequest[cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode/@listName='exclusion-grounds-source']/cac:SpecificTendererRequirement[exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E2', text())])]" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-TendererQualificationRequestSources" ;
+        rml:reference "if (exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E2', text())])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/PlannedProcurement$' || replace(replace(replace(path(/*/cac:ProcurementProject), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+        rr:class epo:PlannedProcurement
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "Exclusion Grounds (specifiesProcurementCriterion)" ;
+        rdfs:comment "PlannedProcurement specifies ExclusionGround criterion" ;
+        rr:predicate epo:specifiesProcurementCriterion ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-ExclusionGround_ND-TendererQualificationRequestSources_v2 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-ExclusionGround_ND-TendererQualificationRequestSources_v2 a rr:TriplesMap ;
+    rdfs:label "MG-ExclusionGround" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:TenderingTerms/cac:TendererQualificationRequest[cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode/@listName='exclusion-grounds-source']/cac:SpecificTendererRequirement[exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E2', text())])]" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-TendererQualificationRequestSources" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ExclusionGround${replace(translate(path(.), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:ExclusionGround
+    ] .
+
+# BT-806: Exclusion Grounds Source - Boolean flags
+
+# Variant 1: hasQualificationCriteriaStatedInNotice (when code = 'epo-notice')
+tedm:MG-ExclusionGround-hasQualificationCriteriaStatedInNotice_ND-ExclusionGroundsSource a rr:TriplesMap ;
+    rdfs:label "MG-ExclusionGround" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:TenderingTerms/cac:TendererQualificationRequest[cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode/@listName='exclusion-grounds-source']/cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode[text()='epo-notice']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-ExclusionGroundsSource" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ExclusionGround${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:ExclusionGround
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-806 (hasQualificationCriteriaStatedInNotice)" ;
+        rdfs:comment "BT-806 (hasQualificationCriteriaStatedInNotice) of MG-ExclusionGround-specifiesProcurementCriterion-Procedure under ND-ExclusionGroundsSource" ;
+        rr:predicate epo:hasQualificationCriteriaStatedInNotice ;
+        rr:objectMap [
+            rr:constant "true" ;
+            rr:datatype xsd:boolean
+        ] ;
+    ] .
+
+# Variant 2: hasQualificationCriteriaStatedInESPDRequest (when code = 'epo-sub-espd' or 'epo-acc-espd-request')
+tedm:MG-ExclusionGround-hasQualificationCriteriaStatedInESPDRequest_ND-ExclusionGroundsSource a rr:TriplesMap ;
+    rdfs:label "MG-ExclusionGround" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:TenderingTerms/cac:TendererQualificationRequest[cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode/@listName='exclusion-grounds-source']/cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode[text()='epo-sub-espd' or text()='epo-acc-espd-request']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-ExclusionGroundsSource" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ExclusionGround${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:ExclusionGround
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-806 (hasQualificationCriteriaStatedInESPDRequest)" ;
+        rdfs:comment "BT-806 (hasQualificationCriteriaStatedInESPDRequest) of MG-ExclusionGround-specifiesProcurementCriterion-Procedure under ND-ExclusionGroundsSource" ;
+        rr:predicate epo:hasQualificationCriteriaStatedInESPDRequest ;
+        rr:objectMap [
+            rr:constant "true" ;
+            rr:datatype xsd:boolean
+        ] ;
+    ] .
+
+# Variant 3: hasQualificationCriteriaStatedInProcurementDocuments (when code = 'epo-procurement-document')
+tedm:MG-ExclusionGround-hasQualificationCriteriaStatedInProcurementDocuments_ND-ExclusionGroundsSource a rr:TriplesMap ;
+    rdfs:label "MG-ExclusionGround" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:TenderingTerms/cac:TendererQualificationRequest[cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode/@listName='exclusion-grounds-source']/cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode[text()='epo-procurement-document']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-ExclusionGroundsSource" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ExclusionGround${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:ExclusionGround
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-806 (hasQualificationCriteriaStatedInProcurementDocuments)" ;
+        rdfs:comment "BT-806 (hasQualificationCriteriaStatedInProcurementDocuments) of MG-ExclusionGround-specifiesProcurementCriterion-Procedure under ND-ExclusionGroundsSource" ;
+        rr:predicate epo:hasQualificationCriteriaStatedInProcurementDocuments ;
+        rr:objectMap [
+            rr:constant "true" ;
+            rr:datatype xsd:boolean
+        ] ;
+    ] .
+
+# BT-300: Additional Information for PlannedProcurement
+tedm:MG-PlannedProcurement-hasAdditionalInformation_ND-ProcedureProcurementScope a rr:TriplesMap ;
+    rdfs:label "MG-PlannedProcurement" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProject/cbc:Note[exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E2', text())])]" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-ProcedureProcurementScope" ;
+        rml:reference "if (exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E2', text())])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/PlannedProcurement$' || replace(replace(replace(path(/*/cac:ProcurementProject), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+        rr:class epo:PlannedProcurement
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-300-Procedure" ;
+        rdfs:comment "Additional information for PlannedProcurement" ;
+        rr:predicate epo:hasAdditionalInformation ;
+        rr:objectMap [
+            rml:reference "if(exists(@languageID)) then . else null" ;
+            rml:languageMap [
+                fnml:functionValue [
+                    rr:predicateObjectMap [
+                        rr:predicate idlab-fn:str ;
+                        rr:objectMap [ rml:reference "./@languageID" ]
+                    ] ,
+                    tedm:idlab-fn_executes_lookup ,
+                    tedm:idlab-fn_inputFile_language ,
+                    tedm:idlab-fn_fromColumn_code ,
+                    tedm:idlab-fn_toColumn_code
+                ]
+            ] ;
+        ] ;
+    ] .
+
+# GR-Lot: Lot related information covering Tendering Terms
+
+# Variant 1: PlanningNotice announces Lot
+tedm:MG-PlanningNotice-announcesLot-Lot_ND-Root a rr:TriplesMap ;
+    rdfs:label "MG-PlanningNotice" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot'][/*/cbc:NoticeTypeCode/@listName='planning' or (/*/cbc:NoticeTypeCode/@listName='change' and exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 7 8 9 T01', text())]))]" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Root" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PlanningNotice" ;
+        rr:class epo-not:PlanningNotice
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "GR-Lot (announcesLot)" ;
+        rdfs:comment "PlanningNotice announces Lot" ;
+        rr:predicate epo:announcesLot ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-Lot_ND-Lot_v1 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-Lot_ND-Lot_v1 a rr:TriplesMap ;
+    rdfs:label "MG-Lot" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot'][/*/cbc:NoticeTypeCode/@listName='planning' or (/*/cbc:NoticeTypeCode/@listName='change' and exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 7 8 9 T01', text())]))]" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Lot" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Lot/{cbc:ID}" ;
+        rr:class epo:Lot
+    ] .
+
+# Variant 2: PreMarketConsultationNotice prepares for potential Lot
+tedm:MG-PreMarketConsultationNotice-preparesForPotentialProcurementObject-Lot_ND-Root a rr:TriplesMap ;
+    rdfs:label "MG-PreMarketConsultationNotice" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot'][/*/cbc:NoticeTypeCode/@listName='consultation']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Root" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PreMarketConsultationNotice" ;
+        rr:class epo-not:PreMarketConsultationNotice
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "GR-Lot (preparesForPotentialProcurementObject)" ;
+        rdfs:comment "PreMarketConsultationNotice prepares for potential Lot" ;
+        rr:predicate epo:preparesForPotentialProcurementObject ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-Lot_ND-Lot_v2 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-Lot_ND-Lot_v2 a rr:TriplesMap ;
+    rdfs:label "MG-Lot" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot'][/*/cbc:NoticeTypeCode/@listName='consultation']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Lot" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Lot/{cbc:ID}" ;
+        rr:class epo:Lot
+    ] .
+
+# BT-36: Dynamic Purchase System Duration - 5 variants
+
+# BT-01: Legal Basis mappings (7 variants)
+
+# Variant 1: CompetitionNotice announces Reviewer (CORRECT DIRECTION)
+tedm:MG-CompetitionNotice-announcesRole-Reviewer_ND-ReviewStatus a rr:TriplesMap ;
+    rdfs:label "MG-CompetitionNotice" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation/efac:AppealProcessingParty[/*/cbc:NoticeTypeCode/@listName='competition' or (/*/cbc:NoticeTypeCode/@listName='change' and exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 CEI', text())]))]" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Root" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/CompetitionNotice" ;
+        rr:class epo-not:CompetitionNotice
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-01 (announcesRole)" ;
+        rdfs:comment "CompetitionNotice announces Reviewer" ;
+        rr:predicate epo:announcesRole ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-Reviewer_ND-ReviewStatus_BT01 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-Reviewer_ND-ReviewStatus_BT01 a rr:TriplesMap ;
+    rdfs:label "MG-Reviewer" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation/efac:AppealProcessingParty[/*/cbc:NoticeTypeCode/@listName='competition' or (/*/cbc:NoticeTypeCode/@listName='change' and exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 CEI', text())]))]" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-ReviewStatus" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Reviewer${replace(translate(path(.), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:Reviewer
+    ] .
+
+# Variant 2: Procedure with legal basis (PreMarketConsultation)
+tedm:MG-Procedure-hasLegalBasis_BT01 a rr:TriplesMap ;
+    rdfs:label "MG-Procedure" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cbc:RegulatoryDomain[/*/cbc:NoticeTypeCode/@listName='consultation']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Root" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Procedure" ;
+        rr:class epo:Procedure
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-01 (hasLegalBasis)" ;
+        rdfs:comment "Legal basis on Procedure for PMC" ;
+        rr:predicate epo:hasLegalBasis ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:legal-basis ;
+            rr:joinCondition [
+                rr:child "." ;
+                rr:parent "code.value" ;
+            ] ;
+        ] ;
+    ] .
+
+# Variant 3: PlannedProcurement with legal basis
+tedm:MG-PlannedProcurement-hasLegalBasis_BT01 a rr:TriplesMap ;
+    rdfs:label "MG-PlannedProcurement" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cbc:RegulatoryDomain[exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E2', text())])]" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Root" ;
+        rml:reference "if (exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E2', text())])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/PlannedProcurement$' || replace(replace(replace(path(/*/cac:ProcurementProject), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+        rr:class epo:PlannedProcurement
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-01 (hasLegalBasis)" ;
+        rdfs:comment "Legal basis for PlannedProcurement" ;
+        rr:predicate epo:hasLegalBasis ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:legal-basis ;
+            rr:joinCondition [
+                rr:child "." ;
+                rr:parent "code.value" ;
+            ] ;
+        ] ;
+    ] .
+
+# Variants 4-7: PlannedProcurement with legal basis description
+
+# Variant 4: From ProcurementLegislationDocumentReference/cbc:ID
+tedm:MG-PlannedProcurement-hasLegalBasisDescription_BT01_v1 a rr:TriplesMap ;
+    rdfs:label "MG-PlannedProcurement" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:TenderingTerms/cac:ProcurementLegislationDocumentReference/cbc:ID[not(text()=('CrossBorderLaw','LocalLegalBasis'))][exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E2', text())])]" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-ProcedureTerms" ;
+        rml:reference "if (exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E2', text())])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/PlannedProcurement$' || replace(replace(replace(path(/*/cac:ProcurementProject), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+        rr:class epo:PlannedProcurement
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-01(c)-Procedure" ;
+        rdfs:comment "Legal basis description (ID)" ;
+        rr:predicate epo:hasLegalBasisDescription ;
+        rr:objectMap [
+            rml:reference "." ;
+        ] ;
+    ] .
+
+# Variant 5: From LocalLegalBasisWithID/cbc:ID (variant 1)
+tedm:MG-PlannedProcurement-hasLegalBasisDescription_BT01_v2 a rr:TriplesMap ;
+    rdfs:label "MG-PlannedProcurement" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:TenderingTerms/cac:ProcurementLegislationDocumentReference[not(cbc:ID/text()=('CrossBorderLaw','LocalLegalBasis'))]/cbc:ID[not(text()=('CrossBorderLaw','LocalLegalBasis'))][exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E2', text())])]" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-LocalLegalBasisWithID" ;
+        rml:reference "if (exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E2', text())])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/PlannedProcurement$' || replace(replace(replace(path(/*/cac:ProcurementProject), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+        rr:class epo:PlannedProcurement
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-01(c)-Procedure" ;
+        rdfs:comment "Legal basis description (LocalLegalBasis ID v1)" ;
+        rr:predicate epo:hasLegalBasisDescription ;
+        rr:objectMap [
+            rml:reference "." ;
+        ] ;
+    ] .
+
+# Variant 6: From LocalLegalBasisWithID/cbc:ID (variant 2)
+tedm:MG-PlannedProcurement-hasLegalBasisDescription_BT01_v3 a rr:TriplesMap ;
+    rdfs:label "MG-PlannedProcurement" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:TenderingTerms/cac:ProcurementLegislationDocumentReference[not(cbc:ID/text()=('CrossBorderLaw','LocalLegalBasis'))]/cbc:ID[exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E2', text())])]" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-LocalLegalBasisWithID" ;
+        rml:reference "if (exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E2', text())])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/PlannedProcurement$' || replace(replace(replace(path(/*/cac:ProcurementProject), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+        rr:class epo:PlannedProcurement
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-01(c)-Procedure" ;
+        rdfs:comment "Legal basis description (LocalLegalBasis ID v2)" ;
+        rr:predicate epo:hasLegalBasisDescription ;
+        rr:objectMap [
+            rml:reference "." ;
+        ] ;
+    ] .
+
+# Variant 7: From LocalLegalBasisWithID/cbc:DocumentDescription (multilingual)
+tedm:MG-PlannedProcurement-hasLegalBasisDescription_BT01_v4 a rr:TriplesMap ;
+    rdfs:label "MG-PlannedProcurement" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:TenderingTerms/cac:ProcurementLegislationDocumentReference[not(cbc:ID/text()=('CrossBorderLaw','LocalLegalBasis'))]/cbc:DocumentDescription[exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E2', text())])]" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-LocalLegalBasisWithID" ;
+        rml:reference "if (exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E2', text())])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/PlannedProcurement$' || replace(replace(replace(path(/*/cac:ProcurementProject), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+        rr:class epo:PlannedProcurement
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-01(d)-Procedure" ;
+        rdfs:comment "Legal basis description (multilingual)" ;
+        rr:predicate epo:hasLegalBasisDescription ;
+        rr:objectMap [
+            rml:reference "if(exists(@languageID)) then . else null" ;
+            rml:languageMap [
+                fnml:functionValue [
+                    rr:predicateObjectMap [
+                        rr:predicate idlab-fn:str ;
+                        rr:objectMap [ rml:reference "./@languageID" ]
+                    ] ,
+                    tedm:idlab-fn_executes_lookup ,
+                    tedm:idlab-fn_inputFile_language ,
+                    tedm:idlab-fn_fromColumn_code ,
+                    tedm:idlab-fn_toColumn_code
+                ]
+            ] ;
+        ] ;
+    ] .

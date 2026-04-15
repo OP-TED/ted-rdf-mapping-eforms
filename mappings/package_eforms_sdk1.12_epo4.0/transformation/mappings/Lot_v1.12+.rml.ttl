@@ -8,7 +8,7 @@
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
@@ -24,7 +24,7 @@
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix idlab-fn: <http://example.com/idlab/function/> .
 
-tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LateTendererInformation a rr:TriplesMap ;
+tedm:MG-SubmissionTerm-isSubjectToTerm-Lot_ND-LateTendererInformation a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -74,7 +74,7 @@ tedm:MG-ParticipationCondition-specifiesProcurementCriterion-Lot_ND-LotReservedP
         ];
 .
 
-tedm:MG-langString-hasNonElectronicSubmissionDescription-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-NonEsubmission a rr:TriplesMap ;
+tedm:MG-langString-hasNonElectronicSubmissionDescription-SubmissionTerm-isSubjectToTerm-Lot_ND-NonEsubmission a rr:TriplesMap ;
   rml:logicalSource [
     rml:source "data/source.xml" ;
     rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingProcess/cac:ProcessJustification/cbc:Description" ;
@@ -88,7 +88,7 @@ tedm:MG-langString-hasNonElectronicSubmissionDescription-SubmissionTerm-isSubjec
   rr:predicateObjectMap [
     rr:predicate epo-not:hasNonElectronicSubmissionDescription ;
     rr:objectMap [
-      rml:reference "." ;
+      rml:reference "if(exists(@languageID)) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -112,7 +112,7 @@ tedm:MG-langString-hasNonElectronicSubmissionDescription-SubmissionTerm-isSubjec
   rdfs:label "MG-SubmissionTerm" .
 
 # this is just here for the language mapping, which has been refactored to an independent TMap below
-# tedm:MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LateTendererInformation a rr:TriplesMap ;
+# tedm:MG-SubmissionTerm-isSubjectToTerm-Lot_ND-LateTendererInformation a rr:TriplesMap ;
 #     rml:logicalSource
 #         [
 #             rml:source "data/source.xml" ;
@@ -146,7 +146,7 @@ tedm:MG-langString-hasNonElectronicSubmissionDescription-SubmissionTerm-isSubjec
 #         ] ;
 # .
 
-tedm:MG-langString-hasLateSubmissionInformationDescription-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LateTendererInformation a rr:TriplesMap ;
+tedm:MG-langString-hasLateSubmissionInformationDescription-SubmissionTerm-isSubjectToTerm-Lot_ND-LateTendererInformation a rr:TriplesMap ;
     rml:logicalSource [
         rml:source "data/source.xml" ;
         rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:TendererQualificationRequest[not(cbc:CompanyLegalFormCode)][not(cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode[@listName='reserved-procurement'])][not(cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode[@listName='selection-criteria-source'])]/cac:SpecificTendererRequirement[cbc:TendererRequirementTypeCode/@listName='missing-info-submission']/cbc:Description" ;
@@ -161,7 +161,7 @@ tedm:MG-langString-hasLateSubmissionInformationDescription-SubmissionTerm-isSubj
         rr:predicate epo-not:hasLateSubmissionInformationDescription ;
         rr:objectMap [
             tedm:minSDKVersion "1.12" ;
-            rml:reference "." ;
+            rml:reference "if(exists(@languageID)) then . else null" ;
             rml:languageMap [
                 fnml:functionValue [
                     rr:predicateObjectMap [
@@ -182,97 +182,3 @@ tedm:MG-langString-hasLateSubmissionInformationDescription-SubmissionTerm-isSubj
         rdfs:comment "Late Tenderer Information of MG-SubmissionTerm under ND-LateTendererInformation" ;
         rdfs:label "BT-772-Lot" ;
     ] .
-
-tedm:MG-ExclusionGround-specifiesProcurementCriterion-Lot_ND-ExclusionGrounds a rr:TriplesMap ;
-    rdfs:label "MG-ExclusionGround" ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:TenderingTerms/cac:TendererQualificationRequest[cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode/@listName='exclusion-ground']/cac:SpecificTendererRequirement" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-ExclusionGrounds" ;
-            rml:reference "if(exists(cbc:Description) or exists(cbc:TendererRequirementTypeCode)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ExclusionGround$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
-            rr:class epo:ExclusionGround
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-67(a)-Procedure" ;
-            rdfs:comment "Exclusion Ground of MG-ExclusionGround under ND-ExclusionGrounds" ;
-            rr:predicate dct:type ;
-            rr:objectMap
-                [
-                    tedm:minSDKVersion "1.12" ;
-                    rdfs:label "at-voc:exclusion-ground" ;
-                    rr:parentTriplesMap tedm:exclusion-ground ;
-                    rr:joinCondition [
-                        rr:child "cbc:TendererRequirementTypeCode" ;
-                        rr:parent "code.value" ;
-                     ] ;
-                ] ;
-        ] ;
-# BT-67(b)-Procedure is in dedicated language TMap
-#    rr:predicateObjectMap
-#         [
-#             rdfs:label "BT-67(b)-Procedure";
-#             rdfs:comment "Exclusion Ground of MG-ExclusionGround under ND-ExclusionGrounds";
-#             rr:predicate dct:description;
-#             rr:objectMap
-#                 [
-#                     rdfs:label "BT-67(b)-Procedure-Language";
-#                     rdfs:comment "Language of Exclusion Ground of MG-ExclusionGround under ND-ExclusionGrounds";
-#                     rml:reference "cbc:Description";
-#                     rml:languageMap [
-#                         fnml:functionValue [
-#                             rr:predicateObjectMap [
-#                                 rr:predicate idlab-fn:str ;
-#                                 rr:objectMap [ rml:reference "cbc:Description/@languageID" ]
-#                             ] ,
-#                             tedm:idlab-fn_executes_lookup ,
-#                             tedm:idlab-fn_inputFile_language ,
-#                             tedm:idlab-fn_fromColumn_code ,
-#                             tedm:idlab-fn_toColumn_code
-#                         ]
-#                     ] ;
-#                 ] ;
-#         ] ;
-.
-
-tedm:MG-langString-description-ExclusionGround-specifiesProcurementCriterion-Lot_ND-ExclusionGrounds a rr:TriplesMap ;
-  rml:logicalSource [
-    rml:source "data/source.xml" ;
-    rml:iterator "/*/cac:TenderingTerms/cac:TendererQualificationRequest[cac:SpecificTendererRequirement/cbc:TendererRequirementTypeCode/@listName='exclusion-ground']/cac:SpecificTendererRequirement/cbc:Description" ;
-    rml:referenceFormulation ql:XPath ;
-  ] ;
-  rr:subjectMap [
-    rr:class epo-not:ExclusionGround ;
-    rdfs:label "ND-ExclusionGrounds" ;
-    rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ExclusionGround${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
-  ] ;
-  rr:predicateObjectMap [
-    rr:predicate dct:description ;
-    rr:objectMap [
-      rml:reference "." ;
-      rml:languageMap [
-        fnml:functionValue [
-          rr:predicateObjectMap [
-            rr:predicate idlab-fn:str ;
-            rr:objectMap [
-              rml:reference "@languageID" ;
-            ] ;
-          ] ;
-          rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
-          rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
-          rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
-          rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
-        ] ;
-      ] ;
-      rdfs:comment "Language of Exclusion Ground of MG-ExclusionGround under ND-ExclusionGrounds" ;
-      rdfs:label "BT-67(b)-Procedure-Language" ;
-    ] ;
-    rdfs:comment "Exclusion Ground of MG-ExclusionGround under ND-ExclusionGrounds" ;
-    rdfs:label "BT-67(b)-Procedure" ;
-  ] ;
-  rdfs:label "MG-ExclusionGround" .

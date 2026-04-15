@@ -8,7 +8,7 @@
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
@@ -99,6 +99,18 @@ tedm:MG-TenderAwardOutcome_ND-LotTender  a rr:TriplesMap ;
                     ];
                 ] ;
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-682-Tender";
+            rdfs:comment "Foreign Subsidies Measures Code of MG-TenderAwardOutcome under ND-LotTender";
+            rr:predicate epo:specifiesForeignSubsidiesMeasureConclusion ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:foreign-subsidy-measure-conclusion" ;
+                    rr:termType rr:IRI ;
+                    rml:reference "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='for-sub-mea-con']) and efbc:ForeignSubsidiesMeasuresCode[@listName='foreign-subsidy-measure-conclusion']/text() = 'unpublished' )) then 'http://publications.europa.eu/resource/authority/foreign-subsidy-measure-conclusion/' || efbc:ForeignSubsidiesMeasuresCode[@listName='foreign-subsidy-measure-conclusion'] else null" ;
+                ] ;
+        ] ;
 .
 
 tedm:MG-Tender-concernsTender-TenderAwardOutcome_ND-LotTender  a rr:TriplesMap ;
@@ -160,7 +172,7 @@ tedm:MG-Tender_ND-LotTender  a rr:TriplesMap ;
         [
             rdfs:label "OPT-310-Tender";
             rdfs:comment "Tendering Party ID Reference of MG-Tender under ND-LotTender";
-            rr:predicate  epo:isSubmitedBy ;
+            rr:predicate  epo:isSubmittedBy ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:MG-Tenderer-isSubmittedBy-Tender_ND-LotTender ;
@@ -375,6 +387,77 @@ tedm:MG-Lot-isSubmittedForLot-Tender_ND-LotTender  a rr:TriplesMap ;
              rml:reference "if (exists( efac:TenderLot/cbc:ID[text() = /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cbc:ID/text()] )) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Lot/' || efac:TenderLot/cbc:ID else null" ;
              rr:class epo:Lot
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-LotTender" ;
+            rdfs:comment "ND-LotTender of MG-Tender under ND-LotTender" ;
+            rr:predicate epo:isSubjectToTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ContractTerm-isSubjectToTerm-Lot_ND-LotTender ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ] ;
+    .
+
+tedm:MG-ContractTerm-isSubjectToTerm-Lot_ND-LotTender a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender[efbc:PublicTransportationCumulatedDistance]" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotTender" ;
+            rml:reference "if (exists(efbc:PublicTransportationCumulatedDistance)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractTerm$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class epo:ContractTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-LotTender" ;
+            rdfs:comment "ND-LotTender of MG-Tender under ND-LotTender" ;
+            rr:predicate epo:definesPublicTransportationKilometers ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Quantity-definesPublicTransportationKilometers-ContractTerm-isSubjectToTerm-Lot_ND-LotTender ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ] ;
+    .
+
+tedm:MG-Quantity-definesPublicTransportationKilometers-ContractTerm-isSubjectToTerm-Lot_ND-LotTender a rr:TriplesMap ;
+    rdfs:label "MG-Quantity" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender[efbc:PublicTransportationCumulatedDistance]" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotTender" ;
+            rml:reference "if (exists(efbc:PublicTransportationCumulatedDistance)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Quantity$' || replace(replace(replace(path(efbc:PublicTransportationCumulatedDistance), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class epo:Quantity
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-727-Tender" ;
+            rdfs:comment "Public Transportation Cumulated Distance of MG-Quantity under ND-LotTender" ;
+            rr:predicate epo:hasQuantityValue ;
+            rr:objectMap
+                [
+                    rml:reference "efbc:PublicTransportationCumulatedDistance" ;
+                    rr:datatype xsd:decimal ;
+                ] ;
+        ] ;
     .
 tedm:MG-LotGroup-isSubjectToGrouping-Tender_ND-LotTender  a rr:TriplesMap ;
   rdfs:label "MG-LotGroup";
@@ -456,35 +539,6 @@ tedm:MG-TenderAwardOutcome-comprisesTenderAwardOutcome-LotAwardOutcome_ND-LotRes
         ] ;
 .
 
-tedm:MG-Tender_ND-SubContractor  a rr:TriplesMap ;
-    rdfs:label "MG-Tender" ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            # Note that the iterator in this case is over the ND-LotTender, not over ND-SubContractor, which is suggested by the name of the TriplesMap
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-SubContractor";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Tender/{cbc:ID}" ;
-            rr:class epo:Tender
-        ] ;
-     rr:predicateObjectMap
-        [
-            rdfs:label "ND-SubContractor" ;
-            rr:predicate epo:specifiesSubcontractors   ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-Subcontractor-specifiesSubcontractors-Tender_ND-SubContractor ;
-                    rr:joinCondition[
-                        rr:child "efac:TenderingParty/cbc:ID";
-                        rr:parent "../cbc:ID"
-                    ];
-                ] ;
-        ] ;
-.
 
 tedm:MG-Tender_ND-LotTenderOriginCountry a rr:TriplesMap ;
     rdfs:label "MG-Tender" ;
@@ -696,7 +750,7 @@ tedm:MG-langString-hasCalculationMethod-ConcessionEstimate-foreseesConcession-Te
             rr:predicate epo:hasCalculationMethod ;
             rr:objectMap
                 [
-                    rml:reference "if(not( exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='val-con-des']) and efbc:ValueDescription/text() = 'unpublished' )) then . else null" ;
+                    rml:reference "if((exists(@languageID)) and (not( exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='val-con-des']) and efbc:ValueDescription/text() = 'unpublished' ))) then . else null" ;
                     rml:languageMap [
                         fnml:functionValue [
                             rr:predicateObjectMap [

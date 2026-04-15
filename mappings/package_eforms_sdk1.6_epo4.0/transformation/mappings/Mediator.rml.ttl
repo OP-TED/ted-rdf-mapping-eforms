@@ -6,7 +6,7 @@
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 
 tedm:MG-Mediator_ND-LotReviewTerms a rr:TriplesMap ;
     rdfs:label "MG-Mediator" ;
@@ -28,7 +28,7 @@ tedm:MG-Mediator_ND-LotReviewTerms a rr:TriplesMap ;
     ] ;
     rr:predicateObjectMap [
         rdfs:label "OPT-301-Lot-Mediator TPO (hasContactPointInRole)" ;
-        rdfs:comment "Connection where MediationParty is a TouchPoint" ;
+        rdfs:comment "Connection where MediationParty is an OrganizationalUnit" ;
         rr:objectMap [
             rr:joinCondition [
                 rr:child "if(cac:MediationParty/cac:PartyIdentification/cbc:ID/@schemeName='touchpoint' or exists(cac:MediationParty/cac:PartyIdentification/cbc:ID[starts-with(text(), 'TPO-')])) then cac:MediationParty/cac:PartyIdentification/cbc:ID else null" ;
@@ -40,7 +40,7 @@ tedm:MG-Mediator_ND-LotReviewTerms a rr:TriplesMap ;
     ] ;
     rr:predicateObjectMap [
         rdfs:label "OPT-301-Lot-Mediator" ;
-        rdfs:comment "Connection between AgentInRole and Organization OR ContactPoint" ;
+        rdfs:comment "Connection between AgentInRole and Organization OR OrganizationalUnit" ;
         rr:objectMap [
             rdfs:label "ORG (playedBy)" ;
             rdfs:comment "Connection where MediationParty is an Organization" ;
@@ -52,8 +52,12 @@ tedm:MG-Mediator_ND-LotReviewTerms a rr:TriplesMap ;
         ] ;
         rr:objectMap [
             rdfs:label "TPO (playedBy)" ;
-            rdfs:comment "Connection where MediationParty is a TouchPoint" ;
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Organization/{cac:MediationParty/cac:PartyIdentification/cbc:ID}" ;
+            rdfs:comment "Connection where MediationParty is an OrganizationalUnit" ;
+            rr:joinCondition [
+                rr:child "if(cac:MediationParty/cac:PartyIdentification/cbc:ID/@schemeName='touchpoint' or exists(cac:MediationParty/cac:PartyIdentification/cbc:ID[starts-with(text(), 'TPO-')])) then cac:MediationParty/cac:PartyIdentification/cbc:ID else null" ;
+                rr:parent "cac:PartyIdentification/cbc:ID" ;
+            ] ;
+            rr:parentTriplesMap tedm:MG-OrganizationalUnit_ND-Touchpoint ;
         ] ;
         rr:predicate epo:playedBy ;
     ] ;

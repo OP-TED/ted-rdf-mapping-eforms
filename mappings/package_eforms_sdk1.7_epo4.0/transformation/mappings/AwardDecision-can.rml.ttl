@@ -8,7 +8,7 @@
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
@@ -48,8 +48,8 @@ tedm:MG-AwardDecision_ND-SettledContract a rr:TriplesMap ;
             rr:predicate epo:hasAwardDecisionDate ;
             rr:objectMap
                 [
-                    rml:reference "cbc:AwardDate" ;
-                    rr:datatype xsd:date ;
+                    rml:reference "if(exists(cbc:AwardDate) and contains(cbc:AwardDate, '+')) then substring-before(cbc:AwardDate, '+') || 'T00:00:00+' || substring-after(cbc:AwardDate, '+') else if(exists(cbc:AwardDate)) then cbc:AwardDate || 'T00:00:00' else null" ;
+                    rr:datatype xsd:dateTime ;
                 ] ;
         ] ;
     .

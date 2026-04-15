@@ -6,7 +6,7 @@
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 
 tedm:MG-EnvironmentalProtectionInformationProvider_ND-LotEnvironmentalLegislation a rr:TriplesMap ;
     rdfs:label "MG-EnvironmentalProtectionInformationProvider" ;
@@ -22,11 +22,15 @@ tedm:MG-EnvironmentalProtectionInformationProvider_ND-LotEnvironmentalLegislatio
     ] ;
     rr:predicateObjectMap [
         rdfs:label "OPT-301-Lot-EnvironLegis" ;
-        rdfs:comment "Connection between AgentInRole and Organization OR ContactPoint" ;
+        rdfs:comment "Connection between AgentInRole and Organization OR OrganizationalUnit" ;
         rr:objectMap [
             rdfs:label "TPO (playedBy)" ;
-            rdfs:comment "Connection where IssuerParty is a TouchPoint" ;
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Organization/{cac:IssuerParty/cac:PartyIdentification/cbc:ID}" ;
+            rdfs:comment "Connection where IssuerParty is an OrganizationalUnit" ;
+            rr:joinCondition [
+                rr:child "if(cac:IssuerParty/cac:PartyIdentification/cbc:ID/@schemeName='touchpoint' or exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID[starts-with(text(), 'TPO-')])) then cac:IssuerParty/cac:PartyIdentification/cbc:ID else null" ;
+                rr:parent "cac:PartyIdentification/cbc:ID" ;
+            ] ;
+            rr:parentTriplesMap tedm:MG-OrganizationalUnit_ND-Touchpoint ;
         ] ;
         rr:objectMap [
             rdfs:label "ORG (playedBy)" ;
@@ -41,7 +45,7 @@ tedm:MG-EnvironmentalProtectionInformationProvider_ND-LotEnvironmentalLegislatio
     ] ;
     rr:predicateObjectMap [
         rdfs:label "OPT-301-Lot-EnvironLegis TPO (hasContactPointInRole)" ;
-        rdfs:comment "Connection where IssuerParty is a TouchPoint" ;
+        rdfs:comment "Connection where IssuerParty is an OrganizationalUnit" ;
         rr:objectMap [
             rr:joinCondition [
                 rr:child "if(cac:IssuerParty/cac:PartyIdentification/cbc:ID/@schemeName='touchpoint' or exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID[starts-with(text(), 'TPO-')])) then cac:IssuerParty/cac:PartyIdentification/cbc:ID else null" ;
@@ -62,5 +66,40 @@ tedm:MG-EnvironmentalProtectionInformationProvider_ND-LotEnvironmentalLegislatio
         ] ;
         rr:predicate epo:contextualisedBy ;
     ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPT-120-Lot-EnvironLegis" ;
+        rdfs:comment "Connection of MG-EnvironmentalProtectionInformationProvider to MG-EnvironmentalDocumentation under ND-LotEnvironmentalLegislation" ;
+        rr:predicate epo:providesDocumentation ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-EnvironmentalDocumentation-providesDocumentation-EnvironmentalProtectionInformationProvider_ND-LotEnvironmentalLegislation ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(../../..)" ;
+            ] ;
+        ] ;
+    ] ;
     tedm:minSDKVersion "1.5.12"
+.
+
+tedm:MG-EnvironmentalDocumentation-providesDocumentation-EnvironmentalProtectionInformationProvider_ND-LotEnvironmentalLegislation a rr:TriplesMap ;
+    rdfs:label "MG-EnvironmentalDocumentation" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:EnvironmentalLegislationDocumentReference/cac:Attachment/cac:ExternalReference/cbc:URI" ;
+        rml:referenceFormulation ql:XPath
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-LotEnvironmentalLegislation" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/EnvironmentalDocumentation${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:EnvironmentalDocumentation
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPT-120-Lot-EnvironLegis" ;
+        rdfs:comment "URL to Environmental Legislation of MG-EnvironmentalDocumentation-providesDocumentation-EnvironmentalProtectionInformationProvider under ND-LotEnvironmentalLegislation" ;
+        rr:predicate epo:hasAddressURL ;
+        rr:objectMap [
+            rml:reference "." ;
+            rr:datatype xsd:anyURI
+        ] ;
+    ] ;
 .

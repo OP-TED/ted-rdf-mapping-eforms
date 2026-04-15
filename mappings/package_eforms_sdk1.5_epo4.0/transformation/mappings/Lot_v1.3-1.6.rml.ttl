@@ -8,7 +8,7 @@
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix epd: <http://data.europa.eu/a4g/resource/> .
 @prefix epo: <http://data.europa.eu/a4g/ontology#> .
 @prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
@@ -29,10 +29,10 @@ tedm:MG-Lot_ND-Lot a rr:TriplesMap ;
     rr:predicateObjectMap
         [
             rdfs:label "BT-707-Lot, BT-615-Lot";
-            rr:predicate epo:isSubjectToLotSpecificTerm ;
+            rr:predicate epo:isSubjectToTerm ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotRestrictedDocuments;
+                    rr:parentTriplesMap tedm:MG-AccessTerm-isSubjectToTerm-Lot_ND-LotRestrictedDocuments;
                     rr:joinCondition [
                         rr:child "path(.)";
                         rr:parent "path(../..)";
@@ -41,11 +41,11 @@ tedm:MG-Lot_ND-Lot a rr:TriplesMap ;
         ];
     rr:predicateObjectMap
         [
-            rdfs:label "BT-15-Lot";
-            rr:predicate epo:isSubjectToLotSpecificTerm ;
+            rdfs:label "BT-15-Lot (object)";
+            rr:predicate epo:isSubjectToTerm ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotDocumentsReference;
+                    rr:parentTriplesMap tedm:MG-AccessTerm-isSubjectToTerm-Lot_ND-LotDocumentsReference;
                     rr:joinCondition [
                         rr:child "path(.)";
                         rr:parent "path(../..)";
@@ -54,7 +54,7 @@ tedm:MG-Lot_ND-Lot a rr:TriplesMap ;
         ];
 .
 
-tedm:MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotRestrictedDocuments  a rr:TriplesMap ;
+tedm:MG-AccessTerm-isSubjectToTerm-Lot_ND-LotRestrictedDocuments  a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -99,7 +99,7 @@ tedm:MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotRestrictedDocuments  a r
         ] ;
 .
 
-tedm:MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotDocumentsReference a rr:TriplesMap ;
+tedm:MG-AccessTerm-isSubjectToTerm-Lot_ND-LotDocumentsReference a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -108,13 +108,13 @@ tedm:MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotDocumentsReference a rr:
         ];
     rr:subjectMap
         [
-            rdfs:label "ND-LotProcurementDocument";
+            rdfs:label "ND-LotDocumentsReference";
             rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/AccessTerm${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class epo:AccessTerm
         ] ;
      rr:predicateObjectMap
         [
-            rdfs:label "BT-15-Lot";
+            rdfs:label "BT-15-Lot (value)";
             rdfs:comment "Documents URL of MG-AccessTerm under ND-LotDocumentsReference";
             rr:predicate epo:hasPublicAccessURL ;
             rr:objectMap
