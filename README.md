@@ -13,10 +13,10 @@
 
 This repository provides mappings between [eForms SDK](https://github.com/OP-TED/eForms-SDK) representation and [eProcurement Ontology](https://github.com/OP-TED/ePO) representation of [eForms Notices](https://simap.ted.europa.eu/eforms).
 
-The artefacts provided in this repository are used by the [TED-SWS system](https://docs.ted.europa.eu/ODS/latest/index.html). They are provided in the [mappings](./mappings) folder and are organised in packages called [Mapping Suites](https://docs.ted.europa.eu/ODS/latest/mapping_eforms/package_structure.html).
+The artefacts provided in this repository are provided in the [mappings](./mappings) folder and are organised in packages (https://docs.ted.europa.eu/ODS/latest/mapping_eforms/package_structure.html).
 
 This project is under development. The current scope of this project includes the mapping of:
-- all notice subtypes except X01 and X02, according to **eForms SDK versions 1.3 to 1.13**0, **_excluding_** the information **encoded in privacy fields** (represented by BT IDs `BT-195`, `BT-196`, `BT-197` and `BT-198`)
+- all notice subtypes except X01 and X02, according to **eForms SDK versions 1.3 to 1.13**, _including_ the information **encoded in privacy fields** (represented by BT IDs `BT-195`, `BT-196`, `BT-197` and `BT-198`)
 
 The official documentation of this project [is available here](http://docs.ted.europa.eu/ted-rdf-mapping-eforms/index.html) and will be integrated into the [TED Semantic Web Service Project Documentation](https://docs.ted.europa.eu/ODS/latest/).
 
@@ -81,29 +81,11 @@ locations in the source XML.
 
 ## Known Issues
 
-- `owl:sameAs` used to get through to the Organization of a TouchPoint for an
-  `epo:AgentInRole`'s "contact point in role" due to technical difficulty
-  <https://github.com/OP-TED/ted-rdf-mapping-eforms/issues/30>
-
-- `Expected epo:hasTimePeriod --> [1..*] at-voc:timeperiod , but found 0 instances` predicate is an alternative and should not be mandatory <https://github.com/OP-TED/ePO/issues/529>
-
-- `model declares a xsd:dateTime` data type misalignment between eForms and ePO <https://github.com/OP-TED/ted-rdf-mapping-eforms/issues/8>
-
 - `epo:Tender epo:isSubjectToGrouping epo:LotGroup` will _not_ have `epo:isSubmittedForLot epo:Lot` at the same time <https://github.com/OP-TED/ePO/issues/683>
 
 - External resources such as a referenced notices will raise violations if tested standalone (as they will only contain information in the current notice's scope)
 
-- all `epo-not:CompetitionNotice` and associations of it will not exist for `epo:ResultNotice`
-
-- all alternative values will not exist for all notices (e.g.  `used` vs. `n-used`)
-
 - `epo:hasAwardDecisionDate` data type misalignment between eForms and ePO <https://github.com/OP-TED/ted-rdf-mapping-eforms/issues/8>
-
-- `epo:hasOJSIssueNumber` data type misalignment between eForms and ePO
-
-- `Expected epo:hasAwardCriteriaStatedInProcurementDocuments` <https://github.com/OP-TED/ePO/issues/679>
-
-- `Expected epo:isSubjectToProcedureSpecificTerm --> [1..*] epo:ProcedureSpecificTerm , but found 0 instances` No Procedure defined in a ResultNotice (it is defined fully in another notice)
 
 - `Expected epo:hasOfficialLanguage --> [1..*] at-voc:language , but found 0 instances` Subtypes of Document do not necessarily have languages in the data
 
