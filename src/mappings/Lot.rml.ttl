@@ -1622,7 +1622,7 @@ rr:predicateObjectMap
             rr:predicate epo:hasEstimatedInvitationToTenderDate ;
             rr:objectMap
                 [
-                    rml:reference "cac:InvitationSubmissionPeriod/cbc:StartDate";
+                    rml:reference "if(contains(cac:InvitationSubmissionPeriod/cbc:StartDate, '+')) then substring-before(cac:InvitationSubmissionPeriod/cbc:StartDate, '+') else if(contains(cac:InvitationSubmissionPeriod/cbc:StartDate, 'Z')) then substring-before(cac:InvitationSubmissionPeriod/cbc:StartDate, 'Z') else cac:InvitationSubmissionPeriod/cbc:StartDate";
                     rr:datatype xsd:date;
                 ] ;
         ];
@@ -1698,7 +1698,7 @@ tedm:MG-SubmissionTerm-isSubjectToTerm-Lot_ND-SubmissionDeadline a rr:TriplesMap
             rr:predicate epo:hasReceiptTenderDeadline ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(cbc:EndDate) and exists(cbc:EndTime) and contains(cbc:EndDate, '+')) then substring-before(cbc:EndDate, '+') || 'T' || cbc:EndTime else if(exists(cbc:EndDate) and exists(cbc:EndTime)) then cbc:EndDate || 'T' || cbc:EndTime else if(exists(cbc:EndDate)) then cbc:EndDate else null";
+                    rml:reference "if(exists(cbc:EndDate) and exists(cbc:EndTime) and contains(cbc:EndDate, '+')) then substring-before(cbc:EndDate, '+') || 'T' || cbc:EndTime else if(exists(cbc:EndDate) and exists(cbc:EndTime)) then cbc:EndDate || 'T' || cbc:EndTime else if(exists(cbc:EndDate) and contains(cbc:EndDate, '+')) then substring-before(cbc:EndDate, '+') || 'T00:00:00+' || substring-after(cbc:EndDate, '+') else if(exists(cbc:EndDate)) then cbc:EndDate || 'T00:00:00' else null";
                     rr:datatype xsd:dateTime;
                 ] ;
         ]
@@ -1752,7 +1752,7 @@ rr:predicateObjectMap
             rr:predicate epo:hasAdditionalInformationDeadline ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(cbc:EndDate) and exists(cbc:EndTime) and contains(cbc:EndDate, '+')) then substring-before(cbc:EndDate, '+') || 'T' || cbc:EndTime else if(exists(cbc:EndDate) and exists(cbc:EndTime)) then cbc:EndDate || 'T' || cbc:EndTime else if(exists(cbc:EndDate)) then cbc:EndDate else null";
+                    rml:reference "if(exists(cbc:EndDate) and exists(cbc:EndTime) and contains(cbc:EndDate, '+')) then substring-before(cbc:EndDate, '+') || 'T' || cbc:EndTime else if(exists(cbc:EndDate) and exists(cbc:EndTime)) then cbc:EndDate || 'T' || cbc:EndTime else if(exists(cbc:EndDate) and contains(cbc:EndDate, '+')) then substring-before(cbc:EndDate, '+') || 'T00:00:00+' || substring-after(cbc:EndDate, '+') else if(exists(cbc:EndDate)) then cbc:EndDate || 'T00:00:00' else null";
                     rr:datatype xsd:dateTime;
                 ] ;
         ]
