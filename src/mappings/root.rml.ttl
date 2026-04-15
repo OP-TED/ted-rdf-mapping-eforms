@@ -598,7 +598,8 @@ tedm:MG-Notice_ND-Root
             rr:predicate epo:hasOJSIssueNumber ;
             rr:objectMap
                 [
-                    rml:reference "ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Publication/efbc:GazetteID[@schemeName='ojs-id']" ;
+                    rml:reference "if(contains(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Publication/efbc:GazetteID[@schemeName='ojs-id'], '/')) then substring-before(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Publication/efbc:GazetteID[@schemeName='ojs-id'], '/') else ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Publication/efbc:GazetteID[@schemeName='ojs-id']" ;
+                    rr:datatype xsd:integer ;
                 ] ;
         ] ;
     rr:predicateObjectMap
