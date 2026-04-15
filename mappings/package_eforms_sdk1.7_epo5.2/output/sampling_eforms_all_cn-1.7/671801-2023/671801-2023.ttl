@@ -17,20 +17,13 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/AccessTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:AccessTerm;
   epo:hasAdditionalInformationDeadline "2023-12-01T09:00:00+01:00"^^xsd:dateTime .
-
-<http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
-  a epo:AccessTerm;
-  epo:hasDocumentRestrictionJustification <http://publications.europa.eu/resource/authority/communication-justification/sen-info>;
-  epo:hasRestrictedAccessURL "https://www.evergabe-online.de/tenderdetails.html?id=542408"^^xsd:anyURI;
-  epo:involvesProcurementDocument <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ProcurementDocument$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1NMB%20551-23>;
-  epo:isProcurementDocumentRestricted true .
 
 <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>
   a epo:AwardCriterion;
@@ -96,6 +89,14 @@ unter Berücksichtigung von Nachlässen, Erstattungsbetrag aus der Lohngleitklau
   cccev:email "justiziariat_blsa@sachsen-anhalt.de";
   cccev:telephone "000" .
 
+<http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2024-05-16+02:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ContractEndPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2025-03-28+01:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ContractLocation$_ContractNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
@@ -116,14 +117,9 @@ unter Berücksichtigung von Nachlässen, Erstattungsbetrag aus der Lohngleitklau
   locn:postCode "39291";
   locn:postName "Möckern OT Dörnitz" .
 
-<http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2024-05-16+02:00"^^xsd:date;
-  epo:hasEnd "2025-03-28+01:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ContractTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/required>;
   epo:hasEOrdering false;
@@ -132,7 +128,8 @@ unter Berücksichtigung von Nachlässen, Erstattungsbetrag aus der Lohngleitklau
   epo:hasMaximumNumberOfRenewals 0;
   epo:hasPaymentArrangement "..."@de;
   epo:hasPerformanceConditions "..."@de;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -140,39 +137,33 @@ unter Berücksichtigung von Nachlässen, Erstattungsbetrag aus der Lohngleitklau
 
 <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "gemäß § 6e Abs. 1 Nr. 1 EU VOB/A i. V. m. § 129 des Strafgesetzbuchs (StGB)"@de;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/crime-org> .
+  dct:description "gemäß § 6e Abs. 1 Nr. 1 EU VOB/A i. V. m. § 129 des Strafgesetzbuchs (StGB)"@de .
 
 <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement2>
   a epo:ExclusionGround;
-  dct:description "gemäß § 6e Abs. 1 Nr. 1 EU VOB/A i. V. m. § 129a des Strafgesetzbuchs (StGB) oder § 129b StGB (kriminelle und terroristische Vereinigungen im Ausland)"@de;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/terr-offence> .
+  dct:description "gemäß § 6e Abs. 1 Nr. 1 EU VOB/A i. V. m. § 129a des Strafgesetzbuchs (StGB) oder § 129b StGB (kriminelle und terroristische Vereinigungen im Ausland)"@de .
 
 <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement3>
   a epo:ExclusionGround;
   dct:description """gemäß § 6e Abs. 1 Nr. 2 EU VOB/A i. V. m. § 89c StGB (Terrorismusfinanzierung) oder wegen der Teilnahme an einer solchen Tat oder wegen der Bereitstellung oder Sammlung finanzieller Mittel in Kenntnis dessen, dass diese finanziellen Mittel ganz oder teilweise dazu verwendet werden oder verwendet werden sollen, eine Tat nach § 89a Absatz 2 Nummer
-2 StGB zu begehen,"""@de;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/finan-laund> .
+2 StGB zu begehen,"""@de .
 
 <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement4>
   a epo:ExclusionGround;
   dct:description """gemäß § 6e Abs. 1 Nr. 3 EU VOB/A i. V. m. § 261 StGB (Geldwäsche; Verschleierung unrechtmäßig erlangter Vermögenswerte)
 gemäß § 6e Abs. 1 Nr. 4 EU VOB/A i. V. m. § 263 StGB (Betrug), soweit sich die Straftat gegen den Haushalt der Europäischen Union oder gegen Haushalte richtet, die von der Europäischen Union oder in ihrem Auftrag verwaltet werden, 
-gemäß § 6e Abs. 1 Nr. 5 EU VOB/A i. V. m. § 264 StGB (Subventionsbetrug), soweit sich die Straftat gegen den Haushalt der Europäischen Union oder gegen Haushalte richtet, die von der Europäischen Union oder in ihrem Auftrag verwaltet werden"""@de;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/fraud> .
+gemäß § 6e Abs. 1 Nr. 5 EU VOB/A i. V. m. § 264 StGB (Subventionsbetrug), soweit sich die Straftat gegen den Haushalt der Europäischen Union oder gegen Haushalte richtet, die von der Europäischen Union oder in ihrem Auftrag verwaltet werden"""@de .
 
 <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement5>
   a epo:ExclusionGround;
   dct:description """gemäß § 6e Abs. 1 Nr. 6 EU VOB/A i. V. m. § 299 StGB (Bestechlichkeit und Bestechung im geschäftlichen Verkehr), §§ 299a und 299b StGB (Bestechlichkeit und Bestechung im Gesundheitswesen) 
 gemäß § 6e Abs. 1 Nr. 7 EU VOB/A i. V. m. § 108e StGB (Bestechlichkeit und Bestechung von Mandatsträgern), den §§ 333 und 334 StGB (Vorteilsgewährung und Bestechung), jeweils auch in Verbindung mit § 335a StGB (Ausländische und internationale Bedienstete), 
 gemäß § 6e Abs. 1 Nr. 9 EU VOB/A i. V. m. Artikel 2 § 2 des Gesetzes zur Bekämpfung internationaler Bestechung (Bestechung ausländischer Abgeordneter im Zusammenhang mit
-internationalem Geschäftsverkehr)"""@de;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/corruption> .
+internationalem Geschäftsverkehr)"""@de .
 
 <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement6>
   a epo:ExclusionGround;
-  dct:description "gemäß § 6e Abs. 1 Nr. 10 EU VOB/A i. V. m. den §§ 232, 232a Absatz 1 bis 5, den §§ 232b bis 233a StGB (Menschenhandel, Zwangsprostitution, Zwangsarbeit, Ausbeutung der Arbeitskraft, Ausbeutung unter Ausnutzung einer Freiheitsberaubung)"@de;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/human-traffic> .
+  dct:description "gemäß § 6e Abs. 1 Nr. 10 EU VOB/A i. V. m. den §§ 232, 232a Absatz 1 bis 5, den §§ 232b bis 233a StGB (Menschenhandel, Zwangsprostitution, Zwangsarbeit, Ausbeutung der Arbeitskraft, Ausbeutung unter Ausnutzung einer Freiheitsberaubung)"@de .
 
 <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -207,6 +198,19 @@ internationalem Geschäftsverkehr)"""@de;
   epo:hasScheme "organization";
   skos:notation "ORG-0004" .
 
+<http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  time:hasEnd <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ContractEndPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
+<http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/LocalLegalBasisInformation$_ContractNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/LocalLegalBasisInformation$_ContractNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2/Identifier> .
+
+<http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/LocalLegalBasisInformation$_ContractNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2/Identifier>
+  a adms:Identifier;
+  skos:notation "vsvgv" .
+
 <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/Lot/Identifier/NMB%20551-23>
   a adms:Identifier;
   epo:hasScheme "InternalID";
@@ -214,7 +218,7 @@ internationalem Geschäftsverkehr)"""@de;
 
 <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
     <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/SubcontractTerm$_ContractNotice1_ProcurementProjectLot1>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/GreenProcurement$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>;
@@ -222,19 +226,13 @@ internationalem Geschäftsverkehr)"""@de;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/Lot/Identifier/NMB%20551-23>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/LotPurpose$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isSMESuitable true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/AccessTerm$_ContractNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/AccessTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/MultipleStageProcedureTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
-    <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>;
+    <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1NMB%20551-23>;
   epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>,
-    <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement2>,
-    <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement3>,
-    <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement4>,
-    <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement5>,
-    <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement6>,
     <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ParticipationCondition$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest2>,
     <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>,
     <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>,
@@ -276,13 +274,15 @@ Ca. 200 m3 Raumgerüst im Treppenhaus"""@de;
     <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ReviewProcedureInformationProvider/ORG-0003organization>,
     <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/Reviewer/ORG-0002organization>,
     <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/TenderReceiver/ORG-0001organization>;
-  epo:hasESenderDispatchDate "2023-11-01T13:38:21+01:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2023-11-01T13:38:21+01:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00671801-2023";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/cn-standard>;
-  epo:hasOJSIssueNumber "212/2023";
+  epo:hasOJSIssueNumber 212;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU>;
   epo:hasPublicationDate "2023-11-03Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/Notice/SpecificationInformation/Version>;
   epo:hasVersion "02";
   epo:refersToLot <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/Procedure/4ae5e224-e05f-409b-80af-12f1f22a0fc0>;
@@ -292,6 +292,22 @@ Ca. 200 m3 Raumgerüst im Treppenhaus"""@de;
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "4518c2df-415a-4283-97ab-691a8afa5694" .
+
+<http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.7" .
+
+<http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/Organization/Identifier$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -349,7 +365,7 @@ Ca. 200 m3 Raumgerüst im Treppenhaus"""@de;
 
 <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/Procedure/4ae5e224-e05f-409b-80af-12f1f22a0fc0>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation """Die Vergabestelle weist darauf
 hin, dass zur Gewährleistung eines zügigen Verfahrens nur rechtzeitig bei der
@@ -361,7 +377,13 @@ Fristende: 17.01.2024"""@de;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ProcedurePurpose$_ContractNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ProcedureTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ProcedureTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement2>,
+    <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement3>,
+    <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement4>,
+    <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement5>,
+    <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement6>;
   dct:description """Baumaßnahme der Bundeswehr Neubau 4 U 150, Neubau von Unterkunftsgebäuden.
 Gerüstbauarbeiten - Beschreibung siehe Los 0001"""@de;
   dct:title "Los 2.014 Gerüstbauarbeiten - Baumaßnahme der Bundeswehr, TrÜbPl Altengrabow, Neubau 4 U150 (NMB 551-23)"@de;
@@ -391,10 +413,6 @@ Gerüstbauarbeiten - Beschreibung siehe Los 0001"""@de;
 <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ProcedureTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>
   a epo:ProcedureTerm;
   epo:definesMediator <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/Mediator/ORG-0003organization> .
-
-<http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ProcurementDocument$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1NMB%20551-23>
-  a epo:ProcurementDocument;
-  epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU> .
 
 <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/ProcurementProcessInformation$_ContractNotice1_TenderingProcess1>
   a epo:ProcurementProcessInformation;
@@ -432,7 +450,6 @@ Gerüstbauarbeiten - Beschreibung siehe Los 0001"""@de;
 
 <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>;
   epo:isUsedForCandidateRestriction true;
   dct:description """Die Eignung ist durch Eintragung in die Liste des Vereins für Präqualifikation von Bauunternehmen e. V.(Präqualifikationsverzeichnis) oder Eigenerklärungen gem. Formblatt 124 „Eigenerklärung zur Eignung“ nachzuweisen. Mit dem Teilnahmeantrag eines nicht präqualifizierten Bewerbers sind die im Formblatt124 „Eigenerklärung zur Eignung“ angegebenen Bescheinigungen vorzulegen. Beruft sich der Bewerber zur Erfüllung des Auftrages auf die Fähigkeiten anderer Unternehmen, ist die jeweilige Nummer im Präqualifikationsverzeichnis oder es sind die Erklärungen und Bescheinigungen gemäß Formblatt124 „Eigenerklärung zur Eignung“ auch für diese anderen Unternehmen vorzulegen. Das Formblatt124 „Eigenerklärung zur Eignung“ ist Bestandteil der Teilnahmeunterlagen.
@@ -442,7 +459,6 @@ Die Eignung von benannten Unterauftragnehmern ist analog der vorbenannten Angabe
 
 <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/ef-stand>;
   epo:isUsedForCandidateRestriction true;
   dct:description """Die Aufgliederung des Personals der letzten 3 abgeschlossenen Geschäftsjahre entsprechend den Vorgaben im Formblatt 124 „Eigenerklärung zur Eignung“ ist bereits mit dem Teilnahmeantrag vorzulegen.
@@ -453,7 +469,6 @@ Die Eignung von benannten Unterauftragnehmern ist analog der vorbenannten Angabe
 
 <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/tp-abil>;
   epo:isUsedForCandidateRestriction true;
   dct:description """Referenzbescheinigungen (vom Auftraggeber bestätigt) für mindestens 3 vergleichbare Leistungen in den letzten 5 Geschäftsjahren mit den im Formblatt 124 „Eigenerklärung zur Eignung“ vorgegebenen Angaben sind bereits mit dem Teilnahmeantrag vorzulegen.
@@ -488,3 +503,10 @@ Die Eignung von benannten Unterauftragnehmern ist analog der vorbenannten Angabe
   a epo:TenderReceiver;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/Lot/LOT-0001>;
   epo:playedBy <http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/4518c2df-415a-4283-97ab-691a8afa5694-02AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1NMB%20551-23>
+  a epo:AccessTerm;
+  epo:hasDocumentRestrictionJustification <http://publications.europa.eu/resource/authority/communication-justification/sen-info>;
+  epo:hasRestrictedAccessURL "https://www.evergabe-online.de/tenderdetails.html?id=542408"^^xsd:anyURI;
+  epo:isProcurementDocumentRestricted true;
+  epo:providesProcurementDocumentsInOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU> .

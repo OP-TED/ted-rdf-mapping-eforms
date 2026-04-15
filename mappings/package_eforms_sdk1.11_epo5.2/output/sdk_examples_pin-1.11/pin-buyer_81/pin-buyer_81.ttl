@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -26,6 +26,10 @@
   epo:hasBuyerProfile "https://example.com"^^xsd:anyURI;
   epo:isContractingEntity true;
   epo:playedBy <http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/Channel$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://www.zenithnovainnovations.com/info-exchange"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>
   a locn:Address;
@@ -43,6 +47,10 @@
   cccev:email "info@zenithnovainnovations.com";
   cccev:telephone "+1 (555) 123-4567" .
 
+<http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>
+  a dct:Location;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GRC> .
+
 <http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/Identifier/ORG-0001>
   a adms:Identifier;
   epo:hasScheme "organization";
@@ -50,11 +58,14 @@
 
 <http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/Notice>
   a epo:Notice, epo:Notice3, epo:PlanningNotice;
+  epo:announcesPlannedProcurement <http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/PlannedProcurement$_PriorInformationNotice1_ProcurementProject1>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/Buyer/ORG-0001organization>;
-  epo:hasESenderDispatchDate "2023-05-26T09:39:01Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2023-05-26T09:39:01Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-buyer>;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/ENG>;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   adms:identifier <http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/Notice/Identifier> .
 
@@ -63,12 +74,29 @@
   epo:hasScheme "notice-id";
   skos:notation "09f9f7d6-a176-4392-9a13-2bf616f957b7" .
 
+<http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.11" .
+
+<http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
+
 <http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
   skos:notation "ABE" .
 
 <http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/Organization/ORG-0001>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/Channel$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>;
   epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>;
   epo:hasLegalName "ZenithNova Innovations"@en;
@@ -76,3 +104,24 @@
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/CompanyContactPoint$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_Contact1>;
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>;
   adms:identifier <http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/Identifier/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/PlannedProcurement$_PriorInformationNotice1_ProcurementProject1>
+  a epo:PlannedProcurement;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+    <http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32009L0081>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
+  dct:description "Description (BT-24-Procedure) vol3"@en;
+  dct:title "Title (BT-21-Procedure) vol3"@en .
+
+<http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>
+  a epo:Purpose;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/31111000> .
+
+<http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>
+  a epo:ContractTerm;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies> .
+
+<http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>
+  a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/09f9f7d6-a176-4392-9a13-2bf616f957b7-01/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1> .

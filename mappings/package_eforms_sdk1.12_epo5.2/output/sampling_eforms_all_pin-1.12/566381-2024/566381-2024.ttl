@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -72,14 +72,13 @@
   cccev:telephone "+352 29291" .
 
 <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 2.0;
   time:unitType time:unitYear .
 
 <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BRA>;
-  locn:address <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/ProcedurePlacePerformance$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1> .
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BRA> .
 
 <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/ContractLocation$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
@@ -87,20 +86,31 @@
 
 <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasMaximumNumberOfRenewals 3;
   epo:hasOptionsDescription "POSIBILIDAD DE PRORROGAS ANUALES"@es;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
   epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/ContractLocation$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>;
   epo:hasBroadPlaceOfPerformance <http://publications.europa.eu/resource/authority/other-place-service/anyw-cou> .
 
+<http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/Duration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 2.0;
+  time:unitType time:unitYear .
+
 <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/DynamicPurchaseSystemTechnicalUsage$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/Duration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
+
+<http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
+  a epo:ExclusionGround;
+  epo:hasQualificationCriteriaStatedInProcurementDocuments true .
 
 <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -125,15 +135,16 @@
 
 <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/SubmissionTerm$_PriorInformationNotice1_ProcurementProjectLot1>;
   epo:isUsingEUFunds true;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>;
   epo:usesTechnique <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/DynamicPurchaseSystemTechnicalUsage$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>;
   dct:description """El objeto del presente contrato es la prestación de servicios de asistencia técnica dirigida al incremento de la presencia de las empresas andaluzas en Brasil.
 Realizar actividades relacionadas con la inteligencia de mercados, organización de ferias, acciones de promoción, información, apoyo técnico y asesoramiento a proyectos empresariales, oportunidades de negocio, atracción de inversiones, estadísticas de comercio exterior y cuestiones relevantes para la introducción de productos andaluces en el mercado de Brasil."""@es;
@@ -146,6 +157,7 @@ Realizar actividades relacionadas con la inteligencia de mercados, organización
 
 <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/Notice>
   a epo:Notice, epo:Notice7, epo:PlanningNotice;
+  epo:announcesProcedure <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/Procedure/0000000-0000-4000-8000-000000000000>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/Buyer/ORG-0001>,
     <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/ProcurementProcedureInformationProvider/ORG-0001>,
     <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>,
@@ -153,13 +165,15 @@ Realizar actividades relacionadas con la inteligencia de mercados, organización
     <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/Reviewer/ORG-0002>,
     <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/TenderProcessor/ORG-0001>,
     <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/TenderReceiver/ORG-0001>;
-  epo:hasESenderDispatchDate "2024-09-19T07:20:45Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-09-19T07:20:45Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticePublicationNumber "00566381-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-rtl>;
-  epo:hasOJSIssueNumber "184/2024";
+  epo:hasOJSIssueNumber 184;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/SPA>;
   epo:hasPublicationDate "2024-09-20+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/Procedure/0000000-0000-4000-8000-000000000000>;
@@ -169,6 +183,22 @@ Realizar actividades relacionadas con la inteligencia de mercados, organización
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "a62b4ef3-dda5-4f04-af6d-71576fd6c942" .
+
+<http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.12" .
+
+<http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -208,9 +238,17 @@ Realizar actividades relacionadas con la inteligencia de mercados, organización
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1_PostalAddress1>;
   adms:identifier <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/Identifier/ORG-0002> .
 
+<http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/PlanningNotice>
+  a epo:PlanningNotice;
+  epo:announcesLot <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/Lot/LOT-0001> .
+
+<http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/Procedure>
+  a epo:Procedure;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1> .
+
 <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/Procedure/0000000-0000-4000-8000-000000000000>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
@@ -219,10 +257,6 @@ Realizar actividades relacionadas con la inteligencia de mercados, organización
   dct:description """El objeto del presente contrato es la prestación de servicios de asistencia técnica dirigida al incremento de la presencia de las empresas andaluzas en Brasil.
 Realizar actividades relacionadas con la inteligencia de mercados, organización de ferias, acciones de promoción, información, apoyo técnico y asesoramiento a proyectos empresariales, oportunidades de negocio, atracción de inversiones, estadísticas de comercio exterior y cuestiones relevantes para la introducción de productos andaluces en el mercado de Brasil."""@es;
   dct:title "Servicios relacionados con la internacionalización de empresas andaluzas en Brasil."@es .
-
-<http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/ProcedurePlacePerformance$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BRA> .
 
 <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>
   a epo:Purpose;
@@ -262,6 +296,10 @@ Realizar actividades relacionadas con la inteligencia de mercados, organización
   a epo:Reviewer;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/Lot/LOT-0001>;
   epo:playedBy <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/Organization/ORG-0002> .
+
+<http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
+  a epo:SelectionCriterion;
+  epo:hasQualificationCriteriaStatedInProcurementDocuments true .
 
 <http://data.europa.eu/a4g/resource/a62b4ef3-dda5-4f04-af6d-71576fd6c942-01/SubmissionTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:SubmissionTerm;

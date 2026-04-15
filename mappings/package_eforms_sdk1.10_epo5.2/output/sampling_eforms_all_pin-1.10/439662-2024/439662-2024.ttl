@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -25,12 +25,15 @@
   a epo:AccessTerm;
   epo:definesProcurementProcedureInformationProvider <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/ProcurementProcedureInformationProvider/ORG-0000organization> .
 
-<http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
+<http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1000>
   a epo:AccessTerm;
   epo:hasDocumentRestrictionJustification <http://publications.europa.eu/resource/authority/communication-justification/tdf-non-av>;
   epo:hasRestrictedAccessURL "www.westpfalz-klinikum.eu"^^xsd:anyURI;
-  epo:involvesProcurementDocument <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/ProcurementDocument$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1000>;
   epo:isProcurementDocumentRestricted true .
+
+<http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/AccessTermt$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1000>
+  a epo:AccessTerm;
+  epo:providesProcurementDocumentsInOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU> .
 
 <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/Buyer/ORG-0000organization>
   a epo:Buyer;
@@ -77,6 +80,14 @@
   cccev:email "noreply.esender_hub@bescha.bund.de";
   cccev:telephone "+49228996100" .
 
+<http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2024-10-01+02:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/ContractEndPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2027-09-30+02:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
@@ -94,16 +105,12 @@
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/DEB32> .
 
-<http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2024-10-01+02:00"^^xsd:date;
-  epo:hasEnd "2027-09-30+02:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/Interval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies>;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -150,6 +157,19 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0002" .
 
+<http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/Interval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  time:hasEnd <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/ContractEndPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
+<http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier> .
+
+<http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier>
+  a adms:Identifier;
+  skos:notation "vgv" .
+
 <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/Lot/Identifier/WKK-008>
   a adms:Identifier;
   epo:hasScheme "InternalID";
@@ -157,16 +177,17 @@
 
 <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/GreenProcurement$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/Lot/Identifier/WKK-008>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
+  epo:hasUnknownUsageOfSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/other>;
   epo:isCoveredByGPA false;
   epo:isFundedBy <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/Fund$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Funding1>;
   epo:isSMESuitable false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
-    <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
+    <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1000>,
     <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/SubmissionTerm$_PriorInformationNotice1_ProcurementProjectLot1>;
@@ -208,13 +229,15 @@ Nach Kenntnis des Auftraggebers kann diese Leistung nur von der Dedalus HealthCa
     <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/ProcurementProcedureInformationProvider/ORG-0000organization>,
     <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>,
     <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/Reviewer/ORG-0001organization>;
-  epo:hasESenderDispatchDate "2024-07-18T00:00:00+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-07-18T00:00:00+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00439662-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-cfc-standard>;
-  epo:hasOJSIssueNumber "141/2024";
+  epo:hasOJSIssueNumber 141;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU>;
   epo:hasPublicationDate "2024-07-22Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/Notice/SpecificationInformation/Version>;
   epo:hasVersion "02";
   epo:refersToLot <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/Lot/LOT-0000>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/Procedure/fd921ae1-c3a2-4684-93ff-1d1b1320389d>;
@@ -224,6 +247,22 @@ Nach Kenntnis des Auftraggebers kann diese Leistung nur von der Dedalus HealthCa
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "e23e1b66-a9fe-46d9-8764-895c691b5c6e" .
+
+<http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.10" .
+
+<http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -279,7 +318,7 @@ Nach Kenntnis des Auftraggebers kann diese Leistung nur von der Dedalus HealthCa
 
 <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/Procedure/fd921ae1-c3a2-4684-93ff-1d1b1320389d>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/Procedure/Identifier/WKK008>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
@@ -319,10 +358,6 @@ Nach Kenntnis des Auftraggebers kann diese Leistung nur von der Dedalus HealthCa
   a epo:Purpose;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/48100000> .
 
-<http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/ProcurementDocument$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1000>
-  a epo:ProcurementDocument;
-  epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU> .
-
 <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/ProcurementProcedureInformationProvider/ORG-0000organization>
   a epo:ProcurementProcedureInformationProvider;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/Lot/LOT-0000>;
@@ -358,7 +393,6 @@ Nach Kenntnis des Auftraggebers kann diese Leistung nur von der Dedalus HealthCa
 
 <http://data.europa.eu/a4g/resource/e23e1b66-a9fe-46d9-8764-895c691b5c6e-02/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/nyk>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/other>;
   epo:isUsedForCandidateRestriction false;
   skos:prefLabel "wird vor Beginn des Vergabeverfahrens festgelegt"@de .

@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -78,7 +78,7 @@ aufgeführt"""@de .
   cccev:telephone "+352 29291" .
 
 <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 48.0;
   time:unitType time:unitMonth .
 
@@ -124,12 +124,13 @@ aufgeführt"""@de .
 
 <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasMaximumNumberOfRenewals 2;
   epo:hasOptionsDescription "zweimalige Verlängerung um jeweils 12 Monate "@de;
   epo:hasPerformanceConditions "Die Bieter haben eine Eigenerklärung darüber einzureichen, ob Ausschlussgründe nach § 123 Abs. 1 bis 4 GWB und § 124 Abs. 1 GWB vorliegen."@de;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -139,9 +140,19 @@ aufgeführt"""@de .
   a epo:ContractTerm;
   epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/ContractLocation$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation2_Address1> .
 
+<http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/Duration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 48.0;
+  time:unitType time:unitMonth .
+
 <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/DynamicPurchaseSystemTechnicalUsage$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/Duration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
+
+<http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
+  a epo:ExclusionGround;
+  epo:hasQualificationCriteriaStatedInProcurementDocuments true .
 
 <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -174,14 +185,14 @@ aufgeführt"""@de .
 
 <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
     <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation2>;
   epo:hasAdditionalInformation "Der Auftraggeber verzichtet auf die Erstellung einer Auftragsbekanntmachung nach §37 Absatz 1 VgV, da die Dienstleistung, die Gegenstand des zu vergebenden Auftrages sein wird, in der Vorinformation benannt wird. Wir bitten Sie Ihr Interesse bei der angegebenen Kontaktstelle innerhalb der angegebenen Frist zu bekunden. Die Vertragslaufzeit beginnt mit der tatsächlichen Inbetriebnahme."@de;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/Lot/Identifier/LK-LAB25-FL>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/MultipleStageProcedureTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
@@ -191,6 +202,7 @@ aufgeführt"""@de .
   epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/AwardCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>,
     <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/AwardCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion2>,
     <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/ParticipationCondition$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest2>,
+    <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
     <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>,
     <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>,
     <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>,
@@ -226,13 +238,15 @@ Die Vertragslaufzeit beträgt 48 Monate mit der Option, diese zweimalig um jewei
     <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/ProcurementProcedureInformationProvider/ORG-0003>,
     <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>,
     <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/Reviewer/ORG-0005>;
-  epo:hasESenderDispatchDate "2025-03-27T09:09:49Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2025-03-27T09:09:49Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00200116-2025";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-cfc-standard>;
-  epo:hasOJSIssueNumber "62/2025";
+  epo:hasOJSIssueNumber 62;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU>;
   epo:hasPublicationDate "2025-03-28+01:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/Procedure/d96a6241-0886-4adc-9989-7778403c0317>;
@@ -242,6 +256,22 @@ Die Vertragslaufzeit beträgt 48 Monate mit der Option, diese zweimalig um jewei
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "a46c2f4c-d1f1-4f92-937a-cea7217b69d8" .
+
+<http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.13" .
+
+<http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -284,6 +314,10 @@ Die Vertragslaufzeit beträgt 48 Monate mit der Option, diese zweimalig um jewei
   a epo:ParticipationCondition;
   epo:hasReservedProcurement <http://publications.europa.eu/resource/authority/reserved-procurement/none> .
 
+<http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/Procedure>
+  a epo:Procedure;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1> .
+
 <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/Procedure/Identifier/LK-LAB25-FL>
   a adms:Identifier;
   epo:hasScheme "InternalID";
@@ -295,7 +329,7 @@ Die Vertragslaufzeit beträgt 48 Monate mit der Option, diese zweimalig um jewei
 
 <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/Procedure/d96a6241-0886-4adc-9989-7778403c0317>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>,
     <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation2>;
   epo:hasAdditionalInformation """A) Objektive Teilnahmeregeln und -kriterien:
@@ -375,6 +409,10 @@ Satz 1 gilt nicht bei einem Antrag auf Feststellung der Unwirksamkeit des Vertra
   a epo:Reviewer;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/Lot/LOT-0001>;
   epo:playedBy <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/Organization/ORG-0005> .
+
+<http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
+  a epo:SelectionCriterion;
+  epo:hasQualificationCriteriaStatedInNotice true .
 
 <http://data.europa.eu/a4g/resource/a46c2f4c-d1f1-4f92-937a-cea7217b69d8-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>
   a epo:SelectionCriterion;

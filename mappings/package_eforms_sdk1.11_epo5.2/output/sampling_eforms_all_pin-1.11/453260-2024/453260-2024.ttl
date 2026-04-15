@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -29,7 +29,7 @@
   a epo:AccessTerm;
   epo:definesProcurementProcedureInformationProvider <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ProcurementProcedureInformationProvider/ORG-0001> .
 
-<http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
+<http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1documentsId>
   a epo:AccessTerm;
   epo:hasPublicAccessURL "https://www.tenderned.nl/aankondigingen/overzicht/344689"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted false .
@@ -70,14 +70,13 @@
   cccev:telephone "+31 624938157" .
 
 <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 72.0;
   time:unitType time:unitMonth .
 
 <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NLD>;
-  locn:address <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ProcedurePlacePerformance$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1> .
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NLD> .
 
 <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ContractLocation$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
@@ -85,13 +84,14 @@
 
 <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/allowed>;
   epo:hasEOrdering false;
   epo:hasEPayment false;
   epo:hasOptionsDescription "Wordt uitgewerkt in de Selectie- en gunningsleidraad op basis van de marktconsultatie."@nl;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -99,14 +99,19 @@
   epo:hasBroadPlaceOfPerformance <http://publications.europa.eu/resource/authority/other-place-service/anyw-cou>;
   epo:hasPlaceOfPerformanceAdditionalInformation "Purmerend"@nl .
 
+<http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Duration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 72.0;
+  time:unitType time:unitMonth .
+
 <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/DynamicPurchaseSystemTechnicalUsage$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Duration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
 
 <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Uitsluitingsgronden zijn opgevoerd in de aanbestedingsdocumenten of in TenderNed toegevoegd."@nl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/nati-ground> .
+  dct:description "Uitsluitingsgronden zijn opgevoerd in de aanbestedingsdocumenten of in TenderNed toegevoegd."@nl .
 
 <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -126,6 +131,11 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0001" .
 
+<http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Identifier/TPO-0001>
+  a adms:Identifier;
+  epo:hasScheme "touchpoint";
+  skos:notation "TPO-0001" .
+
 <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Lot/Identifier/1>
   a adms:Identifier;
   epo:hasScheme "InternalID";
@@ -133,15 +143,17 @@
 
 <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
+  epo:doesNotRequireSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/other>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
+    <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ProcurementCriterion$_PriorInformationNotice1_ProcurementProjectLot1>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/GreenProcurement$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Lot/Identifier/1>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
-    <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
+    <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1documentsId>,
     <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/MultipleStageProcedureTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
@@ -150,9 +162,7 @@
   epo:isUsingEUFunds false;
   epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/AwardCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>,
     <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/AwardCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion2>,
-    <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
     <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ParticipationCondition$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1>,
-    <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ProcurementCriterion$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>,
     <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>;
   epo:usesTechnique <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/DynamicPurchaseSystemTechnicalUsage$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>;
@@ -171,18 +181,21 @@
 
 <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Notice>
   a epo:Notice, epo:Notice7, epo:PlanningNotice;
+  epo:announcesProcedure <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Procedure/0000000-0000-4000-8000-000000000000>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Buyer/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ProcurementProcedureInformationProvider/ORG-0001>,
     <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ReviewProcedureInformationProvider/ORG-0001>,
     <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Reviewer/TPO-0001>,
     <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/TenderReceiver/ORG-0001>;
-  epo:hasESenderDispatchDate "2024-07-26T12:55:40.69605027+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-07-26T12:55:40.69605027+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticePublicationNumber "00453260-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-rtl>;
-  epo:hasOJSIssueNumber "146/2024";
+  epo:hasOJSIssueNumber 146;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/NLD>;
   epo:hasPublicationDate "2024-07-29+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Lot/LOT-0000>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Procedure/0000000-0000-4000-8000-000000000000>;
@@ -192,6 +205,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "a9c1f90d-2117-47e7-af51-f80eecc4ba7a" .
+
+<http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.11" .
+
+<http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -205,25 +234,37 @@
   epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/CompanyContactPoint$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_Contact1>;
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>;
-  adms:identifier <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Identifier/ORG-0001> .
+  adms:identifier <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Identifier/ORG-0001>;
+  org:hasUnit <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/OrganizationalUnit/TPO-0001> .
 
-<http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Organization/TPO-0001>
-  a org:Organization;
-  owl:sameAs <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Organization/ORG-0001> .
+<http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/OrganizationalUnit/TPO-0001>
+  a org:OrganizationalUnit;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/TouchPoint/TPO-0001>;
+  dct:title "Rechtbank Noord-Holland, locatie Haarlem"@nl;
+  adms:identifier <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Identifier/TPO-0001> .
 
 <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ParticipationCondition$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1>
   a epo:ParticipationCondition;
   epo:hasReservedProcurement <http://publications.europa.eu/resource/authority/reserved-procurement/none> .
 
+<http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/PlanningNotice>
+  a epo:PlanningNotice;
+  epo:announcesLot <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Lot/LOT-0000> .
+
+<http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Procedure/>
+  a epo:Procedure;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1> .
+
 <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Procedure/0000000-0000-4000-8000-000000000000>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Procedure/Identifier/20240726>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Lot/LOT-0000>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>;
   dct:description """Voor het realiseren, gebruiksklaar opleveren, plaatsen en onderhouden van tijdelijke woningen maken we gebruik van een bestaande raamovereenkomst. Met behulp van deze raamovereenkomst zijn reeds 242 tijdelijke woningen gerealiseerd op 5 verschillende plekken in Purmerend. De raamovereenkomst is begin 2019 gesloten na een Europese aanbesteding. Op 14 januari 2025 eindigt de raamovereenkomst. 
 
 De verwachting is dat de opgave voor het huisvesten van aandachtsgroepen, waaronder bijvoorbeeld OekraÃ¯ense ontheemden, maar ook Purmerendse woningzoekenden, na het verlopen van de huidige raamovereenkomst blijft bestaan. Het realiseren van (tijdelijke) woningen is een van de onderdelen van de oplossing voor deze opgave. Een nieuwe raamovereenkomst voor de bouw van tijdelijke woningen kan ons daar bij helpen en biedt kansen om in te spelen op actuele ontwikkelingen, wensen en behoeften. Zo zien we dat er behoefte is aan woningen met meer dan 1 slaapkamer en de mogelijkheid om eventueel een 4e laag n.t.b."""@nl;
@@ -234,15 +275,15 @@ De verwachting is dat de opgave voor het huisvesten van aandachtsgroepen, waaron
   epo:hasScheme "InternalID";
   skos:notation "20240726" .
 
-<http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ProcedurePlacePerformance$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NLD> .
-
 <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>
   a epo:Purpose;
   epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/44211100>, <http://data.europa.eu/cpv/cpv/45000000>,
     <http://data.europa.eu/cpv/cpv/70111000>;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/45211000> .
+
+<http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>
+  a epo:ProcessPlanningTerm;
+  epo:hasEstimatedContractNoticePublicationDate "2024-11-01+01:00"^^xsd:date .
 
 <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/ProcurementCriterion$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ProcurementCriterion;
@@ -277,7 +318,7 @@ De verwachting is dat de opgave voor het huisvesten van aandachtsgroepen, waaron
   a epo:Reviewer;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Lot/LOT-0000>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/TouchPoint/TPO-0001>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/Organization/TPO-0001> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/OrganizationalUnit/TPO-0001> .
 
 <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/SecurityClearanceTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>
   a epo:SecurityClearanceTerm;
@@ -285,14 +326,12 @@ De verwachting is dat de opgave voor het huisvesten van aandachtsgroepen, waaron
 
 <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>;
   dct:description "(zie aanbestedingsdocument)"@nl;
   skos:prefLabel "E1 Uniform Europees Aanbestedingsdocument (UEA)"@nl .
 
 <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/n-used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/other> .
 
 <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/SubmissionTerm$_PriorInformationNotice1_ProcurementProjectLot1>
@@ -317,7 +356,6 @@ De verwachting is dat de opgave voor het huisvesten van aandachtsgroepen, waaron
   epo:hasContactName "n.v.t.";
   epo:hasInternetAddress "http://www.rechtspraak.nl"^^xsd:anyURI;
   cccev:email "haarlem@rechtspraak.nl";
-  dct:description "Rechtbank Noord-Holland, locatie Haarlem"@nl;
   locn:address <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/TouchPointAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint1_PostalAddress1> .
 
 <http://data.europa.eu/a4g/resource/a9c1f90d-2117-47e7-af51-f80eecc4ba7a-01/TouchPointAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint1_PostalAddress1>

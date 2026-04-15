@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -29,12 +29,6 @@
   a epo:AccessTerm;
   epo:definesOfflineAccessProvider <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/OfflineAccessProvider/ORG-0001organization>;
   epo:definesProcurementProcedureInformationProvider <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/ProcurementProcedureInformationProvider/ORG-0001organization> .
-
-<http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
-  a epo:AccessTerm;
-  epo:hasPublicAccessURL "https://www.staatsanzeiger-eservices.de/aJs/EFormsBekVuUrl?z_param=296820"^^xsd:anyURI;
-  epo:involvesProcurementDocument <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/ProcurementDocument$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1LV202%20Technische%20Anlagen%20in%20Au%C3%9Fenanlagen%20%28Medienerschlie%C3%9Fung%29>;
-  epo:isProcurementDocumentRestricted false .
 
 <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>
   a epo:AwardCriterion;
@@ -86,25 +80,29 @@
   cccev:email "noreply.esender_hub@bescha.bund.de";
   cccev:telephone "+49228996100" .
 
+<http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2024-10-28+01:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/ContractEndPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2025-04-25+01:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/ContractLocation$_ContractNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/DE25A>;
   locn:address <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/ProcedurePlacePerformance$_ContractNotice1_ProcurementProject1_RealizedLocation1_Address1> .
 
-<http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2024-10-28+01:00"^^xsd:date;
-  epo:hasEnd "2025-04-25+01:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/required>;
   epo:hasEOrdering false;
   epo:hasEPayment true;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/DynamicPurchaseSystemTechnicalUsage$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
@@ -112,8 +110,7 @@
 
 <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Es gelten zusätzlich die gesetzlichen Ausschlussvoraussetzungen nach §§ 123 bis 126 GWB. Der Bieter hat anzugeben, ob Ausschlussgründe nach §§ 123,124 GWB vorliegen und ob er selbst bzw. ein nach Satzung oder Gesetz für den Bieter Vertretungsberechtigter in den letzten zwei Jahren • gem. § 21 Abs. 1 Satz 1 oder 2 Schwarzarbeitsbekämpfungsgesetz oder • gem. § 21 Abs. 1 Arbeitnehmerentsendegesetz oder • gem. § 19 Abs. 1 Mindestlohngesetz mit einer Freiheitsstrafe von mehr als drei Monaten oder einer Geldstrafe von mehr als 90 Tagessätzen oder einer Geldbuße von mehr als 2.500 Euro belegt worden ist."@de;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/nati-ground> .
+  dct:description "Es gelten zusätzlich die gesetzlichen Ausschlussvoraussetzungen nach §§ 123 bis 126 GWB. Der Bieter hat anzugeben, ob Ausschlussgründe nach §§ 123,124 GWB vorliegen und ob er selbst bzw. ein nach Satzung oder Gesetz für den Bieter Vertretungsberechtigter in den letzten zwei Jahren • gem. § 21 Abs. 1 Satz 1 oder 2 Schwarzarbeitsbekämpfungsgesetz oder • gem. § 21 Abs. 1 Arbeitnehmerentsendegesetz oder • gem. § 19 Abs. 1 Mindestlohngesetz mit einer Freiheitsstrafe von mehr als drei Monaten oder einer Geldstrafe von mehr als 90 Tagessätzen oder einer Geldbuße von mehr als 2.500 Euro belegt worden ist."@de .
 
 <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -143,6 +140,20 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0003" .
 
+<http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  time:hasEnd <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/ContractEndPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
+<http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/LocalLegalBasisInformation$_ContractNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/LocalLegalBasisInformation$_ContractNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier> .
+
+<http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/LocalLegalBasisInformation$_ContractNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier>
+  a adms:Identifier;
+  epo:hasScheme "ELI";
+  skos:notation "vob-a" .
+
 <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/Lot/Identifier/B-009>
   a adms:Identifier;
   epo:hasScheme "InternalID";
@@ -150,27 +161,26 @@
 
 <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/ProcurementCriterion$_ContractNotice1_ProcurementProjectLot1>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/GreenProcurement$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/Lot/Identifier/B-009>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/LotPurpose$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA false;
   epo:isRecurrent false;
   epo:isSMESuitable false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
-    <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
     <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/MultipleStageProcedureTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/OpeningTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1>,
     <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>,
     <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/SecurityClearanceTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
-    <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>;
+    <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1LV202%20Technische%20Anlagen%20in%20Au%C3%9Fenanlagen%20%28Medienerschlie%C3%9Fung%29>;
   epo:isUsingEUFunds false;
   epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>,
-    <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/ProcurementCriterion$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>;
   epo:usesTechnique <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/DynamicPurchaseSystemTechnicalUsage$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>;
   dct:description "LV202 TA2 Medienerschließung in AA Teil2ca. 350 m Entwässerungskanäle für Regenwasser / Schmutzwasser, blau und rotbraun, PP-SN8 DN110-160ca. 135 m Entwässerungskanäle für Regenwasser / Schmutzwasser, blau und rotbraun, PP-SN8 DN200-3152 Stück Fertigteilschächte d=1000 mm4 Stück Kunststoffschächte d=400 mm4 Stück Kunststoffschächte d=600 mm1 Stück Schmutzwasser-Pumpenschacht mit Doppelpumpenanlage, d=1500 mm, Fördermenge 12,50 l/s, Schaltschrank mit integrierter beheizbarer Rückstauschleife, ca, 40 m Druckrohrleitung DN80 PE, Kranmontageca. 10 m Fernwärmeleitung KMR-Einzelrohr AD=76,1 mm / AD=140 mm (Lückenschluss)ca. 5 m Trinkwasserleitung PE DN50 / OD63 (Lückenschluss)ca. 50 m Kälteleitungen KMR-Doppelrohr 2x AD=76,1 mm / AD=225 mmca. 200 m Kupferohrleitungen für medizinische Gase DN20 undca. 50 m Kupferrohrleitung für medizinische Gase DN15 im gemeinsamen KG Schutzrohr DN150Dienstleistungen: Inbetriebnahme, Einweisung, Wartungsvertrag"@de;
@@ -199,13 +209,15 @@
     <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/TaxInformationProvider/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/TenderProcessor/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/TenderReceiver/ORG-0001organization>;
-  epo:hasESenderDispatchDate "2024-08-07T12:31:03+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-08-07T12:31:03+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00478489-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/cn-standard>;
-  epo:hasOJSIssueNumber "154/2024";
+  epo:hasOJSIssueNumber 154;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU>;
   epo:hasPublicationDate "2024-08-08+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/Procedure/a2d3f59d-8bf7-412a-bd32-9da6f7bd424e>;
@@ -216,20 +228,32 @@
   epo:hasScheme "notice-id";
   skos:notation "b1844b5a-3ad0-4a20-8d23-477778e36602" .
 
+<http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.7" .
+
+<http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
+
 <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/OfflineAccessProvider/ORG-0001organization>
   a epo:OfflineAccessProvider;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/Lot/LOT-0001>;
   epo:playedBy <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/Organization/ORG-0001> .
 
-<http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/OpenTenderEventPlace$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1_OccurenceLocation1>
-  a locn:Address;
-  locn:fullAddress "Paracelsusstraße 3491413 Neustadt an der Aisch"@de .
-
 <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/OpeningTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1>
   a epo:OpeningTerm;
-  epo:definesOpeningPlace <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/OpenTenderEventPlace$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1_OccurenceLocation1>;
   epo:hasOpeningDateTime "2024-09-10T13:00:00+01:00"^^xsd:dateTime;
-  epo:hasOpeningDescription "Bauabteilung im Ärztehaus"@de .
+  epo:hasOpeningDescription "Bauabteilung im Ärztehaus"@de;
+  epo:hasOpeningPlace "Paracelsusstraße 3491413 Neustadt an der Aisch"@de .
 
 <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/Organization/Identifier$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -280,7 +304,7 @@
 
 <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/Procedure/a2d3f59d-8bf7-412a-bd32-9da6f7bd424e>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation "Der Bieter hat anzugeben inwieweit sein Unternehmen einen Bezug zu Russland hat. Dafür ist die “Eigenerklärung Bezug Russland“ (FB 127/L127/III.127) auszufüllen und als Teil des Angebotes abzugeben. Diese Erklärung ist auch für Unterauftragnehmer, Lieferanten oder Eignungsverleiher gem. den Bedingungen der Erklärung abzugeben.Angebote können ausschließlich von registrierten Bewerbern über die Vergabeplattform (www.staatsanzeiger-eservices.de) in Textform eingereicht werden.Die Kommunikation (Fragen, Auskünfte) erfolgt ausschließlich über die Vergabeplattform."@de;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/Procedure/Identifier/B-009>;
@@ -290,7 +314,8 @@
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/ProcedurePurpose$_ContractNotice1_ProcurementProject1>;
   epo:isAccelerated false;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/ProcedureTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/ProcedureTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>;
   dct:description "LV202 Technische Anlagen in Außenanlagen (Medienerschließung)"@de;
   dct:title "Neubau OP, Umbau/Erweiterung Notaufnahme"@de;
   adms:identifier <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/Procedure/Identifier/a2d3f59d-8bf7-412a-bd32-9da6f7bd424e> .
@@ -315,10 +340,6 @@
 <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/ProcurementCriterion$_ContractNotice1_ProcurementProjectLot1>
   a epo:ProcurementCriterion;
   epo:hasPerformingStaffQualificationInformation <http://publications.europa.eu/resource/authority/requirement-stage/not-requ> .
-
-<http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/ProcurementDocument$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1LV202%20Technische%20Anlagen%20in%20Au%C3%9Fenanlagen%20%28Medienerschlie%C3%9Fung%29>
-  a epo:ProcurementDocument;
-  epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU> .
 
 <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/ProcurementProcedureInformationProvider/ORG-0001organization>
   a epo:ProcurementProcedureInformationProvider;
@@ -369,7 +390,7 @@
   dct:description "Direkter Link zur Eigenerklärung -- siehe Link https://www.staatsanzeiger-eservices.de/aJs/EFormsBekEigenUrl?z_param=296820"@de .
 
 <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/SpecificDuration$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TenderValidityPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 60.0;
   time:unitType time:unitDay .
 
@@ -403,3 +424,9 @@
   a epo:TenderReceiver;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/Lot/LOT-0001>;
   epo:playedBy <http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/b1844b5a-3ad0-4a20-8d23-477778e36602-01AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1LV202%20Technische%20Anlagen%20in%20Au%C3%9Fenanlagen%20%28Medienerschlie%C3%9Fung%29>
+  a epo:AccessTerm;
+  epo:hasPublicAccessURL "https://www.staatsanzeiger-eservices.de/aJs/EFormsBekVuUrl?z_param=296820"^^xsd:anyURI;
+  epo:isProcurementDocumentRestricted false;
+  epo:providesProcurementDocumentsInOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU> .

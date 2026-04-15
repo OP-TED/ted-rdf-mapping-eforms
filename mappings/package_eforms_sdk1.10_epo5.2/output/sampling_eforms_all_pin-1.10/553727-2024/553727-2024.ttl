@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -53,6 +53,12 @@
   cccev:email "noreply.esender_hub@bescha.bund.de";
   cccev:telephone "+49228996100" .
 
+<http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>
+  a dct:Location;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE264>;
+  locn:address <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/ProcedurePlacePerformance$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1> .
+
 <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
@@ -72,19 +78,35 @@
   epo:hasScheme "Part";
   skos:notation "PAR-0001" .
 
+<http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/Identifier/TPO-0001>
+  a adms:Identifier;
+  epo:hasScheme "touchpoint";
+  skos:notation "TPO-0001" .
+
+<http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier> .
+
+<http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier>
+  a adms:Identifier;
+  skos:notation "vgv" .
+
 <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/Notice>
   a epo:Notice, epo:Notice4, epo:PlanningNotice;
+  epo:announcesPlannedProcurement <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/PlannedProcurement$_PriorInformationNotice1_ProcurementProject1>;
   epo:announcesPlannedProcurementPart <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/PlannedProcurementPart/PAR-0001>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/Buyer/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>,
     <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/Reviewer/TPO-0001>;
-  epo:hasESenderDispatchDate "2024-09-12T11:18:00+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-09-12T11:18:00+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticePublicationNumber "00553727-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-only>;
-  epo:hasOJSIssueNumber "180/2024";
+  epo:hasOJSIssueNumber 180;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU>;
   epo:hasPublicationDate "2024-09-16+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   adms:identifier <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/Notice/Identifier> .
 
@@ -92,6 +114,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "101c494a-c92d-48dc-856c-898f31bb357b" .
+
+<http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.10" .
+
+<http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -109,7 +147,8 @@
   epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/CompanyContactPoint$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_Contact1>;
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>;
-  adms:identifier <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/Identifier/ORG-0001> .
+  adms:identifier <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/Identifier/ORG-0001>;
+  org:hasUnit <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/OrganizationalUnit/TPO-0001> .
 
 <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/Organization/ORG-0002>
   a org:Organization;
@@ -119,35 +158,76 @@
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1_PostalAddress1>;
   adms:identifier <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/Identifier/ORG-0002> .
 
-<http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/Organization/TPO-0001>
-  a org:Organization;
-  owl:sameAs <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/Organization/ORG-0001> .
+<http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/OrganizationalUnit/TPO-0001>
+  a org:OrganizationalUnit;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/TouchPoint/TPO-0001>;
+  dct:title "Landratsamt Aschaffenburg Zentrale Vergabestelle"@de;
+  adms:identifier <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/Identifier/TPO-0001> .
 
-<http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/PartPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2025-01-01+01:00"^^xsd:date .
+<http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/PartInterval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/PartStartPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
 
 <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>
-  a epo:ProcurementObject;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
-  epo:isSMESuitable true;
-  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/ReviewTerm/TPO-0001> .
+  a epo:ProcurementObject .
 
 <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>
   a epo:Purpose;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/60100000> .
 
 <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/PartSpecificDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 35.0;
   time:unitType time:unitMonth .
 
+<http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/PartStartPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2025-01-01+01:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/PlannedProcurement$_PriorInformationNotice1_ProcurementProject1>
+  a epo:PlannedProcurement;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+    <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
+  epo:hasAdditionalInformation """Vom öffentlichen Verkehrswesen abgedeckte Bereiche:
+Busverkehr (innerstädtisch/regional)
+
+Zusätzliche Angaben:
+A) Hinweis für die Frist für eigenwirtschaftliche Anträge gem. § 8a Abs. 2 S. 2 PBefG
+Ein Antrag auf Erteilung einer gebündelten Genehmigung für einen eigenwirtschaftlichen Verkehr i. S. d. § 8 Abs. 4 S.2 PBefG ist für die gesamte Laufzeit gemäß Abschnitt 3.1.3 innerhalb der 3-Monats-Frist nach § 12 Abs. 6 S. 1 PBefG zu stellen. Diese Frist wird durch diese Vorinformation für sämtliche von der beabsichtigten Vergabe umfassten Linienverkehre ausgelöst. Die Verkehrsleistung ist am 01.01.2025 aufzunehmen, als Vertragsdauer sind 35 Monate (bis zum 30.11.2027) vorgesehen (mit einer einmaligen einseitigen Verlängerungsoption der zuständigen Behörden bis zum Ablauf des 31.12.2029).
+B) Anforderungen an die Verkehre und eigenwirtschaftliche Genehmigungserteilung
+Gem. § 8a A. 2 S. 3 PBefG werden mit dieser Vorabbekanntmachung Anforderungen an die umfassten Verkehre hinsichtlich Fahrplan, Beförderungsentgelt und Standards festgelegt. Diese Anforderungen sind nach Maßgabe von § 13 Abs. 2a PBefG ausschlaggebend für die Genehmigungsfähigkeit eigenwirtschaftlicher Anträge. In diesem Zusammenhang wird darauf hingewiesen, dass die Genehmigungsfähigkeit eines eigenwirtschaftlichen Antrags neben der Dauerhaftigkeit auch voraussetzt, dass die in dieser Vorabbekanntmachung angegebenen Anforderungen nach § 12 Abs. 1a PBefG verbindlich zugesichert werden.
+Enthält der Genehmigungsantrag des Verkehrsunternehmens Zusagen bzgl. Überschreitungen der Anforderungen oder zur Erfüllung weiterer, in diesem Dokument nicht aufgelisteter Standards, so sind diese ebenfalls verbindlich zuzusichern. Die Zusicherungen sind mit dem Antrag auf Genehmigungserteilung in Schriftform unter Bezugnahme auf dieses Dokument bei der Genehmigungsbehörde einzureichen.
+C) Ergänzend zu den Angaben in Abschnitt 3.1 werden folgende mit dem ÖDA verbundene Mindestanforderungen festgelegt:
+- Die Anwendung des Verbundtarifs der Verkehrsgemeinschaft am Bayerischen Untermain (VAB).
+- Die Lieferung der Fahrplandaten entsprechend VDV-Schrift 452 sowie der Ist- Fahrplandaten entsprechend der VDV-Schrift 453 und VDV-Schrift 454 an die Datendrehscheibe DEFAS Bayern (www.bayern-fahrplan.de).
+- Die Bewirtschaftung der auf den genannten Linien bedienten Haltestellen, insbesondere im Hinblick auf die Fahrgastinformation.
+- Die Erstellung der Aushangfahrpläne nach Layout-Vorgabe des Aufgabenträgers.
+Die im Linienverkehr eingesetzten Fahrzeuge müssen folgende Mindestvorgaben erfüllen:
+- Fahrzeugtyp entsprechend StVZO Klasse M3 als Vollniederflur oder LowEntry
+- Fahrzeuge welche die Autobahn A3 nutzen benötigen eine 100km/h-Zulassung
+- Maximales Durchschnittsalter 8 Jahre
+- Automatisches Fahrgastzählsystem (AFZS) für alle regelmäßig eingesetzten Fahrzeuge entsprechend VDV-Schrift 457 Version 2.1
+- Die Fahrgastzählsysteme in den Fahrzeugen sowie das zentrale Hintergrundsystem müssen von unabhängiger Stelle zertifiziert werden
+- TFT-Innenanzeigen mit Linienverlaufsanzeige
+- Sondernutzungsfläche für Rollstühle, Kinderwagen und Fahrräder
+- Emissionsstandard mindestens EURO VI
+- Die Fensterflächen dürfen maximal zu einem Drittel durch Werbefolien belegt werden.
+- Über die Fahrscheindrucker muss der Vertrieb aller VAB-Tickets möglich sein. Im Fahrzeug muss eine elektronische Kontrollinfrastruktur zur Kontrolle aller in der VAB angebotenen und anerkannten elektronischen Tickets vorhanden sein. Dies beinhaltet auch einen Barcode-Scanner zum Auslesen und Prüfen von VDV-Barcodes. Die Prüfung von Deutschlandtickets (Chipkarten, Smartphone-App) mit Anschluss an das zentrale PV-System (ZPVS) der eTicket-Deutschland muss möglich sein."""@de;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32007R1370>;
+  epo:hasLegalBasisDescription "vgv";
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>;
+  dct:description "siehe Beschreibung unter 3.1"@de;
+  dct:title "Vergabe zusätzlicher öffentlicher Personenverkehrsleistungen im Linienverkehr mit Kraftfahrzeugen auf den Linien 21, 23, 26 und 33"@de .
+
 <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/PlannedProcurementPart/PAR-0001>
   a epo:PlannedProcurementPart;
-  epo:foreseesProcurementObject <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/PartInterval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasPlannedDuration <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/PartSpecificDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:hasPlannedPeriod <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/PartPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
+  epo:isSMESuitable true;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/ReviewTerm/TPO-0001>;
   dct:description """Der Landkreis Aschaffenburg (im Folgenden auch als \"zuständige Behörde\" bezeichnet) ist Aufgabenträger für den öffentlichen Personennahverkehr gemäß Art. 8 Abs. 1 des Gesetzes über den öffentlichen Personennahverkehr in Bayern (BayÖPNVG) und damit gemäß Art. 8 Abs. 3 BayÖPNVG zugleich die zuständige Behörde nach der VO (EG) Nr. 1370/2007. Er beabsichtigt die Direktvergabe eines öffentlichen Dienstleistungsauftrags in Form einer Dienstleistungskonzession (DLK) gemäß Art. 5 Abs. 4 VO 1370/2007 und § 8a Abs. 2 PBefG an die Kahlgrund-Verkehrs-Gesellschaft mbH.
 Die DLK bezieht sich auf Verkehrsdienste des öffentlichen Personennahverkehrs (ÖPNV) im Sinne von § 8 PBefG (Linienverkehr gem. § 42 PBefG) auf dem Gebiet des Landkreises Aschaffenburg. Die DLK wird Regelungen beinhalten, wonach das Verkehrsangebot auf Verlangen des Auftraggebers an sich ändernde Verkehrsbedürfnisse oder finanzielle Rahmenbedingungen und an die Nahverkehrspläne in der jeweils geltenden Fassung sowie an andere veränderte Umstände angepasst werden muss.
 Umfang der DLK:
@@ -174,6 +254,28 @@ Ergänzend wird auf Abschnitt 2.1.4 dieser Bekanntmachung verwiesen.
   dct:title "Vergabe zusätzlicher öffentlicher Personenverkehrsleistungen im Linienverkehr mit Kraftfahrzeugen auf den Linien 21, 23, 26 und 33"@de;
   adms:identifier <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/Identifier/PAR-0001> .
 
+<http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/ProcedurePlacePerformance$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE264> .
+
+<http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>
+  a epo:Purpose;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/60100000> .
+
+<http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>
+  a epo:ProcessPlanningTerm;
+  epo:hasEstimatedContractNoticePublicationDate "2025-01-30+01:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>
+  a epo:ContractTerm;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
+
+<http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>
+  a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>;
+  epo:hasPlaceOfPerformanceAdditionalInformation "Landkreis Aschaffenburg"@de .
+
 <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>
   a epo:ProcurementServiceProvider;
   epo:actsOnBehalfOf <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/Buyer/ORG-0001organization>;
@@ -187,7 +289,7 @@ Ergänzend wird auf Abschnitt 2.1.4 dieser Bekanntmachung verwiesen.
 <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/Reviewer/TPO-0001>
   a epo:Reviewer;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/TouchPoint/TPO-0001>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/Organization/TPO-0001> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/OrganizationalUnit/TPO-0001> .
 
 <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/TouchPoint/TPO-0001>
   a cccev:ContactPoint;
@@ -195,7 +297,6 @@ Ergänzend wird auf Abschnitt 2.1.4 dieser Bekanntmachung verwiesen.
   epo:hasInternetAddress "https://www.landkreis-aschaffenburg.de/"^^xsd:anyURI;
   cccev:email "vergabe@lra-ab.bayern.de";
   cccev:telephone "060213941520";
-  dct:description "Landratsamt Aschaffenburg Zentrale Vergabestelle"@de;
   locn:address <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/TouchPointAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint1_PostalAddress1> .
 
 <http://data.europa.eu/a4g/resource/101c494a-c92d-48dc-856c-898f31bb357b-01/TouchPointAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint1_PostalAddress1>

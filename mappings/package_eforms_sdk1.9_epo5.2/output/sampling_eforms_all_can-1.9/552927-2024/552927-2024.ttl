@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -28,7 +28,7 @@
 <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/AwardDecision/2023-07-26%2B02%3A00>
   a epo:AwardDecision;
   epo:comprisesAwardOutcome <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/LotAwardOutcome/RES-0001>;
-  epo:hasAwardDecisionDate "2023-07-26+02:00"^^xsd:date .
+  epo:hasAwardDecisionDate "2023-07-26T00:00:00+02:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Buyer/ORG-0001organization>
   a epo:Buyer;
@@ -80,7 +80,8 @@
 
 <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -118,12 +119,12 @@
 
 <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Lot/Identifier/67224584-17b9-476f-a3d4-3b437fbfa311%4039-G-1878%2FLOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>;
   epo:isUsingEUFunds true;
   dct:description "<p><strong>Piano Nazionale di Ripresa e Resilienza - PNRR &#8211; Missione 1, componente C3 &#8211; Investimento 4.3 &#8220;Caput Mundi. Next Generation EU per grandi eventi turistici&#8221;. Intervento n. ID. 13 &#8220;Terme di Traiano - Cisterna delle sette sale - Restauro conservativo, consolidamento e valorizzazione&#8221;. PT20221388 &#8211; CUP J89D22000770001.</strong><br /><strong>Determinazione Dirigenziale di variazione in diminuzione degli impegni fondi IPE per Servizi Tecnici di progettazione e delle economie da ribasso.</strong></p>"@it;
@@ -141,19 +142,22 @@
 <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Notice>
   a epo:DirectAwardPrenotificationNotice, epo:Notice, epo:Notice25;
   epo:announcesAwardDecision <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/AwardDecision/2023-07-26%2B02%3A00>;
+  epo:announcesContract <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Contract/CON-0001>;
   epo:announcesLot <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Lot/LOT-0001>;
   epo:announcesProcedure <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Procedure/ae7fee2f-983e-4a97-bd45-f4e7bafd290c>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Buyer/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/ProcurementProcedureInformationProvider/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Reviewer/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Tenderer/TPA-0001>;
-  epo:hasESenderDispatchDate "2024-09-12T15:45:31+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-09-12T15:45:31+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/dir-awa-pre>;
   epo:hasNoticePublicationNumber "00552927-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/veat>;
-  epo:hasOJSIssueNumber "180/2024";
+  epo:hasOJSIssueNumber 180;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/ITA>;
   epo:hasPublicationDate "2024-09-16+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Procedure/ae7fee2f-983e-4a97-bd45-f4e7bafd290c>;
@@ -163,6 +167,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "ae7fee2f-983e-4a97-bd45-f4e7bafd290c" .
+
+<http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.9" .
+
+<http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Organization/Identifier$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -201,13 +221,13 @@
 
 <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Procedure/ae7fee2f-983e-4a97-bd45-f4e7bafd290c>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Procedure/Identifier/67224584-17b9-476f-a3d4-3b437fbfa311%4039-G-1878>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/ProcedurePurpose$_ContractAwardNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/DirectAwardTerm$_ContractAwardNotice1_TenderingProcess1_ProcessJustification1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/DirectAwardTerm$_ContractAwardNotice1_TenderingProcess1_ProcessJustification1>;
   dct:description "Terme di Traiano - Cisterna delle sette sale - Restauro conservativo, consolidamento e valorizzazione"@it;
   dct:title "<p><strong>PNRR &#8211; Missione 1, componente C3 &#8211; Investimento 4.3 &#8220;Caput Mundi. Next Generation EU per grandi eventi turistici&#8221;. Intervento n. ID. 13 &#8220;Terme di Traiano - Cisterna delle sette sale - Restauro conservativo, consolidamento e valorizzazione&#8221;. PT20221388 &#8211; CUP J89D22000770001. </strong></p>"@it;
   adms:identifier <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Procedure/Identifier/ae7fee2f-983e-4a97-bd45-f4e7bafd290c> .
@@ -241,7 +261,7 @@
 
 <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Tender/TEN-0001>
   a epo:Tender;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Lot/LOT-0001>;
   adms:identifier <http://data.europa.eu/a4g/resource/ae7fee2f-983e-4a97-bd45-f4e7bafd290c-01/Tender/Identifier/TEN-0001> .
 

@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -26,11 +26,14 @@
   epo:definesOfflineAccessProvider <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/OfflineAccessProvider/ORG-0001organization>;
   epo:definesProcurementProcedureInformationProvider <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ProcurementProcedureInformationProvider/ORG-0001organization> .
 
-<http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
+<http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1%202024-377895_0%20-%20Affaldsh%C3%A5ndtering>
   a epo:AccessTerm;
   epo:hasPublicAccessURL "https://eu.eu-supply.com/app/rfq/rwlentrance_s.asp?PID=415036&B="^^xsd:anyURI;
-  epo:involvesProcurementDocument <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ProcurementDocument$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1%202024-377895_0%20-%20Affaldsh%C3%A5ndtering>;
   epo:isProcurementDocumentRestricted false .
+
+<http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/AccessTermt$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1%202024-377895_0%20-%20Affaldsh%C3%A5ndtering>
+  a epo:AccessTerm;
+  epo:providesProcurementDocumentsInOfficialLanguage <http://publications.europa.eu/resource/authority/language/DAN> .
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>
   a epo:AwardCriterion;
@@ -127,14 +130,13 @@
   cccev:telephone "+47 21018800" .
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 4.0;
   time:unitType time:unitYear .
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ContractLocation$_ContractNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DNK>;
-  locn:address <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ProcedurePlacePerformance$_ContractNotice1_ProcurementProject1_RealizedLocation1_Address1> .
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DNK> .
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ContractLocation$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
@@ -142,7 +144,7 @@
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/required>;
   epo:hasEOrdering true;
@@ -154,7 +156,8 @@ Tilbudsgiveren vil blive udelukket fra deltagelse i udbudsproceduren, hvis Tilbu
 Dog bemærkes, at en tilbudsgiver, der har ubetalt forfalden gæld til offentlige myndigheder vedrørende skatter, afgifter eller bidrag til sociale sikringsordninger, alene vil blive udelukket på denne baggrund, hvis denne gæld er på 100.000 kr. eller derover."""@da;
   epo:hasPerformanceConditions "Efter investeringsscreeningsloven (https://www.retsinformation.dk/eli/lta/2021/842) skal økonomiske aktører, i) som er hjemmehørende uden for EU eller EFTA, eller ii) som er under kontrol af eller underlagt betydelig indflydelse som defineret i loven fra en virksomhed hjemmehørende eller en statsborger fra et land uden for EU eller EFTA, ansøge Erhvervsstyrelsen om tilladelse til at indgå en ”særlig økonomisk aftale” inden for en særligt følsom sektor eller aktivitet. Ordregiver vurderer, at indgåelse af rammeaftalen kan være omfattet af krav om tilladelse. Tilbudsgiver bør afklare, om ansøgers aftaleindgåelse vil være omfattet af et sådant krav. Se nærmere herom på https://erhvervsstyrelsen.dk/aftaler-omfattet-af-investeringsscreeningsloven."@da;
   epo:hasRenewalDescription "ANDEL kan forlænge Rammeaftalen på samme vilkår i op til 12 måneder. Forlængelse må ikke finde sted mere end 4 gange. "@da;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -162,91 +165,81 @@ Dog bemærkes, at en tilbudsgiver, der har ubetalt forfalden gæld til offentlig
   epo:hasBroadPlaceOfPerformance <http://publications.europa.eu/resource/authority/other-place-service/anyw-cou>;
   epo:hasPlaceOfPerformanceAdditionalInformation "ANDELs lokationer samt sites, fordelt primært på Sjælland samt dele af Jylland (Horsens & Aalborg). Der forventes udbygning af geografisk dækning til også at omfatte Fyn og yderligere dele af Jylland (dog alene land-/brofaste)."@da .
 
+<http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/Duration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 4.0;
+  time:unitType time:unitYear .
+
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/DynamicPurchaseSystemTechnicalUsage$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/Duration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Er den økonomiske aktør i en situation, som svarer til konkurs i henhold til en tilsvarende procedure, der er fastsat i national ret?"@da;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/bankr-nat> .
+  dct:description "Er den økonomiske aktør i en situation, som svarer til konkurs i henhold til en tilsvarende procedure, der er fastsat i national ret?"@da .
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement10>
   a epo:ExclusionGround;
-  dct:description "Tilbudsgiveren vil blive udelukket fra deltagelse i udbudsproceduren, hvis Tilbudsgiveren er omfattet af udelukkelsesgrundene anført i udbudslovens § 137, stk. 1, nr. 2, jf. implementeringsbekendtgørelsens § 11, stk. 1, nr. 1, medmindre Tilbudsgiver har fremlagt tilstrækkelig dokumentation for, at denne er pålidelig i overensstemmelse med udbudslovens § 138, jf. implementeringsbekendtgørelsens § 11, stk. 1, nr. 2."@da;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/liq-admin> .
+  dct:description "Tilbudsgiveren vil blive udelukket fra deltagelse i udbudsproceduren, hvis Tilbudsgiveren er omfattet af udelukkelsesgrundene anført i udbudslovens § 137, stk. 1, nr. 2, jf. implementeringsbekendtgørelsens § 11, stk. 1, nr. 1, medmindre Tilbudsgiver har fremlagt tilstrækkelig dokumentation for, at denne er pålidelig i overensstemmelse med udbudslovens § 138, jf. implementeringsbekendtgørelsens § 11, stk. 1, nr. 2."@da .
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement11>
   a epo:ExclusionGround;
-  dct:description "Tilbudsgiveren vil blive udelukket fra deltagelse i udbudsproceduren, hvis Tilbudsgiveren er omfattet af de i udbudslovens § 136, stk. 1, pkt. 1, jf. implementeringsbekendtgørelsens § 11, stk. 1, nr. 1, medmindre Tilbudsgiver har fremlagt tilstrækkelig dokumentation for, at denne er pålidelig i overensstemmelse med udbudslovens § 138, jf. implementeringsbekendtgørelsens § 11, stk. 1, nr. 2."@da;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/partic-confl> .
+  dct:description "Tilbudsgiveren vil blive udelukket fra deltagelse i udbudsproceduren, hvis Tilbudsgiveren er omfattet af de i udbudslovens § 136, stk. 1, pkt. 1, jf. implementeringsbekendtgørelsens § 11, stk. 1, nr. 1, medmindre Tilbudsgiver har fremlagt tilstrækkelig dokumentation for, at denne er pålidelig i overensstemmelse med udbudslovens § 138, jf. implementeringsbekendtgørelsens § 11, stk. 1, nr. 2."@da .
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement12>
   a epo:ExclusionGround;
-  dct:description "Tilbudsgiveren vil blive udelukket fra deltagelse i udbudsproceduren, hvis Tilbudsgiveren er omfattet af de i udbudslovens § 136, stk. 1, pkt. 1, jf. implementeringsbekendtgørelsens § 11, stk. 1, nr. 1, medmindre Tilbudsgiver har fremlagt tilstrækkelig dokumentation for, at denne er pålidelig i overensstemmelse med udbudslovens § 138, jf. implementeringsbekendtgørelsens § 11, stk. 1, nr. 2."@da;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/prep-confl> .
+  dct:description "Tilbudsgiveren vil blive udelukket fra deltagelse i udbudsproceduren, hvis Tilbudsgiveren er omfattet af de i udbudslovens § 136, stk. 1, pkt. 1, jf. implementeringsbekendtgørelsens § 11, stk. 1, nr. 1, medmindre Tilbudsgiver har fremlagt tilstrækkelig dokumentation for, at denne er pålidelig i overensstemmelse med udbudslovens § 138, jf. implementeringsbekendtgørelsens § 11, stk. 1, nr. 2."@da .
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement13>
   a epo:ExclusionGround;
-  dct:description "Har den økonomiske aktør tilsidesat sine forpligtelser vedrørende betaling af bidrag til sociale sikringsordninger både i det land, hvor den økonomiske aktør er etableret, og i den ordregivende myndigheds eller den ordregivende enheds medlemsstat, hvis denne er en anden end etableringslandet?"@da;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/socsec-pay> .
+  dct:description "Har den økonomiske aktør tilsidesat sine forpligtelser vedrørende betaling af bidrag til sociale sikringsordninger både i det land, hvor den økonomiske aktør er etableret, og i den ordregivende myndigheds eller den ordregivende enheds medlemsstat, hvis denne er en anden end etableringslandet?"@da .
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement14>
   a epo:ExclusionGround;
-  dct:description "Tilbudsgiveren vil blive udelukket fra deltagelse i udbudsproceduren, hvis Tilbudsgiveren er omfattet af udelukkelsesgrundene anført i udbudslovens § 137, stk. 1, nr. 2, jf. implementeringsbekendtgørelsens § 11, stk. 1, nr. 1, medmindre Tilbudsgiver har fremlagt tilstrækkelig dokumentation for, at denne er pålidelig i overensstemmelse med udbudslovens § 138, jf. implementeringsbekendtgørelsens § 11, stk. 1, nr. 2."@da;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/susp-act> .
+  dct:description "Tilbudsgiveren vil blive udelukket fra deltagelse i udbudsproceduren, hvis Tilbudsgiveren er omfattet af udelukkelsesgrundene anført i udbudslovens § 137, stk. 1, nr. 2, jf. implementeringsbekendtgørelsens § 11, stk. 1, nr. 1, medmindre Tilbudsgiver har fremlagt tilstrækkelig dokumentation for, at denne er pålidelig i overensstemmelse med udbudslovens § 138, jf. implementeringsbekendtgørelsens § 11, stk. 1, nr. 2."@da .
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement15>
   a epo:ExclusionGround;
-  dct:description "Har den økonomiske aktør tilsidesat sine forpligtelser vedrørende betaling af skatter og afgifter både i det land, hvor den økonomiske aktør er etableret, og i den ordregivende myndigheds eller den ordregivende enheds medlemsstat, hvis denne er en anden end etableringslandet?"@da;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/tax-pay> .
+  dct:description "Har den økonomiske aktør tilsidesat sine forpligtelser vedrørende betaling af skatter og afgifter både i det land, hvor den økonomiske aktør er etableret, og i den ordregivende myndigheds eller den ordregivende enheds medlemsstat, hvis denne er en anden end etableringslandet?"@da .
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement16>
   a epo:ExclusionGround;
-  dct:description "Er den økonomiske aktør selv eller en person, der tilhører den økonomiske aktørs administrations-, ledelses- eller tilsynsorgan eller har beføjelse til at repræsentere eller kontrollere eller til at træffe beslutninger heri, ved en endelig dom blevet dømt for terrorhandlinger eller strafbare handlinger med forbindelse til terroraktivitet ved en dom afsagt for højst fem år siden, eller hvori en udelukkelsesperiode fastsat direkte i dommen fortsat finder anvendelse? Som defineret i henholdsvis artikel 1 og 3 i Rådets rammeafgørelse 2002/475/RIA af 13. juni 2002 om bekæmpelse af terrorisme (EFT L 164 af 22.6.2002, s. 3). Denne udelukkelsesgrund omfatter også anstiftelse, medvirken og forsøg på at begå sådanne handlinger som omhandlet i nævnte rammeafgørelses artikel 4."@da;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/terr-offence> .
+  dct:description "Er den økonomiske aktør selv eller en person, der tilhører den økonomiske aktørs administrations-, ledelses- eller tilsynsorgan eller har beføjelse til at repræsentere eller kontrollere eller til at træffe beslutninger heri, ved en endelig dom blevet dømt for terrorhandlinger eller strafbare handlinger med forbindelse til terroraktivitet ved en dom afsagt for højst fem år siden, eller hvori en udelukkelsesperiode fastsat direkte i dommen fortsat finder anvendelse? Som defineret i henholdsvis artikel 1 og 3 i Rådets rammeafgørelse 2002/475/RIA af 13. juni 2002 om bekæmpelse af terrorisme (EFT L 164 af 22.6.2002, s. 3). Denne udelukkelsesgrund omfatter også anstiftelse, medvirken og forsøg på at begå sådanne handlinger som omhandlet i nævnte rammeafgørelses artikel 4."@da .
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement2>
   a epo:ExclusionGround;
   dct:description """Ansøgeren vil blive udelukket fra deltagelse i
 udbudsproceduren, hvis Ansøgeren er omfattet af udelukkelsesgrundene anført i udbudslovens § 137, stk. 1, nr. 2, jf. implementeringsbekendtgørelsens § 11, stk. 1,
-nr. 1, medmindre Ansøgeren har fremlagt tilstrækkelig dokumentation for, at denne er pålidelig i overensstemmelse med udbudslovens § 138, jf. implementeringsbekendtgørelsens § 11, stk. 1, nr. 2."""@da;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/bankruptcy> .
+nr. 1, medmindre Ansøgeren har fremlagt tilstrækkelig dokumentation for, at denne er pålidelig i overensstemmelse med udbudslovens § 138, jf. implementeringsbekendtgørelsens § 11, stk. 1, nr. 2."""@da .
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement3>
   a epo:ExclusionGround;
-  dct:description "Er den økonomiske aktør selv eller en person, der tilhører den økonomiske aktørs administrations-, ledelses- eller tilsynsorgan eller har beføjelse til at repræsentere eller kontrollere eller til at træffe beslutninger heri, ved en endelig dom blevet dømt for bestikkelse ved en dom afsagt for højst fem år siden, eller hvori en udelukkelsesperiode fastsat direkte i dommen fortsat finder anvendelse? Som defineret i artikel 3 i konventionen om bekæmpelse af bestikkelse, som involverer tjenestemænd ved De Europæiske Fællesskaber eller i Den Europæiske Unions medlemsstater (EFT C 195 af 25.6.1997, s. 1), og i artikel 2, stk. 1, i Rådets rammeafgørelse 2003/568/RIA af 22. juli 2003 om bekæmpelse af bestikkelse i den private sektor (EUT L 192 af 31.7.2003, s. 54). Denne udelukkelsesgrund omfatter også bestikkelse som defineret i den nationale ret gældende for den ordregivende myndighed (den ordregivende enhed) eller den økonomiske aktør."@da;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/corruption> .
+  dct:description "Er den økonomiske aktør selv eller en person, der tilhører den økonomiske aktørs administrations-, ledelses- eller tilsynsorgan eller har beføjelse til at repræsentere eller kontrollere eller til at træffe beslutninger heri, ved en endelig dom blevet dømt for bestikkelse ved en dom afsagt for højst fem år siden, eller hvori en udelukkelsesperiode fastsat direkte i dommen fortsat finder anvendelse? Som defineret i artikel 3 i konventionen om bekæmpelse af bestikkelse, som involverer tjenestemænd ved De Europæiske Fællesskaber eller i Den Europæiske Unions medlemsstater (EFT C 195 af 25.6.1997, s. 1), og i artikel 2, stk. 1, i Rådets rammeafgørelse 2003/568/RIA af 22. juli 2003 om bekæmpelse af bestikkelse i den private sektor (EUT L 192 af 31.7.2003, s. 54). Denne udelukkelsesgrund omfatter også bestikkelse som defineret i den nationale ret gældende for den ordregivende myndighed (den ordregivende enhed) eller den økonomiske aktør."@da .
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement4>
   a epo:ExclusionGround;
-  dct:description "Tilbudsgiveren vil blive udelukket fra deltagelse i udbudsproceduren, hvis Tilbudsgiveren er omfattet af udelukkelsesgrundene anført i udbudslovens § 137, stk. 1, nr. 2, jf. implementeringsbekendtgørelsens § 11, stk. 1, nr. 1, medmindre Tilbudsgiver har fremlagt tilstrækkelig dokumentation for, at denne er pålidelig i overensstemmelse med udbudslovens § 138, jf. implementeringsbekendtgørelsens § 11, stk. 1, nr. 2."@da;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/cred-arran> .
+  dct:description "Tilbudsgiveren vil blive udelukket fra deltagelse i udbudsproceduren, hvis Tilbudsgiveren er omfattet af udelukkelsesgrundene anført i udbudslovens § 137, stk. 1, nr. 2, jf. implementeringsbekendtgørelsens § 11, stk. 1, nr. 1, medmindre Tilbudsgiver har fremlagt tilstrækkelig dokumentation for, at denne er pålidelig i overensstemmelse med udbudslovens § 138, jf. implementeringsbekendtgørelsens § 11, stk. 1, nr. 2."@da .
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement5>
   a epo:ExclusionGround;
-  dct:description "Er den økonomiske aktør selv eller en person, der tilhører den økonomiske aktørs administrations-, ledelses- eller tilsynsorgan eller har beføjelse til at repræsentere eller kontrollere eller til at træffe beslutninger heri, ved en endelig dom blevet dømt for deltagelse i en kriminel organisation ved en dom afsagt for højst fem år siden, eller hvori en udelukkelsesperiode fastsat direkte i dommen fortsat finder anvendelse? Som defineret i artikel 2 i Rådets rammeafgørelse 2008/841/RIA af 24. oktober 2008 om bekæmpelse af organiseret kriminalitet (EUT L 300 af 11.11.2008, s. 42)."@da;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/crime-org> .
+  dct:description "Er den økonomiske aktør selv eller en person, der tilhører den økonomiske aktørs administrations-, ledelses- eller tilsynsorgan eller har beføjelse til at repræsentere eller kontrollere eller til at træffe beslutninger heri, ved en endelig dom blevet dømt for deltagelse i en kriminel organisation ved en dom afsagt for højst fem år siden, eller hvori en udelukkelsesperiode fastsat direkte i dommen fortsat finder anvendelse? Som defineret i artikel 2 i Rådets rammeafgørelse 2008/841/RIA af 24. oktober 2008 om bekæmpelse af organiseret kriminalitet (EUT L 300 af 11.11.2008, s. 42)."@da .
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement6>
   a epo:ExclusionGround;
-  dct:description "Er den økonomiske aktør selv eller en person, der tilhører den økonomiske aktørs administrations-, ledelses- eller tilsynsorgan eller har beføjelse til at repræsentere eller kontrollere eller til at træffe beslutninger heri, ved en endelig dom blevet dømt for hvidvaskning af penge eller finansiering af terrorisme ved en dom afsagt for højst fem år siden, eller hvori en udelukkelsesperiode fastsat direkte i dommen fortsat finder anvendelse? Som defineret i artikel 1 i Europa-Parlamentets og Rådets direktiv 2005/60/EF af 26. oktober 2005 om forebyggende foranstaltninger mod anvendelse af det finansielle system til hvidvaskning af penge og finansiering af terrorisme (EUT L 309 af 25.11.2005, s. 15)."@da;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/finan-laund> .
+  dct:description "Er den økonomiske aktør selv eller en person, der tilhører den økonomiske aktørs administrations-, ledelses- eller tilsynsorgan eller har beføjelse til at repræsentere eller kontrollere eller til at træffe beslutninger heri, ved en endelig dom blevet dømt for hvidvaskning af penge eller finansiering af terrorisme ved en dom afsagt for højst fem år siden, eller hvori en udelukkelsesperiode fastsat direkte i dommen fortsat finder anvendelse? Som defineret i artikel 1 i Europa-Parlamentets og Rådets direktiv 2005/60/EF af 26. oktober 2005 om forebyggende foranstaltninger mod anvendelse af det finansielle system til hvidvaskning af penge og finansiering af terrorisme (EUT L 309 af 25.11.2005, s. 15)."@da .
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement7>
   a epo:ExclusionGround;
-  dct:description "Er den økonomiske aktør selv eller en person, der tilhører den økonomiske aktørs administrations-, ledelses- eller tilsynsorgan eller har beføjelse til at repræsentere eller kontrollere eller til at træffe beslutninger heri, ved en endelig dom blevet dømt for svig ved en dom afsagt for højst fem år siden, eller hvori en udelukkelsesperiode fastsat direkte i dommen fortsat finder anvendelse? Som omhandlet i artikel 1 i konventionen om beskyttelse af De Europæiske Fællesskabers finansielle interesser (EFT C 316 af 27.11.1995, s. 48)."@da;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/fraud> .
+  dct:description "Er den økonomiske aktør selv eller en person, der tilhører den økonomiske aktørs administrations-, ledelses- eller tilsynsorgan eller har beføjelse til at repræsentere eller kontrollere eller til at træffe beslutninger heri, ved en endelig dom blevet dømt for svig ved en dom afsagt for højst fem år siden, eller hvori en udelukkelsesperiode fastsat direkte i dommen fortsat finder anvendelse? Som omhandlet i artikel 1 i konventionen om beskyttelse af De Europæiske Fællesskabers finansielle interesser (EFT C 316 af 27.11.1995, s. 48)."@da .
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement8>
   a epo:ExclusionGround;
-  dct:description "Er den økonomiske aktør selv eller en person, der tilhører den økonomiske aktørs administrations-, ledelses- eller tilsynsorgan eller har beføjelse til at repræsentere eller kontrollere eller til at træffe beslutninger heri, ved en endelig dom blevet dømt for børnearbejde og andre former for menneskehandel ved en dom afsagt for højst fem år siden, eller hvori en udelukkelsesperiode fastsat direkte i dommen fortsat finder anvendelse? Som defineret i artikel 2 i Europa-Parlamentets og Rådets direktiv 2011/36/EU af 5. april 2011 om forebyggelse og bekæmpelse af menneskehandel og beskyttelse af ofrene herfor, og om erstatning af Rådets rammeafgørelse 2002/629/RIA (EUT L 101 af 15.4.2011, s. 1)."@da;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/human-traffic> .
+  dct:description "Er den økonomiske aktør selv eller en person, der tilhører den økonomiske aktørs administrations-, ledelses- eller tilsynsorgan eller har beføjelse til at repræsentere eller kontrollere eller til at træffe beslutninger heri, ved en endelig dom blevet dømt for børnearbejde og andre former for menneskehandel ved en dom afsagt for højst fem år siden, eller hvori en udelukkelsesperiode fastsat direkte i dommen fortsat finder anvendelse? Som defineret i artikel 2 i Europa-Parlamentets og Rådets direktiv 2011/36/EU af 5. april 2011 om forebyggelse og bekæmpelse af menneskehandel og beskyttelse af ofrene herfor, og om erstatning af Rådets rammeafgørelse 2002/629/RIA (EUT L 101 af 15.4.2011, s. 1)."@da .
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement9>
   a epo:ExclusionGround;
-  dct:description "Tilbudsgiveren vil blive udelukket fra deltagelse i udbudsproceduren, hvis Tilbudsgiveren er omfattet af udelukkelsesgrundene anført i udbudslovens § 137, stk. 1, nr. 2, jf. implementeringsbekendtgørelsens § 11, stk. 1, nr. 1, medmindre Tilbudsgiver har fremlagt tilstrækkelig dokumentation for, at denne er pålidelig i overensstemmelse med udbudslovens § 138, jf. implementeringsbekendtgørelsens § 11, stk. 1, nr. 2."@da;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/insolvency> .
+  dct:description "Tilbudsgiveren vil blive udelukket fra deltagelse i udbudsproceduren, hvis Tilbudsgiveren er omfattet af udelukkelsesgrundene anført i udbudslovens § 137, stk. 1, nr. 2, jf. implementeringsbekendtgørelsens § 11, stk. 1, nr. 1, medmindre Tilbudsgiver har fremlagt tilstrækkelig dokumentation for, at denne er pålidelig i overensstemmelse med udbudslovens § 138, jf. implementeringsbekendtgørelsens § 11, stk. 1, nr. 2."@da .
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -289,7 +282,8 @@ nr. 1, medmindre Ansøgeren har fremlagt tilstrækkelig dokumentation for, at de
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
+  epo:doesNotRequireSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation """Såfremt ANDEL modtager flere egnede ansøgninger, end  ANDEL forventer at udvælge, vil ANDEL begrænse antallet ud fra følgende objektive og ikke-diskriminerende kriterier.
 Begrænsning af ansøgere, der opfordres til at afgive tilbud, vil ske efter vurdering af, hvilke ansøgere der har dokumenteret de mest relevante leverancer af de 
@@ -313,8 +307,8 @@ forelægge ANDEL et certifikat for optagelse udstedt af den kompetente myndighed
   epo:hasPurpose <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/LotPurpose$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA false;
   epo:isSMESuitable true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
-    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
+    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1%202024-377895_0%20-%20Affaldsh%C3%A5ndtering>,
     <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/MultipleStageProcedureTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/NonDisclosureAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
@@ -324,22 +318,6 @@ forelægge ANDEL et certifikat for optagelse udstedt af den kompetente myndighed
     <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>;
   epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>,
     <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion2>,
-    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement10>,
-    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement11>,
-    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement12>,
-    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement13>,
-    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement14>,
-    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement15>,
-    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement16>,
-    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement2>,
-    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement3>,
-    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement4>,
-    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement5>,
-    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement6>,
-    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement7>,
-    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement8>,
-    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement9>,
     <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ParticipationCondition$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1>,
     <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>,
     <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>,
@@ -401,13 +379,16 @@ Sagsnummer hos den ordregivende enhed: 2024-377895"""@da;
     <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/Reviewer/ORG-0002organization>,
     <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/TenderProcessor/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/TenderReceiver/ORG-0001organization>;
-  epo:hasESenderDispatchDate "2024-10-23T10:04:43+00:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-10-23T10:04:43+00:00"^^xsd:dateTime;
+  epo:hasESenderDispatchDate "2024-10-23T10:19:46+00:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00646927-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-cfc-standard>;
-  epo:hasOJSIssueNumber "208/2024";
+  epo:hasOJSIssueNumber 208;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DAN>;
   epo:hasPublicationDate "2024-10-24+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/Lot/LOT-0000>;
   epo:refersToPrevious <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/Notice/544454-2024>;
@@ -427,6 +408,22 @@ Sagsnummer hos den ordregivende enhed: 2024-377895"""@da;
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "7daa036e-7a3b-4a1a-8c76-3e43aa56c023" .
+
+<http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.10" .
+
+<http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/Notice/be4de609-b006-4651-9bac-8eefaaab0606-01>
   a epo:Notice;
@@ -502,7 +499,7 @@ Sagsnummer hos den ordregivende enhed: 2024-377895"""@da;
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/Procedure/477331a5-e819-464b-b39b-6943bb3e3f67>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation """Såfremt ANDEL modtager flere egnede ansøgninger, end  ANDEL forventer at udvælge, vil ANDEL begrænse antallet ud fra følgende objektive og ikke-diskriminerende kriterier.
 Begrænsning af ansøgere, der opfordres til at afgive tilbud, vil ske efter vurdering af, hvilke ansøgere der har dokumenteret de mest relevante leverancer af de 
@@ -527,6 +524,22 @@ forelægge ANDEL et certifikat for optagelse udstedt af den kompetente myndighed
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/Lot/LOT-0000>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ProcedurePurpose$_ContractNotice1_ProcurementProject1>;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement10>,
+    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement11>,
+    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement12>,
+    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement13>,
+    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement14>,
+    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement15>,
+    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement16>,
+    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement2>,
+    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement3>,
+    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement4>,
+    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement5>,
+    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement6>,
+    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement7>,
+    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement8>,
+    <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement9>;
   dct:description """Nærværende udbud omhandler indgåelse af Rammeaftale vedrørende affaldshåndtering og containerleje for erhvervsaffald, affaldshåndtering af farligt affald inkl. anvendelse af ekstern lovpligtig sikkerhedsrådgiverfunktion, samt makulering af fortrolige papirer/dokumenter. 
 Der er tale om en rammeaftale, hvorfor der ikke kan garanteres nogen minimumsomsætning. Rammeaftalen vil blive tildelt til en (1) leverandør.
 Sagsnummer hos den ordregivende enhed: 2024-377895"""@da;
@@ -542,10 +555,6 @@ Sagsnummer hos den ordregivende enhed: 2024-377895"""@da;
   a adms:Identifier;
   skos:notation "477331a5-e819-464b-b39b-6943bb3e3f67" .
 
-<http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ProcedurePlacePerformance$_ContractNotice1_ProcurementProject1_RealizedLocation1_Address1>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DNK> .
-
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ProcedurePurpose$_ContractNotice1_ProcurementProject1>
   a epo:Purpose;
   epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/90000000>, <http://data.europa.eu/cpv/cpv/90510000>,
@@ -557,10 +566,6 @@ Sagsnummer hos den ordregivende enhed: 2024-377895"""@da;
   a epo:MonetaryValue;
   epo:hasAmountValue 17500000.0;
   epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/DKK> .
-
-<http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ProcurementDocument$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1%202024-377895_0%20-%20Affaldsh%C3%A5ndtering>
-  a epo:ProcurementDocument;
-  epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DAN> .
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/ProcurementProcedureInformationProvider/ORG-0001organization>
   a epo:ProcurementProcedureInformationProvider;
@@ -622,7 +627,6 @@ Internetadresse URL http://www.kfst.dk"""@da .
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/ef-stand>;
   dct:description """Den økonomiske aktørs samlede årsomsætning for det antal regnskabsår, der anmodes om i den relevante meddelelse, i udbudsdokumenterne eller i ESPD, er som følger:
 
@@ -641,7 +645,6 @@ Tilbudsgiver kan også dokumentere opfyldelsen ved ethvert andet dokument, som A
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/ef-stand>;
   dct:description """For så vidt angår de finansielle nøgletal (såsom forholdet mellem aktiver og passiver), der er anført i den relevante meddelelse, i udbudsdokumenterne eller i ESPD, erklærer den økonomiske aktør, at de faktiske værdier for de nøgletal, der anmodes om, er som følger:
 
@@ -662,21 +665,18 @@ implementeringsbekendtgørelsen § 12. Tilbudsgiver kan også dokumentere opfyld
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/ef-stand>;
   dct:description "For så vidt angår eventuelle øvrige økonomiske og finansielle krav, som måtte være blevet anført i den relevante meddelelse eller i udbudsdokumenterne, erklærer den økonomiske aktør, at:"@da;
   skos:prefLabel "Øvrige økonomiske og finansielle krav"@da .
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria4>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/n-used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>;
   dct:description "Den økonomiske aktør er optaget i det relevante faglige register i den medlemsstat, hvor denne er etableret, jf. bilag XI til direktiv 2014/24/EU; økonomiske aktører fra visse medlemsstater kan være nødt til at opfylde andre krav i nævnte bilag."@da;
   skos:prefLabel "Optagelse i et relevant fagligt register"@da .
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria5>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/tp-abil>;
   dct:description """Her anføres referenceliste over de væsentligste sammenlignelige referencer, der er udført inden for de seneste 3 år, med angivelse af:
 a. Beskrivelse (opgave- og ydelsesbeskrivelse),
@@ -695,14 +695,12 @@ Dokumentation: Tilbudsgiver skal på anmodning fremsende dokumentation vedrøren
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria6>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/tp-abil>;
   dct:description "Den økonomiske aktør agter eventuelt at give følgende andel (i procent) af kontrakten i underleverance. Bemærk, at hvis den økonomiske aktør har besluttet at give en del af kontrakten i underleverance og baserer sig på underleverandørens kapacitet til at udføre denne del, udfyldes et særskilt ESPD for sådanne underleverandører, se del II, afsnit C, ovenfor."@da;
   skos:prefLabel "Andel i underleverance"@da .
 
 <http://data.europa.eu/a4g/resource/7daa036e-7a3b-4a1a-8c76-3e43aa56c023-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria7>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/tp-abil>;
   dct:description "Den økonomiske aktør agter eventuelt at give følgende andel (i procent) af kontrakten i underleverance. Bemærk, at hvis den økonomiske aktør har besluttet at give en del af kontrakten i underleverance og baserer sig på underleverandørens kapacitet til at udføre denne del, udfyldes et særskilt ESPD for sådanne underleverandører, se del II, afsnit C, ovenfor."@da;
   skos:prefLabel "Andel i underleverance"@da .

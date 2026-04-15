@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -25,7 +25,7 @@
   a epo:AccessTerm;
   epo:definesProcurementProcedureInformationProvider <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/ProcurementProcedureInformationProvider/ORG-0001> .
 
-<http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
+<http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1BNP%202023%2F107%20AK>
   a epo:AccessTerm;
   epo:hasPublicAccessURL "https://www.eis.gov.lv/EKEIS/Supplier/Procurement/110019"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted false .
@@ -41,6 +41,10 @@
 <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/Buyer/ORG-0001>
   a epo:Buyer;
   epo:playedBy <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/Channel$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://www.eis.gov.lv/EKEIS/Supplier/Organizer/472"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/CompanyAddress$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>
   a locn:Address;
@@ -72,6 +76,14 @@
   cccev:email "pasts@iub.gov.lv";
   cccev:telephone "+371 22416641" .
 
+<http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2024-01-01+02:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/ContractEndPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2024-12-31+02:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/ContractLocation$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/LVA>;
@@ -86,14 +98,9 @@
   locn:postCode "LV-4501";
   locn:postName "Balvi" .
 
-<http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2024-01-01+02:00"^^xsd:date;
-  epo:hasEnd "2024-12-31+02:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/required>;
   epo:hasEOrdering false;
@@ -103,7 +110,8 @@
   epo:hasPaymentArrangement "Saskaņā ar iepirkuma līguma projektu"@lv;
   epo:hasPerformanceConditions "Saskaņā ar iepirkuma tehnisko specifikāciju un iepirkuma līguma projektu"@lv;
   epo:hasRenewalDescription "Ja nav iesniegts pretendenta piedāvājums"@lv;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -115,8 +123,7 @@
 
 <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Saskaņā ar Publisko iepirkumu likuma 42.pantu"@lv;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/nati-ground> .
+  dct:description "Saskaņā ar Publisko iepirkumu likuma 42.pantu"@lv .
 
 <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -135,21 +142,27 @@
   a adms:Identifier;
   skos:notation "ORG-0002" .
 
+<http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  time:hasEnd <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/ContractEndPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/Lot/Identifier/BNP%202023%2F107%20AK>
   a adms:Identifier;
   skos:notation "BNP 2023/107 AK" .
 
 <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
+    <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/ProcurementCriterion$_ContractNotice1_ProcurementProjectLot1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/MonetaryValueLot$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/Lot/Identifier/BNP%202023%2F107%20AK>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/LotPurpose$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
   epo:isRecurrent false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
-    <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
+    <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1BNP%202023%2F107%20AK>,
     <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/MultipleStageProcedureTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/OpeningTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1>,
@@ -158,9 +171,7 @@
     <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>;
   epo:isUsingEUFunds false;
   epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>,
-    <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
     <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/ParticipationCondition$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest2>,
-    <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/ProcurementCriterion$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>,
     <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>;
   epo:usesTechnique <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/DynamicPurchaseSystemTechnicalUsage$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>;
@@ -189,13 +200,16 @@
   epo:announcesRole <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/Buyer/ORG-0001>,
     <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/ProcurementProcedureInformationProvider/ORG-0001>,
     <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/Reviewer/ORG-0002>;
+  epo:hasDispatchDate "2023-10-27T23:53:37Z"^^xsd:dateTime;
   epo:hasESenderDispatchDate "2023-10-27T23:53:37Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00665220-2023";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/cn-standard>;
-  epo:hasOJSIssueNumber "210/2023";
+  epo:hasOJSIssueNumber 210;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/LAV>;
   epo:hasPublicationDate "2023-10-31Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/Procedure/4378a70a-7ef8-42ac-bc5c-e00b4789a0ef>;
@@ -206,14 +220,26 @@
   epo:hasScheme "notice-id";
   skos:notation "f61e0809-3b16-411f-84d0-2215f16b006f" .
 
-<http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/OpenTenderEventPlace$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1_OccurenceLocation1>
-  a locn:Address;
-  locn:fullAddress "Elektronisko iepirkumu sistēma"@lv .
+<http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.8" .
+
+<http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/OpeningTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1>
   a epo:OpeningTerm;
-  epo:definesOpeningPlace <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/OpenTenderEventPlace$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1_OccurenceLocation1>;
-  epo:hasOpeningDateTime "2023-12-12T13:00:00+02:00"^^xsd:dateTime .
+  epo:hasOpeningDateTime "2023-12-12T13:00:00+02:00"^^xsd:dateTime;
+  epo:hasOpeningPlace "Elektronisko iepirkumu sistēma"@lv .
 
 <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/Organization/Identifier$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -235,6 +261,7 @@
 
 <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/Organization/ORG-0002>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/Channel$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/Organization/Identifier$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1_PartyLegalEntity1>;
   epo:hasLegalName "Iepirkumu uzraudzības birojs"@lv;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/CompanyContactPoint$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1_Contact1>;
@@ -247,13 +274,14 @@
 
 <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/Procedure/4378a70a-7ef8-42ac-bc5c-e00b4789a0ef>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/Procedure/Identifier/BNP%202023%2F107%20AK>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/ProcedurePurpose$_ContractNotice1_ProcurementProject1>;
   epo:isAccelerated false;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>;
   dct:description "Balvu pilsētas tranzīta ielu ikdienas uzturēšanas darbu veikšana ziemas un vasaras sezonā 2024.gadā"@lv;
   dct:title "Balvu pilsētas tranzīta ielu ikdienas uzturēšanas darbu veikšana ziemas un vasaras sezonā 2024.gadā"@lv;
   adms:identifier <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/Procedure/Identifier/4378a70a-7ef8-42ac-bc5c-e00b4789a0ef> .
@@ -300,20 +328,18 @@
 
 <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>;
   epo:isUsedForCandidateRestriction false;
   dct:description "Saskaņā ar iepirkuma dokumentiem"@lv .
 
 <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/tp-abil>;
   epo:isUsedForCandidateRestriction false;
   dct:description "Saskaņā ar iepirkuma dokumentiem"@lv .
 
 <http://data.europa.eu/a4g/resource/f61e0809-3b16-411f-84d0-2215f16b006f-01/SpecificDuration$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TenderValidityPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 6.0;
   time:unitType time:unitMonth .
 

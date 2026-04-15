@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -29,7 +29,7 @@
   a epo:AccessTerm;
   epo:definesProcurementProcedureInformationProvider <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/ProcurementProcedureInformationProvider/ORG-0001> .
 
-<http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
+<http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1documentsId>
   a epo:AccessTerm;
   epo:hasPublicAccessURL "https://www.tenderned.nl/aankondigingen/overzicht/351249"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted false .
@@ -87,7 +87,7 @@ Tevens is het digitale UEA toegevoegd."""@nl;
   cccev:telephone "+31 535723503" .
 
 <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 48.0;
   time:unitType time:unitMonth .
 
@@ -127,7 +127,7 @@ Tevens is het digitale UEA toegevoegd."""@nl;
 
 <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/ContractTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/required>;
   epo:hasEOrdering false;
@@ -135,7 +135,8 @@ Tevens is het digitale UEA toegevoegd."""@nl;
   epo:hasMaximumNumberOfRenewals 2;
   epo:hasOptionsDescription "De Overeenkomst kan worden verlengd."@nl;
   epo:hasRenewalDescription "De looptijd van de Overeenkomst is gesteld op vier (4) jaar. Verlenging van de Overeenkomst is wederkerig, met een opzegtermijn van twee jaar voor de Opdrachtnemer en één jaar voor de Keender. Partijen hebben de mogelijkheid deze Overeenkomst twee (2) keer te verlengen. Elke verlenging betreft een periode van 24 maanden."@nl;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -147,9 +148,19 @@ Tevens is het digitale UEA toegevoegd."""@nl;
   epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/ContractLocation$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation2_Address1>;
   epo:hasPlaceOfPerformanceAdditionalInformation "Haaksbergen"@nl .
 
+<http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/Duration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 48.0;
+  time:unitType time:unitMonth .
+
 <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/DynamicPurchaseSystemTechnicalUsage$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/Duration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
+
+<http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
+  a epo:ExclusionGround;
+  epo:hasQualificationCriteriaStatedInESPDRequest true .
 
 <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -169,6 +180,11 @@ Tevens is het digitale UEA toegevoegd."""@nl;
   epo:hasScheme "organization";
   skos:notation "ORG-0001" .
 
+<http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/Identifier/TPO-0001>
+  a adms:Identifier;
+  epo:hasScheme "touchpoint";
+  skos:notation "TPO-0001" .
+
 <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/Lot/Identifier/1>
   a adms:Identifier;
   epo:hasScheme "InternalID";
@@ -176,17 +192,18 @@ Tevens is het digitale UEA toegevoegd."""@nl;
 
 <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
-    <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation2>;
+    <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation2>,
+    <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/ProcurementCriterion$_ContractNotice1_ProcurementProjectLot1>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/GreenProcurement$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/Lot/Identifier/1>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/LotPurpose$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
   epo:isRecurrent false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/AccessTerm$_ContractNotice1_ProcurementProjectLot1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/AccessTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
-    <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
+    <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1documentsId>,
     <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/MultipleStageProcedureTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
@@ -197,7 +214,7 @@ Tevens is het digitale UEA toegevoegd."""@nl;
     <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion2>,
     <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion3>,
     <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/ParticipationCondition$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1>,
-    <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/ProcurementCriterion$_ContractNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest3_SpecificTendererRequirement1>,
     <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>;
   epo:usesTechnique <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/DynamicPurchaseSystemTechnicalUsage$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>;
   dct:description "Dit perceel betreft het onderhoud en vervanging van E&W-installaties t.b.v. stichting Keender in overeenstemming met het bepaalde in aanbestedingsstukken."@nl;
@@ -226,13 +243,15 @@ Tevens is het digitale UEA toegevoegd."""@nl;
     <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/ReviewProcedureInformationProvider/ORG-0001>,
     <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/Reviewer/TPO-0001>,
     <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/TenderReceiver/ORG-0001>;
-  epo:hasESenderDispatchDate "2024-09-30T10:23:49.875642685+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-09-30T10:23:49.875642685+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00589143-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/cn-standard>;
-  epo:hasOJSIssueNumber "191/2024";
+  epo:hasOJSIssueNumber 191;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/NLD>;
   epo:hasPublicationDate "2024-10-01+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/Notice/SpecificationInformation/Version>;
   epo:hasVersion "02";
   epo:refersToLot <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/Lot/LOT-0000>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/Procedure/52f10a72-bbe2-47f7-98ef-a4957da86718>;
@@ -251,6 +270,22 @@ Tevens is het digitale UEA toegevoegd."""@nl;
   epo:hasScheme "notice-id";
   skos:notation "4bf538b8-cd84-4baa-91d4-7e38034ab344" .
 
+<http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.12" .
+
+<http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
+
 <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/Organization/Identifier$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
   skos:notation "391689163" .
@@ -263,19 +298,26 @@ Tevens is het digitale UEA toegevoegd."""@nl;
   epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/education>;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/CompanyContactPoint$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_Contact1>;
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/CompanyAddress$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>;
-  adms:identifier <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/Identifier/ORG-0001> .
+  adms:identifier <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/Identifier/ORG-0001>;
+  org:hasUnit <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/OrganizationalUnit/TPO-0001> .
 
-<http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/Organization/TPO-0001>
-  a org:Organization;
-  owl:sameAs <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/Organization/ORG-0001> .
+<http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/OrganizationalUnit/TPO-0001>
+  a org:OrganizationalUnit;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/TouchPoint/TPO-0001>;
+  dct:title "Rechtbank Enschede"@nl;
+  adms:identifier <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/Identifier/TPO-0001> .
 
 <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/ParticipationCondition$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1>
   a epo:ParticipationCondition;
   epo:hasReservedProcurement <http://publications.europa.eu/resource/authority/reserved-procurement/none> .
 
+<http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/Procedure>
+  a epo:Procedure;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1> .
+
 <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/Procedure/52f10a72-bbe2-47f7-98ef-a4957da86718>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1_RealizedLocation1>,
     <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1_RealizedLocation2>;
   epo:hasAdditionalInformation "Er zijn geen nadere inlichtingen over deze aankondiging. Maar mochten er tocht vragen zijn, dan kunt deze stellen via de berichtenmodule in TenderNed."@nl;
@@ -351,11 +393,15 @@ Tevens is het digitale UEA toegevoegd."""@nl;
   a epo:Reviewer;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/Lot/LOT-0000>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/TouchPoint/TPO-0001>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/Organization/TPO-0001> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/OrganizationalUnit/TPO-0001> .
 
 <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/SecurityClearanceTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>
   a epo:SecurityClearanceTerm;
   epo:isSecurityClearanceRequired false .
+
+<http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest3_SpecificTendererRequirement1>
+  a epo:SelectionCriterion;
+  epo:hasQualificationCriteriaStatedInESPDRequest true .
 
 <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>
   a epo:SelectionCriterion;
@@ -385,7 +431,6 @@ Tevens is het digitale UEA toegevoegd."""@nl;
   epo:hasInternetAddress "http://www.rechtspraak.nl"^^xsd:anyURI;
   cccev:email "communicatie.rb-ove@rechtspraak.nl";
   cccev:telephone "+31 883611062";
-  dct:description "Rechtbank Enschede"@nl;
   locn:address <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/TouchPointAddress$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint1_PostalAddress1> .
 
 <http://data.europa.eu/a4g/resource/4bf538b8-cd84-4baa-91d4-7e38034ab344-02/TouchPointAddress$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint1_PostalAddress1>

@@ -17,14 +17,14 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/AwardDecision/2010-07-22%2B02%3A00>
   a epo:AwardDecision;
   epo:comprisesAwardOutcome <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/LotAwardOutcome/RES-0001>;
-  epo:hasAwardDecisionDate "2010-07-22+02:00"^^xsd:date .
+  epo:hasAwardDecisionDate "2010-07-22T00:00:00+02:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/Buyer/ORG-0001organization>
   a epo:Buyer;
@@ -121,8 +121,12 @@
   a epo:ContractAmendment;
   epo:amendsContract <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/Contract/CON-0001> .
 
+<http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2016-06-01+02:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 120.0;
   time:unitType time:unitMonth .
 
@@ -160,15 +164,12 @@
   a adms:Identifier;
   skos:notation "LOT-0000" .
 
-<http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2016-06-01+02:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies> .
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -204,17 +205,21 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0005" .
 
+<http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/Lot/Identifier/103420>
   a adms:Identifier;
   skos:notation "103420" .
 
 <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/Lot/Identifier/103420>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>;
   dct:description "Automated laboratory medicine systems incorporating clinical chemistry, haematology, immunology and blood bank."@en;
   dct:title "Automated Laboratory Medicine Systems"@en;
   adms:identifier <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/Identifier/LOT-0000> .
@@ -242,10 +247,12 @@
 <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/Notice>
   a epo:ContractModificationNotice, epo:Notice, epo:Notice38;
   epo:announcesContractAmendment <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/ContractAmendment$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_ContractModification1>;
-  epo:hasESenderDispatchDate "2010-10-07T06:06:06+01:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2010-10-07T06:06:06+01:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/cont-modif>;
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-modif>;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/ENG>;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToAwardDecision <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/AwardDecision/2010-07-22%2B02%3A00>;
   epo:refersToContractToBeModified <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/Contract/CON-0001>;
@@ -272,6 +279,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "1f8687c9-8cca-493a-b0ee-553ed23d8402" .
+
+<http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.5" .
+
+<http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
   a epo:NoticeAwardInformation;
@@ -347,13 +370,13 @@
 
 <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/Procedure/b492c659-4893-4796-b7db-4e511d85e0c8>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/Procedure/Identifier/%20103420>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/Lot/LOT-0000>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/ProcedurePurpose$_ContractAwardNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/ProcedureTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/ProcedureTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>;
   dct:description "Automated laboratory medicine systems incorporating clinical chemistry, haematology, immunology and blood bank."@en;
   dct:title "Automated Laboratory Medicine Systems"@en;
   adms:identifier <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/Procedure/Identifier/b492c659-4893-4796-b7db-4e511d85e0c8> .
@@ -402,14 +425,15 @@
 <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/Tender/TEN-0001>
   a epo:Tender;
   epo:hasFinancialOfferValue <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/Lot/LOT-0000>;
   adms:identifier <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/Tender/Identifier/BID%2FBSO%2F2000-03> .
 
 <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/TenderAwardOutcome/TEN-0001>
   a epo:TenderAwardOutcome;
   epo:concernsTender <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/Tender/TEN-0001>;
-  epo:hasAwardRank 1 .
+  epo:hasAwardRank 1;
+  epo:specifiesForeignSubsidiesMeasureConclusion <http://publications.europa.eu/resource/authority/foreign-subsidy-measure-conclusion/> .
 
 <http://data.europa.eu/a4g/resource/1f8687c9-8cca-493a-b0ee-553ed23d8402-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>
   a epo:MonetaryValue;

@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -142,7 +142,7 @@ potabilizzazione dell’acqua ed altro, oltre alla gestione impianto sportivo di
   skos:notation "CIG A001959BB4" .
 
 <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 288.0;
   time:unitType time:unitMonth .
 
@@ -165,8 +165,9 @@ potabilizzazione dell’acqua ed altro, oltre alla gestione impianto sportivo di
 
 <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -208,12 +209,12 @@ potabilizzazione dell’acqua ed altro, oltre alla gestione impianto sportivo di
 
 <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/Lot/Identifier/CIG%20A001959BB4>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>;
   epo:isUsingEUFunds false;
@@ -256,15 +257,18 @@ potabilizzazione dell’acqua ed altro, oltre alla gestione impianto sportivo di
 <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/Notice>
   a epo:Notice, epo:Notice32, epo:ResultNotice;
   epo:announcesAwardDecision <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/AwardDecision/CON-0001>;
+  epo:announcesContract <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/Contract/CON-0001>;
   epo:announcesNoticeAwardInformation <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/Tenderer/TPA-0001>;
-  epo:hasESenderDispatchDate "2024-09-23T10:41:31Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-09-23T10:41:31Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/result>;
   epo:hasNoticePublicationNumber "00571881-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-standard>;
-  epo:hasOJSIssueNumber "186/2024";
+  epo:hasOJSIssueNumber 186;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/ITA>;
   epo:hasPublicationDate "2024-09-24+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/Procedure/3f9a52b9-decb-4f87-89b5-aa4138649199>;
@@ -278,6 +282,22 @@ potabilizzazione dell’acqua ed altro, oltre alla gestione impianto sportivo di
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1" .
+
+<http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.12" .
+
+<http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
   a epo:NoticeAwardInformation;
@@ -369,7 +389,7 @@ potabilizzazione dell’acqua ed altro, oltre alla gestione impianto sportivo di
 
 <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/Procedure/3f9a52b9-decb-4f87-89b5-aa4138649199>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/MonetaryValueProcedure$_ContractAwardNotice1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/Procedure/Identifier/CIG%20A001959BB4>;
@@ -442,7 +462,7 @@ potabilizzazione dell’acqua ed altro, oltre alla gestione impianto sportivo di
   a epo:Tender;
   epo:foreseesConcession <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/ConcessionEstimate$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1_ConcessionRevenue1>;
   epo:hasFinancialOfferValue <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/Lot/LOT-0001>;
   adms:identifier <http://data.europa.eu/a4g/resource/fd9447b6-81fa-4d73-b0d7-b02ffe7da5a1-01/Tender/Identifier/Offerta%20presentata%20da%20RTI%20ICET%20SPORT%20S.R.L.S.%20%28mandataria%29%20e%20LAURENZIANA%20S.S.D.R.L.%20e%20ZEUS%20FIRENZE%202022%20S.S.D.A.R.L.%20%28mandanti%29> .
 

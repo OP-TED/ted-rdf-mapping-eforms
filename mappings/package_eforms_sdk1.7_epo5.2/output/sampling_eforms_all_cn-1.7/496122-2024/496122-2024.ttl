@@ -17,18 +17,13 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>
   a epo:AccessTerm;
   epo:definesProcurementProcedureInformationProvider <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/ProcurementProcedureInformationProvider/ORG-0001organization> .
-
-<http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
-  a epo:AccessTerm;
-  epo:hasPublicAccessURL "https://vy-supplier.ivalua.app/page.aspx/nb/rfp/request_browse_public"^^xsd:anyURI;
-  epo:isProcurementDocumentRestricted false .
 
 <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/Buyer/ORG-0001organization>
   a epo:Buyer;
@@ -73,7 +68,8 @@
   epo:hasPaymentArrangement "See contract"@en;
   epo:hasPerformanceConditions "See the contract."@en;
   epo:hasRenewalDescription "The agreement has a duration for 3 years, with the possibility to extend the contract for additional 1 + 1 + 1 years."@en;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -85,8 +81,7 @@
 
 <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "The reasons for rejection follow the regulation on purchasing rules in the supply sector, chapter 20."@en;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/bankruptcy> .
+  dct:description "The reasons for rejection follow the regulation on purchasing rules in the supply sector, chapter 20."@en .
 
 <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -116,7 +111,7 @@
 
 <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation """This is a framework agreement for entire Vygruppen.
 
@@ -127,15 +122,14 @@ The primary delivery is expected to be foiling of new and older trains. There wi
   epo:hasRecurrenceDescription "N/A"@en;
   epo:isCoveredByGPA true;
   epo:isRecurrent false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
-    <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/MultipleStageProcedureTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
-    <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>;
+    <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1Doc1>;
   epo:isUsingEUFunds false;
-  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/ParticipationCondition$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1>,
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/ParticipationCondition$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1>,
     <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>,
     <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>,
     <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>;
@@ -176,13 +170,15 @@ A more detailed description of the procurement can be found in Appendix A - Deli
   epo:announcesRole <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/Buyer/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/ProcurementProcedureInformationProvider/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/Reviewer/ORG-0004organization>;
-  epo:hasESenderDispatchDate "2024-08-15T09:54:22+00:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-08-15T09:54:22+00:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00496122-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/cn-standard>;
-  epo:hasOJSIssueNumber "160/2024";
+  epo:hasOJSIssueNumber 160;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/ENG>;
   epo:hasPublicationDate "2024-08-19+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/Lot/LOT-0001>;
   epo:refersToPrevious <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/Notice/00ec54d7-6117-4515-af56-5a4a06b70cc9-01>;
@@ -201,6 +197,22 @@ A more detailed description of the procurement can be found in Appendix A - Deli
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "00ec54d7-6117-4515-af56-5a4a06b70cc9" .
+
+<http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.7" .
+
+<http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/Organization/Identifier$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -244,7 +256,7 @@ A more detailed description of the procurement can be found in Appendix A - Deli
 
 <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/Procedure/b4b7aaef-09e7-45eb-93bc-2da2238ef651>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation "Please see the tender documents for more information."@en;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/MonetaryValueProcedure$_ContractNotice1_ProcurementProject1_RequestedTenderTotal1>;
@@ -253,6 +265,7 @@ A more detailed description of the procurement can be found in Appendix A - Deli
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/ProcedurePurpose$_ContractNotice1_ProcurementProject1>;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>;
   dct:description "Vygruppen AS aims to enter a parallel framework agreement with up to 3 suppliers for the production and delivery of signs and foil for Vygruppens's vehicles and buildings. By vehicle is mainly meant trains. Deliveries will mainly take place in Norway, but deliveries to other Nordic countries may also be relevant."@en;
   dct:title "Signs and foilingsservices"@en;
   adms:identifier <http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01/Procedure/Identifier/b4b7aaef-09e7-45eb-93bc-2da2238ef651> .
@@ -314,3 +327,8 @@ A more detailed description of the procurement can be found in Appendix A - Deli
   epo:hasLanguage <http://publications.europa.eu/resource/authority/language/NOR>;
   epo:hasReceiptTenderDeadline "2024-09-17T12:00:00+02:00"^^xsd:dateTime;
   epo:isGuaranteeRequired false .
+
+<http://data.europa.eu/a4g/resource/00ec54d7-6117-4515-af56-5a4a06b70cc9-01AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1Doc1>
+  a epo:AccessTerm;
+  epo:hasPublicAccessURL "https://vy-supplier.ivalua.app/page.aspx/nb/rfp/request_browse_public"^^xsd:anyURI;
+  epo:isProcurementDocumentRestricted false .

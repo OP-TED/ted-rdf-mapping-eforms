@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -35,7 +35,7 @@
 <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/AwardDecision/2024-08-26%2B03%3A00>
   a epo:AwardDecision;
   epo:comprisesAwardOutcome <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/LotAwardOutcome/RES-0001>;
-  epo:hasAwardDecisionDate "2024-08-26+03:00"^^xsd:date .
+  epo:hasAwardDecisionDate "2024-08-26T00:00:00+03:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/AwardEvaluationTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1>
   a epo:AwardEvaluationTerm;
@@ -51,6 +51,11 @@
   a epo:Buyer;
   epo:hasBuyerProfile "https://app.eop.bg/buyer/1176"^^xsd:anyURI;
   epo:playedBy <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/CleanVehicleDirectiveInformation$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>
+  a epo:CleanVehicleDirectiveInformation;
+  epo:concernsGreenProcurement <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/GreenProcurement$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>;
+  epo:specifiesCleanVehicleDirectiveContractType <http://publications.europa.eu/resource/authority/cvd-contract-type/pass-tran-serv> .
 
 <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/CompanyAddress$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>
   a locn:Address;
@@ -104,7 +109,6 @@
   epo:hasContractConclusionDate "2024-09-09+03:00"^^xsd:date;
   epo:hasLotReference <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Lot/LOT-0001>;
   epo:includesTender <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Tender/TEN-0001>;
-  epo:isSubjectToContractSpecificTerm <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/ContractTerm$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_PayerParty1>;
   epo:signedByBuyer <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Buyer/ORG-0001organization>;
   dct:title "Извършване на специализиран превоз на ученици до приемно Второ ОУ „Васил Левски“, община Костинброд"@bg;
   adms:identifier <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Contract/Identifier/164347> .
@@ -112,6 +116,14 @@
 <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Contract/Identifier/164347>
   a adms:Identifier;
   skos:notation "164347" .
+
+<http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2024-09-16+03:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/ContractEndPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2025-09-16+03:00"^^xsd:date .
 
 <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/ContractLocation$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
@@ -130,16 +142,12 @@
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BGR>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/BG412> .
 
-<http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2024-09-16+03:00"^^xsd:date;
-  epo:hasEnd "2025-09-16+03:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
-  epo:hasMaximumNumberOfRenewals 0 .
+  epo:hasMaximumNumberOfRenewals 0;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -189,6 +197,21 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0003" .
 
+<http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  time:hasEnd <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/ContractEndPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
+<http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  epo:concernsProcurementElement <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Procedure/baaa1078-cf06-4260-b8f0-ef308e0e59e2>;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/other> .
+
+<http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2>
+  a epo:LocalLegalBasisInformation;
+  epo:concernsProcurementElement <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Procedure/baaa1078-cf06-4260-b8f0-ef308e0e59e2>;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/other> .
+
 <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Lot/Identifier/430755>
   a adms:Identifier;
   epo:hasScheme "Lot";
@@ -196,11 +219,13 @@
 
 <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
+    <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/ContractTerm$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_PayerParty1>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/GreenProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType1>,
     <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/GreenProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType2>,
     <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/GreenProcurement$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>,
+    <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/SocialProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/SocialProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType3>,
     <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/StrategicProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:hasAdditionalInformation "Изпълнението на предмета на договора се извършва съгласно действащото към момента на сключването му маршрутно разписание за всяка от автобусните линии, съставляващи Приложения, неразделна част от договора, при спазване изискванията за този вид превоз съгласно Закона за автомобилните превози /обн.ДВ, бр. 82 от 17.09.1999г./, Наредба №2 от 15.03.2002г. за условията и реда за утвърждаване на транспортни схеми и за осъществяване на обществени превози на пътници с автобуси и Наредба №33 от 03.11.1999г. за обществен превоз на пътници и товари на територията на Република България,  Наредбата за условията и реда за предоставяне на средства за компенсирлане на намалените приходи от прилагане на цени за обществени пътнически превози по автомобилен транспорт, предвидини в нормативните актове за определени категории пътници, за субсидиране на обществени пътнически превози по нерентабилни автобусни линии във вътрешноградския транспорт и транспорта в планински и други райони и за издаване на превозни документи за извършване на превозите, приета с ПМС №163 от 29.06.2015 г. на Министерски съвет и във връзка с чл.283, ал.2 от Закона за предучилищното и училищното образование. Срещу изключителното право да извършва обществената услуга за пътнически превоз, лицата имат право да получават компенсации за извършени безплатни и по намалени цени пътувания на определени категории пътници, по реда и при условията на Наредба за условията и реда за предоставяне на средства за компенсиране на намалените приходи от прилагането на цени за обществени пътнически превози по автомобилния транспорт, предвидени в нормативните актове за определени категории пътници, за субсидиране на обществени пътнически превози по нерентабилни автобусни линии във вътрешноградския транспорт и транспорта в планински и други райони и за издаване на превозни документи за извършване на превозите, средства за помощи за пътувания на определени категории пътници,  в размер определен със Заповед № РД09-277/02.02.2024 на министър на образованието и науката и във връзка с чл.283, ал.2 от Закона за предучилищното и училищно образование."@bg;
@@ -208,7 +233,7 @@
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Lot/Identifier/430755>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/AwardEvaluationTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1>,
     <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
@@ -224,9 +249,7 @@
   a epo:LotAwardOutcome;
   epo:comprisesTenderAwardOutcome <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/TenderAwardOutcome/TEN-0001>;
   epo:concernsLot <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Lot/LOT-0001>;
-  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
-  rdfs:seeAlso <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/BudgetProvider/ORG-0001organization>,
-    <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/PaymentExecutor/ORG-0001organization> .
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> .
 
 <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>
   a epo:Purpose;
@@ -246,17 +269,20 @@
 <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Notice>
   a epo:Notice, epo:Notice29, epo:ResultNotice;
   epo:announcesAwardDecision <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/AwardDecision/2024-08-26%2B03%3A00>;
+  epo:announcesContract <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Contract/CON-0001>;
   epo:announcesNoticeAwardInformation <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/BudgetProvider/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/PaymentExecutor/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Tenderer/TPA-0001>;
-  epo:hasESenderDispatchDate "2024-10-02T18:55:37+03:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-10-02T18:55:37+03:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/result>;
   epo:hasNoticePublicationNumber "00599533-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-standard>;
-  epo:hasOJSIssueNumber "194/2024";
+  epo:hasOJSIssueNumber 194;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/BUL>;
   epo:hasPublicationDate "2024-10-04+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Procedure/baaa1078-cf06-4260-b8f0-ef308e0e59e2>;
@@ -271,6 +297,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "ddbec186-9639-450a-834f-728786b58d4a" .
+
+<http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.8" .
+
+<http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
   a epo:NoticeAwardInformation;
@@ -336,19 +378,18 @@
   skos:notation "baaa1078-cf06-4260-b8f0-ef308e0e59e2" .
 
 <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Procedure/baaa1078-cf06-4260-b8f0-ef308e0e59e2>
-  a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
+  a epo:LocalLegalBasisInformation, epo:Procedure;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation """Маршрути: 1. база с. Петърч-второ ОУ „В.Левски“ - с. Петърч - с. Безден - с. Опицвет - второ ОУ „В.Левски“ - с. Гуляновци - с. Драговищица - с. Градец - второ ОУ „В. Левски“ - база с. Петърч; 2. база с. Петърч - с. Чибаовци - с. Дръмша - с. Богьовци - с. Безден - с. Опицвет - с. Петърч - Второ ОУ „В. Левски“ -с.Драговищица – с. Гуляновци – части на гр.Костинброд - Второ ОУ - база с.Петърч
 Пробег 56,1 км,+ 93 км, в една посока за 180 дни, общо 36936 км за учебна година. Цената е по Заповед № РД09-277/02.02.2024 - министър на образованието и науката."""@bg;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Procedure/Identifier/430755>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/other>;
-  epo:hasLegalBasisDescription "чл.14, ал.1, т.5, б \"а\", \"б\" и \"в\" и ал.5 от ЗОП"@bg,
-    "чл.7, ал.1 от Закона за публичните предприятия и чл.16г, ал.1 от Наредба №2 от 15.03.2002 г. за условията и реда за утвърждаване на транспортни схеми и за осъществяване на обществен превоз с пътни автобуси, издадана от министъра на транспорта и съобщенията(обн. Дв. бр.32 от 29.03.2002 г. с посл. изм. ДВ бр.51 от 13.06.2023 г.), постановление №66 на МС от 1991 г.; Закона за предучилищното и училищн"@bg;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/ProcedurePurpose$_ContractAwardNotice1_ProcurementProject1>;
-  dct:description "Извършване на специализиран превоз на ученици до приемно Второ ОУ „Васил Левски“, община Костинброд"@bg;
+  dct:description "Извършване на специализиран превоз на ученици до приемно Второ ОУ „Васил Левски“, община Костинброд"@bg,
+    "чл.14, ал.1, т.5, б \"а\", \"б\" и \"в\" и ал.5 от ЗОП"@bg, "чл.7, ал.1 от Закона за публичните предприятия и чл.16г, ал.1 от Наредба №2 от 15.03.2002 г. за условията и реда за утвърждаване на транспортни схеми и за осъществяване на обществен превоз с пътни автобуси, издадана от министъра на транспорта и съобщенията(обн. Дв. бр.32 от 29.03.2002 г. с посл. изм. ДВ бр.51 от 13.06.2023 г.), постановление №66 на МС от 1991 г.; Закона за предучилищното и училищн"@bg;
   dct:title "Извършване на специализиран превоз на ученици до приемно Второ ОУ „Васил Левски“, община Костинброд"@bg;
   adms:identifier <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Procedure/Identifier/baaa1078-cf06-4260-b8f0-ef308e0e59e2> .
 
@@ -399,14 +440,17 @@
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Lot/LOT-0001>;
   epo:playedBy <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Organization/ORG-0002> .
 
+<http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/SocialProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>
+  a epo:SocialProcurement;
+  epo:includesAccessibilityCriterion <http://publications.europa.eu/resource/authority/accessibility/inc> .
+
 <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/SocialProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType3>
   a epo:SocialProcurement;
   epo:fulfillsRequirement <http://publications.europa.eu/resource/authority/social-objective/other> .
 
 <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/StrategicProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>
   a epo:SocialProcurement, epo:StrategicProcurement;
-  epo:hasStrategicProcurementDescription "обезпечаване на посещаемост на ученици до съответното учебно заведение"@bg;
-  epo:includesAccessibilityCriterion <http://publications.europa.eu/resource/authority/accessibility/inc> .
+  epo:hasStrategicProcurementDescription "обезпечаване на посещаемост на ученици до съответното учебно заведение"@bg .
 
 <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/SubmissionStatisticalInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1>
   a epo:SubmissionStatisticalInformation;
@@ -420,7 +464,7 @@
 <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Tender/TEN-0001>
   a epo:Tender;
   epo:hasFinancialOfferValue <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Lot/LOT-0001>;
   epo:isVariant false;
   adms:identifier <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Tender/Identifier/164347> .
@@ -437,8 +481,3 @@
 <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Tenderer/TPA-0001>
   a epo:Tenderer;
   epo:playedBy <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/Organization/ORG-0003> .
-
-<http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/VehicleInformation$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>
-  a epo:VehicleInformation;
-  epo:concernsGreenProcurement <http://data.europa.eu/a4g/resource/ddbec186-9639-450a-834f-728786b58d4a-01/GreenProcurement$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>;
-  epo:specifiesCleanVehicleDirectiveContractType <http://publications.europa.eu/resource/authority/cvd-contract-type/pass-tran-serv> .

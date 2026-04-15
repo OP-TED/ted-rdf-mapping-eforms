@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -25,11 +25,14 @@
   a epo:AccessTerm;
   epo:definesProcurementProcedureInformationProvider <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/ProcurementProcedureInformationProvider/ORG-0001> .
 
-<http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
+<http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_DEFAULT_VALUE_CHANGE_ME_>
   a epo:AccessTerm;
   epo:hasRestrictedAccessURL "www.subreport.de/E67168426"^^xsd:anyURI;
-  epo:involvesProcurementDocument <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/ProcurementDocument$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_DEFAULT_VALUE_CHANGE_ME_>;
   epo:isProcurementDocumentRestricted true .
+
+<http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/AccessTermt$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_DEFAULT_VALUE_CHANGE_ME_>
+  a epo:AccessTerm;
+  epo:providesProcurementDocumentsInOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU> .
 
 <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/Buyer/ORG-0001>
   a epo:Buyer;
@@ -74,8 +77,12 @@
   cccev:email "vergabekammern@wirtschaft.saarland.de";
   cccev:telephone "0681-501-4994" .
 
+<http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2025-01-01+01:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 4.0;
   time:unitType time:unitYear .
 
@@ -96,14 +103,10 @@
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/DEC01> .
 
-<http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2025-01-01+01:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/Interval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/required>;
   epo:hasEOrdering true;
@@ -112,21 +115,27 @@
 Vertragsdauer: mindestens 4 Jahre; 
 Option zur Erweiterung auf Maschinen- und Elektronikversicherung einseitig durch den EVS."""@de;
   epo:hasPerformanceConditions "Die Erbringung der Dienstleistung ist einem besonderen Berufsstand vorbehalten."@de;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
   epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/ContractLocation$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>;
   epo:hasPlaceOfPerformanceAdditionalInformation "Der NUTS-3-Code gilt für das gesamte Saarland."@de .
 
+<http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/Duration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 4.0;
+  time:unitType time:unitYear .
+
 <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/DynamicPurchaseSystemTechnicalUsage$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/Duration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
 
 <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Neben der Insolvenz gelten noch folgende andere zwingende (§123 GWB) und fakultative Ausschlussgründe (§ 124 GWB). Ggf. unter Berücksichtigung einer durchgeführten Selbstreinigung gemäß § 125 GWB: Mit Insolvenz vergleichbares Verfahren, Bestechlichkeit, Vorteilsgewährung und Bestechung, Bildung krimineller Vereinigungen, Wettbewerbsbeschränkende Vereinbarungen, Verstöße gegen umweltrechtliche Verpflichtungen, Geldwäsche oder Terrorismusfinanzierung, Betrug oder Subventionsbetrug, Menschenhandel, Zwangsprostitution, Zwangsarbeit oder Ausbeutung, Zahlungsunfähigkeit, Verstöße gegen arbeitsrechtliche Verpflichtungen, Täuschung oder unzulässige Beeinflussung des Vergabeverfahrens, Rein nationale Ausschlussgründe, Interessenkonflikt, Wettbewerbsverzerrung wegen Vorbefassung, Schwere Verfehlung, Mangelhafte Erfüllung eines früheren öffentlichen Auftrags, Verstöße gegen sozialrechtliche Verpflichtungen, Verstöße gegen Verpflichtungen zur Zahlung von Sozialversicherungsbeiträgen, Einstellung der beruflichen Tätigkeit, Verstöße gegen Verpflichtungen zur Zahlung von Steuern oder Abgaben, Bildung terroristischer Vereinigungen."@de;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/liq-admin> .
+  dct:description "Neben der Insolvenz gelten noch folgende andere zwingende (§123 GWB) und fakultative Ausschlussgründe (§ 124 GWB). Ggf. unter Berücksichtigung einer durchgeführten Selbstreinigung gemäß § 125 GWB: Mit Insolvenz vergleichbares Verfahren, Bestechlichkeit, Vorteilsgewährung und Bestechung, Bildung krimineller Vereinigungen, Wettbewerbsbeschränkende Vereinbarungen, Verstöße gegen umweltrechtliche Verpflichtungen, Geldwäsche oder Terrorismusfinanzierung, Betrug oder Subventionsbetrug, Menschenhandel, Zwangsprostitution, Zwangsarbeit oder Ausbeutung, Zahlungsunfähigkeit, Verstöße gegen arbeitsrechtliche Verpflichtungen, Täuschung oder unzulässige Beeinflussung des Vergabeverfahrens, Rein nationale Ausschlussgründe, Interessenkonflikt, Wettbewerbsverzerrung wegen Vorbefassung, Schwere Verfehlung, Mangelhafte Erfüllung eines früheren öffentlichen Auftrags, Verstöße gegen sozialrechtliche Verpflichtungen, Verstöße gegen Verpflichtungen zur Zahlung von Sozialversicherungsbeiträgen, Einstellung der beruflichen Tätigkeit, Verstöße gegen Verpflichtungen zur Zahlung von Steuern oder Abgaben, Bildung terroristischer Vereinigungen."@de .
 
 <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -149,27 +158,38 @@ Option zur Erweiterung auf Maschinen- und Elektronikversicherung einseitig durch
   a adms:Identifier;
   skos:notation "ORG-0003" .
 
+<http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/Interval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
+<http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier> .
+
+<http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier>
+  a adms:Identifier;
+  skos:notation "VgV" .
+
 <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/Lot/Identifier/2024_060>
   a adms:Identifier;
   skos:notation "2024_060" .
 
 <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/Lot/Identifier/2024_060>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
   epo:isSMESuitable false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
-    <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
+    <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_DEFAULT_VALUE_CHANGE_ME_>,
     <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>,
     <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/SubmissionTerm$_PriorInformationNotice1_ProcurementProjectLot1>;
   epo:isUsingEUFunds false;
-  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/ParticipationCondition$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest2>,
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/ParticipationCondition$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest2>,
     <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>,
     <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>,
     <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>;
@@ -198,13 +218,15 @@ Details zu den Anlagen des EVS finden sich auf der Internetseite des EVS www.evs
     <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/Reviewer/ORG-0002>,
     <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/TenderProcessor/ORG-0001>,
     <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/TenderReceiver/ORG-0001>;
-  epo:hasESenderDispatchDate "2024-07-22T11:48:26Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-07-22T11:48:26Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00440582-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-cfc-standard>;
-  epo:hasOJSIssueNumber "142/2024";
+  epo:hasOJSIssueNumber 142;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU>;
   epo:hasPublicationDate "2024-07-23+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/Procedure/6e86dd42-f228-4f21-8c16-ef3618b88404>;
@@ -214,6 +236,22 @@ Details zu den Anlagen des EVS finden sich auf der Internetseite des EVS www.evs
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "d5bda3c3-0c5e-41db-92b7-e2c7a3483b52" .
+
+<http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.11" .
+
+<http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -258,7 +296,7 @@ Details zu den Anlagen des EVS finden sich auf der Internetseite des EVS www.evs
 
 <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/Procedure/6e86dd42-f228-4f21-8c16-ef3618b88404>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation """Hinweis:
 Die Einreichung der Interessenbekundung ist an folgende Mail-Adresse fristgerecht einzureichen: vergabe@evs.de .
@@ -269,6 +307,7 @@ Bedingungen für die Ausführung des Auftrags: Es gelten die Bestimmungen des Ge
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>;
   dct:description """Hinweis: Die Einreichung der Interessenbekundung ist an folgende Mail-Adresse fristgerecht einzureichen: vergabe@evs.de . Der Entsorgungsverband Saar (im folgenden EVS) ist ein sondergesetzlicher kommunaler Zweckverband in der Rechtsform einer Körperschaft des öffentlichen Rechts mit Sitz in Saarbrücken. Aufgaben des EVS sind die überörtliche und örtliche Abfallbewirtschaftung sowie die überörtliche Abwasserbeseitigung. Das Verbandsgebiet ist das Bundesland Saarland. Mitglieder des EVS sind alle Städte und Gemeinden des Saarlandes. Der EVS beabsichtigt, die Sach- und technischen Versicherungen für den Verband selbst sowie für seine Tochtergesellschaft EVS Gesellschaft für Abfallwirtschaft mbH (im folgenden EVS ABW GmbH) neu zu ordnen. Aktuell besteht eine Gebäude- und Inventarversicherung für die Risiken Feuer, Leitungswasser, Sturm und Einbruchsdiebstahl, sowie eine Maschinen- und Elektronikversicherung. Das Anlagevermögen des EVS und der EVS ABW GmbH verteilt sich auf den Verwaltungsbereich sowie flächendeckend über das Saarland. Dabei handelt es sich insbesondere um: 
 · 136 Kläranlagen (davon 3 Sickerwasserkläranlagen) mit der jeweils dazugehörenden Abwasseranlage (u.a. ca. 300 Pumpwerke), 
 · ca. 20 Wertstoffzentren, 
@@ -296,10 +335,6 @@ finden sich auf der Internetseite des EVS www.evs.de Wesentliche und nicht verha
 <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>
   a epo:Purpose;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/66510000> .
-
-<http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/ProcurementDocument$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_DEFAULT_VALUE_CHANGE_ME_>
-  a epo:ProcurementDocument;
-  epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU> .
 
 <http://data.europa.eu/a4g/resource/d5bda3c3-0c5e-41db-92b7-e2c7a3483b52-01/ProcurementProcedureInformationProvider/ORG-0001>
   a epo:ProcurementProcedureInformationProvider;

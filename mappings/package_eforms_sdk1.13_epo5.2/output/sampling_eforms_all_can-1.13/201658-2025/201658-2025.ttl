@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -89,6 +89,14 @@
   a adms:Identifier;
   skos:notation "Inhousevergabe gem. Art. 5 Abs. 1 VO 1370/2007 i.V.m. § 108 GWB eines öffentlichen Dienstleistungsauftrages über Leistungen im ÖPNV mit Bussen/Straßenbahnen auf dem Gebiet der Stadt Krefeld und ausbrechenden Linien" .
 
+<http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2025-01-01+01:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/ContractEndPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2047-06-30+02:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/ContractLocation$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
@@ -144,15 +152,16 @@
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/DEA1F> .
 
-<http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2025-01-01+01:00"^^xsd:date;
-  epo:hasEnd "2047-06-30+02:00"^^xsd:date .
+<http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/ContractTerm$_ContractAwardNotice1_ProcurementProject1>
+  a epo:ContractTerm;
+  epo:hasTransportServiceType <http://publications.europa.eu/resource/authority/transport-service/bus-s>,
+    <http://publications.europa.eu/resource/authority/transport-service/tram-s> .
 
 <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -174,6 +183,16 @@
   a epo:ContractTerm;
   epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/ContractLocation$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation5_Address1> .
 
+<http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>
+  a epo:ContractTerm .
+
+<http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/ContractTerm$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
+  a epo:ContractTerm;
+  epo:hasTicketsSalesRevenueAllocation 100.0 .
+
+<http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/ContractTerm$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_SettledContract1_DurationJustification1>
+  a epo:ContractTerm .
+
 <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Identifier/LOT-0001>
   a adms:Identifier;
   epo:hasScheme "Lot";
@@ -194,16 +213,22 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0002" .
 
+<http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  time:hasEnd <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/ContractEndPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
     <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation2>,
     <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation3>,
     <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation4>,
     <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation5>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
+    <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/ContractTerm$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>;
   dct:description """Die Stadt Krefeld ist in ihrem Zuständigkeitsgebiet gemäß § 3 Abs. 1 Gesetz über den öffentlichen Personennahverkehr in Nordrhein-Westfalen (ÖPNVG NRW) Aufgabenträgerin für den ÖPNV und zuständige Behörde im Sinne von Art. 2 lit. c) VO 1370/2007. Sie hat die Direktvergabe eines öffentlichen Dienstleistungsauftrags über öffentliche Personenverkehrsdienste mit Bussen in ihrem Zuständigkeitsgebiet entsprechend § 8a Abs. 2 Satz 1 PBefG im Wege der Inhousevergabe nach Art. 5 Abs. 1 VO 1370/2007 i.V.m. § 108 GWB (vgl. EuGH, Urt. v. 21.3.2019, Az. C-266/17 und C-267/17 sowie BGH, B. v. 12.11.2019 – XIII ZB 120/19) an die SWK Mobil GmbH (SWK Mobil) vorgenommen.
 Die Verlängerung der Laufzeit ist begründet, um für unmittelbar nach der öDA-Erteilung anstehende Investitionen eine angemessene Amortisation zu gewährleisten.
 Die Inhousevergabe an die SWK Mobil als städtisches Verkehrsunternehmen erfolgte als Gesamtleistung gem. § 8a Abs. 2 Satz 4 PBefG und umfasst 4,97 Mio. Nutzwagen-km im Busverkehr und 2,22 Mio. Nutzwagen-km im Straßenbahnverkehr. Hinzu kommen alternative Bedienungsformen.
@@ -215,6 +240,10 @@ Die SWK Mobil darf Leistungen an einen oder mehrere Unterauftragnehmer unter Bea
 """@de;
   dct:title "Inhousevergabe gem. Art. 5 Abs. 1 VO 1370/2007 i.V.m. § 108 GWB eines öffentlichen Dienstleistungsauftrages über Leistungen im ÖPNV mit Bussen/Straßenbahnen auf dem Gebiet der Stadt Krefeld und ausbrechenden Linien"@de;
   adms:identifier <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Identifier/LOT-0001> .
+
+<http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Lot/TEN-0001>
+  a epo:Lot;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/ContractTerm$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1> .
 
 <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/LotAwardOutcome/RES-0001>
   a epo:LotAwardOutcome;
@@ -230,14 +259,17 @@ Die SWK Mobil darf Leistungen an einen oder mehrere Unterauftragnehmer unter Bea
 <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Notice>
   a epo:Notice, epo:NoticeT02, epo:ResultNotice;
   epo:announcesAwardDecision <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/AwardDecision/CON-0001>;
+  epo:announcesContract <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Contract/CON-0001>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Tenderer/TPA-0001>;
-  epo:hasESenderDispatchDate "2025-03-27T09:06:42Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2025-03-27T09:06:42Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/result>;
   epo:hasNoticePublicationNumber "00201658-2025";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-tran>;
-  epo:hasOJSIssueNumber "62/2025";
+  epo:hasOJSIssueNumber 62;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU>;
   epo:hasPublicationDate "2025-03-28+01:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Procedure/744ae227-2b3b-4aec-9962-f258a019a919>;
@@ -250,6 +282,22 @@ Die SWK Mobil darf Leistungen an einen oder mehrere Unterauftragnehmer unter Bea
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "b97f2b91-4cca-4bec-a87e-9ff821feac4c" .
+
+<http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.13" .
+
+<http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Organization/Identifier$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -289,9 +337,13 @@ als Gruppe von Behörden nach Art. 2 b) Verordnung (EG) Nr. 1370/2007"""@de;
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/CompanyAddress$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1_PostalAddress1>;
   adms:identifier <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Identifier/ORG-0002> .
 
+<http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Procedure>
+  a epo:Procedure;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/ContractTerm$_ContractAwardNotice1_ProcurementProject1> .
+
 <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Procedure/744ae227-2b3b-4aec-9962-f258a019a919>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32007R1370>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/comp-tend>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Lot/LOT-0001>;
@@ -326,6 +378,10 @@ B. Auf die Rechtsbehelfsfrist des § 135 Abs. 2 Satz 2 GWB wird hingewiesen. Dan
   epo:playedBy <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Organization/ORG-0000>;
   dct:description "ted-esen" .
 
+<http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/QualityTargetInformation$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_ContractExecutionRequirement1>
+  a epo:QualityTargetInformation;
+  epo:hasQualityTargetCode <http://publications.europa.eu/resource/authority/customer-service/other> .
+
 <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Tender/Identifier/Inhousevergabe%20gem.%20Art.%205%20Abs.%201%20VO%201370%2F2007%20i.V.m.%20%C2%A7%20108%20GWB%20eines%20%C3%B6ffentlichen%20Dienstleistungsauftrages%20%C3%BCber%20Leistungen%20im%20%C3%96PNV%20mit%20Bussen%2FStra%C3%9Fenbahnen%20auf%20dem%20Gebiet%20der%20Stadt%20Krefeld%20und%20ausbrechenden%20Linien>
   a adms:Identifier;
   skos:notation "Inhousevergabe gem. Art. 5 Abs. 1 VO 1370/2007 i.V.m. § 108 GWB eines öffentlichen Dienstleistungsauftrages über Leistungen im ÖPNV mit Bussen/Straßenbahnen auf dem Gebiet der Stadt Krefeld und ausbrechenden Linien" .
@@ -333,7 +389,7 @@ B. Auf die Rechtsbehelfsfrist des § 135 Abs. 2 Satz 2 GWB wird hingewiesen. Dan
 <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Tender/TEN-0001>
   a epo:Tender;
   epo:hasFinancialOfferValue <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Lot/LOT-0001>;
   adms:identifier <http://data.europa.eu/a4g/resource/b97f2b91-4cca-4bec-a87e-9ff821feac4c-01/Tender/Identifier/Inhousevergabe%20gem.%20Art.%205%20Abs.%201%20VO%201370%2F2007%20i.V.m.%20%C2%A7%20108%20GWB%20eines%20%C3%B6ffentlichen%20Dienstleistungsauftrages%20%C3%BCber%20Leistungen%20im%20%C3%96PNV%20mit%20Bussen%2FStra%C3%9Fenbahnen%20auf%20dem%20Gebiet%20der%20Stadt%20Krefeld%20und%20ausbrechenden%20Linien> .
 

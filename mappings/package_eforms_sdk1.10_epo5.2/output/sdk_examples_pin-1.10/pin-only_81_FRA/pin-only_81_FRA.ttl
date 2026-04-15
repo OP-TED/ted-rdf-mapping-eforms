@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -62,6 +62,10 @@
   cccev:email "esender@example.com";
   cccev:telephone "+352 123456789" .
 
+<http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>
+  a dct:Location;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA> .
+
 <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies> .
@@ -73,12 +77,12 @@
 
 <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/EmploymentInformationProvider/ORG-0001organization>
   a epo:EmploymentInformationProvider;
-  epo:contextualisedBy <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:contextualisedBy <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/PlannedProcurementPart/PAR-0000>;
   epo:playedBy <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/Organization/ORG-0001> .
 
 <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/EnvironmentalProtectionInformationProvider/ORG-0001organization>
   a epo:EnvironmentalProtectionInformationProvider;
-  epo:contextualisedBy <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:contextualisedBy <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/PlannedProcurementPart/PAR-0000>;
   epo:playedBy <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/Organization/ORG-0001> .
 
 <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/Identifier/ORG-0001>
@@ -102,6 +106,7 @@
 
 <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/Notice>
   a epo:Notice, epo:Notice6, epo:PlanningNotice;
+  epo:announcesPlannedProcurement <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/PlannedProcurement$_PriorInformationNotice1_ProcurementProject1>;
   epo:announcesPlannedProcurementPart <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/PlannedProcurementPart/PAR-0000>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/Buyer/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/EmploymentInformationProvider/ORG-0001organization>,
@@ -111,10 +116,12 @@
     <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>,
     <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/Reviewer/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/TaxInformationProvider/ORG-0001organization>;
-  epo:hasESenderDispatchDate "2020-12-07T12:35:04+01:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2020-12-07T12:35:04+01:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-only>;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/FRA>;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   adms:identifier <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/Notice/Identifier> .
 
@@ -122,6 +129,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "3f60af90-c612-40bd-9943-866fe3ae21b4" .
+
+<http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.10" .
+
+<http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -153,20 +176,33 @@
   epo:hasFrameworkAgreementType <http://publications.europa.eu/resource/authority/framework-agreement/none> .
 
 <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>
-  a epo:ProcurementObject;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
-    <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/PartFrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1_ContractingSystem1>;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
-  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/ReviewTerm/ORG-0001organization> .
+  a epo:ProcurementObject .
 
 <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>
   a epo:Purpose;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/35520000> .
 
+<http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/PlannedProcurement$_PriorInformationNotice1_ProcurementProject1>
+  a epo:PlannedProcurement;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+    <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32009L0081>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>;
+  dct:description """
+Dans le cadre de l'approvisionnement en matériel de plongée pour les armées françaises, le SSF souhaite approfondir sa connaissance de l'offre industrielle en matière de recycleurs destinés à la guerre des mines.
+Cette Demande d'informations (DI) vise à identifier et évaluer les solutions possibles, sous les angles techniques et financiers.
+Elle ne constitue pas une consultation liée à un marché public, ni un acte d'achat, ni un quelconque engagement de l'administration à lancer ultérieurement une opération sur le même objet. Le dossier de consultation complet incluant modalités de réponse est consultable sur le site https://www.ixarm.com/fr/node/861985 (RFI nº 123).
+		"""@fr;
+  dct:title "Demande d'informations nº DI 123/DSSFT ayant pour objet le recueil d'informations sur les solutions industrielles dans le domaine des recycleurs de plongée destinés à la guerre des mines"@fr .
+
 <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/PlannedProcurementPart/PAR-0000>
   a epo:PlannedProcurementPart;
-  epo:foreseesProcurementObject <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
+    <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/PartFrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1_ContractingSystem1>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/ReviewTerm/ORG-0001organization>;
   dct:description """
 Dans le cadre de l'approvisionnement en matériel de plongée pour les armées françaises, le SSF souhaite approfondir sa connaissance de l'offre industrielle en matière de recycleurs destinés à la guerre des mines.
 Cette Demande d'informations (DI) vise à identifier et évaluer les solutions possibles, sous les angles techniques et financiers.
@@ -175,10 +211,26 @@ Elle ne constitue pas une consultation liée à un marché public, ni un acte d'
   dct:title "Demande d'informations nº DI 123/DSSFT ayant pour objet le recueil d'informations sur les solutions industrielles dans le domaine des recycleurs de plongée destinés à la guerre des mines"@fr;
   adms:identifier <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/Identifier/PAR-0000> .
 
+<http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>
+  a epo:Purpose;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/35520000> .
+
+<http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>
+  a epo:ProcessPlanningTerm;
+  epo:hasEstimatedContractNoticePublicationDate "2021-05-07+02:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/ProcurementProcedureInformationProvider/ORG-0001organization>
   a epo:ProcurementProcedureInformationProvider;
-  epo:contextualisedBy <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:contextualisedBy <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/PlannedProcurementPart/PAR-0000>;
   epo:playedBy <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>
+  a epo:ContractTerm;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies> .
+
+<http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>
+  a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1> .
 
 <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>
   a epo:ProcurementServiceProvider;
@@ -195,5 +247,5 @@ Elle ne constitue pas une consultation liée à un marché public, ni un acte d'
 
 <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/TaxInformationProvider/ORG-0001organization>
   a epo:TaxInformationProvider;
-  epo:contextualisedBy <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:contextualisedBy <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/PlannedProcurementPart/PAR-0000>;
   epo:playedBy <http://data.europa.eu/a4g/resource/3f60af90-c612-40bd-9943-866fe3ae21b4-01/Organization/ORG-0001> .

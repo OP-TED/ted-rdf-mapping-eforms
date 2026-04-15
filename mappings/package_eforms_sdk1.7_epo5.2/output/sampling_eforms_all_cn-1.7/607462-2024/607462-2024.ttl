@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -29,15 +29,6 @@
   a epo:AccessTerm;
   epo:definesOfflineAccessProvider <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/OfflineAccessProvider/TPO-0001touchpoint>;
   epo:definesProcurementProcedureInformationProvider <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ProcurementProcedureInformationProvider/TPO-0001touchpoint> .
-
-<http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
-  a epo:AccessTerm;
-  epo:hasRestrictedAccessURL "https://www.vortal.biz/"^^xsd:anyURI;
-  epo:isProcurementDocumentRestricted true .
-
-<http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/AuctionTerms$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_AuctionTerms1>
-  a epo:EAuctionTechnique;
-  dct:description "não aplicável"@pt .
 
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>
   a epo:AwardCriterion;
@@ -61,6 +52,14 @@
   a epo:AdHocChannel;
   epo:hasAddressURL "https://www.vortal.biz/"^^xsd:anyURI;
   dct:description "Não aplicável" .
+
+<http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Channel$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://bairrobenfica.pt"^^xsd:anyURI .
+
+<http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Channel$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://bairrobenfica.pt"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/CompanyAddress$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>
   a locn:Address;
@@ -94,8 +93,12 @@
   cccev:email "2serie@diariodarepublica.pt";
   cccev:telephone "+351 217810870" .
 
+<http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2024-11-01+01:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 30.0;
   time:unitType time:unitDay .
 
@@ -119,14 +122,10 @@
   locn:postCode "1549-019";
   locn:postName "Av. Gomes Pereira, nº17" .
 
-<http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2024-11-01+01:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/allowed>;
   epo:hasEOrdering false;
@@ -135,33 +134,50 @@
   epo:hasOptionsDescription "não aplicável"@pt;
   epo:hasPaymentArrangement "não aplicável"@pt;
   epo:hasRenewalDescription "não aplicável"@pt;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
   epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ContractLocation$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>;
   epo:hasPlaceOfPerformanceAdditionalInformation "não aplicável"@pt .
 
+<http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Duration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 30.0;
+  time:unitType time:unitDay .
+
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/DynamicPurchaseSystemTechnicalUsage$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Duration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
+
+<http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/EmploymentDocumentation$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_EmploymentLegislationDocumentReference1_Attachment1>
+  a epo:EmploymentDocumentation;
+  epo:hasAddressURL "https://www.vortal.biz/"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/EmploymentInformationProvider/TPO-0001touchpoint>
   a epo:EmploymentInformationProvider;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Lot/LOT-0001>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/TouchPoint/TPO-0001>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Organization/TPO-0001> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Organization/TPO-0001>,
+    <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/OrganizationalUnit/TPO-0001>;
+  epo:providesDocumentation <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/EmploymentDocumentation$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_EmploymentLegislationDocumentReference1_Attachment1> .
+
+<http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/EnvironmentalDocumentation$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_EnvironmentalLegislationDocumentReference1_Attachment1>
+  a epo:EnvironmentalDocumentation;
+  epo:hasAddressURL "https://www.vortal.biz/"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/EnvironmentalProtectionInformationProvider/TPO-0001touchpoint>
   a epo:EnvironmentalProtectionInformationProvider;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Lot/LOT-0001>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/TouchPoint/TPO-0001>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Organization/TPO-0001> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/OrganizationalUnit/TPO-0001>;
+  epo:providesDocumentation <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/EnvironmentalDocumentation$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_EnvironmentalLegislationDocumentReference1_Attachment1> .
 
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Concurso Público n.º 16 /2024 com publicação de anúncio no Jornal Oficial da União Europeia – Aquisição de um Autocarro novo de 55 lugares de transporte de passageiros para a Junta de Freguesia de Benfica em regime de locação financeira."@pt;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/bankr-nat> .
+  dct:description "Concurso Público n.º 16 /2024 com publicação de anúncio no Jornal Oficial da União Europeia – Aquisição de um Autocarro novo de 55 lugares de transporte de passageiros para a Junta de Freguesia de Benfica em regime de locação financeira."@pt .
 
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -199,9 +215,44 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0002" .
 
+<http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Identifier/TPO-0001>
+  a adms:Identifier;
+  epo:hasScheme "touchpoint";
+  skos:notation "TPO-0001" .
+
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/InnovativeProcurement$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType4>
   a epo:InnovativeProcurement;
   epo:fulfillsRequirement <http://publications.europa.eu/resource/authority/innovative-acquisition/mar-nov> .
+
+<http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
+<http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/LocalLegalBasisInformation$_ContractNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/LocalLegalBasisInformation$_ContractNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier> .
+
+<http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/LocalLegalBasisInformation$_ContractNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier>
+  a adms:Identifier;
+  skos:notation "não aplicável" .
+
+<http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/LocalLegalBasisInformation$_ContractNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/LocalLegalBasisInformation$_ContractNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2/Identifier> .
+
+<http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/LocalLegalBasisInformation$_ContractNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2/Identifier>
+  a adms:Identifier;
+  epo:hasScheme "CrossBorderLaw";
+  skos:notation "não aplicável" .
+
+<http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/LocalLegalBasisInformation$_ContractNotice1_TenderingTerms1_ProcurementLegislationDocumentReference3>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/LocalLegalBasisInformation$_ContractNotice1_TenderingTerms1_ProcurementLegislationDocumentReference3/Identifier> .
+
+<http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/LocalLegalBasisInformation$_ContractNotice1_TenderingTerms1_ProcurementLegislationDocumentReference3/Identifier>
+  a adms:Identifier;
+  epo:hasScheme "LocalLegalBasis";
+  skos:notation "não aplicável" .
 
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Lot/Identifier/Concurso%20P%C3%BAblico%20n.%C2%BA%2016%20%2F2024%20com%20publica%C3%A7%C3%A3o%20de%20an%C3%BAncio%20no%20Jornal%20Oficial%20da%20Uni%C3%A3o%20Europeia%20%E2%80%93%20Abertura%20de%20procedimento%20-%20Aquisi%C3%A7%C3%A3o%20de%20um%20Autocarro%20novo%20de%2055%20lugares%20de%20transporte%20de%20passageiros%20para%20a%20Junta%20de%20Freguesia%20de%20Benfica%20em%20regime%20de%20loca%C3%A7%C3%A3o%20financeira.>
   a adms:Identifier;
@@ -210,13 +261,14 @@
 
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
+    <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ProcurementCriterion$_ContractNotice1_ProcurementProjectLot1>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/GreenProcurement$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType1>,
     <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/GreenProcurement$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType2>,
     <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/InnovativeProcurement$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType4>,
-    <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/SocialProcurement$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType3>,
-    <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/StrategicProcurement$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>;
+    <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/SocialProcurement$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>,
+    <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/SocialProcurement$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType3>;
   epo:hasAdditionalInformation "não aplicável"@pt;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/MonetaryValueLot$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Lot/Identifier/Concurso%20P%C3%BAblico%20n.%C2%BA%2016%20%2F2024%20com%20publica%C3%A7%C3%A3o%20de%20an%C3%BAncio%20no%20Jornal%20Oficial%20da%20Uni%C3%A3o%20Europeia%20%E2%80%93%20Abertura%20de%20procedimento%20-%20Aquisi%C3%A7%C3%A3o%20de%20um%20Autocarro%20novo%20de%2055%20lugares%20de%20transporte%20de%20passageiros%20para%20a%20Junta%20de%20Freguesia%20de%20Benfica%20em%20regime%20de%20loca%C3%A7%C3%A3o%20financeira.>;
@@ -226,9 +278,8 @@
   epo:isFundedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Fund$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Funding1>;
   epo:isRecurrent false;
   epo:isSMESuitable true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
-    <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
     <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/AwardEvaluationTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1>,
     <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/MultipleStageProcedureTerm$_ContractNotice1_ProcurementProjectLot1>,
@@ -237,11 +288,10 @@
     <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>,
     <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/SecurityClearanceTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
-    <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>;
+    <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1N%C3%A3o%20aplic%C3%A1vel>;
   epo:isUsingEUFunds false;
   epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>,
-    <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ProcurementCriterion$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>;
   epo:usesChannel <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Channel$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>;
   epo:usesTechnique <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/DynamicPurchaseSystemTechnicalUsage$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>;
@@ -258,7 +308,7 @@
   a epo:Mediator;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Lot/LOT-0001>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/TouchPoint/TPO-0001>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Organization/TPO-0001> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/OrganizationalUnit/TPO-0001> .
 
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/MonetaryValueLot$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1>
   a epo:MonetaryValue;
@@ -297,13 +347,15 @@
     <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/TaxInformationProvider/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/TenderProcessor/TPO-0001touchpoint>,
     <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/TenderReceiver/TPO-0001touchpoint>;
-  epo:hasESenderDispatchDate "2024-10-07T08:33:16+01:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-10-07T08:33:16+01:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00607462-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/cn-standard>;
-  epo:hasOJSIssueNumber "197/2024";
+  epo:hasOJSIssueNumber 197;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/POR>;
   epo:hasPublicationDate "2024-10-09+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Lot/LOT-0001>;
   epo:refersToPrevious <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Notice/1-2024>;
@@ -333,21 +385,33 @@
   epo:hasScheme "notice-id";
   skos:notation "a659f32d-7439-47b1-be39-061cd019a424" .
 
+<http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.7" .
+
+<http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
+
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/OfflineAccessProvider/TPO-0001touchpoint>
   a epo:OfflineAccessProvider;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Lot/LOT-0001>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/TouchPoint/TPO-0001>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Organization/TPO-0001> .
-
-<http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/OpenTenderEventPlace$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1_OccurenceLocation1>
-  a locn:Address;
-  locn:fullAddress "Benfica"@pt .
+  epo:playedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/OrganizationalUnit/TPO-0001> .
 
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/OpeningTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1>
   a epo:OpeningTerm;
-  epo:definesOpeningPlace <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/OpenTenderEventPlace$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1_OccurenceLocation1>;
   epo:hasOpeningDateTime "2024-11-03T10:00:00+01:00"^^xsd:dateTime;
-  epo:hasOpeningDescription "não aplicável"@pt .
+  epo:hasOpeningDescription "não aplicável"@pt;
+  epo:hasOpeningPlace "Benfica"@pt .
 
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Organization/Identifier$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -359,13 +423,15 @@
 
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Organization/ORG-0001>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Channel$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>;
   epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/la>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Organization/Identifier$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>;
   epo:hasLegalName "Freguesia de Benfica"@pt;
   epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/CompanyContactPoint$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_Contact1>;
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/CompanyAddress$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>;
-  adms:identifier <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Identifier/ORG-0001> .
+  adms:identifier <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Identifier/ORG-0001>;
+  org:hasUnit <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/OrganizationalUnit/TPO-0001> .
 
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Organization/ORG-0002>
   a org:Organization;
@@ -375,13 +441,16 @@
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/CompanyAddress$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1_PostalAddress1>;
   adms:identifier <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Identifier/ORG-0002> .
 
-<http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Organization/TPO-0001>
-  a org:Organization;
-  owl:sameAs <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Organization/ORG-0001> .
+<http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/OrganizationalUnit/TPO-0001>
+  a org:OrganizationalUnit;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Channel$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint1>;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/TouchPoint/TPO-0001>;
+  dct:title "Freguesia de Benfica"@pt;
+  adms:identifier <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Identifier/TPO-0001> .
 
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Procedure/7cd99047-d8d5-4f00-b158-c0613ef03104>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/MonetaryValueProcedure$_ContractNotice1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Procedure/Identifier/ORG-0001>;
@@ -394,8 +463,9 @@
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ProcedurePurpose$_ContractNotice1_ProcurementProject1>;
   epo:isAccelerated true;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ProcedureTerm$_ContractNotice1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ProcedureTerm$_ContractNotice1>,
     <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ProcedureTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>;
   dct:description "Ricardo João de Oliveira Marques"@pt;
   dct:title "Presidente da Junta de Freguesia de Benfica"@pt;
   adms:identifier <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Procedure/Identifier/7cd99047-d8d5-4f00-b158-c0613ef03104> .
@@ -445,7 +515,7 @@
   a epo:ProcurementProcedureInformationProvider;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Lot/LOT-0001>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/TouchPoint/TPO-0001>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Organization/TPO-0001> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/OrganizationalUnit/TPO-0001> .
 
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ProcurementProcessInformation$_ContractNotice1_TenderingProcess1>
   a epo:ProcurementProcessInformation;
@@ -481,7 +551,7 @@
   a epo:ReviewProcedureInformationProvider;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Lot/LOT-0001>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/TouchPoint/TPO-0001>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Organization/TPO-0001> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/OrganizationalUnit/TPO-0001> .
 
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>
   a epo:ReviewTerm;
@@ -496,36 +566,37 @@
   a epo:Reviewer;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Lot/LOT-0001>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/TouchPoint/TPO-0001>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Organization/TPO-0001> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/OrganizationalUnit/TPO-0001> .
 
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/SecurityClearanceTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>
   a epo:SecurityClearanceTerm;
-  epo:hasDeadline "2024-11-01+01:00"^^xsd:date;
   epo:isSecurityClearanceRequired false;
   dct:description "não aplicável"@pt .
 
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/other>;
   epo:isUsedForCandidateRestriction false;
   dct:description "Concurso Público n.º 16 /2024 com publicação de anúncio no Jornal Oficial da União Europeia – Aquisição de um Autocarro novo de 55 lugares de transporte de passageiros para a Junta de Freguesia de Benfica em regime de locação financeira."@pt;
   skos:prefLabel "Concurso Público n.º 16 /2024 com publicação de anúncio no Jornal Oficial da União Europeia – Aquisição de um Autocarro novo de 55 lugares de transporte de passageiros para a Junta de Freguesia de Benfica em regime de locação financeira."@pt .
+
+<http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/SocialProcurement$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>
+  a epo:SocialProcurement;
+  epo:hasNonAccessibilityCriterionJustification "não aplicável"@pt;
+  epo:includesAccessibilityCriterion <http://publications.europa.eu/resource/authority/accessibility/n-inc> .
 
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/SocialProcurement$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType3>
   a epo:SocialProcurement;
   epo:fulfillsRequirement <http://publications.europa.eu/resource/authority/social-objective/other> .
 
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/SpecificDuration$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TenderValidityPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 90.0;
   time:unitType time:unitDay .
 
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/StrategicProcurement$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>
   a epo:StrategicProcurement;
-  epo:hasNonAccessibilityCriterionJustification "não aplicável"@pt;
-  epo:hasStrategicProcurementDescription "Não aplicável"@pt;
-  epo:includesAccessibilityCriterion <http://publications.europa.eu/resource/authority/accessibility/n-inc> .
+  epo:hasStrategicProcurementDescription "Não aplicável"@pt .
 
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:SubmissionTerm;
@@ -546,22 +617,27 @@
   epo:isGuaranteeRequired false;
   epo:isMultipleTenderSubmissionAllowed false .
 
+<http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/TaxDocumentation$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_FiscalLegislationDocumentReference1_Attachment1>
+  a epo:TaxDocumentation;
+  epo:hasAddressURL "https://www.vortal.biz/"^^xsd:anyURI .
+
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/TaxInformationProvider/ORG-0001organization>
   a epo:TaxInformationProvider;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Lot/LOT-0001>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Organization/ORG-0001> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Organization/ORG-0001>;
+  epo:providesDocumentation <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/TaxDocumentation$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_FiscalLegislationDocumentReference1_Attachment1> .
 
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/TenderProcessor/TPO-0001touchpoint>
   a epo:TenderProcessor;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Lot/LOT-0001>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/TouchPoint/TPO-0001>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Organization/TPO-0001> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/OrganizationalUnit/TPO-0001> .
 
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/TenderReceiver/TPO-0001touchpoint>
   a epo:TenderReceiver;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Lot/LOT-0001>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/TouchPoint/TPO-0001>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/Organization/TPO-0001> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/OrganizationalUnit/TPO-0001> .
 
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/TouchPoint/TPO-0001>
   a cccev:ContactPoint;
@@ -570,7 +646,6 @@
   epo:hasInternetAddress "https://bairrobenfica.pt"^^xsd:anyURI;
   cccev:email "geral@jf-benfica.pt";
   cccev:telephone "2171230000";
-  dct:description "Freguesia de Benfica"@pt;
   locn:address <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/TouchPointAddress$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint1_PostalAddress1> .
 
 <http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01/TouchPointAddress$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint1_PostalAddress1>
@@ -580,3 +655,8 @@
   locn:fullAddress "Contratação, Av Gomes Pereira, n º17, Lisboa, 1549-019, PRT";
   locn:postCode "1549-019";
   locn:postName "Lisboa" .
+
+<http://data.europa.eu/a4g/resource/a659f32d-7439-47b1-be39-061cd019a424-01AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1N%C3%A3o%20aplic%C3%A1vel>
+  a epo:AccessTerm;
+  epo:hasRestrictedAccessURL "https://www.vortal.biz/"^^xsd:anyURI;
+  epo:isProcurementDocumentRestricted true .

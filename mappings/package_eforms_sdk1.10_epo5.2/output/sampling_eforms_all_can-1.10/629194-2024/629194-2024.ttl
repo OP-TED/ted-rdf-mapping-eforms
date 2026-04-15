@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -48,7 +48,7 @@
 <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/AwardDecision/2024-07-15%2B02%3A00>
   a epo:AwardDecision;
   epo:comprisesAwardOutcome <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/LotAwardOutcome/RES-0001>;
-  epo:hasAwardDecisionDate "2024-07-15+02:00"^^xsd:date .
+  epo:hasAwardDecisionDate "2024-07-15T00:00:00+02:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Buyer/ORG-0001>
   a epo:Buyer;
@@ -150,16 +150,12 @@
   locn:postCode "85614";
   locn:postName "Kirchseeon - OT Eglharting" .
 
-<http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasTimePeriod <http://publications.europa.eu/resource/authority/timeperiod/UNLIMITED> .
-
 <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasOptionsDescription """Es erfolgt eine stufenweise Beauftragung der Leistungen gemäß Vertrag; mit Vertragsschluss wird die Leistungsstufe 1 beauftragt. Ein Anspruch
-auf Beauftragung weiterer Stufen besteht jeweils nicht. Besondere Leistungen nach Bedarf."""@de .
+auf Beauftragung weiterer Stufen besteht jeweils nicht. Besondere Leistungen nach Bedarf."""@de;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -207,13 +203,21 @@ auf Beauftragung weiterer Stufen besteht jeweils nicht. Besondere Leistungen nac
   epo:hasScheme "organization";
   skos:notation "ORG-0005" .
 
+<http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier> .
+
+<http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier>
+  a adms:Identifier;
+  skos:notation "vgv" .
+
 <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Lot/Identifier/PS-001>
   a adms:Identifier;
   skos:notation "PS-001" .
 
 <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/GreenProcurement$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>;
   epo:hasAdditionalInformation """Fragen
@@ -234,7 +238,7 @@ ausschließlich beim Bewerber/Bieter. Dazu gehört auch die regelmäßige
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Lot/Identifier/PS-001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>;
   epo:isUsingEUFunds false;
@@ -279,19 +283,29 @@ Die Beauftragung der Zielfindungsphase soll Anfang 3. Quartal 2024 erfolgen. Wei
   epo:hasAmountValue 480000.0;
   epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
 
+<http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/NonPublishedInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/ProcedureTerm$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Notice>;
+  epo:hasMaskableProperty epo:hasCrossBorderLaw;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/oth-int> .
+
 <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Notice>
   a epo:Notice, epo:Notice29, epo:ResultNotice;
   epo:announcesAwardDecision <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/AwardDecision/2024-07-15%2B02%3A00>;
+  epo:announcesContract <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Contract/CON-0001>;
   epo:announcesNoticeAwardInformation <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Subcontractor/ORG-0004>,
     <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Tenderer/TPA-0001>;
-  epo:hasESenderDispatchDate "2024-10-16T13:38:39+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-10-16T13:38:39+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/result>;
   epo:hasNoticePublicationNumber "00629194-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-standard>;
-  epo:hasOJSIssueNumber "203/2024";
+  epo:hasOJSIssueNumber 203;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU>;
   epo:hasPublicationDate "2024-10-17+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Procedure/7c5845d0-bfa5-4d63-8278-db0a765d6eaa>;
@@ -304,6 +318,22 @@ Die Beauftragung der Zielfindungsphase soll Anfang 3. Quartal 2024 erfolgen. Wei
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "a22072f5-c9e1-4973-aec4-520427f9c27e" .
+
+<http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.10" .
+
+<http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
   a epo:NoticeAwardInformation;
@@ -349,6 +379,7 @@ Die Beauftragung der Zielfindungsphase soll Anfang 3. Quartal 2024 erfolgen. Wei
 
 <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Organization/ORG-0003>
   a epo:Business, org:Organization;
+  epo:foreseesSubcontractor <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Subcontractor/ORG-0004>;
   epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/small>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Organization/Identifier$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization3_Company1_PartyLegalEntity1>;
   epo:hasLegalName "HSP Projektmanagement und Beratung GmbH"@de;
@@ -374,14 +405,14 @@ Die Beauftragung der Zielfindungsphase soll Anfang 3. Quartal 2024 erfolgen. Wei
 
 <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Procedure/7c5845d0-bfa5-4d63-8278-db0a765d6eaa>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasLegalBasisDescription "vgv";
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/ProcedurePurpose$_ContractAwardNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/ProcedureTerm$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/ProcedureTerm$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2>;
   dct:description """Der Markt Kirchseeon plant den Umbau / die Sanierung und die Erweiterung / den Teilersatzneubau der Grund- und Mittelschule Eglharting und benötigt hierfür die Unterstützung bei der Projektsteuerung.
 
 Grund für Maßnahme ist der sehr hohe Sanierungsstau beim Bestandsgebäude (insbesondere Bauteil 1960er Jahre) und der Bedarf an weiteren Flächen.
@@ -467,9 +498,8 @@ Die Beauftragung der Zielfindungsphase soll Anfang 3. Quartal 2024 erfolgen. Wei
 <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Tender/TEN-0001>
   a epo:Tender;
   epo:hasSubcontracting <http://publications.europa.eu/resource/authority/applicability/yes>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Lot/LOT-0001>;
-  epo:specifiesSubcontractors <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Subcontractor/ORG-0004>;
   adms:identifier <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/Tender/Identifier/Angebot%20HSP> .
 
 <http://data.europa.eu/a4g/resource/a22072f5-c9e1-4973-aec4-520427f9c27e-01/TenderAwardOutcome/TEN-0001>

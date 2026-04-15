@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -108,20 +108,28 @@
   epo:hasAmountValue 350000.0;
   epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
 
+<http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/MonetaryValueProcedure$_PriorInformationNotice1_ProcurementProject1_RequestedTenderTotal1>
+  a epo:MonetaryValue;
+  epo:hasAmountValue 350000.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
 <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/Notice>
   a epo:Notice, epo:Notice4, epo:PlanningNotice;
+  epo:announcesPlannedProcurement <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/PlannedProcurement$_PriorInformationNotice1_ProcurementProject1>;
   epo:announcesPlannedProcurementPart <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/PlannedProcurementPart/PAR-0001>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/Buyer/ORG-0002>,
     <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/Mediator/ORG-0002>,
     <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>,
     <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/Reviewer/ORG-0003>;
-  epo:hasESenderDispatchDate "2023-07-24T17:32:50+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2023-07-24T17:32:50+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticePublicationNumber "00455486-2023";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-only>;
-  epo:hasOJSIssueNumber "142/2023";
+  epo:hasOJSIssueNumber 142;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/ENG>;
   epo:hasPublicationDate "2023-07-26Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   adms:identifier <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/Notice/Identifier> .
 
@@ -129,6 +137,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "319284f7-1c90-48d6-8111-fedac5e227e2" .
+
+<http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.6" .
+
+<http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/Notice/e68dea6e-491d-4694-b3cd-6b7926539677-01>
   a epo:Notice;
@@ -181,31 +205,58 @@
   epo:hasFrameworkAgreementType <http://publications.europa.eu/resource/authority/framework-agreement/none> .
 
 <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>
-  a epo:ProcurementObject;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/PartFrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1_ContractingSystem1>;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
-  epo:isCoveredByGPA true;
-  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/ReviewTerm/ORG-0003> .
+  a epo:ProcurementObject .
 
 <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>
   a epo:Purpose;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/71241000> .
 
 <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/PartSpecificDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 6.0;
   time:unitType time:unitMonth .
 
+<http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/PlannedProcurement$_PriorInformationNotice1_ProcurementProject1>
+  a epo:PlannedProcurement;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>;
+  epo:hasAdditionalInformation "This prior information notice announces the intention of the contracting authority to publish a future call for tenders. No other information or documents are available at this stage. Interested economic operators are invited to subscribe at the link https://etendering.ted.europa.eu/cft/cft-display.html?cftId=14623 in order to get notified when the contract notice and all the procurement documents, including the tender specifications, are published."@en;
+  epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/MonetaryValueProcedure$_PriorInformationNotice1_ProcurementProject1_RequestedTenderTotal1>;
+  epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/PlannedProcurement/Identifier/JRC%2FIPR%2F2023%2FRP%2F1498>;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32018R1046>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>;
+  dct:description "The Call for Tenders concerns the review of the Decommissioning Plan (and associated cost estimate) of HFR, the nuclear reactor on the Petten site JRC owns and for whose decommissioning JRC is responsible. The review will also elaborate on the implications the Decommissioning Plan has in terms of the internal organization that JRC needs to set up to manage the decommissioning of HFR effectively and efficiently."@en;
+  dct:title "Review of HFR Decommissioning Plan, cost estimate and its implementation"@en .
+
+<http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/PlannedProcurement/Identifier/JRC%2FIPR%2F2023%2FRP%2F1498>
+  a adms:Identifier;
+  skos:notation "JRC/IPR/2023/RP/1498" .
+
 <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/PlannedProcurementPart/PAR-0001>
   a epo:PlannedProcurementPart;
-  epo:foreseesProcurementObject <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/PartFrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1_ContractingSystem1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/MonetaryValuePart$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasPlannedDuration <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/PartSpecificDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
+  epo:isCoveredByGPA true;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/ReviewTerm/ORG-0003>;
   epo:usesChannel <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/AdHocChannel$_PriorInformationNotice1_ProcurementProjectLot1>;
   dct:description "The Call for Tenders concerns the review of the Decommissioning Plan (and associated cost estimate) of HFR, the nuclear reactor on the Petten site JRC owns and for whose decommissioning JRC is responsible. The review will also elaborate on the implications the Decommissioning Plan has in terms of the internal organization that JRC needs to set up to manage the decommissioning of HFR effectively and efficiently."@en;
   dct:title "Review of HFR Decommissioning Plan, cost estimate and its implementation"@en;
   adms:identifier <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/Identifier/PAR-0001> .
+
+<http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>
+  a epo:Purpose;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/71241000> .
+
+<http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>
+  a epo:ProcessPlanningTerm;
+  epo:hasEstimatedContractNoticePublicationDate "2023-07-31+02:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>
+  a epo:ContractTerm;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
 
 <http://data.europa.eu/a4g/resource/319284f7-1c90-48d6-8111-fedac5e227e2-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>
   a epo:ProcurementServiceProvider;

@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -29,11 +29,15 @@
 <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/AwardDecision/2022-06-01%2B02%3A00>
   a epo:AwardDecision;
   epo:comprisesAwardOutcome <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/LotAwardOutcome/RES-0001>;
-  epo:hasAwardDecisionDate "2022-06-01+02:00"^^xsd:date .
+  epo:hasAwardDecisionDate "2022-06-01T00:00:00+02:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/Buyer/ORG-0001>
   a epo:Buyer;
   epo:playedBy <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/Channel$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "http://caenlamerhabitat.e-marchespublics.com"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/CompanyAddress$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>
   a locn:Address;
@@ -136,11 +140,11 @@
 
 <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation "Marché passé en appel d'offres ouvert avec une prestation forfaitaire et une prestation ponctuelle. Les prestations ponctuelles ne peuvent pas excéder le montant maximum de l'accord cadre d'un montant de 320 000€ HT. Les montants indiqués correspondent aux montants totales des deux prestations."@fr;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/Lot/Identifier/Avenant%202%20au%20march%C3%A9%205392%20MILECLAIR%20-%20March%C3%A9%20de%20nettoyage%20des%20parties%20communes%20d%27immeubles%2C%20traitement%20et%20%C3%A9limination%20des%20d%C3%A9chets%20m%C3%A9nagers%2C%20%C3%A9vacuation%20des%20encombrants%20et%20nettoyage%20des%20abords%20et%20aires%20de%20stationnement%20-%20Patrimoine%20de%20Caen%20la%20mer%20Habitat%20-%20Base%20%2B%20avenants%20-%20Plus%20value%20annuelle%20forfaitaire>;
   epo:isCoveredByGPA false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>;
   dct:description "Avenant 2 au marché 5392 MILECLAIR - Marché de nettoyage des parties communes d'immeubles, traitement et élimination des déchets ménagers, évacuation des encombrants et nettoyage des abords et aires de stationnement - Patrimoine de Caen la mer Habitat - Base + avenants - Plus value annuelle forfaitaire"@fr;
   dct:title "Avenant 2 au marché 5392 MILECLAIR - Marché de nettoyage des parties communes d'immeubles, traitement et élimination des déchets ménagers, évacuation des encombrants et nettoyage des abords et aires de stationnement - Patrimoine de Caen la mer Habitat - Base + avenants - Plus value annuelle forfaitaire"@fr;
   adms:identifier <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/Identifier/LOT-0001> .
@@ -157,16 +161,35 @@
   epo:hasAmountValue 155364.77;
   epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
 
+<http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_FrameworkAgreementValues1_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/MonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_FrameworkAgreementValues1>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/Notice>;
+  epo:hasAccessibilityDate "2024-05-24+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "155364,77"@fr;
+  epo:hasMaskableProperty epo:hasAmountValue;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/law-enf> .
+
+<http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/Notice>;
+  epo:hasAccessibilityDate "2022-05-31+02:00"^^xsd:date;
+  epo:hasMaskableProperty epo:hasAmountValue;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/law-enf> .
+
 <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/Notice>
   a epo:ContractModificationNotice, epo:Notice, epo:Notice38;
   epo:announcesContractAmendment <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/ContractAmendment$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_ContractModification1>;
-  epo:hasESenderDispatchDate "2024-09-27T14:30:08Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-09-27T14:30:08Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/cont-modif>;
   epo:hasNoticePublicationNumber "00588659-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-modif>;
-  epo:hasOJSIssueNumber "191/2024";
+  epo:hasOJSIssueNumber 191;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/FRA>;
   epo:hasPublicationDate "2024-10-01+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToAwardDecision <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/AwardDecision/2022-06-01%2B02%3A00>;
   epo:refersToContractToBeModified <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/Contract/CON-0001>;
@@ -194,6 +217,22 @@
   epo:hasScheme "notice-id";
   skos:notation "050b4f35-fedc-4a89-a427-e4b41a4a3852" .
 
+<http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.12" .
+
+<http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
+
 <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
   a epo:NoticeAwardInformation;
   epo:hasApproximateFrameworkAgreementValue <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/ApproximateFrameworkAgreementMonetaryValueLot$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1> .
@@ -220,6 +259,7 @@
 
 <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/Organization/ORG-0001>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/Channel$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/Organization/Identifier$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>;
   epo:hasLegalName "Caen La Mer Habitat"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/CompanyContactPoint$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_Contact1>;
@@ -236,6 +276,7 @@
 
 <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/Procedure/0365b381-4cd9-4b78-ae43-5097c9981326>
   a epo:Procedure;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/Procedure/Identifier/appel%20d%27offres%20ouvert>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/Lot/LOT-0001>;
@@ -255,6 +296,9 @@
 <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/ProcedurePurpose$_ContractAwardNotice1_ProcurementProject1>
   a epo:Purpose;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/90900000> .
+
+<http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>
+  a epo:ContractTerm .
 
 <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/ProcurementServiceProvider$_ContractAwardNotice1_ContractingParty1_Party1_ServiceProviderParty1>
   a epo:ProcurementServiceProvider;
@@ -284,7 +328,7 @@
 <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/Tender/TEN-0001>
   a epo:Tender;
   epo:hasFinancialOfferValue <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/Lot/LOT-0001>;
   adms:identifier <http://data.europa.eu/a4g/resource/050b4f35-fedc-4a89-a427-e4b41a4a3852-01/Tender/Identifier/Avenant%202%20au%20march%C3%A9%205392%20MILECLAIR%20-%20March%C3%A9%20de%20nettoyage%20des%20parties%20communes%20d%27immeubles%2C%20traitement%20et%20%C3%A9limination%20des%20d%C3%A9chets%20m%C3%A9nagers%2C%20%C3%A9vacuation%20des%20encombrants%20et%20nettoyage%20des%20abords%20et%20aires%20de%20stationnement%20-%20Patrimoine%20de%20Caen%20la%20mer%20Habitat%20-%20Base%20%2B%20avenants%20-%20Plus%20value%20annuelle%20forfaitaire> .
 

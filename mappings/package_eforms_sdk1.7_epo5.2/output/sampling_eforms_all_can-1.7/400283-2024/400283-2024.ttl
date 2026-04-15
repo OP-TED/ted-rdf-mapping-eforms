@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -164,17 +164,36 @@
 <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/ContractLocation$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/DEA23> .
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DEA23>;
+  locn:address <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/ContractLocationAddress$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1> .
 
 <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/ContractLocation$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation2_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/DEA23> .
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DEA23>;
+  locn:address <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/ContractLocationAddress$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation2_Address1> .
+
+<http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/ContractLocationAddress$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DEA23>;
+  locn:fullAddress "Universität zu Köln, Abteilung 64 - Einkauf, Albertus-Magnus-Platz, Köln, 50923, DEU";
+  locn:postCode "50923";
+  locn:postName "Köln" .
+
+<http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/ContractLocationAddress$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation2_Address1>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DEA23>;
+  locn:fullAddress "West German Genome Center, Köln, 50931, DEU";
+  locn:postCode "50931";
+  locn:postName "Köln" .
 
 <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies>;
-  epo:hasMaximumNumberOfRenewals 0 .
+  epo:hasMaximumNumberOfRenewals 0;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -240,6 +259,14 @@
   a adms:Identifier;
   skos:notation "UBO-0001" .
 
+<http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier> .
+
+<http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier>
+  a adms:Identifier;
+  skos:notation "vgv" .
+
 <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Lot/Identifier/2024_64_0080>
   a adms:Identifier;
   epo:hasScheme "internalID";
@@ -247,14 +274,14 @@
 
 <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
     <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation2>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/GreenProcurement$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Lot/Identifier/2024_64_0080>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>;
   epo:isUsingEUFunds false;
@@ -280,17 +307,204 @@ Für die initiale Qualitätskontrolle des Probenmaterials auf den vorhandenen Ta
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Lot/LOT-0001>;
   epo:playedBy <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Organization/ORG-0005> .
 
+<http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/NonPublishedInformation$_ContractAwardNotice1_TenderingProcess1_ProcessJustification1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/DirectAwardTerm$_ContractAwardNotice1_TenderingProcess1_ProcessJustification1>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-02+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Der Grund für die Nichtveröffentlichung bestimmter Verfahrensangaben ist darin begründet, dass bestimmte Angaben berechtigte geschäftliche Interessen eines Unternehmens schädigen würden. Darunter fallen vor allem Betriebs- oder Geschäftsgeheimnisse des Auftragnehmers. Informationen, die einen Rückschluss auf die Kalkulation oder Produktions- und Verfahrensabläufe des Auftragnehmers zulassen, dürfen nicht weitergegeben werden. Diese Regelung steht in engem Zusammenhang mit § 5 Abs. 2 S. 2 VgV, wonach der Auftraggeber verpflichtet ist, die Angebote und deren Anlagen auch nach Abschluss des Vergabeverfahrens vertraulich zu behandeln sowie § 39 Abs. 6 Nr. 3 VgV."@de;
+  epo:hasMaskableProperty epo:hasDirectAwardJustification;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/eo-int> .
+
+<http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/NonPublishedInformation$_ContractAwardNotice1_TenderingProcess1_ProcessJustification1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_FieldsPrivacy2>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/DirectAwardTerm$_ContractAwardNotice1_TenderingProcess1_ProcessJustification1>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-02+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Der Grund für die Nichtveröffentlichung bestimmter Verfahrensangaben ist darin begründet, dass bestimmte Angaben berechtigte geschäftliche Interessen eines Unternehmens schädigen würden. Darunter fallen vor allem Betriebs- oder Geschäftsgeheimnisse des Auftragnehmers. Informationen, die einen Rückschluss auf die Kalkulation oder Produktions- und Verfahrensabläufe des Auftragnehmers zulassen, dürfen nicht weitergegeben werden. Diese Regelung steht in engem Zusammenhang mit § 5 Abs. 2 S. 2 VgV, wonach der Auftraggeber verpflichtet ist, die Angebote und deren Anlagen auch nach Abschluss des Vergabeverfahrens vertraulich zu behandeln sowie § 39 Abs. 6 Nr. 3 VgV."@de;
+  epo:hasMaskableProperty epo:hasJustification;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/eo-int> .
+
+<http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/NonPublishedInformation$_ContractAwardNotice1_TenderingProcess1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Procedure/defd3e8c-11eb-426d-8c24-a3cd83703e8a>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-02+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Der Grund für die Nichtveröffentlichung bestimmter Verfahrensangaben ist darin begründet, dass bestimmte Angaben berechtigte geschäftliche Interessen eines Unternehmens schädigen würden. Darunter fallen vor allem Betriebs- oder Geschäftsgeheimnisse des Auftragnehmers. Informationen, die einen Rückschluss auf die Kalkulation oder Produktions- und Verfahrensabläufe des Auftragnehmers zulassen, dürfen nicht weitergegeben werden. Diese Regelung steht in engem Zusammenhang mit § 5 Abs. 2 S. 2 VgV, wonach der Auftraggeber verpflichtet ist, die Angebote und deren Anlagen auch nach Abschluss des Vergabeverfahrens vertraulich zu behandeln sowie § 39 Abs. 6 Nr. 3 VgV."@de;
+  epo:hasMaskableProperty epo:hasProcedureType;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/eo-int> .
+
+<http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-02+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Der Grund für die Nichtveröffentlichung bestimmter Verfahrensangaben ist darin begründet, dass bestimmte Angaben berechtigte geschäftliche Interessen eines Unternehmens schädigen würden. Darunter fallen vor allem Betriebs- oder Geschäftsgeheimnisse des Auftragnehmers. Informationen, die einen Rückschluss auf die Kalkulation oder Produktions- und Verfahrensabläufe des Auftragnehmers zulassen, dürfen nicht weitergegeben werden. Diese Regelung steht in engem Zusammenhang mit § 5 Abs. 2 S. 2 VgV, wonach der Auftraggeber verpflichtet ist, die Angebote und deren Anlagen auch nach Abschluss des Vergabeverfahrens vertraulich zu behandeln sowie § 39 Abs. 6 Nr. 3 VgV."@de;
+  epo:hasMaskableProperty epo:hasAmountValue;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/eo-int> .
+
+<http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_FieldsPrivacy2>
+  a epo:NonPublishedInformation;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-02+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Der Grund für die Nichtveröffentlichung bestimmter Verfahrensangaben ist darin begründet, dass bestimmte Angaben berechtigte geschäftliche Interessen eines Unternehmens schädigen würden. Darunter fallen vor allem Betriebs- oder Geschäftsgeheimnisse des Auftragnehmers. Informationen, die einen Rückschluss auf die Kalkulation oder Produktions- und Verfahrensabläufe des Auftragnehmers zulassen, dürfen nicht weitergegeben werden. Diese Regelung steht in engem Zusammenhang mit § 5 Abs. 2 S. 2 VgV, wonach der Auftraggeber verpflichtet ist, die Angebote und deren Anlagen auch nach Abschluss des Vergabeverfahrens vertraulich zu behandeln sowie § 39 Abs. 6 Nr. 3 VgV."@de;
+  epo:hasMaskableProperty epo:hasAmountValue;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/eo-int> .
+
+<http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_FieldsPrivacy3>
+  a epo:NonPublishedInformation;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-02+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Der Grund für die Nichtveröffentlichung bestimmter Verfahrensangaben ist darin begründet, dass bestimmte Angaben berechtigte geschäftliche Interessen eines Unternehmens schädigen würden. Darunter fallen vor allem Betriebs- oder Geschäftsgeheimnisse des Auftragnehmers. Informationen, die einen Rückschluss auf die Kalkulation oder Produktions- und Verfahrensabläufe des Auftragnehmers zulassen, dürfen nicht weitergegeben werden. Diese Regelung steht in engem Zusammenhang mit § 5 Abs. 2 S. 2 VgV, wonach der Auftraggeber verpflichtet ist, die Angebote und deren Anlagen auch nach Abschluss des Vergabeverfahrens vertraulich zu behandeln sowie § 39 Abs. 6 Nr. 3 VgV."@de;
+  epo:hasMaskableProperty epo:hasAmountValue;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/eo-int> .
+
+<http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/LotAwardOutcome/RES-0001>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-02+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Der Grund für die Nichtveröffentlichung bestimmter Verfahrensangaben ist darin begründet, dass bestimmte Angaben berechtigte geschäftliche Interessen eines Unternehmens schädigen würden. Darunter fallen vor allem Betriebs- oder Geschäftsgeheimnisse des Auftragnehmers. Informationen, die einen Rückschluss auf die Kalkulation oder Produktions- und Verfahrensabläufe des Auftragnehmers zulassen, dürfen nicht weitergegeben werden. Diese Regelung steht in engem Zusammenhang mit § 5 Abs. 2 S. 2 VgV, wonach der Auftraggeber verpflichtet ist, die Angebote und deren Anlagen auch nach Abschluss des Vergabeverfahrens vertraulich zu behandeln sowie § 39 Abs. 6 Nr. 3 VgV."@de;
+  epo:hasMaskableProperty epo:hasAwardStatus;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/eo-int> .
+
+<http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_FieldsPrivacy2>
+  a epo:NonPublishedInformation;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-02+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Der Grund für die Nichtveröffentlichung bestimmter Verfahrensangaben ist darin begründet, dass bestimmte Angaben berechtigte geschäftliche Interessen eines Unternehmens schädigen würden. Darunter fallen vor allem Betriebs- oder Geschäftsgeheimnisse des Auftragnehmers. Informationen, die einen Rückschluss auf die Kalkulation oder Produktions- und Verfahrensabläufe des Auftragnehmers zulassen, dürfen nicht weitergegeben werden. Diese Regelung steht in engem Zusammenhang mit § 5 Abs. 2 S. 2 VgV, wonach der Auftraggeber verpflichtet ist, die Angebote und deren Anlagen auch nach Abschluss des Vergabeverfahrens vertraulich zu behandeln sowie § 39 Abs. 6 Nr. 3 VgV."@de;
+  epo:hasMaskableProperty epo:hasAmountValue;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/eo-int> .
+
+<http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_FieldsPrivacy3>
+  a epo:NonPublishedInformation;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-02+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Der Grund für die Nichtveröffentlichung bestimmter Verfahrensangaben ist darin begründet, dass bestimmte Angaben berechtigte geschäftliche Interessen eines Unternehmens schädigen würden. Darunter fallen vor allem Betriebs- oder Geschäftsgeheimnisse des Auftragnehmers. Informationen, die einen Rückschluss auf die Kalkulation oder Produktions- und Verfahrensabläufe des Auftragnehmers zulassen, dürfen nicht weitergegeben werden. Diese Regelung steht in engem Zusammenhang mit § 5 Abs. 2 S. 2 VgV, wonach der Auftraggeber verpflichtet ist, die Angebote und deren Anlagen auch nach Abschluss des Vergabeverfahrens vertraulich zu behandeln sowie § 39 Abs. 6 Nr. 3 VgV."@de;
+  epo:hasMaskableProperty epo:hasAmountValue;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/eo-int> .
+
+<http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_ReceivedSubmissionsStatistics10_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/SubmissionStatisticalInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-02+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Der Grund für die Nichtveröffentlichung bestimmter Verfahrensangaben ist darin begründet, dass bestimmte Angaben berechtigte geschäftliche Interessen eines Unternehmens schädigen würden. Darunter fallen vor allem Betriebs- oder Geschäftsgeheimnisse des Auftragnehmers. Informationen, die einen Rückschluss auf die Kalkulation oder Produktions- und Verfahrensabläufe des Auftragnehmers zulassen, dürfen nicht weitergegeben werden. Diese Regelung steht in engem Zusammenhang mit § 5 Abs. 2 S. 2 VgV, wonach der Auftraggeber verpflichtet ist, die Angebote und deren Anlagen auch nach Abschluss des Vergabeverfahrens vertraulich zu behandeln sowie § 39 Abs. 6 Nr. 3 VgV."@de;
+  epo:hasMaskableProperty epo:hasReceivedTenders;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/eo-int> .
+
+<http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_ReceivedSubmissionsStatistics11_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/SubmissionStatisticalInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-02+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Der Grund für die Nichtveröffentlichung bestimmter Verfahrensangaben ist darin begründet, dass bestimmte Angaben berechtigte geschäftliche Interessen eines Unternehmens schädigen würden. Darunter fallen vor allem Betriebs- oder Geschäftsgeheimnisse des Auftragnehmers. Informationen, die einen Rückschluss auf die Kalkulation oder Produktions- und Verfahrensabläufe des Auftragnehmers zulassen, dürfen nicht weitergegeben werden. Diese Regelung steht in engem Zusammenhang mit § 5 Abs. 2 S. 2 VgV, wonach der Auftraggeber verpflichtet ist, die Angebote und deren Anlagen auch nach Abschluss des Vergabeverfahrens vertraulich zu behandeln sowie § 39 Abs. 6 Nr. 3 VgV."@de;
+  epo:hasMaskableProperty epo:hasReceivedTenders;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/eo-int> .
+
+<http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_ReceivedSubmissionsStatistics1_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/SubmissionStatisticalInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-02+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Der Grund für die Nichtveröffentlichung bestimmter Verfahrensangaben ist darin begründet, dass bestimmte Angaben berechtigte geschäftliche Interessen eines Unternehmens schädigen würden. Darunter fallen vor allem Betriebs- oder Geschäftsgeheimnisse des Auftragnehmers. Informationen, die einen Rückschluss auf die Kalkulation oder Produktions- und Verfahrensabläufe des Auftragnehmers zulassen, dürfen nicht weitergegeben werden. Diese Regelung steht in engem Zusammenhang mit § 5 Abs. 2 S. 2 VgV, wonach der Auftraggeber verpflichtet ist, die Angebote und deren Anlagen auch nach Abschluss des Vergabeverfahrens vertraulich zu behandeln sowie § 39 Abs. 6 Nr. 3 VgV."@de;
+  epo:hasMaskableProperty epo:hasReceivedTenders;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/eo-int> .
+
+<http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_ReceivedSubmissionsStatistics2_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/SubmissionStatisticalInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-02+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Der Grund für die Nichtveröffentlichung bestimmter Verfahrensangaben ist darin begründet, dass bestimmte Angaben berechtigte geschäftliche Interessen eines Unternehmens schädigen würden. Darunter fallen vor allem Betriebs- oder Geschäftsgeheimnisse des Auftragnehmers. Informationen, die einen Rückschluss auf die Kalkulation oder Produktions- und Verfahrensabläufe des Auftragnehmers zulassen, dürfen nicht weitergegeben werden. Diese Regelung steht in engem Zusammenhang mit § 5 Abs. 2 S. 2 VgV, wonach der Auftraggeber verpflichtet ist, die Angebote und deren Anlagen auch nach Abschluss des Vergabeverfahrens vertraulich zu behandeln sowie § 39 Abs. 6 Nr. 3 VgV."@de;
+  epo:hasMaskableProperty epo:hasReceivedTenders;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/eo-int> .
+
+<http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_ReceivedSubmissionsStatistics3_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/SubmissionStatisticalInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-02+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Der Grund für die Nichtveröffentlichung bestimmter Verfahrensangaben ist darin begründet, dass bestimmte Angaben berechtigte geschäftliche Interessen eines Unternehmens schädigen würden. Darunter fallen vor allem Betriebs- oder Geschäftsgeheimnisse des Auftragnehmers. Informationen, die einen Rückschluss auf die Kalkulation oder Produktions- und Verfahrensabläufe des Auftragnehmers zulassen, dürfen nicht weitergegeben werden. Diese Regelung steht in engem Zusammenhang mit § 5 Abs. 2 S. 2 VgV, wonach der Auftraggeber verpflichtet ist, die Angebote und deren Anlagen auch nach Abschluss des Vergabeverfahrens vertraulich zu behandeln sowie § 39 Abs. 6 Nr. 3 VgV."@de;
+  epo:hasMaskableProperty epo:hasReceivedTenders;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/eo-int> .
+
+<http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_ReceivedSubmissionsStatistics4_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/SubmissionStatisticalInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-02+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Der Grund für die Nichtveröffentlichung bestimmter Verfahrensangaben ist darin begründet, dass bestimmte Angaben berechtigte geschäftliche Interessen eines Unternehmens schädigen würden. Darunter fallen vor allem Betriebs- oder Geschäftsgeheimnisse des Auftragnehmers. Informationen, die einen Rückschluss auf die Kalkulation oder Produktions- und Verfahrensabläufe des Auftragnehmers zulassen, dürfen nicht weitergegeben werden. Diese Regelung steht in engem Zusammenhang mit § 5 Abs. 2 S. 2 VgV, wonach der Auftraggeber verpflichtet ist, die Angebote und deren Anlagen auch nach Abschluss des Vergabeverfahrens vertraulich zu behandeln sowie § 39 Abs. 6 Nr. 3 VgV."@de;
+  epo:hasMaskableProperty epo:hasReceivedTenders;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/eo-int> .
+
+<http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_ReceivedSubmissionsStatistics5_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/SubmissionStatisticalInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-02+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Der Grund für die Nichtveröffentlichung bestimmter Verfahrensangaben ist darin begründet, dass bestimmte Angaben berechtigte geschäftliche Interessen eines Unternehmens schädigen würden. Darunter fallen vor allem Betriebs- oder Geschäftsgeheimnisse des Auftragnehmers. Informationen, die einen Rückschluss auf die Kalkulation oder Produktions- und Verfahrensabläufe des Auftragnehmers zulassen, dürfen nicht weitergegeben werden. Diese Regelung steht in engem Zusammenhang mit § 5 Abs. 2 S. 2 VgV, wonach der Auftraggeber verpflichtet ist, die Angebote und deren Anlagen auch nach Abschluss des Vergabeverfahrens vertraulich zu behandeln sowie § 39 Abs. 6 Nr. 3 VgV."@de;
+  epo:hasMaskableProperty epo:hasReceivedTenders;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/eo-int> .
+
+<http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_ReceivedSubmissionsStatistics6_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/SubmissionStatisticalInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-02+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Der Grund für die Nichtveröffentlichung bestimmter Verfahrensangaben ist darin begründet, dass bestimmte Angaben berechtigte geschäftliche Interessen eines Unternehmens schädigen würden. Darunter fallen vor allem Betriebs- oder Geschäftsgeheimnisse des Auftragnehmers. Informationen, die einen Rückschluss auf die Kalkulation oder Produktions- und Verfahrensabläufe des Auftragnehmers zulassen, dürfen nicht weitergegeben werden. Diese Regelung steht in engem Zusammenhang mit § 5 Abs. 2 S. 2 VgV, wonach der Auftraggeber verpflichtet ist, die Angebote und deren Anlagen auch nach Abschluss des Vergabeverfahrens vertraulich zu behandeln sowie § 39 Abs. 6 Nr. 3 VgV."@de;
+  epo:hasMaskableProperty epo:hasReceivedTenders;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/eo-int> .
+
+<http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_ReceivedSubmissionsStatistics7_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/SubmissionStatisticalInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-02+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Der Grund für die Nichtveröffentlichung bestimmter Verfahrensangaben ist darin begründet, dass bestimmte Angaben berechtigte geschäftliche Interessen eines Unternehmens schädigen würden. Darunter fallen vor allem Betriebs- oder Geschäftsgeheimnisse des Auftragnehmers. Informationen, die einen Rückschluss auf die Kalkulation oder Produktions- und Verfahrensabläufe des Auftragnehmers zulassen, dürfen nicht weitergegeben werden. Diese Regelung steht in engem Zusammenhang mit § 5 Abs. 2 S. 2 VgV, wonach der Auftraggeber verpflichtet ist, die Angebote und deren Anlagen auch nach Abschluss des Vergabeverfahrens vertraulich zu behandeln sowie § 39 Abs. 6 Nr. 3 VgV."@de;
+  epo:hasMaskableProperty epo:hasReceivedTenders;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/eo-int> .
+
+<http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_ReceivedSubmissionsStatistics8_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/SubmissionStatisticalInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-02+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Der Grund für die Nichtveröffentlichung bestimmter Verfahrensangaben ist darin begründet, dass bestimmte Angaben berechtigte geschäftliche Interessen eines Unternehmens schädigen würden. Darunter fallen vor allem Betriebs- oder Geschäftsgeheimnisse des Auftragnehmers. Informationen, die einen Rückschluss auf die Kalkulation oder Produktions- und Verfahrensabläufe des Auftragnehmers zulassen, dürfen nicht weitergegeben werden. Diese Regelung steht in engem Zusammenhang mit § 5 Abs. 2 S. 2 VgV, wonach der Auftraggeber verpflichtet ist, die Angebote und deren Anlagen auch nach Abschluss des Vergabeverfahrens vertraulich zu behandeln sowie § 39 Abs. 6 Nr. 3 VgV."@de;
+  epo:hasMaskableProperty epo:hasReceivedTenders;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/eo-int> .
+
+<http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_ReceivedSubmissionsStatistics9_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/SubmissionStatisticalInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-02+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Der Grund für die Nichtveröffentlichung bestimmter Verfahrensangaben ist darin begründet, dass bestimmte Angaben berechtigte geschäftliche Interessen eines Unternehmens schädigen würden. Darunter fallen vor allem Betriebs- oder Geschäftsgeheimnisse des Auftragnehmers. Informationen, die einen Rückschluss auf die Kalkulation oder Produktions- und Verfahrensabläufe des Auftragnehmers zulassen, dürfen nicht weitergegeben werden. Diese Regelung steht in engem Zusammenhang mit § 5 Abs. 2 S. 2 VgV, wonach der Auftraggeber verpflichtet ist, die Angebote und deren Anlagen auch nach Abschluss des Vergabeverfahrens vertraulich zu behandeln sowie § 39 Abs. 6 Nr. 3 VgV."@de;
+  epo:hasMaskableProperty epo:hasReceivedTenders;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/eo-int> .
+
+<http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Tender/TEN-0001>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-02+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Der Grund für die Nichtveröffentlichung bestimmter Verfahrensangaben ist darin begründet, dass bestimmte Angaben berechtigte geschäftliche Interessen eines Unternehmens schädigen würden. Darunter fallen vor allem Betriebs- oder Geschäftsgeheimnisse des Auftragnehmers. Informationen, die einen Rückschluss auf die Kalkulation oder Produktions- und Verfahrensabläufe des Auftragnehmers zulassen, dürfen nicht weitergegeben werden. Diese Regelung steht in engem Zusammenhang mit § 5 Abs. 2 S. 2 VgV, wonach der Auftraggeber verpflichtet ist, die Angebote und deren Anlagen auch nach Abschluss des Vergabeverfahrens vertraulich zu behandeln sowie § 39 Abs. 6 Nr. 3 VgV."@de;
+  epo:hasMaskableProperty epo:isVariant;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/eo-int> .
+
 <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice>
   a epo:Notice, epo:Notice29, epo:ResultNotice;
   epo:announcesAwardDecision <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/AwardDecision/CON-0001>;
+  epo:announcesContract <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Contract/CON-0001>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Tenderer/TPA-0001>;
-  epo:hasESenderDispatchDate "2024-07-03T13:20:26+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-07-03T13:20:26+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/result>;
   epo:hasNoticePublicationNumber "00400283-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-standard>;
-  epo:hasOJSIssueNumber "129/2024";
+  epo:hasOJSIssueNumber 129;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU>;
   epo:hasPublicationDate "2024-07-04Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Procedure/defd3e8c-11eb-426d-8c24-a3cd83703e8a>;
@@ -306,6 +520,22 @@ Für die initiale Qualitätskontrolle des Probenmaterials auf den vorhandenen Ta
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "222ea8df-760c-48a8-81ca-4802afd60968" .
+
+<http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.7" .
+
+<http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Organization/Identifier$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -412,7 +642,7 @@ Für die initiale Qualitätskontrolle des Probenmaterials auf den vorhandenen Ta
 
 <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Procedure/defd3e8c-11eb-426d-8c24-a3cd83703e8a>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1>,
     <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation2>;
   epo:hasAdditionalInformation """Bekanntmachungs-ID: CXS0Y4CY1QFYN2N8
@@ -424,7 +654,7 @@ eForms sind standardisierte Bekanntmachungsdokumente des öffentlichen Einkaufs 
   epo:hasLegalBasisDescription "vgv";
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/ProcedurePurpose$_ContractAwardNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/DirectAwardTerm$_ContractAwardNotice1_TenderingProcess1_ProcessJustification1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/DirectAwardTerm$_ContractAwardNotice1_TenderingProcess1_ProcessJustification1>,
     <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/ProcedureTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>;
   dct:description "Erwerb von Verbrauchsmaterialien für Tape Station Analysegeräte aufgeteilt auf die Prä- und Post-PCR im Rahmen der initialen Qualitätskontrolle (QC) sowie genetische Analyse nach der Whole Exome Sequencing Methode (WES) mit automatisierten speziellen Liquid-Handling Robotern des Herstellers Agilent."@de;
   dct:title "Universität zu Köln - Verbrauchsmaterialien für Qualitätskontrolle"@de;
@@ -507,7 +737,7 @@ eForms sind standardisierte Bekanntmachungsdokumente des öffentlichen Einkaufs 
 <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Tender/TEN-0001>
   a epo:Tender;
   epo:hasSubcontracting <http://publications.europa.eu/resource/authority/applicability/no>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/Lot/LOT-0001> .
 
 <http://data.europa.eu/a4g/resource/222ea8df-760c-48a8-81ca-4802afd60968-01/TenderAwardOutcome/TEN-0001>

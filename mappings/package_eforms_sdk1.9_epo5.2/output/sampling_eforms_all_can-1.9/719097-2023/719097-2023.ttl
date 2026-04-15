@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -106,7 +106,8 @@
 
 <http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works> .
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -143,12 +144,12 @@
 
 <http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/Lot/Identifier/42641>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>;
   epo:isUsingEUFunds false;
@@ -170,16 +171,44 @@
   epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/45210000>;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/45200000> .
 
+<http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_DecisionReason1_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/LotAwardOutcome/RES-0001>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/Notice>;
+  epo:hasAccessibilityDate "2023-11-27+01:00"^^xsd:date;
+  epo:hasConfidentialityJustification """Ordregiver den 20. november 2023 har truffet beslutning om at annullere udbudsproceduren med henblik på genudbud.
+Ordregiver er i forbindelse med evalueringen af de indkomne tilbud blevet opmærksom på en række væsentlige uklarheder og fejl i udbudsmaterialet som medfører, at udbudsmaterialet ikke kan danne grundlag for en lovlig tildeling: 
+1)	Styregruppens behov for, at der ikke arbejdes i flere end 2 blokke samtidigt er ved en fejl ikke blevet implementeret som et ufravigeligt krav i udbudsmaterialet. Dette kan have påvirket udbudsresultatet, idet nogle bydende i deres tilbud har forudsat, at der godt kan arbejdes i flere end 2 blokke samtidigt. Ordregiver vurderer således, at tilbuddene ikke er direkte sammenlignelige.
+2)	Der er fastsat en pointmodel vedrørende priskriteriet ”Hovedentreprisesum”, hvorefter laveste pris + 100 % tildeles 1 point. Det faktiske spænd i tilbuddene er dog kun ca. 25 % og det er derfor kun en lille del af pointskalaen som udnyttes. Dette medfører, at pointmodellen ikke afspejler den faktiske spredning i de indkomne tilbud og at de tilbudte priser i praksis vægter lagt mindre end de 50 % som er forudsat i udbudsmaterialet. Modellen er således ikke egnet til at identificere det bedste forhold mellem pris og kvalitet, jf. den tilsvarende situation i Klagenævnet for Udbuds kendelse af 9. januar 2012, Reno-Norden A/S mod Skive Kommune.
+Ordregiver har på ovenstående baggrund truffet beslutning om at annullere udbuddet og genudbyde opgaven med et præciseret udbudsmateriale."""@da;
+  epo:hasMaskableProperty epo:hasNonAwardJustification;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/fair-comp> .
+
+<http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/LotAwardOutcome/RES-0001>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/Notice>;
+  epo:hasAccessibilityDate "2023-11-27+01:00"^^xsd:date;
+  epo:hasConfidentialityJustification """Ordregiver den 20. november 2023 har truffet beslutning om at annullere udbudsproceduren med henblik på genudbud.
+Ordregiver er i forbindelse med evalueringen af de indkomne tilbud blevet opmærksom på en række væsentlige uklarheder og fejl i udbudsmaterialet som medfører, at udbudsmaterialet ikke kan danne grundlag for en lovlig tildeling: 
+1)	Styregruppens behov for, at der ikke arbejdes i flere end 2 blokke samtidigt er ved en fejl ikke blevet implementeret som et ufravigeligt krav i udbudsmaterialet. Dette kan have påvirket udbudsresultatet, idet nogle bydende i deres tilbud har forudsat, at der godt kan arbejdes i flere end 2 blokke samtidigt. Ordregiver vurderer således, at tilbuddene ikke er direkte sammenlignelige.
+2)	Der er fastsat en pointmodel vedrørende priskriteriet ”Hovedentreprisesum”, hvorefter laveste pris + 100 % tildeles 1 point. Det faktiske spænd i tilbuddene er dog kun ca. 25 % og det er derfor kun en lille del af pointskalaen som udnyttes. Dette medfører, at pointmodellen ikke afspejler den faktiske spredning i de indkomne tilbud og at de tilbudte priser i praksis vægter lagt mindre end de 50 % som er forudsat i udbudsmaterialet. Modellen er således ikke egnet til at identificere det bedste forhold mellem pris og kvalitet, jf. den tilsvarende situation i Klagenævnet for Udbuds kendelse af 9. januar 2012, Reno-Norden A/S mod Skive Kommune.
+Ordregiver har på ovenstående baggrund truffet beslutning om at annullere udbuddet og genudbyde opgaven med et præciseret udbudsmateriale."""@da;
+  epo:hasMaskableProperty epo:hasAwardStatus;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/fair-comp> .
+
 <http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/Notice>
   a epo:Notice, epo:Notice29, epo:ResultNotice;
   epo:announcesAwardDecision <http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/AwardDecision/RES-0001>;
-  epo:hasESenderDispatchDate "2023-11-24T11:22:29Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2023-11-24T11:22:29Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/result>;
   epo:hasNoticePublicationNumber "00719097-2023";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-standard>;
-  epo:hasOJSIssueNumber "228/2023";
+  epo:hasOJSIssueNumber 228;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DAN>;
   epo:hasPublicationDate "2023-11-27Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/Lot/LOT-0001>;
   epo:refersToPrevious <http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/Notice/105562-2023>,
@@ -219,6 +248,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "a2b6a28a-dc69-4eda-8db3-4000f056b3ef" .
+
+<http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.9" .
+
+<http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/Organization/Identifier$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -268,7 +313,7 @@
 
 <http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/Procedure/fd71f213-4b0b-4940-94ee-eb6853a9de52>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/a2b6a28a-dc69-4eda-8db3-4000f056b3ef-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation """Ordregiver har den 20. november 2023 har truffet beslutning om at annullere udbudsproceduren med henblik på genudbud. 
 Ordregiver er i forbindelse med evalueringen af de indkomne tilbud blevet opmærksom på en række væsentlige uklarheder og fejl i udbudsmaterialet som medfører, at udbudsmaterialet ikke kan danne grundlag for en lovlig tildeling: 

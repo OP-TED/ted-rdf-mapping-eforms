@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -31,9 +31,7 @@
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
   a epo:AccessTerm;
-  epo:hasPublicAccessURL "https://www.enarocanje.si/api/datoteka/get?id=Mjc0ODE4O1JhenBpc25hX2Rva3VtZW50YWNpamFfSk4tNi0yMDI0X3BvcHJhdmVrMjUtMy0yMDI0LnppcA"^^xsd:anyURI;
-  epo:involvesProcurementDocument <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ProcurementDocument$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1DocLot0>;
-  epo:isProcurementDocumentRestricted false .
+  epo:hasPublicAccessURL "https://www.enarocanje.si/api/datoteka/get?id=Mjc0ODE4O1JhenBpc25hX2Rva3VtZW50YWNpamFfSk4tNi0yMDI0X3BvcHJhdmVrMjUtMy0yMDI0LnppcA"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>
   a epo:AwardCriterion;
@@ -131,6 +129,14 @@
   cccev:email "nabava@zd-lj.si";
   cccev:telephone "+38613003925" .
 
+<http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2024-04-15+02:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ContractEndPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2026-01-31+01:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ContractLocation$_ContractNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/SVN>;
@@ -148,19 +154,15 @@
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/SVN>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/SI041> .
 
-<http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2024-04-15+02:00"^^xsd:date;
-  epo:hasEnd "2026-01-31+01:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/required>;
   epo:hasEOrdering false;
   epo:hasEPayment false;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -172,123 +174,99 @@
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/crime-org> .
+  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement10>
   a epo:ExclusionGround;
-  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/socsec-law> .
+  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement11>
   a epo:ExclusionGround;
-  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/labour-law> .
+  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement12>
   a epo:ExclusionGround;
-  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/bankruptcy> .
+  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement13>
   a epo:ExclusionGround;
-  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/insolvency> .
+  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement14>
   a epo:ExclusionGround;
-  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/cred-arran> .
+  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement15>
   a epo:ExclusionGround;
-  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/bankr-nat> .
+  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement16>
   a epo:ExclusionGround;
-  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/liq-admin> .
+  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement17>
   a epo:ExclusionGround;
-  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/susp-act> .
+  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement18>
   a epo:ExclusionGround;
-  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/prof-misconduct> .
+  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement19>
   a epo:ExclusionGround;
-  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/distorsion> .
+  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement2>
   a epo:ExclusionGround;
-  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/corruption> .
+  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement20>
   a epo:ExclusionGround;
-  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/partic-confl> .
+  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement21>
   a epo:ExclusionGround;
-  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/prep-confl> .
+  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement22>
   a epo:ExclusionGround;
-  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/sanction> .
+  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement23>
   a epo:ExclusionGround;
-  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/misinterpr> .
+  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement24>
   a epo:ExclusionGround;
-  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/nati-ground> .
+  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement3>
   a epo:ExclusionGround;
-  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/fraud> .
+  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement4>
   a epo:ExclusionGround;
-  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/terr-offence> .
+  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement5>
   a epo:ExclusionGround;
-  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/finan-laund> .
+  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement6>
   a epo:ExclusionGround;
-  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/human-traffic> .
+  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement7>
   a epo:ExclusionGround;
-  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/tax-pay> .
+  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement8>
   a epo:ExclusionGround;
-  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/socsec-pay> .
+  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement9>
   a epo:ExclusionGround;
-  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/envir-law> .
+  dct:description "Navedeno v razpisni dokumentaciji v točki 2.2 Razlogi za izključitev"@sl .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -332,56 +310,38 @@
   a epo:InnovativeProcurement;
   epo:fulfillsRequirement <http://publications.europa.eu/resource/authority/innovative-acquisition/other> .
 
+<http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  time:hasEnd <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ContractEndPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/LeadBuyer$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1>
   a epo:LeadBuyer;
   epo:playedBy <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/Organization/ORG-0001> .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/GreenProcurement$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType1>,
     <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/InnovativeProcurement$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType3>,
-    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/SocialProcurement$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType2>,
-    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/StrategicProcurement$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>;
+    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/SocialProcurement$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>,
+    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/SocialProcurement$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType2>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/LotPurpose$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA false;
   epo:isSMESuitable true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
     <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/OpeningTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1>,
     <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>,
-    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>;
+    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1DocLot0>;
   epo:isUsingEUFunds false;
   epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>,
     <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion2>,
-    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement10>,
-    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement11>,
-    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement12>,
-    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement13>,
-    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement14>,
-    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement15>,
-    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement16>,
-    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement17>,
-    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement18>,
-    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement19>,
-    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement2>,
-    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement20>,
-    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement21>,
-    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement22>,
-    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement23>,
-    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement24>,
-    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement3>,
-    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement4>,
-    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement5>,
-    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement6>,
-    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement7>,
-    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement8>,
-    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement9>,
     <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ParticipationCondition$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1>,
     <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>,
     <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>,
@@ -411,13 +371,15 @@
     <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ProcurementProcedureInformationProvider/ORG-0002organization>,
     <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ReviewProcedureInformationProvider/ORG-0004organization>,
     <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/Reviewer/ORG-0003organization>;
-  epo:hasESenderDispatchDate "2024-03-28T09:38:10.0863784+01:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-03-28T09:38:10.0863784+01:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00188538-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/cn-standard>;
-  epo:hasOJSIssueNumber "64/2024";
+  epo:hasOJSIssueNumber 64;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/SLV>;
   epo:hasPublicationDate "2024-03-29Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/Lot/LOT-0000>;
   epo:refersToPrevious <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/Notice/103c8243-95ee-43ea-9224-74a6e2e8dd56-01>;
@@ -445,14 +407,26 @@
   epo:hasScheme "notice-id";
   skos:notation "dd4904fd-78af-492f-b123-7cf14ba445aa" .
 
-<http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/OpenTenderEventPlace$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1_OccurenceLocation1>
-  a locn:Address;
-  locn:fullAddress "https://ejn.gov.si/ponudba/pages/aktualno/aktualno_jnc_podrobno.xhtml?zadevaId=37274"@sl .
+<http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.6" .
+
+<http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/OpeningTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1>
   a epo:OpeningTerm;
-  epo:definesOpeningPlace <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/OpenTenderEventPlace$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1_OccurenceLocation1>;
-  epo:hasOpeningDateTime "2024-04-08T12:00:00.0000000+01:00"^^xsd:dateTime .
+  epo:hasOpeningDateTime "2024-04-08T12:00:00.0000000+01:00"^^xsd:dateTime;
+  epo:hasOpeningPlace "https://ejn.gov.si/ponudba/pages/aktualno/aktualno_jnc_podrobno.xhtml?zadevaId=37274"@sl .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/Organization/Identifier$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -530,14 +504,38 @@
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/Procedure/bfdfa7b1-3229-4a19-b4ad-9a76a67c9be5>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/Procedure/Identifier/JN-6-2024>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/Lot/LOT-0000>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ProcedurePurpose$_ContractNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ProcedureTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ProcedureTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement10>,
+    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement11>,
+    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement12>,
+    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement13>,
+    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement14>,
+    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement15>,
+    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement16>,
+    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement17>,
+    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement18>,
+    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement19>,
+    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement2>,
+    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement20>,
+    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement21>,
+    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement22>,
+    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement23>,
+    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement24>,
+    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement3>,
+    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement4>,
+    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement5>,
+    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement6>,
+    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement7>,
+    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement8>,
+    <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement9>;
   dct:description "Nabava potrošnega materiala za tiskanje"@sl;
   dct:title "Nabava potrošnega materiala za tiskanje"@sl;
   adms:identifier <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/Procedure/Identifier/bfdfa7b1-3229-4a19-b4ad-9a76a67c9be5> .
@@ -555,10 +553,6 @@
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ProcedureTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>
   a epo:ProcedureTerm;
   epo:definesMediator <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/Mediator/ORG-0005organization> .
-
-<http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ProcurementDocument$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1DocLot0>
-  a epo:ProcurementDocument;
-  epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/SLV> .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/ProcurementProcedureInformationProvider/ORG-0002organization>
   a epo:ProcurementProcedureInformationProvider;
@@ -594,29 +588,26 @@
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>;
   skos:prefLabel "Navedeno v razpisni dokumentaciji v točki 2.3 Pogoji za sodelovanje"@sl .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/ef-stand>;
   skos:prefLabel "Navedeno v razpisni dokumentaciji v točki 2.3 Pogoji za sodelovanje"@sl .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/tp-abil>;
   skos:prefLabel "Navedeno v razpisni dokumentaciji v točki 2.3 Pogoji za sodelovanje"@sl .
+
+<http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/SocialProcurement$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>
+  a epo:SocialProcurement;
+  epo:includesAccessibilityCriterion <http://publications.europa.eu/resource/authority/accessibility/n-inc> .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/SocialProcurement$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType2>
   a epo:SocialProcurement;
   epo:fulfillsRequirement <http://publications.europa.eu/resource/authority/social-objective/other> .
-
-<http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/StrategicProcurement$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>
-  a epo:StrategicProcurement;
-  epo:includesAccessibilityCriterion <http://publications.europa.eu/resource/authority/accessibility/n-inc> .
 
 <http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:SubmissionTerm;
@@ -626,3 +617,8 @@
   epo:hasReceiptTenderDeadline "2024-04-08T09:00:00.0000000+01:00"^^xsd:dateTime;
   epo:hasVariantPermission <http://publications.europa.eu/resource/authority/permission/not-allowed>;
   epo:isGuaranteeRequired true .
+
+<http://data.europa.eu/a4g/resource/dd4904fd-78af-492f-b123-7cf14ba445aa-01AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1DocLot0>
+  a epo:AccessTerm;
+  epo:isProcurementDocumentRestricted false;
+  epo:providesProcurementDocumentsInOfficialLanguage <http://publications.europa.eu/resource/authority/language/SLV> .

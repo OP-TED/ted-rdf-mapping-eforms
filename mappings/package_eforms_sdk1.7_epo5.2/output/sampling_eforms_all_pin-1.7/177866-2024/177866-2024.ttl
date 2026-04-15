@@ -17,19 +17,13 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>
   a epo:AccessTerm;
   epo:definesProcurementProcedureInformationProvider <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ProcurementProcedureInformationProvider/ORG-0001organization> .
-
-<http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
-  a epo:AccessTerm;
-  epo:hasPublicAccessURL "https://www.quickborn.de"^^xsd:anyURI;
-  epo:involvesProcurementDocument <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ProcurementDocument$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1Nein>;
-  epo:isProcurementDocumentRestricted false .
 
 <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/Buyer/ORG-0001organization>
   a epo:Buyer;
@@ -70,6 +64,10 @@
   cccev:email "esender_hub@bescha.bund.de";
   cccev:telephone "+49228996100" .
 
+<http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2024-12-31+01:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
@@ -90,19 +88,16 @@
   locn:postCode "25451";
   locn:postName "Quickborn" .
 
-<http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2024-12-31+01:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/Interval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasAdditionalContractNature <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works>;
   epo:hasMaximumNumberOfRenewals 0;
   epo:hasOptionsDescription "TGA Planung"@de;
   epo:hasPerformanceConditions "keine Angaben"@de;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -114,8 +109,7 @@
 
 <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Mangelnde Eignung"@de;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/insolvency> .
+  dct:description "Mangelnde Eignung"@de .
 
 <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -140,9 +134,29 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0002" .
 
+<http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/Interval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/LeadBuyer$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1>
   a epo:LeadBuyer;
   epo:playedBy <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2/Identifier> .
+
+<http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2/Identifier>
+  a adms:Identifier;
+  skos:notation "vgv" .
+
+<http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference3>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference3/Identifier> .
+
+<http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference3/Identifier>
+  a adms:Identifier;
+  skos:notation "vgv" .
 
 <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/Lot/Identifier/24-03-VgV-Q>
   a adms:Identifier;
@@ -151,7 +165,7 @@
 
 <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/GreenProcurement$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>;
   epo:hasAdditionalInformation "#Besonders geeignet für:selbst#"@de;
@@ -160,14 +174,13 @@
   epo:hasPurpose <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA false;
   epo:isSMESuitable true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
-    <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
-    <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/SubmissionTerm$_PriorInformationNotice1_ProcurementProjectLot1>;
+    <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/SubmissionTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1Nein>;
   epo:isUsingEUFunds false;
-  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ParticipationCondition$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1>,
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ParticipationCondition$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1>,
     <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>;
   epo:usesTechnique <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/DynamicPurchaseSystemTechnicalUsage$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>;
   dct:description "In der Himmelmoor in Quickborn befindet sich ein denkmalgeschütztes Gebäudeessemble, welches für die Öffentlichkeit zugänglich und für diverse Veranstaltungen nutzbar gemacht werden soll. Die zukünftig angedachten Nutzungen dieser Gebäude sind wie folgt geplant:Henri-Goldstein-Haus als Gedenkstätte, Verwaltungsgebäude als Betriebsleiterwohnung, Beherbungsmöglichkeiten Seminarteilnehmer und das Gefängnishaus als EG Ausstellungen UNI HH, OG Büros/Archive/Vereine/historische Möbelausstellung, DG Seminare/Veranstaltungen). Die Leistung beinhaltet die baurechtliche und technische TGA-Planung der drei Gebäuden hins. der zukünftigen Nutzungen sowie die Ermittlung der Kostenhöhe und Terminierung. Die Planungen werden stufenweise beauftragt."@de;
@@ -190,18 +203,21 @@
 
 <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/Notice>
   a epo:Notice, epo:Notice7, epo:PlanningNotice;
+  epo:announcesProcedure <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/Procedure/0000000-0000-4000-8000-000000000000>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/Buyer/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/LeadBuyer$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1>,
     <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ProcurementProcedureInformationProvider/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>,
     <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/Reviewer/ORG-0001organization>;
-  epo:hasESenderDispatchDate "2024-03-22T00:00:00+01:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-03-22T00:00:00+01:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticePublicationNumber "00177866-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-rtl>;
-  epo:hasOJSIssueNumber "60/2024";
+  epo:hasOJSIssueNumber 60;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU>;
   epo:hasPublicationDate "2024-03-25Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/Notice/SpecificationInformation/Version>;
   epo:hasVersion "02";
   epo:refersToLot <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/Procedure/0000000-0000-4000-8000-000000000000>;
@@ -219,6 +235,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "0cca1a6d-ceb5-46cd-bfc7-0759a6a10094" .
+
+<http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.7" .
+
+<http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -250,9 +282,17 @@
   a epo:ParticipationCondition;
   epo:hasReservedProcurement <http://publications.europa.eu/resource/authority/reserved-procurement/none> .
 
+<http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/PlanningNotice>
+  a epo:PlanningNotice;
+  epo:announcesLot <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/Lot/LOT-0001> .
+
+<http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/Procedure/>
+  a epo:Procedure;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1> .
+
 <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/Procedure/0000000-0000-4000-8000-000000000000>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/MonetaryValueProcedure$_PriorInformationNotice1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/Procedure/Identifier/24-03-VgV-Q>;
@@ -262,7 +302,8 @@
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ProcedureTerm$_PriorInformationNotice1_TenderingTerms1_LotDistribution1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ProcedureTerm$_PriorInformationNotice1_TenderingTerms1_LotDistribution1>,
+    <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>;
   dct:description "In der Himmelmoor in Quickborn befindet sich ein denkmalgeschütztes Gebäudeessemble, welches für die Öffentlichkeit zugänglich und für diverse Veranstaltungen nutzbar gemacht werden soll. Die zukünftig angedachten Nutzungen dieser Gebäude sind wie folgt geplant:Henri-Goldstein-Haus als Gedenkstätte, Verwaltungsgebäude als Betriebsleiterwohnung, Beherbungsmöglichkeiten Seminarteilnehmer und das Gefängnishaus als EG Ausstellungen UNI HH, OG Büros/Archive/Vereine/historische Möbelausstellung, DG Seminare/Veranstaltungen). Die Leistung beinhaltet die baurechtliche und technische TGA-Planung der drei Gebäuden hins. der zukünftigen Nutzungen sowie die Ermittlung der Kostenhöhe und Terminierung. Die Planungen werden stufenweise beauftragt."@de;
   dct:title "TGA Planung"@de .
 
@@ -293,9 +334,9 @@
   epo:hasAmountValue 3084000.0;
   epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
 
-<http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ProcurementDocument$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1Nein>
-  a epo:ProcurementDocument;
-  epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU> .
+<http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>
+  a epo:ProcessPlanningTerm;
+  epo:hasEstimatedContractNoticePublicationDate "2024-05-14+02:00"^^xsd:date .
 
 <http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02/ProcurementProcedureInformationProvider/ORG-0001organization>
   a epo:ProcurementProcedureInformationProvider;
@@ -339,3 +380,9 @@
   epo:hasLateSubmissionPermission <http://publications.europa.eu/resource/authority/missing-info-submission/late-some>;
   epo:hasVariantPermission <http://publications.europa.eu/resource/authority/permission/not-allowed>;
   epo:isMultipleTenderSubmissionAllowed false .
+
+<http://data.europa.eu/a4g/resource/0cca1a6d-ceb5-46cd-bfc7-0759a6a10094-02AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1Nein>
+  a epo:AccessTerm;
+  epo:hasPublicAccessURL "https://www.quickborn.de"^^xsd:anyURI;
+  epo:isProcurementDocumentRestricted false;
+  epo:providesProcurementDocumentsInOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU> .

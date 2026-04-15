@@ -17,14 +17,14 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/AwardDecision/2024-07-09%2B02%3A00>
   a epo:AwardDecision;
   epo:comprisesAwardOutcome <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/LotAwardOutcome/RES-0001>;
-  epo:hasAwardDecisionDate "2024-07-09+02:00"^^xsd:date .
+  epo:hasAwardDecisionDate "2024-07-09T00:00:00+02:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/Buyer/ORG-0001>
   a epo:Buyer;
@@ -65,7 +65,8 @@
 
 <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/Identifier/LOT-0001>
   a adms:Identifier;
@@ -84,9 +85,9 @@
 
 <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>;
   epo:isUsingEUFunds false;
   dct:description """construction d'une Maison d'enfants à Caractère Social
@@ -104,17 +105,29 @@ Concours de maîtrise d'oeuvre"""@fr;
   a epo:Purpose;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/71000000> .
 
+<http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/NonPublishedInformation$_ContractAwardNotice1_TenderingProcess1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/Procedure/ee356ae4-a0ed-4093-b2cb-4b4343d4e4ca>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/Notice>;
+  epo:hasAccessibilityDate "2023-12-24+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Autre procédure en plusieurs étapes"@fr;
+  epo:hasMaskableProperty epo:hasProcedureType;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/law-enf> .
+
 <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/Notice>
   a epo:Notice, epo:Notice36, epo:ResultNotice;
   epo:announcesAwardDecision <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/AwardDecision/2024-07-09%2B02%3A00>;
+  epo:announcesContract <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/Contract/CON-0001>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/Tenderer/TPA-0001>;
-  epo:hasESenderDispatchDate "2024-10-04T13:44:01+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-10-04T13:44:01+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/result>;
   epo:hasNoticePublicationNumber "00602825-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-desg>;
-  epo:hasOJSIssueNumber "195/2024";
+  epo:hasOJSIssueNumber 195;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/FRA>;
   epo:hasPublicationDate "2024-10-07+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/Lot/LOT-0001>;
   epo:refersToPrevious <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/Notice/790847-2023>;
@@ -135,6 +148,22 @@ Concours de maîtrise d'oeuvre"""@fr;
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "dd74cb34-6846-4e76-b6f6-b3eabdd3727b" .
+
+<http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.11" .
+
+<http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/Organization/Identifier$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -169,7 +198,7 @@ Concours de maîtrise d'oeuvre"""@fr;
 
 <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/Procedure/ee356ae4-a0ed-4093-b2cb-4b4343d4e4ca>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/Lot/LOT-0001>;
@@ -211,7 +240,7 @@ Concours de maîtrise d'oeuvre"""@fr;
 
 <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/Tender/TEN-0001>
   a epo:Tender;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/Lot/LOT-0001>;
   epo:isVariant false;
   adms:identifier <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/Tender/Identifier/Offre%20groupement%20Catherine%20Dormoy%20%2F%20OTE%20ing%C3%A9nierie%20%2F%20Ot%C3%A9lio> .
@@ -219,7 +248,8 @@ Concours de maîtrise d'oeuvre"""@fr;
 <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/TenderAwardOutcome/TEN-0001>
   a epo:TenderAwardOutcome;
   epo:concernsTender <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/Tender/TEN-0001>;
-  epo:hasAwardRank 1 .
+  epo:hasAwardRank 1;
+  epo:specifiesForeignSubsidiesMeasureConclusion <http://publications.europa.eu/resource/authority/foreign-subsidy-measure-conclusion/> .
 
 <http://data.europa.eu/a4g/resource/dd74cb34-6846-4e76-b6f6-b3eabdd3727b-01/Tenderer/TPA-0001>
   a epo:Tenderer;

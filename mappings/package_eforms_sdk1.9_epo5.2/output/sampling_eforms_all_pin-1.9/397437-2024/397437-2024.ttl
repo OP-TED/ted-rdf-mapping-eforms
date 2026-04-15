@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -70,15 +70,11 @@
   cccev:email "eproc-esender@eurodyn.com";
   cccev:telephone "+30 2108094500" .
 
-<http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasTimePeriod <http://publications.europa.eu/resource/authority/timeperiod/UNKNOWN> .
-
 <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works>;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/not-known> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/not-known>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -118,14 +114,14 @@
 
 <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/MonetaryValueLot$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/Lot/Identifier/DL-22-0005>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
   epo:isSMESuitable true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/AwardEvaluationTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1>,
     <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
@@ -158,17 +154,20 @@ This proposed scheme will be located on the northern side of the R267 consist of
 
 <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/Notice>
   a epo:Notice, epo:Notice7, epo:PlanningNotice;
+  epo:announcesProcedure <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/Procedure/0000000-0000-4000-8000-000000000000>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/Buyer/ORG-0001>,
     <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/ProcurementProcedureInformationProvider/ORG-0001>,
     <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>,
     <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/Reviewer/ORG-0002>;
-  epo:hasESenderDispatchDate "2024-07-03T11:40:13+01:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-07-03T11:40:13+01:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticePublicationNumber "00397437-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-rtl>;
-  epo:hasOJSIssueNumber "129/2024";
+  epo:hasOJSIssueNumber 129;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/ENG>;
   epo:hasPublicationDate "2024-07-04Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/Procedure/0000000-0000-4000-8000-000000000000>;
@@ -178,6 +177,22 @@ This proposed scheme will be located on the northern side of the R267 consist of
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "199ba69f-0d2a-454a-8142-ace565912bbc" .
+
+<http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.9" .
+
+<http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -221,9 +236,13 @@ This proposed scheme will be located on the northern side of the R267 consist of
   a epo:ParticipationCondition;
   epo:hasReservedProcurement <http://publications.europa.eu/resource/authority/reserved-procurement/none> .
 
+<http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/PlanningNotice>
+  a epo:PlanningNotice;
+  epo:announcesLot <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/Lot/LOT-0001> .
+
 <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/Procedure/0000000-0000-4000-8000-000000000000>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/MonetaryValueProcedure$_PriorInformationNotice1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/Procedure/Identifier/DL-22-0005>;
@@ -231,6 +250,7 @@ This proposed scheme will be located on the northern side of the R267 consist of
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>;
   dct:description """The project will provide a cycle and pedestrian corridor between to two towns of Bundoran and Ballyshannon which will be reserved exclusively for non-motorised journeys, enhancing both the environment and the quality of life of the surrounding area. 
 This proposed scheme will be located on the northern side of the R267 consist of 3m wide shared cycle and pedestrian route commencing 50m west of the Bundoran Roundabout travelling East along a 3.5km rural route. On the approach to Ballyshannon at the speed limits the shared area separates into a 2m wide pedestrian walkway and the 3m wide 2-way cycle track to the Ballyshannon roundabout. Total Scheme is Approximately 5km in Length.
 """@en;
@@ -249,6 +269,10 @@ This proposed scheme will be located on the northern side of the R267 consist of
   a epo:MonetaryValue;
   epo:hasAmountValue 3000000.0;
   epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
+<http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>
+  a epo:ProcessPlanningTerm;
+  epo:hasEstimatedContractNoticePublicationDate "2024-09-23+01:00"^^xsd:date .
 
 <http://data.europa.eu/a4g/resource/199ba69f-0d2a-454a-8142-ace565912bbc-01/ProcurementProcedureInformationProvider/ORG-0001>
   a epo:ProcurementProcedureInformationProvider;

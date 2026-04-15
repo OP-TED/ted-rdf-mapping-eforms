@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -29,7 +29,7 @@
 <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/AwardDecision/2020-07-14%2B03%3A00>
   a epo:AwardDecision;
   epo:comprisesAwardOutcome <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/LotAwardOutcome/RES-0001>;
-  epo:hasAwardDecisionDate "2020-07-14+03:00"^^xsd:date .
+  epo:hasAwardDecisionDate "2020-07-14T00:00:00+03:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/BudgetProvider/ORG-0001organization>
   a epo:BudgetProvider;
@@ -106,7 +106,6 @@
   a epo:Contract;
   epo:hasContractConclusionDate "2020-11-07+02:00"^^xsd:date;
   epo:hasLotReference <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/Lot/LOT-0000>;
-  epo:isSubjectToContractSpecificTerm <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/ContractTerm$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_PayerParty1>;
   epo:signedByBuyer <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/Buyer/ORG-0001organization>;
   dct:title """
 Sopimus muutos ilmoitus koskien rintasyövän seulontojen hankintaa"""@fi;
@@ -120,10 +119,17 @@ Sopimus muutos ilmoitus koskien rintasyövän seulontojen hankintaa"""@fi;
   a epo:ContractAmendment;
   epo:amendsContract <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/Contract/CON-0001> .
 
+<http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2021-01-01+02:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/ContractEndPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2024-12-31+02:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/ContractLocation$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FIN>;
-  locn:address <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/ProcedurePlacePerformance$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1> .
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FIN> .
 
 <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/ContractLocation$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
@@ -165,14 +171,9 @@ Hankintayksikkö on päättänyt hyväksyä hinnanmuutoksen, koska muutoksen tar
   a adms:Identifier;
   skos:notation "CON-0001" .
 
-<http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2021-01-01+02:00"^^xsd:date;
-  epo:hasEnd "2024-12-31+02:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/required>;
   epo:hasEOrdering false;
@@ -182,7 +183,8 @@ Hankintayksikkö on päättänyt hyväksyä hinnanmuutoksen, koska muutoksen tar
 """@fi;
   epo:hasPerformanceConditions "Sopimuskausi alkoi 1.1.2021. Hankinnasta on julkaistu ilmoitus tehdystä sopimuksesta 12.7.2021"@fi;
   epo:hasRenewalDescription "Vuosi 2024 on ensimmäinen optiovuosi"@fi;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -233,6 +235,11 @@ Hankintayksikkö on päättänyt hyväksyä hinnanmuutoksen, koska muutoksen tar
   epo:hasScheme "organization";
   skos:notation "ORG-0004" .
 
+<http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  time:hasEnd <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/ContractEndPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/Lot/Identifier/670123>
   a adms:Identifier;
   epo:hasScheme "InternalID";
@@ -240,8 +247,9 @@ Hankintayksikkö on päättänyt hyväksyä hinnanmuutoksen, koska muutoksen tar
 
 <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
+    <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/ContractTerm$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_PayerParty1>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/GreenProcurement$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>;
   epo:hasAdditionalInformation """Asiasta KEUHDno-2023-3804 § 5 julkaistu päätös option käytöstä ja sopimuksen muutoksesta maammografiapalvelusopimukseen 
 liittyen Keusoten nettisivuilla 11.10.2023."""@fi;
@@ -249,7 +257,7 @@ liittyen Keusoten nettisivuilla 11.10.2023."""@fi;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:hasRecurrenceDescription "Hankinta kuuluu jatkuviin palveluihin, joka kilpailutetaan säännöllisesti."@fi;
   epo:isRecurrent true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>;
   epo:isUsingEUFunds false;
   dct:description """Keski-Uudenmaan sote-kuntayhtymä on kilpailuttanut mammografiaseulontapalvelun, joka perustuu terveydenhuoltolain (1326/2010) ja
@@ -270,9 +278,7 @@ Hankinnan kohde on tarkemmin kuvattu tarjouspyynnön liitteessä Palvelukuvaus.
 <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/LotAwardOutcome/RES-0001>
   a epo:LotAwardOutcome;
   epo:comprisesTenderAwardOutcome <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/TenderAwardOutcome/TEN-0001>;
-  epo:concernsLot <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/Lot/LOT-0000>;
-  rdfs:seeAlso <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/BudgetProvider/ORG-0001organization>,
-    <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/PaymentExecutor/ORG-0001organization> .
+  epo:concernsLot <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/Lot/LOT-0000> .
 
 <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>
   a epo:Purpose;
@@ -291,13 +297,16 @@ Hankinnan kohde on tarkemmin kuvattu tarjouspyynnön liitteessä Palvelukuvaus.
 <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/Notice>
   a epo:ContractModificationNotice, epo:Notice, epo:Notice39;
   epo:announcesContractAmendment <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/ContractAmendment$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_ContractModification1>;
-  epo:hasESenderDispatchDate "2023-10-11T12:32:22+00:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2023-10-11T12:32:22+00:00"^^xsd:dateTime;
+  epo:hasESenderDispatchDate "2023-10-11T12:32:49+00:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/cont-modif>;
   epo:hasNoticePublicationNumber "00615939-2023";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-modif>;
-  epo:hasOJSIssueNumber "197/2023";
+  epo:hasOJSIssueNumber 197;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/FIN>;
   epo:hasPublicationDate "2023-10-12Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToAwardDecision <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/AwardDecision/2020-07-14%2B03%3A00>;
   epo:refersToContractToBeModified <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/Contract/CON-0001>;
@@ -332,6 +341,22 @@ Hankinnan kohde on tarkemmin kuvattu tarjouspyynnön liitteessä Palvelukuvaus.
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "58afdcf1-595b-49f5-919b-ca6d53b30587" .
+
+<http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.7" .
+
+<http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
   a epo:NoticeAwardInformation;
@@ -397,7 +422,7 @@ Hankinnan kohde on tarkemmin kuvattu tarjouspyynnön liitteessä Palvelukuvaus.
 
 <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/Procedure/054afb8e-d646-460e-bbf1-2b34fe35ecb2>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation """Asiasta KEUHDno-2023-3804 § 5 julkaistu päätös option käytöstä ja sopimuksen muutoksesta maammografiapalvelusopimukseen 
 liittyen Keusoten nettisivuilla 11.10.2023."""@fi;
@@ -405,7 +430,7 @@ liittyen Keusoten nettisivuilla 11.10.2023."""@fi;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/Lot/LOT-0000>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/ProcedurePurpose$_ContractAwardNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/ProcedureTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/ProcedureTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>;
   dct:description """Keski-Uudenmaan sote-kuntayhtymä on kilpailuttanut mammografiaseulontapalvelun, joka perustuu terveydenhuoltolain (1326/2010) ja
 valtioneuvoston asetuksiin seulonnoista (339/2011 ja 908/2018). Mammografiaan perustuva rintasyöpäseulontatutkimus on
 suoritettava kaikkien voimassa olevien viranomaismääräysten edellyttämällä tavalla ja standardoituja seulontakäytäntöjä noudattaen, suoradigitaalisella ajanmukaisella laitteella.
@@ -429,10 +454,6 @@ Hankinnan kohde on tarkemmin kuvattu tarjouspyynnön liitteessä Palvelukuvaus.
   a adms:Identifier;
   epo:hasScheme "InternalID";
   skos:notation "KEUHDno-2023-3804" .
-
-<http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/ProcedurePlacePerformance$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FIN> .
 
 <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/ProcedurePurpose$_ContractAwardNotice1_ProcurementProject1>
   a epo:Purpose;
@@ -494,7 +515,7 @@ Hankinnan kohde on tarkemmin kuvattu tarjouspyynnön liitteessä Palvelukuvaus.
   a epo:Tender;
   epo:hasFinancialOfferValue <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
   epo:hasSubcontracting <http://publications.europa.eu/resource/authority/applicability/no>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/Lot/LOT-0000>;
   adms:identifier <http://data.europa.eu/a4g/resource/58afdcf1-595b-49f5-919b-ca6d53b30587-01/Tender/Identifier/362955-2021> .
 

@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -66,7 +66,8 @@
 
 <http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -89,7 +90,7 @@
 
 <http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   dct:description "Service d'entretien de remise en état et de nettoyage des espaces verts."@fr;
@@ -109,11 +110,14 @@
 <http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/Notice>
   a epo:Notice, epo:NoticeE4, epo:ResultNotice;
   epo:announcesAwardDecision <http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/AwardDecision/CON-0001>;
+  epo:announcesContract <http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/Contract/CON-0001>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/Tenderer/TPA-0001>;
-  epo:hasESenderDispatchDate "2025-10-23T00:00:00+01:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2025-10-23T00:00:00+01:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/result>;
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-standard>;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/FRA>;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/Procedure/8698a8e5-9815-4889-ae6a-632170aeb5e6>;
@@ -124,6 +128,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "d1106611-6941-48f4-9029-8b11062939af" .
+
+<http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.13" .
+
+<http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/Organization/ORG-0001>
   a org:Organization;
@@ -139,7 +159,7 @@
 
 <http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/Procedure/8698a8e5-9815-4889-ae6a-632170aeb5e6>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/other>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/Lot/LOT-0001>;
@@ -175,7 +195,7 @@
 
 <http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/Tender/TEN-0001>
   a epo:Tender;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/Lot/LOT-0001>;
   adms:identifier <http://data.europa.eu/a4g/resource/d1106611-6941-48f4-9029-8b11062939af-01/Tender/Identifier/PROJ%20DEF%2F2022-01> .
 

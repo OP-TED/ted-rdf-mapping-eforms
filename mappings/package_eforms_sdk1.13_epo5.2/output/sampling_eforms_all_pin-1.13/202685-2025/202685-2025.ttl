@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -59,6 +59,10 @@
   cccev:email "ted@publications.europa.eu";
   cccev:telephone "+352 29291" .
 
+<http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2026-04-01+02:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/ContractLocation$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ITA>;
@@ -73,14 +77,15 @@
   locn:postCode "90046";
   locn:postName "Monreale" .
 
-<http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2026-04-01+02:00"^^xsd:date .
+<http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/ContractTerm$_PriorInformationNotice1_ProcurementProject1>
+  a epo:ContractTerm;
+  epo:hasTransportServiceType <http://publications.europa.eu/resource/authority/transport-service/bus-s> .
 
 <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/Interval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -106,12 +111,16 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0001" .
 
+<http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/Interval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>;
   dct:description "Contratto di servizio pubblico a una piccola o media impresa che opera con non più di 23 veicoli,  valore annuo medio stimato inferiore a 2.000.000 EUR riguardante la fornitura di servizi di trasporto pubblico di passeggeri, inferiore a 600. 000 chilometri l’anno."@it;
   dct:title "Servizio di Trasporto Pubblico Locale - Città di Monreale"@it;
   adms:identifier <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/Identifier/LOT-0001> .
@@ -123,16 +132,19 @@
 
 <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/Notice>
   a epo:Notice, epo:NoticeT01, epo:PlanningNotice;
+  epo:announcesProcedure <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/Procedure/0000000-0000-4000-8000-000000000000>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/Buyer/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/ProcurementProcedureInformationProvider/ORG-0001>,
     <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>;
-  epo:hasESenderDispatchDate "2025-03-27T12:32:43Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2025-03-27T12:32:43Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticePublicationNumber "00202685-2025";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-tran>;
-  epo:hasOJSIssueNumber "62/2025";
+  epo:hasOJSIssueNumber 62;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/ITA>;
   epo:hasPublicationDate "2025-03-28+01:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/Procedure/0000000-0000-4000-8000-000000000000>;
@@ -142,6 +154,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "1779a80f-7695-47fd-9edc-91fa18ae31f3" .
+
+<http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.13" .
+
+<http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -169,14 +197,22 @@
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>;
   adms:identifier <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/Identifier/ORG-0001> .
 
+<http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/PlanningNotice>
+  a epo:PlanningNotice;
+  epo:announcesLot <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/Lot/LOT-0001> .
+
+<http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/Procedure>
+  a epo:Procedure;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/ContractTerm$_PriorInformationNotice1_ProcurementProject1> .
+
 <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/Procedure/0000000-0000-4000-8000-000000000000>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32007R1370>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/comp-tend>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/DirectAwardTerm$_PriorInformationNotice1_TenderingProcess1_ProcessJustification1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/1779a80f-7695-47fd-9edc-91fa18ae31f3-01/DirectAwardTerm$_PriorInformationNotice1_TenderingProcess1_ProcessJustification1>;
   dct:description "Contratto di servizio pubblico a una piccola o media impresa che opera con non più di 23 veicoli, avente un valore annuo medio stimato inferiore a 2.000.000 EUR, riguardante la fornitura di servizi di trasporto pubblico di passeggeri, inferiore a 600.000 chilometri l’anno"@it;
   dct:title "Servizio di Trasporto Pubblico Locale - Città di Monreale"@it .
 

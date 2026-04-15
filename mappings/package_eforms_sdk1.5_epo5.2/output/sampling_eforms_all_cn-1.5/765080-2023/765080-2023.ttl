@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -27,9 +27,7 @@
 
 <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
   a epo:AccessTerm;
-  epo:hasPublicAccessURL "https://vergabe.bwbm.de/NetServer/TenderingProcedureDetails?function=_Details&TenderOID=54321-Tender-18bf6b4c6f0-1d537280740c5de2"^^xsd:anyURI;
-  epo:involvesProcurementDocument <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/ProcurementDocument$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1TenderDoc>;
-  epo:isProcurementDocumentRestricted false .
+  epo:hasPublicAccessURL "https://vergabe.bwbm.de/NetServer/TenderingProcedureDetails?function=_Details&TenderOID=54321-Tender-18bf6b4c6f0-1d537280740c5de2"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>
   a epo:AwardCriterion;
@@ -107,6 +105,14 @@ Es sollen alle geeigneten Bewerber zur Angebotsabgabe aufgefordert werden."""@de
   cccev:email "poststelle@bundeskartellamt.bund.de";
   cccev:telephone "+49 228-94-99-0" .
 
+<http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2024-05-08+02:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/ContractEndPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2025-02-28+01:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/ContractLocation$_ContractNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
@@ -127,14 +133,9 @@ Es sollen alle geeigneten Bewerber zur Angebotsabgabe aufgefordert werden."""@de
   locn:postCode "29664";
   locn:postName "Walsrode" .
 
-<http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2024-05-08+02:00"^^xsd:date;
-  epo:hasEnd "2025-02-28+01:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/required>;
   epo:hasEOrdering true;
@@ -143,7 +144,8 @@ Es sollen alle geeigneten Bewerber zur Angebotsabgabe aufgefordert werden."""@de
   epo:hasOptionsDescription "Ersatzteile für die Verschieberegalanlage sowie Verlängerung des Wartungsvertrages"@de;
   epo:hasPaymentArrangement "siehe Vergabeunterlagen"@de;
   epo:hasRenewalDescription "Der Wartungsvertrag kann optional bis viermal um jeweils zwölf Monate verlängert werden."@de;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -151,8 +153,7 @@ Es sollen alle geeigneten Bewerber zur Angebotsabgabe aufgefordert werden."""@de
 
 <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "siehe Übersicht Geforderte Nachweise Abschnitt A"@de;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/nati-ground> .
+  dct:description "siehe Übersicht Geforderte Nachweise Abschnitt A"@de .
 
 <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -178,14 +179,28 @@ Es sollen alle geeigneten Bewerber zur Angebotsabgabe aufgefordert werden."""@de
   epo:hasScheme "organization";
   skos:notation "ORG-7005" .
 
+<http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  time:hasEnd <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/ContractEndPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/LeadBuyer$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2>
   a epo:LeadBuyer;
   epo:playedBy <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/Organization/ORG-7001> .
 
+<http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/LocalLegalBasisInformation$_ContractNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/LocalLegalBasisInformation$_ContractNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier> .
+
+<http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/LocalLegalBasisInformation$_ContractNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier>
+  a adms:Identifier;
+  skos:notation "vsvgv" .
+
 <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
+    <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/ProcurementCriterion$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/SubcontractTerm$_ContractNotice1_ProcurementProjectLot1>;
   epo:hasAdditionalInformation """Präzisierung zu Anforderungen: Namen und Qualifikation des für die Auftragsausführung eingesetzten Personals:
 Mit dem Teilnahmeantrag sind Name und Referenzen des vorgesehenen Projektleiters/der Projektleiterin und des vorgesehenen Montageleiters/der Montageleiterin anzugeben.
@@ -196,19 +211,18 @@ ausgesuchte Termine des Vergabeverfahrens siehe Unterlagen des Teilnahmewettbewe
   epo:hasPurpose <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/LotPurpose$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isRecurrent false;
   epo:isSMESuitable false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
     <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/MultipleStageProcedureTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>,
-    <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>;
+    <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1TenderDoc>;
   epo:isUsingEUFunds false;
   epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>,
     <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion2>,
-    <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
     <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/ParticipationCondition$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest3>,
-    <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/ProcurementCriterion$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>,
     <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>,
     <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>;
@@ -236,13 +250,15 @@ ausgesuchte Termine des Vergabeverfahrens siehe Unterlagen des Teilnahmewettbewe
     <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/ProcurementServiceProvider$_ContractNotice1_ContractingParty1_Party1_ServiceProviderParty1>,
     <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/Reviewer/ORG-7004organization>,
     <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/TenderReceiver/ORG-7001organization>;
-  epo:hasESenderDispatchDate "2023-12-14T18:54:36+01:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2023-12-14T18:54:36+01:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00765080-2023";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/cn-standard>;
-  epo:hasOJSIssueNumber "243/2023";
+  epo:hasOJSIssueNumber 243;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU>;
   epo:hasPublicationDate "2023-12-18Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/Lot/LOT-0000>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/Procedure/2579cfd9-9d18-454d-bc0b-e34d9734a0d8>;
@@ -252,6 +268,22 @@ ausgesuchte Termine des Vergabeverfahrens siehe Unterlagen des Teilnahmewettbewe
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "9d4420e7-f566-421d-a89b-e1d8c3474cea" .
+
+<http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.5" .
+
+<http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/Notice/a1de6283-f5de-43ff-ab8b-245555bffa11-01>
   a epo:Notice;
@@ -309,7 +341,7 @@ ausgesuchte Termine des Vergabeverfahrens siehe Unterlagen des Teilnahmewettbewe
 
 <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/Procedure/2579cfd9-9d18-454d-bc0b-e34d9734a0d8>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation "Teilnahmeanträge und Angebote sind einzureichen elektronisch via https://vergabe.bwbm.de (Bietercockpit)."@de;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/Procedure/Identifier/BWBM-2023-0078>;
@@ -319,6 +351,7 @@ ausgesuchte Termine des Vergabeverfahrens siehe Unterlagen des Teilnahmewettbewe
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/Lot/LOT-0000>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/ProcedurePurpose$_ContractNotice1_ProcurementProject1>;
   epo:isAccelerated false;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>;
   dct:description "Planung, Lieferung, Aufbau und Inbetriebnahme einer Verschieberegalanlage am Standort Walsrode sowie Wartung für einen Zeitraum von 36 Monaten mit optionaler Verlängerungsmöglichkeit von viermal 12 Monaten"@de;
   dct:title "Verschieberegalanlage"@de;
   adms:identifier <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/Procedure/Identifier/2579cfd9-9d18-454d-bc0b-e34d9734a0d8> .
@@ -347,10 +380,6 @@ ausgesuchte Termine des Vergabeverfahrens siehe Unterlagen des Teilnahmewettbewe
 <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/ProcurementCriterion$_ContractNotice1_ProcurementProjectLot1>
   a epo:ProcurementCriterion;
   epo:hasPerformingStaffQualificationInformation <http://publications.europa.eu/resource/authority/requirement-stage/par-requ> .
-
-<http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/ProcurementDocument$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1TenderDoc>
-  a epo:ProcurementDocument;
-  epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU> .
 
 <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/ProcurementProcedureInformationProvider/ORG-7001organization>
   a epo:ProcurementProcedureInformationProvider;
@@ -471,3 +500,8 @@ Im Rahmen der Angebotsabgabe wird die Nachforderung von Unterlagen teilweise aus
   a epo:TenderReceiver;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/Lot/LOT-0000>;
   epo:playedBy <http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01/Organization/ORG-7001> .
+
+<http://data.europa.eu/a4g/resource/9d4420e7-f566-421d-a89b-e1d8c3474cea-01AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1TenderDoc>
+  a epo:AccessTerm;
+  epo:isProcurementDocumentRestricted false;
+  epo:providesProcurementDocumentsInOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU> .

@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -58,8 +58,12 @@
   cccev:email "ted@publications.europa.eu";
   cccev:telephone "+352 29291" .
 
+<http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2025-10-01+02:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 51.0;
   time:unitType time:unitMonth .
 
@@ -74,15 +78,16 @@
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/POL>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/PL634> .
 
-<http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2025-10-01+02:00"^^xsd:date .
+<http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/ContractTerm$_PriorInformationNotice1_ProcurementProject1>
+  a epo:ContractTerm;
+  epo:hasTransportServiceType <http://publications.europa.eu/resource/authority/transport-service/bus-s> .
 
 <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/Interval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -106,17 +111,21 @@
   a adms:Identifier;
   skos:notation "ORG-0001" .
 
+<http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/Interval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/Lot/Identifier/ZP.271.21.2024>
   a adms:Identifier;
   skos:notation "ZP.271.21.2024" .
 
 <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/Lot/Identifier/ZP.271.21.2024>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>;
   dct:description "Świadczenie usług drogowego publicznego transportu zbiorowego w zakresie przewozów autobusowych na terenie Gminy Przodkowo"@pl;
   dct:title "Świadczenie usług drogowego publicznego transportu zbiorowego w zakresie przewozów autobusowych na terenie Gminy Przodkowo "@pl;
   adms:identifier <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/Identifier/LOT-0001> .
@@ -127,16 +136,19 @@
 
 <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/Notice>
   a epo:Notice, epo:NoticeT01, epo:PlanningNotice;
+  epo:announcesProcedure <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/Procedure/0000000-0000-4000-8000-000000000000>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/Buyer/ORG-0001>,
     <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/ProcurementProcedureInformationProvider/ORG-0001>,
     <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>;
-  epo:hasESenderDispatchDate "2024-09-09T13:24:16Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-09-09T13:24:16Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticePublicationNumber "00542285-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-tran>;
-  epo:hasOJSIssueNumber "176/2024";
+  epo:hasOJSIssueNumber 176;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/POL>;
   epo:hasPublicationDate "2024-09-10+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/Procedure/0000000-0000-4000-8000-000000000000>;
@@ -146,6 +158,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "752afa15-b116-4050-b13c-1c710aef247e" .
+
+<http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.12" .
+
+<http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -173,9 +201,17 @@
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>;
   adms:identifier <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/Identifier/ORG-0001> .
 
+<http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/PlanningNotice>
+  a epo:PlanningNotice;
+  epo:announcesLot <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/Lot/LOT-0001> .
+
+<http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/Procedure>
+  a epo:Procedure;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/ContractTerm$_PriorInformationNotice1_ProcurementProject1> .
+
 <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/Procedure/0000000-0000-4000-8000-000000000000>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>;
   epo:hasAdditionalInformation """Zamówienie dotyczy linii uruchamianych w ramach gminnych przewozów pasażerskich,
 których organizatorem jest Gmina Przodkowo
 Podstawa prawna: Rozporządzenie (WE) nr 1370/2007 art. 7 ust. 2 rozporządzenia (WE) nr
@@ -187,7 +223,7 @@ art. 22 ust. 1 pkt 1 ustawy z dnia 16 grudnia 2010 r. o publicznym transporcie z
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/DirectAwardTerm$_PriorInformationNotice1_TenderingProcess1_ProcessJustification1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/752afa15-b116-4050-b13c-1c710aef247e-01/DirectAwardTerm$_PriorInformationNotice1_TenderingProcess1_ProcessJustification1>;
   dct:description """Świadczenie usług drogowego publicznego transportu zbiorowego w zakresie przewozów autobusowych na terenie Gminy Przodkowo
 """@pl;
   dct:title """ Świadczenie usług drogowego publicznego transportu zbiorowego w zakresie przewozów autobusowych na terenie Gminy Przodkowo

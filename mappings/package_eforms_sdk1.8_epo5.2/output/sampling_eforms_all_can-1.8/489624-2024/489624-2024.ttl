@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -94,7 +94,7 @@ b) návrh evaluace vzdělávání
 <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/AwardDecision/2024-01-24%2B01%3A00>
   a epo:AwardDecision;
   epo:comprisesAwardOutcome <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/LotAwardOutcome/RES-0002>;
-  epo:hasAwardDecisionDate "2024-01-24+01:00"^^xsd:date .
+  epo:hasAwardDecisionDate "2024-01-24T00:00:00+01:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/Buyer/ORG-0005>
   a epo:Buyer;
@@ -177,24 +177,27 @@ b) návrh evaluace vzdělávání
   a adms:Identifier;
   skos:notation "Vzdělávání zaměstnanců Sdružení pro výstavbu silnic" .
 
+<http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2024-02-06+01:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/ContractEndPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2026-12-31+01:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/ContractLocation$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/CZE>;
-  locn:address <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/ProcedurePlacePerformance$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1> .
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/CZE> .
 
 <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/ContractLocation$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/CZE> .
 
-<http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2024-02-06+01:00"^^xsd:date;
-  epo:hasEnd "2026-12-31+01:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -249,13 +252,34 @@ b) návrh evaluace vzdělávání
   epo:hasScheme "organization";
   skos:notation "ORG-0006" .
 
+<http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  time:hasEnd <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/ContractEndPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
+<http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier> .
+
+<http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier>
+  a adms:Identifier;
+  skos:notation "32014L0024" .
+
+<http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2/Identifier> .
+
+<http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2/Identifier>
+  a adms:Identifier;
+  skos:notation "134/2016 Sb." .
+
 <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/Lot/Identifier/SVS001>
   a adms:Identifier;
   skos:notation "SVS001" .
 
 <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/Lot/LOT-0002>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation """Sdružení pro výstavbu silnic je dotovaným zadavatelem (dle § 4 odst. 2 zákona č. 134/2016 Sb).
 
@@ -269,7 +293,7 @@ Jedná se o souhrnné oznámení za II.Q 2024 dle § 137 odst. b) ZZVZ o VZ zada
   epo:hasLaunchFrameworkAgreementMaximumValue <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/LotValueEstimateExtension$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>;
   epo:isUsingEUFunds true;
@@ -290,8 +314,7 @@ Jedná se o souhrnné oznámení za II.Q 2024 dle § 137 odst. b) ZZVZ o VZ zada
   epo:concernsLot <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/Lot/LOT-0002>;
   epo:hasApproximateFrameworkAgreementValue <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/MonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_FrameworkAgreementValues1>;
   epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
-  epo:hasFrameworkAgreementMaximumValue <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/FrameworkAgreementMaximumMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_FrameworkAgreementValues1>;
-  rdfs:seeAlso <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/ReviewRequestSummary$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1> .
+  epo:hasFrameworkAgreementMaximumValue <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/FrameworkAgreementMaximumMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_FrameworkAgreementValues1> .
 
 <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>
   a epo:Purpose;
@@ -331,15 +354,18 @@ Jedná se o souhrnné oznámení za II.Q 2024 dle § 137 odst. b) ZZVZ o VZ zada
 <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/Notice>
   a epo:Notice, epo:Notice29, epo:ResultNotice;
   epo:announcesAwardDecision <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/AwardDecision/2024-01-24%2B01%3A00>;
+  epo:announcesContract <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/Contract/CON-0002>;
   epo:announcesNoticeAwardInformation <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/Tenderer/TPA-0002>;
-  epo:hasESenderDispatchDate "2024-08-13T11:51:50+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-08-13T11:51:50+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/result>;
   epo:hasNoticePublicationNumber "00489624-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-standard>;
-  epo:hasOJSIssueNumber "158/2024";
+  epo:hasOJSIssueNumber 158;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/CES>;
   epo:hasPublicationDate "2024-08-14+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/Lot/LOT-0002>;
   epo:refersToPrevious <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/Notice/779020-2023>;
@@ -374,6 +400,22 @@ Jedná se o souhrnné oznámení za II.Q 2024 dle § 137 odst. b) ZZVZ o VZ zada
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "96398f7c-a790-4a9f-9882-4ab3eda50172" .
+
+<http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.8" .
+
+<http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/Notice/bc906dd7-9f48-4af0-b2f5-75b4e83c8936-01/Identifier>
   a adms:Identifier;
@@ -441,7 +483,7 @@ Jedná se o souhrnné oznámení za II.Q 2024 dle § 137 odst. b) ZZVZ o VZ zada
 
 <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/Procedure/79a31c8b-0841-4409-a030-3639d988c28d>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation """Sdružení pro výstavbu silnic je dotovaným zadavatelem (dle § 4 odst. 2 zákona č. 134/2016 Sb).
 
@@ -472,10 +514,6 @@ Jedná se o souhrnné oznámení za II.Q 2024 dle § 137 odst. b) ZZVZ o VZ zada
 <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/Procedure/Identifier/SVS001>
   a adms:Identifier;
   skos:notation "SVS001" .
-
-<http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/ProcedurePlacePerformance$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/CZE> .
 
 <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/ProcedurePurpose$_ContractAwardNotice1_ProcurementProject1>
   a epo:Purpose;
@@ -561,7 +599,7 @@ Ve lhůtě pro doručení návrhu je navrhovatel povinen složit na účet ÚOHS
 <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/Tender/TEN-0002>
   a epo:Tender;
   epo:hasSubcontracting <http://publications.europa.eu/resource/authority/applicability/no>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/Tenderer/TPA-0002>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/Tenderer/TPA-0002>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/Lot/LOT-0002>;
   epo:isVariant false;
   adms:identifier <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/Tender/Identifier/Vzd%C4%9Bl%C3%A1v%C3%A1n%C3%AD%20zam%C4%9Bstnanc%C5%AF%20Sdru%C5%BEen%C3%AD%20pro%20v%C3%BDstavbu%20silnic> .
@@ -569,7 +607,8 @@ Ve lhůtě pro doručení návrhu je navrhovatel povinen složit na účet ÚOHS
 <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/TenderAwardOutcome/TEN-0002>
   a epo:TenderAwardOutcome;
   epo:concernsTender <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/Tender/TEN-0002>;
-  epo:hasAwardRank 1 .
+  epo:hasAwardRank 1;
+  epo:specifiesForeignSubsidiesMeasureConclusion <http://publications.europa.eu/resource/authority/foreign-subsidy-measure-conclusion/> .
 
 <http://data.europa.eu/a4g/resource/96398f7c-a790-4a9f-9882-4ab3eda50172-01/Tenderer/TPA-0002>
   a epo:Tenderer;

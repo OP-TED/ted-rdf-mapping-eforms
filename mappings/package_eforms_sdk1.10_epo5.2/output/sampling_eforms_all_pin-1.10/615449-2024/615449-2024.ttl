@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -135,8 +135,14 @@
   epo:hasAmountValue 24000000.0;
   epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
 
+<http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/MonetaryValueProcedure$_PriorInformationNotice1_ProcurementProject1_RequestedTenderTotal1>
+  a epo:MonetaryValue;
+  epo:hasAmountValue 24000000.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
 <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/Notice>
   a epo:Notice, epo:Notice4, epo:PlanningNotice;
+  epo:announcesPlannedProcurement <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/PlannedProcurement$_PriorInformationNotice1_ProcurementProject1>;
   epo:announcesPlannedProcurementPart <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/PlannedProcurementPart/PAR-0001>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/AwardingCentralPurchasingBody$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1>,
     <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/Buyer/ORG-0001>,
@@ -144,13 +150,15 @@
     <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/LeadBuyer$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1>,
     <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>,
     <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/Reviewer/ORG-0003>;
-  epo:hasESenderDispatchDate "2024-10-10T14:18:26+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-10-10T14:18:26+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticePublicationNumber "00615449-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-only>;
-  epo:hasOJSIssueNumber "199/2024";
+  epo:hasOJSIssueNumber 199;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/ITA>;
   epo:hasPublicationDate "2024-10-11+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   adms:identifier <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/Notice/Identifier> .
 
@@ -158,6 +166,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "6619cecb-db6e-43c5-bf09-93532308f0f6" .
+
+<http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.10" .
+
+<http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/Notice/c4471524-fe8c-4ea8-90c1-b409ea373b0e-01>
   a epo:Notice;
@@ -224,31 +248,59 @@
   epo:hasFrameworkAgreementType <http://publications.europa.eu/resource/authority/framework-agreement/fa-wo-rc> .
 
 <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>
-  a epo:ProcurementObject;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/PartFrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1_ContractingSystem1>;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
-  epo:isCoveredByGPA false;
-  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/ReviewTerm/ORG-0003> .
+  a epo:ProcurementObject .
 
 <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>
   a epo:Purpose;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/79620000> .
 
 <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/PartSpecificDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 48.0;
   time:unitType time:unitMonth .
 
+<http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/PlannedProcurement$_PriorInformationNotice1_ProcurementProject1>
+  a epo:PlannedProcurement;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>;
+  epo:hasAdditionalInformation """Il presente avviso di preinformazione annuncia l'intenzione dell'amministrazione aggiudicatrice di pubblicare una futura gara d'appalto. In questa fase non sono disponibili altre informazioni o altri documenti. Gli operatori economici interessati sono invitati ad iscriversi al link https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/tender-details/6e1ee42f-ab98-4d6b-9275-847c72fb304e-PIN per essere informati della pubblicazione del bando di gara e di tutti i documenti di gara, compreso il capitolato d'oneri.
+"""@it;
+  epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/MonetaryValueProcedure$_PriorInformationNotice1_ProcurementProject1_RequestedTenderTotal1>;
+  epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/PlannedProcurement/Identifier/EFSA%2F2024%2FOP%2F0006-PIN>;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32018R1046>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>;
+  dct:description "L'EFSA intende indire una gara d'appalto aperta per la messa a disposizione di personale interinale all'EFSA e all'ETF. L'esito della procedura sarà un contratto quadro a cascata."@it;
+  dct:title "Somministrazione di lavoratori interinali per EFSA ed ETF"@it .
+
+<http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/PlannedProcurement/Identifier/EFSA%2F2024%2FOP%2F0006-PIN>
+  a adms:Identifier;
+  skos:notation "EFSA/2024/OP/0006-PIN" .
+
 <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/PlannedProcurementPart/PAR-0001>
   a epo:PlannedProcurementPart;
-  epo:foreseesProcurementObject <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/PartFrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1_ContractingSystem1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/MonetaryValuePart$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasPlannedDuration <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/PartSpecificDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
+  epo:isCoveredByGPA false;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/ReviewTerm/ORG-0003>;
   epo:usesChannel <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/AdHocChannel$_PriorInformationNotice1_ProcurementProjectLot1>;
   dct:description "L'EFSA intende indire una gara d'appalto aperta per la messa a disposizione di personale interinale all'EFSA e all'ETF. L'esito della procedura sarà un contratto quadro a cascata."@it;
   dct:title "Somministrazione di lavoratori interinali per EFSA ed ETF"@it;
   adms:identifier <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/Identifier/PAR-0001> .
+
+<http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>
+  a epo:Purpose;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/79620000> .
+
+<http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>
+  a epo:ProcessPlanningTerm;
+  epo:hasEstimatedContractNoticePublicationDate "2024-11-01+01:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>
+  a epo:ContractTerm;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
 
 <http://data.europa.eu/a4g/resource/6619cecb-db6e-43c5-bf09-93532308f0f6-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>
   a epo:ProcurementServiceProvider;

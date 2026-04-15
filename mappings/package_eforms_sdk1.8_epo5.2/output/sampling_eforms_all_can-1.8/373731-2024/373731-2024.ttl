@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -113,6 +113,14 @@
   a epo:ContractAmendment;
   epo:amendsContract <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/Contract/CON-0001> .
 
+<http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2023-10-01+02:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/ContractEndPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2025-04-17+02:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/ContractLocation$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BEL>;
@@ -139,15 +147,11 @@
   epo:hasScheme "contract";
   skos:notation "CON-0001" .
 
-<http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2023-10-01+02:00"^^xsd:date;
-  epo:hasEnd "2025-04-17+02:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works> .
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -184,6 +188,11 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0005" .
 
+<http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  time:hasEnd <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/ContractEndPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/Lot/Identifier/2001%2F1710%2F03%20-%20bouw>
   a adms:Identifier;
   epo:hasScheme "InternalID";
@@ -191,12 +200,12 @@
 
 <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/Lot/Identifier/2001%2F1710%2F03%20-%20bouw>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>;
   epo:isUsingEUFunds false;
   dct:description "Nieuwbouw \"Heirbrug - Ploegstraat\" - Bouwen van 14 koopwoningen, 13 huurwoningen, 1 gemeenschapswoning en 8 studio’s"@nl;
@@ -220,13 +229,16 @@
 <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/Notice>
   a epo:ContractModificationNotice, epo:Notice, epo:Notice38;
   epo:announcesContractAmendment <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/ContractAmendment$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_ContractModification1>;
+  epo:hasDispatchDate "2024-06-20T00:00:00+02:00"^^xsd:dateTime;
   epo:hasESenderDispatchDate "2024-06-20T00:00:00+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/cont-modif>;
   epo:hasNoticePublicationNumber "00373731-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-modif>;
-  epo:hasOJSIssueNumber "121/2024";
+  epo:hasOJSIssueNumber 121;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/NLD>;
   epo:hasPublicationDate "2024-06-24Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToAwardDecision <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/AwardDecision/CON-0001>;
   epo:refersToContractToBeModified <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/Contract/CON-0001>;
@@ -255,6 +267,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "5396918e-a498-4901-b706-9dfb17c58857" .
+
+<http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.8" .
+
+<http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
   a epo:NoticeAwardInformation;
@@ -331,7 +359,7 @@
 
 <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/Procedure/b54ea27e-5a19-4e3e-aacf-3c2aa4eccf08>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/Procedure/Identifier/PPP0MP-702%2F4077%2F2001%2F1710%2F03%20-%20bouw>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/Lot/LOT-0001>;
@@ -372,15 +400,21 @@
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/Lot/LOT-0001>;
   epo:playedBy <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/Organization/ORG-0004> .
 
+<http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/SubcontractingEstimate$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>
+  a epo:SubcontractingEstimate;
+  epo:isSubcontractingPercentageKnown false;
+  epo:isSubcontractingValueKnown false .
+
 <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/Tender/Identifier/BOUWONDERNEMING%20DAMMAN>
   a adms:Identifier;
   skos:notation "BOUWONDERNEMING DAMMAN" .
 
 <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/Tender/TEN-0001>
   a epo:Tender;
+  epo:foreseesSubcontracting <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/SubcontractingEstimate$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
   epo:hasFinancialOfferValue <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
   epo:hasSubcontracting <http://publications.europa.eu/resource/authority/applicability/no>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/Lot/LOT-0001>;
   adms:identifier <http://data.europa.eu/a4g/resource/5396918e-a498-4901-b706-9dfb17c58857-01/Tender/Identifier/BOUWONDERNEMING%20DAMMAN> .
 

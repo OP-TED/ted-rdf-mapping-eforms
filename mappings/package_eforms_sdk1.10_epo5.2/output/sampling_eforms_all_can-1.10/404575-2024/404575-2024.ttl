@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -38,6 +38,14 @@
 <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Buyer/ORG-0001organization>
   a epo:Buyer;
   epo:playedBy <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Channel$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://naevneneshus.dk/start-din-klage/klagenaevnet-for-udbud/"^^xsd:anyURI .
+
+<http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Channel$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization3_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://www.kfst.dk"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/CompanyAddress$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>
   a locn:Address;
@@ -115,7 +123,6 @@
   epo:hasContractConclusionDate "2018-03-14Z"^^xsd:date;
   epo:hasLotReference <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Lot/LOT-0000>;
   epo:includesTender <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Tender/TEN-0001>;
-  epo:isSubjectToContractSpecificTerm <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/ContractTerm$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_PayerParty1>;
   epo:signedByBuyer <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Buyer/ORG-0001organization>;
   dct:title "Kontrakt om udførelse af lokalbuskørsel i Svendborg Kommune. "@da;
   adms:identifier <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Contract/Identifier/431495-2017> .
@@ -129,7 +136,7 @@
   epo:amendsContract <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Contract/CON-0001> .
 
 <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 8.0;
   time:unitType time:unitYear .
 
@@ -167,7 +174,7 @@ nulemissionsbusser, en betydelig investering. Denne investering er blevet fordyr
 
 <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/required>;
   epo:hasEOrdering false;
@@ -175,7 +182,8 @@ nulemissionsbusser, en betydelig investering. Denne investering er blevet fordyr
   epo:hasMaximumNumberOfRenewals 2;
   epo:hasOptionsDescription "Option på forlængelse i 2 x 1 år."@da;
   epo:hasRenewalDescription "Option på forlængelse i 2 x 1 år."@da;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -232,13 +240,14 @@ nulemissionsbusser, en betydelig investering. Denne investering er blevet fordyr
 
 <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
+    <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/ContractTerm$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_PayerParty1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Lot/Identifier/%20201708-17056>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
   epo:isRecurrent false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>;
   epo:isUsingEUFunds false;
@@ -249,9 +258,7 @@ nulemissionsbusser, en betydelig investering. Denne investering er blevet fordyr
 <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/LotAwardOutcome/RES-0001>
   a epo:LotAwardOutcome;
   epo:comprisesTenderAwardOutcome <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/TenderAwardOutcome/TEN-0001>;
-  epo:concernsLot <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Lot/LOT-0000>;
-  rdfs:seeAlso <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/BudgetProvider/ORG-0001organization>,
-    <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/PaymentExecutor/ORG-0001organization> .
+  epo:concernsLot <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Lot/LOT-0000> .
 
 <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>
   a epo:Purpose;
@@ -270,13 +277,16 @@ nulemissionsbusser, en betydelig investering. Denne investering er blevet fordyr
 <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Notice>
   a epo:ContractModificationNotice, epo:Notice, epo:Notice39;
   epo:announcesContractAmendment <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/ContractAmendment$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_ContractModification1>;
-  epo:hasESenderDispatchDate "2024-07-04T10:41:37+00:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-07-04T10:41:37+00:00"^^xsd:dateTime;
+  epo:hasESenderDispatchDate "2024-07-04T15:11:25+00:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/cont-modif>;
   epo:hasNoticePublicationNumber "00404575-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-modif>;
-  epo:hasOJSIssueNumber "131/2024";
+  epo:hasOJSIssueNumber 131;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DAN>;
   epo:hasPublicationDate "2024-07-08Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToAwardDecision <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/AwardDecision/CON-0001>;
   epo:refersToContractToBeModified <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Contract/CON-0001>;
@@ -311,6 +321,22 @@ nulemissionsbusser, en betydelig investering. Denne investering er blevet fordyr
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "f83fa223-a275-4b12-b296-c43c21c78fda" .
+
+<http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.10" .
+
+<http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
   a epo:NoticeAwardInformation;
@@ -351,6 +377,7 @@ nulemissionsbusser, en betydelig investering. Denne investering er blevet fordyr
 
 <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Organization/ORG-0002>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Channel$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Organization/Identifier$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1_PartyLegalEntity1>;
   epo:hasLegalName "Klagenævnet for Udbud"@da;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/CompanyContactPoint$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1_Contact1>;
@@ -359,6 +386,7 @@ nulemissionsbusser, en betydelig investering. Denne investering er blevet fordyr
 
 <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Organization/ORG-0003>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Channel$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization3_Company1>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Organization/Identifier$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization3_Company1_PartyLegalEntity1>;
   epo:hasLegalName "Konkurrence- og Forbrugerstyrelsen"@da;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/CompanyContactPoint$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization3_Company1_Contact1>;
@@ -397,13 +425,13 @@ nulemissionsbusser, en betydelig investering. Denne investering er blevet fordyr
 
 <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Procedure/e58f7292-6210-4b46-bd61-b15ee6550e79>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Procedure/Identifier/%20201708-17056>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Lot/LOT-0000>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/ProcedurePurpose$_ContractAwardNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/ProcedureTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/ProcedureTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>;
   dct:description "Kontrakt om udførelse af lokalbuskørsel i Svendborg Kommune. Kørselsomfanget i Kontrakten i Svendborg Kommune udgjorde 5.987 afregningstimer pr. køreplanår fordelt på 13 busser. Herudover omfattede Kontrakten ad hoc dubleringskørsel og ekstrakørsel. Kontrakten løb fra 1. august 2018 og frem til køreplanskift august 2024 med option på forlængelse i 2 x 1 år. FynBus giver den kommende entreprenør mulighed for at benytte underentreprenører til udførelse af kørslen. Herudover pålægges den kommende entreprenør at overholde sociale klausuler."@da;
   dct:title "Udbud af lokalbuskørsel i Svedborg Kommune"@da;
   adms:identifier <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Procedure/Identifier/e58f7292-6210-4b46-bd61-b15ee6550e79> .
@@ -478,7 +506,7 @@ kontrakten ikke er indgået inden udløbet af 10 kalenderdage regnet fra dagen e
   a epo:Tender;
   epo:hasFinancialOfferValue <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
   epo:hasSubcontracting <http://publications.europa.eu/resource/authority/applicability/no>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Lot/LOT-0000>;
   adms:identifier <http://data.europa.eu/a4g/resource/f83fa223-a275-4b12-b296-c43c21c78fda-01/Tender/Identifier/201708-17056> .
 

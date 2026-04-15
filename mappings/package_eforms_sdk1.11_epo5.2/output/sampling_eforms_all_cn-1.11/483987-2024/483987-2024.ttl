@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -29,6 +29,10 @@
   a epo:Buyer;
   epo:hasBuyerProfile "www.lifesugerproject.com"^^xsd:anyURI;
   epo:playedBy <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/Channel$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "www.lifesugarproject.com"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>
   a locn:Address;
@@ -46,7 +50,7 @@
   cccev:telephone "0039010576391" .
 
 <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 20.0;
   time:unitType time:unitMonth .
 
@@ -58,14 +62,21 @@
 
 <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasAdditionalContractNature <http://publications.europa.eu/resource/authority/contract-nature/works>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies>;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/not-known> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/not-known>;
+  epo:hasUnknownDuration false .
+
+<http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/Duration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 20.0;
+  time:unitType time:unitMonth .
 
 <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/DynamicPurchaseSystemTechnicalUsage$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/Duration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
 
 <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -86,11 +97,11 @@
 
 <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/Lot/Identifier/SG-R190001-T2>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>,
@@ -119,14 +130,16 @@
   epo:announcesRole <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/Buyer/ORG-0001>,
     <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/ProcurementProcedureInformationProvider/ORG-0001>,
     <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/Reviewer/ORG-0001>;
-  epo:hasESenderDispatchDate "2024-08-08T13:47:30Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-08-08T13:47:30Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00483987-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-cfc-standard>;
-  epo:hasOJSIssueNumber "156/2024";
+  epo:hasOJSIssueNumber 156;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/ENG>,
     <http://publications.europa.eu/resource/authority/language/ITA>;
   epo:hasPublicationDate "2024-08-12+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/Procedure/799ed462-a45e-43ce-aee6-ac2b31970344>;
@@ -137,12 +150,29 @@
   epo:hasScheme "notice-id";
   skos:notation "7d550f78-df78-475c-bc25-a2ec0d16964f" .
 
+<http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.11" .
+
+<http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
+
 <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
   skos:notation "03599930108" .
 
 <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/Organization/ORG-0001>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/Channel$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>;
   epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>;
   epo:hasLegalName "Stara Glass S.p.A."@en, "Stara Glass S.p.A."@it;
@@ -157,7 +187,7 @@
 
 <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/Procedure/799ed462-a45e-43ce-aee6-ac2b31970344>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/7d550f78-df78-475c-bc25-a2ec0d16964f-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation "https://www.lifesugarproject.com/2023/08/03/call-for-tender-sg-r190001-2/"@en,
     "https://www.lifesugarproject.com/2023/08/03/call-for-tender-sg-r190001-2/"@it;

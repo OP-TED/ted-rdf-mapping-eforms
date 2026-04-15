@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -25,10 +25,6 @@
   a epo:AccessTerm;
   epo:definesOfflineAccessProvider <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/OfflineAccessProvider/ORG-0001organization>;
   epo:definesProcurementProcedureInformationProvider <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/ProcurementProcedureInformationProvider/ORG-0001organization> .
-
-<http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/AuctionTerms$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_AuctionTerms1>
-  a epo:EAuctionTechnique;
-  dct:description "zie opdrachtdocumenten"@nl .
 
 <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>
   a epo:AwardCriterion;
@@ -72,8 +68,12 @@
   cccev:email "e.proc@publicprocurement.be";
   cccev:telephone "+32 2 740 80 00" .
 
+<http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2025-01-27+01:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 48.0;
   time:unitType time:unitMonth .
 
@@ -88,28 +88,31 @@
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BEL>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/BE211> .
 
-<http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2025-01-27+01:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/required>;
   epo:hasOptionsDescription "zie opdrachtdocumenten"@nl;
   epo:hasPaymentArrangement "zie opdrachtdocument"@nl;
   epo:hasRenewalDescription "zie opdrachtdocumenten"@nl;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
   epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/ContractLocation$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1> .
 
+<http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/Duration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 48.0;
+  time:unitType time:unitMonth .
+
 <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/DynamicPurchaseSystemTechnicalUsage$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/Duration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
 
 <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -132,6 +135,10 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0002" .
 
+<http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/Lot/Identifier/1>
   a adms:Identifier;
   epo:hasScheme "InternalID";
@@ -139,7 +146,7 @@
 
 <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation "zie opdrachtdocumenten"@nl;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/Lot/Identifier/1>;
@@ -147,7 +154,7 @@
   epo:hasRecurrenceDescription "zie opdrachtdocumenten"@nl;
   epo:isRecurrent false;
   epo:isSMESuitable true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/MultipleStageProcedureTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/NonDisclosureAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
@@ -197,13 +204,16 @@
     <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/Reviewer/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/TenderProcessor/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/TenderReceiver/ORG-0001organization>;
+  epo:hasDispatchDate "2024-07-15T00:00:00+02:00"^^xsd:dateTime;
   epo:hasESenderDispatchDate "2024-07-15T00:00:00+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00428003-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/cn-social>;
-  epo:hasOJSIssueNumber "138/2024";
+  epo:hasOJSIssueNumber 138;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/NLD>;
   epo:hasPublicationDate "2024-07-17Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/Procedure/a8242d36-9226-4f1a-a205-e2ede1a87fc5>;
@@ -213,6 +223,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "6b533238-bf52-412d-ace7-ecf40998ae80" .
+
+<http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.8" .
+
+<http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/OfflineAccessProvider/ORG-0001organization>
   a epo:OfflineAccessProvider;
@@ -260,7 +286,7 @@
 
 <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/Procedure/a8242d36-9226-4f1a-a205-e2ede1a87fc5>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>;
   epo:hasAdditionalInformation "zie opdrachtdocumenten"@nl;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/Procedure/Identifier/2024-2359>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
@@ -268,7 +294,7 @@
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/ProcedurePurpose$_ContractNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/ProcedureTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/ProcedureTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>;
   dct:description "De aanbesteder is op zoek naar een een innovatieve en patiëntvriendelijke oplossing voor het vertalen van raadplegings- en hospitalisatieverslagen met behulp van Kunstmatige Intelligentie (AI) in begrijpelijke en patiëntgerichte taal. De vertaling moet minstens voor het Nederlands, Frans én Engels mogelijk zijn. Het resultaat moet zijn dat de patiënt via ehealth beschikt over een voor hem verstaanbare versie van de medische brief."@nl;
   dct:title "Ontwikkeling, aankoop, indienststelling en onderhoud van een AI-tool met oog op opstellen van een patiëntvriendelijke brief"@nl;
   adms:identifier <http://data.europa.eu/a4g/resource/6b533238-bf52-412d-ace7-ecf40998ae80-01/Procedure/Identifier/a8242d36-9226-4f1a-a205-e2ede1a87fc5> .

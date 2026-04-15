@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -54,6 +54,10 @@
   cccev:email "esender@example.com";
   cccev:telephone "+352 123456789" .
 
+<http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>
+  a dct:Location;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR> .
+
 <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
@@ -63,14 +67,22 @@
   epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/PartContractLocation$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>;
   epo:hasBroadPlaceOfPerformance <http://publications.europa.eu/resource/authority/other-place-service/anyw-cou> .
 
+<http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/EmploymentDocumentation$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_EmploymentLegislationDocumentReference1_Attachment1>
+  a epo:EmploymentDocumentation;
+  epo:hasAddressURL "https://example.com/employment-legislation"^^xsd:anyURI .
+
 <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/EmploymentInformationProvider/ORG-0001organization>
   a epo:EmploymentInformationProvider;
-  epo:contextualisedBy <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:contextualisedBy <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/PlannedProcurementPart/PAR-0000>;
   epo:playedBy <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/EnvironmentalDocumentation$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_EnvironmentalLegislationDocumentReference1_Attachment1>
+  a epo:EnvironmentalDocumentation;
+  epo:hasAddressURL "https://example.com/environmental-legislation"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/EnvironmentalProtectionInformationProvider/ORG-0001organization>
   a epo:EnvironmentalProtectionInformationProvider;
-  epo:contextualisedBy <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:contextualisedBy <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/PlannedProcurementPart/PAR-0000>;
   epo:playedBy <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/Organization/ORG-0001> .
 
 <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/Identifier/ORG-0001>
@@ -90,16 +102,19 @@
 
 <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/Notice>
   a epo:Notice, epo:Notice6, epo:PlanningNotice;
+  epo:announcesPlannedProcurement <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/PlannedProcurement$_PriorInformationNotice1_ProcurementProject1>;
   epo:announcesPlannedProcurementPart <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/PlannedProcurementPart/PAR-0000>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/Buyer/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/EmploymentInformationProvider/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/EnvironmentalProtectionInformationProvider/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>,
     <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/TaxInformationProvider/ORG-0001organization>;
-  epo:hasESenderDispatchDate "2020-04-16T12:35:04+01:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2020-04-16T12:35:04+01:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-only>;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/ENG>;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   adms:identifier <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/Notice/Identifier> .
 
@@ -107,6 +122,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "64bdfc22-2f35-4109-9817-a8f0bd9468b6" .
+
+<http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.12" .
+
+<http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -131,33 +162,69 @@
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR> .
 
-<http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/PartPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2021-04-23+02:00"^^xsd:date .
+<http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/PartInterval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/PartStartPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
 
 <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>
-  a epo:ProcurementObject;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1> .
+  a epo:ProcurementObject .
 
 <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>
   a epo:Purpose;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/79530000> .
 
 <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/PartSpecificDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 4.0;
   time:unitType time:unitYear .
 
+<http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/PartStartPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2021-04-23+02:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/PlannedProcurement$_PriorInformationNotice1_ProcurementProject1>
+  a epo:PlannedProcurement;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+    <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
+  epo:hasAdditionalInformation "The authority reserves the right to amend any condition related to security of information to reflect any changes in national law or government policy. If any contract documents are accompanied by instructions on safeguarding classified information (e.g. a Security Aspects Letter), the authority reserves the right to amend the terms of these instructions to reflect any changes in national law or government policy, whether in respect of the applicable protective marking scheme, specific protective markings given, the aspects to which any protective marking applies or otherwise. The link below to the Gov.uk website provides information on the Government Security Classification. https://www.gov.uk/government/publications/government-security-classifications Advertising regime OJEU: This contract opportunity is published in the Official Journal of the European Union (OJEU), the MoD Defence Contracts Bulletin and www.contracts.mod.uk Go reference: GO-2020416-DCB-16375622"@en;
+  epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/PlannedProcurement/Identifier/700032337>;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32009L0081>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>;
+  dct:description "The authority has identified a requirement for a single supplier framework agreement for linguistic services in support of Permanent Joint Headquarters (PJHQ) and other user worldwide operations. This requirement shall include linguists at a variety of skill and security clearance levels to meet pre-defined roles but will also necessitate short notice deployments in to emerging operational locations when required by the authority. The authority will be looking to place a contract for four (4) years, with the potential to extend for a further twenty-four (24) months. The authority will be looking to place a contract notice for this requirement, with further details of the requirement, in the next 1-4 months. Interested suppliers will be expected to complete a Dynamic Pre-Qualification Questionnaire (DPQQ) with a minimum of three suppliers taken through to the invitation to tender (ITT) stage"@en;
+  dct:title "Provision of Worldwide Linguistic Services in Support of UK MoD Operations"@en .
+
+<http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/PlannedProcurement/Identifier/700032337>
+  a adms:Identifier;
+  epo:hasScheme "InternalID";
+  skos:notation "700032337" .
+
 <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/PlannedProcurementPart/PAR-0000>
   a epo:PlannedProcurementPart;
-  epo:foreseesProcurementObject <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
+    <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/PartInterval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasPlannedDuration <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/PartSpecificDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:hasPlannedPeriod <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/PartPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
   dct:description "The authority has identified a requirement for a single supplier framework agreement for linguistic services in support of Permanent Joint Headquarters (PJHQ) and other user worldwide operations. This requirement shall include linguists at a variety of skill and security clearance levels to meet pre-defined roles but will also necessitate short notice deployments in to emerging operational locations when required by the authority. The authority will be looking to place a contract for four (4) years, with the potential to extend for a further twenty-four (24) months. The authority will be looking to place a contract notice for this requirement, with further details of the requirement, in the next 1-4 months. Interested suppliers will be expected to complete a Dynamic Pre-Qualification Questionnaire (DPQQ) with a minimum of three suppliers taken through to the invitation to tender (ITT) stage"@en;
   dct:title "Provision of Worldwide Linguistic Services in Support of UK MoD Operations"@en;
   adms:identifier <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/Identifier/PAR-0000> .
+
+<http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>
+  a epo:Purpose;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/79530000> .
+
+<http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>
+  a epo:ProcessPlanningTerm;
+  epo:hasEstimatedContractNoticePublicationDate "2020-08-01+02:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>
+  a epo:ContractTerm;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
+
+<http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>
+  a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1> .
 
 <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>
   a epo:ProcurementServiceProvider;
@@ -165,7 +232,11 @@
   epo:playedBy <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/Organization/ORG-0002>;
   dct:description "ted-esen" .
 
+<http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/TaxDocumentation$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_FiscalLegislationDocumentReference1_Attachment1>
+  a epo:TaxDocumentation;
+  epo:hasAddressURL "https://example.com/fiscal-legislation"^^xsd:anyURI .
+
 <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/TaxInformationProvider/ORG-0001organization>
   a epo:TaxInformationProvider;
-  epo:contextualisedBy <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:contextualisedBy <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/PlannedProcurementPart/PAR-0000>;
   epo:playedBy <http://data.europa.eu/a4g/resource/64bdfc22-2f35-4109-9817-a8f0bd9468b6-01/Organization/ORG-0001> .

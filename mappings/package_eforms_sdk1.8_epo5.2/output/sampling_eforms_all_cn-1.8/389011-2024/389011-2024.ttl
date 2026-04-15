@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -25,12 +25,7 @@
   a epo:AccessTerm;
   epo:definesProcurementProcedureInformationProvider <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/ProcurementProcedureInformationProvider/ORG-0002organization> .
 
-<http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
-  a epo:AccessTerm;
-  epo:hasPublicAccessURL "https://cloud.3p.eu/Downloads/1/427/UX/2024"^^xsd:anyURI;
-  epo:isProcurementDocumentRestricted false .
-
-<http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference2>
+<http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1DOC%2001>
   a epo:AccessTerm;
   epo:hasPublicAccessURL "https://cloud.3p.eu/Downloads/1/427/UX/2024"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted false .
@@ -133,6 +128,14 @@ PROCEDURE - La date limite d'introduction des offres a été adaptée au 10/07/2
   cccev:email "info@conseildetat.be";
   cccev:telephone "+32 22349470" .
 
+<http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2024-10-01+02:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/ContractEndPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2026-05-23+02:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/ContractLocation$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BEL>;
@@ -147,19 +150,15 @@ PROCEDURE - La date limite d'introduction des offres a été adaptée au 10/07/2
   locn:postCode "1000";
   locn:postName "Bruxelles" .
 
-<http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2024-10-01+02:00"^^xsd:date;
-  epo:hasEnd "2026-05-23+02:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/required>;
   epo:hasEOrdering false;
   epo:hasEPayment true;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -172,8 +171,7 @@ PROCEDURE - La date limite d'introduction des offres a été adaptée au 10/07/2
 
 <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "(voir Déclaration sur l'honneur)"@fr, "(zie verklaring op erewoord)"@nl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/nati-ground> .
+  dct:description "(voir Déclaration sur l'honneur)"@fr, "(zie verklaring op erewoord)"@nl .
 
 <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -209,6 +207,11 @@ PROCEDURE - La date limite d'introduction des offres a été adaptée au 10/07/2
   epo:hasScheme "organization";
   skos:notation "ORG-0005" .
 
+<http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  time:hasEnd <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/ContractEndPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/Lot/Identifier/MR-488>
   a adms:Identifier;
   epo:hasScheme "InternalID";
@@ -216,14 +219,14 @@ PROCEDURE - La date limite d'introduction des offres a été adaptée au 10/07/2
 
 <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
+    <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/ProcurementCriterion$_ContractNotice1_ProcurementProjectLot1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/Lot/Identifier/MR-488>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/LotPurpose$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
-    <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
-    <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference2>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
+    <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1DOC%2001>,
     <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/MultipleStageProcedureTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/OpeningTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1>,
@@ -232,9 +235,7 @@ PROCEDURE - La date limite d'introduction des offres a été adaptée au 10/07/2
   epo:isUsingEUFunds true;
   epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>,
     <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion2>,
-    <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
     <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/ParticipationCondition$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1>,
-    <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/ProcurementCriterion$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>,
     <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>,
     <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>,
@@ -265,14 +266,17 @@ PROCEDURE - La date limite d'introduction des offres a été adaptée au 10/07/2
     <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/ProcurementServiceProvider$_ContractNotice1_ContractingParty1_Party1_ServiceProviderParty2>,
     <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/Reviewer/ORG-0005organization>,
     <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/TenderReceiver/ORG-0002organization>;
+  epo:hasDispatchDate "2024-06-27T00:00:00+02:00"^^xsd:dateTime;
   epo:hasESenderDispatchDate "2024-06-27T00:00:00+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00389011-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/cn-standard>;
-  epo:hasOJSIssueNumber "126/2024";
+  epo:hasOJSIssueNumber 126;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/FRA>,
     <http://publications.europa.eu/resource/authority/language/NLD>;
   epo:hasPublicationDate "2024-07-01Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/Procedure/69b18d65-4522-4935-9053-3dbff3e250cf>;
@@ -295,15 +299,27 @@ PROCEDURE - La date limite d'introduction des offres a été adaptée au 10/07/2
   epo:hasScheme "notice-id";
   skos:notation "3d47a918-bd8a-4be7-a51a-a14631656761" .
 
-<http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/OpenTenderEventPlace$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1_OccurenceLocation1>
-  a locn:Address;
-  locn:fullAddress "Société d'Aménagement Urbain - SA de droit public, Rue Brederode 9 à 1000 Bruxelles"@fr,
-    "Maatschappij voor Stedelijke Inrichting - NV van publiek recht, Brederodestraat 9 te 1000 Bruxelles"@nl .
+<http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.8" .
+
+<http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/OpeningTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1>
   a epo:OpeningTerm;
-  epo:definesOpeningPlace <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/OpenTenderEventPlace$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1_OccurenceLocation1>;
-  epo:hasOpeningDateTime "2024-07-10T11:00:00+02:00"^^xsd:dateTime .
+  epo:hasOpeningDateTime "2024-07-10T11:00:00+02:00"^^xsd:dateTime;
+  epo:hasOpeningPlace "Société d'Aménagement Urbain - SA de droit public, Rue Brederode 9 à 1000 Bruxelles"@fr,
+    "Maatschappij voor Stedelijke Inrichting - NV van publiek recht, Brederodestraat 9 te 1000 Bruxelles"@nl .
 
 <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/Organization/Identifier$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -374,12 +390,13 @@ PROCEDURE - La date limite d'introduction des offres a été adaptée au 10/07/2
 
 <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/Procedure/69b18d65-4522-4935-9053-3dbff3e250cf>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/Procedure/Identifier/PPP0UX-427%2F4144%2FMR-488>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/ProcedurePurpose$_ContractNotice1_ProcurementProject1>;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>;
   dct:description "Construction du bâtiment à rue (Plinthe) du futur pôle productif situé rue de Manchester 13-15-17-19 à Molenbeek-Saint-Jean"@fr,
     "Bouw van het nieuwe gebouw aan de straatzijde (Plint) van het toekomstige productiecentrum"@nl;
   dct:title "Construction du bâtiment à rue (Plinthe) du futur pôle productif sis rue de Manchester 13-15-17-19 à Molenbeek"@fr,
@@ -433,14 +450,12 @@ PROCEDURE - La date limite d'introduction des offres a été adaptée au 10/07/2
 
 <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/tp-abil>;
   dct:description "Les référencesNiveau(x) minimal(aux): Une référence de travaux de construction réalisés en milieu urbain d'un montant de minimum 3.000.000 euros HTVA, ayant fait l’objet d’une réception provisoire au cours des 5 années précédant la date limite de réception des offres et qui présente une (ou plusieurs) action(s) circulaire(s)"@fr,
     "De referentiesMinimumeisen: Een referentie van bouwproject in een stedelijke omgeving met een minimale waarde van 3.000.000 euro excl. btw, dat voorlopig werd opgeleverd in de 5 jaar voorafgaand aan de uiterste datum voor ontvangst van de offertes en met een (of meer) circulaire actie(s) voor een bedrag dat minstens gelijk is aan 2% van het totaalbedrag van de werken."@nl .
 
 <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/tp-abil>;
   dct:description """Profils minimum exigésNiveau(x) minimal(aux): Gestionnaire de chantier
 Chaque Soumissionnaire proposera un gestionnaire de chantier. Ce dernier sera présent à plein temps sur le chantier. Cet interlocuteur aura une capacité de communication, d’organisation, de planification, de coordination et de suivi budgétaire. Il interagira avec les différents acteurs du projet mais aussi avec des personnes externes. Il sera présent à toutes les réunions de chantier. Toute absence à celles-ci étant sanctionnée par des pénalités (cfr.Infra XII.13.1.1.). Le gestionnaire de chantier disposera d’une expérience probante de minimum 10 (dix) ans. Afin de prouver cette expérience demandée, le CV du gestionnaire proposé sera joint à l’offre.
@@ -454,7 +469,6 @@ De Inschrijver moet een werfleider voorstellen. Deze persoon zal dagelijks (volt
 
 <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>;
   dct:description """Le DUME, par lequel l'opérateur économique déclare qu’il ne se trouve pas dans une des situations d’exclusion visées aux articles 67 à 69 de la loi du 17 juin 2016.
 L’article 70 de la loi du 17 juin 2016 relative aux marchés publics s’applique. Pour les motifs d’exclusion visés à l’article 67 de la loi, le candidat ou soumissionnaire signale d’initiative s’il a pris les mesures correctrices visées au paragraphe 1er de l'article 70 au début de la procédure."""@fr,
@@ -463,13 +477,12 @@ Artikel 70 van de wet van 17 juni 2016 betreffende de overheidsopdrachten is van
 
 <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria4>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/other>;
   dct:description "Agréation et enregistrement des entrepreneurs: D (Entreprises générales de bâtiments), classe 8"@fr,
     "Erkenning en registratie van aannemers: D (Bouwwerken), klasse 8"@nl .
 
 <http://data.europa.eu/a4g/resource/3d47a918-bd8a-4be7-a51a-a14631656761-01/SpecificDuration$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TenderValidityPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 180.0;
   time:unitType time:unitDay .
 

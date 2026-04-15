@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -39,6 +39,10 @@
   epo:isProcurementDocumentRestricted true;
   epo:refersToPlannedPart <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PlannedProcurementPart/PAR-0001> .
 
+<http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1_UBLExtensions1>
+  a epo:AccessTerm;
+  epo:providesProcurementDocumentsInOfficialLanguage <http://publications.europa.eu/resource/authority/language/FRA> .
+
 <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/AdHocChannel$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:AdHocChannel;
   dct:description "https://sncf.bravosolution.com/web/login.html" .
@@ -47,6 +51,10 @@
   a epo:Buyer;
   epo:hasBuyerProfile "https://sncf.bravosolution.com/web/login.html"^^xsd:anyURI;
   epo:playedBy <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/Channel$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://sncf.bravosolution.com/web/login.html"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>
   a locn:Address;
@@ -62,6 +70,10 @@
   epo:hasInternetAddress "http://www.groupe-sncf.com/"^^xsd:anyURI;
   cccev:email "ext.adeline.amic@sncf.fr";
   cccev:telephone "0698079073" .
+
+<http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>
+  a dct:Location;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA> .
 
 <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
@@ -86,6 +98,7 @@
 
 <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/Notice>
   a epo:Notice, epo:Notice5, epo:PlanningNotice;
+  epo:announcesPlannedProcurement <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PlannedProcurement$_PriorInformationNotice1_ProcurementProject1>;
   epo:announcesPlannedProcurementPart <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PlannedProcurementPart/PAR-0001>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/Buyer/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/OfflineAccessProvider/ORG-0001organization>,
@@ -93,13 +106,15 @@
     <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/Reviewer/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/TenderProcessor/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/TenderReceiver/ORG-0001organization>;
-  epo:hasESenderDispatchDate "2025-04-04T16:31:50Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2025-04-04T16:31:50Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticePublicationNumber "00226866-2025";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-only>;
-  epo:hasOJSIssueNumber "69/2025";
+  epo:hasOJSIssueNumber 69;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/FRA>;
   epo:hasPublicationDate "2025-04-08+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   adms:identifier <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/Notice/Identifier> .
 
@@ -108,9 +123,25 @@
   epo:hasScheme "notice-id";
   skos:notation "f04327db-47c4-4576-b79c-68029e652347" .
 
+<http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.13" .
+
+<http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
+
 <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/OfflineAccessProvider/ORG-0001organization>
   a epo:OfflineAccessProvider;
-  epo:contextualisedBy <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:contextualisedBy <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PlannedProcurementPart/PAR-0001>;
   epo:playedBy <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/Organization/ORG-0001> .
 
 <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
@@ -119,6 +150,7 @@
 
 <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/Organization/ORG-0001>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/Channel$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>;
   epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>;
   epo:hasLegalName "SNCF Réseau SA"@fr;
@@ -135,22 +167,20 @@
   a epo:DynamicPurchaseSystemTechnique;
   epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
 
+<http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PartEndPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2025-05-19+02:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PartFrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1_ContractingSystem1>
   a epo:FrameworkAgreementTerm;
   epo:hasFrameworkAgreementType <http://publications.europa.eu/resource/authority/framework-agreement/none> .
 
-<http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PartPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasEnd "2025-05-19+02:00"^^xsd:date .
+<http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PartInterval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasEnd <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PartEndPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
 
 <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>
-  a epo:ProcurementObject;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
-    <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PartFrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1_ContractingSystem1>;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
-  epo:isCoveredByGPA true;
-  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/ReviewTerm/ORG-0001organization> .
+  a epo:ProcurementObject .
 
 <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>
   a epo:Purpose;
@@ -161,20 +191,70 @@
     <http://data.europa.eu/cpv/cpv/50324100>;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/35125000> .
 
+<http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/ParticipationCondition$_PriorInformationNotice1_ProcurementProjectLot1>
+  a epo:ParticipationCondition;
+  epo:hasReservedProcurement <http://publications.europa.eu/resource/authority/reserved-procurement/none> .
+
+<http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PlannedProcurement$_PriorInformationNotice1_ProcurementProject1>
+  a epo:PlannedProcurement;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+    <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
+  epo:hasAdditionalInformation """Il est rappelé que le présent RFI ne constitue pas un appel d’offres et n’engage aucune partie.
+
+Les fournisseurs sont libres de répondre ou non à la présente demande d’information. L’absence de réponse ne constituera en aucune façon un critère d’exclusion dans le cadre d’un futur appel d’offres. De même, la réponse à ce RFI ne constituera aucun avantage dans le cadre d’un futur appel d’offres."""@fr;
+  epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PlannedProcurement/Identifier/2025DOS0466360>;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
+  dct:description "L'objectif de cet AMI (Appel à Manifestation d'Intérêt) ou RFI est d'étudier le marché autour du système de monitoring par sondes du GSM-R, essentiel pour maintenir la performance et l'opérabilité des communications vocales et de données sur le réseau ferroviaire grâce à des indicateurs performants et à une collecte et analyse en temps réel des informations techniques opérationnelles."@fr;
+  dct:title "RFI SYSTEME DE CAPTATION DES DONNEES PAR SONDE DU RESEAU GSM-R"@fr .
+
+<http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PlannedProcurement/Identifier/2025DOS0466360>
+  a adms:Identifier;
+  epo:hasScheme "InternalID";
+  skos:notation "2025DOS0466360" .
+
 <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PlannedProcurementPart/PAR-0001>
   a epo:PlannedProcurementPart;
-  epo:foreseesProcurementObject <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>;
   epo:foreseesTechnique <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PartDynamicPurchaseSystemTechnique$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1_ContractingSystem2>;
-  epo:hasPlannedPeriod <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PartPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
+    <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PartFrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1_ContractingSystem1>,
+    <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PartInterval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
+  epo:isCoveredByGPA true;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/ReviewTerm/ORG-0001organization>;
   epo:usesChannel <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/AdHocChannel$_PriorInformationNotice1_ProcurementProjectLot1>;
   dct:description "L'objectif de cet AMI (Appel à Manifestation d'Intérêt) ou RFI est d'étudier le marché autour du système de monitoring par sondes du GSM-R, essentiel pour maintenir la performance et l'opérabilité des communications vocales et de données sur le réseau ferroviaire grâce à des indicateurs performants et à une collecte et analyse en temps réel des informations techniques opérationnelles."@fr;
   dct:title "RFI SYSTEME DE CAPTATION DES DONNEES PAR SONDE DU RESEAU GSM-R"@fr;
   adms:identifier <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/Identifier/PAR-0001> .
 
+<http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PlannedProcurementPart/f04327db-47c4-4576-b79c-68029e652347>
+  a epo:PlannedProcurementPart;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1_UBLExtensions1>;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/ParticipationCondition$_PriorInformationNotice1_ProcurementProjectLot1> .
+
+<http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>
+  a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/32400000>, <http://data.europa.eu/cpv/cpv/32418000>,
+    <http://data.europa.eu/cpv/cpv/32425000>, <http://data.europa.eu/cpv/cpv/32427000>,
+    <http://data.europa.eu/cpv/cpv/32428000>, <http://data.europa.eu/cpv/cpv/32522000>,
+    <http://data.europa.eu/cpv/cpv/32524000>, <http://data.europa.eu/cpv/cpv/34943000>,
+    <http://data.europa.eu/cpv/cpv/50324100>;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/35125000> .
+
 <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/ProcurementProcedureInformationProvider/ORG-0001organization>
   a epo:ProcurementProcedureInformationProvider;
-  epo:contextualisedBy <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:contextualisedBy <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PlannedProcurementPart/PAR-0001>;
   epo:playedBy <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>
+  a epo:ContractTerm;
+  epo:hasAdditionalContractNature <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies> .
+
+<http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>
+  a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1> .
 
 <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/ReviewTerm/ORG-0001organization>
   a epo:ReviewTerm;
@@ -186,10 +266,10 @@
 
 <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/TenderProcessor/ORG-0001organization>
   a epo:TenderProcessor;
-  epo:contextualisedBy <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:contextualisedBy <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PlannedProcurementPart/PAR-0001>;
   epo:playedBy <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/Organization/ORG-0001> .
 
 <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/TenderReceiver/ORG-0001organization>
   a epo:TenderReceiver;
-  epo:contextualisedBy <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:contextualisedBy <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/PlannedProcurementPart/PAR-0001>;
   epo:playedBy <http://data.europa.eu/a4g/resource/f04327db-47c4-4576-b79c-68029e652347-01/Organization/ORG-0001> .

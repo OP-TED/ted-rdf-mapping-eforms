@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -160,7 +160,8 @@
   a epo:ContractTerm;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasOptionsDescription "Kui tööde teostamise käigus peaks ilmnema ettenägematuid lisa- või uusi töid, mis on esialgse projektiga kooskõlas ja/või samalaadse teenuste kordamiseks, on hankijal õigus korraldada riigihange väljakuulutamiseta läbirääkimistega hankemenetlusena ja tellida tööd samalt pakkujalt."@et;
-  epo:hasRenewalDescription "Kui tööde teostamise käigus peaks ilmnema ettenägematuid lisatöid ja ettevõtja vahetamine põhjustaks hankijale märkimisväärseid lisakulusid ega oleks majanduslikel või tehnilistel põhjustel võimalik, võib hankija lepingut uuendada ja tellida lisatööd samalt pakujalt ilma uut hanget läbi viimata."@et .
+  epo:hasRenewalDescription "Kui tööde teostamise käigus peaks ilmnema ettenägematuid lisatöid ja ettevõtja vahetamine põhjustaks hankijale märkimisväärseid lisakulusid ega oleks majanduslikel või tehnilistel põhjustel võimalik, võib hankija lepingut uuendada ja tellida lisatööd samalt pakujalt ilma uut hanget läbi viimata."@et;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/Identifier/LOT-0000>
   a adms:Identifier;
@@ -212,13 +213,13 @@
 
 <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>;
   epo:hasAdditionalInformation "Hanget ei saa osadeks jagada, kuna tegemist on ühe projektiga, mille tööd on omavahel seotud. (9440-2023)"@et;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/Lot/Identifier/254471>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
   epo:isRecurrent false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>;
   epo:isUsingEUFunds false;
   dct:description "Pinnase jääkreostuse likvideerimine Tartu Raatuse territooriumil SA Keskkonnainvesteeringute Keskuse toetusega."@et;
@@ -228,8 +229,7 @@
 <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/LotAwardOutcome/RES-0000>
   a epo:LotAwardOutcome;
   epo:comprisesTenderAwardOutcome <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/TenderAwardOutcome/TEN-0001>;
-  epo:concernsLot <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/Lot/LOT-0000>;
-  rdfs:seeAlso <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/BudgetProvider/ORG-0007organization> .
+  epo:concernsLot <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/Lot/LOT-0000> .
 
 <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>
   a epo:Purpose;
@@ -244,13 +244,16 @@
 <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/Notice>
   a epo:ContractModificationNotice, epo:Notice, epo:Notice38;
   epo:announcesContractAmendment <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/ContractAmendment$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_ContractModification1>;
-  epo:hasESenderDispatchDate "2024-03-28T09:24:05.692+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-03-28T09:24:05.692+02:00"^^xsd:dateTime;
+  epo:hasESenderDispatchDate "2024-03-28T13:00:50.584+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/cont-modif>;
   epo:hasNoticePublicationNumber "00189148-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-modif>;
-  epo:hasOJSIssueNumber "64/2024";
+  epo:hasOJSIssueNumber 64;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/EST>;
   epo:hasPublicationDate "2024-03-29Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToAwardDecision <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/AwardDecision/CON-0001>;
   epo:refersToContractToBeModified <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/Contract/CON-0001>;
@@ -282,6 +285,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "0b821713-2eef-4c2f-99a2-572f75ebd40e" .
+
+<http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.9" .
+
+<http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/OrganisationGroup$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_TenderingParty1>
   a epo:OrganisationGroup;
@@ -383,13 +402,13 @@
 
 <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/Procedure/f04dd768-a3bc-4263-a8af-9fe9d3bbeca3>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>;
   epo:hasAdditionalInformation "Hanget ei saa osadeks jagada, kuna tegemist on ühe projektiga, mille tööd on omavahel seotud. (9440-2023)"@et;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/Procedure/Identifier/254471>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/Lot/LOT-0000>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/ProcedurePurpose$_ContractAwardNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/ProcedureTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/ProcedureTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>;
   dct:description "Pinnase jääkreostuse likvideerimine Tartu Raatuse territooriumil SA Keskkonnainvesteeringute Keskuse toetusega."@et;
   dct:title "Raatuse territooriumi jääkreostuse likvideerimine"@et;
   adms:identifier <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/Procedure/Identifier/f04dd768-a3bc-4263-a8af-9fe9d3bbeca3> .
@@ -443,7 +462,7 @@
   a epo:Tender;
   epo:hasFinancialOfferValue <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
   epo:hasSubcontracting <http://publications.europa.eu/resource/authority/applicability/no>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/Lot/LOT-0000>;
   adms:identifier <http://data.europa.eu/a4g/resource/0b821713-2eef-4c2f-99a2-572f75ebd40e-01/Tender/Identifier/498096> .
 

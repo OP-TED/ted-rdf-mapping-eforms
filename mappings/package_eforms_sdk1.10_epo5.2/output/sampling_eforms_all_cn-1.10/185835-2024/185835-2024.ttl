@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -43,6 +43,14 @@
   cccev:email "versorgungsvertraege@kkh.de";
   cccev:telephone "0000" .
 
+<http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2024-04-01+02:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/ContractEndPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2028-03-31+02:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
@@ -60,16 +68,12 @@
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/DE929> .
 
-<http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2024-04-01+02:00"^^xsd:date;
-  epo:hasEnd "2028-03-31+02:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/Interval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies>;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -93,13 +97,18 @@
   a adms:Identifier;
   skos:notation "ORG-0001" .
 
+<http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/Interval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  time:hasEnd <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/ContractEndPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/Lot/Identifier/->
   a adms:Identifier;
   skos:notation "-" .
 
 <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation """Der Beitritt muss spätestens bis 30.04.24 erfolgen. Danach ist ein Beitritt nicht mehr möglich (befristetes Beitrittsrecht).
 Es handelt sich bei diesen Verträgen nicht um einen öffentlichen Auftrag im Sinne von § 103 Absatz 1 des Gesetzes gegeben Wettbewerbsbeschränkungen (GWB), da keinem Wirtschaftsteilnehmer ein exklusiver Status im Wege einer vergaberechtlich relevanten Auswahlentscheidung eingeräumt wird. Der 4. Teil des GWB sowie die Vergabeverordnung finden keine Anwendung."""@de;
@@ -107,7 +116,7 @@ Es handelt sich bei diesen Verträgen nicht um einen öffentlichen Auftrag im Si
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/Lot/Identifier/->;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/SubmissionTerm$_PriorInformationNotice1_ProcurementProjectLot1>;
@@ -150,13 +159,15 @@ Leistungserbringer mit der Absicht, einem der Verträge beizutreten, gewährt di
     <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/ProcurementProcedureInformationProvider/ORG-0001>,
     <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/ReviewProcedureInformationProvider/ORG-0001>,
     <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/Reviewer/ORG-0001>;
-  epo:hasESenderDispatchDate "2024-03-26T20:53:01Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-03-26T20:53:01Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00185835-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-cfc-standard>;
-  epo:hasOJSIssueNumber "63/2024";
+  epo:hasOJSIssueNumber 63;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU>;
   epo:hasPublicationDate "2024-03-28Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/Lot/LOT-0001>;
   epo:refersToPrevious <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/Notice/121540-2024>;
@@ -175,6 +186,22 @@ Leistungserbringer mit der Absicht, einem der Verträge beizutreten, gewährt di
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "46f2daf1-d466-47f5-9d08-848608485408" .
+
+<http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.10" .
+
+<http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/OfflineAccessProvider/ORG-0001>
   a epo:OfflineAccessProvider;
@@ -209,7 +236,7 @@ Leistungserbringer mit der Absicht, einem der Verträge beizutreten, gewährt di
 
 <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/Procedure/f35ba4f2-eacc-4928-a13c-f83a6d189bee>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/MonetaryValueProcedure$_PriorInformationNotice1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/Procedure/Identifier/rtCGM-Vertr%C3%A4ge>;
@@ -217,7 +244,7 @@ Leistungserbringer mit der Absicht, einem der Verträge beizutreten, gewährt di
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/ProcedureTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/46f2daf1-d466-47f5-9d08-848608485408-01/ProcedureTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>;
   dct:description """Die KKH bietet ab dem 01.04.2024 ihren Versicherten auf der Basis einer Satzungsleistung bei bestehender BOT-Therapie (basal-unterstützende orale Therapie) bei Diabetes mellitus Typ 2 zeitlich befristet eine Versorgung mit einem rtCGM-System an. Mit der Bekanntmachung 693115-2023 - Wettbewerb - TED (europa.eu) sowie der Aktualisierung 121540-2024 wurde die Beabsichtigung von Vertragsabschlüssen bekannt gegeben. 
 Die KKH hat diesbezüglich mehrere bundesweit gültige Verträge über die die Versorgung ihrer Versicherten mit rtCGM-Systemen nach § 53 SGB X geschlossen.
 Leistungserbringer mit der Absicht, einem der Verträge beizutreten, gewährt die KKH (wie in der Bekanntmachung 121540-2024 beschrieben) ein zeitlich befristetes Beitrittsrecht bis zum 30.04.2024. Diese Leistungserbringer erhalten die Unterlagen auf Anfrage unter folgender E-Mail-Adresse: versorgungsvertraege@kkh.de. Voraussetzungen für die Anforderung der Vertragsunterlagen, sowie des Beitrittes ist die Vorlage einer gültigen Präqualifizierungsurkunde."""@de;

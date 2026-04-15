@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -26,7 +26,7 @@
   epo:definesOfflineAccessProvider <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/OfflineAccessProvider/ORG-0001organization>;
   epo:definesProcurementProcedureInformationProvider <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/ProcurementProcedureInformationProvider/ORG-0001organization> .
 
-<http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
+<http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1https%3A%2F%2Fapp.albofornitori.it%2Falboeproc%2Falbo_nuoveacque>
   a epo:AccessTerm;
   epo:hasPublicAccessURL "https://app.albofornitori.it/alboeproc/albo_nuoveacque"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted false .
@@ -47,6 +47,10 @@
   epo:hasChangeDescription "Data termine presentazione per errore indicazione su ENOTICE(documentazione di gara corretta)"@it;
   epo:hasChangeReasonDescription "Data termine presentazione per errore indicazione su ENOTICE(documentazione di gara corretta)"@it;
   epo:isProcurementDocumentChanged false .
+
+<http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/Channel$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://nuoveacque.it/"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/CompanyAddress$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>
   a locn:Address;
@@ -74,8 +78,12 @@
   cccev:email "taraq-sez1@ga-cert.it";
   cccev:telephone "055 267301" .
 
+<http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2025-01-01+02:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 5.0;
   time:unitType time:unitYear .
 
@@ -92,14 +100,10 @@
   locn:postCode "52100";
   locn:postName "in tutto il territorio di competenza Nuove Acque s.p.a." .
 
-<http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2025-01-01+02:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/allowed>;
   epo:hasEOrdering false;
@@ -107,20 +111,26 @@
   epo:hasMaximumNumberOfRenewals 0;
   epo:hasPaymentArrangement "come da disciplinare di gara"@it;
   epo:hasPerformanceConditions "nessuna"@it;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
   epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/ContractLocation$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>;
   epo:hasPlaceOfPerformanceAdditionalInformation "in tutto il territorio di competenza Nuove Acque s.p.a."@it .
 
+<http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/Duration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 5.0;
+  time:unitType time:unitYear .
+
 <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/DynamicPurchaseSystemTechnicalUsage$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/Duration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
 
 <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
-  a epo:ExclusionGround;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/nati-ground> .
+  a epo:ExclusionGround .
 
 <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -141,6 +151,19 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0002" .
 
+<http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
+<http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/LocalLegalBasisInformation$_ContractNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/LocalLegalBasisInformation$_ContractNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier> .
+
+<http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/LocalLegalBasisInformation$_ContractNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier>
+  a adms:Identifier;
+  epo:hasScheme "";
+  skos:notation "D.lgs 36/2023" .
+
 <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/Lot/Identifier/%E2%80%9CFORNITURA%20DI%20ENERGIA%20ELETTRICA%20E%20SERVIZI%20ASSOCIATI%20PER%20GLI%20ANNI%202025%2C%202026%20E%202027%E2%80%9D>
   a adms:Identifier;
   epo:hasScheme "InternalID";
@@ -148,22 +171,21 @@
 
 <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation "come da disciplinare di gara"@it;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/MonetaryValueLot$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/Lot/Identifier/%E2%80%9CFORNITURA%20DI%20ENERGIA%20ELETTRICA%20E%20SERVIZI%20ASSOCIATI%20PER%20GLI%20ANNI%202025%2C%202026%20E%202027%E2%80%9D>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/LotPurpose$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
-    <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
+    <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1https%3A%2F%2Fapp.albofornitori.it%2Falboeproc%2Falbo_nuoveacque>,
     <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/OpeningTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1>,
     <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>;
   epo:isUsingEUFunds false;
   epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>,
-    <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
     <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/ParticipationCondition$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest2>,
     <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>;
   epo:usesTechnique <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/DynamicPurchaseSystemTechnicalUsage$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>;
@@ -196,13 +218,15 @@
     <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/Reviewer/ORG-0002organization>,
     <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/TenderProcessor/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/TenderReceiver/ORG-0001organization>;
-  epo:hasESenderDispatchDate "2024-07-29T16:30:02Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-07-29T16:30:02Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00459255-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/cn-standard>;
-  epo:hasOJSIssueNumber "148/2024";
+  epo:hasOJSIssueNumber 148;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/ITA>;
   epo:hasPublicationDate "2024-07-31+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/Lot/LOT-0001>;
   epo:refersToPrevious <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/Notice/000654-2024>;
@@ -223,20 +247,32 @@
   epo:hasScheme "notice-id";
   skos:notation "58fd59ab-803f-4e34-bad4-9b727be5773d" .
 
+<http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.9" .
+
+<http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
+
 <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/OfflineAccessProvider/ORG-0001organization>
   a epo:OfflineAccessProvider;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/Lot/LOT-0001>;
   epo:playedBy <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/Organization/ORG-0001> .
 
-<http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/OpenTenderEventPlace$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1_OccurenceLocation1>
-  a locn:Address;
-  locn:fullAddress "come da disicplinare"@it .
-
 <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/OpeningTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1>
   a epo:OpeningTerm;
-  epo:definesOpeningPlace <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/OpenTenderEventPlace$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1_OccurenceLocation1>;
   epo:hasOpeningDateTime "2024-09-11T10:30:00+02:00"^^xsd:dateTime;
-  epo:hasOpeningDescription "come da disicplinare"@it .
+  epo:hasOpeningDescription "come da disicplinare"@it;
+  epo:hasOpeningPlace "come da disicplinare"@it .
 
 <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/Organization/Identifier$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -248,6 +284,7 @@
 
 <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/Organization/ORG-0001>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/Channel$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>;
   epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/Organization/Identifier$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>;
   epo:hasLegalName "Nuove Acque spa"@it;
@@ -270,7 +307,7 @@
 
 <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/Procedure/661837d5-3463-4e1b-a265-a007e64394f1>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/MonetaryValueProcedure$_ContractNotice1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/other>;
   epo:hasLegalBasisDescription "D.lgs 36/2023 [] / D.lgs 36/2023"@it;
@@ -278,6 +315,7 @@
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/ProcedurePurpose$_ContractNotice1_ProcurementProject1>;
   epo:isAccelerated false;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>;
   dct:description "“FORNITURA DI ENERGIA ELETTRICA E SERVIZI ASSOCIATI PER GLI ANNI 2025, 2026 E 2027”"@it;
   dct:title "“FORNITURA DI ENERGIA ELETTRICA E SERVIZI ASSOCIATI PER GLI ANNI 2025, 2026 E 2027”"@it;
   adms:identifier <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/Procedure/Identifier/661837d5-3463-4e1b-a265-a007e64394f1> .
@@ -321,7 +359,7 @@
   skos:prefLabel "come da disciplinare di gara"@it .
 
 <http://data.europa.eu/a4g/resource/58fd59ab-803f-4e34-bad4-9b727be5773d-01/SpecificDuration$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TenderValidityPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 180.0;
   time:unitType time:unitDay .
 

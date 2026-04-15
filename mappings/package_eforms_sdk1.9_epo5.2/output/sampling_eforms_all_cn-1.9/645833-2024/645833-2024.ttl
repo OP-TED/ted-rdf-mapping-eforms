@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -25,7 +25,7 @@
   a epo:AccessTerm;
   epo:definesProcurementProcedureInformationProvider <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/ProcurementProcedureInformationProvider/ORG-0001organization> .
 
-<http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
+<http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms18816011>
   a epo:AccessTerm;
   epo:hasPublicAccessURL "https://riigihanked.riik.ee/rhr-web/#/procurement/7931204/general-info"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted false .
@@ -75,6 +75,14 @@
   a cccev:ContactPoint;
   cccev:email "register@riigihanked.riik.ee";
   cccev:telephone "+3726113693" .
+
+<http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2024-12-26+02:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/ContractEndPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2025-10-15+03:00"^^xsd:date .
 
 <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/ContractLocation$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
@@ -131,14 +139,9 @@
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/EST>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/EE009> .
 
-<http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2024-12-26+02:00"^^xsd:date;
-  epo:hasEnd "2025-10-15+03:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/required>;
   epo:hasEOrdering true;
@@ -154,7 +157,8 @@ Hankija faktooringuprogrammiga liitudes on lepingu maksetähtaeg 95 kalendripäe
 Ettemakseid ei tehta."""@et;
   epo:hasPerformanceConditions "Hankelepingut täites peab edukas pakkuja täitma Elektrilevi OÜ juhtimissüsteemi dokumentides toodud nõudeid. Juhtimissüsteemi dokumendid on saadaval: https://www8.energia.ee/public/ee043.nsf/PKDE?OpenView, sh eetikakoodeks ning töötervishoiu ja tööohutuse nõuded, mis on saadaval https://www.energia.ee/et/hankedokumendid."@et;
   epo:hasRenewalDescription "Kooskõlas RHS § 123."@et;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -213,27 +217,34 @@ Ettemakseid ei tehta."""@et;
   epo:hasScheme "organization";
   skos:notation "ORG-0003" .
 
+<http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  time:hasEnd <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/ContractEndPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/Lot/Identifier/285649>
   a adms:Identifier;
   skos:notation "285649" .
 
 <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
+  epo:doesNotRequireSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>,
+    <http://publications.europa.eu/resource/authority/selection-criterion/tp-abil>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
     <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation2>,
     <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation3>,
     <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation4>,
     <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation5>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/GreenProcurement$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>,
-    <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/StrategicProcurement$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>;
+    <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/SocialProcurement$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:hasAdditionalInformation "Hankija selgitab, et lähtudes RHS § 27 lõikest 2 ei ole hankija hanget osadeks jaotanud, kuna riigihanke osadeks jagamine muudab hankelepingu täitmise keerukaks ning mitme lepingupartneri korral ei pruugi olla tagatud sobilik terviklahendus."@et;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/Lot/Identifier/285649>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/LotPurpose$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
   epo:isRecurrent false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
-    <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
+    <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms18816011>,
     <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/OpeningTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1>,
     <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
@@ -272,13 +283,16 @@ Ettemakseid ei tehta."""@et;
     <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/ProcurementServiceProvider$_ContractNotice1_ContractingParty1_Party1_ServiceProviderParty1>,
     <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/Reviewer/ORG-0002organization>,
     <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/TenderReceiver/ORG-0001organization>;
-  epo:hasESenderDispatchDate "2024-10-23T11:33:39.713+03:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-10-23T11:33:39.713+03:00"^^xsd:dateTime;
+  epo:hasESenderDispatchDate "2024-10-23T13:00:52.583+03:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00645833-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/cn-standard>;
-  epo:hasOJSIssueNumber "208/2024";
+  epo:hasOJSIssueNumber 208;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/EST>;
   epo:hasPublicationDate "2024-10-24+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/Lot/LOT-0000>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/Procedure/fcafb074-47e4-4608-a657-258721885e7e>;
@@ -288,6 +302,22 @@ Ettemakseid ei tehta."""@et;
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "70697605-454a-4633-a545-2165c322b264" .
+
+<http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.9" .
+
+<http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/OpeningTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1>
   a epo:OpeningTerm;
@@ -345,7 +375,7 @@ Ettemakseid ei tehta."""@et;
 
 <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/Procedure/fcafb074-47e4-4608-a657-258721885e7e>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>;
   epo:hasAdditionalInformation "Hankija selgitab, et lähtudes RHS § 27 lõikest 2 ei ole hankija hanget osadeks jaotanud, kuna riigihanke osadeks jagamine muudab hankelepingu täitmise keerukaks ning mitme lepingupartneri korral ei pruugi olla tagatud sobilik terviklahendus."@et;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/Procedure/Identifier/285649>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
@@ -353,7 +383,7 @@ Ettemakseid ei tehta."""@et;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/Lot/LOT-0000>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/ProcedurePurpose$_ContractNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/ProcedureTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/ProcedureTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>;
   dct:description """Virtsu 110/35/10 10 kV alajaama jaotusseadme ost vastavalt hanke alusdokumentides sätestatud tingimustele. 
 
 - Edukas pakkuja peab hiljemalt ühe kuu jooksul pärast hankelepingu sõlmimist esitama hankijale kirjalikult detailse tööde teostamise ajakava.
@@ -396,31 +426,28 @@ Ettemakseid ei tehta."""@et;
 
 <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/n-used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>;
   epo:isUsedForCandidateRestriction false .
 
 <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/ef-stand>;
   epo:isUsedForCandidateRestriction false;
   dct:description "https://riigihanked.riik.ee/rhr-web/#/procurement/7931204/procurement-passport"@et .
 
 <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/n-used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/tp-abil>;
   epo:isUsedForCandidateRestriction false .
 
+<http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/SocialProcurement$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>
+  a epo:SocialProcurement;
+  epo:includesAccessibilityCriterion <http://publications.europa.eu/resource/authority/accessibility/n-inc> .
+
 <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/SpecificDuration$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TenderValidityPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 3.0;
   time:unitType time:unitMonth .
-
-<http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/StrategicProcurement$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>
-  a epo:StrategicProcurement;
-  epo:includesAccessibilityCriterion <http://publications.europa.eu/resource/authority/accessibility/n-inc> .
 
 <http://data.europa.eu/a4g/resource/70697605-454a-4633-a545-2165c322b264-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:SubmissionTerm;

@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -128,7 +128,6 @@
   epo:hasContractConclusionDate "2021-06-29+03:00"^^xsd:date;
   epo:hasLotReference <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Lot/LOT-0001>;
   epo:includesTender <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Tender/TEN-0001>;
-  epo:isSubjectToContractSpecificTerm <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/ContractTerm$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_PayerParty1>;
   epo:signedByBuyer <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Buyer/ORG-0001organization>;
   dct:title "„Охранителни услуги, включващи следните дейности:1.Физическа въоръжена и невъоръжена охрана на обекти на Община Сливен, посочени в Приложение № 1 към настоящия договор; 2.Физическа охрана на обекти на"@bg;
   adms:identifier <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Contract/Identifier/3603> .
@@ -140,6 +139,14 @@
 <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/ContractAmendment$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_ContractModification1>
   a epo:ContractAmendment;
   epo:amendsContract <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Contract/CON-0001> .
+
+<http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2021-06-29+03:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/ContractEndPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2024-06-28+03:00"^^xsd:date .
 
 <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/ContractLocation$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
@@ -174,17 +181,13 @@
   a adms:Identifier;
   skos:notation "CON-0001" .
 
-<http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2021-06-29+03:00"^^xsd:date;
-  epo:hasEnd "2024-06-28+03:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/allowed>;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -194,15 +197,25 @@
   a epo:ContractTerm;
   epo:definesPaymentExecutor <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/PaymentExecutor/ORG-0001organization> .
 
+<http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/EmploymentDocumentation$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_EmploymentLegislationDocumentReference1_Attachment1>
+  a epo:EmploymentDocumentation;
+  epo:hasAddressURL "https://www.mlsp.government.bg/"^^xsd:anyURI .
+
 <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/EmploymentInformationProvider/ORG-0006organization>
   a epo:EmploymentInformationProvider;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Lot/LOT-0001>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Organization/ORG-0006> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Organization/ORG-0006>;
+  epo:providesDocumentation <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/EmploymentDocumentation$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_EmploymentLegislationDocumentReference1_Attachment1> .
+
+<http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/EnvironmentalDocumentation$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_EnvironmentalLegislationDocumentReference1_Attachment1>
+  a epo:EnvironmentalDocumentation;
+  epo:hasAddressURL "https://www.moew.government.bg/"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/EnvironmentalProtectionInformationProvider/ORG-0005organization>
   a epo:EnvironmentalProtectionInformationProvider;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Lot/LOT-0001>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Organization/ORG-0005> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Organization/ORG-0005>;
+  epo:providesDocumentation <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/EnvironmentalDocumentation$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_EnvironmentalLegislationDocumentReference1_Attachment1> .
 
 <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/GreenProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType1>
   a epo:GreenProcurement;
@@ -247,6 +260,11 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0006" .
 
+<http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  time:hasEnd <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/ContractEndPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Lot/Identifier/149617>
   a adms:Identifier;
   epo:hasScheme "Lot";
@@ -254,15 +272,16 @@
 
 <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
+    <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/ContractTerm$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_PayerParty1>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/GreenProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType1>,
     <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/GreenProcurement$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>,
-    <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/StrategicProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
+    <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/SocialProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Lot/Identifier/149617>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isRecurrent false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>;
   epo:isUsingEUFunds false;
   dct:description "„Охранителни услуги, включващи следните дейности:1.Физическа въоръжена и невъоръжена охрана на обекти на Община Сливен, посочени в Приложение № 1 към настоящия договор; 2.Физическа охрана на обекти на Община Сливен, посочени в Приложение № 2 към настоящия договор; 3.Охрана със СОТ на обекти на Община Сливен, посочени в Приложение № 3 към настоящия договор; 4. Охрана на мероприятия”"@bg;
@@ -272,9 +291,7 @@
 <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/LotAwardOutcome/RES-0001>
   a epo:LotAwardOutcome;
   epo:comprisesTenderAwardOutcome <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/TenderAwardOutcome/TEN-0001>;
-  epo:concernsLot <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Lot/LOT-0001>;
-  rdfs:seeAlso <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/BudgetProvider/ORG-0001organization>,
-    <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/PaymentExecutor/ORG-0001organization> .
+  epo:concernsLot <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Lot/LOT-0001> .
 
 <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>
   a epo:Purpose;
@@ -288,13 +305,15 @@
 <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Notice>
   a epo:ContractModificationNotice, epo:Notice, epo:Notice38;
   epo:announcesContractAmendment <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/ContractAmendment$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_ContractModification1>;
-  epo:hasESenderDispatchDate "2024-06-27T16:14:01+03:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-06-27T16:14:01+03:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/cont-modif>;
   epo:hasNoticePublicationNumber "00387908-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-modif>;
-  epo:hasOJSIssueNumber "126/2024";
+  epo:hasOJSIssueNumber 126;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/BUL>;
   epo:hasPublicationDate "2024-07-01Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToAwardDecision <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/AwardDecision/CON-0001>;
   epo:refersToContractToBeModified <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Contract/CON-0001>;
@@ -326,6 +345,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4" .
+
+<http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.8" .
+
+<http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
   a epo:NoticeAwardInformation;
@@ -424,13 +459,13 @@
 
 <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Procedure/ffb61996-421e-4e78-84f7-9fe794662f56>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Procedure/Identifier/149617>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/other>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/ProcedurePurpose$_ContractAwardNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/ProcedureTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/ProcedureTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>;
   dct:description "„Охранителни услуги, включващи следните дейности:1.Физическа въоръжена и невъоръжена охрана на обекти на Община Сливен, посочени в Приложение № 1 към настоящия договор; 2.Физическа охрана на обекти на Община Сливен, посочени в Приложение № 2 към настоящия договор; 3.Охрана със СОТ на обекти на Община Сливен, посочени в Приложение № 3 към настоящия договор; 4. Охрана на мероприятия”"@bg;
   dct:title "„Охранителни услуги, включващи следните дейности:1.Физическа въоръжена и невъоръжена охрана на обекти на Община Сливен, посочени в Приложение № 1 към настоящия договор; 2.Физическа охрана на обекти на Община Сливен, посочени в Приложение № 2 към настоящия договор; 3.Охрана със СОТ на обекти на Община Сливен, посочени в Приложение № 3 към настоящия договор; 4. Охрана на мероприятия”"@bg;
   adms:identifier <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Procedure/Identifier/ffb61996-421e-4e78-84f7-9fe794662f56> .
@@ -475,14 +510,19 @@
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Lot/LOT-0001>;
   epo:playedBy <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Organization/ORG-0002> .
 
-<http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/StrategicProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>
-  a epo:StrategicProcurement;
+<http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/SocialProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>
+  a epo:SocialProcurement;
   epo:includesAccessibilityCriterion <http://publications.europa.eu/resource/authority/accessibility/n-inc> .
+
+<http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/TaxDocumentation$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_FiscalLegislationDocumentReference1_Attachment1>
+  a epo:TaxDocumentation;
+  epo:hasAddressURL "https://nra.bg/wps/portal/nra/nachalo"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/TaxInformationProvider/ORG-0004organization>
   a epo:TaxInformationProvider;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Lot/LOT-0001>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Organization/ORG-0004> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Organization/ORG-0004>;
+  epo:providesDocumentation <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/TaxDocumentation$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_FiscalLegislationDocumentReference1_Attachment1> .
 
 <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Tender/Identifier/3603>
   a adms:Identifier;
@@ -491,7 +531,7 @@
 <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Tender/TEN-0001>
   a epo:Tender;
   epo:hasFinancialOfferValue <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Lot/LOT-0001>;
   adms:identifier <http://data.europa.eu/a4g/resource/376f5fc2-8f7e-4ca4-b6e6-5a6c14d1c6d4-01/Tender/Identifier/3603> .
 

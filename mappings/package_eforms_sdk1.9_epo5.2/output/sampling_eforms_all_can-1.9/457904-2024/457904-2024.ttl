@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -29,7 +29,7 @@
 <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/AwardDecision/2024-06-25%2B01%3A00>
   a epo:AwardDecision;
   epo:comprisesAwardOutcome <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/LotAwardOutcome/RES-0001>;
-  epo:hasAwardDecisionDate "2024-06-25+01:00"^^xsd:date .
+  epo:hasAwardDecisionDate "2024-06-25T00:00:00+01:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/AwardEvaluationTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1>
   a epo:AwardEvaluationTerm;
@@ -84,7 +84,6 @@
   epo:hasContractConclusionDate "2024-07-26+01:00"^^xsd:date;
   epo:hasLotReference <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/Lot/LOT-0001>;
   epo:includesTender <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/Tender/TEN-0001>;
-  epo:isSubjectToContractSpecificTerm <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/ContractTerm$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_PayerParty1>;
   epo:signedByBuyer <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/Buyer/ORG-0001organization>;
   dct:title "https://ambientespa.acquistitelematici.it/list/tender/procedure-gara"@it;
   adms:identifier <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/Contract/Identifier/con-0001> .
@@ -115,7 +114,8 @@
 <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
-  epo:hasOptionsDescription "si rimanda ai documenti di gara"@it .
+  epo:hasOptionsDescription "si rimanda ai documenti di gara"@it;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -160,14 +160,15 @@
 
 <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
+    <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/ContractTerm$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_PayerParty1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/MonetaryValueLot$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/Lot/Identifier/lot-001>;
   epo:hasLaunchFrameworkAgreementMaximumValue <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/LotValueEstimateExtension$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/AwardEvaluationTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/AwardEvaluationTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1>,
     <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>;
   epo:isUsingEUFunds false;
@@ -183,9 +184,7 @@ La durata dell’appalto (escluse le eventuali opzioni) è di 24 (ventiquattro) 
   a epo:LotAwardOutcome;
   epo:comprisesTenderAwardOutcome <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/TenderAwardOutcome/TEN-0001>;
   epo:concernsLot <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/Lot/LOT-0001>;
-  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
-  rdfs:seeAlso <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/BudgetProvider/ORG-0001organization>,
-    <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/PaymentExecutor/ORG-0001organization> .
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> .
 
 <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>
   a epo:Purpose;
@@ -214,17 +213,20 @@ La durata dell’appalto (escluse le eventuali opzioni) è di 24 (ventiquattro) 
 <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/Notice>
   a epo:Notice, epo:Notice29, epo:ResultNotice;
   epo:announcesAwardDecision <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/AwardDecision/2024-06-25%2B01%3A00>;
+  epo:announcesContract <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/Contract/CON-0001>;
   epo:announcesNoticeAwardInformation <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/BudgetProvider/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/PaymentExecutor/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/Tenderer/TPA-0001>;
-  epo:hasESenderDispatchDate "2024-07-26T17:18:00+01:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-07-26T17:18:00+01:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/result>;
   epo:hasNoticePublicationNumber "00457904-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-standard>;
-  epo:hasOJSIssueNumber "147/2024";
+  epo:hasOJSIssueNumber 147;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/ITA>;
   epo:hasPublicationDate "2024-07-30+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/Lot/LOT-0001>;
   epo:refersToPrevious <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/Notice/314017-2024>;
@@ -249,6 +251,22 @@ La durata dell’appalto (escluse le eventuali opzioni) è di 24 (ventiquattro) 
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871" .
+
+<http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.9" .
+
+<http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
   a epo:NoticeAwardInformation;
@@ -300,7 +318,7 @@ La durata dell’appalto (escluse le eventuali opzioni) è di 24 (ventiquattro) 
 
 <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/Procedure/518b43c2-e0ac-4a80-bcf8-b3cbf131e921>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/MonetaryValueProcedure$_ContractAwardNotice1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/Procedure/Identifier/lot-001>;
@@ -357,7 +375,7 @@ La durata dell’appalto (escluse le eventuali opzioni) è di 24 (ventiquattro) 
 <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/Tender/TEN-0001>
   a epo:Tender;
   epo:hasFinancialOfferValue <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/Lot/LOT-0001>;
   epo:isVariant false;
   adms:identifier <http://data.europa.eu/a4g/resource/2b8c3b1b-2bc6-4318-bb24-a1a0bbf64871-01/Tender/Identifier/off001> .

@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -34,6 +34,10 @@
   a epo:Buyer;
   epo:hasBuyerProfile "https://acquebresciane.acquistitelematici.it"^^xsd:anyURI;
   epo:playedBy <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Channel$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://acquebresciane.acquistitelematici.it/"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/CompanyAddress$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>
   a locn:Address;
@@ -79,6 +83,14 @@
   cccev:email "esender@example.com";
   cccev:telephone "+352 123456789" .
 
+<http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2020-05-01+02:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/ContractEndPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2023-04-30+02:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/ContractLocation$_ContractNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ITA>;
@@ -96,18 +108,14 @@
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ITA>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/ITC47> .
 
-<http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2020-05-01+02:00"^^xsd:date;
-  epo:hasEnd "2023-04-30+02:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/required>;
   epo:hasMaximumNumberOfRenewals 0;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -134,6 +142,16 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0003" .
 
+<http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Identifier/TPO-0001>
+  a adms:Identifier;
+  epo:hasScheme "touchpoint";
+  skos:notation "TPO-0001" .
+
+<http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  time:hasEnd <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/ContractEndPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Lot/Identifier/SQASF2020>
   a adms:Identifier;
   epo:hasScheme "InternalID";
@@ -141,13 +159,13 @@
 
 <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation "A) Controversie. Ai sensi e per gli effetti degli art. 119 e 120 del D.Lgs. 104/2010 e s.m.i. così come recentemente modificato dal codice dei contratti, mediante ricorso al Tribunale amministrativo regionale della Lombardia, sez. di Brescia. Per gli oneri e le tempistiche di impugnazione, posti a pena di inammissibilità del ricorso, si rinvia integralmente a quanto previsto dal predetto art. 120 del D.Lgs. 104/2010 e s.m.i. Tutte le controversie derivanti dall’esecuzione dei contratti afferenti al presente sistema di qualificazione, previo esperimento dei tentativi di transazione e di accordo bonario ai sensi degli art. 205 e 206 del Codice, saranno deferite alla giurisdizione dell’Autorità giudiziaria di Brescia, con esclusione della giurisdizione arbitrale. B) Riserva di aggiudicazione. Acque Bresciane si riserva la facoltà di non procedere agli inviti mediante procedure ristrette/negoziate ai sensi del presente regolamento e di avvalersi per l’aggiudicazione di tali lavori di altre procedure consentite e regolamentate dal codice; Acque Bresciane si riserva, altresì, la facoltà di revocare le successive aggiudicazioni qualora accerti, in qualsiasi momento e con qualunque mezzo di prova, l’assenza di uno o più d’uno dei requisiti minimi richiesti dal presente regolamento, oppure quando accerti una violazione in materia di dichiarazioni, a prescindere dalle verifiche già effettuate, nonché il mancato rispetto della legge n. 136/2010 e s.m.i. C) Trattamento dei dati personali: Acque Bresciane tratterà le informazioni finalizzate all’iscrizione nel «Sistema di qualificazione» nel rispetto dei legittimi interessi dell’operatore economico, riguardante la protezione dei segreti tecnici e commerciali, e della normativa sulla privacy di cui al regolamento europeo n. 2016/679 («GDPR») ed alla normativa applicabile in materia di protezione dei dati personali. Il trattamento suddetto verrà svolto dalla SA secondo le modalità descritte nell’informativa ai sensi dell’art. 13 del GDPR, disponibile sul Portale al seguente indirizzo https://acquebresciane.acquistitelematici.it D) Responsabile del procedimento. Verrà nominato per ciascuna procedura ristretta o negoziata."@it;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Lot/Identifier/SQASF2020>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/LotPurpose$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>;
   epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>,
@@ -167,7 +185,7 @@
   a epo:Mediator;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Lot/LOT-0000>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/TouchPoint/TPO-0001>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Organization/TPO-0001> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/OrganizationalUnit/TPO-0001> .
 
 <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Notice>
   a epo:CompetitionNotice, epo:Notice, epo:Notice15;
@@ -179,10 +197,12 @@
     <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/ProcurementServiceProvider$_ContractNotice1_ContractingParty1_Party1_ServiceProviderParty1>,
     <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/ReviewProcedureInformationProvider/TPO-0001touchpoint>,
     <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Reviewer/ORG-0002organization>;
-  epo:hasESenderDispatchDate "2020-04-03T12:30:00+01:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2020-04-03T12:30:00+01:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/qu-sy>;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/ITA>;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Lot/LOT-0000>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Procedure/0bc9e721-7916-4b3d-bbd0-2350efc3f00e>;
@@ -192,6 +212,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "8439f5f1-ad52-46a0-b363-533779a02e4b" .
+
+<http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.11" .
+
+<http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Organization/Identifier$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -207,13 +243,15 @@
 
 <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Organization/ORG-0001>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Channel$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>;
   epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert-ra>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Organization/Identifier$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>;
   epo:hasLegalName "Acque Bresciane srl"@it;
   epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/water>;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/CompanyContactPoint$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_Contact1>;
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/CompanyAddress$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>;
-  adms:identifier <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Identifier/ORG-0001> .
+  adms:identifier <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Identifier/ORG-0001>;
+  org:hasUnit <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/OrganizationalUnit/TPO-0001> .
 
 <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Organization/ORG-0002>
   a org:Organization;
@@ -231,9 +269,11 @@
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/CompanyAddress$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization3_Company1_PostalAddress1>;
   adms:identifier <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Identifier/ORG-0003> .
 
-<http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Organization/TPO-0001>
-  a org:Organization;
-  owl:sameAs <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Organization/ORG-0001> .
+<http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/OrganizationalUnit/TPO-0001>
+  a org:OrganizationalUnit;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/TouchPoint/TPO-0001>;
+  dct:title "Responsabile del Procedimento"@it;
+  adms:identifier <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Identifier/TPO-0001> .
 
 <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/ParticipationCondition$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1>
   a epo:ParticipationCondition;
@@ -241,14 +281,14 @@
 
 <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Procedure/0bc9e721-7916-4b3d-bbd0-2350efc3f00e>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation "A) Controversie. Ai sensi e per gli effetti degli art. 119 e 120 del D.Lgs. 104/2010 e s.m.i. così come recentemente modificato dal codice dei contratti, mediante ricorso al Tribunale amministrativo regionale della Lombardia, sez. di Brescia. Per gli oneri e le tempistiche di impugnazione, posti a pena di inammissibilità del ricorso, si rinvia integralmente a quanto previsto dal predetto art. 120 del D.Lgs. 104/2010 e s.m.i. Tutte le controversie derivanti dall’esecuzione dei contratti afferenti al presente sistema di qualificazione, previo esperimento dei tentativi di transazione e di accordo bonario ai sensi degli art. 205 e 206 del Codice, saranno deferite alla giurisdizione dell’Autorità giudiziaria di Brescia, con esclusione della giurisdizione arbitrale. B) Riserva di aggiudicazione. Acque Bresciane si riserva la facoltà di non procedere agli inviti mediante procedure ristrette/negoziate ai sensi del presente regolamento e di avvalersi per l’aggiudicazione di tali lavori di altre procedure consentite e regolamentate dal codice; Acque Bresciane si riserva, altresì, la facoltà di revocare le successive aggiudicazioni qualora accerti, in qualsiasi momento e con qualunque mezzo di prova, l’assenza di uno o più d’uno dei requisiti minimi richiesti dal presente regolamento, oppure quando accerti una violazione in materia di dichiarazioni, a prescindere dalle verifiche già effettuate, nonché il mancato rispetto della legge n. 136/2010 e s.m.i. C) Trattamento dei dati personali: Acque Bresciane tratterà le informazioni finalizzate all’iscrizione nel «Sistema di qualificazione» nel rispetto dei legittimi interessi dell’operatore economico, riguardante la protezione dei segreti tecnici e commerciali, e della normativa sulla privacy di cui al regolamento europeo n. 2016/679 («GDPR») ed alla normativa applicabile in materia di protezione dei dati personali. Il trattamento suddetto verrà svolto dalla SA secondo le modalità descritte nell’informativa ai sensi dell’art. 13 del GDPR, disponibile sul Portale al seguente indirizzo https://acquebresciane.acquistitelematici.it D) Responsabile del procedimento. Verrà nominato per ciascuna procedura ristretta o negoziata."@it;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Procedure/Identifier/SQASF2020>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Lot/LOT-0000>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/ProcedurePurpose$_ContractNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/ProcedureTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/ProcedureTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>;
   dct:description "Acque Bresciane, ai sensi dell’art. 134 del Codice e in conformità a quanto previsto dal regolamento dei contratti, intende istituire un sistema di qualificazione di operatori economici qualificati per l’esecuzione dei lavori di asfaltatura dei rappezzi e delle tracce di scavo derivanti da: — interventi di manutenzione e allacciamenti alle reti di distribuzione acquedotto e fognatura, — estendimenti e/o rifacimenti delle reti di distribuzione acquedotto e fognatura. Il sistema di qualificazione potrà essere utilizzato anche dalle società del gruppo Cogeme e/o da altra società, sempreché controllante o controllata, ai sensi e per gli effetti di cui all’art. 2359 del Codice civile, o comunque partecipante o partecipata. Il sistema di qualificazione ha lo scopo di: — definire le regole con cui viene istituito e gestito il sistema di qualificazione, i requisiti che devono essere posseduti dagli operatori economici al fine di ottenere la qualificazione e la documentazione comprovante il possesso dei predetti requisiti, — costituire elenchi di operatori economici qualificati nell’attività specifica dei lavori oggetto del presente regolamento e di comprovata idoneità tecnico-professionale (disponibilità minima di mezzi, attrezzature, personale) nell’ambito dei quali la SA, e nell’eventualità le società del gruppo Cogeme (e/o altra società, sempreché controllante o controllata, ai sensi e per gli effetti di cui all’art. 2359 del Codice civile, o comunque partecipante o partecipata) individua i soggetti da invitare — nel rispetto dei principi di non discriminazione, parità di trattamento, proporzionalità, trasparenza e rotazione — alle singole procedure di affidamento di lavori, siano esse procedure ristrette o negoziate di importo inferiore o superiore alla soglia comunitaria. A tali procedure potranno partecipare solo gli operatori economici qualificati, fatto salvo le eccezioni di cui all'art. 10) del regolamento. Il presente regolamento e l’istituzione del sistema di qualificazione non vincolano in alcun modo Acque Bresciane e non costituiscono l’avvio di una procedura di affidamento e/o di aggiudicazione di appalti; il regolamento, l’avviso, le dichiarazioni e la documentazione forniti dagli operatori economici hanno il solo scopo di manifestare la volontà dei medesimi di essere iscritti nel sistema di qualificazione, senza che questo costituisca un vincolo per la SA, atteso che il sistema di qualificazione rappresenta per Acque Bresciane uno strumento da utilizzare, secondo le proprie necessità, per la selezione di operatori economici nell’ambito di affidamento degli appalti appartenenti alle predette categorie di lavori o altre categorie di lavori analoghi e affini. Le disposizioni del presente regolamento devono intendersi sostituite, modificate, abrogate ovvero disapplicate automaticamente ove il relativo contenuto sia incompatibile con sopravvenute inderogabili disposizioni legislative o regolamentari."@it;
   dct:title "Sistema di qualificazione lavori di asfaltatura dei rappezzi e delle tracce di scavo"@it;
   adms:identifier <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Procedure/Identifier/0bc9e721-7916-4b3d-bbd0-2350efc3f00e> .
@@ -299,7 +339,7 @@
   a epo:ReviewProcedureInformationProvider;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Lot/LOT-0000>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/TouchPoint/TPO-0001>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/Organization/TPO-0001> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/OrganizationalUnit/TPO-0001> .
 
 <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>
   a epo:ReviewTerm;
@@ -313,19 +353,16 @@
 
 <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>;
   dct:description "L’istanza di ammissione al sistema di qualificazione è gestita tramite il Portale (https://acquebresciane.acquistitelematici.it) al quale si rinvia per le modalità di registrazione. La procedura di accreditamento è descritta nell'art. 3 del regolamento. Sono ammessi a presentare l’istanza di ammissione al sistema di qualificazione i soggetti di cui all’art. 45 del codice dei contratti. All'art. 5) del regolamento sono elencati i requisiti minimi per accedere al sistema di qualificazione, pena l'esclusione."@it .
 
 <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/ef-stand>;
   dct:description "L’istanza di ammissione al sistema di qualificazione è gestita tramite il Portale (https://acquebresciane.acquistitelematici.it) al quale si rinvia per le modalità di registrazione. La procedura di accreditamento è descritta nell'art. 3 del regolamento. Sono ammessi a presentare l’istanza di ammissione al sistema di qualificazione i soggetti di cui all’art. 45 del codice dei contratti. All'art. 5) del regolamento sono elencati i requisiti minimi per accedere al sistema di qualificazione, pena l'esclusione."@it .
 
 <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/tp-abil>;
   dct:description "L’istanza di ammissione al sistema di qualificazione è gestita tramite il Portale (https://acquebresciane.acquistitelematici.it) al quale si rinvia per le modalità di registrazione. La procedura di accreditamento è descritta nell'art. 3 del regolamento. Sono ammessi a presentare l’istanza di ammissione al sistema di qualificazione i soggetti di cui all’art. 45 del codice dei contratti. All'art. 5) del regolamento sono elencati i requisiti minimi per accedere al sistema di qualificazione, pena l'esclusione."@it .
 
@@ -340,7 +377,6 @@
   epo:hasInternetAddress "http://www.acquebresciane.it"^^xsd:anyURI;
   cccev:email "contact@acquebresciane.it";
   cccev:telephone "+39 03077199";
-  dct:description "Responsabile del Procedimento"@it;
   locn:address <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/TouchPointAddress$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint1_PostalAddress1> .
 
 <http://data.europa.eu/a4g/resource/8439f5f1-ad52-46a0-b363-533779a02e4b-01/TouchPointAddress$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint1_PostalAddress1>

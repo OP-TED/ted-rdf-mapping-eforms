@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -25,12 +25,7 @@
   a epo:AccessTerm;
   epo:definesProcurementProcedureInformationProvider <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/ProcurementProcedureInformationProvider/ORG-0001organization> .
 
-<http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
-  a epo:AccessTerm;
-  epo:hasPublicAccessURL "https://cloud.3p.eu/Downloads/1/1627/QA/2024"^^xsd:anyURI;
-  epo:isProcurementDocumentRestricted false .
-
-<http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference2>
+<http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1DOC%2001>
   a epo:AccessTerm;
   epo:hasPublicAccessURL "https://cloud.3p.eu/Downloads/1/1627/QA/2024"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted false .
@@ -100,6 +95,14 @@ There are adjustments to the NDA Document.
   cccev:email "orb.antwerpen.secr.voorz@just.fgov.be";
   cccev:telephone "+32 32578700" .
 
+<http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2025-03-31+02:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/ContractEndPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2028-12-15+01:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/ContractLocation$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BEL>;
@@ -114,19 +117,15 @@ There are adjustments to the NDA Document.
   locn:postCode "2400";
   locn:postName "Mol" .
 
-<http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2025-03-31+02:00"^^xsd:date;
-  epo:hasEnd "2028-12-15+01:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/required>;
   epo:hasEOrdering false;
   epo:hasEPayment false;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -139,8 +138,7 @@ There are adjustments to the NDA Document.
 
 <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "(voir DUME)"@fr, "(zie UEA)"@nl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/nati-ground> .
+  dct:description "(voir DUME)"@fr, "(zie UEA)"@nl .
 
 <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -161,6 +159,11 @@ There are adjustments to the NDA Document.
   epo:hasScheme "organization";
   skos:notation "ORG-0002" .
 
+<http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  time:hasEnd <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/ContractEndPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/Lot/Identifier/2024-106-IVE_1>
   a adms:Identifier;
   epo:hasScheme "InternalID";
@@ -168,14 +171,14 @@ There are adjustments to the NDA Document.
 
 <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
+    <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/ProcurementCriterion$_ContractNotice1_ProcurementProjectLot1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/Lot/Identifier/2024-106-IVE_1>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/LotPurpose$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
-    <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
-    <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference2>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
+    <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1DOC%2001>,
     <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/MultipleStageProcedureTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
@@ -183,9 +186,7 @@ There are adjustments to the NDA Document.
   epo:isUsingEUFunds false;
   epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>,
     <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion2>,
-    <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
     <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/ParticipationCondition$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1>,
-    <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/ProcurementCriterion$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>,
     <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>,
     <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>,
@@ -307,14 +308,17 @@ Optie 3: De ondersteuning van de Cryoplant-operatie tijdens de geïntegreerde in
     <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/ReviewProcedureInformationProvider/ORG-0002organization>,
     <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/Reviewer/ORG-0002organization>,
     <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/TenderReceiver/ORG-0001organization>;
+  epo:hasDispatchDate "2024-10-01T00:00:00+02:00"^^xsd:dateTime;
   epo:hasESenderDispatchDate "2024-10-01T00:00:00+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00596384-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/cn-standard>;
-  epo:hasOJSIssueNumber "193/2024";
+  epo:hasOJSIssueNumber 193;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/FRA>,
     <http://publications.europa.eu/resource/authority/language/NLD>;
   epo:hasPublicationDate "2024-10-03+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/Procedure/e223ded6-11c9-4e96-9b28-98331f9ed174>;
@@ -324,6 +328,22 @@ Optie 3: De ondersteuning van de Cryoplant-operatie tijdens de geïntegreerde in
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "dc9647ed-a2fe-4a9a-a038-f072fa29a316" .
+
+<http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.10" .
+
+<http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/Notice/c6cdc635-f6ae-4cbd-a65f-becb389b7ec7-01>
   a epo:Notice;
@@ -378,12 +398,13 @@ Optie 3: De ondersteuning van de Cryoplant-operatie tijdens de geïntegreerde in
 
 <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/Procedure/e223ded6-11c9-4e96-9b28-98331f9ed174>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/Procedure/Identifier/PPP0QA-1627%2F4514%2F2024-106-IVE>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/ProcedurePurpose$_ContractNotice1_ProcurementProject1>;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>;
   dct:description """
 L'objet de cet appel d'offres est la fourniture d'un cryoplant pour le LINAC supraconducteur MINERVA.  
 Le contrat comprend la conception, la fabrication, le transport, l'installation, la mise en service et les tests de performance.  
@@ -587,7 +608,7 @@ Artikel 70 van de wet van 17 juni 2016 betreffende de overheidsopdrachten is van
 """@nl .
 
 <http://data.europa.eu/a4g/resource/dc9647ed-a2fe-4a9a-a038-f072fa29a316-01/SpecificDuration$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TenderValidityPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 120.0;
   time:unitType time:unitDay .
 

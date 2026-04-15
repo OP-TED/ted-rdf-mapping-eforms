@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -28,6 +28,10 @@
 <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/Buyer/ORG-0001>
   a epo:Buyer;
   epo:playedBy <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/Channel$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://www.contratosdegalicia.gal/consultaOrganismo.jsp?lang=gl&ID=800&N=505&OR=505&SORT=2&ORDER=2"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>
   a locn:Address;
@@ -59,7 +63,8 @@
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasEOrdering true;
   epo:hasEPayment true;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/DynamicPurchaseSystemTechnicalUsage$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
@@ -88,11 +93,11 @@
 
 <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/Lot/Identifier/2023-CONSE%2004-SC>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/MultipleStageProcedureTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
@@ -128,13 +133,15 @@
   epo:announcesRole <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/Buyer/ORG-0001>,
     <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/ProcurementProcedureInformationProvider/ORG-0001>,
     <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/Reviewer/ORG-0002>;
-  epo:hasESenderDispatchDate "2023-11-27T11:05:18Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2023-11-27T11:05:18Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00722556-2023";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-cfc-standard>;
-  epo:hasOJSIssueNumber "229/2023";
+  epo:hasOJSIssueNumber 229;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/SPA>;
   epo:hasPublicationDate "2023-11-28Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/Procedure/0491fc55-6594-4c04-9eb5-f1f06cc08cb6>;
@@ -144,6 +151,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "db9d8981-a320-45f8-998d-a43925dbe16d" .
+
+<http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.9" .
+
+<http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -155,6 +178,7 @@
 
 <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/Organization/ORG-0001>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/Channel$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>;
   epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/ra>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>;
   epo:hasLegalName "Vicepresidencia Primera y Consellería de Presidencia, Justicia y Deportes"@es;
@@ -177,7 +201,7 @@
 
 <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/Procedure/0491fc55-6594-4c04-9eb5-f1f06cc08cb6>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/MonetaryValueProcedure$_PriorInformationNotice1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/db9d8981-a320-45f8-998d-a43925dbe16d-01/Procedure/Identifier/2023-CONSE%2004-SC>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;

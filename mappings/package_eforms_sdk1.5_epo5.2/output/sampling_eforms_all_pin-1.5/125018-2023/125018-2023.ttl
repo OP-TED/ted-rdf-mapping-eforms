@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -65,6 +65,12 @@
   cccev:email "GC.Registry@curia.europa.eu";
   cccev:telephone "0035243031" .
 
+<http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>
+  a dct:Location;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ITA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ITC41>;
+  locn:address <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ProcedurePlacePerformance$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1> .
+
 <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies>;
@@ -105,21 +111,29 @@
   a epo:Mediator;
   epo:playedBy <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/Organization/ORG-0001> .
 
+<http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/MonetaryValueProcedure$_PriorInformationNotice1_ProcurementProject1_RequestedTenderTotal1>
+  a epo:MonetaryValue;
+  epo:hasAmountValue 1800000.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
 <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/Notice>
   a epo:Notice, epo:Notice4, epo:PlanningNotice;
+  epo:announcesPlannedProcurement <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/PlannedProcurement$_PriorInformationNotice1_ProcurementProject1>;
   epo:announcesPlannedProcurementPart <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/PlannedProcurementPart/PAR-0001>,
     <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/PlannedProcurementPart/PAR-0002>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/Buyer/ORG-0001>,
     <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/Mediator/ORG-0001>,
     <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/Reviewer/ORG-0002>;
-  epo:hasESenderDispatchDate "2023-02-27T07:50:29.15884Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2023-02-27T07:50:29.15884Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticePublicationNumber "00125018-2023";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-only>;
-  epo:hasOJSIssueNumber "42/2023";
+  epo:hasOJSIssueNumber 42;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/ENG>,
     <http://publications.europa.eu/resource/authority/language/ITA>;
   epo:hasPublicationDate "2023-02-28Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   adms:identifier <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/Notice/Identifier> .
 
@@ -127,6 +141,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "49cca485-0d7d-4f93-a0dd-c1014a918be7" .
+
+<http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.5" .
+
+<http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -192,26 +222,10 @@
   epo:hasFrameworkAgreementType <http://publications.europa.eu/resource/authority/framework-agreement/fa-wo-rc> .
 
 <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>
-  a epo:ProcurementObject;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
-    <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/PartFrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1_ContractingSystem1>;
-  epo:hasAdditionalInformation "On request of economic operators this prior information notice can be translated into any other official EU language."@en,
-    "Su richiesta degli operatori economici, il presente avviso di preinformazione può essere tradotto in qualsiasi altra lingua ufficiale dell'UE."@it;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
-  epo:isCoveredByGPA true;
-  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ReviewTerm/ORG-0002> .
+  a epo:ProcurementObject .
 
 <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot2>
-  a epo:ProcurementObject;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot2>,
-    <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot2_ProcurementProject1_RealizedLocation1>,
-    <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/PartFrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot2_TenderingProcess1_ContractingSystem1>;
-  epo:hasAdditionalInformation "On request of economic operators this prior information notice can be translated into any other official EU language."@en,
-    "Su richiesta degli operatori economici, il presente avviso di preinformazione può essere tradotto in qualsiasi altra lingua ufficiale dell'UE."@it;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot2_ProcurementProject1>;
-  epo:isCoveredByGPA true;
-  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ReviewTerm/ORG-0002> .
+  a epo:ProcurementObject .
 
 <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>
   a epo:Purpose;
@@ -228,14 +242,50 @@
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/33696300> .
 
 <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/PartSpecificDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 48.0;
   time:unitType time:unitMonth .
 
 <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/PartSpecificDuration$_PriorInformationNotice1_ProcurementProjectLot2_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 48.0;
   time:unitType time:unitMonth .
+
+<http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ParticipationCondition$_PriorInformationNotice1_ProcurementProjectLot1>
+  a epo:ParticipationCondition;
+  epo:hasReservedProcurement <http://publications.europa.eu/resource/authority/reserved-procurement/none> .
+
+<http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ParticipationCondition$_PriorInformationNotice1_ProcurementProjectLot2>
+  a epo:ParticipationCondition;
+  epo:hasReservedProcurement <http://publications.europa.eu/resource/authority/reserved-procurement/none> .
+
+<http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/PlannedProcurement$_PriorInformationNotice1_ProcurementProject1>
+  a epo:PlannedProcurement;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+    <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
+  epo:hasAdditionalInformation """This prior information notice announces the intention of the contracting authority to publish a future call for tenders. No other information or documents are available at this stage. Interested economic operators are invited to subscribe at the following address: https://etendering.ted.europa.eu/cft/cft-display.html?cftId=13573 in order to get notified when the contract notice and all the procurement documents, including the tender specifications, are published. Economic operators are also invited to participate in the request for information at the following link: https://ec.europa.eu/eusurvey/runner/364270e2-a391-10b0-b015-c192695e40d6
+"""@en,
+    """Il presente avviso di preinformazione annuncia l'intenzione dell'amministrazione aggiudicatrice di pubblicare una futura gara d'appalto. In questa fase non sono disponibili altre informazioni o documenti. Gli operatori economici interessati sono invitati a iscriversi all'indirizzo https://etendering.ted.europa.eu/cft/cft-display.html?cftId=13573 per essere informati al momento della pubblicazione del bando di gara e di tutti i documenti, compreso il capitolato d'oneri.
+Gli operatori economici interessati sono invitati a partecipare alla richiesta di informazioni al seguente link: https://ec.europa.eu/eusurvey/runner/364270e2-a391-10b0-b015-c192695e40d6
+"""@it;
+  epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/MonetaryValueProcedure$_PriorInformationNotice1_ProcurementProject1_RequestedTenderTotal1>;
+  epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/PlannedProcurement/Identifier/JRC%2FIPR%2F2023%2FOP%2F0572-PIN>;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>;
+  dct:description "Supply of chemical, microbiological and cloning reagents for JRC Ispra."@en,
+    "Fornitura di reagenti chimici, microbiologici e per clonazione per il JRC Ispra"@it;
+  dct:title "Framework contract for the supply of chemicals and reagents (Lot 1) and of cloning, microbiology and reagents (Lot 2) for the  JRC Ispra site laboratories."@en,
+    "Contratto quadro per la fornitura di sostanze chimiche e reagenti (Lotto 1) e di reagenti per clonazione e microbiologici (Lotto 2) per i laboratori del sito di CCR Ispra."@it .
+
+<http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/PlannedProcurement/Identifier/JRC%2FIPR%2F2023%2FOP%2F0572-PIN>
+  a adms:Identifier;
+  skos:notation "JRC/IPR/2023/OP/0572-PIN" .
+
+<http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/PlannedProcurementPart/49cca485-0d7d-4f93-a0dd-c1014a918be7>
+  a epo:PlannedProcurementPart;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ParticipationCondition$_PriorInformationNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ParticipationCondition$_PriorInformationNotice1_ProcurementProjectLot2> .
 
 <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/PlannedProcurementPart/Identifier/JRC%2FIPR%2F2023%2FOP%2F0572-PIN>
   a adms:Identifier;
@@ -243,23 +293,61 @@
 
 <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/PlannedProcurementPart/PAR-0001>
   a epo:PlannedProcurementPart;
-  epo:foreseesProcurementObject <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
+    <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/PartFrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1_ContractingSystem1>;
+  epo:hasAdditionalInformation "On request of economic operators this prior information notice can be translated into any other official EU language."@en,
+    "Su richiesta degli operatori economici, il presente avviso di preinformazione può essere tradotto in qualsiasi altra lingua ufficiale dell'UE."@it;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/PlannedProcurementPart/Identifier/JRC%2FIPR%2F2023%2FOP%2F0572-PIN>;
   epo:hasPlannedDuration <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/PartSpecificDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
+  epo:isCoveredByGPA true;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ReviewTerm/ORG-0002>;
   dct:description "Lot 1: Supply of Chemicals and Reagents for Laboratory Use"@en, "Lotto 1: Fornitura di sostanze chimiche e reagenti per uso in laboratorio"@it;
   dct:title "Lot 1: Supply of Chemicals and Reagents for Laboratory Use"@en, "Lotto 1: Fornitura di sostanze chimiche e reagenti per uso in laboratorio"@it;
   adms:identifier <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/Identifier/PAR-0001> .
 
 <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/PlannedProcurementPart/PAR-0002>
   a epo:PlannedProcurementPart;
-  epo:foreseesProcurementObject <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot2>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot2>,
+    <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot2_ProcurementProject1_RealizedLocation1>,
+    <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/PartFrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot2_TenderingProcess1_ContractingSystem1>;
+  epo:hasAdditionalInformation "On request of economic operators this prior information notice can be translated into any other official EU language."@en,
+    "Su richiesta degli operatori economici, il presente avviso di preinformazione può essere tradotto in qualsiasi altra lingua ufficiale dell'UE."@it;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/PlannedProcurementPart/Identifier/JRC%2FIPR%2F2023%2FOP%2F0572-PIN>;
   epo:hasPlannedDuration <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/PartSpecificDuration$_PriorInformationNotice1_ProcurementProjectLot2_ProcurementProject1_PlannedPeriod1>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot2_ProcurementProject1>;
+  epo:isCoveredByGPA true;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ReviewTerm/ORG-0002>;
   dct:description "Lot 2: Supply of chemical, microbiological and cloning reagents for laboratory use"@en,
     "Lotto 2: Fornitura di reagenti per clonazione e microbiologici per uso in laboratorio"@it;
   dct:title "Lot 2: Supply of chemical, microbiological and cloning reagents for laboratory use"@en,
     "Lotto 2: Fornitura di reagenti per clonazione e microbiologici per uso in laboratorio"@it;
   adms:identifier <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/Identifier/PAR-0002> .
+
+<http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ProcedurePlacePerformance$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ITA>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ITC41>;
+  locn:fullAddress "Via Enrico Fermi, 2749  , Ispra, 21027, ITA";
+  locn:postCode "21027";
+  locn:postName "Ispra" .
+
+<http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>
+  a epo:Purpose;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/33696300> .
+
+<http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>
+  a epo:ProcessPlanningTerm;
+  epo:hasEstimatedContractNoticePublicationDate "2023-04-30+02:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>
+  a epo:ContractTerm;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies> .
+
+<http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>
+  a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1> .
 
 <http://data.europa.eu/a4g/resource/49cca485-0d7d-4f93-a0dd-c1014a918be7-01/ReviewTerm/ORG-0002>
   a epo:ReviewTerm;
