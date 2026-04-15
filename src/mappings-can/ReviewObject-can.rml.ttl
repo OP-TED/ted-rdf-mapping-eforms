@@ -232,7 +232,7 @@ tedm:MG-ReviewDecision_ND-ReviewStatus a rr:TriplesMap ;
             rr:predicate epo:hasWithdrawalDate   ;
              rr:objectMap
                 [
-                   rml:reference "efbc:WithdrawnAppealDate";
+                   rml:reference "if(contains(efbc:WithdrawnAppealDate, '+')) then substring-before(efbc:WithdrawnAppealDate, '+') else if(contains(efbc:WithdrawnAppealDate, 'Z')) then substring-before(efbc:WithdrawnAppealDate, 'Z') else efbc:WithdrawnAppealDate";
                    rr:datatype xsd:date   ;
                 ] ;
         ] ;
