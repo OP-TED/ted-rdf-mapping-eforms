@@ -1,0 +1,759 @@
+:doctitle: TED-RDF Mapping Suite for eForms Notices v2.0.0
+
+== Release notes
+*April 2026*
+
+* Updated Mappings of eForms Notices from link:https://github.com/OP-TED/ePO/tree/v4.0.0[ePO 4.0.0] to link:https://github.com/OP-TED/ePO/tree/v5.2.0[ePO 5.2.0].
+
+* Added Mappings for Unpublish Fields for eForms SDK 1.3 - 1.13
+
+* This release addresses the following GitHub issues:
+** Issue #122: Conflated VehicleInformation properties, empty instances
+** Issue #123: Missing privacy condition for BT-09(b)-Procedure hasCrossBorderLaw
+** Issue #124: Conflated BT-5010-Lot isFundedBy Fund adms:identifier values
+** Issue #126: Conflated BT-133-Lot definesOpeningPlace values
+** Issue #127: Empty LotGroupAwardInformation in LotGroup announcesLotGroupAwardInformation
+** Issue #128: Missing currency for BT-156-NoticeResult in NoticeAwardInformation
+** Issue #129: Unlinked/orphan ContractTerm with definesPaymentExecutor ND-PayerParty
+** Issue #130: Runt/empty Procedure instance in DirectAwardTerm refersToPreviousProcedure
+** Issue #151: Conflated hasPlaceOfPerformanceAdditionalInformation and specific/broad place mixup
+** Issue #152: announces_refersTo_lotGroup.patch Missing announces/refersTo LotGroup under ND-LotsGroup
+** Issue #153: legal_basis_description.patch Missing BT-01(c)-Procedure legal basis ID if description is absent
+** Issue #154: award-criterion-threshold.patch Missing AwardCriterion threshold Constraint linkage
+** Issue #155: definesLotGroup.patch Wrong definesLotGroup mapping
+** Issue #156: refersToPreviousNotice.patch Possibly wrong mapping for refersToPreviousNotice for notices without ChangeReason
+
+== Change notes (Conceptual Mapping)
+|===
+
+| Prior Version |epo 4.0.0
+| Current Version | epo 5.2.0 |
+|===
+
+=== Added Mappings
+|===
+|*Min SDK Version*|*Max SDK Version*|*eForms SDK ID* | *Class Path* |*Property Path*
+|		|		|	OPT-001-notice	|	epo:Notice / epo:SpecificationInformation / adms:Identifier / rdf:PlainLiteral	|	?this epo:hasSpecificationInformation / epo:hasSourceVersionSpecification / skos:notation ?value .
+|		|		|	OPT-002-notice	|	epo:Notice / epo:SpecificationInformation / adms:Identifier / rdf:PlainLiteral	|	?this epo:hasSpecificationInformation / epo:hasSourceSpecificationCustomisation / skos:notation ?value .
+|	1.13	|		|	BT-795-Review	|	epo:ReviewDecision / epo:ReviewRequest / epo:MonetaryValue / xsd:decimal	|	?this epo:answersReviewRequest / epo:hasReviewRequestFee / epo:hasAmountValue ?value .
+|	1.13	|		|	BT-786-Review	|	epo:ReviewInformation / adms:Identifier / rdf:PlainLiteral	|	?this epo:relatesToEFormSectionIdentifier / skos:notation ?value .
+|	1.13	|		|	BT-786-Review	|	epo:ReviewInformation / epo:ReviewDecision .	|	?this epo:concernsReviewDecision ?value .
+|	1.13	|		|	BT-786-Review	|	epo:ReviewInformation / epo:ReviewRequest .	|	?this epo:concernsReviewRequest ?value .
+|	1.13	|		|	BT-01-notice	|	epo-not:PreMarketConsultationNotice / epo:Procedure	|	?this epo:preparesForPotentialProcurementObject ?value .
+|		|		|	BT-01-notice	|	epo-not:PlanningNotice / epo:PlannedProcurement	|	?this epo:announcesPlannedProcurement ?value .
+|		|		|	BT-01-notice	|	epo-not:PlanningNotice / epo:Procedure	|	?this epo:announcesProcedure ?value .
+|		|		|	BT-01-notice	|	epo:PlannedProcurement / at-voc:legal-basis	|	?this epo:hasLegalBasis ?value .
+|	1.3	|	1.3	|	BT-01(c)-Procedure	|	epo:PlannedProcurement / rdf:langString	|	?this epo:hasLegalBasisDescription ?value .
+|	1.4	|	1.7	|	BT-01(c)-Procedure	|	epo:PlannedProcurement / rdf:langString	|	?this epo:hasLegalBasisDescription ?value .
+|	1.8	|		|	BT-01(c)-Procedure	|	epo:PlannedProcurement / rdf:langString	|	?this epo:hasLegalBasisDescription ?value .
+|		|		|	BT-01(d)-Procedure	|	epo:PlannedProcurement / rdf:langString	|	?this epo:hasLegalBasisDescription ?value .
+|	1.4	|	1.7	|	BT-01(e)-Procedure	|	epo:LocalLegalBasisInformation / at-voc:legal-basis	|	?this epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/other> .
+|	1.8	|		|	BT-01(e)-Procedure	|	epo:LocalLegalBasisInformation / at-voc:legal-basis	|	?this epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/other> .
+|		|		|	BT-22-Procedure	|	epo:PlannedProcurement / adms:Identifier / rdf:PlainLiteral	|	?this epo:hasInternalIdentifier / skos:notation ?value .
+|		|		|	BT-21-Procedure	|	epo:PlannedProcurement / rdf:langString	|	?this dct:title ?value .
+|		|		|	BT-24-Procedure	|	epo:PlannedProcurement / rdf:langString	|	?this dct:description ?value .
+|		|		|	BT-23-Procedure	|	epo:PlannedProcurement / epo:ContractTerm / at-voc:contract-nature	|	?this epo:foreseesTerm / epo:hasContractNatureType ?value .
+|	1.3	|	1.7	|	BT-531-Procedure	|	epo:PlannedProcurement / epo:ContractTerm / at-voc:contract-nature	|	?this epo:foreseesTerm / epo:hasAdditionalContractNature ?value .
+|	1.8	|		|	BT-531-Procedure	|	epo:PlannedProcurement / epo:ContractTerm / at-voc:contract-nature	|	?this epo:foreseesTerm / epo:hasAdditionalContractNature ?value .
+|		|		|	BT-27-Procedure	|	epo:PlannedProcurement / epo:MonetaryValue / xsd:decimal	|	?this epo:hasEstimatedValue / epo:hasAmountValue ?value .
+|		|		|	BT-262-Procedure	|	epo:PlannedProcurement / epo:Purpose / at-voc:cpv	|	?this epo:hasPurpose / epo:hasMainClassification ?value .
+|		|		|	BT-263-Procedure	|	epo:PlannedProcurement / epo:Purpose / at-voc:cpv	|	?this epo:hasPurpose / epo:hasAdditionalClassification ?value .
+|	1.12	|		|	BT-806-Procedure	|	epo:ExclusionGround / xsd:boolean	|	?this epo:hasQualificationCriteriaStatedInNotice true .
+|	1.12	|		|	BT-806-Procedure	|	epo:ExclusionGround / xsd:boolean	|	?this epo:hasQualificationCriteriaStatedInESPDRequest true .
+|	1.12	|		|	BT-806-Procedure	|	epo:ExclusionGround / xsd:boolean	|	?this epo:hasQualificationCriteriaStatedInProcurementDocuments true .
+|		|		|	BT-300-Procedure	|	epo:PlannedProcurement / rdf:langString	|	?this epo:hasAdditionalInformation ?value .
+|		|		|	BT-1251-Lot	|	epo:Notice / epo-not:PlanningNotice / epo:PlannedProcurementPart / adms:Identifier / rdf:PlainLiteral	|	?this epo:refersToPrevious / epo:announcesPlannedProcurementPart / adms:identifier / skos:notation ?value .
+|		|		|	BT-36-Lot	|	epo:Lot / epo:DynamicPurchaseSystemTechnique / time:Duration / xsd:decimal	|	?this epo:usesTechnique / epo:hasEstimatedDuration / time:numericDuration ?value .
+|		|		|	BT-36-Lot	|	epo:Lot / epo:DynamicPurchaseSystemTechnique / time:Duration / time:TemporalUnit	|	?this epo:usesTechnique / epo:hasEstimatedDuration / time:unitType time:unitDay .
+|		|		|	BT-36-Lot	|	epo:Lot / epo:DynamicPurchaseSystemTechnique / time:Duration / time:TemporalUnit	|	?this epo:usesTechnique / epo:hasEstimatedDuration / time:unitType time:unitWeek .
+|		|		|	BT-36-Lot	|	epo:Lot / epo:DynamicPurchaseSystemTechnique / time:Duration / time:TemporalUnit	|	?this epo:usesTechnique / epo:hasEstimatedDuration / time:unitType time:unitMonth .
+|		|		|	BT-36-Lot	|	epo:Lot / epo:DynamicPurchaseSystemTechnique / time:Duration / time:TemporalUnit	|	?this epo:usesTechnique / epo:hasEstimatedDuration / time:unitType time:unitYear .
+|	1.12	|		|	BT-681-Lot	|	epo:Lot / xsd:boolean	|	?this epo:appliesForeignSubsidiesRegulation ?value .
+|		|		|	OPT-110-Lot-FiscalLegis	|	epo:TaxInformationProvider / epo:TaxDocumentation / xsd:anyURI	|	?this epo:providesDocumentation / epo:hasAddressURL ?value .
+|		|		|	OPT-120-Lot-EnvironLegis	|	epo:EnvironmentalProtectionInformationProvider / epo:EnvironmentalDocumentation / xsd:anyURI	|	?this epo:providesDocumentation / epo:hasAddressURL ?value .
+|		|		|	OPT-130-Lot-EmployLegis	|	epo:EmploymentInformationProvider / epo:EmploymentDocumentation / xsd:anyURI	|	?this epo:providesDocumentation / epo:hasAddressURL ?value .
+|		|	1.11	|	BT-747-Lot	|	epo:Lot / at-voc:selection-criterion	|	?this epo:doesNotRequireSelectionCriterionType ?value .
+|		|	1.11	|	BT-747-Lot	|	epo:Lot / at-voc:selection-criterion	|	?this epo:hasUnknownUsageOfSelectionCriterionType ?value .
+|	1.12	|		|	BT-809-Lot	|	epo:Lot / at-voc:selection-criterion	|	?this epo:doesNotRequireSelectionCriterionType ?value .
+|	1.12	|		|	BT-809-Lot	|	epo:Lot / at-voc:selection-criterion	|	?this epo:hasUnknownUsageOfSelectionCriterionType ?value .
+|	1.12	|		|	BT-821-Lot	|	epo:SelectionCriterion / xsd:boolean	|	?this epo:hasQualificationCriteriaStatedInNotice ?value .
+|	1.12	|		|	BT-821-Lot	|	epo:SelectionCriterion / xsd:boolean	|	?this epo:hasQualificationCriteriaStatedInESPDRequest ?value .
+|	1.12	|		|	BT-821-Lot	|	epo:SelectionCriterion / xsd:boolean	|	?this epo:hasQualificationCriteriaStatedInProcurementDocuments ?value .
+|		|		|	BT-45-Lot	|	epo:Lot / epo:DesignContestRegimeTerm / rdf:langString	|	?this epo:isSubjectToTerm / epo:hasFollowupContractInformation ?value.
+|	1.3	|	1.7	|	BT-47-Lot	|	epo-not:CompetitionNotice / epo:Candidate	|	?this epo:announcesRole ?value .
+|	1.3	|	1.7	|	BT-47-Lot	|	epo:Candidate / epo:Lot	|	?this epo:contextualisedBy ?value .
+|	1.13	|		|	BT-810-Lot	|	epo:EnergyEfficiencyInformation / epo:GreenProcurement	|	?this epo:concernsGreenProcurement ?value .
+|	1.13	|		|	BT-811(a)-Lot	|	epo:EnergyEfficiencyInformation / at-voc:energy-efficiency-basis	|	?this epo:hasCalculationBasedOn ?value .
+|	1.13	|		|	BT-811(b)-Lot	|	epo:EnergyEfficiencyInformation / at-voc:energy-efficiency-item	|	?this epo:concernsEnergyEfficiencyItemCategory ?value .
+|	1.13	|		|	BT-684-Lot	|	epo:InternationalProcurementInstrumentMeasuresInformation	|	?this a epo:InternationalProcurementInstrumentMeasuresInformation .
+|		|		|	BT-726-LotsGroup	|	epo:LotGroup / xsd:boolean	|	?this epo:isSMESuitable ?value .
+|		|		|	BT-543-LotsGroup	|	epo:LotGroup / epo:AwardEvaluationTerm / rdf:langString	|	?this epo:isSubjectToTerm / epo:hasAwardCriteriaEvaluationFormula ?value .
+|		|		|	BT-733-LotsGroup	|	epo:LotGroup / epo:AwardEvaluationTerm / rdf:langString	|	?this epo:isSubjectToTerm / epo:hasAwardCriteriaOrderJustification ?value .
+|		|		|	BT-509-Organization-Company	|	org:Organization / cv:Channel / xsd:anyURI	|	?this epo:exposesChannel / epo:hasAddressURL ?value .
+|		|		|	BT-509-Organization-TouchPoint	|	org:OrganizationalUnit / cv:Channel / xsd:anyURI	|	?this epo:exposesChannel / epo:hasAddressURL ?value .
+|	1.4	|		|	BT-195(BT-88)-Procedure	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasMainFeature> .
+|	1.4	|		|	BT-196(BT-88)-Procedure	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.4	|		|	BT-197(BT-88)-Procedure	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.4	|	1.5	|	BT-198(BT-88)-Procedure	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-88)-Procedure	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.4	|		|	BT-195(BT-105)-Procedure	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasProcedureType> .
+|	1.4	|		|	BT-196(BT-105)-Procedure	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.4	|		|	BT-197(BT-105)-Procedure	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.4	|	1.5	|	BT-198(BT-105)-Procedure	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-105)-Procedure	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.4	|		|	BT-195(BT-106)-Procedure	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#isAccelerated> .
+|	1.4	|		|	BT-196(BT-106)-Procedure	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.4	|		|	BT-197(BT-106)-Procedure	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.4	|	1.5	|	BT-198(BT-106)-Procedure	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-106)-Procedure	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.4	|		|	BT-195(BT-1351)-Procedure	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasAcceleratedProcedureJustification> .
+|	1.4	|		|	BT-196(BT-1351)-Procedure	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.4	|		|	BT-197(BT-1351)-Procedure	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.4	|	1.5	|	BT-198(BT-1351)-Procedure	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-1351)-Procedure	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.4	|		|	BT-195(BT-136)-Procedure	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasDirectAwardJustification> .
+|	1.4	|		|	BT-196(BT-136)-Procedure	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.4	|		|	BT-197(BT-136)-Procedure	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.4	|	1.5	|	BT-198(BT-136)-Procedure	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-136)-Procedure	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.4	|		|	BT-195(BT-135)-Procedure	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasJustification> .
+|	1.4	|		|	BT-196(BT-135)-Procedure	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.4	|		|	BT-197(BT-135)-Procedure	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.4	|	1.5	|	BT-198(BT-135)-Procedure	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-135)-Procedure	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.4	|		|	BT-195(BT-1252)-Procedure	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://www.w3.org/ns/adms#identifier> .
+|	1.4	|		|	BT-196(BT-1252)-Procedure	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.4	|		|	BT-197(BT-1252)-Procedure	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.4	|	1.5	|	BT-198(BT-1252)-Procedure	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-1252)-Procedure	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.4	|		|	BT-195(BT-539)-Lot	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasAwardCriterionType> .
+|	1.4	|		|	BT-196(BT-539)-Lot	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.4	|		|	BT-197(BT-539)-Lot	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.4	|	1.5	|	BT-198(BT-539)-Lot	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-539)-Lot	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.4	|		|	BT-195(BT-540)-Lot	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://purl.org/dc/terms/description> .
+|	1.4	|		|	BT-196(BT-540)-Lot	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.4	|		|	BT-197(BT-540)-Lot	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.4	|	1.5	|	BT-198(BT-540)-Lot	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-540)-Lot	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.4	|	1.7	|	BT-195(BT-541)-Lot	|	epo:NonPublishedInformation	|	{?this epo:hasMaskableProperty <http://data.europa.eu/m8g/weight>} UNION {?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasFixedValue>} UNION {?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasThresholdValue>}
+|	1.8	|		|	BT-195(BT-541)-Lot-Weight	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/m8g/weight> .
+|	1.4	|	1.7	|	BT-196(BT-541)-Lot	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.8	|		|	BT-196(BT-541)-Lot-Weight	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.4	|	1.7	|	BT-197(BT-541)-Lot	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.8	|		|	BT-197(BT-541)-Lot-Weight	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.4	|	1.5	|	BT-198(BT-541)-Lot	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|	1.7	|	BT-198(BT-541)-Lot	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.8	|		|	BT-198(BT-541)-Lot-Weight	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.4	|		|	BT-195(BT-5421)-Lot	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasWeightValueType> .
+|	1.4	|		|	BT-196(BT-5421)-Lot	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.4	|		|	BT-197(BT-5421)-Lot	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.4	|	1.5	|	BT-198(BT-5421)-Lot	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-5421)-Lot	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.8	|		|	BT-195(BT-541)-Lot-Fixed	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasFixedValue> .
+|	1.8	|		|	BT-196(BT-541)-Lot-Fixed	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.8	|		|	BT-197(BT-541)-Lot-Fixed	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|		|		|	BT-198(BT-541)-Lot-Fixed	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.4	|		|	BT-195(BT-5422)-Lot	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasFixedValueType> .
+|	1.4	|		|	BT-196(BT-5422)-Lot	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.4	|		|	BT-197(BT-5422)-Lot	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.4	|	1.5	|	BT-198(BT-5422)-Lot	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-5422)-Lot	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.8	|		|	BT-195(BT-541)-Lot-Threshold	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasThresholdValue> .
+|	1.8	|		|	BT-196(BT-541)-Lot-Threshold	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.8	|		|	BT-197(BT-541)-Lot-Threshold	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.8	|		|	BT-198(BT-541)-Lot-Threshold	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.4	|		|	BT-195(BT-5423)-Lot	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasThresholdType> .
+|	1.4	|		|	BT-196(BT-5423)-Lot	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.4	|		|	BT-197(BT-5423)-Lot	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.4	|	1.5	|	BT-198(BT-5423)-Lot	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-5423)-Lot	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.4	|		|	BT-195(BT-734)-Lot	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://www.w3.org/2004/02/skos/core#prefLabel> .
+|	1.4	|		|	BT-196(BT-734)-Lot	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.4	|		|	BT-197(BT-734)-Lot	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.4	|	1.5	|	BT-198(BT-734)-Lot	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-734)-Lot	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.4	|		|	BT-195(BT-543)-Lot	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasAwardCriteriaEvaluationFormula> .
+|	1.4	|		|	BT-196(BT-543)-Lot	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.4	|		|	BT-197(BT-543)-Lot	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.4	|	1.5	|	BT-198(BT-543)-Lot	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-543)-Lot	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.4	|		|	BT-195(BT-733)-Lot	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasAwardCriteriaOrderJustification> .
+|	1.4	|		|	BT-196(BT-733)-Lot	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.4	|		|	BT-197(BT-733)-Lot	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.4	|	1.5	|	BT-198(BT-733)-Lot	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-733)-Lot	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.4	|		|	BT-195(BT-539)-LotsGroup	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasAwardCriterionType> .
+|	1.4	|		|	BT-196(BT-539)-LotsGroup	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.4	|		|	BT-197(BT-539)-LotsGroup	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.4	|	1.5	|	BT-198(BT-539)-LotsGroup	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-539)-LotsGroup	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.4	|		|	BT-195(BT-540)-LotsGroup	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://purl.org/dc/terms/description> .
+|	1.4	|		|	BT-196(BT-540)-LotsGroup	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.4	|		|	BT-197(BT-540)-LotsGroup	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.4	|	1.5	|	BT-198(BT-540)-LotsGroup	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-540)-LotsGroup	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.4	|	1.7	|	BT-195(BT-541)-LotsGroup	|	epo:NonPublishedInformation	|	{?this epo:hasMaskableProperty <http://data.europa.eu/m8g/weight>} UNION {?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasFixedValue>} UNION {?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasThresholdValue>}
+|	1.8	|		|	BT-195(BT-541)-LotsGroup-Weight	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/m8g/weight> .
+|	1.4	|	1.7	|	BT-196(BT-541)-LotsGroup	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.8	|		|	BT-196(BT-541)-LotsGroup-Weight	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.4	|	1.7	|	BT-197(BT-541)-LotsGroup	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.8	|		|	BT-197(BT-541)-LotsGroup-Weight	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.4	|	1.5	|	BT-198(BT-541)-LotsGroup	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|	1.7	|	BT-198(BT-541)-LotsGroup	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.8	|		|	BT-198(BT-541)-LotsGroup-Weight	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.4	|		|	BT-195(BT-5421)-LotsGroup	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasWeightValueType> .
+|	1.4	|		|	BT-196(BT-5421)-LotsGroup	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.4	|		|	BT-197(BT-5421)-LotsGroup	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.4	|	1.5	|	BT-198(BT-5421)-LotsGroup	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-5421)-LotsGroup	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.8	|		|	BT-195(BT-541)-LotsGroup-Fixed	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasFixedValue> .
+|	1.8	|		|	BT-196(BT-541)-LotsGroup-Fixed	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.8	|		|	BT-197(BT-541)-LotsGroup-Fixed	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.8	|		|	BT-198(BT-541)-LotsGroup-Fixed	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.4	|		|	BT-195(BT-5422)-LotsGroup	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasFixedValueType> .
+|	1.4	|		|	BT-196(BT-5422)-LotsGroup	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.4	|		|	BT-197(BT-5422)-LotsGroup	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.4	|	1.5	|	BT-198(BT-5422)-LotsGroup	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-5422)-LotsGroup	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.8	|		|	BT-195(BT-541)-LotsGroup-Threshold	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasThresholdValue> .
+|	1.8	|		|	BT-196(BT-541)-LotsGroup-Threshold	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.8	|		|	BT-197(BT-541)-LotsGroup-Threshold	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.8	|		|	BT-198(BT-541)-LotsGroup-Threshold	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.4	|		|	BT-195(BT-5423)-LotsGroup	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasThresholdType> .
+|	1.4	|		|	BT-196(BT-5423)-LotsGroup	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.4	|		|	BT-197(BT-5423)-LotsGroup	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.4	|	1.5	|	BT-198(BT-5423)-LotsGroup	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-5423)-LotsGroup	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.4	|		|	BT-195(BT-734)-LotsGroup	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://www.w3.org/2004/02/skos/core#prefLabel> .
+|	1.4	|		|	BT-196(BT-734)-LotsGroup	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.4	|		|	BT-197(BT-734)-LotsGroup	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.4	|	1.5	|	BT-198(BT-734)-LotsGroup	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-734)-LotsGroup	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.4	|		|	BT-195(BT-543)-LotsGroup	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasAwardCriteriaEvaluationFormula> .
+|	1.4	|		|	BT-196(BT-543)-LotsGroup	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.4	|		|	BT-197(BT-543)-LotsGroup	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.4	|	1.5	|	BT-198(BT-543)-LotsGroup	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-543)-LotsGroup	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.4	|		|	BT-195(BT-733)-LotsGroup	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasAwardCriteriaOrderJustification> .
+|	1.4	|		|	BT-196(BT-733)-LotsGroup	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.4	|		|	BT-197(BT-733)-LotsGroup	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.4	|	1.5	|	BT-198(BT-733)-LotsGroup	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-733)-LotsGroup	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|		|		|	BT-195(BT-161)-NoticeResult	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasAmountValue> .
+|		|		|	BT-196(BT-161)-NoticeResult	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|		|		|	BT-197(BT-161)-NoticeResult	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|		|	1.5	|	BT-198(BT-161)-NoticeResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-161)-NoticeResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|		|		|	BT-195(BT-118)-NoticeResult	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasAmountValue> .
+|		|		|	BT-196(BT-118)-NoticeResult	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|		|		|	BT-197(BT-118)-NoticeResult	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|		|	1.5	|	BT-198(BT-118)-NoticeResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-118)-NoticeResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|		|		|	BT-195(BT-1118)-NoticeResult	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasAmountValue> .
+|		|		|	BT-196(BT-1118)-NoticeResult	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|		|		|	BT-197(BT-1118)-NoticeResult	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|		|	1.5	|	BT-198(BT-1118)-NoticeResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-1118)-NoticeResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|		|		|	BT-195(BT-156)-NoticeResult	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasAmountValue> .
+|		|		|	BT-196(BT-156)-NoticeResult	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|		|		|	BT-197(BT-156)-NoticeResult	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|		|	1.5	|	BT-198(BT-156)-NoticeResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-156)-NoticeResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.5	|	1.6	|	BT-1561-NoticeResult	|	epo:LotGroupAwardInformation / epo:MonetaryValue / xsd:decimal	|	?this epo:hasApproximateGroupFrameworkAgreementValue / epo:hasAmountValue ?value .
+|	1.7	|		|	BT-1561-NoticeResult	|	epo:LotGroupAwardInformation / epo:MonetaryValue / xsd:decimal	|	?this epo:hasApproximateGroupFrameworkAgreementValue / epo:hasAmountValue ?value .
+|	1.5	|	1.6	|	BT-195(BT-1561)-NoticeResult	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasAmountValue> .
+|	1.7	|		|	BT-195(BT-1561)-NoticeResult	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasAmountValue> .
+|	1.5	|	1.6	|	BT-196(BT-1561)-NoticeResult	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.7	|		|	BT-196(BT-1561)-NoticeResult	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.5	|	1.6	|	BT-197(BT-1561)-NoticeResult	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.7	|		|	BT-197(BT-1561)-NoticeResult	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.5	|	1.5	|	BT-198(BT-1561)-NoticeResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|	1.6	|	BT-198(BT-1561)-NoticeResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.7	|		|	BT-198(BT-1561)-NoticeResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|		|	1.7	|	OPT-301-Tenderer-MainCont	|	org:Organization / epo:Subcontractor	|	?this epo:foreseesSubcontractor ?value .
+|	1.8	|		|	OPT-301-Tenderer-MainCont	|	org:Organization / epo:Subcontractor	|	?this epo:foreseesSubcontractor ?value .
+|	1.12	|		|	BT-682-Tender	|	epo:TenderAwardOutcome / at-voc:foreign-subsidy-measure-conclusion	|	?this epo:specifiesForeignSubsidiesMeasureConclusion ?value
+|	1.12	|		|	BT-682-Tender	|	epo:TenderAwardOutcome / epo:Tender	|	?this epo:concernsTender ?value
+|		|		|	BT-195(BT-171)-Tender	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasAwardRank> .
+|		|		|	BT-196(BT-171)-Tender	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|		|		|	BT-197(BT-171)-Tender	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|		|	1.5	|	BT-198(BT-171)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-171)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|		|		|	BT-195(BT-193)-Tender	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#isVariant> .
+|		|		|	BT-196(BT-193)-Tender	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|		|		|	BT-197(BT-193)-Tender	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|		|	1.5	|	BT-198(BT-193)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-193)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|		|		|	BT-195(BT-720)-Tender	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasAmountValue> .
+|		|		|	BT-196(BT-720)-Tender	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|		|		|	BT-197(BT-720)-Tender	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|		|	1.5	|	BT-198(BT-720)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-720)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|		|	1.8	|	BT-195(BT-553)-Tender	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasAmountValue> .
+|	1.9	|		|	BT-195(BT-553)-Tender	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasAmountValue> .
+|		|	1.8	|	BT-196(BT-553)-Tender	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.9	|		|	BT-196(BT-553)-Tender	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|		|	1.8	|	BT-197(BT-553)-Tender	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.9	|		|	BT-197(BT-553)-Tender	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|		|	1.5	|	BT-198(BT-553)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|	1.8	|	BT-198(BT-553)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.9	|		|	BT-198(BT-553)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|		|	1.8	|	BT-195(BT-554)-Tender	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://purl.org/dc/terms/description> .
+|	1.9	|		|	BT-195(BT-554)-Tender	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://purl.org/dc/terms/description> .
+|		|	1.8	|	BT-196(BT-554)-Tender	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.9	|		|	BT-196(BT-554)-Tender	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|		|	1.8	|	BT-197(BT-554)-Tender	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.9	|		|	BT-197(BT-554)-Tender	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|		|	1.5	|	BT-198(BT-554)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|	1.8	|	BT-198(BT-554)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.9	|		|	BT-198(BT-554)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|		|	1.8	|	BT-195(BT-555)-Tender	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasEstimatedPercentage> .
+|	1.9	|		|	BT-195(BT-555)-Tender	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasEstimatedPercentage> .
+|		|	1.8	|	BT-196(BT-555)-Tender	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.9	|		|	BT-196(BT-555)-Tender	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|		|	1.8	|	BT-197(BT-555)-Tender	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.9	|		|	BT-197(BT-555)-Tender	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|		|	1.5	|	BT-198(BT-555)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|	1.8	|	BT-198(BT-555)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.9	|		|	BT-198(BT-555)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|		|	1.8	|	BT-195(BT-773)-Tender	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasSubcontracting> .
+|	1.9	|		|	BT-195(BT-773)-Tender	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasSubcontracting> .
+|		|	1.8	|	BT-196(BT-773)-Tender	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.9	|		|	BT-196(BT-773)-Tender	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|		|	1.8	|	BT-197(BT-773)-Tender	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.9	|		|	BT-197(BT-773)-Tender	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|		|	1.5	|	BT-198(BT-773)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|	1.8	|	BT-198(BT-773)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.9	|		|	BT-198(BT-773)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|		|	1.8	|	BT-730-Tender	|	epo:Tender / epo:SubcontractingEstimate / xsd:boolean	|	?this epo:foreseesSubcontracting / epo:isSubcontractingValueKnown ?value .
+|	1.9	|		|	BT-730-Tender	|	epo:Tender / epo:SubcontractingEstimate / xsd:boolean	|	?this epo:foreseesSubcontracting / epo:isSubcontractingValueKnown ?value .
+|		|	1.8	|	BT-195(BT-730)-Tender	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#isSubcontractingValueKnown> .
+|	1.9	|		|	BT-195(BT-730)-Tender	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#isSubcontractingValueKnown> .
+|		|	1.8	|	BT-196(BT-730)-Tender	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.9	|		|	BT-196(BT-730)-Tender	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|		|	1.8	|	BT-197(BT-730)-Tender	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.9	|		|	BT-197(BT-730)-Tender	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|		|	1.5	|	BT-198(BT-730)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|	1.8	|	BT-198(BT-730)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.9	|		|	BT-198(BT-730)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|		|	1.8	|	BT-731-Tender	|	epo:Tender / epo:SubcontractingEstimate / xsd:boolean	|	?this epo:foreseesSubcontracting / epo:isSubcontractingPercentageKnown ?value .
+|	1.9	|		|	BT-731-Tender	|	epo:Tender / epo:SubcontractingEstimate / xsd:boolean	|	?this epo:foreseesSubcontracting / epo:isSubcontractingPercentageKnown ?value .
+|		|	1.8	|	BT-195(BT-731)-Tender	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#isSubcontractingPercentageKnown> .
+|	1.9	|		|	BT-195(BT-731)-Tender	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#isSubcontractingPercentageKnown> .
+|		|	1.8	|	BT-196(BT-731)-Tender	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.9	|		|	BT-196(BT-731)-Tender	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|		|	1.8	|	BT-197(BT-731)-Tender	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.9	|		|	BT-197(BT-731)-Tender	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|		|	1.5	|	BT-198(BT-731)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|	1.8	|	BT-198(BT-731)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.9	|		|	BT-198(BT-731)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|		|		|	BT-195(BT-142)-LotResult	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasAwardStatus> .
+|		|		|	BT-196(BT-142)-LotResult	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|		|		|	BT-197(BT-142)-LotResult	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|		|	1.5	|	BT-198(BT-142)-LotResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.5	|		|	BT-198(BT-142)-LotResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|		|		|	BT-195(BT-144)-LotResult	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasNonAwardJustification> .
+|		|		|	BT-196(BT-144)-LotResult	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|		|		|	BT-197(BT-144)-LotResult	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|		|	1.5	|	BT-198(BT-144)-LotResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-144)-LotResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.13	|		|	BT-685-LotResult	|	epo:InternationalProcurementInstrumentMeasuresInformation / at-voc:international-procurement-instrument-measure	|	?this epo:concernsInternationalProcurementInstrumentMeasure ?value .
+|	1.13	|		|	BT-687-LotResult	|	epo:InternationalProcurementInstrumentMeasuresInformation / at-voc:international-procurement-instrument-application	|	?this epo:hasInternationalProcurementInstrumentExceptionInformation ?value .
+|	1.13	|		|	BT-688-LotResult	|	epo:InternationalProcurementInstrumentMeasuresInformation / rdf:langString	|	?this epo:hasPublicInterestExceptionJustification ?value .
+|	1.13	|		|	BT-686-LotResult	|	epo:InternationalProcurementInstrumentMeasuresInformation / xsd:integer	|	?this epo:hasNumberOfTendersConcerned ?value .
+|	1.13	|		|	BT-811(a)-LotResult	|	epo:EnergyEfficiencyInformation / at-voc:energy-efficiency-basis	|	?this epo:hasCalculationBasedOn ?value .
+|	1.13	|		|	BT-811(b)-LotResult	|	epo:EnergyEfficiencyInformation / at-voc:energy-efficiency-item	|	?this epo:concernsEnergyEfficiencyItemCategory ?value .
+|	1.13	|		|	BT-812-LotResult	|	epo:EnergyEfficiencyInformation / at-voc:energy-efficiency-label	|	?this epo:hasEnergyEfficiencyLabel ?value .
+|	1.13	|		|	BT-813-LotResult	|	epo:EnergyEfficiencyInformation / epo:Quantity / xsd:decimal	|	?this epo:hasItemConsumption / epo:hasQuantityValue ?value .
+|	1.13	|		|	OPT-080-LotResult	|	epo:EnergyEfficiencyInformation / epo:Quantity / at-voc:measurement-unit	|	?this epo:hasItemConsumption / epo:hasUnitCode ?value .
+|	1.13	|		|	BT-814-LotResult	|	epo:EnergyEfficiencyInformation / epo:Quantity / xsd:decimal	|	?this epo:hasItemConsumptionSavings / epo:hasQuantityValue ?value .
+|	1.13	|		|	OPT-081-LotResult	|	epo:EnergyEfficiencyInformation / epo:Quantity / at-voc:measurement-unit	|	?this epo:hasItemConsumptionSavings / epo:hasUnitCode ?value .
+|	1.13	|		|	BT-815-LotResult	|	epo:EnergyEfficiencyInformation / xsd:decimal	|	?this epo:concernsTotalItems ?value .
+|	1.7	|		|	BT-195(BT-660)-LotResult	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasAmountValue> .
+|	1.7	|		|	BT-196(BT-660)-LotResult	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.7	|		|	BT-197(BT-660)-LotResult	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.7	|		|	BT-198(BT-660)-LotResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|		|		|	BT-195(BT-709)-LotResult	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasAmountValue> .
+|		|		|	BT-196(BT-709)-LotResult	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|		|		|	BT-197(BT-709)-LotResult	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|		|	1.5	|	BT-198(BT-709)-LotResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-709)-LotResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|		|		|	BT-195(BT-710)-LotResult	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasAmountValue> .
+|		|		|	BT-196(BT-710)-LotResult	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|		|		|	BT-197(BT-710)-LotResult	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|		|	1.5	|	BT-198(BT-710)-LotResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-710)-LotResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|		|		|	BT-195(BT-711)-LotResult	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasAmountValue> .
+|		|		|	BT-196(BT-711)-LotResult	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|		|		|	BT-197(BT-711)-LotResult	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|		|	1.5	|	BT-198(BT-711)-LotResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-711)-LotResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.4	|		|	BT-195(BT-636)-LotResult	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasIrregularityType> .
+|	1.4	|		|	BT-196(BT-636)-LotResult	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.4	|		|	BT-197(BT-636)-LotResult	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.4	|	1.5	|	BT-198(BT-636)-LotResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-636)-LotResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.4	|		|	BT-195(BT-635)-LotResult	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasReviewIrregularityCount> .
+|	1.4	|		|	BT-196(BT-635)-LotResult	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|	1.4	|		|	BT-197(BT-635)-LotResult	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|	1.4	|	1.5	|	BT-198(BT-635)-LotResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-635)-LotResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|		|		|	BT-195(BT-712)-LotResult	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasTotalNumberOfComplainants> .
+|		|		|	BT-196(BT-712)-LotResult	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|		|		|	BT-197(BT-712)-LotResult	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|		|	1.5	|	BT-198(BT-712)-LotResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-712)-LotResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|		|		|	BT-195(BT-759)-LotResult	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasReceivedTenders> .
+|		|		|	BT-195(BT-759)-LotResult	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasReceivedParticipationRequests> .
+|		|		|	BT-195(BT-759)-LotResult	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasElectronicTenders> .
+|		|		|	BT-195(BT-759)-LotResult	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasMediumTenderPerLots> .
+|		|		|	BT-195(BT-759)-LotResult	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasReceivedMicroTenders> .
+|		|		|	BT-195(BT-759)-LotResult	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasNonEEAReceivedTenders> .
+|		|		|	BT-195(BT-759)-LotResult	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasUnverifiedTenders> .
+|		|		|	BT-195(BT-759)-LotResult	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasEEAReceivedTenders> .
+|		|		|	BT-195(BT-759)-LotResult	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasReceivedSmallTenders> .
+|		|		|	BT-195(BT-759)-LotResult	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasSMEReceivedTenders> .
+|		|		|	BT-195(BT-759)-LotResult	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasInadmissibleTenders> .
+|		|		|	BT-195(BT-759)-LotResult	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasAbnormallyLowTenders> .
+|		|		|	BT-196(BT-759)-LotResult	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|		|		|	BT-197(BT-759)-LotResult	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|		|	1.5	|	BT-198(BT-759)-LotResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-759)-LotResult	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|		|		|	BT-195(BT-09)-Procedure	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasCrossBorderLaw> .
+|		|		|	BT-196(BT-09)-Procedure	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|		|		|	BT-197(BT-09)-Procedure	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|		|	1.5	|	BT-198(BT-09)-Procedure	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-09)-Procedure	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|		|		|	BT-195(BT-191)-Tender	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasItemCountryOfOrigin> .
+|		|		|	BT-196(BT-191)-Tender	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|		|		|	BT-197(BT-191)-Tender	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|		|	1.5	|	BT-198(BT-191)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-191)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|		|		|	BT-195(BT-160)-Tender	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasAmountValue> .
+|		|		|	BT-196(BT-160)-Tender	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|		|		|	BT-197(BT-160)-Tender	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|		|	1.5	|	BT-198(BT-160)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-160)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|		|		|	BT-195(BT-162)-Tender	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasAmountValue> .
+|		|		|	BT-196(BT-162)-Tender	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|		|		|	BT-197(BT-162)-Tender	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|		|	1.5	|	BT-198(BT-162)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-162)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|		|		|	BT-195(BT-163)-Tender	|	epo:NonPublishedInformation	|	?this epo:hasMaskableProperty <http://data.europa.eu/a4g/ontology#hasCalculationMethod> .
+|		|		|	BT-196(BT-163)-Tender	|	epo:NonPublishedInformation / rdf:langString	|	?this epo:hasConfidentialityJustification ?value .
+|		|		|	BT-197(BT-163)-Tender	|	epo:NonPublishedInformation / at-voc:non-publication-justification	|	?this epo:hasNonPublicationJustification ?value .
+|		|	1.5	|	BT-198(BT-163)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|	1.6	|		|	BT-198(BT-163)-Tender	|	epo:NonPublishedInformation / xsd:date	|	?this epo:hasAccessibilityDate ?value .
+|		|		|	BT-127-notice	|	epo:PlannedProcurement / epo:ProcessPlanningTerm / xsd:date	|	?this epo:isSubjectToTerm / epo:hasEstimatedContractNoticePublicationDate ?value.
+|		|		|	BT-127-notice	|	epo:Procedure / epo:ProcessPlanningTerm / xsd:date	|	?this epo:isSubjectToTerm / epo:hasEstimatedContractNoticePublicationDate ?value.
+|		|		|	BT-1251-Part	|	epo-not:PlanningNotice / epo-not:PlanningNotice / epo:PlannedProcurementPart / adms:Identifier / rdf:PlainLiteral	|	?this epo:refersToPrevious / epo:announcesPlannedProcurementPart / adms:identifier / skos:notation ?value .
+|		|		|	OPT-110-Part-FiscalLegis	|	epo:TaxInformationProvider / epo:TaxDocumentation / xsd:anyURI	|	?this epo:providesDocumentation / epo:hasAddressURL ?value .
+|		|		|	OPT-120-Part-EnvironLegis	|	epo:EnvironmentalProtectionInformationProvider / epo:EnvironmentalDocumentation / xsd:anyURI	|	?this epo:providesDocumentation / epo:hasAddressURL ?value .
+|		|		|	OPT-130-Part-EmployLegis	|	epo:EmploymentInformationProvider / epo:EmploymentDocumentation / xsd:anyURI	|	?this epo:providesDocumentation / epo:hasAddressURL ?value .
+|		|	1.7	|	BT-71-Part	|	epo:PlannedProcurementPart / epo:ParticipationCondition / at-voc:reserved-procurement	|	?this epo:specifiesProcurementCriterion / epo:hasReservedProcurement ?value .
+|	1.8	|	1.11	|	BT-71-Part	|	epo:PlannedProcurementPart / epo:ParticipationCondition / at-voc:reserved-procurement	|	?this epo:specifiesProcurementCriterion / epo:hasReservedProcurement ?value .
+|	1.12	|		|	BT-71-Part	|	epo:PlannedProcurementPart / epo:ParticipationCondition / at-voc:reserved-procurement	|	?this epo:specifiesProcurementCriterion / epo:hasReservedProcurement ?value .
+|	1.9	|		|	BT-708-Part	|	epo:PlannedProcurementPart / epo:AccessTerm / at-voc:language	|	?this epo:isSubjectToTerm / epo:providesProcurementDocumentsInOfficialLanguage ?value .
+|	1.8	|	1.8	|	BT-708-Part	|	epo:PlannedProcurementPart / epo:AccessTerm / at-voc:language	|	?this epo:isSubjectToTerm / epo:providesProcurementDocumentsInOfficialLanguage ?value .
+|		|	1.7	|	BT-708-Part	|	epo:PlannedProcurementPart / epo:AccessTerm / at-voc:language	|	?this epo:isSubjectToTerm / epo:providesProcurementDocumentsInOfficialLanguage ?value .
+|	1.9	|		|	BT-737-Part	|	epo:PlannedProcurementPart / epo:AccessTerm / at-voc:language	|	?this epo:isSubjectToTerm / epo:providesProcurementDocumentsInUnofficialLanguage ?value .
+|		|	1.8	|	BT-737-Part	|	epo:PlannedProcurementPart / epo:AccessTerm / at-voc:language	|	?this epo:isSubjectToTerm / epo:providesProcurementDocumentsInUnofficialLanguage ?value .
+|	1.9	|		|	OPT-070-Lot	|	epo:Lot / epo:ContractTerm / rdf:langString	|	?this epo:isSubjectToTerm / epo:hasReservedExecutionJustification ?value .
+|		|	1.8	|	OPT-070-Lot	|	epo:Lot / epo:ContractTerm / rdf:langString	|	?this epo:isSubjectToTerm / epo:hasReservedExecutionJustification ?value .
+|	1.8	|		|	OPP-040-Procedure	|	epo:Procedure / epo:ContractTerm / at-voc:transport-service	|	?this epo:isSubjectToTerm / epo:hasTransportServiceType ?value .
+|		|	1.7	|	OPP-040-Procedure	|	epo:Procedure / epo:ContractTerm / at-voc:transport-service	|	?this epo:isSubjectToTerm / epo:hasTransportServiceType ?value .
+|		|		|	OPT-071-Lot	|	epo:QualityTargetInformation / at-voc:customer-service	|	?this  epo:hasQualityTargetCode ?value .
+|		|		|	OPT-072-Lot	|	epo:QualityTargetInformation / rdf:langString	|	?this epo:hasQualityTargetDescription ?value .
+|	1.5	|		|	OPP-021-Contract	|	epo:Asset / rdf:langString	|	?this  dct:description ?value .
+|		|	1.4	|	OPP-021-Contract	|	epo:Asset / rdf:PlainLiteral	|	?this  dct:description ?value .
+|		|		|	OPP-022-Contract	|	epo:Asset / rdf:PlainLiteral	|	?this epo:hasSignificance ?value .
+|		|		|	OPP-023-Contract	|	epo:Asset / rdf:PlainLiteral	|	?this epo:hasPredominance ?value .
+|		|		|	OPP-080-Tender	|	epo:Lot / epo:ContractTerm / epo:Quantity / xsd:decimal	|	?this epo:isSubjectToTerm / epo:definesPublicTransportationKilometers / epo:hasQuantityValue ?value .
+|		|		|	OPP-032-Tender	|	epo:ContractTerm / xsd:decimal	|	?this epo:hasTicketsSalesRevenueAllocation ?value .
+|		|		|	OPP-031-Tender	|	epo:ContractTerm / rdf:langString	|	?this epo:hasCompensationCostParametersDescription ?value .
+|		|		|	OPP-031-Tender	|	epo:ContractTerm / rdf:langString	|	?this epo:hasParticularConditionsDescription ?value .
+|		|		|	OPP-031-Tender	|	epo:ContractTerm / rdf:langString	|	?this epo:hasGrantedExclusiveRightsDescription ?value .
+|		|		|	OPP-031-Tender	|	epo:ContractTerm / rdf:langString	|	?this epo:hasPublicServiceObligationsDescription ?value .
+|		|		|	OPP-031-Tender	|	epo:ContractTerm / rdf:langString	|	?this epo:hasSocialStandardsDescription ?value .
+|		|		|	OPP-034-Tender	|	epo:ContractTerm / rdf:langString	|	?this epo:hasPenaltiesAndRewardsDescription ?value .
+|===
+
+
+=== Modified Mappings
+|===
+|*Min SDK Version*|*Max SDK Version*|*eForms SDK ID* | *epo 4.0.0 Class Path* |*epo 4.0.0 Property Path* | *epo 5.2.0 Class Path* |*epo 5.2.0 Property Path*
+|		|		|	BT-05(a)-notice	|	epo:Notice / xsd:dateTime	|	?this epo:hasESenderDispatchDate ?value .	|	epo:Notice / xsd:dateTime	|	?this epo:hasDispatchDate ?value .
+|		|		|	BT-05(b)-notice	|	epo:Notice / xsd:dateTime	|	?this epo:hasESenderDispatchDate ?value .	|	epo:Notice / xsd:dateTime	|	?this epo:hasDispatchDate ?value .
+|	1.13	|		|	BT-785-Review	|	epo:ReviewDecision / epo:ReviewObject /  adms:Identifier / rdf:PlainLiteral	|	?this epo:refersToPreviousReview / adms:identifier / skos:notation ?value .	|	epo:ReviewDecision / epo:ReviewRequest / adms:Identifier / rdf:PlainLiteral	|	?this epo:refersToPrevious / adms:identifier / skos:notation ?value .
+|	1.13	|		|	BT-785-Review	|	epo:ReviewRequest / epo:ReviewObject / adms:Identifier / rdf:PlainLiteral	|	?this epo:refersToPreviousReview / adms:identifier / skos:notation ?value .	|	epo:ReviewRequest / epo:ReviewDecision / adms:Identifier / rdf:PlainLiteral	|	?this epo:refersToPrevious / adms:identifier / skos:notation ?value .
+|	1.13	|		|	BT-787-Review	|	epo:ReviewDecision / xsd:date	|	?this epo:hasDecisionDate ?value .	|	epo:ReviewDecision / xsd:date	|	?this dct:issued ?value .
+|	1.13	|		|	BT-787-Review	|	epo:ReviewRequest / xsd:date	|	?this  epo:hasRequestDate ?value .	|	epo:ReviewRequest / xsd:date	|	?this  dct:issued ?value .
+|	1.13	|		|	BT-796-Review	|	epo:ReviewRequest / xsd:boolean	|	?this epo:isWithdrawn ?value .	|	epo:ReviewDecision / xsd:boolean	|	?this epo:isWithdrawn ?value .
+|	1.13	|		|	BT-797-Review	|	epo:ReviewRequest / xsd:date	|	?this epo:hasWithdrawalDate ?value .	|	epo:ReviewDecision / xsd:date	|	?this epo:hasWithdrawalDate ?value .
+|	1.13	|		|	BT-798-Review	|	epo:ReviewRequest / rdf:langString	|	?this epo:hasWithdrawalReason ?value .	|	epo:ReviewDecision / rdf:langString	|	?this epo:hasWithdrawalReason ?value .
+|	1.13	|		|	BT-808-Review	|	epo-not:ResultNotice / epo:ReviewRequester / org:Organization / adms:Identifier / rdf:PlainLiteral	|	?this epo:announcesRole / epo:playedBy / adms:identifier / skos:notation ?value .	|	epo:ReviewRequester / org:Organization / adms:Identifier / rdf:PlainLiteral	|	?this epo:playedBy / adms:identifier / skos:notation ?value .
+|	1.3	|	1.3	|	BT-01(c)-Procedure	|	epo:Procedure / rdf:langString	|	?this epo:hasLegalBasisDescription ?value .	|	epo:Procedure / rdf:langString	|	?this epo:hasLegalBasisDescription ?value .
+|	1.4	|		|	BT-01(f)-Procedure	|	epo:Procedure / rdf:langString	|	?this epo:hasLegalBasisDescription ?value .	|	epo:LocalLegalBasisInformation / rdf:langString	|	?this dct:description ?value .
+|		|		|	BT-23-Procedure	|	epo:Procedure / epo:ContractTerm / at-voc:contract-nature	|	?this epo:foreseesContractSpecificTerm / epo:hasContractNatureType ?value .	|	epo:Procedure / epo:ContractTerm / at-voc:contract-nature	|	?this epo:foreseesTerm / epo:hasContractNatureType ?value .
+|	1.3	|	1.7	|	BT-531-Procedure	|	epo:Procedure / epo:ContractTerm / at-voc:contract-nature	|	?this epo:foreseesContractSpecificTerm / epo:hasAdditionalContractNature ?value .	|	epo:Procedure / epo:ContractTerm / at-voc:contract-nature	|	?this epo:foreseesTerm / epo:hasAdditionalContractNature ?value .
+|	1.8	|		|	BT-531-Procedure	|	epo:Procedure / epo:ContractTerm / at-voc:contract-nature	|	?this epo:foreseesContractSpecificTerm / epo:hasAdditionalContractNature ?value .	|	epo:Procedure / epo:ContractTerm / at-voc:contract-nature	|	?this epo:foreseesTerm / epo:hasAdditionalContractNature ?value .
+|		|		|	BT-5101(a)-Procedure	|	epo:Procedure / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .	|	dct:Location / locn:Address / rdf:PlainLiteral	|	?this locn:address / locn:fullAddress ?value .
+|		|		|	BT-5101(b)-Procedure	|	epo:Procedure / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .	|	dct:Location / locn:Address / rdf:PlainLiteral	|	?this locn:address / locn:fullAddress ?value .
+|		|		|	BT-5101(c)-Procedure	|	epo:Procedure / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .	|	dct:Location / locn:Address / rdf:PlainLiteral	|	?this locn:address / locn:fullAddress ?value .
+|		|		|	BT-5131-Procedure	|	epo:Procedure / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:postName ?value .	|	dct:Location / locn:Address / rdf:PlainLiteral	|	?this locn:address / locn:postName ?value .
+|		|		|	BT-5131-Procedure	|	epo:Procedure / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .	|	dct:Location / locn:Address / rdf:PlainLiteral	|	?this locn:address / locn:fullAddress ?value .
+|		|		|	BT-5121-Procedure	|	epo:Procedure / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:postCode ?value .	|	dct:Location / locn:Address / rdf:PlainLiteral	|	?this locn:address / locn:postCode ?value .
+|		|		|	BT-5121-Procedure	|	epo:Procedure / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .	|	dct:Location / locn:Address / rdf:PlainLiteral	|	?this locn:address / locn:fullAddress ?value .
+|		|		|	BT-5071-Procedure	|	epo:Procedure / epo:ContractTerm / dct:Location / at-voc:nuts	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / epo:hasNutsCode ?value .	|	dct:Location / at-voc:nuts	|	?this epo:hasNutsCode ?value .
+|		|		|	BT-5071-Procedure	|	epo:Procedure / epo:ContractTerm / dct:Location / locn:Address / at-voc:nuts	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / epo:hasNutsCode ?value .	|	dct:Location / locn:Address / at-voc:nuts	|	?this locn:address / epo:hasNutsCode ?value .
+|		|		|	BT-5141-Procedure	|	epo:Procedure / epo:ContractTerm / dct:Location / at-voc:country	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / epo:hasCountryCode ?value .	|	dct:Location / at-voc:country	|	?this epo:hasCountryCode ?value .
+|		|		|	BT-5141-Procedure	|	epo:Procedure / epo:ContractTerm / dct:Location / locn:Address / at-voc:country	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / epo:hasCountryCode ?value .	|	dct:Location / locn:Address / at-voc:country	|	?this locn:address / epo:hasCountryCode ?value .
+|		|		|	BT-5141-Procedure	|	epo:Procedure / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address/ locn:fullAddress ?value .	|	dct:Location / locn:Address / rdf:PlainLiteral	|	?this locn:address / locn:fullAddress ?value .
+|		|		|	BT-727-Procedure	|	epo:Procedure / epo:ContractTerm / at-voc:other-place-service	|	?this epo:foreseesContractSpecificTerm / epo:hasBroadPlaceOfPerformance ?value .	|	epo:ContractTerm / at-voc:other-place-service	|	?this epo:hasBroadPlaceOfPerformance ?value .
+|		|		|	BT-728-Procedure	|	epo:Procedure / epo:ContractTerm / rdf:langString	|	?this epo:foreseesContractSpecificTerm / epo:hasPlaceOfPerformanceAdditionalInformation ?value .	|	epo:ContractTerm / rdf:langString	|	?this epo:hasPlaceOfPerformanceAdditionalInformation ?value .
+|		|	1.11	|	BT-67(a)-Procedure	|	epo:Lot / epo:ExclusionGround / at-voc:criterion	|	?this epo:specifiesProcurementCriterion / dct:type ?value .	|	epo:ExclusionGround / at-voc:exclusion-ground	|	?this epo:hasExclusionGroundType ?value .
+|	1.12	|		|	BT-67(a)-Procedure	|	epo:Lot / epo:ExclusionGround / at-voc:exclusion-ground	|	?this epo:specifiesProcurementCriterion / dct:type ?value .	|	epo:ExclusionGround / at-voc:exclusion-ground	|	?this epo:hasExclusionGroundType ?value .
+|		|	1.11	|	BT-67(b)-Procedure	|	epo:Lot / epo:ExclusionGround / rdf:langString	|	?this epo:specifiesProcurementCriterion / dct:description ?value .	|	epo:ExclusionGround / rdf:langString	|	?this dct:description ?value .
+|	1.12	|		|	BT-67(b)-Procedure	|	epo:Lot / epo:ExclusionGround / rdf:langString	|	?this epo:specifiesProcurementCriterion / dct:description ?value .	|	epo:ExclusionGround / rdf:langString	|	?this dct:description ?value .
+|		|		|	BT-09(b)-Procedure	|	epo:Procedure / epo:ProcedureTerm / rdf:langString	|	?this epo:isSubjectToProcedureSpecificTerm / epo:hasCrossBorderLaw ?value .	|	epo:Procedure / epo:ProcedureTerm / rdf:langString	|	?this epo:isSubjectToTerm / epo:hasCrossBorderLaw ?value .
+|	1.3	|	1.5	|	BT-31-Procedure	|	epo:Procedure / epo:ProcedureTerm / xsd:integer	|	?this epo:isSubjectToProcedureSpecificTerm / epo:hasMaximumLotSubmissionAllowed ?value .	|	epo:Procedure / epo:ProcedureTerm / xsd:integer	|	?this epo:isSubjectToTerm / epo:hasMaximumLotSubmissionAllowed ?value .
+|	1.3	|	1.5	|	BT-33-Procedure	|	epo:Procedure / epo:ProcedureTerm / xsd:integer	|	?this epo:isSubjectToProcedureSpecificTerm / epo:hasMaximumNumberOfLotsToBeAwarded ?value .	|	epo:Procedure / epo:ProcedureTerm / xsd:integer	|	?this epo:isSubjectToTerm / epo:hasMaximumNumberOfLotsToBeAwarded ?value .
+|	1.9	|		|	BT-763-Procedure	|	epo:Procedure / epo:ProcedureTerm / xsd:boolean	|	?this epo:isSubjectToProcedureSpecificTerm / epo:isSubmissionForAllLotsRequired true .	|	epo:Procedure / epo:ProcedureTerm / xsd:boolean	|	?this epo:isSubjectToTerm / epo:isSubmissionForAllLotsRequired true .
+|	1.3	|	1.8	|	BT-763-Procedure	|	epo:Procedure / epo:ProcedureTerm / xsd:boolean	|	?this epo:isSubjectToProcedureSpecificTerm / epo:isSubmissionForAllLotsRequired true .	|	epo:Procedure / epo:ProcedureTerm / xsd:boolean	|	?this epo:isSubjectToTerm / epo:isSubmissionForAllLotsRequired true .
+|	1.6	|		|	BT-330-Procedure	|	epo:Procedure / epo:ProcedureTerm / epo:LotGroup	|	?this epo:isSubjectToProcedureSpecificTerm / epo:definesLotGroup ?value .	|	epo:Procedure / epo:ProcedureTerm / epo:LotGroup	|	?this epo:isSubjectToTerm / epo:definesLotGroup ?value .
+|	1.8	|		|	BT-1375-Procedure	|	epo:Procedure / epo:ProcedureTerm / epo:LotGroup / epo:Lot	|	?this epo:isSubjectToProcedureSpecificTerm / epo:definesLotGroup / epo:setsGroupingContextForLot ?value .	|	epo:Procedure / epo:ProcedureTerm / epo:LotGroup / epo:Lot	|	?this epo:isSubjectToTerm / epo:definesLotGroup / epo:setsGroupingContextForLot ?value .
+|	1.6	|	1.7	|	BT-1375-Procedure	|	epo:Procedure / epo:ProcedureTerm / epo:LotGroup / epo:Lot	|	?this epo:isSubjectToProcedureSpecificTerm / epo:definesLotGroup / epo:setsGroupingContextForLot ?value .	|	epo:Procedure / epo:ProcedureTerm / epo:LotGroup / epo:Lot	|	?this epo:isSubjectToTerm / epo:definesLotGroup / epo:setsGroupingContextForLot ?value .
+|	1.6	|		|	BT-31-Procedure	|	epo:Procedure / epo:ProcedureTerm / xsd:integer	|	?this epo:isSubjectToProcedureSpecificTerm / epo:hasMaximumLotSubmissionAllowed ?value .	|	epo:Procedure / epo:ProcedureTerm / xsd:integer	|	?this epo:isSubjectToTerm / epo:hasMaximumLotSubmissionAllowed ?value .
+|	1.6	|		|	BT-33-Procedure	|	epo:Procedure / epo:ProcedureTerm / xsd:integer	|	?this epo:isSubjectToProcedureSpecificTerm / epo:hasMaximumNumberOfLotsToBeAwarded ?value .	|	epo:Procedure / epo:ProcedureTerm / xsd:integer	|	?this epo:isSubjectToTerm / epo:hasMaximumNumberOfLotsToBeAwarded ?value .
+|		|		|	BT-23-Lot	|	epo:Lot / epo:ContractTerm / at-voc:contract-nature	|	?this epo:foreseesContractSpecificTerm / epo:hasContractNatureType ?value .	|	epo:Lot / epo:ContractTerm / at-voc:contract-nature	|	?this epo:foreseesTerm / epo:hasContractNatureType ?value .
+|	1.3	|	1.7	|	BT-531-Lot	|	epo:Lot / epo:ContractTerm / at-voc:contract-nature	|	?this epo:foreseesContractSpecificTerm / epo:hasAdditionalContractNature ?value .	|	epo:Lot / epo:ContractTerm / at-voc:contract-nature	|	?this epo:foreseesTerm / epo:hasAdditionalContractNature ?value .
+|	1.8	|		|	BT-531-Lot	|	epo:Lot / epo:ContractTerm / at-voc:contract-nature	|	?this epo:foreseesContractSpecificTerm / epo:hasAdditionalContractNature ?value .	|	epo:Lot / epo:ContractTerm / at-voc:contract-nature	|	?this epo:foreseesTerm / epo:hasAdditionalContractNature ?value .
+|	1.3	|	1.4	|	BT-754-Lot	|	epo:Lot / epo:StrategicProcurement / at-voc:accessibility	|	?this epo:fulfillsStrategicProcurement / epo:includesAccessibilityCriterion ?value .	|	epo:Lot / epo:SocialProcurement / at-voc:accessibility	|	?this epo:fulfillsStrategicProcurement / epo:includesAccessibilityCriterion ?value .
+|	1.5	|	1.7	|	BT-754-Lot	|	epo:Lot / epo:StrategicProcurement / at-voc:accessibility	|	?this epo:fulfillsStrategicProcurement / epo:includesAccessibilityCriterion ?value .	|	epo:Lot / epo:SocialProcurement / at-voc:accessibility	|	?this epo:fulfillsStrategicProcurement / epo:includesAccessibilityCriterion ?value .
+|	1.8	|		|	BT-754-Lot	|	epo:Lot / epo:StrategicProcurement / at-voc:accessibility	|	?this epo:fulfillsStrategicProcurement / epo:includesAccessibilityCriterion ?value .	|	epo:Lot / epo:SocialProcurement / at-voc:accessibility	|	?this epo:fulfillsStrategicProcurement / epo:includesAccessibilityCriterion ?value .
+|		|		|	BT-755-Lot	|	epo:Lot / epo:StrategicProcurement / rdf:langString	|	?this epo:fulfillsStrategicProcurement / epo:hasNonAccessibilityCriterionJustification ?value .	|	epo:Lot / epo:SocialProcurement / rdf:langString	|	?this epo:fulfillsStrategicProcurement / epo:hasNonAccessibilityCriterionJustification ?value .
+|	1.3	|	1.4	|	BT-5101(a)-Lot	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .
+|	1.5	|		|	BT-5101(a)-Lot	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .
+|	1.3	|	1.4	|	BT-5101(b)-Lot	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .
+|	1.5	|		|	BT-5101(b)-Lot	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .
+|	1.3	|	1.4	|	BT-5101(c)-Lot	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .
+|	1.5	|		|	BT-5101(c)-Lot	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .
+|	1.3	|	1.4	|	BT-5131-Lot	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:postName ?value .	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:postName ?value .
+|	1.3	|	1.4	|	BT-5131-Lot	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .
+|	1.5	|		|	BT-5131-Lot	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:postName ?value .	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:postName ?value .
+|	1.5	|		|	BT-5131-Lot	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .
+|	1.3	|	1.4	|	BT-5121-Lot	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:postCode ?value .	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:postCode ?value .
+|	1.3	|	1.4	|	BT-5121-Lot	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .
+|	1.5	|		|	BT-5121-Lot	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:postCode ?value .	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:postCode ?value .
+|	1.5	|		|	BT-5121-Lot	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .
+|	1.3	|	1.4	|	BT-5071-Lot	|	epo:Lot / epo:ContractTerm / dct:Location / at-voc:nuts	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / epo:hasNutsCode ?value .	|	epo:Lot / epo:ContractTerm / dct:Location / at-voc:nuts	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / epo:hasNutsCode ?value .
+|	1.5	|		|	BT-5071-Lot	|	epo:Lot / epo:ContractTerm / dct:Location / at-voc:nuts	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / epo:hasNutsCode ?value .	|	epo:Lot / epo:ContractTerm / dct:Location / at-voc:nuts	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / epo:hasNutsCode ?value .
+|	1.5	|		|	BT-5071-Lot	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / at-voc:nuts	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / epo:hasNutsCode ?value .	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / at-voc:nuts	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / locn:address / epo:hasNutsCode ?value .
+|	1.3	|	1.4	|	BT-5141-Lot	|	epo:Lot / epo:ContractTerm / dct:Location / at-voc:country	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / epo:hasCountryCode ?value .	|	epo:Lot / epo:ContractTerm / dct:Location / at-voc:country	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / epo:hasCountryCode ?value .
+|	1.3	|	1.4	|	BT-5141-Lot	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / at-voc:country	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / epo:hasCountryCode ?value .	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / at-voc:country	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / locn:address / epo:hasCountryCode ?value .
+|	1.3	|	1.4	|	BT-5141-Lot	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address/ locn:fullAddress ?value .	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .
+|	1.5	|		|	BT-5141-Lot	|	epo:Lot / epo:ContractTerm / dct:Location / at-voc:country	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / epo:hasCountryCode ?value .	|	epo:Lot / epo:ContractTerm / dct:Location / at-voc:country	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / epo:hasCountryCode ?value .
+|	1.5	|		|	BT-5141-Lot	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / at-voc:country	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / epo:hasCountryCode ?value .	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / at-voc:country	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / locn:address / epo:hasCountryCode ?value .
+|	1.5	|		|	BT-5141-Lot	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address/ locn:fullAddress ?value .	|	epo:Lot / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .
+|	1.3	|	1.4	|	BT-727-Lot	|	epo:Lot / epo:ContractTerm / at-voc:other-place-service	|	?this epo:foreseesContractSpecificTerm / epo:hasBroadPlaceOfPerformance ?value .	|	epo:Lot / epo:ContractTerm / at-voc:other-place-service	|	?this epo:foreseesTerm / epo:hasBroadPlaceOfPerformance ?value .
+|	1.5	|		|	BT-727-Lot	|	epo:Lot / epo:ContractTerm / at-voc:other-place-service	|	?this epo:foreseesContractSpecificTerm / epo:hasBroadPlaceOfPerformance ?value .	|	epo:Lot / epo:ContractTerm / at-voc:other-place-service	|	?this epo:foreseesTerm / epo:hasBroadPlaceOfPerformance ?value .
+|		|		|	BT-728-Lot	|	epo:Lot / epo:ContractTerm / rdf:langString	|	?this epo:foreseesContractSpecificTerm / epo:hasPlaceOfPerformanceAdditionalInformation ?value .	|	epo:Lot / epo:ContractTerm / rdf:langString	|	?this epo:foreseesTerm / epo:hasPlaceOfPerformanceAdditionalInformation ?value .
+|		|		|	BT-536-Lot	|	epo:Lot / epo:ContractTerm / epo:Period / xsd:date	|	?this epo:foreseesContractSpecificTerm / epo:definesContractPeriod / epo:hasBeginning ?value .	|	epo:Lot / epo:ContractTerm / time:Interval / time:Instant / xsd:date	|	?this epo:foreseesTerm / epo:definesContractPeriod / time:hasBeginning / time:inXSDDate ?value .
+|		|		|	BT-537-Lot	|	epo:Lot / epo:ContractTerm / epo:Period / xsd:date	|	?this epo:foreseesContractSpecificTerm / epo:definesContractPeriod / epo:hasEnd ?value .	|	epo:Lot / epo:ContractTerm / time:Interval / time:Instant / xsd:date	|	?this epo:foreseesTerm / epo:definesContractPeriod / time:hasEnd / time:inXSDDate ?value .
+|		|		|	BT-36-Lot	|	epo:Lot / epo:ContractTerm / epo:SpecificDuration / xsd:decimal	|	?this epo:foreseesContractSpecificTerm / epo:definesContractDuration / time:numericDuration ?value .	|	epo:Lot / epo:ContractTerm / time:Duration / xsd:decimal	|	?this epo:foreseesTerm / epo:definesEstimatedContractDuration / time:numericDuration ?value .
+|		|		|	BT-36-Lot	|	epo:Lot / epo:ContractTerm / epo:SpecificDuration / time:TemporalUnit	|	?this epo:foreseesContractSpecificTerm / epo:definesContractDuration / time:unitType time:unitDay .	|	epo:Lot / epo:ContractTerm / time:Duration / time:TemporalUnit	|	?this epo:foreseesTerm / epo:definesEstimatedContractDuration / time:unitType time:unitDay .
+|		|		|	BT-36-Lot	|	epo:Lot / epo:ContractTerm / epo:SpecificDuration / time:TemporalUnit	|	?this epo:foreseesContractSpecificTerm / epo:definesContractDuration / time:unitType time:unitWeek .	|	epo:Lot / epo:ContractTerm / time:Duration / time:TemporalUnit	|	?this epo:foreseesTerm / epo:definesEstimatedContractDuration / time:unitType time:unitWeek .
+|		|		|	BT-36-Lot	|	epo:Lot / epo:ContractTerm / epo:SpecificDuration / time:TemporalUnit	|	?this epo:foreseesContractSpecificTerm / epo:definesContractDuration / time:unitType time:unitMonth .	|	epo:Lot / epo:ContractTerm / time:Duration / time:TemporalUnit	|	?this epo:foreseesTerm / epo:definesEstimatedContractDuration / time:unitType time:unitMonth .
+|		|		|	BT-36-Lot	|	epo:Lot / epo:ContractTerm / epo:SpecificDuration / time:TemporalUnit	|	?this epo:foreseesContractSpecificTerm / epo:definesContractDuration / time:unitType time:unitYear .	|	epo:Lot / epo:ContractTerm / time:Duration / time:TemporalUnit	|	?this epo:foreseesTerm / epo:definesEstimatedContractDuration / time:unitType time:unitYear .
+|	1.3	|	1.7	|	BT-538-Lot	|	epo:Lot / epo:ContractTerm / epo:Period / at-voc:timeperiod	|	?this epo:foreseesContractSpecificTerm / epo:definesContractPeriod / epo:hasTimePeriod ?value .	|	epo:Lot / epo:ContractTerm / xsd:boolean	|	?this epo:foreseesTerm / epo:hasUnknownDuration true .
+|	1.3	|	1.7	|	BT-538-Lot	|	epo:Lot / epo:ContractTerm / epo:Period / at-voc:timeperiod	|	?this epo:foreseesContractSpecificTerm / epo:definesContractPeriod / epo:hasTimePeriod ?value .	|	epo:Lot / epo:ContractTerm / xsd:boolean	|	?this epo:foreseesTerm / epo:hasUnlimitedDuration true .
+|	1.8	|		|	BT-538-Lot	|	epo:Lot / epo:ContractTerm / epo:Period / at-voc:timeperiod	|	?this epo:foreseesContractSpecificTerm / epo:definesContractPeriod / epo:hasTimePeriod ?value .	|	epo:Lot / epo:ContractTerm / xsd:boolean	|	?this epo:foreseesTerm / epo:hasUnknownDuration true .
+|	1.8	|		|	BT-538-Lot	|	epo:Lot / epo:ContractTerm / epo:Period / at-voc:timeperiod	|	?this epo:foreseesContractSpecificTerm / epo:definesContractPeriod / epo:hasTimePeriod ?value .	|	epo:Lot / epo:ContractTerm / xsd:boolean	|	?this epo:foreseesTerm / epo:hasUnlimitedDuration true .
+|	1.13	|		|	BT-781-Lot	|	epo:Lot / epo:ContractTerm / rdf:langString	|	?this epo:foreseesContractSpecificTerm / epo:hasExceedingDurationJustification ?value .	|	epo:Lot / epo:ContractTerm / rdf:langString	|	?this epo:foreseesTerm / epo:hasDurationAdditionalInformation ?value .
+|		|		|	OPA-36-Lot-Number	|		|		|		|
+|		|		|	BT-54-Lot	|	epo:Lot / epo:ContractTerm / rdf:langString	|	?this epo:foreseesContractSpecificTerm / epo:hasOptionsDescription ?value .	|	epo:Lot / epo:ContractTerm / rdf:langString	|	?this epo:foreseesTerm / epo:hasOptionsDescription ?value .
+|	1.3	|	1.7	|	BT-58-Lot	|	epo:Lot / epo:ContractTerm / xsd:integer	|	?this epo:foreseesContractSpecificTerm / epo:hasMaximumNumberOfRenewals ?value .	|	epo:Lot / epo:ContractTerm / xsd:integer	|	?this epo:foreseesTerm / epo:hasMaximumNumberOfRenewals ?value .
+|	1.3	|	1.4	|	BT-57-Lot	|	epo:Lot / epo:ContractTerm / rdf:langString	|	?this epo:foreseesContractSpecificTerm / epo:hasRenewalDescription ?value .	|	epo:Lot / epo:ContractTerm / rdf:langString	|	?this epo:foreseesTerm / epo:hasRenewalDescription ?value .
+|	1.5	|		|	BT-57-Lot	|	epo:Lot / epo:ContractTerm / rdf:langString	|	?this epo:foreseesContractSpecificTerm / epo:hasRenewalDescription ?value .	|	epo:Lot / epo:ContractTerm / rdf:langString	|	?this epo:foreseesTerm / epo:hasRenewalDescription ?value .
+|	1.8	|		|	BT-58-Lot	|	epo:Lot / epo:ContractTerm / xsd:integer	|	?this epo:foreseesContractSpecificTerm / epo:hasMaximumNumberOfRenewals ?value .	|	epo:Lot / epo:ContractTerm / xsd:integer	|	?this epo:foreseesTerm / epo:hasMaximumNumberOfRenewals ?value .
+|		|		|	BT-122-Lot	|	epo:Lot / epo:EAuctionTechnique / rdf:langString	|	?this epo:usesTechnique / dct:description ?value .	|	epo:Lot / epo:EAuctionTechnique / rdf:langString	|	?this epo:usesTechnique / dct:description ?value .
+|		|		|	BT-123-Lot	|	epo:Lot / epo:SubmissionTerm / xsd:anyURI	|	?this epo:isSubjectToLotSpecificTerm / epo:hasEAuctionURL ?value .	|	epo:Lot / epo:SubmissionTerm / xsd:anyURI	|	?this epo:isSubjectToTerm / epo:hasEAuctionURL ?value .
+|	1.3	|	1.8	|	BT-765-Lot	|	epo:Lot / epo:FrameworkAgreementTerm / at-voc:framework-agreement	|	?this epo:isSubjectToLotSpecificTerm / epo:hasFrameworkAgreementType ?value .	|	epo:Lot / epo:FrameworkAgreementTerm / at-voc:framework-agreement	|	?this epo:isSubjectToTerm / epo:hasFrameworkAgreementType ?value .
+|	1.9	|		|	BT-765-Lot	|	epo:Lot / epo:FrameworkAgreementTerm / at-voc:framework-agreement	|	?this epo:isSubjectToLotSpecificTerm / epo:hasFrameworkAgreementType ?value .	|	epo:Lot / epo:FrameworkAgreementTerm / at-voc:framework-agreement	|	?this epo:isSubjectToTerm / epo:hasFrameworkAgreementType ?value .
+|		|		|	BT-113-Lot	|	epo:Lot / epo:FrameworkAgreementTerm / xsd:integer	|	?this epo:isSubjectToLotSpecificTerm / epo:hasMaximumParticipantsNumber ?value .	|	epo:Lot / epo:FrameworkAgreementTerm / xsd:integer	|	?this epo:isSubjectToTerm / epo:hasMaximumParticipantsNumber ?value .
+|		|		|	BT-109-Lot	|	epo:Lot / epo:FrameworkAgreementTerm / rdf:langString	|	?this epo:isSubjectToLotSpecificTerm / epo:hasDurationExtensionJustification ?value .	|	epo:Lot / epo:FrameworkAgreementTerm / rdf:langString	|	?this epo:isSubjectToTerm / epo:hasDurationExtensionJustification ?value .
+|		|		|	BT-111-Lot	|	epo:Lot / epo:FrameworkAgreementTerm / rdf:langString	|	?this epo:isSubjectToLotSpecificTerm / epo:hasBuyerCategoryDescription ?value .	|	epo:Lot / epo:FrameworkAgreementTerm / rdf:langString	|	?this epo:isSubjectToTerm / epo:hasBuyerCategoryDescription ?value .
+|		|	1.11	|	BT-748-Lot	|	epo:Lot / epo:SelectionCriterion / at-voc:usage	|	?this epo:specifiesProcurementCriterion / epo:hasSelectionCriteriaUsage ?value .	|		|
+|		|		|	BT-52-Lot	|	epo:Lot / epo:MultipleStageProcedureTerm / xsd:boolean	|	?this epo:isSubjectToLotSpecificTerm / epo:hasSuccessiveReduction ?value .	|	epo:Lot / epo:MultipleStageProcedureTerm / xsd:boolean	|	?this epo:isSubjectToTerm / epo:hasSuccessiveReduction ?value .
+|		|		|	BT-51-Lot	|	epo:Lot / epo:MultipleStageProcedureTerm / xsd:integer	|	?this epo:isSubjectToLotSpecificTerm / epo:hasMaximumNumberOfCandidates ?value .	|	epo:Lot / epo:MultipleStageProcedureTerm / xsd:integer	|	?this epo:isSubjectToTerm / epo:hasMaximumNumberOfCandidates ?value .
+|		|		|	BT-50-Lot	|	epo:Lot / epo:MultipleStageProcedureTerm / xsd:integer	|	?this epo:isSubjectToLotSpecificTerm / epo:hasMinimumNumberOfCandidates ?value .	|	epo:Lot / epo:MultipleStageProcedureTerm / xsd:integer	|	?this epo:isSubjectToTerm / epo:hasMinimumNumberOfCandidates ?value .
+|		|		|	BT-543-Lot	|	epo:Lot / epo:AwardEvaluationTerm / rdf:langString	|	?this epo:isSubjectToLotSpecificTerm / epo:hasAwardCriteriaEvaluationFormula ?value.	|	epo:Lot / epo:AwardEvaluationTerm / rdf:langString	|	?this epo:isSubjectToTerm / epo:hasAwardCriteriaEvaluationFormula ?value.
+|		|		|	BT-733-Lot	|	epo:Lot / epo:AwardEvaluationTerm / rdf:langString	|	?this epo:isSubjectToLotSpecificTerm / epo:hasAwardCriteriaOrderJustification ?value .	|	epo:Lot / epo:AwardEvaluationTerm / rdf:langString	|	?this epo:isSubjectToTerm / epo:hasAwardCriteriaOrderJustification ?value .
+|		|		|	BT-120-Lot	|	epo:Lot / epo:MultipleStageProcedureTerm / xsd:boolean	|	?this epo:isSubjectToLotSpecificTerm / epo:hasNoNegotiationNecessary ?value .	|	epo:Lot / epo:MultipleStageProcedureTerm / xsd:boolean	|	?this epo:isSubjectToTerm / epo:hasNoNegotiationNecessary ?value .
+|		|		|	BT-76-Lot	|	epo:Lot / epo:ContractTerm / rdf:langString	|	?this epo:foreseesContractSpecificTerm / epo:hasLegalFormRequirement ?value .	|	epo:Lot / epo:ContractTerm / rdf:langString	|	?this epo:foreseesTerm / epo:hasLegalFormRequirement ?value .
+|		|		|	BT-41-Lot	|	epo:Lot / epo:DesignContestRegimeTerm / xsd:boolean	|	?this epo:isSubjectToLotSpecificTerm / epo:hasFollowupContract ?value .	|	epo:Lot / epo:DesignContestRegimeTerm / xsd:boolean	|	?this epo:isSubjectToTerm / epo:hasFollowupContract ?value .
+|		|		|	BT-42-Lot	|	epo:Lot / epo:DesignContestRegimeTerm / xsd:boolean	|	?this epo:isSubjectToLotSpecificTerm / epo:isJuryDecisionBinding ?value .	|	epo:Lot / epo:DesignContestRegimeTerm / xsd:boolean	|	?this epo:isSubjectToTerm / epo:isJuryDecisionBinding ?value .
+|		|		|	BT-44-Lot	|	epo:Lot / epo:DesignContestRegimeTerm / epo:Prize / xsd:integer	|	?this epo:isSubjectToLotSpecificTerm / epo:definesPrize / epo:hasPrizeRank ?value .	|	epo:Lot / epo:DesignContestRegimeTerm / epo:Prize / xsd:integer	|	?this epo:isSubjectToTerm / epo:definesPrize / epo:hasPrizeRank ?value .
+|		|		|	BT-644-Lot	|	epo:Lot / epo:DesignContestRegimeTerm / epo:Prize / epo:MonetaryValue / xsd:decimal	|	?this epo:isSubjectToLotSpecificTerm / epo:definesPrize / epo:hasPrizeValue / epo:hasAmountValue ?value .	|	epo:Lot / epo:DesignContestRegimeTerm / epo:Prize / epo:MonetaryValue / xsd:decimal	|	?this epo:isSubjectToTerm / epo:definesPrize / epo:hasPrizeValue / epo:hasAmountValue ?value .
+|	1.3	|	1.7	|	BT-771-Lot	|	epo:Lot / epo:SubmissionTerm / at-voc:missing-info-submission	|	?this epo:isSubjectToLotSpecificTerm / epo:hasLateSubmissionPermission ?value .	|	epo:Lot / epo:SubmissionTerm / at-voc:missing-info-submission	|	?this epo:isSubjectToTerm / epo:hasLateSubmissionPermission ?value .
+|	1.8	|	1.11	|	BT-771-Lot	|	epo:Lot / epo:SubmissionTerm / at-voc:missing-info-submission	|	?this epo:isSubjectToLotSpecificTerm / epo:hasLateSubmissionPermission ?value .	|	epo:Lot / epo:SubmissionTerm / at-voc:missing-info-submission	|	?this epo:isSubjectToTerm / epo:hasLateSubmissionPermission ?value .
+|	1.12	|		|	BT-771-Lot	|	epo:Lot / epo:SubmissionTerm / at-voc:missing-info-submission	|	?this epo:isSubjectToLotSpecificTerm / epo:hasLateSubmissionPermission ?value .	|	epo:Lot / epo:SubmissionTerm / at-voc:missing-info-submission	|	?this epo:isSubjectToTerm / epo:hasLateSubmissionPermission ?value .
+|	1.3	|	1.7	|	BT-772-Lot	|	epo:Lot / epo:SubmissionTerm / rdf:langString	|	?this epo:isSubjectToLotSpecificTerm / epo:hasLateSubmissionInformationDescription ?value .	|	epo:Lot / epo:SubmissionTerm / rdf:langString	|	?this epo:isSubjectToTerm / epo:hasLateSubmissionInformationDescription ?value .
+|	1.8	|	1.11	|	BT-772-Lot	|	epo:Lot / epo:SubmissionTerm / rdf:langString	|	?this epo:isSubjectToLotSpecificTerm / epo:hasLateSubmissionInformationDescription ?value .	|	epo:Lot / epo:SubmissionTerm / rdf:langString	|	?this epo:isSubjectToTerm / epo:hasLateSubmissionInformationDescription ?value .
+|	1.12	|		|	BT-772-Lot	|	epo:Lot / epo:SubmissionTerm / rdf:langString	|	?this epo:isSubjectToLotSpecificTerm / epo:hasLateSubmissionInformationDescription ?value .	|	epo:Lot / epo:SubmissionTerm / rdf:langString	|	?this epo:isSubjectToTerm / epo:hasLateSubmissionInformationDescription ?value .
+|		|		|	BT-63-Lot	|	epo:Lot / epo:SubmissionTerm / at-voc:permission	|	?this epo:isSubjectToLotSpecificTerm / epo:hasVariantPermission ?value .	|	epo:Lot / epo:SubmissionTerm / at-voc:permission	|	?this epo:isSubjectToTerm / epo:hasVariantPermission ?value .
+|		|		|	BT-769-Lot	|	epo:Lot / epo:SubmissionTerm / xsd:boolean	|	?this epo:isSubjectToLotSpecificTerm / epo:isMultipleTenderSubmissionAllowed true .	|	epo:Lot / epo:SubmissionTerm / xsd:boolean	|	?this epo:isSubjectToTerm / epo:isMultipleTenderSubmissionAllowed true .
+|		|		|	BT-769-Lot	|	epo:Lot / epo:SubmissionTerm / xsd:boolean	|	?this epo:isSubjectToLotSpecificTerm / epo:isMultipleTenderSubmissionAllowed false .	|	epo:Lot / epo:SubmissionTerm / xsd:boolean	|	?this epo:isSubjectToTerm / epo:isMultipleTenderSubmissionAllowed false .
+|	1.3	|	1.8	|	BT-736-Lot	|	epo:Lot / epo:ContractTerm / at-voc:applicability	|	?this epo:foreseesContractSpecificTerm / epo:hasReservedExecution ?value .	|	epo:Lot / epo:ContractTerm / at-voc:applicability	|	?this epo:foreseesTerm / epo:hasReservedExecution ?value .
+|	1.9	|		|	BT-736-Lot	|	epo:Lot / epo:ContractTerm / at-voc:applicability	|	?this epo:foreseesContractSpecificTerm / epo:hasReservedExecution ?value .	|	epo:Lot / epo:ContractTerm / at-voc:applicability	|	?this epo:foreseesTerm / epo:hasReservedExecution ?value .
+|	1.3	|	1.8	|	BT-743-Lot	|	epo:Lot / epo:ContractTerm / at-voc:permission	|	?this epo:foreseesContractSpecificTerm / epo:hasEInvoicingPermission ?value .	|	epo:Lot / epo:ContractTerm / at-voc:permission	|	?this epo:foreseesTerm / epo:hasEInvoicingPermission ?value .
+|		|		|	BT-70-Lot	|	epo:Lot / epo:ContractTerm / rdf:langString	|	?this epo:foreseesContractSpecificTerm / epo:hasPerformanceConditions ?value .	|	epo:Lot / epo:ContractTerm / rdf:langString	|	?this epo:foreseesTerm / epo:hasPerformanceConditions ?value .
+|	1.9	|		|	BT-743-Lot	|	epo:Lot / epo:ContractTerm / at-voc:permission	|	?this epo:foreseesContractSpecificTerm / epo:hasEInvoicingPermission ?value .	|	epo:Lot / epo:ContractTerm / at-voc:permission	|	?this epo:foreseesTerm / epo:hasEInvoicingPermission ?value .
+|		|		|	BT-79-Lot	|	epo:Lot / epo:ProcurementCriterion / at-voc:requirement-stage	|	?this epo:specifiesProcurementCriterion / epo:hasPerformingStaffQualificationInformation ?value .	|	epo:Lot / epo:ContractTerm / at-voc:requirement-stage	|	?this epo:foreseesTerm / epo:hasPerformingStaffQualificationInformation ?value .
+|	1.53	|		|	BT-78-Lot	|	epo:Lot / epo:SecurityClearanceTerm / xsd:date	|	?this epo:isSubjectToLotSpecificTerm / epo:hasDeadline ?value .	|	epo:Lot / epo:SecurityClearanceTerm / time:Instant / xsd:date	|	?this epo:isSubjectToTerm / epo:hasSecurityClearanceDeadline / time:inXSDDate ?value .
+|		|		|	BT-578-Lot	|	epo:Lot / epo:SecurityClearanceTerm / xsd:boolean	|	?this epo:isSubjectToLotSpecificTerm / epo:isSecurityClearanceRequired ?value .	|	epo:Lot / epo:SecurityClearanceTerm / xsd:boolean	|	?this epo:isSubjectToTerm / epo:isSecurityClearanceRequired ?value .
+|		|		|	BT-732-Lot	|	epo:Lot / epo:SecurityClearanceTerm / rdf:langString	|	?this epo:isSubjectToLotSpecificTerm / dct:description ?value .	|	epo:Lot / epo:SecurityClearanceTerm / rdf:langString	|	?this epo:isSubjectToTerm / dct:description ?value .
+|		|	1.12	|	BT-735-Lot	|	epo:VehicleInformation / at-voc:cvd-contract-type	|	?this epo:specifiesCleanVehicleDirectiveContractType ?value .	|	epo:CleanVehicleDirectiveInformation / at-voc:cvd-contract-type	|	?this epo:specifiesCleanVehicleDirectiveContractType ?value .
+|	1.13	|		|	BT-735-Lot	|	epo:VehicleInformation / at-voc:cvd-contract-type	|	?this epo:specifiesCleanVehicleDirectiveContractType ?value .	|	epo:CleanVehicleDirectiveInformation / at-voc:cvd-contract-type	|	?this epo:specifiesCleanVehicleDirectiveContractType ?value .
+|	1.5	|	1.7	|	BT-801-Lot	|	epo:Lot / epo:NonDisclosureAgreementTerm / xsd:boolean	|	?this epo:isSubjectToLotSpecificTerm / epo:isNonDisclosureAgreementRequired ?value .	|	epo:Lot / epo:NonDisclosureAgreementTerm / xsd:boolean	|	?this epo:isSubjectToTerm / epo:isNonDisclosureAgreementRequired ?value .
+|	1.8	|		|	BT-801-Lot	|	epo:Lot / epo:NonDisclosureAgreementTerm / xsd:boolean	|	?this epo:isSubjectToLotSpecificTerm / epo:isNonDisclosureAgreementRequired ?value .	|	epo:Lot / epo:NonDisclosureAgreementTerm / xsd:boolean	|	?this epo:isSubjectToTerm / epo:isNonDisclosureAgreementRequired ?value .
+|	1.5	|		|	BT-802-Lot	|	epo:Lot / epo:NonDisclosureAgreementTerm / rdf:langString	|	?this epo:isSubjectToLotSpecificTerm / dct:description ?value .	|	epo:Lot / epo:NonDisclosureAgreementTerm / rdf:langString	|	?this epo:isSubjectToTerm / dct:description ?value .
+|	1.3	|	1.8	|	BT-764-Lot	|	epo:Lot / epo:SubmissionTerm / at-voc:permission	|	?this epo:isSubjectToLotSpecificTerm / epo:hasECataloguePermission ?value .	|	epo:Lot / epo:SubmissionTerm / at-voc:permission	|	?this epo:isSubjectToTerm / epo:hasECataloguePermission ?value .
+|	1.9	|		|	BT-764-Lot	|	epo:Lot / epo:SubmissionTerm / at-voc:permission	|	?this epo:isSubjectToLotSpecificTerm / epo:hasECataloguePermission ?value .	|	epo:Lot / epo:SubmissionTerm / at-voc:permission	|	?this epo:isSubjectToTerm / epo:hasECataloguePermission ?value .
+|	1.3	|	1.8	|	BT-744-Lot	|	epo:Lot / epo:SubmissionTerm / xsd:boolean	|	?this epo:isSubjectToLotSpecificTerm / epo:isAdvancedElectronicSignatureRequired ?value .	|	epo:Lot / epo:SubmissionTerm / xsd:boolean	|	?this epo:isSubjectToTerm / epo:isAdvancedElectronicSignatureRequired ?value .
+|	1.9	|		|	BT-744-Lot	|	epo:Lot / epo:SubmissionTerm / xsd:boolean	|	?this epo:isSubjectToLotSpecificTerm / epo:isAdvancedElectronicSignatureRequired ?value .	|	epo:Lot / epo:SubmissionTerm / xsd:boolean	|	?this epo:isSubjectToTerm / epo:isAdvancedElectronicSignatureRequired ?value .
+|	1.3	|	1.8	|	BT-92-Lot	|	epo:Lot / epo:ContractTerm / xsd:boolean	|	?this epo:foreseesContractSpecificTerm / epo:hasEOrdering ?value .	|	epo:Lot / epo:ContractTerm / xsd:boolean	|	?this epo:foreseesTerm / epo:hasEOrdering ?value .
+|	1.9	|		|	BT-92-Lot	|	epo:Lot / epo:ContractTerm / xsd:boolean	|	?this epo:foreseesContractSpecificTerm / epo:hasEOrdering ?value .	|	epo:Lot / epo:ContractTerm / xsd:boolean	|	?this epo:foreseesTerm / epo:hasEOrdering ?value .
+|	1.3	|	1.8	|	BT-93-Lot	|	epo:Lot / epo:ContractTerm / xsd:boolean	|	?this epo:foreseesContractSpecificTerm / epo:hasEPayment ?value .	|	epo:Lot / epo:ContractTerm / xsd:boolean	|	?this epo:foreseesTerm / epo:hasEPayment ?value .
+|	1.9	|		|	BT-93-Lot	|	epo:Lot / epo:ContractTerm / xsd:boolean	|	?this epo:foreseesContractSpecificTerm / epo:hasEPayment ?value .	|	epo:Lot / epo:ContractTerm / xsd:boolean	|	?this epo:foreseesTerm / epo:hasEPayment ?value .
+|	1.3	|	1.7	|	BT-651-Lot	|	epo:Lot / epo:SubmissionTerm / at-voc:subcontracting-indication	|	?this epo:isSubjectToLotSpecificTerm / epo:hasTenderSubcontractingInformation ?value .	|	epo:Lot / epo:SubmissionTerm / at-voc:subcontracting-indication	|	?this epo:isSubjectToTerm / epo:hasTenderSubcontractingInformation ?value .
+|	1.8	|		|	BT-651-Lot	|	epo:Lot / epo:SubmissionTerm / at-voc:subcontracting-indication	|	?this epo:isSubjectToLotSpecificTerm / epo:hasTenderSubcontractingInformation ?value .	|	epo:SubmissionTerm / at-voc:subcontracting-indication	|	?this epo:hasTenderSubcontractingInformation ?value .
+|		|		|	BT-65-Lot	|	epo:Lot / epo:SubcontractTerm / at-voc:subcontracting-obligation	|	?this epo:foreseesContractSpecificTerm / epo:hasSubcontractingObligation ?value .	|	epo:SubcontractTerm / at-voc:subcontracting-obligation	|	?this epo:hasSubcontractingObligation ?value .
+|	1.3	|	1.8	|	BT-729-Lot	|	epo:Lot / epo:SubcontractTerm / xsd:decimal	|	?this epo:foreseesContractSpecificTerm / epo:hasSubcontractorsProposedAboveObligation ?value .	|	epo:SubcontractTerm / xsd:decimal	|	?this epo:hasSubcontractorsProposedAboveObligation ?value .
+|	1.3	|	1.8	|	BT-64-Lot	|	epo:Lot / epo:SubcontractTerm / xsd:decimal	|	?this epo:foreseesContractSpecificTerm / epo:hasMinimumSubcontractorsProposedObligation ?value .	|	epo:SubcontractTerm / xsd:decimal	|	?this epo:hasMinimumSubcontractorsProposedObligation ?value .
+|	1.9	|		|	BT-729-Lot	|	epo:Lot / epo:SubcontractTerm / xsd:decimal	|	?this epo:foreseesContractSpecificTerm / epo:hasSubcontractorsProposedAboveObligation ?value .	|	epo:SubcontractTerm / xsd:decimal	|	?this epo:hasSubcontractorsProposedAboveObligation ?value .
+|	1.9	|		|	BT-64-Lot	|	epo:Lot / epo:SubcontractTerm / xsd:decimal	|	?this epo:foreseesContractSpecificTerm / epo:hasMinimumSubcontractorsProposedObligation ?value .	|	epo:SubcontractTerm / xsd:decimal	|	?this epo:hasMinimumSubcontractorsProposedObligation ?value .
+|		|		|	BT-77-Lot	|	epo:Lot / epo:ContractTerm / rdf:langString	|	?this epo:foreseesContractSpecificTerm / epo:hasPaymentArrangement ?value .	|	epo:Lot / epo:ContractTerm / rdf:langString	|	?this epo:foreseesTerm / epo:hasPaymentArrangement ?value .
+|		|		|	OPT-301-Lot-TenderEval	|	epo:Lot / epo:SubmissionTerm / epo:TenderProcessor / org:Organization	|	?this epo:isSubjectToLotSpecificTerm / epo:definesTenderProcessor / epo:playedBy ?value .	|	epo:Lot / epo:SubmissionTerm / epo:TenderProcessor / org:Organization	|	?this epo:isSubjectToTerm / epo:definesTenderProcessor / epo:playedBy ?value .
+|	1.13	|		|	BT-800(d)-Lot	|	epo:Lot / epo:SubmissionTerm / xsd:dateTime	|	?this epo:isSubjectToLotSpecificTerm / epo:hasReceiptPreliminaryMarketConsultationDeadline ?value .	|	epo:Lot / epo:SubmissionTerm / xsd:dateTime	|	?this epo:isSubjectToTerm / epo:hasReceiptPreliminaryMarketConsultationDeadline ?value .
+|	1.13	|		|	BT-800(t)-Lot	|	epo:Lot / epo:SubmissionTerm / xsd:dateTime	|	?this epo:isSubjectToLotSpecificTerm / epo:hasReceiptPreliminaryMarketConsultationDeadline ?value .	|	epo:Lot / epo:SubmissionTerm / xsd:dateTime	|	?this epo:isSubjectToTerm / epo:hasReceiptPreliminaryMarketConsultationDeadline ?value .
+|		|		|	BT-131(d)-Lot	|	epo:Lot / epo:SubmissionTerm / xsd:dateTime	|	?this epo:isSubjectToLotSpecificTerm / epo:hasReceiptTenderDeadline ?value .	|	epo:Lot / epo:SubmissionTerm / xsd:dateTime	|	?this epo:isSubjectToTerm / epo:hasReceiptTenderDeadline ?value .
+|		|		|	BT-131(t)-Lot	|	epo:Lot / epo:SubmissionTerm / xsd:dateTime	|	?this epo:isSubjectToLotSpecificTerm / epo:hasReceiptTenderDeadline ?value .	|	epo:Lot / epo:SubmissionTerm / xsd:dateTime	|	?this epo:isSubjectToTerm / epo:hasReceiptTenderDeadline ?value .
+|		|		|	BT-130-Lot	|	epo:Lot / epo:MultipleStageProcedureTerm / xsd:date	|	?this epo:isSubjectToLotSpecificTerm / epo:hasEstimatedInvitationToTenderDate ?value .	|	epo:Lot / epo:MultipleStageProcedureTerm / xsd:date	|	?this epo:isSubjectToTerm / epo:hasEstimatedInvitationToTenderDate ?value .
+|		|		|	BT-631-Lot	|	epo:Lot / epo:MultipleStageProcedureTerm / xsd:date	|	?this epo:isSubjectToLotSpecificTerm / epo:hasEstimatedInvitationToExpressInterestDate ?value .	|	epo:Lot / epo:MultipleStageProcedureTerm / xsd:date	|	?this epo:isSubjectToTerm / epo:hasEstimatedInvitationToExpressInterestDate ?value .
+|		|		|	BT-1311(d)-Lot	|	epo:Lot / epo:SubmissionTerm / xsd:dateTime	|	?this epo:isSubjectToLotSpecificTerm / epo:hasReceiptParticipationRequestDeadline ?value .	|	epo:Lot / epo:SubmissionTerm / xsd:dateTime	|	?this epo:isSubjectToTerm / epo:hasReceiptParticipationRequestDeadline ?value .
+|		|		|	BT-1311(t)-Lot	|	epo:Lot / epo:SubmissionTerm / xsd:dateTime	|	?this epo:isSubjectToLotSpecificTerm / epo:hasReceiptParticipationRequestDeadline ?value .	|	epo:Lot / epo:SubmissionTerm / xsd:dateTime	|	?this epo:isSubjectToTerm / epo:hasReceiptParticipationRequestDeadline ?value .
+|		|		|	BT-13(d)-Lot	|	epo:Lot / epo:AccessTerm / xsd:dateTime	|	?this epo:isSubjectToLotSpecificTerm / epo:hasAdditionalInformationDeadline ?value .	|	epo:Lot / epo:AccessTerm / xsd:dateTime	|	?this epo:isSubjectToTerm / epo:hasAdditionalInformationDeadline ?value .
+|		|		|	BT-13(t)-Lot	|	epo:Lot / epo:AccessTerm / xsd:dateTime	|	?this epo:isSubjectToLotSpecificTerm / epo:hasAdditionalInformationDeadline ?value .	|	epo:Lot / epo:AccessTerm / xsd:dateTime	|	?this epo:isSubjectToTerm / epo:hasAdditionalInformationDeadline ?value .
+|		|		|	BT-98-Lot	|	epo:Lot / epo:SubmissionTerm / epo:SpecificDuration / xsd:decimal	|	?this epo:isSubjectToLotSpecificTerm / epo:hasTenderValidityDuration / time:numericDuration ?value .	|	epo:Lot / epo:SubmissionTerm / time:Duration / xsd:decimal	|	?this epo:isSubjectToTerm / epo:hasTenderValidityDuration / time:numericDuration ?value .
+|		|		|	BT-98-Lot	|	epo:Lot / epo:SubmissionTerm / epo:SpecificDuration / time:TemporalUnit	|	?this epo:isSubjectToLotSpecificTerm / epo:hasTenderValidityDuration / time:unitType time:unitDay .	|	epo:Lot / epo:SubmissionTerm / time:Duration / time:TemporalUnit	|	?this epo:isSubjectToTerm / epo:hasTenderValidityDuration / time:unitType time:unitDay .
+|		|		|	BT-98-Lot	|	epo:Lot / epo:SubmissionTerm / epo:SpecificDuration / time:TemporalUnit	|	?this epo:isSubjectToLotSpecificTerm / epo:hasTenderValidityDuration / time:unitType time:unitWeek .	|	epo:Lot / epo:SubmissionTerm / time:Duration / time:TemporalUnit	|	?this epo:isSubjectToTerm / epo:hasTenderValidityDuration / time:unitType time:unitWeek .
+|		|		|	BT-98-Lot	|	epo:Lot / epo:SubmissionTerm / epo:SpecificDuration / time:TemporalUnit	|	?this epo:isSubjectToLotSpecificTerm / epo:hasTenderValidityDuration / time:unitType time:unitMonth .	|	epo:Lot / epo:SubmissionTerm / time:Duration / time:TemporalUnit	|	?this epo:isSubjectToTerm / epo:hasTenderValidityDuration / time:unitType time:unitMonth .
+|		|		|	BT-98-Lot	|	epo:Lot / epo:SubmissionTerm / epo:SpecificDuration / time:TemporalUnit	|	?this epo:isSubjectToLotSpecificTerm / epo:hasTenderValidityDuration / time:unitType time:unitYear .	|	epo:Lot / epo:SubmissionTerm / time:Duration / time:TemporalUnit	|	?this epo:isSubjectToTerm / epo:hasTenderValidityDuration / time:unitType time:unitYear .
+|		|		|	BT-630(d)-Lot	|	epo:Lot / epo:SubmissionTerm / xsd:dateTime	|	?this epo:isSubjectToLotSpecificTerm / epo:hasReceiptExpressionDeadline ?value .	|	epo:Lot / epo:SubmissionTerm / xsd:dateTime	|	?this epo:isSubjectToTerm / epo:hasReceiptExpressionDeadline ?value .
+|		|		|	BT-630(t)-Lot	|	epo:Lot / epo:SubmissionTerm / xsd:dateTime	|	?this epo:isSubjectToLotSpecificTerm / epo:hasReceiptExpressionDeadline ?value .	|	epo:Lot / epo:SubmissionTerm / xsd:dateTime	|	?this epo:isSubjectToTerm / epo:hasReceiptExpressionDeadline ?value .
+|	1.3	|	1.7	|	BT-97-Lot	|	epo:Lot / epo:SubmissionTerm / at-voc:language	|	?this epo:isSubjectToLotSpecificTerm / epo:hasLanguage ?value .	|	epo:Lot / epo:SubmissionTerm / at-voc:language	|	?this epo:isSubjectToTerm / epo:hasLanguage ?value .
+|	1.8	|		|	BT-97-Lot	|	epo:Lot / epo:SubmissionTerm / at-voc:language	|	?this epo:isSubjectToLotSpecificTerm / epo:hasLanguage ?value .	|	epo:Lot / epo:SubmissionTerm / at-voc:language	|	?this epo:isSubjectToTerm / epo:hasLanguage ?value .
+|		|		|	BT-132(d)-Lot	|	epo:Lot / epo:OpeningTerm / xsd:dateTime	|	?this epo:isSubjectToLotSpecificTerm / epo:hasOpeningDateTime ?value .	|	epo:Lot / epo:OpeningTerm / xsd:dateTime	|	?this epo:isSubjectToTerm / epo:hasOpeningDateTime ?value .
+|		|		|	BT-132(t)-Lot	|	epo:Lot / epo:OpeningTerm / xsd:dateTime	|	?this epo:isSubjectToLotSpecificTerm / epo:hasOpeningDateTime ?value .	|	epo:Lot / epo:OpeningTerm / xsd:dateTime	|	?this epo:isSubjectToTerm / epo:hasOpeningDateTime ?value .
+|		|		|	BT-134-Lot	|	epo:Lot / epo:OpeningTerm / rdf:langString	|	?this epo:isSubjectToLotSpecificTerm / epo:hasOpeningDescription ?value .	|	epo:Lot / epo:OpeningTerm / rdf:langString	|	?this epo:isSubjectToTerm / epo:hasOpeningDescription ?value .
+|	1.3	|	1.3	|	BT-133-Lot	|	epo:Lot / epo:OpeningTerm / locn:Address / rdf:langString	|	?this epo:isSubjectToLotSpecificTerm / epo:definesOpeningPlace / locn:fullAddress ?value .	|	epo:Lot / epo:OpeningTerm / rdf:langString	|	?this epo:isSubjectToTerm / epo:hasOpeningPlace ?value .
+|	1.4	|		|	BT-133-Lot	|	epo:Lot / epo:OpeningTerm / locn:Address / rdf:langString	|	?this epo:isSubjectToLotSpecificTerm / epo:definesOpeningPlace / locn:fullAddress ?value .	|	epo:Lot / epo:OpeningTerm / rdf:langString	|	?this epo:isSubjectToTerm / epo:hasOpeningPlace ?value .
+|		|		|	BT-751-Lot	|	epo:Lot / epo:SubmissionTerm / xsd:boolean	|	?this epo:isSubjectToLotSpecificTerm / epo:isGuaranteeRequired ?value .	|	epo:Lot / epo:SubmissionTerm / xsd:boolean	|	?this epo:isSubjectToTerm / epo:isGuaranteeRequired ?value .
+|	1.3	|	1.3	|	BT-75-Lot	|	epo:Lot / epo:SubmissionTerm / rdf:langString	|	?this epo:isSubjectToLotSpecificTerm / epo:hasGuaranteeDescription ?value .	|	epo:Lot / epo:SubmissionTerm / rdf:langString	|	?this epo:isSubjectToTerm / epo:hasGuaranteeDescription ?value .
+|	1.4	|		|	BT-75-Lot	|	epo:Lot / epo:SubmissionTerm / rdf:langString	|	?this epo:isSubjectToLotSpecificTerm / epo:hasGuaranteeDescription ?value .	|	epo:Lot / epo:SubmissionTerm / rdf:langString	|	?this epo:isSubjectToTerm / epo:hasGuaranteeDescription ?value .
+|		|		|	BT-17-Lot	|	epo:Lot / epo:SubmissionTerm / at-voc:permission	|	?this epo:isSubjectToLotSpecificTerm / epo:hasESubmissionPermission ?value .	|	epo:Lot / epo:SubmissionTerm / at-voc:permission	|	?this epo:isSubjectToTerm / epo:hasESubmissionPermission ?value .
+|		|		|	BT-18-Lot	|	epo:Lot / epo:SubmissionTerm / xsd:anyURI	|	?this epo:isSubjectToLotSpecificTerm / epo:hasSubmissionURL ?value .	|	epo:Lot / epo:SubmissionTerm / xsd:anyURI	|	?this epo:isSubjectToTerm / epo:hasSubmissionURL ?value .
+|	1.3	|	1.7	|	BT-19-Lot	|	epo:Lot / epo:SubmissionTerm / at-voc:communication-justification	|	?this epo:isSubjectToLotSpecificTerm / epo:hasNonElectronicSubmissionJustification ?value .	|	epo:Lot / epo:SubmissionTerm / at-voc:communication-justification	|	?this epo:isSubjectToTerm / epo:hasNonElectronicSubmissionJustification ?value .
+|	1.8	|	1.11	|	BT-19-Lot	|	epo:Lot / epo:SubmissionTerm / at-voc:communication-justification	|	?this epo:isSubjectToLotSpecificTerm / epo:hasNonElectronicSubmissionJustification ?value .	|	epo:Lot / epo:SubmissionTerm / at-voc:communication-justification	|	?this epo:isSubjectToTerm / epo:hasNonElectronicSubmissionJustification ?value .
+|	1.12	|		|	BT-19-Lot	|	epo:Lot / epo:SubmissionTerm / at-voc:communication-justification	|	?this epo:isSubjectToLotSpecificTerm / epo:hasNonElectronicSubmissionJustification ?value .	|	epo:Lot / epo:SubmissionTerm / at-voc:communication-justification	|	?this epo:isSubjectToTerm / epo:hasNonElectronicSubmissionJustification ?value .
+|	1.3	|	1.7	|	BT-745-Lot	|	epo:Lot / epo:SubmissionTerm / rdf:langString	|	?this epo:isSubjectToLotSpecificTerm / epo:hasNonElectronicSubmissionDescription ?value .	|	epo:Lot / epo:SubmissionTerm / rdf:langString	|	?this epo:isSubjectToTerm / epo:hasNonElectronicSubmissionDescription ?value .
+|	1.8	|	1.11	|	BT-745-Lot	|	epo:Lot / epo:SubmissionTerm / rdf:langString	|	?this epo:isSubjectToLotSpecificTerm / epo:hasNonElectronicSubmissionDescription ?value .	|	epo:Lot / epo:SubmissionTerm / rdf:langString	|	?this epo:isSubjectToTerm / epo:hasNonElectronicSubmissionDescription ?value .
+|	1.12	|		|	BT-745-Lot	|	epo:Lot / epo:SubmissionTerm / rdf:langString	|	?this epo:isSubjectToLotSpecificTerm / epo:hasNonElectronicSubmissionDescription ?value .	|	epo:Lot / epo:SubmissionTerm / rdf:langString	|	?this epo:isSubjectToTerm / epo:hasNonElectronicSubmissionDescription ?value .
+|	1.9	|		|	BT-708-Lot	|	epo:Lot / epo:AccessTerm / epo:ProcurementDocument / at-voc:language	|	?this epo:isSubjectToLotSpecificTerm / epo:involvesProcurementDocument / epo:hasOfficialLanguage ?value .	|	epo:Lot / epo:AccessTerm / at-voc:language	|	?this epo:isSubjectToTerm / epo:providesProcurementDocumentsInOfficialLanguage ?value .
+|	1.9	|		|	BT-737-Lot	|	epo:Lot / epo:AccessTerm / epo:ProcurementDocument / at-voc:language	|	?this epo:isSubjectToLotSpecificTerm / epo:involvesProcurementDocument / epo:hasUnofficialLanguage ?value .	|	epo:Lot / epo:AccessTerm / at-voc:language	|	?this epo:isSubjectToTerm / epo:providesProcurementDocumentsInUnofficialLanguage ?value .
+|		|		|	BT-14-Lot	|	epo:Lot / epo:AccessTerm / xsd:boolean	|	?this epo:isSubjectToLotSpecificTerm / epo:isProcurementDocumentRestricted true .	|	epo:Lot / epo:AccessTerm / xsd:boolean	|	?this epo:isSubjectToTerm / epo:isProcurementDocumentRestricted true .
+|		|		|	BT-14-Lot	|		|		|	epo:Lot / epo:AccessTerm / xsd:boolean	|	?this epo:isSubjectToTerm / epo:isProcurementDocumentRestricted false .
+|	1.3	|	1.6	|	BT-707-Lot	|	epo:Lot / epo:AccessTerm / at-voc:communication-justification	|	?this epo:isSubjectToLotSpecificTerm / epo:hasDocumentRestrictionJustification ?value .	|	epo:Lot / epo:AccessTerm / at-voc:communication-justification	|	?this epo:isSubjectToTerm / epo:hasDocumentRestrictionJustification ?value .
+|	1.7	|		|	BT-707-Lot	|	epo:Lot / epo:AccessTerm / at-voc:communication-justification	|	?this epo:isSubjectToLotSpecificTerm / epo:hasDocumentRestrictionJustification ?value .	|	epo:Lot / epo:AccessTerm / at-voc:communication-justification	|	?this epo:isSubjectToTerm / epo:hasDocumentRestrictionJustification ?value .
+|	1.3	|	1.7	|	BT-708-Lot	|	epo:Lot / epo:AccessTerm / epo:ProcurementDocument / at-voc:language	|	?this epo:isSubjectToLotSpecificTerm / epo:involvesProcurementDocument / epo:hasOfficialLanguage ?value .	|	epo:Lot / epo:AccessTerm / at-voc:language	|	?this epo:isSubjectToTerm / epo:providesProcurementDocumentsInOfficialLanguage ?value .
+|	1.8	|	1.8	|	BT-708-Lot	|	epo:Lot / epo:AccessTerm / epo:ProcurementDocument / at-voc:language	|	?this epo:isSubjectToLotSpecificTerm / epo:involvesProcurementDocument / epo:hasOfficialLanguage ?value .	|	epo:Lot / epo:AccessTerm / at-voc:language	|	?this epo:isSubjectToTerm / epo:providesProcurementDocumentsInOfficialLanguage ?value .
+|	1.3	|	1.8	|	BT-737-Lot	|	epo:Lot / epo:AccessTerm / epo:ProcurementDocument / at-voc:language	|	?this epo:isSubjectToLotSpecificTerm / epo:involvesProcurementDocument / epo:hasUnofficialLanguage ?value .	|	epo:Lot / epo:AccessTerm / at-voc:language	|	?this epo:isSubjectToTerm / epo:providesProcurementDocumentsInUnofficialLanguage ?value .
+|	1.3	|	1.6	|	BT-15-Lot	|	epo:Lot / epo:AccessTerm / xsd:anyURI	|	?this epo:isSubjectToLotSpecificTerm / epo:hasPublicAccessURL ?value .	|	epo:Lot / epo:AccessTerm / xsd:anyURI	|	?this epo:isSubjectToTerm / epo:hasPublicAccessURL ?value .
+|	1.7	|	1.7	|	BT-15-Lot	|	epo:Lot / epo:AccessTerm / xsd:anyURI	|	?this epo:isSubjectToLotSpecificTerm / epo:hasPublicAccessURL ?value .	|	epo:Lot / epo:AccessTerm / xsd:anyURI	|	?this epo:isSubjectToTerm / epo:hasPublicAccessURL ?value .
+|	1.8	|		|	BT-15-Lot	|	epo:Lot / epo:AccessTerm / xsd:anyURI	|	?this epo:isSubjectToLotSpecificTerm / epo:hasPublicAccessURL ?value .	|	epo:Lot / epo:AccessTerm / xsd:anyURI	|	?this epo:isSubjectToTerm / epo:hasPublicAccessURL ?value .
+|	1.3	|	1.6	|	BT-615-Lot	|	epo:Lot / epo:AccessTerm / xsd:anyURI	|	?this epo:isSubjectToLotSpecificTerm / epo:hasRestrictedAccessURL ?value .	|	epo:Lot / epo:AccessTerm / xsd:anyURI	|	?this epo:isSubjectToTerm / epo:hasRestrictedAccessURL ?value .
+|	1.7	|		|	BT-615-Lot	|	epo:Lot / epo:AccessTerm / xsd:anyURI	|	?this epo:isSubjectToLotSpecificTerm / epo:hasRestrictedAccessURL ?value .	|	epo:Lot / epo:AccessTerm / xsd:anyURI	|	?this epo:isSubjectToTerm / epo:hasRestrictedAccessURL ?value .
+|		|		|	OPT-301-Lot-AddInfo	|	epo:Lot / epo:AccessTerm  / epo:ProcurementProcedureInformationProvider / org:Organization	|	?this epo:isSubjectToLotSpecificTerm / epo:definesProcurementProcedureInformationProvider / epo:playedBy ?value .	|	epo:Lot / epo:AccessTerm / epo:ProcurementProcedureInformationProvider / org:Organization	|	?this epo:isSubjectToTerm / epo:definesProcurementProcedureInformationProvider / epo:playedBy ?value .
+|		|		|	OPT-301-Lot-DocProvider	|	epo:Lot / epo:AccessTerm / epo:OfflineAccessProvider / org:Organization	|	?this epo:isSubjectToLotSpecificTerm / epo:definesOfflineAccessProvider / epo:playedBy ?value .	|	epo:Lot / epo:AccessTerm / epo:OfflineAccessProvider / org:Organization	|	?this epo:isSubjectToTerm / epo:definesOfflineAccessProvider / epo:playedBy ?value .
+|	1.3	|	1.3	|	BT-99-Lot	|	epo:Lot / epo:ReviewTerm / rdf:langString	|	?this epo:isSubjectToLotSpecificTerm / epo:hasReviewDeadlineInformation ?value .	|	epo:Lot / epo:ReviewTerm / rdf:langString	|	?this epo:isSubjectToTerm / epo:hasReviewDeadlineInformation ?value .
+|	1.4	|		|	BT-99-Lot	|	epo:Lot / epo:ReviewTerm / rdf:langString	|	?this epo:isSubjectToLotSpecificTerm / epo:hasReviewDeadlineInformation ?value .	|	epo:Lot / epo:ReviewTerm / rdf:langString	|	?this epo:isSubjectToTerm / epo:hasReviewDeadlineInformation ?value .
+|		|		|	OPT-301-Lot-ReviewOrg	|	epo:Lot / epo:ReviewTerm  / epo:Reviewer / org:Organization	|	?this epo:isSubjectToLotSpecificTerm / epo:definesReviewer / epo:playedBy ?value .	|	epo:Lot / epo:ReviewTerm / epo:Reviewer / org:Organization	|	?this epo:isSubjectToTerm / epo:definesReviewer / epo:playedBy ?value .
+|		|		|	OPT-301-Lot-ReviewInfo	|	epo:Lot / epo:ReviewTerm  / epo:ReviewProcedureInformationProvider/ org:Organization	|	?this epo:isSubjectToLotSpecificTerm / epo:definesReviewProcedureInformationProvider / epo:playedBy ?value .	|	epo:Lot / epo:ReviewTerm / epo:ReviewProcedureInformationProvider / org:Organization	|	?this epo:isSubjectToTerm / epo:definesReviewProcedureInformationProvider / epo:playedBy ?value .
+|		|		|	OPT-301-Lot-Mediator	|	epo:Procedure / epo:ProcedureTerm / epo:Mediator / org:Organization	|	?this epo:isSubjectToProcedureSpecificTerm / epo:definesMediator / epo:playedBy ?value .	|	epo:Procedure / epo:ProcedureTerm / epo:Mediator / org:Organization	|	?this epo:isSubjectToTerm / epo:definesMediator / epo:playedBy ?value .
+|	1.3	|	1.5	|	BT-330-Procedure	|	epo:Procedure / epo:ProcedureTerm / epo:LotGroup	|	?this epo:isSubjectToProcedureSpecificTerm / epo:definesLotGroup ?value .	|	epo:Procedure / epo:ProcedureTerm / epo:LotGroup	|	?this epo:isSubjectToTerm / epo:definesLotGroup ?value .
+|	1.3	|	1.5	|	BT-1375-Procedure	|	epo:Procedure / epo:ProcedureTerm / epo:LotGroup / epo:Lot	|	?this epo:isSubjectToProcedureSpecificTerm / epo:definesLotGroup / epo:setsGroupingContextForLot ?value .	|	epo:Procedure / epo:ProcedureTerm / epo:LotGroup / epo:Lot	|	?this epo:isSubjectToTerm / epo:definesLotGroup / epo:setsGroupingContextForLot ?value .
+|		|		|	BT-16-Organization-Company	|	org:Organization / locn:Address / rdf:PlainLiteral	|	?this cv:registeredAddress / locn:fullAddress ?value .	|	org:Organization / locn:Address / rdf:PlainLiteral	|	?this cv:registeredAddress / locn:fullAddress ?value .
+|		|		|	OPT-201-Organization-TouchPoint	|		|		|	org:OrganizationalUnit / adms:Identifier / rdf:PlainLiteral	|	?this adms:identifier / skos:notation ?value .
+|		|		|	BT-500-Organization-TouchPoint	|	cpov:ContactPoint / rdf:langString	|	?this dct:description ?value .	|	org:OrganizationalUnit / rdf:langString	|	?this dct:title ?value .
+|		|		|	BT-16-Organization-TouchPoint	|	cpov:ContactPoint / locn:Address / rdf:PlainLiteral	|	?this locn:address / locn:fullAddress ?value .	|	cpov:ContactPoint / locn:Address / rdf:PlainLiteral	|	?this locn:address / locn:fullAddress ?value .
+|		|		|	BT-136-Procedure	|	epo:Procedure / epo:DirectAwardTerm / at-voc:direct-award-justification	|	?this epo:isSubjectToProcedureSpecificTerm / epo:hasDirectAwardJustification ?value .	|	epo:Procedure / epo:DirectAwardTerm / at-voc:direct-award-justification	|	?this epo:isSubjectToTerm / epo:hasDirectAwardJustification ?value .
+|		|		|	BT-135-Procedure	|	epo:Procedure / epo:DirectAwardTerm / rdf:langString	|	?this epo:isSubjectToProcedureSpecificTerm / epo:hasJustification ?value .	|	epo:Procedure / epo:DirectAwardTerm / rdf:langString	|	?this epo:isSubjectToTerm / epo:hasJustification ?value .
+|		|		|	BT-1252-Procedure	|	epo:Procedure / epo:DirectAwardTerm / epo:Procedure / adms:Identifier / rdf:PlainLiteral	|	?this epo:isSubjectToProcedureSpecificTerm / epo:refersToPreviousProcedure / adms:identifier / skos:notation ?value .	|	epo:Procedure / epo:DirectAwardTerm / epo:Procedure / adms:Identifier / rdf:PlainLiteral	|	?this epo:isSubjectToTerm / epo:refersToPreviousProcedure / adms:identifier / skos:notation ?value .
+|		|		|	BT-556-NoticeResult	|	epo:LotGroup / epo:Lot	|	?this epo:setsGroupingContextForLot ?value .	|	epo:LotGroupAwardInformation / epo:LotGroup	|	?this epo:describesLotGroup ?value .
+|		|		|	BT-1451-Contract	|	epo:AwardDecision / xsd:date	|	?this epo:hasAwardDecisionDate ?value .	|	epo:AwardDecision / xsd:date	|	?this epo:hasAwardDecisionDate ?value .
+|		|		|	OPT-310-Tender	|	epo:Tender / epo:Tenderer	|	?this epo:isSubmitedBy ?value .	|	epo:Tender / epo:Tenderer	|	?this epo:isSubmittedBy ?value .
+|		|	1.12	|	BT-735-LotResult	|	epo:VehicleInformation / at-voc:cvd-contract-type	|	?this epo:specifiesCleanVehicleDirectiveContractType ?value .	|	epo:CleanVehicleDirectiveInformation / at-voc:cvd-contract-type	|	?this epo:specifiesCleanVehicleDirectiveContractType ?value .
+|	1.13	|		|	BT-735-LotResult	|	epo:VehicleInformation / at-voc:cvd-contract-type	|	?this epo:specifiesCleanVehicleDirectiveContractType ?value .	|	epo:CleanVehicleDirectiveInformation / at-voc:cvd-contract-type	|	?this epo:specifiesCleanVehicleDirectiveContractType ?value .
+|		|	1.12	|	OPT-156-LotResult	|	epo:VehicleInformation / xsd:integer	|	?this epo:hasTotalVehicles ?value .	|	epo:CleanVehicleDirectiveInformation / xsd:integer	|	?this epo:hasTotalVehicles ?value .
+|		|	1.12	|	OPT-156-LotResult	|	epo:VehicleInformation / xsd:integer	|	?this epo:hasCleanVehicles ?value .	|	epo:CleanVehicleDirectiveInformation / xsd:integer	|	?this epo:hasCleanVehicles ?value .
+|		|	1.12	|	OPT-156-LotResult	|	epo:VehicleInformation / xsd:integer	|	?this epo:hasZeroEmissionVehicles ?value .	|	epo:CleanVehicleDirectiveInformation / xsd:integer	|	?this epo:hasZeroEmissionVehicles ?value .
+|	1.13	|		|	OPT-156-LotResult	|	epo:VehicleInformation / xsd:integer	|	?this epo:hasTotalVehicles ?value .	|	epo:CleanVehicleDirectiveInformation / xsd:integer	|	?this epo:hasTotalVehicles ?value .
+|	1.13	|		|	OPT-156-LotResult	|	epo:VehicleInformation / xsd:integer	|	?this epo:hasCleanVehicles ?value .	|	epo:CleanVehicleDirectiveInformation / xsd:integer	|	?this epo:hasCleanVehicles ?value .
+|	1.13	|		|	OPT-156-LotResult	|	epo:VehicleInformation / xsd:integer	|	?this epo:hasZeroEmissionVehicles ?value .	|	epo:CleanVehicleDirectiveInformation / xsd:integer	|	?this epo:hasZeroEmissionVehicles ?value .
+|		|	1.12	|	BT-723-LotResult	|	epo:VehicleInformation / at-voc:vehicle-category	|	?this epo:specifiesCleanVehicleDirectiveVehicleCategory ?value .	|	epo:CleanVehicleDirectiveInformation / at-voc:vehicle-category	|	?this epo:specifiesCleanVehicleDirectiveVehicleCategory ?value .
+|	1.13	|		|	BT-723-LotResult	|	epo:VehicleInformation / at-voc:vehicle-category	|	?this epo:specifiesCleanVehicleDirectiveVehicleCategory ?value .	|	epo:CleanVehicleDirectiveInformation / at-voc:vehicle-category	|	?this epo:specifiesCleanVehicleDirectiveVehicleCategory ?value .
+|		|		|	BT-23-Part	|	epo:PlannedProcurementPart / epo:ProcurementObject / epo:ContractTerm / at-voc:contract-nature	|	?this epo:foreseesProcurementObject / epo:foreseesContractSpecificTerm / epo:hasContractNatureType ?value .	|	epo:PlannedProcurementPart / epo:ContractTerm / at-voc:contract-nature	|	?this epo:foreseesTerm / epo:hasContractNatureType ?value .
+|	1.8	|		|	BT-531-Part	|	epo:PlannedProcurementPart / epo:ProcurementObject / epo:ContractTerm / at-voc:contract-nature	|	?this epo:foreseesProcurementObject / epo:foreseesContractSpecificTerm / epo:hasAdditionalContractNature ?value .	|	epo:PlannedProcurementPart / epo:ContractTerm / at-voc:contract-nature	|	?this epo:foreseesTerm / epo:hasAdditionalContractNature ?value .
+|	1.4	|	1.7	|	BT-531-Part	|	epo:PlannedProcurementPart / epo:ProcurementObject / epo:ContractTerm / at-voc:contract-nature	|	?this epo:foreseesProcurementObject / epo:foreseesContractSpecificTerm / epo:hasAdditionalContractNature ?value .	|	epo:PlannedProcurementPart / epo:ContractTerm / at-voc:contract-nature	|	?this epo:foreseesTerm / epo:hasAdditionalContractNature ?value .
+|		|	1.3	|	BT-531-Part	|	epo:PlannedProcurementPart / epo:ProcurementObject / epo:ContractTerm / at-voc:contract-nature	|	?this epo:foreseesProcurementObject / epo:foreseesContractSpecificTerm / epo:hasAdditionalContractNature ?value .	|	epo:PlannedProcurementPart / epo:ContractTerm / at-voc:contract-nature	|	?this epo:foreseesTerm / epo:hasAdditionalContractNature ?value .
+|		|		|	BT-726-Part	|	epo:PlannedProcurementPart / epo:ProcurementObject / xsd:boolean	|	?this epo:foreseesProcurementObject / epo:isSMESuitable ?value .	|	epo:PlannedProcurementPart / xsd:boolean	|	?this epo:isSMESuitable ?value .
+|		|		|	BT-262-Part	|	epo:PlannedProcurementPart / epo:ProcurementObject / epo:Purpose / at-voc:cpv	|	"?this epo:foreseesProcurementObject  / epo:hasPurpose / epo:hasMainClassification ?value .
+"	|	epo:Purpose / at-voc:cpv	|	?this epo:hasMainClassification ?value .
+|		|		|	BT-263-Part	|	epo:PlannedProcurementPart / epo:ProcurementObject / epo:Purpose / at-voc:cpv	|	?this epo:foreseesProcurementObject  / epo:hasPurpose / epo:hasAdditionalClassification ?value	|	epo:Purpose / at-voc:cpv	|	?this epo:hasAdditionalClassification ?value
+|		|		|	BT-5101(a)-Part	|	epo:PlannedProcurementPart / epo:ProcurementObject / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesProcurementObject / epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .	|	epo:PlannedProcurementPart / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .
+|		|		|	BT-5101(b)-Part	|	epo:PlannedProcurementPart / epo:ProcurementObject / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesProcurementObject / epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .	|	epo:PlannedProcurementPart / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .
+|		|		|	BT-5101(c)-Part	|	epo:PlannedProcurementPart / epo:ProcurementObject / epo:ContractTerm / dct:Location /  locn:Address / rdf:PlainLiteral	|	?this epo:foreseesProcurementObject / epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .	|	epo:PlannedProcurementPart / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .
+|		|		|	BT-5131-Part	|	epo:PlannedProcurementPart / epo:ProcurementObject / epo:ContractTerm / dct:Location /  locn:Address / rdf:PlainLiteral	|	?this epo:foreseesProcurementObject / epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance /  locn:address / locn:postName ?value .	|	epo:PlannedProcurementPart / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:postName ?value .
+|		|		|	BT-5131-Part	|	epo:PlannedProcurementPart / epo:ProcurementObject / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesProcurementObject / epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .	|	epo:PlannedProcurementPart / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .
+|		|		|	BT-5121-Part	|	epo:PlannedProcurementPart / epo:ProcurementObject / epo:ContractTerm / dct:Location /  locn:Address / rdf:PlainLiteral	|	?this epo:foreseesProcurementObject / epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance /  locn:address / locn:postCode ?value .	|	epo:PlannedProcurementPart / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:postCode ?value .
+|		|		|	BT-5121-Part	|	epo:PlannedProcurementPart / epo:ProcurementObject / epo:ContractTerm / dct:Location /  locn:Address / rdf:PlainLiteral	|	?this epo:foreseesProcurementObject / epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .	|	epo:PlannedProcurementPart / epo:ContractTerm / dct:Location / locn:Address / rdf:PlainLiteral	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / locn:address / locn:fullAddress ?value .
+|		|		|	BT-5071-Part	|	epo:PlannedProcurementPart / epo:ProcurementObject / epo:ContractTerm / dct:Location / at-voc:nuts	|	?this epo:foreseesProcurementObject / epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / epo:hasNutsCode ?value .	|	epo:PlannedProcurementPart / epo:ContractTerm / dct:Location / at-voc:nuts	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / epo:hasNutsCode ?value .
+|		|		|	BT-5071-Part	|	epo:PlannedProcurementPart / epo:ProcurementObject / epo:ContractTerm / dct:Location / locn:Address / at-voc:nuts	|	?this epo:foreseesProcurementObject / epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / epo:hasNutsCode ?value .	|	epo:PlannedProcurementPart / epo:ContractTerm / dct:Location / locn:Address / at-voc:nuts	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / locn:address / epo:hasNutsCode ?value .
+|		|		|	BT-5141-Part	|	epo:PlannedProcurementPart / epo:ProcurementObject / epo:ContractTerm / dct:Location / at-voc:country	|	?this epo:foreseesProcurementObject / epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / epo:hasCountryCode ?value .	|	epo:PlannedProcurementPart / epo:ContractTerm / dct:Location / at-voc:country	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / epo:hasCountryCode ?value .
+|		|		|	BT-5141-Part	|	epo:PlannedProcurementPart / epo:ProcurementObject / epo:ContractTerm / dct:Location / locn:Address / at-voc:country	|	?this epo:foreseesProcurementObject / epo:foreseesContractSpecificTerm / epo:definesSpecificPlaceOfPerformance / locn:address / epo:hasCountryCode ?value .	|	epo:PlannedProcurementPart / epo:ContractTerm / dct:Location / locn:Address / at-voc:country	|	?this epo:foreseesTerm / epo:definesSpecificPlaceOfPerformance / locn:address / epo:hasCountryCode ?value .
+|		|		|	BT-727-Part	|	epo:PlannedProcurementPart / epo:ProcurementObject / epo:ContractTerm / at-voc:other-place-service	|	?this epo:foreseesProcurementObject / epo:foreseesContractSpecificTerm / epo:hasBroadPlaceOfPerformance ?value .	|	epo:PlannedProcurementPart / epo:ContractTerm / at-voc:other-place-service	|	?this epo:foreseesTerm / epo:hasBroadPlaceOfPerformance ?value .
+|		|		|	BT-728-Part	|	epo:PlannedProcurementPart / epo:ProcurementObject / epo:ContractTerm / rdf:langString	|	?this epo:foreseesProcurementObject / epo:foreseesContractSpecificTerm / epo:hasPlaceOfPerformanceAdditionalInformation ?value .	|	epo:PlannedProcurementPart / epo:ContractTerm / rdf:langString	|	?this epo:foreseesTerm / epo:hasPlaceOfPerformanceAdditionalInformation ?value .
+|		|		|	BT-536-Part	|	epo:PlannedProcurementPart / epo:Period / xsd:date	|	?this epo:hasPlannedPeriod / epo:hasBeginning ?value .	|	epo:PlannedProcurementPart / time:Interval / time:Instant / xsd:date	|	?this epo:hasPlannedPeriod / time:hasBeginning / time:inXSDDate ?value .
+|		|		|	BT-537-Part	|	epo:PlannedProcurementPart / epo:Period / xsd:date	|	?this epo:hasPlannedPeriod / epo:hasEnd ?value .	|	epo:PlannedProcurementPart / time:Interval / time:Instant / xsd:date	|	?this epo:hasPlannedPeriod / time:hasEnd / time:inXSDDate ?value .
+|		|		|	BT-36-Part	|	epo:PlannedProcurementPart / epo:SpecificDuration / xsd:decimal	|	?this epo:hasPlannedDuration / time:numericDuration ?value .	|	epo:PlannedProcurementPart / time:Duration / xsd:decimal	|	?this epo:hasPlannedDuration / time:numericDuration ?value .
+|		|		|	BT-36-Part	|		|		|	epo:PlannedProcurementPart / time:Duration / time:TemporalUnit	|	?this epo:hasPlannedDuration / time:unitType time:unitDay .
+|		|		|	BT-36-Part	|		|		|	epo:PlannedProcurementPart / time:Duration / time:TemporalUnit	|	?this epo:hasPlannedDuration / time:unitType time:unitWeek .
+|		|		|	BT-36-Part	|		|		|	epo:PlannedProcurementPart / time:Duration / time:TemporalUnit	|	?this epo:hasPlannedDuration / time:unitType time:unitMonth .
+|		|		|	BT-36-Part	|		|		|	epo:PlannedProcurementPart / time:Duration / time:TemporalUnit	|	?this epo:hasPlannedDuration / time:unitType time:unitYear .
+|		|		|	BT-538-Part	|	epo:PlannedProcurementPart / epo:Period / at-voc:timeperiod	|	?this epo:hasPlannedPeriod / epo:hasTimePeriod ?value	|	epo:PlannedProcurementPart / epo:ContractTerm / xsd:boolean	|	?this epo:foreseesTerm / epo:hasUnknownDuration true .
+|		|		|	BT-538-Part	|	epo:PlannedProcurementPart / epo:Period / at-voc:timeperiod	|	?this epo:hasPlannedPeriod / epo:hasTimePeriod ?value	|	epo:PlannedProcurementPart / epo:ContractTerm / xsd:boolean	|	?this epo:foreseesTerm / epo:hasUnlimitedDuration true .
+|		|		|	BT-115-Part	|	epo:PlannedProcurementPart / epo:ProcurementObject / xsd:boolean	|	?this epo:foreseesProcurementObject / epo:isCoveredByGPA ?value .	|	epo:PlannedProcurementPart / xsd:boolean	|	?this epo:isCoveredByGPA ?value .
+|	1.9	|		|	BT-765-Part	|	epo:PlannedProcurementPart / epo:ProcurementObject / epo:FrameworkAgreementTerm / at-voc:framework-agreement	|	?this epo:foreseesProcurementObject / epo:foreseesContractSpecificTerm / epo:hasFrameworkAgreementType ?value .	|	epo:PlannedProcurementPart / epo:FrameworkAgreementTerm / at-voc:framework-agreement	|	?this epo:foreseesTerm / epo:hasFrameworkAgreementType ?value .
+|		|	1.8	|	BT-765-Part	|	epo:PlannedProcurementPart / epo:ProcurementObject / epo:FrameworkAgreementTerm / at-voc:framework-agreement	|	?this epo:foreseesProcurementObject / epo:foreseesContractSpecificTerm / epo:hasFrameworkAgreementType ?value .	|	epo:PlannedProcurementPart / epo:FrameworkAgreementTerm / at-voc:framework-agreement	|	?this epo:foreseesTerm / epo:hasFrameworkAgreementType ?value .
+|		|		|	OPT-301-Part-TenderReceipt	|	epo-not:PlanningNotice / epo:TenderReceiver / epo:ProcurementObject	|	?this epo:announcesRole / epo:contextualisedBy ?value .	|	epo-not:PlanningNotice / epo:TenderReceiver / epo:PlannedProcurementPart	|	?this epo:announcesRole / epo:contextualisedBy ?value .
+|		|		|	OPT-301-Part-TenderEval	|	epo-not:PlanningNotice / epo:TenderProcessor / epo:ProcurementObject	|	?this epo:announcesRole / epo:contextualisedBy ?value .	|	epo-not:PlanningNotice / epo:TenderProcessor / epo:PlannedProcurementPart	|	?this epo:announcesRole / epo:contextualisedBy ?value .
+|		|		|	BT-300-Part	|	epo:PlannedProcurementPart / epo:ProcurementObject / rdf:langString	|	?this epo:foreseesProcurementObject / epo:hasAdditionalInformation ?value .	|	epo:PlannedProcurementPart / rdf:langString	|	?this  epo:hasAdditionalInformation ?value .
+|	1.9	|		|	BT-736-Part	|	epo:PlannedProcurementPart / epo:ProcurementObject / epo:ContractTerm / at-voc:applicability	|	?this epo:foreseesProcurementObject / epo:foreseesContractSpecificTerm / epo:hasReservedExecution ?value .	|	epo:PlannedProcurementPart / epo:ContractTerm / at-voc:applicability	|	?this epo:foreseesTerm / epo:hasReservedExecution ?value .
+|		|	1.8	|	BT-736-Part	|	epo:PlannedProcurementPart / epo:ProcurementObject / epo:ContractTerm / at-voc:applicability	|	?this epo:foreseesProcurementObject / epo:foreseesContractSpecificTerm / epo:hasReservedExecution ?value .	|	epo:PlannedProcurementPart / epo:ContractTerm / at-voc:applicability	|	?this epo:foreseesTerm / epo:hasReservedExecution ?value .
+|		|		|	OPT-301-Part-AddInfo	|	epo-not:PlanningNotice / epo:ProcurementProcedureInformationProvider / epo:ProcurementObject	|	?this epo:announcesRole / epo:contextualisedBy ?value .	|	epo-not:PlanningNotice / epo:ProcurementProcedureInformationProvider / epo:PlannedProcurementPart	|	?this epo:announcesRole / epo:contextualisedBy ?value .
+|		|		|	OPT-301-Part-DocProvider	|	epo-not:PlanningNotice / epo:OfflineAccessProvider / epo:ProcurementObject	|	?this epo:announcesRole / epo:contextualisedBy ?value .	|	epo-not:PlanningNotice / epo:OfflineAccessProvider / epo:PlannedProcurementPart	|	?this epo:announcesRole / epo:contextualisedBy ?value .
+|		|		|	OPT-301-Part-ReviewOrg	|	epo:PlannedProcurementPart / epo:ProcurementObject / epo:ReviewTerm	|	?this epo:foreseesProcurementObject / epo:isSubjectToTerm ?value .	|	epo:PlannedProcurementPart / epo:ReviewTerm	|	?this epo:isSubjectToTerm ?value .
+|		|		|	OPT-301-Part-ReviewInfo	|	epo:PlannedProcurementPart / epo:ProcurementObject / epo:ReviewTerm	|	?this epo:foreseesProcurementObject / epo:isSubjectToTerm ?value .	|	epo:PlannedProcurementPart / epo:ReviewTerm	|	?this epo:isSubjectToTerm ?value .
+|===
