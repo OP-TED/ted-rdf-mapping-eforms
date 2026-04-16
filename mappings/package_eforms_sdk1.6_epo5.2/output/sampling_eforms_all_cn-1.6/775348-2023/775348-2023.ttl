@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -31,8 +31,7 @@
 
 <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
   a epo:AccessTerm;
-  epo:hasPublicAccessURL "https://www.e-licitatie.ro"^^xsd:anyURI;
-  epo:isProcurementDocumentRestricted false .
+  epo:hasPublicAccessURL "https://www.e-licitatie.ro"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>
   a epo:AwardCriterion;
@@ -100,7 +99,7 @@ P(n) = [Pret(min) / ( Pret(n)] x 5"""@ro;
     "Locul pentru care se acordă premiul"@ro, "Valoarea premiului"@ro;
   epo:hasChangeJustification <http://publications.europa.eu/resource/authority/change-corrig-justification/cor-buy>;
   epo:hasChangeReasonDescription "modificare realizata pentru a putea publica anunt atribuire"@ro;
-  epo:hasProcurementDocumentChangeDate "2023-12-20+02:00"^^xsd:date;
+  epo:hasProcurementDocumentChangeDate "2023-12-20T00:00:00+02:00"^^xsd:dateTime;
   epo:isProcurementDocumentChanged false, true;
   epo:refersToPreviousNotice <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/Notice/422781-2023>;
   epo:relatesToEFormSectionIdentifier <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/Notice/422781-2023/Identifier/PROCEDURE> .
@@ -178,7 +177,8 @@ P(n) = [Pret(min) / ( Pret(n)] x 5"""@ro;
 
 <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -200,45 +200,41 @@ P(n) = [Pret(min) / ( Pret(n)] x 5"""@ro;
   epo:hasFollowupContract true;
   epo:isJuryDecisionBinding true .
 
+<http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/DesignContestRegimeTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1>
+  a epo:DesignContestRegimeTerm;
+  epo:hasFollowupContractInformation "Detaliile privind platile catre participanti se regasesc in Regulamentul concursului si contract."@ro .
+
 <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Participare la o organizatie criminala"@ro;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/crime-org> .
+  dct:description "Participare la o organizatie criminala"@ro .
 
 <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement2>
   a epo:ExclusionGround;
-  dct:description "Coruptie"@ro;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/corruption> .
+  dct:description "Coruptie"@ro .
 
 <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement3>
   a epo:ExclusionGround;
-  dct:description "Frauda"@ro;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/fraud> .
+  dct:description "Frauda"@ro .
 
 <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement4>
   a epo:ExclusionGround;
-  dct:description "Infractiuni teroriste sau infractiuni legate de activitati teroriste"@ro;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/terr-offence> .
+  dct:description "Infractiuni teroriste sau infractiuni legate de activitati teroriste"@ro .
 
 <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement5>
   a epo:ExclusionGround;
-  dct:description "Spalare de bani sau finantarea terorismului"@ro;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/finan-laund> .
+  dct:description "Spalare de bani sau finantarea terorismului"@ro .
 
 <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement6>
   a epo:ExclusionGround;
-  dct:description "Exploatarea prin munca a copiilor si alte forme de trafic de persoane"@ro;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/human-traffic> .
+  dct:description "Exploatarea prin munca a copiilor si alte forme de trafic de persoane"@ro .
 
 <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement7>
   a epo:ExclusionGround;
-  dct:description "Plata impozitelor"@ro;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/tax-pay> .
+  dct:description "Plata impozitelor"@ro .
 
 <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement8>
   a epo:ExclusionGround;
-  dct:description "Plata asigurarilor sociale"@ro;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/socsec-pay> .
+  dct:description "Plata asigurarilor sociale"@ro .
 
 <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/Identifier/LOT-0000>
   a adms:Identifier;
@@ -275,27 +271,21 @@ P(n) = [Pret(min) / ( Pret(n)] x 5"""@ro;
 
 <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
+  epo:doesNotRequireSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/ef-stand>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/Lot/Identifier/14756536_2023_PAAPD1425456>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/LotPurpose$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
     <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/DesignContestRegimeTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
-    <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>;
+    <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1Documentatia%20de%20achizitie>;
   epo:isUsingEUFunds false;
   epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>,
     <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion2>,
-    <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement2>,
-    <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement3>,
-    <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement4>,
-    <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement5>,
-    <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement6>,
-    <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement7>,
-    <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement8>,
     <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>,
     <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>,
     <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>,
@@ -374,13 +364,16 @@ Amenajarea propusă de concurenți va trebui să ofere și o soluție suste
     <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/Reviewer/ORG-0002>,
     <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/TenderProcessor/ORG-0004>,
     <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/TenderReceiver/ORG-0008>;
-  epo:hasESenderDispatchDate "2023-07-07T14:35:26.0000000+03:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2023-07-07T14:35:26.0000000+03:00"^^xsd:dateTime;
+  epo:hasESenderDispatchDate "2023-12-20T12:15:32.0000000+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/change>;
   epo:hasNoticePublicationNumber "00775348-2023";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/corr>;
-  epo:hasOJSIssueNumber "246/2023";
+  epo:hasOJSIssueNumber 246;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/RON>;
   epo:hasPublicationDate "2023-12-21Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/Lot/LOT-0000>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/Procedure/7e71285c-6940-49ed-8502-70e0cd8fcf6f>;
@@ -402,6 +395,22 @@ Amenajarea propusă de concurenți va trebui să ofere și o soluție suste
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "c65d9117-91e8-490c-866c-e4a29d4fe228" .
+
+<http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.6" .
+
+<http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/Organization/Identifier$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -510,12 +519,20 @@ Amenajarea propusă de concurenți va trebui să ofere și o soluție suste
 
 <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/Procedure/7e71285c-6940-49ed-8502-70e0cd8fcf6f>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/Procedure/Identifier/14756536_2023_PAAPD1425456>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/oth-single>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/Lot/LOT-0000>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ProcedurePurpose$_ContractNotice1_ProcurementProject1>;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement2>,
+    <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement3>,
+    <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement4>,
+    <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement5>,
+    <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement6>,
+    <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement7>,
+    <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement8>;
   dct:description "Municipiul Timișoara împreună cu Ordinul Arhiecților din România organizează un concurs de soluții de arhitectură pentru spatiul public care este totodata cea mai centrala zona a Timisoarei.  Câștigătorul concursului va fi invitat la procedura de negociere fără publicarea prealabilă conform prevederilor art. 104 alin (7) din Legea nr. 98/2016 privind achizițiile publice, în vederea încheierii contractului de servicii de proiectare. Solicitarile de clarificari si raspunsurile aferente se vor adresa/raspunde conform Regulamentului de concurs, atasat.Documentatia necesara intocmirii proiectelor poate fi regasita si accesand link-urile:  pentru documentatia in limba romana: https://oar.archi/concursuri/oar/piata-victoriei-timisoara/   ; pentru documentatia in limba engleza: https://oar.archi/en/concursuri/oar/victoriei-square-timisoara/"@ro;
   dct:title "Servicii de proiectare (DALI+PT+AT, studii conexe) necesare realizarii obiectivului de investitie „Amenajare si modernizare Piata Operei si strazi zona Cetate”"@ro;
   adms:identifier <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/Procedure/Identifier/7e71285c-6940-49ed-8502-70e0cd8fcf6f> .
@@ -558,7 +575,6 @@ Amenajarea propusă de concurenți va trebui să ofere și o soluție suste
 
 <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>;
   epo:isUsedForCandidateRestriction false;
   dct:description "Municipiul Timisoara, va exclude în orice moment orice operator economic care se afla în sit prev.la art.60,164,165 şi 167 din L98/2016.Mot.de excludere se aplica şi asociaţilor/subcontractanţilor/terţilor susţinători, după caz. Mod.de indeplin: OE participant (ofertant, ofertant asociat,subcontractant,tert sustinator,dupa caz) va prez.cu oferta, DUAE distinct.Se vor prezenta:a)Declar.art.60 din L98/2016 si b) daca este cazul, angaj.ferm al tert sustin, acordul de subcontr.si/sau asociere.Doc.justif.val.la data prez:1.certif.constat./orice doc.(în țara în care ofertantul este stabilit) priv.plata impozit, taxe sau a contrib la bug gen.consol.(buget local, buget de stat etc.) Doc.prez.vor evid.lipsa datoriilor restante la mom. prez.;2.cazierul judiciar al OE si al membrilor org.de admin., de conducere sau de suprav.al respectivului OE, cu putere de reprez., de decizie sau de control,asa cum rez.din certif.const ONRC/act const.sau orice alte doc.; 3.după caz, doc.prin care se dem.că OE poate ben.de derog.art.166 alin.(2),art.167 alin.(2),art.171 din L98/2016;4.alte doc.edif., după cazNota: AC,cf.L98/2016, va accepta ca fiind sufic.şi relev.pt dem.fapt că ofertantul nu se încadrează în una dintre sit.prev.la art.164, 165 şi 167,orice doc.consid.edificator, din acest pdv, în ţara de origine sau în ţara în care ofertantul este stabilit,cum ar fi certif, caziere judic sau orice alte doc.echi.emise de autorităţi compet din ţara respect.Doc.justif.care probeaza îndeplin.celor asum.prin complet.DUAE urm.a fi prez.doar la sol.AC, de catre ofertantul aflat pe primul loc dupa aplic. criter.de atribuire asupra ofertelor admis. Pt respect.alin (2), in etapa de la art.196 alin(2) din L98/2016, OE prez.pt sed.princip.doc.din care sa reiasa neincadr.in art.165alin(1), iar pt sed. sec./pct de lucru, o declar.pe propr.rasp.priv.indeplin.oblig.de plata a impozit., taxe sau a contrib la bug. gen. consolidat datorate. Doc.se vor prez.în lb ro/lb în care au fost emise însotite de trad.autoriz.in lb ro, dupa caz. AC publica urm.inf.in tem.art.63 alin.(1) din L98/2016:-Pers.cu functie de decizie din cadrul AC sunt: Dominic Samuel Fritz;Ruben Latcau;Cosmin Gabriel Tabara-Amanar;Matei Cristian Creiveanu;Steliana Stanciu;Lucretia Schipor;Caius–Sorin Suli;Adina Mihaela Paunescu;Simona Moga;Nicoleta Ramona Dolha;Eliza-Angela Cristiu;Liviu Andron;Florescu Mihai-Dorin;Adriana Deaconu.Consilieri locali:Raul Ambrus;Lorenzo-Flavius Barabas;Lucian Caldararu; Marius-Lucian Craina;Emanuel David;Dan Aurel Diaconu;Jorge Gonzalez Garrido;Cornel-Florin Ilca; Roxana-Teodora Iliescu;Andra-Anca Lapadatu;Adrian Razvan Lulciuc;Daniela Mirela Maris;Ovidiu Merean;Andrei Mester;Elena-Rodica Militaru;Mihai-Ionut Mortan;Simion Mosiu;Ana-Maria Munteanu;Razvan-Gabriel Negrisanu;Paula-Ana Romocean;Mihaela-Paula Rusu;Constantin Stefan Sandu;Razvan-Ion Stana;Ioan-Stefan Szatmari;Radu Daniel Toanca;Comisia de evaluare: TITULARI:Lavinia ALEXANDRESCU;Roxana CANCEAL;Andreea PATROI;Elena GOIA;Adriana SEITAN;REZERVE:Emilia MICORICI;Adina SUIU;Cosmin CAPRIS;Mariana ROMAN;Cristian JENARIU;- Persoanele cu functie de decizie din cadrul Organizatorului concursului (OAR) sunt:arh.Ștefan BÂLICI,arh.Cristian Tiberiu BLIDARIU,arh.Beatrice-Elena BIRTUM,arh.Mihaela HĂRMĂNESCU,arh. Dan-Felix PARASCHIV, arh.Soma-Gyorgy KALAMAR,arh.Cristian-Daniel OPREA;arh.Lucian-Alexandru GĂVOZDEA,arh. Ana-Maria ZAHARIADE,arh.Raluca MUNTEANU,arh.Oana-Alexandra SIMIONESCU,arh.Matei BOGOESCU,arh.Andrei-Ladislau FENYO,arh.Mirona Crăciun,arh.Daniela Calciu,arh. Cazmer Tomas Kovacs,arh.Andreea-Ilinca POP,arh.Andreea Raluca DUMINICĂ,arh.Andra-Raisa PARPALĂ,urb.Elena-Louisiana STOICA.-Juriul concursului:titulari:Gabriel Almăjan-arhitect șef al Municipiului Timișoara,peis. Maria Chiara Pozzana (Italia),arh. Ana Sverko (Croația),arh. Marusa Zorec (Slovenia),Gruia Bădescu (România/Germania),arh. Dragoș Oprea (România),arh.Ciprian Silviu CADARIU,supleanți:arh.Monica Sebestyen(România),Ruben Lațcău-Viceprimar al Municipiului Timișoara."@ro;
@@ -566,7 +582,6 @@ Amenajarea propusă de concurenți va trebui să ofere și o soluție suste
 
 <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>;
   epo:isUsedForCandidateRestriction false;
   dct:description """A)OE trebuie sa dovedească o forma de înregistrare în cond.legii din tara de rezidenta,din care să reiasă ca OE (ofertant si,dupa caz,ofertant asociat,subcontractant) este legal constituit,ca nu se afla in niciuna din sit.de anulare a constituirii si faptul ca are capacitatea profesionala de a realiza activităţile care fac ob.ctr.Mod.de îndeplin:Se va prez.DUAE completat in cf.cu art.193 din L98/2016. Doc.justif.care probează îndeplinirea celor asumate prin complet.DUAE, respectiv Certif.constat. ONRC/doc.echiv.emise in tara de rezidenta, urmează a fi prez.doar la sol.AC, de catre ofertantul aflat pe primul loc după aplic.criteriului de atribuire asupra ofertelor admisibile.Inform.cupr.in certificat/doc.echivalent, treb.sa fie reale, val.la data prez.acestuia. În cazul unei oferte comune dep.de mai mulţi OE, doc.sol.se vor prez.de către fiecare OE semnatar al acord.de asociere, pt partea de ctr pe care o realizează.In sit.în care vor fi exec.părți din ctr.de către subcontr.dovada înregistrării și corespondența activităților princip./sec.din cadrul acestuia cu ob.achiziției se va prez.obligatoriu și de către subcontr.pt partea din ctr.pe care o vor realiza. Doc.sol.se vor prez.în limba romana/limba în care au fost emise însoţite de trad.autorizata in limba romana, după caz.
@@ -575,7 +590,6 @@ B)Arhitect cu drept de semnatura cf.L184/2001, membru OAR/organizatie internat.e
 
 <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/tp-abil>;
   epo:isUsedForCandidateRestriction false;
   dct:description """In cazul în care ofertantul intenţioneaza să subcontracteze parţial contractul, DUAE include informatiile solicitate cu privire la subcontractanti, activitatile pe care le vor realiza acestia si procentul aferent acestor activitati, raportat la valoarea contractului, iar subcontractantul/subcontractantii nominalizat/i de catre ofertant, are/au obligatia de a completa DUAE cu datele proprii. Se va prezenta DUAE completat de fiecare subcontractant (daca este cazul), in conformitate cu prev. art. 193 din Legea 98/2016. Neprezentarea acestuia odata cu oferta atrage dupa sine respingerea ofertei ca inacceptabila (temei art. 137, alin.(2), litera k) din HG 395/2016). 
@@ -586,7 +600,6 @@ De asemenea, la incheierea contractului de achizitie publica/acordului-cadru, la
 
 <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria4>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>;
   epo:isUsedForCandidateRestriction false;
   dct:description """A) Operatorii economici care depun oferta trebuie sa dovedească o forma de înregistrare în condiţiile legii din tara de rezidenta, din care să reiasă ca operatorul economic  (ofertant si, dupa caz, ofertant asociat, subcontractant), este legal constituit, ca nu se afla in niciuna din situaţiile de anulare a constituirii precum si faptul ca are capacitatea profesionala de a realiza activităţile care fac obiectul contractului. Se va prezenta DUAE completat in conformitate cu prev. art. 193 din Legea 98/2016. 
@@ -599,7 +612,6 @@ Existența și conformitatea documentelor solicitate mai sus va fi verificată d
 
 <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria5>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>;
   epo:isUsedForCandidateRestriction false;
   dct:description """Arhitect cu drept de semnatura conform prevederilor Legii 184/2001, membru OAR/organizatie internationala echivalenta. Se va prezenta DUAE completat in conformitate cu prev. art. 193 din Legea 98/2016. 
@@ -609,7 +621,6 @@ Existența și conformitatea documentelor solicitate mai sus va fi verificată d
 
 <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria6>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/n-used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/ef-stand> .
 
 <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>
@@ -630,3 +641,7 @@ Existența și conformitatea documentelor solicitate mai sus va fi verificată d
   a epo:TenderReceiver;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/Lot/LOT-0000>;
   epo:playedBy <http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01/Organization/ORG-0008> .
+
+<http://data.europa.eu/a4g/resource/c65d9117-91e8-490c-866c-e4a29d4fe228-01AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1Documentatia%20de%20achizitie>
+  a epo:AccessTerm;
+  epo:isProcurementDocumentRestricted false .

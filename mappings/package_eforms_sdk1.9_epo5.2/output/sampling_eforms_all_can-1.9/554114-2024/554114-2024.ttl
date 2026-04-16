@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -129,7 +129,8 @@ Die gegenständliche Änderung (§ 365 Abs 3 Z 5 BVergG 2018) wurde aus den gena
   epo:hasEOrdering true;
   epo:hasEPayment true;
   epo:hasPerformanceConditions "Die Bedingungen für Ausführung des Auftrages wurden in den mit Verfahrensbekanntmachung veröffentlichten Ausschreibungsunterlagen vorgegeben."@de;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -159,14 +160,14 @@ Die gegenständliche Änderung (§ 365 Abs 3 Z 5 BVergG 2018) wurde aus den gena
 
 <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/Lot/LOT-8114>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation "Die Auftraggeberin weist darauf hin, dass - da eine Änderung eines Abrufes aus der Rahmenvereinbarung NÖ-SAP-Digital Finance erfolgte - im \"Abschnitt IX: Gesamtergebnis\" demnach der Auftragswert des ursprünglichen Abrufs aus der Rahmenvereinbarung und der Auftragswert der geänderten, zusätzlichen Leistungen des Abrufes aus der Rahmenvereinbarung ergänzt wurde."@de;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/Lot/Identifier/1>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
   epo:isRecurrent false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>;
   epo:isUsingEUFunds false;
   dct:description "Die Auftraggeberin (AG) hat mit Auftragserteilung vom 11.12.2023 einen Abruf aus der Rahmenvereinbarung NÖ-SAP-Digital Finance (Bekanntmachung zu 2020/S 170-411572) mit einem Auftragswert von EUR 1.645.497,22 (exkl. USt) vorgenommen und diesen Abruf mit einer Bekanntgabe des vergebenen Auftrages via data.gv.at bekanntgegeben (Tag der Absendung der Bekanntgabe: 20.12.2023). Die nunmehr gegenständliche Bekanntgabe erfolgt aufgrund der Beauftragung des Auftragnehmers mit zusätzlich erforderlichen Leistungen zu diesem Abruf (Vertragsänderung). Insbesondere wurden weitere Anpassungen des Systems erforderlich. Gegenstand der Beauftragung sind insbesondere zusätzliche Dienstleistungen für funktionale Umsetzungen, deren Notwendigkeit im Demobetrieb evident wurden, sowie technische Optimierungen von Prozessabläufen, Umsetzung zusätzlicher Schnittstellen und Anpassungen im Bereich Datenübernahme sowie Support."@de;
@@ -196,13 +197,15 @@ Die gegenständliche Änderung (§ 365 Abs 3 Z 5 BVergG 2018) wurde aus den gena
 <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/Notice>
   a epo:ContractModificationNotice, epo:Notice, epo:Notice38;
   epo:announcesContractAmendment <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/ContractAmendment$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_ContractModification1>;
-  epo:hasESenderDispatchDate "2024-09-13T09:09:00+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-09-13T09:09:00+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/cont-modif>;
   epo:hasNoticePublicationNumber "00554114-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-modif>;
-  epo:hasOJSIssueNumber "180/2024";
+  epo:hasOJSIssueNumber 180;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU>;
   epo:hasPublicationDate "2024-09-16+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToAwardDecision <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/AwardDecision/CON-3608>;
   epo:refersToContractToBeModified <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/Contract/CON-3608>;
@@ -227,6 +230,22 @@ Die gegenständliche Änderung (§ 365 Abs 3 Z 5 BVergG 2018) wurde aus den gena
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "53aa50d4-f1be-4227-9843-1d3f87c3c450" .
+
+<http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.9" .
+
+<http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
   a epo:NoticeAwardInformation;
@@ -278,7 +297,7 @@ Die gegenständliche Änderung (§ 365 Abs 3 Z 5 BVergG 2018) wurde aus den gena
 
 <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/Procedure/acc6f648-47aa-44a5-80ca-d46ed6d5b960>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/Procedure/Identifier/2021%2FS%20033-083017>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/Lot/LOT-8114>;
@@ -324,7 +343,7 @@ Die gegenständliche Änderung (§ 365 Abs 3 Z 5 BVergG 2018) wurde aus den gena
   epo:foreseesSubcontracting <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/SubcontractingEstimate$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
   epo:hasFinancialOfferValue <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
   epo:hasSubcontracting <http://publications.europa.eu/resource/authority/applicability/yes>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/Tenderer/TPA-5514>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/Tenderer/TPA-5514>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/Lot/LOT-8114>;
   adms:identifier <http://data.europa.eu/a4g/resource/53aa50d4-f1be-4227-9843-1d3f87c3c450-01/Tender/Identifier/Institut%20f%C3%BCr%20Verwaltungsmanagement%20GmbH> .
 

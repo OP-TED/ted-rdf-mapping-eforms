@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -55,6 +55,12 @@
   cccev:email "esender@example.com";
   cccev:telephone "+352 123456789" .
 
+<http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>
+  a dct:Location;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ITC33>;
+  locn:address <http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/ProcedurePlacePerformance$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1> .
+
 <http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/Identifier/ORG-0001>
   a adms:Identifier;
   epo:hasScheme "organization";
@@ -67,15 +73,18 @@
 
 <http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/Notice>
   a epo:Notice, epo:Notice1, epo:PlanningNotice;
+  epo:announcesPlannedProcurement <http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/PlannedProcurement$_PriorInformationNotice1_ProcurementProject1>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/Buyer/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>;
-  epo:hasESenderDispatchDate "2020-04-08T03:57:07+01:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2020-04-08T03:57:07+01:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticePublicationNumber "12345678-2025";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-buyer>;
-  epo:hasOJSIssueNumber "123/2025";
+  epo:hasOJSIssueNumber 123;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/ITA>;
   epo:hasPublicationDate "2025-05-22+01:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/Notice/SpecificationInformation/Version>;
   epo:hasVersion "02";
   adms:identifier <http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/Notice/Identifier> .
 
@@ -83,6 +92,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "e5dc3c2b-3df5-45e0-af7f-399ca201d7e0" .
+
+<http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.3" .
+
+<http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -109,6 +134,38 @@
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/CompanyContactPoint$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1_Contact1>;
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1_PostalAddress1>;
   adms:identifier <http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/Identifier/ORG-0002> .
+
+<http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/PlannedProcurement$_PriorInformationNotice1_ProcurementProject1>
+  a epo:PlannedProcurement;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+    <http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
+  epo:hasAdditionalInformation "Si richiede ad eventuali operatori economici che dispongano di soluzioni che ottemperino in maniera equivalente ai requisiti tecnici e prestazionali sopra indicati di presentare adeguata documentazione tecnico-scientifica entro e non oltre le ore 12:00 del giorno 23.4.2020 al seguente indirizzo e-mail: protocollo@pec.hsanmartino.it. Indicando: — gli estremi del mittente (ragione/denominazione sociale), indirizzo, numero di telefono, fax ed indirizzo di posta elettronica ove inviare eventuali comunicazioni, — la dicitura: «fornitura di materiale dedicato a ventilatore polmonare mod. Monnal T75». Il termine per la presentazione della documentazione è tassativo. Qualora entro il termine stabilito un concorrente presenti più plichi, gli stessi sono numerati secondo l'ordine di presentazione e verrà considerato valido soltanto l'ultimo. Per eventuali chiarimenti rivolgersi al responsabile del procedimento: — sig.ra Paola Rovegno — tel. +39 0105552612; paola.rovegno@hsanmartino.it, — dott.ssa Michela Mattera — +39 0105553063; michela.mattera@hsanmartino.it."@it;
+  epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/PlannedProcurement/Identifier/not%20available>;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
+  dct:description "Oggetto: Consultazione preliminare di mercato volta all’eventuale acquisizione, mediante procedura negoziata senza previa pubblicazione di un bando di gara, ex art. 63, comma 2, lett. b), del decreto legislativo del 18.4.2016, n. 50, per la fornitura di materiale dedicato a ventilatore polmonare mod. Monnal T75. Motivazione della pubblicazione: con il presente avviso si intende avviare una consultazione preliminare di mercato al fine di conoscere se, diversamente dalle informazioni in possesso di questa stazione appaltante, altri operatori economici oltre a Medival srl, possano fornire i prodotti di seguito indicati: — valvola espiratoria per ventilatori Monnal T75 autoclavabile blu, n. 50 pezzi, — sensore di flusso per ventilatori Monnal T75 autoclavabile blu, n. 50 pezzi, — valvola espiratoria per ventilator Monnal T75, n. 350 pezzi, — sensore di flusso per ventilatori Monnal T75, n. 350 pezzi."@it;
+  dct:title "Avviso consultazione preliminare mat. dedicato a ventilatore polmonare mod. Monnal T75"@it .
+
+<http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/PlannedProcurement/Identifier/not%20available>
+  a adms:Identifier;
+  skos:notation "not available" .
+
+<http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/ProcedurePlacePerformance$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ITC33> .
+
+<http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>
+  a epo:Purpose;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/33157000> .
+
+<http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>
+  a epo:ContractTerm;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies> .
+
+<http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>
+  a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1> .
 
 <http://data.europa.eu/a4g/resource/e5dc3c2b-3df5-45e0-af7f-399ca201d7e0-02/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>
   a epo:ProcurementServiceProvider;

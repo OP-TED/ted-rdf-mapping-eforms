@@ -17,18 +17,17 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
+<http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1zad%C3%A1vac%C3%AD%20podm%C3%ADnky%20VZ%2043%2F2024>
   a epo:AccessTerm;
   epo:hasPublicAccessURL "https://www.tenderarena.cz/profil/detail.jsf?identifikator=vfn"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted false .
 
 <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/AuctionTerms$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_AuctionTerms1>
   a epo:EAuctionTechnique;
-  epo:hasUsage <http://publications.europa.eu/resource/authority/usage/used>;
   dct:description """Zadavatel sděluje, že po hodnocení nabídek bude provedena elektronická aukce (dále „eAukce“). K realizaci eAukce bude využito eAukčního systému TENDERBOX, a to za předpokladu, že pro konkrétní část VZ zadavatel po posouzení bude mít k dispozici 2 a více nabídek.
 
 Blíže viz zadávací dokumentace."""@cs .
@@ -73,8 +72,12 @@ Blíže viz zadávací dokumentace."""@cs .
   cccev:email "posta@uohs.cz";
   cccev:telephone "+420 542167111" .
 
+<http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2024-08-31+02:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 48.0;
   time:unitType time:unitMonth .
 
@@ -95,33 +98,35 @@ Blíže viz zadávací dokumentace."""@cs .
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/CZE>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/CZ010> .
 
-<http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2024-08-31+02:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/required>;
   epo:hasEOrdering true;
   epo:hasEPayment true;
   epo:hasOptionsDescription "Blíže viz zadávací dokumentace"@cs;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
   epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/ContractLocation$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1> .
 
+<http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/Duration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 48.0;
+  time:unitType time:unitMonth .
+
 <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/DynamicPurchaseSystemTechnicalUsage$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/Duration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
 
 <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Možné důvody vyloučení účastníka zadávacího postupu jsou definovány v § 48, §88 odst.2, §  107 odst.5, §113 odst. 6, §122 odst.8 a §124 odst.2 zákona č. 134/2016 Sb., o zadávaní veřejných zakázek."@cs;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/bankr-nat> .
+  dct:description "Možné důvody vyloučení účastníka zadávacího postupu jsou definovány v § 48, §88 odst.2, §  107 odst.5, §113 odst. 6, §122 odst.8 a §124 odst.2 zákona č. 134/2016 Sb., o zadávaní veřejných zakázek."@cs .
 
 <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -142,26 +147,45 @@ Blíže viz zadávací dokumentace."""@cs .
   epo:hasScheme "organization";
   skos:notation "ORG-0002" .
 
+<http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
+<http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/LocalLegalBasisInformation$_ContractNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/LocalLegalBasisInformation$_ContractNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier> .
+
+<http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/LocalLegalBasisInformation$_ContractNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier>
+  a adms:Identifier;
+  skos:notation "32014L0024" .
+
+<http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/LocalLegalBasisInformation$_ContractNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/LocalLegalBasisInformation$_ContractNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2/Identifier> .
+
+<http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/LocalLegalBasisInformation$_ContractNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2/Identifier>
+  a adms:Identifier;
+  skos:notation "134/2016 Sb." .
+
 <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/Lot/Identifier/VZ%2043%2F2024>
   a adms:Identifier;
   skos:notation "VZ 43/2024" .
 
 <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/MonetaryValueLot$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/Lot/Identifier/VZ%2043%2F2024>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/LotPurpose$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1zad%C3%A1vac%C3%AD%20podm%C3%ADnky%20VZ%2043%2F2024>,
     <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>,
     <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>;
   epo:isUsingEUFunds false;
   epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>,
-    <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
     <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/ParticipationCondition$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1>,
     <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>,
     <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>;
@@ -195,13 +219,15 @@ Blíže viz zadávací dokumentace."""@cs .
   epo:announcesRole <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/Buyer/ORG-0001>,
     <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/ReviewProcedureInformationProvider/ORG-0002>,
     <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/Reviewer/ORG-0002>;
-  epo:hasESenderDispatchDate "2024-06-25T12:03:17+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-06-25T12:03:17+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00377458-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/cn-standard>;
-  epo:hasOJSIssueNumber "123/2024";
+  epo:hasOJSIssueNumber 123;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/CES>;
   epo:hasPublicationDate "2024-06-26Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/Procedure/48caa199-b9de-4bba-b4b7-e7a4b32f0871>;
@@ -211,6 +237,22 @@ Blíže viz zadávací dokumentace."""@cs .
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "3ea77a3d-a468-491f-839b-74669712cf00" .
+
+<http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.8" .
+
+<http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/Organization/Identifier$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -244,7 +286,7 @@ Blíže viz zadávací dokumentace."""@cs .
 
 <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/Procedure/48caa199-b9de-4bba-b4b7-e7a4b32f0871>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/MonetaryValueProcedure$_ContractNotice1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
@@ -253,6 +295,7 @@ Blíže viz zadávací dokumentace."""@cs .
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/ProcedurePurpose$_ContractNotice1_ProcurementProject1>;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>;
   dct:description """•	Předmětem plnění veřejné zakázky jsou průběžné dodávky sterilizačního materiálu pro plazmovou sterilizaci pro Všeobecnou fakultní nemocnici v Praze , a to ve skladbě a předpokládaném množství uvedeném v Příloze č. 6 zadávacích podmínek.
 •	Předmět plnění veřejné zakázky je vymezen i závazným návrhem smlouvy, která tvoří přílohu zadávacích podmínek č. 2.
 •	Množství předmětu plnění v jednotlivých položkách uvedené v přílohách č. 6 je množství orientační, resp. předpokládaným. Zadavatel je oprávněn určovat konkrétní množství a dobu plnění jednotlivých dílčích dodávek podle svých okamžitých, resp. aktuálních potřeb s ohledem na skladbu pacientů bez penalizace či jiného postihu ze strany dodavatele.
@@ -314,7 +357,6 @@ Ve lhůtě pro doručení návrhu je navrhovatel povinen složit na účet ÚOHS
 
 <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>;
   dct:description """a)	výpisem z obchodního rejstříku nebo jiné obdobné evidence dle § 77 odst. 1 zákona;
 b)	Registrací, která ho opravňuje k distribuci zdravotnických prostředků, které jsou předmětem plnění VZ (pokud je nabízené zboží zdravotnickým prostředkem dle ZZP a pokud to ZZP vyžaduje). Tato registrace musí být platná ke dni podání nabídky a vybraný dodavatel ji musí udržovat v platnosti po celou dobu plnění předmětu veřejné zakázky. Dodavatel předloží doklad, že je odborně způsobilý nebo disponuje osobou, jejímž prostřednictvím odbornou způsobilost zabezpečuje a čestné prohlášení, že registrované informace jsou aktuální a pravdivé.
@@ -322,7 +364,6 @@ b)	Registrací, která ho opravňuje k distribuci zdravotnických prostředků, 
 
 <http://data.europa.eu/a4g/resource/3ea77a3d-a468-491f-839b-74669712cf00-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/tp-abil>;
   dct:description """•	Dle § 79 odst. 2 písm. b) zákona dodavatel předloží seznam minimálně 3 dodávek obalového sterilizačního materiálu pro plazmovou sterilizaci, poskytnutých za poslední 3 roky před zahájením zadávacího řízení s uvedením ceny, doby poskytnutí a identifikace objednatele, přičemž finanční objem každé z těchto dodávek dosáhl pro jednoho objednatele nejméně 20 000 Kč bez DPH. Dodavatel k prokázání technické kvalifikace použije vzor, který je přílohou č. 4 těchto zadávacích podmínek.
 

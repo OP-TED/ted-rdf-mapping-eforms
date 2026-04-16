@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -97,19 +97,27 @@
   epo:hasAmountValue 35000000.0;
   epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
 
+<http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/MonetaryValueProcedure$_PriorInformationNotice1_ProcurementProject1_RequestedTenderTotal1>
+  a epo:MonetaryValue;
+  epo:hasAmountValue 35000000.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
 <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/Notice>
   a epo:Notice, epo:Notice4, epo:PlanningNotice;
+  epo:announcesPlannedProcurement <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/PlannedProcurement$_PriorInformationNotice1_ProcurementProject1>;
   epo:announcesPlannedProcurementPart <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/PlannedProcurementPart/PAR-0001>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/Buyer/ORG-0001>,
     <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>,
     <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/Reviewer/ORG-0002>;
-  epo:hasESenderDispatchDate "2023-12-12T16:04:27+01:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2023-12-12T16:04:27+01:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticePublicationNumber "00757680-2023";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-only>;
-  epo:hasOJSIssueNumber "241/2023";
+  epo:hasOJSIssueNumber 241;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/ENG>;
   epo:hasPublicationDate "2023-12-14Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   adms:identifier <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/Notice/Identifier> .
 
@@ -117,6 +125,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "d6cd904f-10dc-4307-aef0-ba19f6e6a268" .
+
+<http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.7" .
+
+<http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -161,12 +185,7 @@
   epo:hasFrameworkAgreementType <http://publications.europa.eu/resource/authority/framework-agreement/fa-w-rc> .
 
 <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>
-  a epo:ProcurementObject;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/PartFrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1_ContractingSystem1>;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
-  epo:isCoveredByGPA false;
-  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/ReviewTerm/ORG-0002> .
+  a epo:ProcurementObject .
 
 <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>
   a epo:Purpose;
@@ -175,19 +194,51 @@
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/48730000> .
 
 <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/PartSpecificDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 72.0;
   time:unitType time:unitMonth .
 
+<http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/PlannedProcurement$_PriorInformationNotice1_ProcurementProject1>
+  a epo:PlannedProcurement;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>;
+  epo:hasAdditionalInformation "This prior information notice announces the intention of the contracting authority to publish a future call for tenders. No other information or documents are available at this stage. Interested economic operators are invited to subscribe at the link https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/tender-details/ff448c5a-c29f-4524-848c-b1ea06551b9e-PIN in order to get notified when the contract notice and all the procurement documents, including the tender specifications, are published."@en;
+  epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/MonetaryValueProcedure$_PriorInformationNotice1_ProcurementProject1_RequestedTenderTotal1>;
+  epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/PlannedProcurement/Identifier/EIB%2F2024%2FOP%2F0001-PIN>;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32018R1046>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>;
+  dct:description "The purpose of this procurement is to award Framework Agreements to a maximum of three service providers for the purchase and renewal of specific hardware and software products used in the IT Security domain (supplied by various third-party vendors) and for the provision of ad-hoc advisory and consultancy support related to the purchased hardware and software products."@en;
+  dct:title "CFT-1747 - CERBERUS - Provision of IT Security Hardware and Software for the EIB Group"@en .
+
+<http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/PlannedProcurement/Identifier/EIB%2F2024%2FOP%2F0001-PIN>
+  a adms:Identifier;
+  skos:notation "EIB/2024/OP/0001-PIN" .
+
 <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/PlannedProcurementPart/PAR-0001>
   a epo:PlannedProcurementPart;
-  epo:foreseesProcurementObject <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/PartFrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1_ContractingSystem1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/MonetaryValuePart$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasPlannedDuration <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/PartSpecificDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
+  epo:isCoveredByGPA false;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/ReviewTerm/ORG-0002>;
   epo:usesChannel <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/AdHocChannel$_PriorInformationNotice1_ProcurementProjectLot1>;
   dct:description "The purpose of this procurement is to award Framework Agreements to a maximum of three service providers for the purchase and renewal of specific hardware and software products used in the IT Security domain (supplied by various third-party vendors) and for the provision of ad-hoc advisory and consultancy support related to the purchased hardware and software products."@en;
   dct:title "CFT-1747 - CERBERUS - Provision of IT Security Hardware and Software for the EIB Group"@en;
   adms:identifier <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/Identifier/PAR-0001> .
+
+<http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>
+  a epo:Purpose;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/48730000> .
+
+<http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>
+  a epo:ProcessPlanningTerm;
+  epo:hasEstimatedContractNoticePublicationDate "2024-09-04+02:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>
+  a epo:ContractTerm;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies> .
 
 <http://data.europa.eu/a4g/resource/d6cd904f-10dc-4307-aef0-ba19f6e6a268-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>
   a epo:ProcurementServiceProvider;

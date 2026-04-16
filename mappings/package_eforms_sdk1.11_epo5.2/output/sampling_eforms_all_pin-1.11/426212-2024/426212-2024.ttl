@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -25,7 +25,7 @@
   a epo:AccessTerm;
   epo:definesProcurementProcedureInformationProvider <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ProcurementProcedureInformationProvider/ORG-0004> .
 
-<http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
+<http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_DEFAULT_VALUE_CHANGE_ME_>
   a epo:AccessTerm;
   epo:hasPublicAccessURL "https://juntadeandalucia.es/organismos/inclusionsocialjuventudfamiliaseigualdad/consejeria/delegaciones/jaen.html"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted false .
@@ -64,6 +64,14 @@
   cccev:email "gesteco.ja.cisjufi@juntadeandalucia.es";
   cccev:telephone "953013084" .
 
+<http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2024-10-01+02:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ContractEndPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2025-11-30+01:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
@@ -84,17 +92,13 @@
   locn:postCode "23740";
   locn:postName "ANDÚJAR" .
 
-<http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2024-10-01+02:00"^^xsd:date;
-  epo:hasEnd "2025-11-30+01:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/Interval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasOptionsDescription "POSIBIIDAD DE RENOVCIONES DE HASTA 24 MESES"@es;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -106,8 +110,7 @@
 
 <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "LOS INCLUIDOS EN EL PCAP"@es;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/nati-ground> .
+  dct:description "LOS INCLUIDOS EN EL PCAP"@es .
 
 <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -135,13 +138,18 @@
   a adms:Identifier;
   skos:notation "ORG-0004" .
 
+<http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/Interval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  time:hasEnd <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ContractEndPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/Lot/Identifier/CONTR%202024%20724884%20LOTE%20%C3%9ANICO>
   a adms:Identifier;
   skos:notation "CONTR 2024 724884 LOTE ÚNICO" .
 
 <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/MonetaryValueLot$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/Lot/Identifier/CONTR%202024%20724884%20LOTE%20%C3%9ANICO>;
@@ -149,15 +157,14 @@
   epo:isCoveredByGPA false;
   epo:isFundedBy <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/Fund$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Funding1>;
   epo:isSMESuitable true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
-    <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
+    <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_DEFAULT_VALUE_CHANGE_ME_>,
     <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>,
     <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/SubmissionTerm$_PriorInformationNotice1_ProcurementProjectLot1>;
   epo:isUsingEUFunds true;
-  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ParticipationCondition$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1>,
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ParticipationCondition$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1>,
     <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>;
   epo:usesTechnique <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/DynamicPurchaseSystemTechnicalUsage$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>;
   dct:description "CONTRATACIÓN DE 32 PLAZAS DE ACOGIMIENTO RESIDENCIAL PARA MENORES QUE SE ENCUENTREN BAJO LA PROTECCIÓN DE LA ADMINISTRACIÓN DE LA JUNTA DE ANDALUCÍA DENTRO DEL NUEVO MODELO DE CUIDADOS Y PROTECCIÓN. COFINANCIADO POR FONDOS EUROPEOS"@es;
@@ -181,17 +188,20 @@
 
 <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/Notice>
   a epo:Notice, epo:Notice7, epo:PlanningNotice;
+  epo:announcesProcedure <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/Procedure/0000000-0000-4000-8000-000000000000>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/Buyer/ORG-0004>,
     <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ProcurementProcedureInformationProvider/ORG-0004>,
     <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ReviewProcedureInformationProvider/ORG-0003>,
     <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/Reviewer/ORG-0003>;
-  epo:hasESenderDispatchDate "2024-07-14T10:08:39Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-07-14T10:08:39Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticePublicationNumber "00426212-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-rtl>;
-  epo:hasOJSIssueNumber "137/2024";
+  epo:hasOJSIssueNumber 137;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/SPA>;
   epo:hasPublicationDate "2024-07-16Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/Procedure/0000000-0000-4000-8000-000000000000>;
@@ -201,6 +211,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "f1e976e9-47cf-4e5e-883f-06218cd56f2c" .
+
+<http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.11" .
+
+<http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -232,9 +258,17 @@
   a epo:ParticipationCondition;
   epo:hasReservedProcurement <http://publications.europa.eu/resource/authority/reserved-procurement/none> .
 
+<http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/PlanningNotice>
+  a epo:PlanningNotice;
+  epo:announcesLot <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/Lot/LOT-0001> .
+
+<http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/Procedure/>
+  a epo:Procedure;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1> .
+
 <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/Procedure/0000000-0000-4000-8000-000000000000>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/MonetaryValueProcedure$_PriorInformationNotice1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/Procedure/Identifier/CONTR%202024%20724884>;
@@ -242,6 +276,7 @@
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>;
   dct:description "CONTRATACIÓN DE 32 PLAZAS DE ACOGIMIENTO RESIDENCIAL PARA MENORES QUE SE ENCUENTREN BAJO LA PROTECCIÓN DE LA ADMINISTRACIÓN DE LA JUNTA DE ANDALUCÍA DENTRO DEL NUEVO MODELO DE CUIDADOS Y PROTECCIÓN. COFINANCIADO POR FONDOS EUROPEOS"@es;
   dct:title "32 PLAZAS DE ACOGIMIENTO RESIDENCIAL PARA MENORES EN JAÉN.  COFINANCIADO POR FONDOS EUROPEOS"@es .
 
@@ -260,6 +295,10 @@
 <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>
   a epo:Purpose;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/85311300> .
+
+<http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>
+  a epo:ProcessPlanningTerm;
+  epo:hasEstimatedContractNoticePublicationDate "2024-08-15+02:00"^^xsd:date .
 
 <http://data.europa.eu/a4g/resource/f1e976e9-47cf-4e5e-883f-06218cd56f2c-01/ProcurementProcedureInformationProvider/ORG-0004>
   a epo:ProcurementProcedureInformationProvider;

@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -111,6 +111,14 @@
   cccev:email "noreply.esender_hub@bescha.bund.de";
   cccev:telephone "+49228996100" .
 
+<http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2024-09-01+02:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/ContractEndPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2027-03-01+01:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/ContractLocation$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
@@ -120,19 +128,24 @@
 <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/ContractLocation$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/DEA13> .
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DEA13>;
+  locn:address <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/ContractLocationAddress$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1> .
 
-<http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2024-09-01+02:00"^^xsd:date;
-  epo:hasEnd "2027-03-01+01:00"^^xsd:date .
+<http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/ContractLocationAddress$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DEA13>;
+  locn:fullAddress "Internationale Gartenausstellung Metropole Ruhr 2027 gGmbH, Huyssenallee 82-88, Essen, 45128, DEU";
+  locn:postCode "45128";
+  locn:postName "Essen" .
 
 <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasMaximumNumberOfRenewals 0;
-  epo:hasOptionsDescription "Leistungsphase 8"@de .
+  epo:hasOptionsDescription "Leistungsphase 8"@de;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -177,6 +190,19 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0005" .
 
+<http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  time:hasEnd <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/ContractEndPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
+<http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier> .
+
+<http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier>
+  a adms:Identifier;
+  skos:notation "vgv" .
+
 <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/Lot/Identifier/IGA-2024-P1000-001>
   a adms:Identifier;
   epo:hasScheme "internalID";
@@ -184,13 +210,13 @@
 
 <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/GreenProcurement$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/Lot/Identifier/IGA-2024-P1000-001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>;
@@ -240,16 +266,96 @@ Der Auftragnehmer hat die Vertragsbestandteile mit der Sachkunde eines erfahrene
   epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/71240000>;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/71000000> .
 
+<http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/NonPublishedInformation$_ContractAwardNotice1_TenderingProcess1_ProcessJustification1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/Procedure/0c29623f-d779-42ff-a9d6-48b37dbbd1c3>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-25+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Die eingegangenen Teilnehmeranträge konnten im Nachhinein nicht gewertet werden"@de;
+  epo:hasMaskableProperty epo:isAccelerated;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/oth-int> .
+
+<http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/NonPublishedInformation$_ContractAwardNotice1_TenderingProcess1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/Procedure/0c29623f-d779-42ff-a9d6-48b37dbbd1c3>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-25+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Die eingegangenen Teilnehmeranträge konnten im Nachhinein nicht gewertet werden"@de;
+  epo:hasMaskableProperty epo:hasProcedureType;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/oth-int> .
+
+<http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-25+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Die eingegangenen Teilnehmeranträge konnten im Nachhinein nicht gewertet werden"@de;
+  epo:hasMaskableProperty epo:hasAmountValue;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/oth-int> .
+
+<http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_FieldsPrivacy2>
+  a epo:NonPublishedInformation;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-25+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Die eingegangenen Teilnehmeranträge konnten im Nachhinein nicht gewertet werden"@de;
+  epo:hasMaskableProperty epo:hasAmountValue;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/oth-int> .
+
+<http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_FieldsPrivacy3>
+  a epo:NonPublishedInformation;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-25+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Die eingegangenen Teilnehmeranträge konnten im Nachhinein nicht gewertet werden"@de;
+  epo:hasMaskableProperty epo:hasAmountValue;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/oth-int> .
+
+<http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_DecisionReason1_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/LotAwardOutcome/RES-0001>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-25+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Die eingegangenen Teilnehmeranträge konnten im Nachhinein nicht gewertet werden"@de;
+  epo:hasMaskableProperty epo:hasNonAwardJustification;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/oth-int> .
+
+<http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/LotAwardOutcome/RES-0001>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-25+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Die eingegangenen Teilnehmeranträge konnten im Nachhinein nicht gewertet werden"@de;
+  epo:hasMaskableProperty epo:hasAwardStatus;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/oth-int> .
+
+<http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_ReceivedSubmissionsStatistics1_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/SubmissionStatisticalInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-25+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Die eingegangenen Teilnehmeranträge konnten im Nachhinein nicht gewertet werden"@de;
+  epo:hasMaskableProperty epo:hasReceivedTenders;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/oth-int> .
+
+<http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_ReceivedSubmissionsStatistics2_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/SubmissionStatisticalInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/Notice>;
+  epo:hasAccessibilityDate "2034-07-25+02:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Die eingegangenen Teilnehmeranträge konnten im Nachhinein nicht gewertet werden"@de;
+  epo:hasMaskableProperty epo:hasReceivedTenders;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/oth-int> .
+
 <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/Notice>
   a epo:Notice, epo:Notice29, epo:ResultNotice;
   epo:announcesAwardDecision <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/AwardDecision/RES-0001>;
-  epo:hasESenderDispatchDate "2024-07-26T13:34:05+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-07-26T13:34:05+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/result>;
   epo:hasNoticePublicationNumber "00454748-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-standard>;
-  epo:hasOJSIssueNumber "146/2024";
+  epo:hasOJSIssueNumber 146;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU>;
   epo:hasPublicationDate "2024-07-29+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/Lot/LOT-0001>;
   epo:refersToPrevious <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/Notice/349493-2024>;
@@ -273,6 +379,22 @@ Der Auftragnehmer hat die Vertragsbestandteile mit der Sachkunde eines erfahrene
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "566a72c5-714b-4c13-bc03-52e4dbb43374" .
+
+<http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.7" .
+
+<http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/Organization/Identifier$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -338,7 +460,7 @@ Der Auftragnehmer hat die Vertragsbestandteile mit der Sachkunde eines erfahrene
 
 <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/Procedure/0c29623f-d779-42ff-a9d6-48b37dbbd1c3>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/566a72c5-714b-4c13-bc03-52e4dbb43374-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation """Bekanntmachungs-ID: CXS0Y4VY17XU7G5B
 

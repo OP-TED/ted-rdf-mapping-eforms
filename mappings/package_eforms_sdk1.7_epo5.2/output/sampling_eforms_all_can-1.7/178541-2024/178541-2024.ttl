@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -34,6 +34,11 @@
   a epo:Buyer;
   epo:hasBuyerProfile "https://www.wfb-bremen.de"^^xsd:anyURI;
   epo:playedBy <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/CleanVehicleDirectiveInformation$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>
+  a epo:CleanVehicleDirectiveInformation;
+  epo:concernsGreenProcurement <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/GreenProcurement$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>;
+  epo:specifiesCleanVehicleDirectiveContractType <http://publications.europa.eu/resource/authority/cvd-contract-type/oth-serv-contr> .
 
 <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/CompanyAddress$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>
   a locn:Address;
@@ -123,7 +128,8 @@
 
 <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -182,6 +188,14 @@
   a epo:InnovativeProcurement;
   epo:fulfillsRequirement <http://publications.europa.eu/resource/authority/innovative-acquisition/mar-nov> .
 
+<http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier> .
+
+<http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier>
+  a adms:Identifier;
+  skos:notation "vsvgv" .
+
 <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Lot/Identifier/SVG-2020-0001>
   a adms:Identifier;
   epo:hasScheme "InternalID";
@@ -189,7 +203,7 @@
 
 <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/GreenProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType4>,
     <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/GreenProcurement$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>,
@@ -198,7 +212,7 @@
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Lot/Identifier/SVG-2020-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>;
   epo:isUsingEUFunds false;
   epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/AwardCriterion$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>;
@@ -211,9 +225,8 @@
   a epo:LotAwardOutcome;
   epo:comprisesTenderAwardOutcome <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/TenderAwardOutcome/TEN-0001>;
   epo:concernsLot <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Lot/LOT-0000>;
-  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
-  rdfs:seeAlso <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/VehicleInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_StrategicProcurement1_StrategicProcurementInformation1>,
-    <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/VehicleInformation/_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_StrategicProcurement1_StrategicProcurementInformation1> .
+  epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/GreenProcurement$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_StrategicProcurement1_StrategicProcurementInformation1>;
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> .
 
 <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>
   a epo:Purpose;
@@ -222,14 +235,17 @@
 <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Notice>
   a epo:Notice, epo:Notice29, epo:ResultNotice;
   epo:announcesAwardDecision <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/AwardDecision/CON-0001>;
+  epo:announcesContract <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Contract/CON-0001>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Tenderer/TPA-0001>;
-  epo:hasESenderDispatchDate "2024-03-22T00:00:00+01:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-03-22T00:00:00+01:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/result>;
   epo:hasNoticePublicationNumber "00178541-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-standard>;
-  epo:hasOJSIssueNumber "60/2024";
+  epo:hasOJSIssueNumber 60;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU>;
   epo:hasPublicationDate "2024-03-25Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Lot/LOT-0000>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Procedure/f4e7dba3-37c6-4c33-9e33-d5e97dc0dd76>;
@@ -242,6 +258,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "b3d136db-2c29-4214-a824-54596b7d7abc" .
+
+<http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.7" .
+
+<http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Organization/Identifier$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -315,7 +347,7 @@
 
 <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Procedure/f4e7dba3-37c6-4c33-9e33-d5e97dc0dd76>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Procedure/Identifier/SVG-2020-0001>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
@@ -360,7 +392,7 @@
   epo:playedBy <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Organization/ORG-0005> .
 
 <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/StrategicProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>
-  a epo:InnovativeProcurement, epo:StrategicProcurement .
+  a epo:GreenProcurement, epo:InnovativeProcurement, epo:StrategicProcurement .
 
 <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/SubmissionStatisticalInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1>
   a epo:SubmissionStatisticalInformation;
@@ -374,31 +406,27 @@
 <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Tender/TEN-0001>
   a epo:Tender;
   epo:hasSubcontracting <http://publications.europa.eu/resource/authority/applicability/no>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Lot/LOT-0000>;
   adms:identifier <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Tender/Identifier/SVG-2020-0001> .
 
 <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/TenderAwardOutcome/TEN-0001>
   a epo:TenderAwardOutcome;
   epo:concernsTender <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Tender/TEN-0001>;
-  epo:hasAwardRank 1 .
+  epo:hasAwardRank 1;
+  epo:specifiesForeignSubsidiesMeasureConclusion <http://publications.europa.eu/resource/authority/foreign-subsidy-measure-conclusion/> .
 
 <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Tenderer/TPA-0001>
   a epo:Tenderer;
   epo:playedBy <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/Organization/ORG-0009> .
 
-<http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/VehicleInformation$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>
-  a epo:VehicleInformation;
-  epo:concernsGreenProcurement <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/GreenProcurement$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>;
-  epo:specifiesCleanVehicleDirectiveContractType <http://publications.europa.eu/resource/authority/cvd-contract-type/oth-serv-contr> .
-
 <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/VehicleInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_StrategicProcurement1_StrategicProcurementInformation1>
-  a epo:VehicleInformation;
+  a epo:CleanVehicleDirectiveInformation;
   epo:concernsGreenProcurement <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/GreenProcurement$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_StrategicProcurement1_StrategicProcurementInformation1>;
   epo:specifiesCleanVehicleDirectiveContractType <http://publications.europa.eu/resource/authority/cvd-contract-type/oth-serv-contr> .
 
 <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/VehicleInformation/_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_StrategicProcurement1_StrategicProcurementInformation1>
-  a epo:VehicleInformation;
+  a epo:CleanVehicleDirectiveInformation;
   epo:concernsGreenProcurement <http://data.europa.eu/a4g/resource/b3d136db-2c29-4214-a824-54596b7d7abc-01/GreenProcurement$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_StrategicProcurement1_StrategicProcurementInformation1>;
   epo:hasCleanVehicles 10;
   epo:hasTotalVehicles 20;

@@ -17,14 +17,14 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/AwardDecision/2021-10-19%2B02%3A00>
   a epo:AwardDecision;
   epo:comprisesAwardOutcome <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/LotAwardOutcome/RES-0001>;
-  epo:hasAwardDecisionDate "2021-10-19+02:00"^^xsd:date .
+  epo:hasAwardDecisionDate "2021-10-19T00:00:00+02:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/Buyer/ORG-0001>
   a epo:Buyer;
@@ -108,7 +108,8 @@
 
 <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works> .
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/GreenProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType1>
   a epo:GreenProcurement;
@@ -155,10 +156,10 @@
 
 <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/GreenProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/Lot/Identifier/2020-605>;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>;
   dct:description "OPERATION DE SITE PILOTE DE LA BASSEE Travaux portant sur la réalisation de digues et des aménagements intérieurs du site pilote"@fr;
   adms:identifier <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/Identifier/LOT-0001> .
 
@@ -175,13 +176,15 @@
 <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/Notice>
   a epo:ContractModificationNotice, epo:Notice, epo:Notice38;
   epo:announcesContractAmendment <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/ContractAmendment$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_ContractModification1>;
-  epo:hasESenderDispatchDate "2024-09-05T09:33:30+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-09-05T09:33:30+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/cont-modif>;
   epo:hasNoticePublicationNumber "00536356-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-modif>;
-  epo:hasOJSIssueNumber "174/2024";
+  epo:hasOJSIssueNumber 174;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/FRA>;
   epo:hasPublicationDate "2024-09-06+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToAwardDecision <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/AwardDecision/2021-10-19%2B02%3A00>;
   epo:refersToContractToBeModified <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/Contract/CON-0001>;
@@ -207,6 +210,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "afbff793-1041-4dba-8c17-de161191474e" .
+
+<http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.11" .
+
+<http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
   a epo:NoticeAwardInformation;
@@ -294,7 +313,7 @@
 
 <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/Procedure/9bd37917-9b5e-4658-8055-6f6d5ba16d72>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/Procedure/Identifier/2020-605>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/Lot/LOT-0001>;
@@ -335,14 +354,15 @@
 <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/Tender/TEN-0001>
   a epo:Tender;
   epo:hasFinancialOfferValue <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/Lot/LOT-0001>;
   adms:identifier <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/Tender/Identifier/OFFRE%20Groupement%20TERELIAN%2FSOGEA%2FCHANTIERS%20MODERNES%20CONSTRUCTION%2FSOLETANCHE> .
 
 <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/TenderAwardOutcome/TEN-0001>
   a epo:TenderAwardOutcome;
   epo:concernsTender <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/Tender/TEN-0001>;
-  epo:hasAwardRank 1 .
+  epo:hasAwardRank 1;
+  epo:specifiesForeignSubsidiesMeasureConclusion <http://publications.europa.eu/resource/authority/foreign-subsidy-measure-conclusion/> .
 
 <http://data.europa.eu/a4g/resource/afbff793-1041-4dba-8c17-de161191474e-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>
   a epo:MonetaryValue;

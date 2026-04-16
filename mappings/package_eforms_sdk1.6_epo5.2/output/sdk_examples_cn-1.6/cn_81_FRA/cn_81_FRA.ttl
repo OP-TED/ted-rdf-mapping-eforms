@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -67,8 +67,12 @@
   cccev:email "esender@example.com";
   cccev:telephone "+352 123456789" .
 
+<http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2020-12-01+02:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 27.0;
   time:unitType time:unitMonth .
 
@@ -82,14 +86,10 @@
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GBR> .
 
-<http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2020-12-01+02:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasLegalFormRequirement """En cas de groupement, ce dernier doit revêtir la forme d’un Groupement momentané d’entreprises (GME) solidaire ou à défaut d’un GME conjoint. 
 En tout état de cause, le mandataire doit être solidaire de tous les membres du groupement."""@fr;
@@ -108,7 +108,8 @@ En tout état de cause, le mandataire doit être solidaire de tous les membres d
 					— soit une demande d’habilitation (pour tout renseignement contacter OS DAM CAD — Tél: 06.87.91.94.90).
 					Les mêmes démarches doivent être engagées pour les entreprises associées, en cas de candidature en Groupement Momentané d’Entreprises ou des sous-traitants pressentis par les candidats audit marché.
 				"""@fr;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -135,13 +136,19 @@ En tout état de cause, le mandataire doit être solidaire de tous les membres d
   epo:hasScheme "organization";
   skos:notation "ORG-0002" .
 
+<http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/Lot/Identifier/700029324>
   a adms:Identifier;
   skos:notation "700029324" .
 
 <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
+  epo:doesNotRequireSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/ef-stand>,
+    <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>, <http://publications.europa.eu/resource/authority/selection-criterion/tp-abil>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
     <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/SubcontractTerm$_ContractNotice1_ProcurementProjectLot1>;
   epo:hasAdditionalInformation """La réglementation applicable à la présente procédure est définie par le code de la commande publique et les dispositions applicables aux marchés publics de défense ou de sécurité.
@@ -172,7 +179,7 @@ En tout état de cause, le mandataire doit être solidaire de tous les membres d
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/Lot/Identifier/700029324>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/LotPurpose$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isRecurrent false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>,
@@ -212,10 +219,12 @@ Les métiers concernés pour ces missions sont les VRD, le génie civil (gros œ
     <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/ReviewProcedureInformationProvider/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/Reviewer/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/TenderReceiver/ORG-0001organization>;
-  epo:hasESenderDispatchDate "2020-04-08T03:23:02+01:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2020-04-08T03:23:02+01:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/cn-standard>;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/FRA>;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/Lot/LOT-0000>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/Procedure/82c626cc-83e1-4644-9cf1-6ed82b3e3dbc>;
@@ -225,6 +234,22 @@ Les métiers concernés pour ces missions sont les VRD, le génie civil (gros œ
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "866bf88e-f381-45c8-a085-43a6148d0ab7" .
+
+<http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.6" .
+
+<http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/OfflineAccessProvider/ORG-0001organization>
   a epo:OfflineAccessProvider;
@@ -258,14 +283,14 @@ Les métiers concernés pour ces missions sont les VRD, le génie civil (gros œ
 
 <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/Procedure/82c626cc-83e1-4644-9cf1-6ed82b3e3dbc>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/Procedure/Identifier/700029324>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32009L0081>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/Lot/LOT-0000>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/ProcedurePurpose$_ContractNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/ProcedureTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/ProcedureTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>;
   dct:description """
 			Les prestations consistent à assurer une assistance de la maîtrise d’œuvre dans le suivi de réalisation du projet PGZ. 
 			Le projet PGZ comprend la construction de deux sous-ensembles:
@@ -345,7 +370,6 @@ Les métiers concernés pour ces missions sont les VRD, le génie civil (gros œ
 
 <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/n-used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/ef-stand>;
   dct:description """
 									Les entreprises candidates doivent fournir à l’appui de leur candidature un dossier de présentation du candidat, et le cas échéant de chaque co-traitant, comprenant entre autres:
@@ -361,7 +385,6 @@ Les métiers concernés pour ces missions sont les VRD, le génie civil (gros œ
 
 <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/n-used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/tp-abil>;
   dct:description """
 									La sélection des candidats se fera sur les critères techniques suivants:
@@ -394,7 +417,6 @@ Les métiers concernés pour ces missions sont les VRD, le génie civil (gros œ
 
 <http://data.europa.eu/a4g/resource/866bf88e-f381-45c8-a085-43a6148d0ab7-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/n-used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>;
   dct:description """
 									Le CEA procédera à l'analyse et à la sélection des candidatures conformément aux critères suivants:

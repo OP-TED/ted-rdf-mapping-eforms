@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -36,7 +36,7 @@
   epo:concernsNotice <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/Notice>;
   epo:hasChangeDescription "Statt des Linienendes Sigmaringen war versehentlich Überlingen angegeben worden."@de;
   epo:hasChangeJustification <http://publications.europa.eu/resource/authority/change-corrig-justification/cor-buy>;
-  epo:hasProcurementDocumentChangeDate "2025-04-03+02:00"^^xsd:date;
+  epo:hasProcurementDocumentChangeDate "2025-04-03T00:00:00+02:00"^^xsd:dateTime;
   epo:isProcurementDocumentChanged true;
   epo:refersToPreviousNotice <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/Notice/202699-2025>;
   epo:relatesToEFormSectionIdentifier <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/Notice/202699-2025/Identifier/LOT-0001> .
@@ -70,6 +70,14 @@
   cccev:email "ted@publications.europa.eu";
   cccev:telephone "+352 29291" .
 
+<http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2025-12-14+01:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/ContractEndPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2027-07-31+02:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/ContractLocation$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
@@ -83,15 +91,15 @@
   locn:postCode "72488";
   locn:postName "Sigmaringen" .
 
-<http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2025-12-14+01:00"^^xsd:date;
-  epo:hasEnd "2027-07-31+02:00"^^xsd:date .
+<http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/ContractTerm$_PriorInformationNotice1_ProcurementProject1>
+  a epo:ContractTerm;
+  epo:hasTransportServiceType <http://publications.europa.eu/resource/authority/transport-service/bus-s> .
 
 <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/Interval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -116,6 +124,11 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0001" .
 
+<http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/Interval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  time:hasEnd <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/ContractEndPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/Lot/Identifier/Regiobuslinie%20600>
   a adms:Identifier;
   epo:hasScheme "InternalID";
@@ -123,11 +136,11 @@
 
 <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/Lot/Identifier/Regiobuslinie%20600>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>;
   dct:description """Betrieb der Regionbuslinie 600 Meßkirch - Sigmaringen gemäß Fahrplan und Fahrzeuggrößen, der
 hier heruntergeladen werden kann:
 https://www.kanzlei zuck.de/anforderungen_und_standards
@@ -145,16 +158,19 @@ Die Förderbedingungen der RegiobisFörderrichtlinie BadenWürttemberg sind zu e
 
 <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/Notice>
   a epo:Notice, epo:NoticeT01, epo:PlanningNotice;
+  epo:announcesProcedure <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/Procedure/0000000-0000-4000-8000-000000000000>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/Buyer/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/ProcurementProcedureInformationProvider/ORG-0001>,
     <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>;
-  epo:hasESenderDispatchDate "2025-04-01T07:14:18Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2025-04-01T07:14:18Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticePublicationNumber "00211908-2025";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-tran>;
-  epo:hasOJSIssueNumber "65/2025";
+  epo:hasOJSIssueNumber 65;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU>;
   epo:hasPublicationDate "2025-04-02+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/Procedure/0000000-0000-4000-8000-000000000000>;
@@ -176,6 +192,22 @@ Die Förderbedingungen der RegiobisFörderrichtlinie BadenWürttemberg sind zu e
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "66837324-b88f-4e8f-9106-ee6364ebe1c3" .
+
+<http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.13" .
+
+<http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -203,9 +235,17 @@ Die Förderbedingungen der RegiobisFörderrichtlinie BadenWürttemberg sind zu e
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>;
   adms:identifier <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/Identifier/ORG-0001> .
 
+<http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/PlanningNotice>
+  a epo:PlanningNotice;
+  epo:announcesLot <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/Lot/LOT-0001> .
+
+<http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/Procedure>
+  a epo:Procedure;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/ContractTerm$_PriorInformationNotice1_ProcurementProject1> .
+
 <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/Procedure/0000000-0000-4000-8000-000000000000>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>;
   epo:hasAdditionalInformation """Hinweis auf § 12 Abs. 6 PBefG:
 Beabsichtigt die zuständige Behörde die Vergabe eines
 öffentlichen Dienstleistungsauftrages nach Artikel 5 Absatz 2 bis 4 der Verordnung (EG) Nr. 1370/2007 oder nach dem
@@ -228,7 +268,7 @@ Internet https://rp.baden-wuerttemberg.de"""@de;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/DirectAwardTerm$_PriorInformationNotice1_TenderingProcess1_ProcessJustification1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/66837324-b88f-4e8f-9106-ee6364ebe1c3-01/DirectAwardTerm$_PriorInformationNotice1_TenderingProcess1_ProcessJustification1>;
   dct:description """Betrieb der Regionbuslinie 600 Meßkirch - Sigmaringen gemäß Fahrplan und Fahrzeuggrößen, der
 hier heruntergeladen werden kann:
 https://www.kanzlei zuck.de/anforderungen_und_standards

@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -48,7 +48,7 @@ Wykonawca zadeklaruje okres gwarancji w formularzu oferty. Oferta może otrzyma�
 <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/AwardDecision/2024-10-01Z>
   a epo:AwardDecision;
   epo:comprisesAwardOutcome <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/LotAwardOutcome/RES-0001>;
-  epo:hasAwardDecisionDate "2024-10-01Z"^^xsd:date .
+  epo:hasAwardDecisionDate "2024-10-01ZT00:00:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/BudgetProvider/ORG-0001organization>
   a epo:BudgetProvider;
@@ -58,6 +58,10 @@ Wykonawca zadeklaruje okres gwarancji w formularzu oferty. Oferta może otrzyma�
 <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Buyer/ORG-0001organization>
   a epo:Buyer;
   epo:playedBy <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Channel$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://ezamowienia.gov.pl/mp-client/tenders/ocds-148610-61c83544-5631-49de-b089-d67a5fdf38f5"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/CompanyAddress$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>
   a locn:Address;
@@ -109,13 +113,20 @@ Kod pocztowy: 02-676, Warszawa, 02-676, POL""";
   epo:hasContractConclusionDate "2024-10-08Z"^^xsd:date;
   epo:hasLotReference <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Lot/LOT-0001>;
   epo:includesTender <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Tender/TEN-0001>;
-  epo:isSubjectToContractSpecificTerm <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/ContractTerm$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_PayerParty1>;
   dct:title "Dostawa fabrycznie nowego średniego samochodu ratowniczo-gaśniczego z napędem 4x4 dla OSP w Jordanowie"@pl;
   adms:identifier <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Contract/Identifier/1%2FOSP%2F2024> .
 
 <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Contract/Identifier/1%2FOSP%2F2024>
   a adms:Identifier;
   skos:notation "1/OSP/2024" .
+
+<http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2024-09-30Z"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/ContractEndPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2024-12-10Z"^^xsd:date .
 
 <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/ContractLocation$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
@@ -137,15 +148,11 @@ Kod pocztowy: 02-676, Warszawa, 02-676, POL""";
   locn:postCode "34-240";
   locn:postName "Jordanów" .
 
-<http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2024-09-30Z"^^xsd:date;
-  epo:hasEnd "2024-12-10Z"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies> .
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -183,6 +190,19 @@ Kod pocztowy: 02-676, Warszawa, 02-676, POL""";
   epo:hasScheme "organization";
   skos:notation "ORG-0003" .
 
+<http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  time:hasEnd <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/ContractEndPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
+<http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier> .
+
+<http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier>
+  a adms:Identifier;
+  skos:notation "Postępowanie prowadzone jest w trybie przetargu nieograniczonego na podstawie art. 132 i nast. p. z. p. na usługi pn.: „Dostawa fabrycznie nowego średniego samochodu ratowniczo-gaśniczego z napędem 4x4 dla OSP w Jordanowie” o szacunkowej wartości przekraczającej progi unijne, o których mowa w art. 3 ustawy." .
+
 <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Lot/Identifier/1%2F2024>
   a adms:Identifier;
   epo:hasScheme "InternalID";
@@ -190,14 +210,15 @@ Kod pocztowy: 02-676, Warszawa, 02-676, POL""";
 
 <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
-  epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/StrategicProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
+    <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/ContractTerm$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_PayerParty1>;
+  epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/SocialProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/MonetaryValueLot$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Lot/Identifier/1%2F2024>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>;
@@ -214,9 +235,7 @@ Opis: Przedmiotem zamówienia jest Dostawa fabrycznie nowego średniego samochod
   a epo:LotAwardOutcome;
   epo:comprisesTenderAwardOutcome <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/TenderAwardOutcome/TEN-0001>;
   epo:concernsLot <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Lot/LOT-0001>;
-  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
-  rdfs:seeAlso <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/BudgetProvider/ORG-0001organization>,
-    <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/PaymentExecutor/ORG-0001organization> .
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> .
 
 <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>
   a epo:Purpose;
@@ -255,17 +274,20 @@ Opis: Przedmiotem zamówienia jest Dostawa fabrycznie nowego średniego samochod
 <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Notice>
   a epo:Notice, epo:Notice29, epo:ResultNotice;
   epo:announcesAwardDecision <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/AwardDecision/2024-10-01Z>;
+  epo:announcesContract <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Contract/CON-0001>;
   epo:announcesNoticeAwardInformation <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/BudgetProvider/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/PaymentExecutor/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Tenderer/TPA-0001>;
-  epo:hasESenderDispatchDate "2024-10-23T08:25:29+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-10-23T08:25:29+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/result>;
   epo:hasNoticePublicationNumber "00646399-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-standard>;
-  epo:hasOJSIssueNumber "208/2024";
+  epo:hasOJSIssueNumber 208;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/POL>;
   epo:hasPublicationDate "2024-10-24+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Notice/SpecificationInformation/Version>;
   epo:hasVersion "02";
   epo:refersToLot <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Procedure/61c83544-5631-49de-b089-d67a5fdf38f5>;
@@ -282,6 +304,22 @@ Opis: Przedmiotem zamówienia jest Dostawa fabrycznie nowego średniego samochod
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4" .
+
+<http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.11" .
+
+<http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
   a epo:NoticeAwardInformation;
@@ -314,6 +352,7 @@ Opis: Przedmiotem zamówienia jest Dostawa fabrycznie nowego średniego samochod
 
 <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Organization/ORG-0001>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Channel$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>;
   epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/la>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Organization/Identifier$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>,
     <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Organization/Identifier$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity2>;
@@ -348,7 +387,7 @@ Opis: Przedmiotem zamówienia jest Dostawa fabrycznie nowego średniego samochod
 
 <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Procedure/61c83544-5631-49de-b089-d67a5fdf38f5>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasAcceleratedProcedureJustification "art. 138 ust. 2 pkt 2) Pzp"@pl;
   epo:hasAdditionalInformation """O zamówienie może się ubiegać Wykonawca, który nie podlega wykluczeniu z postępowania: - na podstawie art. 108 i 109 ustawy Pzp, - na podstawie art. 7 ust. 1 ustawy o szczególnych rozwiązaniach w zakresie przeciwdziałania wspieraniu agresji na Ukrainę oraz służących ochronie bezpieczeństwa narodowego, - na podstawie przewidzianej w art. 5k rozporządzenia 833/2014 w brzmieniu nadanym rozporządzeniem 2022/576. II. Zamawiający może unieważnić postępowanie o udzielenie zamówienia przed upływem terminu składania ofert, jeżeli wystąpiły okoliczności powodujące, że dalsze prowadzenie postępowania jest nieuzasadnione. III. Wykonawca składa wraz z ofertą: 1. przedmiotowe środki dowodowe: - specyfikacje oferowanego Średniego samochodu ratowniczo – gaśniczego opisujące, co najmniej wszystkie elementy wraz z ich nazwami technicznymi, do których odnosi się Załącznik nr 1 Szczegółowy Opis Przedmiotu Zamówienia; - zamawiający dopuszcza aby ważne świadectwo dopuszczenia wydane przez CNBOP-PIB w Józefowie k/Otwocka było przedłożone w dniu odbioru techniczno-jakościowego zgodnie z zapisem w załączniku nr 1. Opis techniczny punkt 1.2. 2. oświadczenia Wykonawców o niepodleganiu wykluczeniu oraz spełnianiu warunków udziału w postępowaniu w formie Jednolitego Europejskiego Dokumentu Zamówienia (JEDZ/ESPD), o którym mowa w Rozdziale XI ust. 1 SWZ – zgodnie z załącznikiem nr 4 do SWZ; 
@@ -366,7 +405,7 @@ Wykonawcy wspólnie ubiegający się o zamówienie - 10 , podmiotu udostępniaj�
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/ProcedurePurpose$_ContractAwardNotice1_ProcurementProject1>;
   epo:isAccelerated true;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/ProcedureTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/ProcedureTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>;
   dct:description "Przedmiotem zamówienia jest Dostawa fabrycznie nowego średniego samochodu ratowniczo-gaśniczego z napędem 4x4 dla OSP w Jordanowie szczegółowo opisanego w załączniku nr 1 do SWZ"@pl;
   dct:title "Dostawa fabrycznie nowego średniego samochodu ratowniczo-gaśniczego z napędem 4x4 dla OSP w Jordanowie"@pl;
   adms:identifier <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Procedure/Identifier/61c83544-5631-49de-b089-d67a5fdf38f5> .
@@ -443,8 +482,8 @@ Wykonawcy wspólnie ubiegający się o zamówienie - 10 , podmiotu udostępniaj�
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Lot/LOT-0001>;
   epo:playedBy <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Organization/ORG-0002> .
 
-<http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/StrategicProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>
-  a epo:StrategicProcurement;
+<http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/SocialProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>
+  a epo:SocialProcurement;
   epo:hasNonAccessibilityCriterionJustification "przedmiot zamówienia nie jest przeznaczony dla osób niepełnosprawnych"@pl;
   epo:includesAccessibilityCriterion <http://publications.europa.eu/resource/authority/accessibility/n-inc-just> .
 
@@ -462,7 +501,7 @@ Wykonawcy wspólnie ubiegający się o zamówienie - 10 , podmiotu udostępniaj�
 <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Tender/TEN-0001>
   a epo:Tender;
   epo:hasFinancialOfferValue <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Lot/LOT-0001>;
   epo:isVariant false;
   adms:identifier <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Tender/Identifier/OFERTA%20NR%201> .
@@ -470,7 +509,8 @@ Wykonawcy wspólnie ubiegający się o zamówienie - 10 , podmiotu udostępniaj�
 <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/TenderAwardOutcome/TEN-0001>
   a epo:TenderAwardOutcome;
   epo:concernsTender <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/Tender/TEN-0001>;
-  epo:hasAwardRank 1 .
+  epo:hasAwardRank 1;
+  epo:specifiesForeignSubsidiesMeasureConclusion <http://publications.europa.eu/resource/authority/foreign-subsidy-measure-conclusion/> .
 
 <http://data.europa.eu/a4g/resource/7a1dada0-7f64-44e1-9a32-2a0b8ccd39b4-02/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>
   a epo:MonetaryValue;

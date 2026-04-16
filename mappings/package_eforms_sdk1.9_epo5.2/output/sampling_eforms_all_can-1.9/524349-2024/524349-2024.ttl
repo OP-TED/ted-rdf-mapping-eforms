@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -39,7 +39,7 @@
 <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/AwardDecision/2024-05-31%2B01%3A00>
   a epo:AwardDecision;
   epo:comprisesAwardOutcome <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/LotAwardOutcome/RES-0001>;
-  epo:hasAwardDecisionDate "2024-05-31+01:00"^^xsd:date .
+  epo:hasAwardDecisionDate "2024-05-31T00:00:00+01:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/AwardEvaluationTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1>
   a epo:AwardEvaluationTerm;
@@ -59,6 +59,18 @@
 <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Buyer/ORG-0003organization>
   a epo:Buyer;
   epo:playedBy <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Organization/ORG-0003> .
+
+<http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Channel$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://venezia.acquistitelematici.it"^^xsd:anyURI .
+
+<http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Channel$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://www.giustiziaamministrativa.it/tribunaleamministrativoregionaleperilveneto"^^xsd:anyURI .
+
+<http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Channel$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization3_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://www.laesse.org"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/CompanyAddress$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>
   a locn:Address;
@@ -104,7 +116,6 @@
 <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Contract/CON-0001>
   a epo:Contract;
   epo:hasLotReference <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Lot/LOT-0001>;
-  epo:isSubjectToContractSpecificTerm <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/ContractTerm$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_PayerParty1>;
   epo:signedByBuyer <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Buyer/ORG-0003organization>;
   adms:identifier <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Contract/Identifier/GARA%20N.%207%2F2024> .
 
@@ -135,7 +146,8 @@
   a epo:ContractTerm;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasMaximumNumberOfRenewals 0;
-  epo:hasOptionsDescription "prosecuzione e variante"@it .
+  epo:hasOptionsDescription "prosecuzione e variante"@it;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -173,6 +185,11 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0003" .
 
+<http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  epo:concernsProcurementElement <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Procedure/34d9cf35-bf0b-497b-a532-758cf4ed2a0a>;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/other> .
+
 <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Lot/Identifier/GARA%207%2F2024>
   a adms:Identifier;
   epo:hasScheme "InternalID";
@@ -180,13 +197,14 @@
 
 <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
+    <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/ContractTerm$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_PayerParty1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/MonetaryValueLot$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Lot/Identifier/GARA%207%2F2024>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/AwardEvaluationTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1>,
     <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
@@ -206,9 +224,7 @@ Comune di Venezia CUP F71H23000060002 - CUI S00339370272202300070 – CIG B0DA7A
 <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/LotAwardOutcome/RES-0001>
   a epo:LotAwardOutcome;
   epo:concernsLot <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Lot/LOT-0001>;
-  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
-  rdfs:seeAlso <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/BudgetProvider/ORG-0001organization>,
-    <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/PaymentExecutor/ORG-0001organization> .
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> .
 
 <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>
   a epo:Purpose;
@@ -242,16 +258,19 @@ Comune di Venezia CUP F71H23000060002 - CUI S00339370272202300070 – CIG B0DA7A
 <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Notice>
   a epo:Notice, epo:Notice29, epo:ResultNotice;
   epo:announcesAwardDecision <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/AwardDecision/2024-05-31%2B01%3A00>;
+  epo:announcesContract <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Contract/CON-0001>;
   epo:announcesNoticeAwardInformation <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/BudgetProvider/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/PaymentExecutor/ORG-0001organization>;
-  epo:hasESenderDispatchDate "2024-08-29T16:32:00+01:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-08-29T16:32:00+01:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/result>;
   epo:hasNoticePublicationNumber "00524349-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-standard>;
-  epo:hasOJSIssueNumber "170/2024";
+  epo:hasOJSIssueNumber 170;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/ITA>;
   epo:hasPublicationDate "2024-09-02+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Lot/LOT-0001>;
   epo:refersToPrevious <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Notice/165024-2024>;
@@ -277,6 +296,22 @@ Comune di Venezia CUP F71H23000060002 - CUI S00339370272202300070 – CIG B0DA7A
   epo:hasScheme "notice-id";
   skos:notation "e3b9aaa1-5106-4469-aedb-8b1ed4c3718a" .
 
+<http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.9" .
+
+<http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
+
 <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
   a epo:NoticeAwardInformation;
   epo:hasTotalAwardedValue <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/MonetaryValueNoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1> .
@@ -300,6 +335,7 @@ Comune di Venezia CUP F71H23000060002 - CUI S00339370272202300070 – CIG B0DA7A
 
 <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Organization/ORG-0001>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Channel$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>;
   epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/la>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Organization/Identifier$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>;
   epo:hasLegalName "Comune di Venezia"@it;
@@ -310,6 +346,7 @@ Comune di Venezia CUP F71H23000060002 - CUI S00339370272202300070 – CIG B0DA7A
 
 <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Organization/ORG-0002>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Channel$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Organization/Identifier$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1_PartyLegalEntity1>;
   epo:hasLegalName "Tribunale Amministrativo Regionale per il Veneto"@it;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/CompanyContactPoint$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1_Contact1>;
@@ -318,6 +355,7 @@ Comune di Venezia CUP F71H23000060002 - CUI S00339370272202300070 – CIG B0DA7A
 
 <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Organization/ORG-0003>
   a epo:Business, org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Channel$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization3_Company1>;
   epo:hasBusinessSize <http://publications.europa.eu/resource/authority/economic-operator-size/medium>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Organization/Identifier$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization3_Company1_PartyLegalEntity1>;
   epo:hasLegalName "LA ESSE Società Cooperativa Sociale"@it;
@@ -332,7 +370,7 @@ Comune di Venezia CUP F71H23000060002 - CUI S00339370272202300070 – CIG B0DA7A
 
 <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Procedure/34d9cf35-bf0b-497b-a532-758cf4ed2a0a>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/MonetaryValueProcedure$_ContractAwardNotice1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/e3b9aaa1-5106-4469-aedb-8b1ed4c3718a-01/Procedure/Identifier/gara%207%2F2024>;

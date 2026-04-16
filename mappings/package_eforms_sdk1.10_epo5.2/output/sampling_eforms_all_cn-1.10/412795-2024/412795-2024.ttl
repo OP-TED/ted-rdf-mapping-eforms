@@ -17,11 +17,11 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
+<http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1http%3A%2F%2Fklekoon.fr>
   a epo:AccessTerm;
   epo:hasPublicAccessURL "https://www.klekoon.com/appels-offres/avis/accord-cadre-missions-maitrise-oeuvre-conseil?consultation_ID=89643&page=1&dce=1#detail_marche"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted false .
@@ -30,6 +30,15 @@
   a epo:Buyer;
   epo:hasBuyerProfile "https://www.klekoon.com/appels-offres/avis/accord-cadre-missions-maitrise-oeuvre-conseil?consultation_ID=89643&page=1&dce=1#detail_marche"^^xsd:anyURI;
   epo:playedBy <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/Channel$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "http://klekoon.fr"^^xsd:anyURI .
+
+<http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/CleanVehicleDirectiveInformation$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>
+  a epo:CleanVehicleDirectiveInformation;
+  epo:concernsGreenProcurement <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/GreenProcurement$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>;
+  epo:specifiesCleanVehicleDirectiveContractType <http://publications.europa.eu/resource/authority/cvd-contract-type/oth-serv-contr> .
 
 <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/CompanyAddress$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>
   a locn:Address;
@@ -47,27 +56,33 @@
   cccev:telephone "0134722990" .
 
 <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 5.0;
   time:unitType time:unitYear .
 
 <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/required>;
   epo:hasEOrdering true;
   epo:hasEPayment true;
   epo:hasOptionsDescription "4"@fr;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
+
+<http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/Duration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 5.0;
+  time:unitType time:unitYear .
 
 <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/DynamicPurchaseSystemTechnicalUsage$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/Duration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
 
 <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
-  a epo:ExclusionGround;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/misrepresent> .
+  a epo:ExclusionGround .
 
 <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -92,14 +107,15 @@
 
 <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/ProcurementCriterion$_ContractNotice1_ProcurementProjectLot1>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/GreenProcurement$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/Lot/Identifier/a3e1b4e1-ce63-4b99-8270-5b96c1cd1895>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/LotPurpose$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA false;
   epo:isRecurrent false;
   epo:isSMESuitable true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1http%3A%2F%2Fklekoon.fr>,
     <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/MultipleStageProcedureTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/NonDisclosureAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
@@ -108,9 +124,7 @@
     <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/SecurityClearanceTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>;
   epo:isUsingEUFunds false;
-  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/ParticipationCondition$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest2>,
-    <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/ProcurementCriterion$_ContractNotice1_ProcurementProjectLot1>,
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/ParticipationCondition$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest2>,
     <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>;
   epo:usesTechnique <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/DynamicPurchaseSystemTechnicalUsage$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>;
   dct:description """Le syndicat assure la maitrise d’ouvrage de ses travaux d’investissements, tant sur le réseau que sur ses installations de production.
@@ -142,13 +156,15 @@ Les missions de MOE concernent des travaux sur les réseaux de production et de 
   epo:announcesRole <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/Buyer/ORG-0001>,
     <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/Reviewer/ORG-0001>,
     <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/TenderProcessor/ORG-0001>;
-  epo:hasESenderDispatchDate "2024-07-09T14:03:33.9348161+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-07-09T14:03:33.9348161+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00412795-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/cn-standard>;
-  epo:hasOJSIssueNumber "133/2024";
+  epo:hasOJSIssueNumber 133;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/FRA>;
   epo:hasPublicationDate "2024-07-10Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/Procedure/f208520a-3119-4933-86a1-151186be8356>;
@@ -158,6 +174,22 @@ Les missions de MOE concernent des travaux sur les réseaux de production et de 
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "f208520a-3119-4933-86a1-151186be8356" .
+
+<http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.10" .
+
+<http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/OpeningTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1>
   a epo:OpeningTerm;
@@ -169,6 +201,7 @@ Les missions de MOE concernent des travaux sur les réseaux de production et de 
 
 <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/Organization/ORG-0001>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/Channel$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>;
   epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl-la>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/Organization/Identifier$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>;
   epo:hasLegalName "SMAEP Damona"@fr;
@@ -187,13 +220,14 @@ Les missions de MOE concernent des travaux sur les réseaux de production et de 
 
 <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/Procedure/f208520a-3119-4933-86a1-151186be8356>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>;
   epo:hasLaunchFrameworkAgreementMaximumValue <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/ProcedureValueEstimateExtension$_ContractNotice1_ProcurementProject1_RequestedTenderTotal1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/31985R2137>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/ProcedurePurpose$_ContractNotice1_ProcurementProject1>;
   epo:isAccelerated false;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>;
   dct:description """Le SMAEP DAMONA assure la maitrise d’ouvrage de ses travaux d’investissements, tant sur le réseau que sur ses installations de production.
 Pour ce faire le syndicat souhaite s’adjoindre les services d’un bureau d’études de maitrise d’oeuvre et de conseils en charge de la réalisation de ces travaux, mais aussi des missions de conseils et de suivi du délégataire. Compte tenu de la complexité liée à la gestion de l’eau potable et aux moyens du syndicat, les besoins en termes d’ingénierie s’expriment au travers d’un accord-cadre visant à désigner un prestataire qui sera en mesure d’accompagner le SMAEP DAMONA sur l’ensemble des missions dont il a la compétence en bénéficiant d’une capitalisation de conseils liés à la connaissance acquise sur les ouvrages et le fonctionnement des infrastructures.
 Les travaux envisagés seront réalisés sur le territoire syndical.
@@ -238,7 +272,7 @@ Le syndicat souhaite s’appuyer sur un bureau d’étude ayant une vision d’e
   epo:isUsedForCandidateRestriction false .
 
 <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/SpecificDuration$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TenderValidityPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 120.0;
   time:unitType time:unitDay .
 
@@ -258,8 +292,3 @@ Le syndicat souhaite s’appuyer sur un bureau d’étude ayant une vision d’e
   a epo:TenderProcessor;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/Lot/LOT-0001>;
   epo:playedBy <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/Organization/ORG-0001> .
-
-<http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/VehicleInformation$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>
-  a epo:VehicleInformation;
-  epo:concernsGreenProcurement <http://data.europa.eu/a4g/resource/f208520a-3119-4933-86a1-151186be8356-01/GreenProcurement$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>;
-  epo:specifiesCleanVehicleDirectiveContractType <http://publications.europa.eu/resource/authority/cvd-contract-type/oth-serv-contr> .

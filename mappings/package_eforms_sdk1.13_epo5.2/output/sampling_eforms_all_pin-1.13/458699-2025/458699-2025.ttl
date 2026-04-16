@@ -17,11 +17,11 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
+<http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1PTK%20%22Modernizace%20za%C5%99%C3%ADzen%C3%AD%20OM%22>
   a epo:AccessTerm;
   epo:hasDocumentRestrictionJustification <http://publications.europa.eu/resource/authority/communication-justification/sen-info>;
   epo:hasRestrictedAccessURL "https://tenderarena.cz/dodavatel/seznam-profilu-zadavatelu/detail/Z0002371"^^xsd:anyURI;
@@ -45,6 +45,12 @@
   cccev:email "merhoutova@ceps.cz";
   cccev:telephone "+420 720826442" .
 
+<http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>
+  a dct:Location;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/CZE>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/CZ010>;
+  locn:address <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/ProcedurePlacePerformance$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1> .
+
 <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/ContractLocation$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/CZE>;
@@ -56,15 +62,11 @@
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/CZE>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/CZ010> .
 
-<http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasTimePeriod <http://publications.europa.eu/resource/authority/timeperiod/UNKNOWN> .
-
 <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasAdditionalContractNature <http://publications.europa.eu/resource/authority/contract-nature/services>;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies> .
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -80,17 +82,22 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0001" .
 
+<http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  epo:concernsProcurementElement <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/Procedure/0000000-0000-4000-8000-000000000000>;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/other> .
+
 <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/Lot/Identifier/PTK%20%22Modernizace%20za%C5%99%C3%ADzen%C3%AD%20OM%22>
   a adms:Identifier;
   skos:notation "PTK \"Modernizace zařízení OM\"" .
 
 <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/Lot/Identifier/PTK%20%22Modernizace%20za%C5%99%C3%ADzen%C3%AD%20OM%22>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1PTK%20%22Modernizace%20za%C5%99%C3%ADzen%C3%AD%20OM%22>,
     <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/SubmissionTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/SubmissionTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_AnswerReceptionPeriod1>;
   dct:description """Cílem plánované předběžné tržní konzultace je získat přehled o dostupných řešeních na trhu, ověřit technické možnosti a aktuální trendy, a zároveň posoudit vhodnost zamýšlených parametrů pro výběr optimálního řešení. Součástí konzultace je také orientační odhad nákladů na realizaci.
@@ -105,15 +112,18 @@ Součástí plnění má být zejména náhrada stávajících zařízení v roz
 
 <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/Notice>
   a epo:Notice, epo:NoticeE1, epo:PreMarketConsultationNotice;
-  epo:hasESenderDispatchDate "2025-07-11T13:33:39+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2025-07-11T13:33:39+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/consultation>;
   epo:hasNoticePublicationNumber "00458699-2025";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pmc>;
-  epo:hasOJSIssueNumber "132/2025";
+  epo:hasOJSIssueNumber 132;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/CES>;
   epo:hasPublicationDate "2025-07-14+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/Lot/LOT-0001>;
+  epo:refersToProcedure <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/Procedure/0000000-0000-4000-8000-000000000000>;
   epo:refersToRole <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/Buyer/ORG-0001>;
   adms:identifier <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/Notice/Identifier> .
 
@@ -121,6 +131,22 @@ Součástí plnění má být zejména náhrada stávajících zařízení v roz
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "215a02a3-25a1-4cba-9586-e96de9a96183" .
+
+<http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.13" .
+
+<http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -135,6 +161,50 @@ Součástí plnění má být zejména náhrada stávajících zařízení v roz
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/CompanyContactPoint$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_Contact1>;
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>;
   adms:identifier <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/Identifier/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/PreMarketConsultationNotice>
+  a epo:PreMarketConsultationNotice;
+  epo:preparesForPotentialProcurementObject <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/Lot/LOT-0001> .
+
+<http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/Procedure>
+  a epo:Procedure;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025> .
+
+<http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/Procedure/0000000-0000-4000-8000-000000000000>
+  a epo:LocalLegalBasisInformation, epo:Procedure;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+    <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
+  epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/Procedure/Identifier/PTK%20%22Modernizace%20za%C5%99%C3%ADzen%C3%AD%20OM%22>;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
+  epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/Lot/LOT-0001>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
+  dct:description """Cílem plánované předběžné tržní konzultace je získat přehled o dostupných řešeních na trhu, ověřit technické možnosti a aktuální trendy, a zároveň posoudit vhodnost zamýšlených parametrů pro výběr optimálního řešení. Součástí konzultace je také orientační odhad nákladů na realizaci.
+Součástí plnění má být zejména náhrada stávajících zařízení v rozvaděčích OM tj. náhrada elektroměrů a komunikačních cest. Komunikační cesty jsou řešeny pomocí několika druhů komunikačních modulů, pomocných napájecích základen a jejich propojení příslušnými komunikačními kabely s konektory RJ12 nebo RJ45 a v případě GSM modulu vč. antény GPRS/LTE. Pomocná napájecí základna slouží pro vložení komunikačního modulu, který je touto základnou napájen v případě, že modul nemá samostatné napájení. Všechna tato zařízení (mimo elektroměr) musí umožňovat uchycení na DIN lištu. Výběrové řízení se bude vztahovat také na parametrizační software k nabídnutým zařízením a software pro vzdálený odečet elektroměrů. Výše uvedené dále označujeme jako „Zařízení“ a „Software“."""@cs,
+    "Zákon č. 134/2016 Sb., o zadávání veřejných zakázek"@cs;
+  dct:title "PTK \"Modernizace zařízení OM\""@cs .
+
+<http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/Procedure/Identifier/PTK%20%22Modernizace%20za%C5%99%C3%ADzen%C3%AD%20OM%22>
+  a adms:Identifier;
+  skos:notation "PTK \"Modernizace zařízení OM\"" .
+
+<http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/ProcedurePlacePerformance$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/CZE>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/CZ010> .
+
+<http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>
+  a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/50411300>;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/38554000> .
+
+<http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>
+  a epo:ContractTerm;
+  epo:hasAdditionalContractNature <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies> .
+
+<http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>
+  a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1> .
 
 <http://data.europa.eu/a4g/resource/215a02a3-25a1-4cba-9586-e96de9a96183-01/SubmissionTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:SubmissionTerm;

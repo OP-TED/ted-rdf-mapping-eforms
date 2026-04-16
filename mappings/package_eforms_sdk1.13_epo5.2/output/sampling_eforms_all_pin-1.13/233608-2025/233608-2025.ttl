@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -59,8 +59,12 @@
   cccev:email "ted@publications.europa.eu";
   cccev:telephone "+352 29291" .
 
+<http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2025-11-06+01:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 4.0;
   time:unitType time:unitYear .
 
@@ -119,15 +123,12 @@
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/AUT>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/AT335> .
 
-<http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2025-11-06+01:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/Interval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -164,16 +165,20 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0001" .
 
+<http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/Interval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
     <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation2>,
     <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation3>,
     <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation4>,
     <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation5>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>;
   dct:description """Abschluss von Rahmenvereinbarungen mit mehreren Unternehmen über Verkehrsdienstleistungen für Ergänzungs- bzw. Zusatzleistungen im Rahmen eines eigenständigen Vergabeverfahrens (im Vorfeld eines möglichen eigenständigen Vergabeverfahrens); (voraussichtlicher Abschluss der Rahmenvereinbarungen: 4.Quartal 2025) mit einer Laufzeit von jeweils 4 Jahren.
 Los 1 Region 1 Reutte
 Los 2 Region 2 Landeck
@@ -193,16 +198,19 @@ Die abrufbaren jährlichen Fahrplankilometer je Los betragen voraussichtlich 2.0
 
 <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/Notice>
   a epo:Notice, epo:NoticeT01, epo:PlanningNotice;
+  epo:announcesProcedure <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/Procedure/0000000-0000-4000-8000-000000000000>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/Buyer/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/ProcurementProcedureInformationProvider/ORG-0001>,
     <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>;
-  epo:hasESenderDispatchDate "2025-04-09T06:26:37Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2025-04-09T06:26:37Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticePublicationNumber "00233608-2025";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-tran>;
-  epo:hasOJSIssueNumber "71/2025";
+  epo:hasOJSIssueNumber 71;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU>;
   epo:hasPublicationDate "2025-04-10+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/Lot/LOT-0001>;
   epo:refersToPrevious <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/Notice/558885-2024>;
@@ -222,6 +230,22 @@ Die abrufbaren jährlichen Fahrplankilometer je Los betragen voraussichtlich 2.0
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "16b4950c-2acb-48de-baaa-105f9e5a58fd" .
+
+<http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.13" .
+
+<http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -249,9 +273,13 @@ Die abrufbaren jährlichen Fahrplankilometer je Los betragen voraussichtlich 2.0
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>;
   adms:identifier <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/Identifier/ORG-0001> .
 
+<http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/PlanningNotice>
+  a epo:PlanningNotice;
+  epo:announcesLot <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/Lot/LOT-0001> .
+
 <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/Procedure/0000000-0000-4000-8000-000000000000>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/16b4950c-2acb-48de-baaa-105f9e5a58fd-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>;
   epo:hasAdditionalInformation """Diese Vorinformation stellt eine Klarstellung in Form einer Berichtigung (Änderungsbekanntmachung) i.s.d. Art. 7 Abs. 2 Satz 3 und 4 der Verordnung (EG) 1370/2007 der Vorinformation Nr. 558885-2024 (abrufbar unter 558885-2024-Planung - TED (europa.eu)) dar. Sie erfolgt nur deshalb als neue Vorinformation, weil eine Berichtigung der ursprünglichen Vorinformation technisch nicht möglich war. Hauptgrund für die Änderung ist eine Klarstellung, wobei die ursprünglichen Informationen - mit Ausnahme einer Losbezeichnung - unverändert bleiben. 
 Beschreibung der Änderung: 
 Mit der gegenständlichen Berichtigung soll lediglich klargestellt werden, dass die ursprüngliche geschaltete Vorinformation Nr. 558885-2024 eine Vorinformation im Sinne des Art. 7 Abs. 2 der Verordnung (EG) 1370/2007 darstellt. Es wurde für die ursprüngliche Vorinformation lediglich die eForm 4 gewählt, da die verwendete Vergabeplattform die eForm T01 noch nicht in das System integrieren konnte. 

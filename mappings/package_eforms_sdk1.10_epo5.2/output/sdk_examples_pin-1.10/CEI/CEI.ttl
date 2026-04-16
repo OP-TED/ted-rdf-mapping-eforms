@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -26,7 +26,7 @@
   epo:definesOfflineAccessProvider <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/OfflineAccessProvider/ORG-0001organization>;
   epo:definesProcurementProcedureInformationProvider <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/ProcurementProcedureInformationProvider/ORG-0001organization> .
 
-<http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
+<http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1Dummy%20ID>
   a epo:AccessTerm;
   epo:hasPublicAccessURL "https://www.europarl.europa.eu/contracts-and-grants/en/list-of-notices/multiannual-calls/"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted false .
@@ -39,6 +39,14 @@
 <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/Channel$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:AdHocChannel;
   epo:hasAddressURL "https://my-atypical-tool.com/"^^xsd:anyURI .
+
+<http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/Channel$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization3_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://curia.europa.eu/e-Curia/login.faces"^^xsd:anyURI .
+
+<http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/Channel$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization4_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://www.ombudsman.europa.eu/en/contacts"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>
   a locn:Address;
@@ -101,7 +109,7 @@
   cccev:telephone "+33 3 88 17 23 13" .
 
 <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 48.0;
   time:unitType time:unitMonth .
 
@@ -125,9 +133,10 @@
 
 <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/not-known> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/not-known>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -140,8 +149,7 @@
 (b) they have been convicted of an offence concerning their professional conduct by a judgment which is not open to appeal;
 (c) they have been guilty of grave professional misconduct;
 (d) they have not fulfilled obligations relating to the payment of social security contributions or taxes;
-(e) they are guilty of serious misrepresentation in supplying the information required by the authorizing department."""@en;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/bankruptcy> .
+(e) they are guilty of serious misrepresentation in supplying the information required by the authorizing department."""@en .
 
 <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/Identifier/LOT-0000>
   a adms:Identifier;
@@ -174,20 +182,19 @@
 
 <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation "additional information about the lot ..."@en;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/Lot/Identifier/EPRS%2FESMH%2FSER%2F19%2F001CEI>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isSMESuitable true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
-    <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
+    <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1Dummy%20ID>,
     <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>,
     <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/SubmissionTerm$_PriorInformationNotice1_ProcurementProjectLot1>;
   epo:isUsingEUFunds true;
-  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>,
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>,
     <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>,
     <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>;
   epo:usesChannel <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/Channel$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>;
@@ -219,10 +226,12 @@
     <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/ProcurementProcedureInformationProvider/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>,
     <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/Reviewer/ORG-0003organization>;
-  epo:hasESenderDispatchDate "2020-01-27T14:15:35+01:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2020-01-27T14:15:35+01:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-cfc-standard>;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/ENG>;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/Lot/LOT-0000>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/Procedure/16c06d41-2232-4907-b836-07e0ee650c42>;
@@ -232,6 +241,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "37f3f877-01ee-4671-a49f-5581cffe6388" .
+
+<http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.10" .
+
+<http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/OfflineAccessProvider/ORG-0001organization>
   a epo:OfflineAccessProvider;
@@ -274,6 +299,7 @@
 
 <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/Organization/ORG-0003>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/Channel$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization3_Company1>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization3_Company1_PartyLegalEntity1>;
   epo:hasLegalName "Court of Justice of the European Union"@en;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/CompanyContactPoint$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization3_Company1_Contact1>;
@@ -282,6 +308,7 @@
 
 <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/Organization/ORG-0004>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/Channel$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization4_Company1>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization4_Company1_PartyLegalEntity1>;
   epo:hasLegalName "European Ombudsman"@en;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/CompanyContactPoint$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization4_Company1_Contact1>;
@@ -290,7 +317,7 @@
 
 <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/Procedure/16c06d41-2232-4907-b836-07e0ee650c42>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation """This CEI must be read in conjunction with its annexes, which are either to be filled in by the applicant, or provided for information purposes or for later submission.
 — the annexes to be filled in are:
@@ -311,7 +338,8 @@ Interested experts may submit their applications at any point in time until 3 mo
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32018R1046>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/Lot/LOT-0000>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/ProcedureTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/ProcedureTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>;
   dct:description "Call for Expression of Interest to compile a list of experts."@en;
   dct:title "Call for Expressions of Interest"@en;
   adms:identifier <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/Procedure/Identifier/16c06d41-2232-4907-b836-07e0ee650c42> .
@@ -370,19 +398,16 @@ Interested experts may submit their applications at any point in time until 3 mo
 
 <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>;
   dct:description "This call is exclusively addressed to natural persons (and not to legal persons, such as companies), with the specific requirements referred to in Section 5."@en .
 
 <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/ef-stand>;
   dct:description "the applicant shall have the economic and financial capacity to provide the services set out in this document (see the declaration in point 3 of the Application Form)."@en .
 
 <http://data.europa.eu/a4g/resource/37f3f877-01ee-4671-a49f-5581cffe6388-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/tp-abil>;
   dct:description """Experts shall be selected for the list on the basis of their professional and technical ability to carry out the tasks described in this document. In order to be placed on this list of experts by the European Parliament, the applicant shall:
 — have a sound communication, academic or scientific background, with proven experience in science communication; he/she must have at least 4 years' professional experience in science communication, including at least 2 years clearly related to at least 1 of the policy fields in question, alternatively he/she must have a solid professional background linked to at least 1 of the thematic areas listed in paragraph 1.1, with 4 years’ proven professional experience in that area,

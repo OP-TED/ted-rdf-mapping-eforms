@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -73,7 +73,7 @@
   a epo:AwardDecision;
   epo:comprisesAwardOutcome <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/LotAwardOutcome/RES-0001>,
     <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/LotAwardOutcome/RES-0002>;
-  epo:hasAwardDecisionDate "2024-09-11+02:00"^^xsd:date .
+  epo:hasAwardDecisionDate "2024-09-11T00:00:00+02:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/AwardEvaluationTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1>
   a epo:AwardEvaluationTerm;
@@ -91,6 +91,10 @@ Modellen er nærmere beskrevet i udbudsmaterialet"""@da .
   a epo:Buyer;
   epo:hasBuyerProfile "https://udbudsportalen.app.vd.dk/da/"^^xsd:anyURI;
   epo:playedBy <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Channel$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://udbudsportalen.app.vd.dk/da/"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/CompanyAddress$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>
   a locn:Address;
@@ -188,11 +192,13 @@ Modellen er nærmere beskrevet i udbudsmaterialet"""@da .
 
 <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works> .
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot2>
   a epo:ContractTerm;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works> .
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/DynamicPurchaseSystemTechnicalUsage$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
@@ -240,6 +246,14 @@ Modellen er nærmere beskrevet i udbudsmaterialet"""@da .
   a adms:Identifier;
   skos:notation "ORG-0004" .
 
+<http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier> .
+
+<http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier>
+  a adms:Identifier;
+  skos:notation "Udbudsloven" .
+
 <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Lot/Identifier/Overd%C3%A6kninger%202024%20-%20Delkontrakt%201>
   a adms:Identifier;
   skos:notation "Overdækninger 2024 - Delkontrakt 1" .
@@ -250,12 +264,12 @@ Modellen er nærmere beskrevet i udbudsmaterialet"""@da .
 
 <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/MonetaryValueLot$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Lot/Identifier/Overd%C3%A6kninger%202024%20-%20Delkontrakt%201>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/AwardEvaluationTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/AwardEvaluationTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1>,
     <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>;
@@ -283,12 +297,12 @@ Frøslev V"""@da;
 
 <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Lot/LOT-0002>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot2>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot2>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/MonetaryValueLot$_ContractAwardNotice1_ProcurementProjectLot2_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Lot/Identifier/Overd%C3%A6kninger%202024%20-%20Delkontrakt%202>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot2_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/AwardEvaluationTerm$_ContractAwardNotice1_ProcurementProjectLot2_TenderingTerms1_AwardingTerms1_AwardingCriterion1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/AwardEvaluationTerm$_ContractAwardNotice1_ProcurementProjectLot2_TenderingTerms1_AwardingTerms1_AwardingCriterion1>,
     <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot2_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot2_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot2_TenderingTerms1_AppealTerms1_PresentationPeriod1>;
@@ -374,18 +388,30 @@ Ustrup V"""@da;
   epo:hasAmountValue 40000000.0;
   epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/DKK> .
 
+<http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult2_ReceivedSubmissionsStatistics1_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/SubmissionStatisticalInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult2>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Notice>;
+  epo:hasConfidentialityJustification "14 tilbud"@da;
+  epo:hasMaskableProperty epo:hasReceivedTenders;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/oth-int> .
+
 <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Notice>
   a epo:Notice, epo:Notice29, epo:ResultNotice;
   epo:announcesAwardDecision <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/AwardDecision/2024-09-11%2B02%3A00>;
+  epo:announcesContract <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Contract/CON-0001>,
+    <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Contract/CON-0002>;
   epo:announcesNoticeAwardInformation <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Tenderer/TPA-0001>;
-  epo:hasESenderDispatchDate "2024-10-03T08:30:38Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-10-03T08:30:38Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/result>;
   epo:hasNoticePublicationNumber "00598805-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-standard>;
-  epo:hasOJSIssueNumber "194/2024";
+  epo:hasOJSIssueNumber 194;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DAN>;
   epo:hasPublicationDate "2024-10-04+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Lot/LOT-0001>,
     <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Lot/LOT-0002>;
@@ -409,6 +435,22 @@ Ustrup V"""@da;
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "97908c19-7507-4e48-9252-3e8c697fec29" .
+
+<http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.12" .
+
+<http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
   a epo:NoticeAwardInformation;
@@ -444,6 +486,7 @@ Ustrup V"""@da;
 
 <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Organization/ORG-0001>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Channel$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>;
   epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/cga>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Organization/Identifier$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>;
   epo:hasLegalName "Vejdirektoratet"@da;
@@ -483,7 +526,7 @@ Ustrup V"""@da;
 
 <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Procedure/de182d33-d249-4b4c-9b32-6ceb82f6a2c5>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>;
   epo:hasAdditionalInformation """Tilbud skal afgives på dansk, men bilag vedr. betingelser for deltagelse accepteres på dansk, engelsk, norsk og svensk.
 Eventuelle spørgsmål stilles til e-mailadressen anført i udbudsmaterialet, bestemmelser om udbud og tilbud, afsnit 4. Spørgsmål og svar vil blive gjort tilgængelige på internetadressen anført under punkt 5.1.11.
 Udbuddet gennemføres ved anvendelse af et to-kuvertsystem. Proceduren er beskrevet i detaljer i udbudsmaterialet.
@@ -562,6 +605,16 @@ Senest samtidig med, at en klage indgives til Klagenævnet for Udbud, skal klage
     <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Lot/LOT-0002>;
   epo:playedBy <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Organization/ORG-0002> .
 
+<http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/SubcontractingEstimate$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>
+  a epo:SubcontractingEstimate;
+  epo:isSubcontractingPercentageKnown false;
+  epo:isSubcontractingValueKnown false .
+
+<http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/SubcontractingEstimate$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender2>
+  a epo:SubcontractingEstimate;
+  epo:isSubcontractingPercentageKnown false;
+  epo:isSubcontractingValueKnown false .
+
 <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/SubmissionStatisticalInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1>
   a epo:SubmissionStatisticalInformation;
   epo:hasHighestReceivedTenderValue <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/MonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1>;
@@ -585,17 +638,19 @@ Senest samtidig med, at en klage indgives til Klagenævnet for Udbud, skal klage
 
 <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Tender/TEN-0001>
   a epo:Tender;
+  epo:foreseesSubcontracting <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/SubcontractingEstimate$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
   epo:hasFinancialOfferValue <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
   epo:hasSubcontracting <http://publications.europa.eu/resource/authority/applicability/yes>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Lot/LOT-0001>;
   adms:identifier <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Tender/Identifier/Vinderens%20tilbud%20p%C3%A5%20delkontraktnr.%201> .
 
 <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Tender/TEN-0002>
   a epo:Tender;
+  epo:foreseesSubcontracting <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/SubcontractingEstimate$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender2>;
   epo:hasFinancialOfferValue <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender2>;
   epo:hasSubcontracting <http://publications.europa.eu/resource/authority/applicability/yes>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Lot/LOT-0002>;
   adms:identifier <http://data.europa.eu/a4g/resource/97908c19-7507-4e48-9252-3e8c697fec29-01/Tender/Identifier/Vinderens%20tilbud%20p%C3%A5%20delkontraktnr.%202> .
 

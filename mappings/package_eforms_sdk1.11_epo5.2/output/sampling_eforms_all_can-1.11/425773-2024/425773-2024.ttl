@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -73,10 +73,17 @@
   a epo:ContractAmendment;
   epo:amendsContract <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Contract/CON-0001> .
 
+<http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2017-01-01+01:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/ContractEndPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2027-11-01+01:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/ContractLocation$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NLD>;
-  locn:address <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/ProcedurePlacePerformance$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1> .
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NLD> .
 
 <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/ContractLocation$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
@@ -90,14 +97,9 @@ Deze wijziging betreft uitbreiding van het CCTV netwerk door het installeren en 
   epo:hasModificationJustification <http://publications.europa.eu/resource/authority/modification-justification/mod-cir>;
   epo:hasModificationReasonDescription "Tijdens het opstellen van het originele contract voor CCTV in de regio Tiel/Nijmegen was uitbreiding van CCTV bij overnachtingshaven Spijk nog niet bekend. Dit geldt ook voor de renovatie van de verkeerspost Nijmegen. Door de renovatie blijkt er onvoldoende duidelijk beeld te zijn en is het noodzakelijk dat het huidige CCTV-systeem uitgebreid wordt. Er moeten op beide locaties meer camera’s geplaatst en onderhouden worden om te voldoen aan de wettelijke taak 'veilige scheepvaartbegeleiding'. Omdat de uitbreiding geïntegreerd moet worden in het netwerk dat door Swarco wordt onderhouden, is het technisch te risicovol om dat een andere partij dit te laten doen. De omstandigheden zijn gewijzigd welke ten tijde van het afsluiten van het originele contract niet konden worden voorzien door RWS. De aard van de opdracht wijzigt niet; het plaatsen en onderhouden van CCTV installaties. De prijs van de wijziging is niet hoger dan 50% van de oorspronkelijke opdrachtwaarde."@nl .
 
-<http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2017-01-01+01:00"^^xsd:date;
-  epo:hasEnd "2027-11-01+01:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/not-allowed>;
   epo:hasEOrdering false;
@@ -106,7 +108,8 @@ Deze wijziging betreft uitbreiding van het CCTV netwerk door het installeren en 
   epo:hasMaximumNumberOfRenewals 2;
   epo:hasOptionsDescription "herhaling van soortgelijke diensten"@nl;
   epo:hasRenewalDescription "Aantal mogelijke verlengingen: 2. Geraamd tijdsbestek voor verdere opdrachten (vanaf de gunning van de opdracht) : 12 maanden."@nl;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -118,13 +121,14 @@ Deze wijziging betreft uitbreiding van het CCTV netwerk door het installeren en 
   a epo:EmploymentInformationProvider;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Lot/LOT-0000>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/TouchPoint/TPO-0004>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Organization/TPO-0004> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Organization/TPO-0004>,
+    <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/OrganizationalUnit/TPO-0004> .
 
 <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/EnvironmentalProtectionInformationProvider/TPO-0003>
   a epo:EnvironmentalProtectionInformationProvider;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Lot/LOT-0000>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/TouchPoint/TPO-0003>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Organization/TPO-0003> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/OrganizationalUnit/TPO-0003> .
 
 <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Identifier/LOT-0000>
   a adms:Identifier;
@@ -141,6 +145,31 @@ Deze wijziging betreft uitbreiding van het CCTV netwerk door het installeren en 
   epo:hasScheme "organization";
   skos:notation "ORG-0002" .
 
+<http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Identifier/TPO-0001>
+  a adms:Identifier;
+  epo:hasScheme "touchpoint";
+  skos:notation "TPO-0001" .
+
+<http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Identifier/TPO-0002>
+  a adms:Identifier;
+  epo:hasScheme "touchpoint";
+  skos:notation "TPO-0002" .
+
+<http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Identifier/TPO-0003>
+  a adms:Identifier;
+  epo:hasScheme "touchpoint";
+  skos:notation "TPO-0003" .
+
+<http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Identifier/TPO-0004>
+  a adms:Identifier;
+  epo:hasScheme "touchpoint";
+  skos:notation "TPO-0004" .
+
+<http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  time:hasEnd <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/ContractEndPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Lot/Identifier/1>
   a adms:Identifier;
   epo:hasScheme "InternalID";
@@ -148,13 +177,13 @@ Deze wijziging betreft uitbreiding van het CCTV netwerk door het installeren en 
 
 <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Lot/Identifier/1>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
   epo:isRecurrent false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>;
   epo:isUsingEUFunds false;
@@ -180,13 +209,15 @@ Deze wijziging betreft uitbreiding van het CCTV netwerk door het installeren en 
 <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Notice>
   a epo:ContractModificationNotice, epo:Notice, epo:Notice38;
   epo:announcesContractAmendment <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/ContractAmendment$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_ContractModification1>;
-  epo:hasESenderDispatchDate "2024-07-15T09:17:05.156039+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-07-15T09:17:05.156039+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/cont-modif>;
   epo:hasNoticePublicationNumber "00425773-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-modif>;
-  epo:hasOJSIssueNumber "137/2024";
+  epo:hasOJSIssueNumber 137;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/NLD>;
   epo:hasPublicationDate "2024-07-16Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToAwardDecision <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/AwardDecision/CON-0001>;
   epo:refersToContractToBeModified <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Contract/CON-0001>;
@@ -217,6 +248,22 @@ Deze wijziging betreft uitbreiding van het CCTV netwerk door het installeren en 
   epo:hasScheme "notice-id";
   skos:notation "58bf998b-d1aa-4459-9539-da0b10884650" .
 
+<http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.11" .
+
+<http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
+
 <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
   a epo:NoticeAwardInformation;
   epo:hasTotalAwardedValue <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/MonetaryValueNoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1> .
@@ -235,7 +282,11 @@ Deze wijziging betreft uitbreiding van het CCTV netwerk door het installeren en 
   epo:hasLegalName "Rijkswaterstaat Programma's Projecten en Onderhoud"@nl;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/CompanyContactPoint$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_Contact1>;
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/CompanyAddress$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>;
-  adms:identifier <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Identifier/ORG-0001> .
+  adms:identifier <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Identifier/ORG-0001>;
+  org:hasUnit <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/OrganizationalUnit/TPO-0001>,
+    <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/OrganizationalUnit/TPO-0002>,
+    <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/OrganizationalUnit/TPO-0003>,
+    <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/OrganizationalUnit/TPO-0004> .
 
 <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Organization/ORG-0002>
   a org:Organization;
@@ -244,25 +295,33 @@ Deze wijziging betreft uitbreiding van het CCTV netwerk door het installeren en 
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/CompanyAddress$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1_PostalAddress1>;
   adms:identifier <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Identifier/ORG-0002> .
 
-<http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Organization/TPO-0001>
-  a org:Organization;
-  owl:sameAs <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Organization/ORG-0001> .
+<http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/OrganizationalUnit/TPO-0001>
+  a org:OrganizationalUnit;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/TouchPoint/TPO-0001>;
+  dct:title "Burgerlijke rechter"@nl;
+  adms:identifier <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Identifier/TPO-0001> .
 
-<http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Organization/TPO-0002>
-  a org:Organization;
-  owl:sameAs <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Organization/ORG-0001> .
+<http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/OrganizationalUnit/TPO-0002>
+  a org:OrganizationalUnit;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/TouchPoint/TPO-0002>;
+  dct:title "Belastingdienst"@nl;
+  adms:identifier <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Identifier/TPO-0002> .
 
-<http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Organization/TPO-0003>
-  a org:Organization;
-  owl:sameAs <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Organization/ORG-0001> .
+<http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/OrganizationalUnit/TPO-0003>
+  a org:OrganizationalUnit;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/TouchPoint/TPO-0003>;
+  dct:title "Milieubescherming"@nl;
+  adms:identifier <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Identifier/TPO-0003> .
 
-<http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Organization/TPO-0004>
-  a org:Organization;
-  owl:sameAs <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Organization/ORG-0001> .
+<http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/OrganizationalUnit/TPO-0004>
+  a org:OrganizationalUnit;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/TouchPoint/TPO-0004>;
+  dct:title "Arbo"@nl;
+  adms:identifier <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Identifier/TPO-0004> .
 
 <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Procedure/408de7ba-3c29-42cf-85b6-cf390e857e12>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation """Rijkswaterstaat hanteert de gedragscode \"Publiek Opdrachtgeverschap\". De gedragscode is te downloaden op de internetsite van Rijkswaterstaat via het adres: http://www.rws.nl/opdrachtgeverscode. 
 
@@ -276,7 +335,7 @@ De aanbestedingsprocedure vindt plaats onder toepassing van het Aanbestedingsreg
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Lot/LOT-0000>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/ProcedurePurpose$_ContractAwardNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/ProcedureTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/ProcedureTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>;
   dct:description """Het engineeren, uitvoeren en onderhouden van CCTV systemen voor scheepvaartbegeleiding bij de verkeersposten Dordrecht, Tiel en Nijmegen. 
 Deze wijziging betreft uitbreiding van het CCTV netwerk door het installeren en onderhouden van camera’s bij de overnachtingshaven Spijk en de verkeerspost in Nijmegen."""@nl;
   dct:title "31104439: het engineeren, uitvoeren en onderhouden van CCTV systemen voor scheepvaartbegeleiding bij de verkeersposten Dordrecht, Tiel en Nijmegen"@nl;
@@ -290,10 +349,6 @@ Deze wijziging betreft uitbreiding van het CCTV netwerk door het installeren en 
 <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Procedure/Identifier/408de7ba-3c29-42cf-85b6-cf390e857e12>
   a adms:Identifier;
   skos:notation "408de7ba-3c29-42cf-85b6-cf390e857e12" .
-
-<http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/ProcedurePlacePerformance$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NLD> .
 
 <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/ProcedurePurpose$_ContractAwardNotice1_ProcurementProject1>
   a epo:Purpose;
@@ -340,13 +395,13 @@ Deze wijziging betreft uitbreiding van het CCTV netwerk door het installeren en 
   a epo:Reviewer;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Lot/LOT-0000>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/TouchPoint/TPO-0001>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Organization/TPO-0001> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/OrganizationalUnit/TPO-0001> .
 
 <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/TaxInformationProvider/TPO-0002>
   a epo:TaxInformationProvider;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Lot/LOT-0000>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/TouchPoint/TPO-0002>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Organization/TPO-0002> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/OrganizationalUnit/TPO-0002> .
 
 <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Tender/Identifier/1>
   a adms:Identifier;
@@ -356,7 +411,7 @@ Deze wijziging betreft uitbreiding van het CCTV netwerk door het installeren en 
   a epo:Tender;
   epo:hasFinancialOfferValue <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
   epo:hasSubcontracting <http://publications.europa.eu/resource/authority/applicability/no>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Lot/LOT-0000>;
   adms:identifier <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/Tender/Identifier/1> .
 
@@ -377,28 +432,24 @@ Deze wijziging betreft uitbreiding van het CCTV netwerk door het installeren en 
   a cccev:ContactPoint;
   epo:hasInternetAddress "http://www.rechtspraak.nl"^^xsd:anyURI;
   cccev:email "voorlichting.rb.den.haag@rechtspraak.nl";
-  dct:description "Burgerlijke rechter"@nl;
   locn:address <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/TouchPointAddress$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint4_PostalAddress1> .
 
 <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/TouchPoint/TPO-0002>
   a cccev:ContactPoint;
   epo:hasInternetAddress "http://www.belastingdienst.nl"^^xsd:anyURI;
   cccev:email "aanbestedingsteam-gww@rws.nl";
-  dct:description "Belastingdienst"@nl;
   locn:address <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/TouchPointAddress$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint1_PostalAddress1> .
 
 <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/TouchPoint/TPO-0003>
   a cccev:ContactPoint;
   epo:hasInternetAddress "http://www.rijksoverheid.nl/ministeries/ienm.nl"^^xsd:anyURI;
   cccev:email "aanbestedingsteam-gww@rws.nl";
-  dct:description "Milieubescherming"@nl;
   locn:address <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/TouchPointAddress$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint3_PostalAddress1> .
 
 <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/TouchPoint/TPO-0004>
   a cccev:ContactPoint;
   epo:hasInternetAddress "http://www.rijksoverheid.nl/ministeries/szw"^^xsd:anyURI;
   cccev:email "aanbestedingsteam-gww@rws.nl";
-  dct:description "Arbo"@nl;
   locn:address <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/TouchPointAddress$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint2_PostalAddress1> .
 
 <http://data.europa.eu/a4g/resource/58bf998b-d1aa-4459-9539-da0b10884650-01/TouchPointAddress$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint1_PostalAddress1>

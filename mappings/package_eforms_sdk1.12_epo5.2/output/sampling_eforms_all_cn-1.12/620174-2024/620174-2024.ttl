@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -204,8 +204,12 @@
   cccev:email "vergabekammer@senweb.berlin.de";
   cccev:telephone "+49 30 90138316" .
 
+<http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2026-01-01+01:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 6.0;
   time:unitType time:unitYear .
 
@@ -226,14 +230,10 @@
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/DE300> .
 
-<http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2026-01-01+01:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/Interval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasEOrdering true;
   epo:hasEPayment true;
@@ -246,131 +246,142 @@ Bedarfsweise (für einige abrufberechtigten Auftraggeber) können die erforderli
 Bedarfsweise können die erforderlichen Leistungen auch eine Beteiligung an der Weiterentwicklung der DIMAG-Software einschließen."""@de;
   epo:hasPerformanceConditions "Die Auftrags- oder Vertragsbedingungen können umweltbezogene, soziale oder beschäftigungspolitische Ausführungsbedingungen (§ 128 Abs. 2 GWB) enthalten, z.B. zum Umweltschutz (Energieeffizienz, CO2-Reduzierung), zum Mindeststundenentgelt (Mindestlohn), zur Frauenförderung und zur Verhinderung von Benachteiligungen. "@de;
   epo:hasRenewalDescription "Die Rahmenvereinbarung kann zweimalig um jeweils ein Jahr (auf eine Laufzeit von insgesamt bis zu acht Jahren) verlängert werden."@de;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
   epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ContractLocation$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>;
   epo:hasPlaceOfPerformanceAdditionalInformation "Erfüllungsort der Einzelabrufe aus der Rahmenvereinbarung ist der jeweilige Sitz der abrufberechtigten öffentlichen Archive (s. Ziffer 2.1) im Gebiet der Bundesländer Berlin, Brandenburg, Bremen, Mecklenburg-Vorpommern, Sachsen-Anhalt und Schleswig-Holstein."@de .
 
+<http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/Duration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 6.0;
+  time:unitType time:unitYear .
+
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/DynamicPurchaseSystemTechnicalUsage$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/Duration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
 
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest10_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Fakultative Ausschlussgründe nach §§ 124 bis 126 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-bre-env-law> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-bre-env-law>;
+  dct:description "Fakultative Ausschlussgründe nach §§ 124 bis 126 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest11_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Fakultative Ausschlussgründe nach §§ 124 bis 126 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-bre-soc-law> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-bre-soc-law>;
+  dct:description "Fakultative Ausschlussgründe nach §§ 124 bis 126 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest12_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Fakultative Ausschlussgründe nach §§ 124 bis 126 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-bre-lab-law> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-bre-lab-law>;
+  dct:description "Fakultative Ausschlussgründe nach §§ 124 bis 126 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest13_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Fakultative Ausschlussgründe nach §§ 124 bis 126 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-sitn-insolvency> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-sitn-insolvency>;
+  dct:description "Fakultative Ausschlussgründe nach §§ 124 bis 126 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest14_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Fakultative Ausschlussgründe nach §§ 124 bis 126 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-sitn-other> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-sitn-other>;
+  dct:description "Fakultative Ausschlussgründe nach §§ 124 bis 126 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest15_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Fakultative Ausschlussgründe nach §§ 124 bis 126 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-sitn-bankr> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-sitn-bankr>;
+  dct:description "Fakultative Ausschlussgründe nach §§ 124 bis 126 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest16_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Fakultative Ausschlussgründe nach §§ 124 bis 126 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-sitn-liq-admin> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-sitn-liq-admin>;
+  dct:description "Fakultative Ausschlussgründe nach §§ 124 bis 126 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest17_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Fakultative Ausschlussgründe nach §§ 124 bis 126 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-sitn-as-susp> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-sitn-as-susp>;
+  dct:description "Fakultative Ausschlussgründe nach §§ 124 bis 126 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest18_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Fakultative Ausschlussgründe nach §§ 124 bis 126 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-misconduct> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-misconduct>;
+  dct:description "Fakultative Ausschlussgründe nach §§ 124 bis 126 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest19_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Zwingende und fakultative Ausschlussgründe nach §§ 97 Abs. 2, 124 bis 126 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-distortion> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-distortion>;
+  dct:description "Zwingende und fakultative Ausschlussgründe nach §§ 97 Abs. 2, 124 bis 126 GWB"@de .
+
+<http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
+  a epo:ExclusionGround;
+  epo:hasQualificationCriteriaStatedInNotice true .
 
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest20_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Fakultative Ausschlussgründe nach §§ 124 bis 126 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-partic-confl> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-partic-confl>;
+  dct:description "Fakultative Ausschlussgründe nach §§ 124 bis 126 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest21_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Fakultative Ausschlussgründe nach §§ 124 bis 126 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-prep-confl> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-prep-confl>;
+  dct:description "Fakultative Ausschlussgründe nach §§ 124 bis 126 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest22_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Fakultative Ausschlussgründe nach §§ 124 bis 126 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-sanction> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-sanction>;
+  dct:description "Fakultative Ausschlussgründe nach §§ 124 bis 126 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest23_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Fakultative Ausschlussgründe nach §§ 124 bis 126 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-misrepresent> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-misrepresent>;
+  dct:description "Fakultative Ausschlussgründe nach §§ 124 bis 126 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest24_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Fakultative Ausschlussgründe nach §§ 124 Abs. 2 bis 126 GWB, § 21 AEntG, § 98c AufenthG, § 19 MiLoG, § 21 SchwarzArbG, § 22 LkSG, §§ 15, 17 Abs. 3 BerlAVG"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-natl-bre-nat-law> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-natl-bre-nat-law>;
+  dct:description "Fakultative Ausschlussgründe nach §§ 124 Abs. 2 bis 126 GWB, § 21 AEntG, § 98c AufenthG, § 19 MiLoG, § 21 SchwarzArbG, § 22 LkSG, §§ 15, 17 Abs. 3 BerlAVG"@de .
 
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest2_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Zwingende und fakultative Ausschlussgründe nach §§ 123 bis 126 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-crim-part> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-crim-part>;
+  dct:description "Zwingende und fakultative Ausschlussgründe nach §§ 123 bis 126 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest3_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Zwingende und fakultative Ausschlussgründe nach §§ 123 bis 126 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-crim-terror> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-crim-terror>;
+  dct:description "Zwingende und fakultative Ausschlussgründe nach §§ 123 bis 126 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest4_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Zwingende und fakultative Ausschlussgründe nach §§ 123 bis 126 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-crim-laund> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-crim-laund>;
+  dct:description "Zwingende und fakultative Ausschlussgründe nach §§ 123 bis 126 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest5_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Zwingende und fakultative Ausschlussgründe nach §§ 123 bis 126 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-crim-fraud> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-crim-fraud>;
+  dct:description "Zwingende und fakultative Ausschlussgründe nach §§ 123 bis 126 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest6_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Zwingende und fakultative Ausschlussgründe nach §§ 123 bis 126 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-crim-corrpt> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-crim-corrpt>;
+  dct:description "Zwingende und fakultative Ausschlussgründe nach §§ 123 bis 126 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest7_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Zwingende und fakultative Ausschlussgründe nach §§ 123 bis 126 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-crim-traffick> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-crim-traffick>;
+  dct:description "Zwingende und fakultative Ausschlussgründe nach §§ 123 bis 126 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest8_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Zwingende und fakultative Ausschlussgründe nach §§ 123 bis 126 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-pmt-bre-tax> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-pmt-bre-tax>;
+  dct:description "Zwingende und fakultative Ausschlussgründe nach §§ 123 bis 126 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest9_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Zwingende und fakultative Ausschlussgründe nach §§ 123 bis 126 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-pmt-bre-ssc> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-pmt-bre-ssc>;
+  dct:description "Zwingende und fakultative Ausschlussgründe nach §§ 123 bis 126 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -423,6 +434,10 @@ Bedarfsweise können die erforderlichen Leistungen auch eine Beteiligung an der 
   a adms:Identifier;
   skos:notation "ORG-0009" .
 
+<http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/Interval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/LeadBuyer$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1>
   a epo:LeadBuyer;
   epo:playedBy <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/Organization/ORG-0001> .
@@ -433,41 +448,19 @@ Bedarfsweise können die erforderlichen Leistungen auch eine Beteiligung an der 
 
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/Lot/Identifier/20098-24%20DAN-GEMAG-Betrieb>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/MultipleStageProcedureTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>,
     <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/SubmissionTerm$_PriorInformationNotice1_ProcurementProjectLot1>;
   epo:isUsingEUFunds false;
-  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest10_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest11_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest12_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest13_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest14_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest15_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest16_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest17_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest18_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest19_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest20_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest21_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest22_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest23_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest24_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest2_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest3_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest4_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest5_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest6_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest7_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest8_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest9_SpecificTendererRequirement1>,
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
     <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>,
     <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria10>,
     <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria11>,
@@ -529,13 +522,15 @@ Dem Projektbeginn (Ziffer 5.1.3) geht eine Transitionsphase zur Systemeinrichtun
     <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty2>,
     <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/Reviewer/ORG-0009>,
     <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/TenderReceiver/ORG-0008>;
-  epo:hasESenderDispatchDate "2024-10-10T17:20:41Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-10-10T17:20:41Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00620174-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-cfc-standard>;
-  epo:hasOJSIssueNumber "200/2024";
+  epo:hasOJSIssueNumber 200;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU>;
   epo:hasPublicationDate "2024-10-14+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/Procedure/9b54739d-a39a-487b-9923-f5d775ebb14b>;
@@ -545,6 +540,22 @@ Dem Projektbeginn (Ziffer 5.1.3) geht eine Transitionsphase zur Systemeinrichtun
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "5ac48760-7923-4892-a914-1e32284a04de" .
+
+<http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.12" .
+
+<http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization10_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -680,9 +691,13 @@ Dem Projektbeginn (Ziffer 5.1.3) geht eine Transitionsphase zur Systemeinrichtun
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization9_Company1_PostalAddress1>;
   adms:identifier <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/Identifier/ORG-0009> .
 
+<http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/Procedure>
+  a epo:Procedure;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1> .
+
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/Procedure/9b54739d-a39a-487b-9923-f5d775ebb14b>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation """Die Vergabeunterlagen mit weiteren Details zu den Leistungs- und Funktionsanforderungen und Vertragsbedingungen sowie weiterführende Informationen und Bedingungen zur Teilnahme und zum Ablauf werden den beteiligten Unternehmen in den jeweiligen Stadien des weiteren Verfahrens, erstmals mit der Aufforderung zur Interessensbestätigung (s. Ziffer 2.1) zur Verfügung gestellt. 
 .
@@ -705,6 +720,29 @@ An dem folgenden Verhandlungsverfahren werden diejenigen Unternehmen beteiligt, 
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/oth-mult>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest10_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest11_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest12_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest13_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest14_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest15_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest16_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest17_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest18_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest19_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest20_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest21_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest22_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest23_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest24_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest2_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest3_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest4_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest5_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest6_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest7_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest8_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest9_SpecificTendererRequirement1>;
   dct:description """Der Kooperationsverbund Digitale Archivierung Nord (DAN) ist eine länderübergreifende Kooperation der Landesarchive der Bundesländer Berlin, Brandenburg, Bremen, Mecklenburg-Vorpommern, Sachsen-Anhalt und Schleswig-Holstein. Der Zweck des DAN-Verbunds ist die Sicherstellung der dauerhaften Erhaltung und Verfügbarkeit elektronischer Aufzeichnungen. Im DAN-Verbund arbeiten die Landesarchive der Bundesländer („Kooperationspartner“) bei der Magazinierung und Erhaltung  archivwürdiger digitaler Aufzeichnungen zusammen und betreiben ein gemeinsames elektronisches Magazin (GEMAG). An dem GEMAG sind aktuell und werden perspektivisch weitere öffentliche Archive („Magazinpartner“) im Gebiet der Bundesländer des DAN-Verbundes beteiligt. Die im GEMAG dauerhaft verfügbar zu erhaltenden elektronischen Aufzeichnungen sind öffentliches Kulturgut und gehören künftig zur Kategorie der kritischen Infrastruktur. 
 .
 Der DAN-Verbund ist Mitglied im Entwicklungsverbund Digitales Magazin (DIMAG). Der DIMAG-Verbund ist eine länderübergreifende Entwicklungspartnerschaft der Landesarchive der Bundesländer Baden-Württemberg, Hessen, Niedersachsen und der Staatlichen Archive des Freistaats Bayern, des DAN-Verbunds sowie sächsischer Kommunen, schweizerischer Kantonsarchive und des Wiener Stadt- und Landesarchivs. Der Zweck des DIMAG-Verbundes besteht in der gemeinsamen Entwicklung von Software zur Unterstützung der Archive bei der Erhaltung digital gespeicherter Informationen für die Ewigkeit. Das Archivierungssystem des DIMAG-Verbundes wurde nach den Vorgaben des OAIS-Standards (ISO 14721), des PREMIS-Standards und des Nestor-Kriterienkatalogs „Vertrauenswürdige digitale Langzeitarchive“ (DIN 31644) entwickelt. Die DIMAG-Software besteht aus mehreren Modulen ( https://dimag-wiki.la-bw.de/public/ ). Sie wird in zahlreichen öffentlichen Archiven, insbesondere bei den Kooperations- und Magazinpartnern des DAN-Verbundes, eingesetzt. Die DIMAG-Software unterliegt einer beständigen Weiterentwicklung durch alle beteiligten Entwicklungspartner des DIMAG-Verbundes.
@@ -795,6 +833,10 @@ Ein Nachprüfungsantrag ist zudem dann unzulässig, wenn der Zuschlag wirksam er
   a epo:Reviewer;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/Lot/LOT-0001>;
   epo:playedBy <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/Organization/ORG-0009> .
+
+<http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
+  a epo:SelectionCriterion;
+  epo:hasQualificationCriteriaStatedInNotice true .
 
 <http://data.europa.eu/a4g/resource/5ac48760-7923-4892-a914-1e32284a04de-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>
   a epo:SelectionCriterion;

@@ -17,19 +17,13 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>
   a epo:AccessTerm;
   epo:definesProcurementProcedureInformationProvider <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ProcurementProcedureInformationProvider/ORG-0001> .
-
-<http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
-  a epo:AccessTerm;
-  epo:hasPublicAccessURL "https://www.vergabe-westfalen.de/VMPSatellite/notice/CXPWYRMLB4E/documents"^^xsd:anyURI;
-  epo:involvesProcurementDocument <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ProcurementDocument$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1SomeTenderDocID1>;
-  epo:isProcurementDocumentRestricted false .
 
 <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/AwardCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>
   a epo:AwardCriterion;
@@ -128,15 +122,19 @@
 <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ContractLocation$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
-  epo:hasNutsCode <http://data.europa.eu/nuts/code/DEA33> .
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DEA33>;
+  locn:address <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ContractLocationAddress$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1> .
 
-<http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasTimePeriod <http://publications.europa.eu/resource/authority/timeperiod/UNKNOWN> .
+<http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ContractLocationAddress$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DEA33>;
+  locn:fullAddress "Neubau Stadthaus 4, Hafengrenzweg / Kieskamps Mühle, Münster, 48155, DEU";
+  locn:postCode "48155";
+  locn:postName "Münster" .
 
 <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/required>;
   epo:hasEOrdering true;
@@ -144,7 +142,8 @@
   epo:hasLegalFormRequirement "gesamtschuldnerisch haftend"@de;
   epo:hasPaymentArrangement "Siehe jeweils: Besondere Vertragsbedingungen (VVB 214)"@de;
   epo:hasPerformanceConditions "Zum Beispiel, je nach Gewerk:  513 EU Vertragsbedingungen gemäß TVgG NRW  VVB 214 Besondere Vertragsbedingungen  VVB 241 - Abfall"@de;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -201,6 +200,14 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0005" .
 
+<http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier> .
+
+<http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier>
+  a adms:Identifier;
+  skos:notation "vob-a-eu" .
+
 <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/Lot/Identifier/2024-0001-BW-MS>
   a adms:Identifier;
   epo:hasScheme "internalID";
@@ -208,8 +215,9 @@
 
 <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
+    <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ProcurementCriterion$_PriorInformationNotice1_ProcurementProjectLot1>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/GreenProcurement$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType2>,
     <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/GreenProcurement$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType3>,
     <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/GreenProcurement$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType4>,
@@ -223,15 +231,14 @@
   epo:hasPurpose <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
   epo:isSMESuitable true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
-    <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>,
-    <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/SubmissionTerm$_PriorInformationNotice1_ProcurementProjectLot1>;
+    <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/SubmissionTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1SomeTenderDocID1>;
   epo:isUsingEUFunds false;
   epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/AwardCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>,
-    <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ProcurementCriterion$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>,
     <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>,
     <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>;
@@ -268,19 +275,22 @@
 
 <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/Notice>
   a epo:Notice, epo:Notice7, epo:PlanningNotice;
+  epo:announcesProcedure <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/Procedure/0000000-0000-4000-8000-000000000000>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/Buyer/ORG-0001>,
     <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ProcurementProcedureInformationProvider/ORG-0001>,
     <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>,
     <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty2>,
     <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ReviewProcedureInformationProvider/ORG-0003organization>,
     <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/Reviewer/ORG-0004organization>;
-  epo:hasESenderDispatchDate "2024-08-12T13:55:34+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-08-12T13:55:34+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticePublicationNumber "00486310-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-rtl>;
-  epo:hasOJSIssueNumber "157/2024";
+  epo:hasOJSIssueNumber 157;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU>;
   epo:hasPublicationDate "2024-08-13+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/Procedure/0000000-0000-4000-8000-000000000000>;
@@ -298,6 +308,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "8d640d64-694a-4167-b8e7-77f8d5a99fe3" .
+
+<http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.7" .
+
+<http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -361,9 +387,13 @@
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization5_Company1_PostalAddress1>;
   adms:identifier <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/Identifier/ORG-0005> .
 
+<http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/PlanningNotice>
+  a epo:PlanningNotice;
+  epo:announcesLot <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/Lot/LOT-0001> .
+
 <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/Procedure/0000000-0000-4000-8000-000000000000>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation """Bekanntmachungs-ID: CXPWYRMLB4E
 
@@ -377,6 +407,7 @@ Hinweise zur Datenverarbeitung nach Artikel 13 bzw. 14 Datenschutzgrundverordnun
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>;
   dct:description "Neubau Stadthaus 4 in Münster - Die Bauwerke Münster GmbH plant ein neues Verwaltungsgebäude für die Stadtverwaltung Münster zu errichten. Das Stadthaus 4 soll als Bürofläche für die Stadtverwaltung der Stadt Münster dienen."@de;
   dct:title "Vorinformation - Neubau \"Stadthaus 4\" der Stadt Münster"@de .
 
@@ -413,13 +444,13 @@ Hinweise zur Datenverarbeitung nach Artikel 13 bzw. 14 Datenschutzgrundverordnun
     <http://data.europa.eu/cpv/cpv/45450000>;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/45000000> .
 
+<http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>
+  a epo:ProcessPlanningTerm;
+  epo:hasEstimatedContractNoticePublicationDate "2024-09-04+02:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ProcurementCriterion$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ProcurementCriterion;
   epo:hasPerformingStaffQualificationInformation <http://publications.europa.eu/resource/authority/requirement-stage/nyk> .
-
-<http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ProcurementDocument$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1SomeTenderDocID1>
-  a epo:ProcurementDocument;
-  epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU> .
 
 <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/ProcurementProcedureInformationProvider/ORG-0001>
   a epo:ProcurementProcedureInformationProvider;
@@ -496,7 +527,7 @@ Hinweise zur Datenverarbeitung nach Artikel 13 bzw. 14 Datenschutzgrundverordnun
   epo:fulfillsRequirement <http://publications.europa.eu/resource/authority/social-objective/other> .
 
 <http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01/StrategicProcurement$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>
-  a epo:SocialProcurement, epo:StrategicProcurement;
+  a epo:GreenProcurement, epo:SocialProcurement, epo:StrategicProcurement;
   epo:hasStrategicProcurementDescription "Quote der erreichten Vorgabe der Gebäudeleitlinien 2020 Art der Energiversorgung HIeizkosten eines Gebäude - absolut und im Verhältnis zur angemieteten Fläche"@de,
     "Tariftreue Erreichbarkeit Technik (Quote digitaler Aktenführung, HomeOffice-Nutzung) Finanzen (u.a. Mietkosten eines Gebäudes - absolut und im Verhältnis zur angemieteten Fläche, etc.)"@de .
 
@@ -512,3 +543,9 @@ Hinweise zur Datenverarbeitung nach Artikel 13 bzw. 14 Datenschutzgrundverordnun
   epo:hasVariantPermission <http://publications.europa.eu/resource/authority/permission/not-allowed>;
   epo:isGuaranteeRequired false;
   epo:isMultipleTenderSubmissionAllowed true .
+
+<http://data.europa.eu/a4g/resource/8d640d64-694a-4167-b8e7-77f8d5a99fe3-01AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1SomeTenderDocID1>
+  a epo:AccessTerm;
+  epo:hasPublicAccessURL "https://www.vergabe-westfalen.de/VMPSatellite/notice/CXPWYRMLB4E/documents"^^xsd:anyURI;
+  epo:isProcurementDocumentRestricted false;
+  epo:providesProcurementDocumentsInOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU> .

@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -128,14 +128,13 @@
   skos:notation "2024/4-1-477" .
 
 <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 19.0;
   time:unitType time:unitMonth .
 
 <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/ContractLocation$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GEO>;
-  locn:address <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/ProcedurePlacePerformance$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1> .
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GEO> .
 
 <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/ContractLocation$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
@@ -143,17 +142,24 @@
 
 <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies> .
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
   epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/ContractLocation$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>;
   epo:hasBroadPlaceOfPerformance <http://publications.europa.eu/resource/authority/other-place-service/anyw-cou> .
 
+<http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/Duration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 19.0;
+  time:unitType time:unitMonth .
+
 <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/DynamicPurchaseSystemTechnicalUsage$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/Duration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
 
 <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -200,13 +206,13 @@
 
 <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/GreenProcurement$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/Lot/Identifier/728773>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>;
   epo:isUsingEUFunds true;
@@ -238,17 +244,21 @@ Pirkimu siekiama įgyvendinti Europos taikos priemonę, kaip numatyta Europos S�
 <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/Notice>
   a epo:Notice, epo:Notice29, epo:ResultNotice;
   epo:announcesAwardDecision <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/AwardDecision/CON-0001>;
+  epo:announcesContract <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/Contract/CON-0001>;
   epo:announcesNoticeAwardInformation <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/Subcontractor/ORG-0004organization>,
     <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/Tenderer/TPA-0001>;
-  epo:hasESenderDispatchDate "2024-10-25T14:04:33+00:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-10-25T14:04:33+00:00"^^xsd:dateTime;
+  epo:hasESenderDispatchDate "2024-10-25T14:30:25+00:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/result>;
   epo:hasNoticePublicationNumber "00657637-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-standard>;
-  epo:hasOJSIssueNumber "211/2024";
+  epo:hasOJSIssueNumber 211;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/ENG>,
     <http://publications.europa.eu/resource/authority/language/LIT>;
   epo:hasPublicationDate "2024-10-29+01:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/Lot/LOT-0000>;
   epo:refersToPrevious <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/Notice/5d40ab20-fa1c-4059-9b9a-56d711e418c5-01>;
@@ -271,6 +281,22 @@ Pirkimu siekiama įgyvendinti Europos taikos priemonę, kaip numatyta Europos S�
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "d9997c19-6dd6-43e2-9706-28df10f8f1eb" .
+
+<http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.11" .
+
+<http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
   a epo:NoticeAwardInformation;
@@ -316,6 +342,7 @@ Pirkimu siekiama įgyvendinti Europos taikos priemonę, kaip numatyta Europos S�
 
 <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/Organization/ORG-0003>
   a org:Organization;
+  epo:foreseesSubcontractor <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/Subcontractor/ORG-0004organization>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/Organization/Identifier$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization3_Company1_PartyLegalEntity1>;
   epo:hasLegalName "REMORQUES LOUAULT "@en, "REMORQUES LOUAULT "@lt;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/CompanyContactPoint$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization3_Company1_Contact1>;
@@ -340,7 +367,7 @@ Pirkimu siekiama įgyvendinti Europos taikos priemonę, kaip numatyta Europos S�
 
 <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/Procedure/4470cf45-3e28-4176-811f-fde6fac120ff>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/Procedure/Identifier/728773>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
@@ -362,10 +389,6 @@ Pirkimu siekiama įgyvendinti Europos taikos priemonę, kaip numatyta Europos S�
   a adms:Identifier;
   epo:hasScheme "InternalID";
   skos:notation "728773" .
-
-<http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/ProcedurePlacePerformance$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GEO> .
 
 <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/ProcedurePurpose$_ContractAwardNotice1_ProcurementProject1>
   a epo:Purpose;
@@ -416,9 +439,8 @@ Pirkimu siekiama įgyvendinti Europos taikos priemonę, kaip numatyta Europos S�
 <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/Tender/TEN-0001>
   a epo:Tender;
   epo:hasFinancialOfferValue <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/Lot/LOT-0000>;
-  epo:specifiesSubcontractors <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/Subcontractor/ORG-0004organization>;
   adms:identifier <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/Tender/Identifier/Pasi%C5%ABlymas%201> .
 
 <http://data.europa.eu/a4g/resource/d9997c19-6dd6-43e2-9706-28df10f8f1eb-01/TenderAwardOutcome/TEN-0001>

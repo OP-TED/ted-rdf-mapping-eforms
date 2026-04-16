@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -50,19 +50,17 @@ The lowest price award criterion is used because the CAR Insurance which is the 
   cccev:telephone "+31 (0) 6 13 98 91 60" .
 
 <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 19.0;
   time:unitType time:unitMonth .
 
 <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/ContractLocation$_ContractNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NLD>;
-  locn:address <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/ProcedurePlacePerformance$_ContractNotice1_ProcurementProject1_RealizedLocation1_Address1> .
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NLD> .
 
 <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/ContractLocation$_ContractNotice1_ProcurementProject1_RealizedLocation2_Address1>
   a dct:Location;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
-  locn:address <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/ProcedurePlacePerformance$_ContractNotice1_ProcurementProject1_RealizedLocation2_Address1> .
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU> .
 
 <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/ContractLocation$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
@@ -74,11 +72,12 @@ The lowest price award criterion is used because the CAR Insurance which is the 
 
 <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasMaximumNumberOfRenewals 5;
   epo:hasRenewalDescription "Maximum of 5 renewals of 12 months each."@en;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -91,9 +90,15 @@ The lowest price award criterion is used because the CAR Insurance which is the 
   epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/ContractLocation$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation2_Address1>;
   epo:hasBroadPlaceOfPerformance <http://publications.europa.eu/resource/authority/other-place-service/anyw-cou> .
 
+<http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/Duration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 19.0;
+  time:unitType time:unitMonth .
+
 <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/DynamicPurchaseSystemTechnicalUsage$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/Duration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
 
 <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -116,14 +121,16 @@ The lowest price award criterion is used because the CAR Insurance which is the 
 
 <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
+  epo:doesNotRequireSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/other>,
+    <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
     <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation2>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/MonetaryValueLot$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/Lot/Identifier/EU-447>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/LotPurpose$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/AwardEvaluationTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1>,
     <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/MultipleStageProcedureTerm$_ContractNotice1_ProcurementProjectLot1>,
@@ -184,13 +191,16 @@ Coverage is based on All Risks conditions. Major exclusions include war, nuclear
   epo:announcesProcedure <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/Procedure/ec6af479-a93b-4ec6-b36f-6576fcc2d12a>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/Buyer/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/ProcurementProcedureInformationProvider/ORG-0001organization>;
-  epo:hasESenderDispatchDate "2023-11-01T14:59:15+00:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2023-11-01T14:59:15+00:00"^^xsd:dateTime;
+  epo:hasESenderDispatchDate "2023-11-01T14:59:54+00:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00671881-2023";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-cfc-standard>;
-  epo:hasOJSIssueNumber "212/2023";
+  epo:hasOJSIssueNumber 212;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/ENG>;
   epo:hasPublicationDate "2023-11-03Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/Lot/LOT-0000>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/Procedure/ec6af479-a93b-4ec6-b36f-6576fcc2d12a>;
@@ -200,6 +210,22 @@ Coverage is based on All Risks conditions. Major exclusions include war, nuclear
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "522e0114-ee92-479b-9e0a-d1a1b95e283b" .
+
+<http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.7" .
+
+<http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/Organization/Identifier$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -229,7 +255,7 @@ Coverage is based on All Risks conditions. Major exclusions include war, nuclear
 
 <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/Procedure/ec6af479-a93b-4ec6-b36f-6576fcc2d12a>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1_RealizedLocation1>,
     <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1_RealizedLocation2>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/MonetaryValueProcedure$_ContractNotice1_ProcurementProject1_RequestedTenderTotal1>;
@@ -266,14 +292,6 @@ Coverage is based on All Risks conditions. Major exclusions include war, nuclear
   dct:title "Onshore CAR Insurance "@en;
   adms:identifier <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/Procedure/Identifier/ec6af479-a93b-4ec6-b36f-6576fcc2d12a> .
 
-<http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/ProcedurePlacePerformance$_ContractNotice1_ProcurementProject1_RealizedLocation1_Address1>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NLD> .
-
-<http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/ProcedurePlacePerformance$_ContractNotice1_ProcurementProject1_RealizedLocation2_Address1>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU> .
-
 <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/ProcedurePurpose$_ContractNotice1_ProcurementProject1>
   a epo:Purpose;
   epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/66513200>;
@@ -301,22 +319,18 @@ Coverage is based on All Risks conditions. Major exclusions include war, nuclear
 
 <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/ef-stand> .
 
 <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/n-used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/other> .
 
 <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/n-used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act> .
 
 <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria4>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/tp-abil> .
 
 <http://data.europa.eu/a4g/resource/522e0114-ee92-479b-9e0a-d1a1b95e283b-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>

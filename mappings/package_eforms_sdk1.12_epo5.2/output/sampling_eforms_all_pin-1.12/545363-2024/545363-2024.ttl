@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -26,11 +26,14 @@
   epo:definesOfflineAccessProvider <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/OfflineAccessProvider/ORG-0001>;
   epo:definesProcurementProcedureInformationProvider <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ProcurementProcedureInformationProvider/ORG-0001> .
 
-<http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
+<http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_DEFAULT_VALUE_CHANGE_ME_>
   a epo:AccessTerm;
   epo:hasPublicAccessURL "https://avus-ingelheim.de/ausschreibungen/oeffentliche-vergabeverfahren/"^^xsd:anyURI;
-  epo:involvesProcurementDocument <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ProcurementDocument$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_DEFAULT_VALUE_CHANGE_ME_>;
   epo:isProcurementDocumentRestricted false .
+
+<http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/AccessTermt$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_DEFAULT_VALUE_CHANGE_ME_>
+  a epo:AccessTerm;
+  epo:providesProcurementDocumentsInOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU> .
 
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/Buyer/ORG-0001>
   a epo:Buyer;
@@ -80,7 +83,7 @@
   cccev:telephone "+352 29291" .
 
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 3.0;
   time:unitType time:unitYear .
 
@@ -103,7 +106,7 @@
 
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasAdditionalContractNature <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/required>;
@@ -111,115 +114,126 @@
   epo:hasEPayment true;
   epo:hasMaximumNumberOfRenewals 1;
   epo:hasOptionsDescription "Der Vertrag kann einseitig durch den Auftraggeber um ein weiteres Jahr verlängert werden."@de;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
   epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ContractLocation$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1> .
 
+<http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/Duration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 3.0;
+  time:unitType time:unitYear .
+
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/DynamicPurchaseSystemTechnicalUsage$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/Duration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
 
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest10_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "§§ 123, 124 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-sitn-liq-admin> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-sitn-liq-admin>;
+  dct:description "§§ 123, 124 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest11_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "§§ 123, 124 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-natl-bre-nat-law> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-natl-bre-nat-law>;
+  dct:description "§§ 123, 124 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest12_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "§§ 123, 124 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-bre-env-law> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-bre-env-law>;
+  dct:description "§§ 123, 124 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest13_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "§§ 123, 124 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-bre-soc-law> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-bre-soc-law>;
+  dct:description "§§ 123, 124 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest14_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "§§ 123, 124 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-pmt-bre-tax> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-pmt-bre-tax>;
+  dct:description "§§ 123, 124 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest15_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "§§ 123, 124 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-pmt-bre-ssc> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-pmt-bre-ssc>;
+  dct:description "§§ 123, 124 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest16_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "§§ 123, 124 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-bre-lab-law> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-bre-lab-law>;
+  dct:description "§§ 123, 124 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest17_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "§§ 123, 124 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-distortion> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-distortion>;
+  dct:description "§§ 123, 124 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest18_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "§§ 123, 124 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-crim-terror> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-crim-terror>;
+  dct:description "§§ 123, 124 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest19_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "§§ 123, 124 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-crim-laund> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-crim-laund>;
+  dct:description "§§ 123, 124 GWB"@de .
+
+<http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
+  a epo:ExclusionGround;
+  epo:hasQualificationCriteriaStatedInNotice true .
 
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest20_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "§§ 123, 124 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-partic-confl> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-partic-confl>;
+  dct:description "§§ 123, 124 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest21_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "§§ 123, 124 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-crim-corrpt> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-crim-corrpt>;
+  dct:description "§§ 123, 124 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest2_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "§§ 123, 124 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-crim-part> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-crim-part>;
+  dct:description "§§ 123, 124 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest3_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "§§ 123, 124 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-crim-fraud> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-crim-fraud>;
+  dct:description "§§ 123, 124 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest4_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "§§ 123, 124 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-sitn-other> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-sitn-other>;
+  dct:description "§§ 123, 124 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest5_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "§§ 123, 124 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-prep-confl> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-prep-confl>;
+  dct:description "§§ 123, 124 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest6_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "§§ 123, 124 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-sitn-as-susp> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-sitn-as-susp>;
+  dct:description "§§ 123, 124 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest7_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "§§ 123, 124 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-misrepresent> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-misrepresent>;
+  dct:description "§§ 123, 124 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest8_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "§§ 123, 124 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-sitn-insolvency> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-sitn-insolvency>;
+  dct:description "§§ 123, 124 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest9_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "§§ 123, 124 GWB"@de;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-sanction> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-sanction>;
+  dct:description "§§ 123, 124 GWB"@de .
 
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -247,41 +261,35 @@
   a adms:Identifier;
   skos:notation "ORG-0002" .
 
+<http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier> .
+
+<http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier>
+  a adms:Identifier;
+  skos:notation "RL 2014/23/EU" .
+
+<http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2>
+  a epo:LocalLegalBasisInformation;
+  epo:concernsProcurementElement <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/Procedure/8c736fa8-1aef-47d6-9701-11dbd15aff3e>;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/other> .
+
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/GreenProcurement$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
-    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
+    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_DEFAULT_VALUE_CHANGE_ME_>,
     <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/MultipleStageProcedureTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>,
     <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/SubmissionTerm$_PriorInformationNotice1_ProcurementProjectLot1>;
   epo:isUsingEUFunds false;
-  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest10_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest11_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest12_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest13_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest14_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest15_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest16_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest17_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest18_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest19_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest20_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest21_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest2_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest3_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest4_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest5_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest6_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest7_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest8_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest9_SpecificTendererRequirement1>;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>;
   epo:usesTechnique <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/DynamicPurchaseSystemTechnicalUsage$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>;
   dct:description """Gegenstand dieses Vertrages ist die Lieferung von elektrischer Energie aus ausschließlich erneuerbaren Energiequellen in Form einer Vollstromlieferung einschließlich der Netznutzung für die in Anlage 1 (Übersicht über die Kundenanlagen) genannten Anlagen.
 Der Abwasserzweckverband „Untere Selz“ (AVUS) ist für die Abwassersammlung, -reinigung und –ableitung in den Verbandsgemeinden Nieder-Olm und Gau-Algesheim, der Stadt Ingelheim sowie Teilen der Verbandsgemeinde Wörrstadt zuständig und betreibt hierfür ein Kanalnetz von rund 600 km Länge sowie ein zentrales Klärwerk in Ingelheim am Rhein.
@@ -325,13 +333,15 @@ Insbesondere ist darauf hinzuweisen, dass die PV Anlagen in geeigneter Weise so 
     <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>,
     <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ReviewProcedureInformationProvider/ORG-0002>,
     <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/Reviewer/ORG-0002>;
-  epo:hasESenderDispatchDate "2024-09-10T12:00:50Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-09-10T12:00:50Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00545363-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-cfc-standard>;
-  epo:hasOJSIssueNumber "177/2024";
+  epo:hasOJSIssueNumber 177;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU>;
   epo:hasPublicationDate "2024-09-11+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/Procedure/8c736fa8-1aef-47d6-9701-11dbd15aff3e>;
@@ -341,6 +351,22 @@ Insbesondere ist darauf hinzuweisen, dass die PV Anlagen in geeigneter Weise so 
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "0c0d5637-bdaf-42ca-91bc-4869e9d96730" .
+
+<http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.12" .
+
+<http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/OfflineAccessProvider/ORG-0001>
   a epo:OfflineAccessProvider;
@@ -386,18 +412,43 @@ Landwirtschaft und Weinbau Rheinland-Pfalz"""@de;
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1_PostalAddress1>;
   adms:identifier <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/Identifier/ORG-0002> .
 
-<http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/Procedure/8c736fa8-1aef-47d6-9701-11dbd15aff3e>
+<http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/Procedure>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1> .
+
+<http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/Procedure/8c736fa8-1aef-47d6-9701-11dbd15aff3e>
+  a epo:LocalLegalBasisInformation, epo:Procedure;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation "Im Anschluss an das Interessenbekundungsverfahren wird ein Verhandlungsverfahren ohne Teilnahmewettbewerb unter Einbeziehung der Interessenten angestrebt."@de;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
-  epo:hasLegalBasisDescription "RL 2014/23/EU / VgV"@de, "§ 38 VgV"@de;
+  epo:hasLegalBasisDescription "RL 2014/23/EU / VgV"@de;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ProcedureTerm$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference3>;
-  dct:description "Gegenstand dieses Vertrages ist die Lieferung von elektrischer Energie aus ausschließlich erneuerbaren Energiequellen in Form einer Vollstromlieferung einschließlich der Netznutzung."@de;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ProcedureTerm$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference3>;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest10_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest11_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest12_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest13_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest14_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest15_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest16_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest17_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest18_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest19_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest20_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest21_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest2_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest3_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest4_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest5_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest6_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest7_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest8_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest9_SpecificTendererRequirement1>;
+  dct:description "Gegenstand dieses Vertrages ist die Lieferung von elektrischer Energie aus ausschließlich erneuerbaren Energiequellen in Form einer Vollstromlieferung einschließlich der Netznutzung."@de,
+    "§ 38 VgV"@de;
   dct:title "Rahmenvertrag zur Lieferung von elektrischer Energie aus ausschließlich erneuerbaren Energiequellen"@de;
   adms:identifier <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/Procedure/Identifier/8c736fa8-1aef-47d6-9701-11dbd15aff3e> .
 
@@ -418,10 +469,6 @@ Landwirtschaft und Weinbau Rheinland-Pfalz"""@de;
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ProcedureTerm$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference3>
   a epo:ProcedureTerm;
   epo:hasCrossBorderLaw "§§ 123, 124 GWB"@de .
-
-<http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ProcurementDocument$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_DEFAULT_VALUE_CHANGE_ME_>
-  a epo:ProcurementDocument;
-  epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU> .
 
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/ProcurementProcedureInformationProvider/ORG-0001>
   a epo:ProcurementProcedureInformationProvider;
@@ -463,6 +510,10 @@ zur Bewerbung oder zur Angebotsabgabe gegenüber dem Auftraggeber gerügt werden
   a epo:Reviewer;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/Lot/LOT-0001>;
   epo:playedBy <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/Organization/ORG-0002> .
+
+<http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
+  a epo:SelectionCriterion;
+  epo:hasQualificationCriteriaStatedInProcurementDocuments true .
 
 <http://data.europa.eu/a4g/resource/0c0d5637-bdaf-42ca-91bc-4869e9d96730-01/SubmissionTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:SubmissionTerm;

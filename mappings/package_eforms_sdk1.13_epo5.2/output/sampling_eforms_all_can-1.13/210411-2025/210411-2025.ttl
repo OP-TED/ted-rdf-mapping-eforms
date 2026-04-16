@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -57,6 +57,10 @@ zawarty jest w rozdziale XXII SWZ
   a epo:Buyer;
   epo:hasBuyerProfile "https://platformazakupowa.pl/pn/polsa/proceedings"^^xsd:anyURI;
   epo:playedBy <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/Channel$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://platformazakupowa.pl/pn/polsa/proceedings"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/CompanyAddress$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>
   a locn:Address;
@@ -103,6 +107,10 @@ zawarty jest w rozdziale XXII SWZ
   cccev:email "ted@publications.europa.eu";
   cccev:telephone "+352 29291" .
 
+<http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/ContractEndPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2029-03-30+02:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/ContractLocation$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/POL>;
@@ -120,15 +128,11 @@ zawarty jest w rozdziale XXII SWZ
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/POL>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/PL911> .
 
-<http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasEnd "2029-03-30+02:00"^^xsd:date;
-  epo:hasTimePeriod <http://publications.europa.eu/resource/authority/timeperiod/UNKNOWN> .
-
 <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -162,6 +166,18 @@ zawarty jest w rozdziale XXII SWZ
   epo:hasScheme "organization";
   skos:notation "ORG-0002" .
 
+<http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasEnd <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/ContractEndPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
+<http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier> .
+
+<http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier>
+  a adms:Identifier;
+  skos:notation "Ustawa z 11 września 2019 r. – Prawo zamówień publicznych (t.j. Dz.U. z 2024 r., poz. 1320)." .
+
 <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/Lot/Identifier/BO%2F7%2F2025>
   a adms:Identifier;
   epo:hasScheme "InternalID";
@@ -169,7 +185,7 @@ zawarty jest w rozdziale XXII SWZ
 
 <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation """Informacje o warunkach udziału w postępowaniu:
 1)	Na podstawie art. 112 ustawy Pzp zamawiający określa warunki udziału w postępowaniu dotyczące:
@@ -216,7 +232,7 @@ zamówienia (w tym wspólnicy spółek cywilnych);
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/Lot/Identifier/BO%2F7%2F2025>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>;
@@ -252,13 +268,15 @@ zamówienia (w tym wspólnicy spółek cywilnych);
 <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/Notice>
   a epo:Notice, epo:Notice29, epo:ResultNotice;
   epo:announcesAwardDecision <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/AwardDecision/RES-0001>;
-  epo:hasESenderDispatchDate "2025-03-31T13:46:04Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2025-03-31T13:46:04Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/result>;
   epo:hasNoticePublicationNumber "00210411-2025";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-standard>;
-  epo:hasOJSIssueNumber "65/2025";
+  epo:hasOJSIssueNumber 65;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/POL>;
   epo:hasPublicationDate "2025-04-02+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/Lot/LOT-0001>;
   epo:refersToPrevious <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/Notice/122794-2025>;
@@ -284,6 +302,22 @@ zamówienia (w tym wspólnicy spółek cywilnych);
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "185108d8-b757-4c06-9757-0cc0bbdba373" .
+
+<http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.13" .
+
+<http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/OfflineAccessProvider/ORG-0001>
   a epo:OfflineAccessProvider;
@@ -312,6 +346,7 @@ zamówienia (w tym wspólnicy spółek cywilnych);
 
 <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/Organization/ORG-0001>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/Channel$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>;
   epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/Organization/Identifier$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>;
   epo:hasLegalName "Polska Agencja Kosmiczna"@pl;
@@ -330,7 +365,7 @@ zamówienia (w tym wspólnicy spółek cywilnych);
 
 <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/Procedure/041b60a1-2ba3-4ed7-80b5-b49c2a5c18c0>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/MonetaryValueProcedure$_ContractAwardNotice1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/185108d8-b757-4c06-9757-0cc0bbdba373-01/Procedure/Identifier/BO%2F7%2F2025>;

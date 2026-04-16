@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -28,8 +28,7 @@
 <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
   a epo:AccessTerm;
   epo:hasDocumentRestrictionJustification <http://publications.europa.eu/resource/authority/communication-justification/ipr-iss>;
-  epo:hasRestrictedAccessURL "https://etendering.ted.europa.eu/cft/cft-display.html?cftId=5629"^^xsd:anyURI;
-  epo:isProcurementDocumentRestricted true .
+  epo:hasRestrictedAccessURL "https://etendering.ted.europa.eu/cft/cft-display.html?cftId=5629"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>
   a epo:AwardCriterion;
@@ -138,8 +137,12 @@
   cccev:email "esender@example.com";
   cccev:telephone "+352 123456789" .
 
+<http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2020-06-01+02:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 48.0;
   time:unitType time:unitMonth .
 
@@ -160,20 +163,17 @@
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/LUX>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/LU000> .
 
-<http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2020-06-01+02:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/required>;
   epo:hasEOrdering true;
   epo:hasEPayment true;
   epo:hasMaximumNumberOfRenewals 0;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -202,9 +202,15 @@
     "Hlavným miestom vykonania sú priestory dodávateľa a priestory verejného obstarávateľa."@sk,
     "Glavni kraj izvedbe bodo prostori izvajalca in prostori naročnika."@sl, "Plats för utförande är huvudsakligen uppdragstagarens lokaler och den upphandlande myndighetens lokaler."@sv .
 
+<http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/Duration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 48.0;
+  time:unitType time:unitMonth .
+
 <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/DynamicPurchaseSystemTechnicalUsage$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/Duration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
 
 <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
   a epo:ExclusionGround;
@@ -219,8 +225,7 @@
     "zoals vermeld in de aanbestedingsstukken."@nl, "Jak określono w dokumentacji zamówienia."@pl,
     "Tal como indicado na documentação do concurso."@pt, "Astfel cum se indică în dosarul achiziției."@ro,
     "Ako je uvedené v súťažných podkladoch."@sk, "Kot je navedeno v razpisni dokumentaciji."@sl,
-    "Enligt vad som anges i upphandlingsdokumenten."@sv;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/insolvency> .
+    "Enligt vad som anges i upphandlingsdokumenten."@sv .
 
 <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -252,6 +257,10 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0004" .
 
+<http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/Lot/Identifier/AO%2010786%20Lot%201>
   a adms:Identifier;
   epo:hasScheme "InternalID";
@@ -259,26 +268,26 @@
 
 <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
+    <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/ProcurementCriterion$_ContractNotice1_ProcurementProjectLot1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/MonetaryValueLot$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/Lot/Identifier/AO%2010786%20Lot%201>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/LotPurpose$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
   epo:isRecurrent false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
     <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/OpeningTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1>,
     <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>,
-    <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>;
+    <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms15629>;
   epo:isUsingEUFunds true;
   epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>,
     <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion2>,
-    <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
     <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/ParticipationCondition$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1>,
-    <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/ProcurementCriterion$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>,
     <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>,
     <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>;
@@ -365,10 +374,12 @@
     <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/ReviewProcedureInformationProvider/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/Reviewer/ORG-0002organization>,
     <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/TenderReceiver/ORG-0001organization>;
-  epo:hasESenderDispatchDate "2019-11-21T00:00:00+01:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2019-11-21T00:00:00+01:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/cn-standard>;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/ENG>;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/Lot/LOT-0000>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/Procedure/46c9ce89-5986-40d9-992f-e1a2469a48f8>;
@@ -379,24 +390,24 @@
   epo:hasScheme "notice-id";
   skos:notation "55aae64f-88a8-44a5-b2fb-8228e97fe6ee" .
 
-<http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/OpenTenderEventPlace$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1_OccurenceLocation1>
-  a locn:Address;
-  locn:fullAddress "Помещенията на Службата за публикации в Люксембург."@bg, "Prostory Úřadu pro publikace v Lucemburku."@cs,
-    "Publikationskontorets lokaler i Luxembourg."@da, "Räumlichkeiten des Amtes für Veröffentlichungen in Luxemburg."@de,
-    "Στις εγκαταστάσεις της Υπηρεσίας Εκδόσεων στο Λουξεμβούργο."@el, "Premises of the Publications Office in LUXEMBOURG."@en,
-    "Instalaciones de la Oficina de Publicaciones en Luxemburgo."@es, "Väljaannete talituse ruumid Luxembourgis."@et,
-    "julkaisutoimiston toimitilat Luxemburgissa."@fi, "Locaux de l'Office des publications à Luxembourg."@fr,
-    "Áitreabh Oifig na bhFoilseachán i Lucsamburg."@ga, "Prostori Ureda za publikacije u Luxembourgu."@hr,
-    "A Kiadóhivatal luxembourgi helyiségei."@hu, "Locali dell'Ufficio delle pubblicazioni a Lussemburgo."@it,
-    "Leidinių biuro patalpos Liuksemburge."@lt, "Publikāciju biroja telpas Luksemburgā"@lv,
-    "Il-bini tal-Uffiċċju tal-Pubblikazzjonijiet fil-Lussemburgu."@mt, "de kantoren van het Bureau voor publicaties in Luxemburg."@nl,
-    "siedziba Urzędu Publikacji w Luksemburgu."@pl, "Instalações do Serviço das Publicações em Luxemburgo."@pt,
-    "Sediul Oficiului pentru Publicații din Luxemburg."@ro, "Priestory Úradu pre vydávanie publikácií Európskej únie v Luxemburgu."@sk,
-    "prostori Urada za publikacije v Luxembourgu."@sl, "Publikationsbyråns lokaler i Luxemburg."@sv .
+<http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.6" .
+
+<http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/OpeningTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1>
   a epo:OpeningTerm;
-  epo:definesOpeningPlace <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/OpenTenderEventPlace$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1_OccurenceLocation1>;
   epo:hasOpeningDateTime "2020-02-04ZT09:00:00Z"^^xsd:dateTime;
   epo:hasOpeningDescription "Както е определено в документите за обществена поръчка."@bg,
     "Jak je uvedeno v zadávací dokumentaci."@cs, "Som angivet i udbudsdokumenterne."@da,
@@ -409,7 +420,19 @@
     "Kif mistqarr fid-dokumenti tal-ksib."@mt, "zoals vermeld in de aanbestedingsstukken."@nl,
     "Jak określono w dokumentacji zamówienia."@pl, "Tal como indicado na documentação do concurso."@pt,
     "Astfel cum se indică în dosarul achiziției."@ro, "Ako je uvedené v súťažných podkladoch."@sk,
-    "Kot je navedeno v razpisni dokumentaciji."@sl, "Enligt vad som anges i upphandlingsdokumenten."@sv .
+    "Kot je navedeno v razpisni dokumentaciji."@sl, "Enligt vad som anges i upphandlingsdokumenten."@sv;
+  epo:hasOpeningPlace "Помещенията на Службата за публикации в Люксембург."@bg, "Prostory Úřadu pro publikace v Lucemburku."@cs,
+    "Publikationskontorets lokaler i Luxembourg."@da, "Räumlichkeiten des Amtes für Veröffentlichungen in Luxemburg."@de,
+    "Στις εγκαταστάσεις της Υπηρεσίας Εκδόσεων στο Λουξεμβούργο."@el, "Premises of the Publications Office in LUXEMBOURG."@en,
+    "Instalaciones de la Oficina de Publicaciones en Luxemburgo."@es, "Väljaannete talituse ruumid Luxembourgis."@et,
+    "julkaisutoimiston toimitilat Luxemburgissa."@fi, "Locaux de l'Office des publications à Luxembourg."@fr,
+    "Áitreabh Oifig na bhFoilseachán i Lucsamburg."@ga, "Prostori Ureda za publikacije u Luxembourgu."@hr,
+    "A Kiadóhivatal luxembourgi helyiségei."@hu, "Locali dell'Ufficio delle pubblicazioni a Lussemburgo."@it,
+    "Leidinių biuro patalpos Liuksemburge."@lt, "Publikāciju biroja telpas Luksemburgā"@lv,
+    "Il-bini tal-Uffiċċju tal-Pubblikazzjonijiet fil-Lussemburgu."@mt, "de kantoren van het Bureau voor publicaties in Luxemburg."@nl,
+    "siedziba Urzędu Publikacji w Luksemburgu."@pl, "Instalações do Serviço das Publicações em Luxemburgo."@pt,
+    "Sediul Oficiului pentru Publicații din Luxemburg."@ro, "Priestory Úradu pre vydávanie publikácií Európskej únie v Luxemburgu."@sk,
+    "prostori Urada za publikacije v Luxembourgu."@sl, "Publikationsbyråns lokaler i Luxemburg."@sv .
 
 <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/Organization/Identifier$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -493,7 +516,7 @@
 
 <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/Procedure/46c9ce89-5986-40d9-992f-e1a2469a48f8>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/MonetaryValueProcedure$_ContractNotice1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/Procedure/Identifier/AO%2010786>;
@@ -501,7 +524,8 @@
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/Lot/LOT-0000>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/ProcedurePurpose$_ContractNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/ProcedureTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/ProcedureTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>;
   dct:description "Предоставяне на ИТ услуги, свързани с информационните системи на Службата за публикации (именно EUR-Lex, N-Lex и Search Layer) с възможност да се удължи предоставянето на други информационни системи."@bg,
     "Poskytování IT služeb souvisejících s informačními systémy Úřadu pro publikace (konkrétně EUR-Lex, N-Lex a Search Layer), s možností rozšíření poskytování služeb o další informační systémy."@cs,
     "Levering af IT-systemer relateret til Publikationskontorets informationssystemer (dvs. EUR-Lex, N-Lex og søgelag), med mulighed for at udvide leverancen til andre informationssystemer."@da,
@@ -664,7 +688,6 @@
 
 <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>;
   dct:description "Както е определено в документите за обществена поръчка."@bg, "Jak je uvedeno v zadávací dokumentaci."@cs,
     "Som angivet i udbudsdokumenterne."@da, "Wie in den Ausschreibungsunterlagen angegeben."@de,
@@ -681,7 +704,6 @@
 
 <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/ef-stand>;
   dct:description "Както е определено в документите за обществена поръчка."@bg, "Jak je uvedeno v zadávací dokumentaci."@cs,
     "Som angivet i udbudsdokumenterne."@da, "Wie in den Ausschreibungsunterlagen angegeben."@de,
@@ -698,7 +720,6 @@
 
 <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/tp-abil>;
   dct:description "Както е определено в документите за обществена поръчка."@bg, "Jak je uvedeno v zadávací dokumentaci."@cs,
     "Som angivet i udbudsdokumenterne."@da, "Wie in den Ausschreibungsunterlagen angegeben."@de,
@@ -714,7 +735,7 @@
     "Enligt vad som anges i upphandlingsdokumenten."@sv .
 
 <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/SpecificDuration$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TenderValidityPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 6.0;
   time:unitType time:unitMonth .
 
@@ -744,3 +765,8 @@
   a epo:TenderReceiver;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/Lot/LOT-0000>;
   epo:playedBy <http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/55aae64f-88a8-44a5-b2fb-8228e97fe6ee-01AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms15629>
+  a epo:AccessTerm;
+  epo:hasRestrictedAccessURL "https://etendering.ted.europa.eu/cft/cft-display.html?cftId=5629"^^xsd:anyURI;
+  epo:isProcurementDocumentRestricted true .

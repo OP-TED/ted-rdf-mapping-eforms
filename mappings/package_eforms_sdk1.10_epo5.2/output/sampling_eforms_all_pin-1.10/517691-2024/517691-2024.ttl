@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -25,11 +25,14 @@
   a epo:AccessTerm;
   epo:definesProcurementProcedureInformationProvider <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/ProcurementProcedureInformationProvider/ORG-0001organization> .
 
-<http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
+<http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1OHL-2024%2F09>
   a epo:AccessTerm;
   epo:hasPublicAccessURL "https://www.staatsanzeiger-eservices.de"^^xsd:anyURI;
-  epo:involvesProcurementDocument <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/ProcurementDocument$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1OHL-2024%2F09>;
   epo:isProcurementDocumentRestricted false .
+
+<http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/AccessTermt$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1OHL-2024%2F09>
+  a epo:AccessTerm;
+  epo:providesProcurementDocumentsInOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU> .
 
 <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/AwardCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>
   a epo:AwardCriterion;
@@ -82,6 +85,14 @@
   cccev:email "noreply.esender_hub@bescha.bund.de";
   cccev:telephone "+49228996100" .
 
+<http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2025-03-28+01:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/ContractEndPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2025-11-07+01:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
@@ -102,19 +113,15 @@
   locn:postCode "82441";
   locn:postName "Ohlstadt" .
 
-<http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2025-03-28+01:00"^^xsd:date;
-  epo:hasEnd "2025-11-07+01:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/Interval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/allowed>;
   epo:hasEOrdering true;
   epo:hasEPayment true;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -127,8 +134,7 @@
 
 <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Es gelten zusätzlich die gesetzlichen Ausschlussvoraussetzungen nach §§ 123 bis 126 GWB. Der Bieter hat anzugeben, ob Ausschlussgründe nach §§ 123,124 GWB vorliegen und ob er selbst bzw. ein nach Satzung oder Gesetz für den Bieter Vertretungsberechtigter in den letzten zwei Jahren• gem. § 21 Abs. 1 Satz 1 oder 2 Schwarzarbeitsbekämpfungsgesetz oder• gem. § 21 Abs. 1 Arbeitnehmerentsendegesetz oder• gem. § 19 Abs. 1 Mindestlohngesetzmit einer Freiheitsstrafe von mehr als drei Monaten oder einer Geldstrafe von mehr als 90 Tagessätzen oder einer Geldbuße von mehr als 2.500 Euro belegt worden ist."@de;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/nati-ground> .
+  dct:description "Es gelten zusätzlich die gesetzlichen Ausschlussvoraussetzungen nach §§ 123 bis 126 GWB. Der Bieter hat anzugeben, ob Ausschlussgründe nach §§ 123,124 GWB vorliegen und ob er selbst bzw. ein nach Satzung oder Gesetz für den Bieter Vertretungsberechtigter in den letzten zwei Jahren• gem. § 21 Abs. 1 Satz 1 oder 2 Schwarzarbeitsbekämpfungsgesetz oder• gem. § 21 Abs. 1 Arbeitnehmerentsendegesetz oder• gem. § 19 Abs. 1 Mindestlohngesetzmit einer Freiheitsstrafe von mehr als drei Monaten oder einer Geldstrafe von mehr als 90 Tagessätzen oder einer Geldbuße von mehr als 2.500 Euro belegt worden ist."@de .
 
 <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -158,6 +164,20 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0003" .
 
+<http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/Interval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  time:hasEnd <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/ContractEndPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
+<http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier> .
+
+<http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier>
+  a adms:Identifier;
+  epo:hasScheme "ELI";
+  skos:notation "vob-a-eu" .
+
 <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/Lot/Identifier/OHL-2024%2F09>
   a adms:Identifier;
   epo:hasScheme "InternalID";
@@ -165,22 +185,21 @@
 
 <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/GreenProcurement$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/Lot/Identifier/OHL-2024%2F09>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
   epo:isSMESuitable true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
-    <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
+    <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1OHL-2024%2F09>,
     <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>,
     <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/SubmissionTerm$_PriorInformationNotice1_ProcurementProjectLot1>;
   epo:isUsingEUFunds false;
   epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/AwardCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>,
-    <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
     <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>;
   epo:usesTechnique <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/DynamicPurchaseSystemTechnicalUsage$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>;
   dct:description "Außentüren, Fenster, Sonnenschutz - Schwaigweg 1 / Am Dorfbach 15Das Grundstück ist derzeit mit einem ortsbildprägenden Wohnstallhaus bebaut. Das geplante Bauvorhaben besteht aus der Kernsanierung des Gebäudeteils auf Fl.Nr. 47, sowie Abbruch und Ersatzneubau des Gebäudeteils auf Fl.Nr. 47/1, einschl. einer unter dem Neubau liegenden Tiefgarage mit 12 Stellplätzen.Auf den oberirdischen Bereich entfallen im ähnlichen Umriss des Bestands 3 Geschosse, sowie ein Galeriegeschoss im Dachraum.Das Gebäude wird von der Gemeinde Ohlstadt als Bürgerhaus deklariert und enthält mehrere Nutzungen.Der Gebäudeneubau wird als Holzbau mit einer hölzernen Fassade erstellt. Der ehemalige Wohnteil dagegen wird entkernt, wobei die drei Außenwände bis zur Herstellung der neuen Decken mit Holzböcken abgestützt und gesichert werden. Anschließend wird innerhalb der bestehenden Wände ein Holzbau auf eine gründende Bodenplatte aufgebaut.Aufgabenbeschreibung: Gegenstand der Beschaffung sind die Aussentüren, Fenster und Sonnenschutzarbeiten für beschriebenes Bauvorhaben. Beschreibung der Beschaffung: - Baustelleneinrichtung, Geräte, Hebezeuge, Baustelle einrichten, vorhalten, räumen - Eigene Container AN - Schutz sichtbarer Bauteile - Werkstatt- und Montagepläne - Statische Berechnungen, Nachweise, U-Wert-Berechnung - Bemusterung, Mock-Up - Inbetriebnahme, Mitwirkung - Dokumentation - Pfosten-Riegel bzw. Elementfassade, Fichte beschichtet, raumhoch, 3-fach Isolier-Glas, Westfassade EG, ca. 32,5m² - Pfosten-Riegel bzw. Elementfassade, Fichte beschichtet, raumhoch, 3-fach Isolier-Glas, Nordfassade EG, ca. 46,0m² - Einsatzelement bzw. Tür für Elementfassade, als Rahmentür, nach außen öffnend, Fichte beschichtet, raumhoch, 3-fach Isolier-Glas, 5 Stk - Zulage Ausführung in Holzart Heimischer Tanne - Zulage Ausführung in Holzart Lärche - Holzfenster, 2-flg. mit Brüstung, in Dämmebene montiert, Bestandsanschluss EG, nach Aufmaß, Fichte beschichtet, 3-fach Isolier-Glas, Abmessungen ca. 1,490x1,490m, 11 Stk - Holzfenster, 2-flg. mit Brüstung, in Dämmebene montiert, Bestandsanschluss 1.OG, nach Aufmaß, Fichte beschichtet, 3-fach Isolier-Glas, Abmessungen ca. 1,420x1,420m, 13 Stk - Holzfenster, 2-flg. mit Brüstung, in Dämmebene montiert, Bestandsanschluss 2.OG, nach Aufmaß, Fichte beschichtet, 3-fach Isolier-Glas, Abmessungen ca. 1,420x1,340m, 4 Stk - Holzfenster, festverglast, mit Brüstung, in Dämmebene montiert, Bestandsanschluss 3.OG, nach Aufmaß, Fichte beschichtet, 3-fach Isolier-Glas, Abmessungen ca. 1,070x1,000m, 2 Stk - Holzfenster-Tür, 2-flg. bodentief, in Dämmebene montiert 1.OG, Anschluss an Holzbau, Fichte beschichtet, 3-fach Isolier-Glas, Abmessungen ca. 1,700x2,600m, 11 Stk - Holzfenster-Element, zweiteilig, bestehend aus 2-flg. Holzfenster-Tür bodentief und 1 Stk. Festverglasung, in Dämmebene montiert 2.OG, Anschluss an Holzbau, Fichte beschichtet, 3-fach Isolier-Glas, Abmessungen ca. 3,900x2,600m, 2 Stk - Holzfenster-Element, zweiteilig, bestehend aus 2 Stk Festverglasungen, Geometrie entsprechend Dachschräge, in Dämmebene montiert 2.OG, Anschluss an Holzbau, Fichte beschichtet, 3-fach Isolier-Glas, Abmessungen ca. 3,900x2,600m, 2 Stk - Holzfenster-Element, zweiteilig, bestehend aus 1-flg. Holzfenster-Tür bodentief und 1 Stk Festverglasung, Geometrie entsprechend Dachschräge, in Dämmebene montiert 3.OG, Anschluss an Holzbau, Fichte beschichtet, 3-fach Isolier-Glas, Abmessungen ca. 3,900x2,600m, 2 Stk - Zulage Ausführung in Holzart Heimischer Tanne - Zulage Ausführung in Holzart Lärche - Zulage erhöhter Schallschutz - Zulage Nullschwelle Fenstertüren- Aussentür-Element, Holztürblatt, geschlossen, Holzart Fichte, beschichtet, Bestand Hauptzugang, Abmessung ca. 1,250x2,650m, 1 Stk - Aussentür-Element, Holztürblatt, geschlossen, Holzart Fichte, beschichtet, Bestand Nebenzugang, Abmessung ca. 1,150x2,200m, 1 Stk. - Aussentür-Element, 3-tlg., bestehend aus Holztürblatt, geschlossen, Holzart Fichte, beschichtet, 2 Stk. verglaste Seitenteile, 3-fach Isolier-Glas, Anbau Eingang West, Gesamt-Abmessung ca. 3,150x2,750m, 1 Stk - Aussentür-Element, 6-tlg., bestehend aus Holztürblatt, geschlossen, Holzart Fichte, beschichtet, 5 Stk. verglaste Seitenteile, 3-fach Isolier-Glas, Anbau Eingang Ost, Gesamt-Abmessung ca. 3,750x4,200m, 1 Stk - Zulage Ausführung in Holzart Heimischer Tanne - Zulage Ausführung in Holzart Lärche - Sonnenschutz als Vorbaumarkise, Textil-Screen, Anbau EG, Abmessung ca. 1,000x2,700m, 5 Stk - Sonnenschutz als Vorbaumarkise, Textil-Screen, Anbau EG, Abmessung ca. 2,000x2,700m, 4 Stk - Sonnenschutz als Vorbaumarkise, Textil-Screen, Anbau 1.OG, Abmessung ca. 1,800x2,700m, 11 Stk - Fenster-Klappladen, 2-flg, Nachbildung gem. Bestands-Klappläden als Rahmen mit Füllung, Holzart Fichte, beschichtet, Abmessung Öffnung ca. 1,500x1,500, 24 Stk - Fenster-Klappladen, 2-flg, Nachbildung gem. Bestands-Klappläden als Bretterladen, Holzart Fichte, beschichtet, Abmessung Öffnung ca. 1,500x1,500, 4 Stk - Fenster-Klappladen, 2-flg, Nachbildung gem. Bestands-Klappläden als Bretterladen, Holzart Fichte, beschichtet, Abmessung Öffnung ca. 1,100x1,100, 2 Stk - Zulage Ausführung in Holzart Heimischer Tanne - Innenfensterbänke, auf Brüstung, aus Leimholzplatten, d=30mm, Leibungstiefe 100 – 160mm, einschl. sämtlicher Pass-Schnitte, Holzart Fichte beschichtet, ca. 25m - Verleistung / Deckleisten im Bereich Dämmebene, als Leibungsbekleidung, ca. 170m - Zulage Ausführung in Holzart Heimischer Tanne - Türdrücker für beschriebene Positionen, Edelstahl bzw. Alu natur - Fenstergriffe für beschriebene Positionen, Edelstahl. bzw. Alu natur - Drehtürantrieb, 1 Stk, einschl. Kabelschema, Inbetriebnahme - Blower-Door-Test - Schlecht-Wetter-Verbau - Stundenlohnarbeit Vorarbeiter - Stundenlohnarbeit Facharbeiter - Stundenlohnarbeit Bauhelfer"@de;
@@ -196,17 +215,20 @@
 
 <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/Notice>
   a epo:Notice, epo:Notice7, epo:PlanningNotice;
+  epo:announcesProcedure <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/Procedure/0000000-0000-4000-8000-000000000000>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/Buyer/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/ProcurementProcedureInformationProvider/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>,
     <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/Reviewer/ORG-0002organization>;
-  epo:hasESenderDispatchDate "2024-08-27T18:01:02+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-08-27T18:01:02+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticePublicationNumber "00517691-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-rtl>;
-  epo:hasOJSIssueNumber "168/2024";
+  epo:hasOJSIssueNumber 168;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU>;
   epo:hasPublicationDate "2024-08-29+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/Procedure/0000000-0000-4000-8000-000000000000>;
@@ -216,6 +238,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "c944b5ad-bff3-47d9-aef6-2de8dc053fbf" .
+
+<http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.10" .
+
+<http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -255,9 +293,17 @@
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization3_Company1_PostalAddress1>;
   adms:identifier <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/Identifier/ORG-0003> .
 
+<http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/PlanningNotice>
+  a epo:PlanningNotice;
+  epo:announcesLot <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/Lot/LOT-0001> .
+
+<http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/Procedure/>
+  a epo:Procedure;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1> .
+
 <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/Procedure/0000000-0000-4000-8000-000000000000>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation "1. Der Bieter hat anzugeben inwieweit sein Unternehmen einen Bezug zu Russland hat. Dafür ist die “Eigenerklärung Bezug Russland“ (FB 127/L127/III.127) auszufüllen und als Teil des Angebotes abzugeben. Diese Erklärung ist auch für Unterauftragnehmer, Lieferanten oder Eignungsverleiher gem. den Bedingungen der Erklärung abzugeben.Angebote können ausschließlich von registrierten Bewerbern über die Vergabeplattform (www.staatsanzeiger-eservices.de) in Textform eingereicht werden.Die Kommunikation (Fragen, Auskünfte) erfolgt ausschließlich über die Vergabeplattform.2. Der Bieter hat anzugeben inwieweit sein Unternehmen von ausbeuterischer Kinderarbeit sind insbesondere folgende Produkte betroffen ist:- Sportbekleidung, Sportartikel, insbesondere Bälle- Spielwaren- Teppiche- Textilien- Lederprodukte- Billigprodukte aus Holz- Natursteine- Agrarprodukte wie z.B. Kaffee, Kakao, Orangen- oder Tomatensaft.Dafür ist die “Eigenerklärung Kinderarbeit“ (FB 2491) auszufüllen und als Teil des Angebotes abzugeben. Diese Erklärung ist auch für Unterauftragnehmer, Lieferanten oder Eignungsverleiher gem. den Bedingungen der Erklärung abzugeben.Angebote können ausschließlich von registrierten Bewerbern über die Vergabeplattform (www.staatsanzeiger-eservices.de) in Textform eingereicht werden.Die Kommunikation (Fragen, Auskünfte) erfolgt ausschließlich über die Vergabeplattform.3. Der Bieter hat anzugeben inwieweit sein Unternehmen zu verwendenden Holzprodukte zertifiziert sind. Alle zu verwendenden Holzprodukte müssen nach FSC, PEFC oder gleichwertig zertifiziert sein oder die für das jeweilige Herkunftsland geltenden Kriterien des FSC oder PEFC einzeln erfüllen. Dafür ist die “Eigenerklärung zur Verwendung von Holzprodukten“ (FB 248) auszufüllen und als Teil des Angebotes abzugeben. Diese Erklärung ist auch für Unterauftragnehmer, Lieferanten oder Eignungsverleiher gem. den Bedingungen der Erklärung abzugeben.Angebote können ausschließlich von registrierten Bewerbern über die Vergabeplattform (www.staatsanzeiger-eservices.de) in Textform eingereicht werden.Die Kommunikation (Fragen, Auskünfte) erfolgt ausschließlich über die Vergabeplattform.4. Der Bieter hat anzugeben inwieweit sein Unternehmen die Vermeidung, Verwertung und Beseitigung von Bau- und Abbruchabfällen sowie Baustellenabfällen regelt. Dafür ist die “Ergänzung der Aufforderung zur Abgabe eines Angebotes Abfall“ (FB 241) auszufüllen und als Teil des Angebotes abzugeben. Diese Ergänzung der Aufforderung zur Abgabe eines Angebots ist auch für Unterauftragnehmer, Lieferanten oder Eignungsverleiher gem. den Bedingungen der Erklärung abzugeben.Angebote können ausschließlich von registrierten Bewerbern über die Vergabeplattform (www.staatsanzeiger-eservices.de) in Textform eingereicht werden.Die Kommunikation (Fragen, Auskünfte) erfolgt ausschließlich über die Vergabeplattform.5. Auf die Vorschriften der VOB/B, VOB/C und dem BGB wird Bezug genommen und im weiteren Verfahren angewandt."@de;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/Procedure/Identifier/OHL-2024%2F09>;
@@ -266,6 +312,7 @@
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>;
   dct:description "Außentüren, Fenster, Sonnenschutz - Schwaigweg 1 / Am Dorfbach 15Das Grundstück ist derzeit mit einem ortsbildprägenden Wohnstallhaus bebaut. Das geplante Bauvorhaben besteht aus der Kernsanierung des Gebäudeteils auf Fl.Nr. 47, sowie Abbruch und Ersatzneubau des Gebäudeteils auf Fl.Nr. 47/1, einschl. einer unter dem Neubau liegenden Tiefgarage mit 12 Stellplätzen.Auf den oberirdischen Bereich entfallen im ähnlichen Umriss des Bestands 3 Geschosse, sowie ein Galeriegeschoss im Dachraum.Das Gebäude wird von der Gemeinde Ohlstadt als Bürgerhaus deklariert und enthält mehrere Nutzungen.Der Gebäudeneubau wird als Holzbau mit einer hölzernen Fassade erstellt. Der ehemalige Wohnteil dagegen wird entkernt, wobei die drei Außenwände bis zur Herstellung der neuen Decken mit Holzböcken abgestützt und gesichert werden. Anschließend wird innerhalb der bestehenden Wände ein Holzbau auf eine gründende Bodenplatte aufgebaut.Aufgabenbeschreibung: Gegenstand der Beschaffung sind die Aussentüren, Fenster und Sonnenschutzarbeiten für beschriebenes Bauvorhaben. Beschreibung der Beschaffung: - Baustelleneinrichtung, Geräte, Hebezeuge, Baustelle einrichten, vorhalten, räumen - Eigene Container AN - Schutz sichtbarer Bauteile - Werkstatt- und Montagepläne - Statische Berechnungen, Nachweise, U-Wert-Berechnung - Bemusterung, Mock-Up - Inbetriebnahme, Mitwirkung - Dokumentation - Pfosten-Riegel bzw. Elementfassade, Fichte beschichtet, raumhoch, 3-fach Isolier-Glas, Westfassade EG, ca. 32,5m² - Pfosten-Riegel bzw. Elementfassade, Fichte beschichtet, raumhoch, 3-fach Isolier-Glas, Nordfassade EG, ca. 46,0m² - Einsatzelement bzw. Tür für Elementfassade, als Rahmentür, nach außen öffnend, Fichte beschichtet, raumhoch, 3-fach Isolier-Glas, 5 Stk - Zulage Ausführung in Holzart Heimischer Tanne - Zulage Ausführung in Holzart Lärche - Holzfenster, 2-flg. mit Brüstung, in Dämmebene montiert, Bestandsanschluss EG, nach Aufmaß, Fichte beschichtet, 3-fach Isolier-Glas, Abmessungen ca. 1,490x1,490m, 11 Stk - Holzfenster, 2-flg. mit Brüstung, in Dämmebene montiert, Bestandsanschluss 1.OG, nach Aufmaß, Fichte beschichtet, 3-fach Isolier-Glas, Abmessungen ca. 1,420x1,420m, 13 Stk - Holzfenster, 2-flg. mit Brüstung, in Dämmebene montiert, Bestandsanschluss 2.OG, nach Aufmaß, Fichte beschichtet, 3-fach Isolier-Glas, Abmessungen ca. 1,420x1,340m, 4 Stk - Holzfenster, festverglast, mit Brüstung, in Dämmebene montiert, Bestandsanschluss 3.OG, nach Aufmaß, Fichte beschichtet, 3-fach Isolier-Glas, Abmessungen ca. 1,070x1,000m, 2 Stk - Holzfenster-Tür, 2-flg. bodentief, in Dämmebene montiert 1.OG, Anschluss an Holzbau, Fichte beschichtet, 3-fach Isolier-Glas, Abmessungen ca. 1,700x2,600m, 11 Stk - Holzfenster-Element, zweiteilig, bestehend aus 2-flg. Holzfenster-Tür bodentief und 1 Stk. Festverglasung, in Dämmebene montiert 2.OG, Anschluss an Holzbau, Fichte beschichtet, 3-fach Isolier-Glas, Abmessungen ca. 3,900x2,600m, 2 Stk - Holzfenster-Element, zweiteilig, bestehend aus 2 Stk Festverglasungen, Geometrie entsprechend Dachschräge, in Dämmebene montiert 2.OG, Anschluss an Holzbau, Fichte beschichtet, 3-fach Isolier-Glas, Abmessungen ca. 3,900x2,600m, 2 Stk - Holzfenster-Element, zweiteilig, bestehend aus 1-flg. Holzfenster-Tür bodentief und 1 Stk Festverglasung, Geometrie entsprechend Dachschräge, in Dämmebene montiert 3.OG, Anschluss an Holzbau, Fichte beschichtet, 3-fach Isolier-Glas, Abmessungen ca. 3,900x2,600m, 2 Stk - Zulage Ausführung in Holzart Heimischer Tanne - Zulage Ausführung in Holzart Lärche - Zulage erhöhter Schallschutz - Zulage Nullschwelle Fenstertüren- Aussentür-Element, Holztürblatt, geschlossen, Holzart Fichte, beschichtet, Bestand Hauptzugang, Abmessung ca. 1,250x2,650m, 1 Stk - Aussentür-Element, Holztürblatt, geschlossen, Holzart Fichte, beschichtet, Bestand Nebenzugang, Abmessung ca. 1,150x2,200m, 1 Stk. - Aussentür-Element, 3-tlg., bestehend aus Holztürblatt, geschlossen, Holzart Fichte, beschichtet, 2 Stk. verglaste Seitenteile, 3-fach Isolier-Glas, Anbau Eingang West, Gesamt-Abmessung ca. 3,150x2,750m, 1 Stk - Aussentür-Element, 6-tlg., bestehend aus Holztürblatt, geschlossen, Holzart Fichte, beschichtet, 5 Stk. verglaste Seitenteile, 3-fach Isolier-Glas, Anbau Eingang Ost, Gesamt-Abmessung ca. 3,750x4,200m, 1 Stk - Zulage Ausführung in Holzart Heimischer Tanne - Zulage Ausführung in Holzart Lärche - Sonnenschutz als Vorbaumarkise, Textil-Screen, Anbau EG, Abmessung ca. 1,000x2,700m, 5 Stk - Sonnenschutz als Vorbaumarkise, Textil-Screen, Anbau EG, Abmessung ca. 2,000x2,700m, 4 Stk - Sonnenschutz als Vorbaumarkise, Textil-Screen, Anbau 1.OG, Abmessung ca. 1,800x2,700m, 11 Stk - Fenster-Klappladen, 2-flg, Nachbildung gem. Bestands-Klappläden als Rahmen mit Füllung, Holzart Fichte, beschichtet, Abmessung Öffnung ca. 1,500x1,500, 24 Stk - Fenster-Klappladen, 2-flg, Nachbildung gem. Bestands-Klappläden als Bretterladen, Holzart Fichte, beschichtet, Abmessung Öffnung ca. 1,500x1,500, 4 Stk - Fenster-Klappladen, 2-flg, Nachbildung gem. Bestands-Klappläden als Bretterladen, Holzart Fichte, beschichtet, Abmessung Öffnung ca. 1,100x1,100, 2 Stk - Zulage Ausführung in Holzart Heimischer Tanne - Innenfensterbänke, auf Brüstung, aus Leimholzplatten, d=30mm, Leibungstiefe 100 – 160mm, einschl. sämtlicher Pass-Schnitte, Holzart Fichte beschichtet, ca. 25m - Verleistung / Deckleisten im Bereich Dämmebene, als Leibungsbekleidung, ca. 170m - Zulage Ausführung in Holzart Heimischer Tanne - Türdrücker für beschriebene Positionen, Edelstahl bzw. Alu natur - Fenstergriffe für beschriebene Positionen, Edelstahl. bzw. Alu natur - Drehtürantrieb, 1 Stk, einschl. Kabelschema, Inbetriebnahme - Blower-Door-Test - Schlecht-Wetter-Verbau - Stundenlohnarbeit Vorarbeiter - Stundenlohnarbeit Facharbeiter - Stundenlohnarbeit Bauhelfer"@de;
   dct:title "Außentüren, Fenster, Sonnenschutz - Schwaigweg 1 / Am Dorfbach 15"@de .
 
@@ -289,9 +336,9 @@
     <http://data.europa.eu/cpv/cpv/45443000>;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/45421100> .
 
-<http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/ProcurementDocument$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1OHL-2024%2F09>
-  a epo:ProcurementDocument;
-  epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU> .
+<http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>
+  a epo:ProcessPlanningTerm;
+  epo:hasEstimatedContractNoticePublicationDate "2024-10-02+01:00"^^xsd:date .
 
 <http://data.europa.eu/a4g/resource/c944b5ad-bff3-47d9-aef6-2de8dc053fbf-01/ProcurementProcedureInformationProvider/ORG-0001organization>
   a epo:ProcurementProcedureInformationProvider;

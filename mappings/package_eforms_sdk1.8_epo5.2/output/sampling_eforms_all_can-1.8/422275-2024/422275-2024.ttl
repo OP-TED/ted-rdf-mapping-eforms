@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -46,7 +46,7 @@
   epo:hasChangeDescription "Zadavatel snížil požadavky na technickou kvalifikaci, když ponížil počet požadovaných významných služeb z 15 na 3 a současně pro každou z nich snížil požadovanou hodnotu ze 150 tis. Kč bez DPH na 75 tis. Kč bez DPH. Tato oprava se původního formuláře přímo nedotýká. Původní formulář byl zveřejněn podle předchozí právní úpravy - odlišná podoba."@cs;
   epo:hasChangeJustification <http://publications.europa.eu/resource/authority/change-corrig-justification/update-add>;
   epo:hasChangeReasonDescription "Zadavatel snížil požadavky na technickou kvalifikaci, když ponížil počet požadovaných významných služeb z 15 na 3 a současně pro každou z nich snížil požadovanou hodnotu ze 150 tis. Kč bez DPH na 75 tis. Kč bez DPH."@cs;
-  epo:hasProcurementDocumentChangeDate "2024-07-12+02:00"^^xsd:date;
+  epo:hasProcurementDocumentChangeDate "2024-07-12T00:00:00+02:00"^^xsd:dateTime;
   epo:isProcurementDocumentChanged true;
   epo:refersToPreviousNotice <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/Notice/538564-2023>;
   epo:relatesToEFormSectionIdentifier <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/Notice/538564-2023/Identifier/PROCEDURE> .
@@ -78,24 +78,27 @@
   cccev:email "posta@uohs.cz";
   cccev:telephone "+420 542167111" .
 
+<http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2023-09-01+02:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/ContractEndPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2028-08-30+02:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/ContractLocation$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/CZE>;
-  locn:address <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/ProcedurePlacePerformance$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1> .
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/CZE> .
 
 <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/ContractLocation$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/CZE> .
 
-<http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2023-09-01+02:00"^^xsd:date;
-  epo:hasEnd "2028-08-30+02:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -125,19 +128,40 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0002" .
 
+<http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  time:hasEnd <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/ContractEndPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
+<http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier> .
+
+<http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier>
+  a adms:Identifier;
+  skos:notation "32014L0024" .
+
+<http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2/Identifier> .
+
+<http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2/Identifier>
+  a adms:Identifier;
+  skos:notation "134/2016 Sb." .
+
 <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/Lot/Identifier/UKRUK%2F426790%2F2023>
   a adms:Identifier;
   skos:notation "UKRUK/426790/2023" .
 
 <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/MonetaryValueLot$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/Lot/Identifier/UKRUK%2F426790%2F2023>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>;
   epo:isUsingEUFunds false;
@@ -151,8 +175,7 @@
 <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/LotAwardOutcome/RES-0001>
   a epo:LotAwardOutcome;
   epo:concernsLot <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/Lot/LOT-0001>;
-  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/open-nw>;
-  rdfs:seeAlso <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/ReviewRequestSummary$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1> .
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/open-nw> .
 
 <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>
   a epo:Purpose;
@@ -177,13 +200,15 @@
   a epo:Notice, epo:Notice29, epo:ResultNotice;
   epo:announcesAwardDecision <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/AwardDecision/RES-0001>;
   epo:announcesNoticeAwardInformation <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>;
-  epo:hasESenderDispatchDate "2024-07-12T12:45:16+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-07-12T12:45:16+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/result>;
   epo:hasNoticePublicationNumber "00422275-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-standard>;
-  epo:hasOJSIssueNumber "136/2024";
+  epo:hasOJSIssueNumber 136;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/CES>;
   epo:hasPublicationDate "2024-07-15Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/Lot/LOT-0001>;
   epo:refersToPrevious <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/Notice/538564-2023>;
@@ -209,6 +234,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "bb126c6e-d563-446a-a431-033ff3faf2f6" .
+
+<http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.8" .
+
+<http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
   a epo:NoticeAwardInformation;
@@ -246,7 +287,7 @@
 
 <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/Procedure/a40aae46-f023-42c9-8f19-660b40a6d195>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation "Toto opravné oznámení je učiněno z důvodu naplnění podmínek stanovených v § 139a odst. 5 písm. c) ZZVZ, kdy je zadavatel povinen odeslat oznámení o změně k uveřejnění způsobem podle § 212, pokud dojde ke změně nebo doplnění zadávací dokumentace (bez ohledu na to, zda má taková změna dopad do původního uveřejněného formuláře)."@cs;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/MonetaryValueProcedure$_ContractAwardNotice1_ProcurementProject1_RequestedTenderTotal1>;
@@ -259,10 +300,6 @@
   dct:description "Předmětem veřejných zakázek zadávaných v zavedeném DNS bude tisk publikací s vazbou V8 nebo V7."@cs;
   dct:title "Nakladatelství Karolinum – Dynamický nákupní systém na tisk publikací s vazbou V8 nebo V7"@cs;
   adms:identifier <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/Procedure/Identifier/a40aae46-f023-42c9-8f19-660b40a6d195> .
-
-<http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/ProcedurePlacePerformance$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/CZE> .
 
 <http://data.europa.eu/a4g/resource/bb126c6e-d563-446a-a431-033ff3faf2f6-01/ProcedurePurpose$_ContractAwardNotice1_ProcurementProject1>
   a epo:Purpose;

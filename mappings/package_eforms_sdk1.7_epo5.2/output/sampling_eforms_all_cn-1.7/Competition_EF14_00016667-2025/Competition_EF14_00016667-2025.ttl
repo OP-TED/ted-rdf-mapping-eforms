@@ -17,19 +17,13 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>
   a epo:AccessTerm;
   epo:definesProcurementProcedureInformationProvider <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ProcurementProcedureInformationProvider/ORG-0001organization> .
-
-<http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
-  a epo:AccessTerm;
-  epo:hasPublicAccessURL "https://s2c.mercell.com/today/119157"^^xsd:anyURI;
-  epo:involvesProcurementDocument <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ProcurementDocument$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1Tender%20documents>;
-  epo:isProcurementDocumentRestricted false .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/Buyer/ORG-0001organization>
   a epo:Buyer;
@@ -49,6 +43,14 @@
   cccev:email "sietse.waanders@vattenfall.com";
   cccev:telephone "+31622647785" .
 
+<http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2025-04-01Z"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ContractEndPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2028-05-31Z"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ContractLocation$_ContractNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NLD>;
@@ -66,18 +68,14 @@
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NLD>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/NL329> .
 
-<http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2025-04-01Z"^^xsd:date;
-  epo:hasEnd "2028-05-31Z"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasMaximumNumberOfRenewals 2;
   epo:hasPerformanceConditions "zie leidraad"@nl;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -90,118 +88,95 @@
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "zie leidraad"@nl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/bankr-nat> .
+  dct:description "zie leidraad"@nl .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement10>
   a epo:ExclusionGround;
-  dct:description "zie leidraad"@nl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/human-traffic> .
+  dct:description "zie leidraad"@nl .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement11>
   a epo:ExclusionGround;
-  dct:description "zie leidraad"@nl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/insolvency> .
+  dct:description "zie leidraad"@nl .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement12>
   a epo:ExclusionGround;
-  dct:description "zie leidraad"@nl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/labour-law> .
+  dct:description "zie leidraad"@nl .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement13>
   a epo:ExclusionGround;
-  dct:description "zie leidraad"@nl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/liq-admin> .
+  dct:description "zie leidraad"@nl .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement14>
   a epo:ExclusionGround;
-  dct:description "zie leidraad"@nl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/misrepresent> .
+  dct:description "zie leidraad"@nl .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement15>
   a epo:ExclusionGround;
-  dct:description "zie leidraad"@nl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/partic-confl> .
+  dct:description "zie leidraad"@nl .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement16>
   a epo:ExclusionGround;
-  dct:description "zie leidraad"@nl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/prep-confl> .
+  dct:description "zie leidraad"@nl .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement17>
   a epo:ExclusionGround;
-  dct:description "zie leidraad"@nl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/prof-misconduct> .
+  dct:description "zie leidraad"@nl .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement18>
   a epo:ExclusionGround;
-  dct:description "zie leidraad"@nl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/sanction> .
+  dct:description "zie leidraad"@nl .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement19>
   a epo:ExclusionGround;
-  dct:description "zie leidraad"@nl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/socsec-law> .
+  dct:description "zie leidraad"@nl .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement2>
   a epo:ExclusionGround;
-  dct:description "zie leidraad"@nl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/bankruptcy> .
+  dct:description "zie leidraad"@nl .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement20>
   a epo:ExclusionGround;
-  dct:description "zie leidraad"@nl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/socsec-pay> .
+  dct:description "zie leidraad"@nl .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement21>
   a epo:ExclusionGround;
-  dct:description "zie leidraad"@nl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/susp-act> .
+  dct:description "zie leidraad"@nl .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement22>
   a epo:ExclusionGround;
-  dct:description "zie leidraad"@nl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/tax-pay> .
+  dct:description "zie leidraad"@nl .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement23>
   a epo:ExclusionGround;
-  dct:description "zie leidraad"@nl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/terr-offence> .
+  dct:description "zie leidraad"@nl .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement3>
   a epo:ExclusionGround;
-  dct:description "zie leidraad"@nl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/corruption> .
+  dct:description "zie leidraad"@nl .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement4>
   a epo:ExclusionGround;
-  dct:description "zie leidraad"@nl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/cred-arran> .
+  dct:description "zie leidraad"@nl .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement5>
   a epo:ExclusionGround;
-  dct:description "zie leidraad"@nl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/crime-org> .
+  dct:description "zie leidraad"@nl .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement6>
   a epo:ExclusionGround;
-  dct:description "zie leidraad"@nl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/distorsion> .
+  dct:description "zie leidraad"@nl .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement7>
   a epo:ExclusionGround;
-  dct:description "zie leidraad"@nl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/envir-law> .
+  dct:description "zie leidraad"@nl .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement8>
   a epo:ExclusionGround;
-  dct:description "zie leidraad"@nl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/finan-laund> .
+  dct:description "zie leidraad"@nl .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement9>
   a epo:ExclusionGround;
-  dct:description "zie leidraad"@nl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/fraud> .
+  dct:description "zie leidraad"@nl .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -217,6 +192,11 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0001" .
 
+<http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  time:hasEnd <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ContractEndPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/Lot/Identifier/Technische%20Schoonmaak>
   a adms:Identifier;
   epo:hasScheme "InternalID";
@@ -224,46 +204,23 @@
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
+    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ProcurementCriterion$_ContractNotice1_ProcurementProjectLot1>;
   epo:hasAdditionalInformation "zie leidraad"@nl;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/MonetaryValueLot$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/Lot/Identifier/Technische%20Schoonmaak>;
   epo:hasLaunchFrameworkAgreementMaximumValue <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/LotValueEstimateExtension$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/LotPurpose$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
-    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/NonDisclosureAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/SecurityClearanceTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
-    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>;
+    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1Tender%20documents>;
   epo:isUsingEUFunds false;
-  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement10>,
-    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement11>,
-    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement12>,
-    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement13>,
-    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement14>,
-    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement15>,
-    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement16>,
-    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement17>,
-    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement18>,
-    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement19>,
-    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement2>,
-    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement20>,
-    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement21>,
-    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement22>,
-    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement23>,
-    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement3>,
-    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement4>,
-    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement5>,
-    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement6>,
-    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement7>,
-    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement8>,
-    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement9>,
-    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ParticipationCondition$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1>,
-    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ProcurementCriterion$_ContractNotice1_ProcurementProjectLot1>,
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ParticipationCondition$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1>,
     <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>,
     <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>,
     <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>;
@@ -306,13 +263,16 @@ De geraamde waarde van alle voor de duur van de raamovereenkomst voorgenomen opd
     <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ProcurementProcedureInformationProvider/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/TenderProcessor/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/TenderReceiver/ORG-0001organization>;
+  epo:hasDispatchDate "2025-01-09T11:36:56+00:00"^^xsd:dateTime;
   epo:hasESenderDispatchDate "2025-01-09T11:36:56+00:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00016667-2025";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-cfc-standard>;
-  epo:hasOJSIssueNumber "7/2025";
+  epo:hasOJSIssueNumber 7;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/NLD>;
   epo:hasPublicationDate "2025-01-10+01:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/Lot/LOT-0000>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/Procedure/78004fa5-1e04-4607-b88c-79104ebe2e4a>;
@@ -322,6 +282,22 @@ De geraamde waarde van alle voor de duur van de raamovereenkomst voorgenomen opd
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "8c372989-744a-4e7d-864b-af03ee47aa80" .
+
+<http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.7" .
+
+<http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/Organization/Identifier$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -342,7 +318,7 @@ De geraamde waarde van alle voor de duur van de raamovereenkomst voorgenomen opd
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/Procedure/78004fa5-1e04-4607-b88c-79104ebe2e4a>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation "zie leidraad"@nl;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/MonetaryValueProcedure$_ContractNotice1_ProcurementProject1_RequestedTenderTotal1>;
@@ -352,6 +328,29 @@ De geraamde waarde van alle voor de duur van de raamovereenkomst voorgenomen opd
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/Lot/LOT-0000>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ProcedurePurpose$_ContractNotice1_ProcurementProject1>;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement10>,
+    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement11>,
+    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement12>,
+    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement13>,
+    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement14>,
+    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement15>,
+    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement16>,
+    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement17>,
+    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement18>,
+    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement19>,
+    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement2>,
+    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement20>,
+    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement21>,
+    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement22>,
+    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement23>,
+    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement3>,
+    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement4>,
+    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement5>,
+    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement6>,
+    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement7>,
+    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement8>,
+    <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement9>;
   dct:description """De scope betreft het door één partij laten uitvoeren van technische schoonmaakwerkzaamheden in het kader van onderhoudsactiviteiten op de bestaande energieproductielocaties, inclusief sub-locaties.
 De geraamde waarde van alle voor de duur van de raamovereenkomst voorgenomen opdrachten bedraagt : € 2.500.000,- Euro. De overeenkomst zal worden aangegaan voor de duur van 3 jaar en zal eindigen op 31 juni 2028 waarbij Vattenfall de mogelijkheid heeft om 2 maal de overeenkomst te verlengen voor een periode van 1 jaar.
  
@@ -386,10 +385,6 @@ De geraamde waarde van alle voor de duur van de raamovereenkomst voorgenomen opd
   a epo:ProcurementCriterion;
   epo:hasPerformingStaffQualificationInformation <http://publications.europa.eu/resource/authority/requirement-stage/not-requ> .
 
-<http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ProcurementDocument$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1Tender%20documents>
-  a epo:ProcurementDocument;
-  epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/NLD> .
-
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/ProcurementProcedureInformationProvider/ORG-0001organization>
   a epo:ProcurementProcedureInformationProvider;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/Lot/LOT-0000>;
@@ -410,27 +405,24 @@ De geraamde waarde van alle voor de duur van de raamovereenkomst voorgenomen opd
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/ef-stand>;
   dct:description "zie leidraad"@nl;
   skos:prefLabel "zie leidraad"@nl .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>;
   dct:description "zie leidraad"@nl;
   skos:prefLabel "ie leidraad"@nl .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/tp-abil>;
   dct:description "zie leidraad"@nl;
   skos:prefLabel "zie leidraad"@nl .
 
 <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/SpecificDuration$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TenderValidityPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 100.0;
   time:unitType time:unitDay .
 
@@ -457,3 +449,9 @@ De geraamde waarde van alle voor de duur van de raamovereenkomst voorgenomen opd
   a epo:TenderReceiver;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/Lot/LOT-0000>;
   epo:playedBy <http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/8c372989-744a-4e7d-864b-af03ee47aa80-01AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1Tender%20documents>
+  a epo:AccessTerm;
+  epo:hasPublicAccessURL "https://s2c.mercell.com/today/119157"^^xsd:anyURI;
+  epo:isProcurementDocumentRestricted false;
+  epo:providesProcurementDocumentsInOfficialLanguage <http://publications.europa.eu/resource/authority/language/NLD> .

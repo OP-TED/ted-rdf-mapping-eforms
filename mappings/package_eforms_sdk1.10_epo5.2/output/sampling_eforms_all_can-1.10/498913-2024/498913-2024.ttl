@@ -17,14 +17,14 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/AwardDecision/2023-05-03%2B02%3A00>
   a epo:AwardDecision;
   epo:comprisesAwardOutcome <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/LotAwardOutcome/RES-0000>;
-  epo:hasAwardDecisionDate "2023-05-03+02:00"^^xsd:date .
+  epo:hasAwardDecisionDate "2023-05-03T00:00:00+02:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/Buyer/ORG-0000organization>
   a epo:Buyer;
@@ -112,7 +112,8 @@
 
 <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -147,6 +148,14 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0001" .
 
+<http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier> .
+
+<http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier>
+  a adms:Identifier;
+  skos:notation "vgv" .
+
 <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/Lot/Identifier/203422000004>
   a adms:Identifier;
   epo:hasScheme "InternalID";
@@ -154,12 +163,12 @@
 
 <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/GreenProcurement$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/Lot/Identifier/203422000004>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>;
   dct:description "Neukonzeption/Überarbeitung und Umbau der Dauerausstellung \"BioSphärenReservat\" im Informationszentrum des UNESCO-Biosphärenreservates Schaalsee"@de;
   dct:title "Umgestaltung der Ausstellung im Besucherinformationszentrum PAHLHUUS"@de;
   adms:identifier <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/Identifier/LOT-0000> .
@@ -187,13 +196,15 @@
 <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/Notice>
   a epo:ContractModificationNotice, epo:Notice, epo:Notice38;
   epo:announcesContractAmendment <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/ContractAmendment$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_ContractModification1>;
-  epo:hasESenderDispatchDate "2024-08-19T00:00:00+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-08-19T00:00:00+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/cont-modif>;
   epo:hasNoticePublicationNumber "00498913-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-modif>;
-  epo:hasOJSIssueNumber "161/2024";
+  epo:hasOJSIssueNumber 161;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU>;
   epo:hasPublicationDate "2024-08-20+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToAwardDecision <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/AwardDecision/2023-05-03%2B02%3A00>;
   epo:refersToContractToBeModified <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/Contract/CON-0000>;
@@ -229,6 +240,22 @@
   epo:hasScheme "notice-id";
   skos:notation "5afa671a-a6b2-46a3-bd82-02628488ed7e" .
 
+<http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.10" .
+
+<http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
+
 <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
   a epo:NoticeAwardInformation;
   epo:hasMaximumFrameworkAgreementAwardedValue <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/MaximumFrameworkAgreementAwardedMonetaryValueLot$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>;
@@ -260,7 +287,7 @@
 
 <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/Procedure/9117d461-4fc6-4794-b4e7-b5733a238953>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasLegalBasisDescription "vgv / Richtlinie 2014/24/EU"@de;
@@ -320,14 +347,15 @@
 <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/Tender/TEN-0000>
   a epo:Tender;
   epo:hasFinancialOfferValue <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/Tenderer/TPA-0000>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/Tenderer/TPA-0000>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/Lot/LOT-0000>;
   adms:identifier <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/Tender/Identifier/BRA%20SCHELB-2023-0002> .
 
 <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/TenderAwardOutcome/TEN-0000>
   a epo:TenderAwardOutcome;
   epo:concernsTender <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/Tender/TEN-0000>;
-  epo:hasAwardRank 1 .
+  epo:hasAwardRank 1;
+  epo:specifiesForeignSubsidiesMeasureConclusion <http://publications.europa.eu/resource/authority/foreign-subsidy-measure-conclusion/> .
 
 <http://data.europa.eu/a4g/resource/5afa671a-a6b2-46a3-bd82-02628488ed7e-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>
   a epo:MonetaryValue;

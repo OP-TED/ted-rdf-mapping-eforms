@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -75,7 +75,8 @@
 <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Identifier/LOT-0000>
   a adms:Identifier;
@@ -87,6 +88,14 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0001" .
 
+<http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Identifier/TPO-0001>
+  a adms:Identifier;
+  skos:notation "TPO-0001" .
+
+<http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Identifier/TPO-0002>
+  a adms:Identifier;
+  skos:notation "TPO-0002" .
+
 <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Lot/Identifier/P4109400D-2023%2F000100-PBR>
   a adms:Identifier;
   epo:hasScheme "ID_LOTE";
@@ -94,10 +103,10 @@
 
 <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Lot/Identifier/P4109400D-2023%2F000100-PBR>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/MultipleStageProcedureTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/SubmissionTerm$_PriorInformationNotice1_ProcurementProjectLot1>;
@@ -128,13 +137,15 @@
   epo:announcesRole <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Buyer/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/ProcurementProcedureInformationProvider/TPO-0002touchpoint>,
     <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Reviewer/TPO-0001touchpoint>;
-  epo:hasESenderDispatchDate "2024-06-25T20:53:04+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-06-25T20:53:04+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00381128-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-cfc-social>;
-  epo:hasOJSIssueNumber "124/2024";
+  epo:hasOJSIssueNumber 124;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/SPA>;
   epo:hasPublicationDate "2024-06-27Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Lot/LOT-0000>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Procedure/c407da1d-fc32-4acf-9a5a-2af611e521c6>;
@@ -144,6 +155,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "38215900-04aa-462d-a590-499403833664" .
+
+<http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.7" .
+
+<http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Notice/f4dc09d5-9e92-4a5a-8a41-fc60234079e8-01>
   a epo:Notice;
@@ -178,15 +205,21 @@
   epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/CompanyContactPoint$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_Contact1>;
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>;
-  adms:identifier <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Identifier/ORG-0001> .
+  adms:identifier <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Identifier/ORG-0001>;
+  org:hasUnit <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/OrganizationalUnit/TPO-0001>,
+    <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/OrganizationalUnit/TPO-0002> .
 
-<http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Organization/TPO-0001>
-  a org:Organization;
-  owl:sameAs <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Organization/ORG-0001> .
+<http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/OrganizationalUnit/TPO-0001>
+  a org:OrganizationalUnit;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/TouchPoint/TPO-0001>;
+  dct:title "AYUNTAMIENTO DE UMBRETE"@es;
+  adms:identifier <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Identifier/TPO-0001> .
 
-<http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Organization/TPO-0002>
-  a org:Organization;
-  owl:sameAs <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Organization/ORG-0001> .
+<http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/OrganizationalUnit/TPO-0002>
+  a org:OrganizationalUnit;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/TouchPoint/TPO-0002>;
+  dct:title "https://contrataciondelestado.es"@es;
+  adms:identifier <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Identifier/TPO-0002> .
 
 <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/ParticipationCondition$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1>
   a epo:ParticipationCondition;
@@ -202,7 +235,7 @@
 
 <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Procedure/c407da1d-fc32-4acf-9a5a-2af611e521c6>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Procedure/Identifier/P4109400D-2023%2F000100-PBR>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0023>;
@@ -225,7 +258,7 @@
   a epo:ProcurementProcedureInformationProvider;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Lot/LOT-0000>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/TouchPoint/TPO-0002>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Organization/TPO-0002> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/OrganizationalUnit/TPO-0002> .
 
 <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>
   a epo:ContractTerm;
@@ -243,35 +276,30 @@
   a epo:Reviewer;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Lot/LOT-0000>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/TouchPoint/TPO-0001>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/Organization/TPO-0001> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/OrganizationalUnit/TPO-0001> .
 
 <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>;
   dct:description "No prohibición para contratar"@es .
 
 <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/ef-stand>;
   dct:description "Cifra anual de negocio"@es .
 
 <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/ef-stand>;
   dct:description "Otros"@es .
 
 <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria4>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/tp-abil>;
   dct:description "Trabajos realizados"@es .
 
 <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria5>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/tp-abil>;
   dct:description "Otros"@es .
 
@@ -283,14 +311,12 @@
 
 <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/TouchPoint/TPO-0001>
   a cccev:ContactPoint;
-  dct:description "AYUNTAMIENTO DE UMBRETE"@es;
   locn:address <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/TouchPointAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint1_PostalAddress1> .
 
 <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/TouchPoint/TPO-0002>
   a cccev:ContactPoint;
   cccev:email "umbrete@dipusevilla.es";
   cccev:telephone "955715300";
-  dct:description "https://contrataciondelestado.es"@es;
   locn:address <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/TouchPointAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint2_PostalAddress1> .
 
 <http://data.europa.eu/a4g/resource/38215900-04aa-462d-a590-499403833664-01/TouchPointAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint1_PostalAddress1>

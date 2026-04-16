@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -38,7 +38,7 @@
 <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/AwardDecision/2023-11-20%2B01%3A00>
   a epo:AwardDecision;
   epo:comprisesAwardOutcome <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/LotAwardOutcome/RES-0001>;
-  epo:hasAwardDecisionDate "2023-11-20+01:00"^^xsd:date .
+  epo:hasAwardDecisionDate "2023-11-20T00:00:00+01:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/Buyer/ORG-0001>
   a epo:Buyer;
@@ -105,19 +105,26 @@
   epo:signedByBuyer <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/Buyer/ORG-0001> .
 
 <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 88.0;
   time:unitType time:unitMonth .
 
 <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies>;
-  epo:hasRenewalDescription "The contract is concluded for an initial period of 28 (twenty-eight)     months, renewable 5 (five) time(s). Please consult the draft contract in the procurement documents."@en .
+  epo:hasRenewalDescription "The contract is concluded for an initial period of 28 (twenty-eight)     months, renewable 5 (five) time(s). Please consult the draft contract in the procurement documents."@en;
+  epo:hasUnknownDuration false .
+
+<http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/Duration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 88.0;
+  time:unitType time:unitMonth .
 
 <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/DynamicPurchaseSystemTechnicalUsage$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/Duration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
 
 <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -150,12 +157,12 @@
 
 <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/MonetaryValueLot$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/Lot/Identifier/JRC%2FIPR%2F2023%2FOP%2F1901>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>;
   epo:isUsingEUFunds true;
   epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/AwardCriterion$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>,
@@ -193,15 +200,18 @@
 <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/Notice>
   a epo:Notice, epo:Notice29, epo:ResultNotice;
   epo:announcesAwardDecision <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/AwardDecision/2023-11-20%2B01%3A00>;
+  epo:announcesContract <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/Contract/CON-0001>;
   epo:announcesNoticeAwardInformation <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/Tenderer/TPA-0001>;
-  epo:hasESenderDispatchDate "2023-12-20T10:33:01+01:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2023-12-20T10:33:01+01:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/result>;
   epo:hasNoticePublicationNumber "00776457-2023";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-standard>;
-  epo:hasOJSIssueNumber "246/2023";
+  epo:hasOJSIssueNumber 246;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/ENG>;
   epo:hasPublicationDate "2023-12-21Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/Lot/LOT-0001>;
   epo:refersToPrevious <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/Notice/00406230-2023>,
@@ -232,6 +242,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "c46247cc-a6d0-471e-8f07-fd7dc981c223" .
+
+<http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.7" .
+
+<http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
   a epo:NoticeAwardInformation;
@@ -297,7 +323,7 @@
 
 <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/Procedure/ffac029e-97e0-4d6e-94ec-053764e72d88>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/MonetaryValueProcedure$_ContractAwardNotice1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/Procedure/Identifier/JRC%2FIPR%2F2023%2FOP%2F1901>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32018R1046>;
@@ -342,7 +368,7 @@
 
 <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/Tender/TEN-0001>
   a epo:Tender;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/Lot/LOT-0001>;
   adms:identifier <http://data.europa.eu/a4g/resource/c46247cc-a6d0-471e-8f07-fd7dc981c223-01/Tender/Identifier/AGILENT%20TECHNOLOGIES%20ITALIA%20SPA> .
 

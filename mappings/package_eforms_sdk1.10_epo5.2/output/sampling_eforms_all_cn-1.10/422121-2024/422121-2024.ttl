@@ -17,15 +17,15 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:AccessTerm;
-  epo:hasAdditionalInformationDeadline "2024-09-16+02:00"^^xsd:dateTime .
+  epo:hasAdditionalInformationDeadline "2024-09-16T00:00:00+02:00"^^xsd:dateTime .
 
-<http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
+<http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1default-text>
   a epo:AccessTerm;
   epo:hasPublicAccessURL "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/tender-details/03d191ea-2d03-4ade-bbcc-a016887b6e98-CN?#anchorDocuments"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted false .
@@ -96,28 +96,34 @@
   cccev:telephone "+32 2 299 11 11" .
 
 <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 48.0;
   time:unitType time:unitMonth .
 
 <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/allowed>;
   epo:hasEOrdering false;
   epo:hasEPayment true;
   epo:hasRenewalDescription "The framework contract is concluded for an initial period of 24 (twenty-four)     months, renewable 2 (two) time(s). Please consult the draft framework contract in the procurement documents."@en;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
+
+<http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/Duration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 48.0;
+  time:unitType time:unitMonth .
 
 <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/DynamicPurchaseSystemTechnicalUsage$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/Duration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
 
 <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "For the full list of exclusion grounds please consult the procurement documents."@en;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/bankruptcy> .
+  dct:description "For the full list of exclusion grounds please consult the procurement documents."@en .
 
 <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -146,13 +152,13 @@
 
 <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/MonetaryValueLot$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/Lot/Identifier/EPPO%2F2024%2FOP%2F0006>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/LotPurpose$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1default-text>,
     <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/OpeningTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1>,
     <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
@@ -160,7 +166,6 @@
   epo:isUsingEUFunds true;
   epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>,
     <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion2>,
-    <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
     <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/ParticipationCondition$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1>,
     <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>,
     <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>,
@@ -192,13 +197,15 @@
   epo:announcesRole <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/Buyer/ORG-0001>,
     <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/ProcurementServiceProvider$_ContractNotice1_ContractingParty1_Party1_ServiceProviderParty1>,
     <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/Reviewer/ORG-0002>;
-  epo:hasESenderDispatchDate "2024-07-11T18:16:51+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-07-11T18:16:51+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00422121-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/cn-standard>;
-  epo:hasOJSIssueNumber "136/2024";
+  epo:hasOJSIssueNumber 136;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/ENG>;
   epo:hasPublicationDate "2024-07-15Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/Procedure/03d191ea-2d03-4ade-bbcc-a016887b6e98>;
@@ -208,6 +215,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "096ee430-5242-4357-a190-4abdf81c5bdd" .
+
+<http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.10" .
+
+<http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/OpeningTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1>
   a epo:OpeningTerm;
@@ -257,7 +280,7 @@
 
 <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/Procedure/03d191ea-2d03-4ade-bbcc-a016887b6e98>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>;
   epo:hasAdditionalInformation """In case of unavailability or disruptions in the functioning of the electronic means of communication provided in Section 5.1.11 in the last 5 calendar days before the time limit for receipt indicated in Section 5.1.12, the contracting authority reserves the right to extend this time limit and publish the extension at the Internet address provided in Section 5.1.11, without a preceding publication of a corrigendum to this notice. Economic operators interested in this procurement are invited to subscribe to the call for tenders at the address in Section 5.1.11 in order to get notified when new information or documents are published.
 """@en;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/MonetaryValueProcedure$_ContractNotice1_ProcurementProject1_RequestedTenderTotal1>;
@@ -266,6 +289,7 @@
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/ProcedurePurpose$_ContractNotice1_ProcurementProject1>;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>;
   dct:description "Legal and Operational Training services in support of investigations and prosecutions"@en;
   dct:title "Legal and Operational Training services in support of investigations and prosecutions"@en;
   adms:identifier <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/Procedure/Identifier/03d191ea-2d03-4ade-bbcc-a016887b6e98> .
@@ -317,7 +341,7 @@
   dct:description "Please consult the procurement documents."@en .
 
 <http://data.europa.eu/a4g/resource/096ee430-5242-4357-a190-4abdf81c5bdd-01/SpecificDuration$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TenderValidityPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 6.0;
   time:unitType time:unitMonth .
 

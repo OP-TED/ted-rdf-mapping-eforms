@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -27,8 +27,7 @@
 
 <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
   a epo:AccessTerm;
-  epo:hasPublicAccessURL "https://e-licitatie.ro/pub/notices/c-notice/v2/view/100182012"^^xsd:anyURI;
-  epo:isProcurementDocumentRestricted false .
+  epo:hasPublicAccessURL "https://e-licitatie.ro/pub/notices/c-notice/v2/view/100182012"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>
   a epo:AwardCriterion;
@@ -101,7 +100,7 @@
   cccev:telephone "+40 3032997" .
 
 <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 2.0;
   time:unitType time:unitMonth .
 
@@ -118,63 +117,62 @@
 
 <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/required>;
   epo:hasEOrdering false;
   epo:hasEPayment false;
   epo:hasLegalFormRequirement "Asociere conform art. 53. din Legea privind achizitiile publice nr 98/2016"@ro;
   epo:hasMaximumNumberOfRenewals 0;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
   epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ContractLocation$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>;
   epo:hasPlaceOfPerformanceAdditionalInformation "Directia Silvica Cluj - Pepiniera Mihai Viteazul"@ro .
 
+<http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/Duration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 2.0;
+  time:unitType time:unitMonth .
+
 <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/DynamicPurchaseSystemTechnicalUsage$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/Duration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
 
 <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Participare la o organizatie criminala"@ro;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/crime-org> .
+  dct:description "Participare la o organizatie criminala"@ro .
 
 <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement2>
   a epo:ExclusionGround;
-  dct:description "Coruptie"@ro;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/corruption> .
+  dct:description "Coruptie"@ro .
 
 <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement3>
   a epo:ExclusionGround;
-  dct:description "Frauda"@ro;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/fraud> .
+  dct:description "Frauda"@ro .
 
 <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement4>
   a epo:ExclusionGround;
-  dct:description "Infractiuni teroriste sau infractiuni legate de activitati teroriste"@ro;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/terr-offence> .
+  dct:description "Infractiuni teroriste sau infractiuni legate de activitati teroriste"@ro .
 
 <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement5>
   a epo:ExclusionGround;
-  dct:description "Spalare de bani sau finantarea terorismului"@ro;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/finan-laund> .
+  dct:description "Spalare de bani sau finantarea terorismului"@ro .
 
 <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement6>
   a epo:ExclusionGround;
-  dct:description "Exploatarea prin munca a copiilor si alte forme de trafic de persoane"@ro;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/human-traffic> .
+  dct:description "Exploatarea prin munca a copiilor si alte forme de trafic de persoane"@ro .
 
 <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement7>
   a epo:ExclusionGround;
-  dct:description "Plata impozitelor"@ro;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/tax-pay> .
+  dct:description "Plata impozitelor"@ro .
 
 <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement8>
   a epo:ExclusionGround;
-  dct:description "Plata asigurarilor sociale"@ro;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/socsec-pay> .
+  dct:description "Plata asigurarilor sociale"@ro .
 
 <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -207,30 +205,25 @@
 
 <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
+  epo:doesNotRequireSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/ef-stand>,
+    <http://publications.europa.eu/resource/authority/selection-criterion/tp-abil>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
+    <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ProcurementCriterion$_ContractNotice1_ProcurementProjectLot1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/Lot/Identifier/1>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/LotPurpose$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
     <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/OpeningTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1>,
     <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>,
-    <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>;
+    <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1Documentatia%20de%20achizitie>;
   epo:isUsingEUFunds true;
   epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>,
-    <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement2>,
-    <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement3>,
-    <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement4>,
-    <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement5>,
-    <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement6>,
-    <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement7>,
-    <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement8>,
     <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ParticipationCondition$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest2>,
-    <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ProcurementCriterion$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>,
     <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>,
     <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>,
@@ -260,13 +253,16 @@
     <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/Reviewer/ORG-0002>,
     <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/TenderProcessor/ORG-0004>,
     <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/TenderReceiver/ORG-0004>;
-  epo:hasESenderDispatchDate "2024-07-06T01:35:30.0000000+03:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-07-06T01:35:30.0000000+03:00"^^xsd:dateTime;
+  epo:hasESenderDispatchDate "2024-07-05T23:00:18.0000000+03:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00407342-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/cn-standard>;
-  epo:hasOJSIssueNumber "132/2024";
+  epo:hasOJSIssueNumber 132;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/RON>;
   epo:hasPublicationDate "2024-07-09Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/Lot/LOT-0000>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/Procedure/4a61362b-b4d5-4f85-bfef-083674c91652>;
@@ -277,14 +273,26 @@
   epo:hasScheme "notice-id";
   skos:notation "7fb58c13-098e-4618-a81f-939b0f73c155" .
 
-<http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/OpenTenderEventPlace$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1_OccurenceLocation1>
-  a locn:Address;
-  locn:fullAddress "In SEAP"@ro .
+<http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.6" .
+
+<http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/OpeningTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1>
   a epo:OpeningTerm;
-  epo:definesOpeningPlace <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/OpenTenderEventPlace$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1_OccurenceLocation1>;
-  epo:hasOpeningDateTime "2024-07-25T15:00:00.0000000+03:00"^^xsd:dateTime .
+  epo:hasOpeningDateTime "2024-07-25T15:00:00.0000000+03:00"^^xsd:dateTime;
+  epo:hasOpeningPlace "In SEAP"@ro .
 
 <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/Organization/Identifier$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -342,7 +350,7 @@
 
 <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/Procedure/4a61362b-b4d5-4f85-bfef-083674c91652>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>;
   epo:hasAcceleratedProcedureJustification "Directia Silvica Cluj doreste accelerarea procedurii de achizitie prin reducererea termenului de depunere a ofertelor la un numar de 15 zile de la data transmiterii anuntului de participare , solicitare motivata  in Strategia de contractare ."@ro;
   epo:hasAdditionalInformation """In situatia in care mai multe oferte au fost declarate admisibile de catre autoritatea contractanta si sunt clasate pe primul loc si au preturi egale autoritatea contractanta va solicita clarificari prin intermediul SEAP in vederea incarcarii electronice de catre operatorii economici de noi documente care contin noi preturi.In cazul in care din motive tehnice exclusiv legate de performantele tehnice ale SEAP nu este posibila transmiterea in format electronic prin intermediul SEAP documentele respective se transmit autoritatii contractante in plic sigilat.
 	Autoritatea contractanta are dreptul de a solicita ofertantilor in circumstante exceptionale inainte de expirarea perioadei de valabilitate a ofertei prelungirea acestei perioade. In cazul extinderii de valabilitate a ofertei acesta va fi prelungita in mod corespunzator. Ofertantul are obligatia de a comunica autoritatii contractante daca este sau nu de acord cu prelungirea perioadei de valabilitate a ofertei .Ofertantul care nu este de acord cu prelungirea perioadei de valabilitate a ofertei se considera ca si-a retras oferta fara ca acest fapt sa atraga pierderea garantiei de participare.
@@ -357,6 +365,14 @@ Cerintele tehnice definite la nivelul anuntului de participare, caietului de sar
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/Lot/LOT-0000>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ProcedurePurpose$_ContractNotice1_ProcurementProject1>;
   epo:isAccelerated true;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement2>,
+    <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement3>,
+    <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement4>,
+    <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement5>,
+    <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement6>,
+    <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement7>,
+    <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement8>;
   dct:description """Prin implementarea proiectului finantat prin PNRR/2023/C2/S/I.2.A ,,Reabilitare si modernizare Pepiniera Mihai Viteazul” cod proiect : C212A012300007 , Directia Silvica Cluj își propune modernizarea și dezvoltarea Pepinierei Mihai Viteazu din cadrul Ocolului Silvic Turda astfel încât să se realizeze o creșterea capacității de producție de MFR la necesarul de 1.000.000 puieți anual, cu respectarea condiției de producere a minim 3 specii autohtone și anume: Frasin comun (Fraxinus excelsior), Mojdrean (Fraxinus ornus), Paltin de camp (Acer platanoides), Paltin de munte (Acer pseudoplatanus), Gorun (Quercus petraea), Tei cu frunza mare (Tilia platyphyllos) Odată cu creșterea capacității de producție a MFR, mecanizarea unor procese este nu doar necesară dar și eficientă în atingerea obiectivului. Astfel se doreste achiziționarea unor utilaje care vor eficientiza lucrările de înființare și întreținere a culturilor cum ar fi: pregătire sol, semănare, plivire, erbicidare, fertilizare dar și pregătirea semințelor.
  Procedura de atribuire se desfasoara in vederea achizitionarii UNEI REMORCI  necesare in desfasurarea activitatilor specifice din cadrul Pepinierei Mihai Viteazul . 
 Numărul de zile până la care se pot solicita clarificări înainte de data limită de depunere a ofertelor este de 7 zile. Autoritatea contractantă va răspunde în mod clar și complet tuturor solicitărilor de clarificări în a 4-a zi înainte de data limită de depunere a ofertelor"""@ro;
@@ -415,7 +431,6 @@ Numărul de zile până la care se pot solicita clarificări înainte de data li
 
 <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>;
   epo:isUsedForCandidateRestriction false;
   dct:description """Cerinţa nr. 1. Operatorii economici participanti la procedura –ofertant ,ofertant asociat ,subcontractant ,tert sustinator  - nu trebuie sa se regaseasca in situatiile prevazute la art. 164,art. 165 si art. 167 din Legea nr. 98/2016 privind achizitiile publice.
@@ -439,7 +454,6 @@ Modalitatea de indeplinire : Operatorii economici(ofertant ,ofertant asociat ,su
 
 <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>;
   epo:isUsedForCandidateRestriction false;
   dct:description """Cerința nr.1.
@@ -462,16 +476,14 @@ d) Pentru Ofertanții de tipul asociațiilor și fundațiilor, vor prezenta un e
 
 <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/n-used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/ef-stand> .
 
 <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria4>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/n-used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/tp-abil> .
 
 <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/SpecificDuration$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TenderValidityPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 2.0;
   time:unitType time:unitMonth .
 
@@ -499,3 +511,7 @@ d) Pentru Ofertanții de tipul asociațiilor și fundațiilor, vor prezenta un e
   a epo:TenderReceiver;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/Lot/LOT-0000>;
   epo:playedBy <http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01/Organization/ORG-0004> .
+
+<http://data.europa.eu/a4g/resource/7fb58c13-098e-4618-a81f-939b0f73c155-01AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1Documentatia%20de%20achizitie>
+  a epo:AccessTerm;
+  epo:isProcurementDocumentRestricted false .

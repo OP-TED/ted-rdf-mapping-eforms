@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -61,7 +61,7 @@
   cccev:telephone "+352 123456789" .
 
 <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 60.0;
   time:unitType time:unitMonth .
 
@@ -76,10 +76,15 @@
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/PRT>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/PT16D> .
 
+<http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/ContractTerm$_PriorInformationNotice1_ProcurementProject1>
+  a epo:ContractTerm;
+  epo:hasTransportServiceType <http://publications.europa.eu/resource/authority/transport-service/other> .
+
 <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -107,11 +112,11 @@
 
 <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/Lot/Identifier/RA%2FDAF%2FSERV-96%2F18>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>;
   dct:description "Serviço público de transportes de passageiros de Águeda."@pt;
   dct:title "Serviço público de transportes de passageiros de Águeda"@pt;
   adms:identifier <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/Identifier/LOT-0000> .
@@ -122,13 +127,16 @@
 
 <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/Notice>
   a epo:Notice, epo:NoticeT01, epo:PlanningNotice;
+  epo:announcesProcedure <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/Procedure/0000000-0000-4000-8000-000000000000>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/Buyer/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/ProcurementProcedureInformationProvider/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>;
-  epo:hasESenderDispatchDate "2018-06-20T12:00:00+01:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2018-06-20T12:00:00+01:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-tran>;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/POR>;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/Lot/LOT-0000>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/Procedure/0000000-0000-4000-8000-000000000000>;
@@ -138,6 +146,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "468ad654-621e-43f2-bc58-e774eb03926b" .
+
+<http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.9" .
+
+<http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -165,9 +189,17 @@
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1_PostalAddress1>;
   adms:identifier <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/Identifier/ORG-0002> .
 
+<http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/PlanningNotice>
+  a epo:PlanningNotice;
+  epo:announcesLot <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/Lot/LOT-0000> .
+
+<http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/Procedure>
+  a epo:Procedure;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/ContractTerm$_PriorInformationNotice1_ProcurementProject1> .
+
 <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/Procedure/0000000-0000-4000-8000-000000000000>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>;
   epo:hasAdditionalInformation "Some additional information on the procurement ... blablabla"@pt;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/468ad654-621e-43f2-bc58-e774eb03926b-01/Procedure/Identifier/RA%2FDAF%2FSERV-96%2F18>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32007R1370>;

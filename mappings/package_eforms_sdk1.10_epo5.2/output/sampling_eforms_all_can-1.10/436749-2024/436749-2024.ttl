@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -28,12 +28,16 @@
 <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/AwardDecision/2024-06-28%2B02%3A00>
   a epo:AwardDecision;
   epo:comprisesAwardOutcome <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/LotAwardOutcome/RES-0001>;
-  epo:hasAwardDecisionDate "2024-06-28+02:00"^^xsd:date .
+  epo:hasAwardDecisionDate "2024-06-28T00:00:00+02:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Buyer/ORG-0001organization>
   a epo:Buyer;
   epo:hasBuyerProfile "https://sncf.bravosolution.com/web/login.html"^^xsd:anyURI;
   epo:playedBy <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Channel$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://sncf.bravosolution.com/web/login.html"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/CompanyAddress$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>
   a locn:Address;
@@ -79,24 +83,19 @@
 
 <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/ContractLocation$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
-  locn:address <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/ProcedurePlacePerformance$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1> .
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA> .
 
 <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/ContractLocation$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA> .
 
-<http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasTimePeriod <http://publications.europa.eu/resource/authority/timeperiod/UNLIMITED> .
-
 <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasAdditionalContractNature <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies>;
   epo:hasMaximumNumberOfRenewals 0;
-  epo:hasOptionsDescription "Maintenance préventive et/ou corrective de l'installation"@fr .
+  epo:hasOptionsDescription "Maintenance préventive et/ou corrective de l'installation"@fr;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -137,7 +136,7 @@
 
 <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/GreenProcurement$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>;
   epo:hasAdditionalInformation """En phase candidature, les documents et les renseignements demandés doivent être fournis par les candidats (en cas de candidature d’un groupement, chacune des pièces exigées ci-après doit être transmise par chacun des membres du groupement). Les informations doivent être remises soit par les formulaires DC1 (qui peut être commun à tous les lots) et DC2 (un par lot) soit par un Document Unique de Marché Européen électronique (DUME).
@@ -150,7 +149,7 @@ Les critères de notation et leur pondération sont précisés dans le règlemen
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Lot/Identifier/2024DOS0156485>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>;
@@ -182,18 +181,29 @@ L’installation sera raccordée à une centrale de dépollution. Un contrat de 
   epo:hasAmountValue 380000.0;
   epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
 
+<http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1_Origin1_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Tender/TEN-0001>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Notice>;
+  epo:hasAccessibilityDate "2024-07-31+02:00"^^xsd:date;
+  epo:hasMaskableProperty epo:hasItemCountryOfOrigin;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/fair-comp> .
+
 <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Notice>
   a epo:Notice, epo:Notice30, epo:ResultNotice;
   epo:announcesAwardDecision <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/AwardDecision/2024-06-28%2B02%3A00>;
+  epo:announcesContract <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Contract/CON-0001>;
   epo:announcesNoticeAwardInformation <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Tenderer/TPA-0001>;
-  epo:hasESenderDispatchDate "2024-07-19T12:59:01Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-07-19T12:59:01Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/result>;
   epo:hasNoticePublicationNumber "00436749-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-standard>;
-  epo:hasOJSIssueNumber "141/2024";
+  epo:hasOJSIssueNumber 141;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/FRA>;
   epo:hasPublicationDate "2024-07-22Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Procedure/df7f2ad2-7ebc-4e61-866b-7c9a6137d1cd>;
@@ -207,6 +217,22 @@ L’installation sera raccordée à une centrale de dépollution. Un contrat de 
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "b6f17112-5110-4fd5-b87e-911a01bc009d" .
+
+<http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.10" .
+
+<http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
   a epo:NoticeAwardInformation;
@@ -222,6 +248,7 @@ L’installation sera raccordée à une centrale de dépollution. Un contrat de 
 
 <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Organization/ORG-0001>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Channel$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>;
   epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Organization/Identifier$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>;
   epo:hasLegalName "SNCF Voyageurs"@fr;
@@ -249,7 +276,7 @@ L’installation sera raccordée à une centrale de dépollution. Un contrat de 
 
 <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Procedure/df7f2ad2-7ebc-4e61-866b-7c9a6137d1cd>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation """La société SNCF Voyageurs, émet cet avis de marché, en son nom et pour son compte. Dans le cadre de la présente consultation, les candidatures sont obligatoirement envoyées par voie électronique sur le portail Achat e@si. Aucun envoi par e-mail n'est autorisé. Le candidat doit être en mesure de justifier des pouvoirs de son représentant sur requête de l’entité adjudicatrice.
 L’entité adjudicatrice utilise une plateforme collectant des documents génériques de capacité et des attestations légales génériques : Plateforme Provigis. Une invitation d’accès à Provigis est envoyée au candidat lors de sa manifestation d’intérêt sur la plateforme d’achats. En cas de non-réception de l’invitation, le candidat est invité à se rapprocher de l’acheteur dont les coordonnées sont précisées dans cet avis.
@@ -269,10 +296,6 @@ L’installation sera composée de plusieurs canalisations (canalisation « pres
 L’installation sera raccordée à une centrale de dépollution. Un contrat de maintenance de l’installation sera proposé également."""@fr;
   dct:title "INSTALLATION DES CIRCUITS HYDRAULIQUES Atelier TT"@fr;
   adms:identifier <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Procedure/Identifier/df7f2ad2-7ebc-4e61-866b-7c9a6137d1cd> .
-
-<http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/ProcedurePlacePerformance$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA> .
 
 <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/ProcedurePurpose$_ContractAwardNotice1_ProcurementProject1>
   a epo:Purpose;
@@ -324,14 +347,15 @@ o	6 mois à compter du lendemain du jour de la conclusion du contrat si aucun av
 <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Tender/TEN-0001>
   a epo:Tender;
   epo:hasSubcontracting <http://publications.europa.eu/resource/authority/applicability/not-known>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Lot/LOT-0001>;
   adms:identifier <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Tender/Identifier/PIRTEK> .
 
 <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/TenderAwardOutcome/TEN-0001>
   a epo:TenderAwardOutcome;
   epo:concernsTender <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Tender/TEN-0001>;
-  epo:hasAwardRank 1 .
+  epo:hasAwardRank 1;
+  epo:specifiesForeignSubsidiesMeasureConclusion <http://publications.europa.eu/resource/authority/foreign-subsidy-measure-conclusion/> .
 
 <http://data.europa.eu/a4g/resource/b6f17112-5110-4fd5-b87e-911a01bc009d-01/Tenderer/TPA-0001>
   a epo:Tenderer;

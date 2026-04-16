@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -49,19 +49,26 @@
   cccev:telephone "0622705130" .
 
 <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 14.0;
   time:unitType time:unitMonth .
 
 <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
+
+<http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/Duration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 14.0;
+  time:unitType time:unitMonth .
 
 <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/DynamicPurchaseSystemTechnicalUsage$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/Duration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
 
 <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -79,10 +86,10 @@
 
 <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>,
@@ -113,13 +120,15 @@
     <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/ProcurementProcedureInformationProvider/ORG-0004>,
     <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/ReviewProcedureInformationProvider/ORG-0004>,
     <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/Reviewer/ORG-0004>;
-  epo:hasESenderDispatchDate "2024-09-16T10:52:38+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-09-16T10:52:38+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00558049-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-cfc-standard>;
-  epo:hasOJSIssueNumber "181/2024";
+  epo:hasOJSIssueNumber 181;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/FRA>;
   epo:hasPublicationDate "2024-09-17+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/Lot/LOT-0001>;
   epo:refersToPrevious <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/Notice/554712-2024>;
@@ -147,6 +156,22 @@
   epo:hasScheme "notice-id";
   skos:notation "7d896756-ef70-4712-86fa-5427ad29ccaf" .
 
+<http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.11" .
+
+<http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
+
 <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
   skos:notation "24-39" .
@@ -167,12 +192,12 @@
 
 <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/Procedure/81af07c8-33c9-45e6-a863-2ea35b36f49a>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/oth-single>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/ProcedureTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/ProcedureTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>;
   dct:description "Mission d'architecte et Maitrise d'oeuvre de réhabilitation et extension du bâtiment sur le site CMA IDF à Eaubonne"@fr;
   dct:title "Mission d'architecte et Maitrise d'oeuvre de réhabilitation et extension du bâtiment sur le site CMA IDF à Eaubonne"@fr;
   adms:identifier <http://data.europa.eu/a4g/resource/7d896756-ef70-4712-86fa-5427ad29ccaf-01/Procedure/Identifier/81af07c8-33c9-45e6-a863-2ea35b36f49a> .

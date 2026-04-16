@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -47,7 +47,7 @@
   cccev:telephone "+48324000700" .
 
 <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 36.0;
   time:unitType time:unitMonth .
 
@@ -65,10 +65,15 @@
   locn:postCode "44-160";
   locn:postName "Rudziniec" .
 
+<http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/ContractTerm$_PriorInformationNotice1_ProcurementProject1>
+  a epo:ContractTerm;
+  epo:hasTransportServiceType <http://publications.europa.eu/resource/authority/transport-service/bus-s> .
+
 <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -89,10 +94,10 @@
 
 <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>;
   dct:description "Publiczny transport zbiorowy - autobusowy wykonywany na terenie gminy Rudziniec"@pl;
   dct:title "Świadczenie usługi publicznego transportu zbiorowego na ternie Gminy Rudziniec"@pl;
   adms:identifier <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/Identifier/LOT-0001> .
@@ -103,15 +108,18 @@
 
 <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/Notice>
   a epo:Notice, epo:NoticeT01, epo:PlanningNotice;
+  epo:announcesProcedure <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/Procedure/0000000-0000-4000-8000-000000000000>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/Buyer/ORG-0001>,
     <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/ProcurementProcedureInformationProvider/ORG-0001>;
-  epo:hasESenderDispatchDate "2023-11-30T09:58:06Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2023-11-30T09:58:06Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticePublicationNumber "00730845-2023";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-tran>;
-  epo:hasOJSIssueNumber "232/2023";
+  epo:hasOJSIssueNumber 232;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/POL>;
   epo:hasPublicationDate "2023-12-01Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/Procedure/0000000-0000-4000-8000-000000000000>;
@@ -121,6 +129,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "b53cafbd-3aad-46a3-a08b-f3474683c4a6" .
+
+<http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.9" .
+
+<http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -136,15 +160,23 @@
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>;
   adms:identifier <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/Identifier/ORG-0001> .
 
+<http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/PlanningNotice>
+  a epo:PlanningNotice;
+  epo:announcesLot <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/Lot/LOT-0001> .
+
+<http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/Procedure>
+  a epo:Procedure;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/ContractTerm$_PriorInformationNotice1_ProcurementProject1> .
+
 <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/Procedure/0000000-0000-4000-8000-000000000000>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>;
   epo:hasAdditionalInformation "Bezpośrednie zawarcie umowy zgodnie z art. 22 ust. 1 pkt 1 ustawy z dnia 16 grudnia 2010 r. o publicznym transporcie zbiorowym."@pl;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32007R1370>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/DirectAwardTerm$_PriorInformationNotice1_TenderingProcess1_ProcessJustification1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/DirectAwardTerm$_PriorInformationNotice1_TenderingProcess1_ProcessJustification1>;
   dct:title "Świadczenie usługi publicznego transportowego na terenie Gminy Rudziniec"@pl .
 
 <http://data.europa.eu/a4g/resource/b53cafbd-3aad-46a3-a08b-f3474683c4a6-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>

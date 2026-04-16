@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -64,7 +64,7 @@
 <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/AwardDecision/2024-07-11%2B02%3A00>
   a epo:AwardDecision;
   epo:comprisesAwardOutcome <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/LotAwardOutcome/RES-0001>;
-  epo:hasAwardDecisionDate "2024-07-11+02:00"^^xsd:date .
+  epo:hasAwardDecisionDate "2024-07-11T00:00:00+02:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/Buyer/ORG-0001>
   a epo:Buyer;
@@ -90,7 +90,7 @@ Date limite de réception des offres : 25/04/2024 à 12:00
 Lire:
 Date limite de réception des offres : 02/05/2024 à 12:00"""@fr;
   epo:hasChangeReasonDescription "Modification de la date limite de remise des offres"@fr;
-  epo:hasProcurementDocumentChangeDate "2024-04-12+02:00"^^xsd:date;
+  epo:hasProcurementDocumentChangeDate "2024-04-12T00:00:00+02:00"^^xsd:dateTime;
   epo:isProcurementDocumentChanged true;
   epo:relatesToEFormSectionIdentifier <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/Notice//Identifier/LOT-0001> .
 
@@ -149,8 +149,12 @@ domicile à destination des personnes du Bel Age et/ou en situation de handicap"
   a adms:Identifier;
   skos:notation "CONTRAT" .
 
+<http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2024-09-02+02:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 48.0;
   time:unitType time:unitMonth .
 
@@ -171,24 +175,27 @@ domicile à destination des personnes du Bel Age et/ou en situation de handicap"
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/FRL04> .
 
-<http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2024-09-02+02:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
-  epo:hasOptionsDescription "Le pouvoir adjudicateur pourra confier au titulaire de l'accord-cadre, en application des articles L. 2122-1 et R. 2122-7 du Code de la commande publique, un ou plusieurs nouveaux accords-cadres ayant pour objet la réalisation de prestations similaires. La durée pendant laquelle un nouvel accord-cadre pourra être conclu ne peut dépasser 3 ans à compter de la notification du présent accord-cadre."@fr .
+  epo:hasOptionsDescription "Le pouvoir adjudicateur pourra confier au titulaire de l'accord-cadre, en application des articles L. 2122-1 et R. 2122-7 du Code de la commande publique, un ou plusieurs nouveaux accords-cadres ayant pour objet la réalisation de prestations similaires. La durée pendant laquelle un nouvel accord-cadre pourra être conclu ne peut dépasser 3 ans à compter de la notification du présent accord-cadre."@fr;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
   epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/ContractLocation$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1> .
 
+<http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/Duration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 48.0;
+  time:unitType time:unitMonth .
+
 <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/DynamicPurchaseSystemTechnicalUsage$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/Duration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
 
 <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -219,13 +226,17 @@ domicile à destination des personnes du Bel Age et/ou en situation de handicap"
   epo:hasScheme "ubo";
   skos:notation "UBO-0001" .
 
+<http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/Lot/Identifier/2024-0099>
   a adms:Identifier;
   skos:notation "2024-0099" .
 
 <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation """Clause d'insertion. Dans le cadre de ce marché, il est attendu du titulaire a minima l'une des deux modalités suivantes au choix : soit, la réservation d'un volume d'heures d'insertion (1800 heures sur la durée totale du marché, soit 4 ans), soit le recours à la formation en alternance par la mise en place d'un contrat d'alternance de 12 mois dans la première année d'exécution du marché avec la possibilité de valoriser le candidat sur toute l'opération (36 mois restant maximum) s'il est embauché en CDI à l'issue de son alternance.
 """@fr;
@@ -234,7 +245,7 @@ domicile à destination des personnes du Bel Age et/ou en situation de handicap"
   epo:hasLaunchFrameworkAgreementMaximumValue <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/LotValueEstimateExtension$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>;
   epo:isUsingEUFunds false;
@@ -277,14 +288,17 @@ domicile à destination des personnes du Bel Age et/ou en situation de handicap"
 <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/Notice>
   a epo:Notice, epo:Notice29, epo:ResultNotice;
   epo:announcesAwardDecision <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/AwardDecision/2024-07-11%2B02%3A00>;
+  epo:announcesContract <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/Contract/CON-0001>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/Tenderer/TPA-0001>;
-  epo:hasESenderDispatchDate "2024-09-03T12:31:01+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-09-03T12:31:01+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/result>;
   epo:hasNoticePublicationNumber "00529570-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-standard>;
-  epo:hasOJSIssueNumber "172/2024";
+  epo:hasOJSIssueNumber 172;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/FRA>;
   epo:hasPublicationDate "2024-09-04+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/Lot/LOT-0001>;
   epo:refersToPrevious <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/Notice/dea7388b-4acb-484d-abad-23474bad45b0-01>;
@@ -302,6 +316,22 @@ domicile à destination des personnes du Bel Age et/ou en situation de handicap"
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "fcfcb817-b0b6-4cca-8d7a-9341493519a4" .
+
+<http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.9" .
+
+<http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/Notice/dea7388b-4acb-484d-abad-23474bad45b0-01>
   a epo:Notice;
@@ -375,7 +405,7 @@ domicile à destination des personnes du Bel Age et/ou en situation de handicap"
 
 <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/Procedure/c49a6d0f-dcb6-4dea-93a2-35d9c37e0572>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation "Pour présenter leur candidature, les candidats utilisent les formulaires DC1 et DC2 ou le DUME."@fr;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/MonetaryValueProcedure$_ContractAwardNotice1_ProcurementProject1_RequestedTenderTotal1>;
@@ -443,7 +473,7 @@ domicile à destination des personnes du Bel Age et/ou en situation de handicap"
 <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/Tender/TEN-0001>
   a epo:Tender;
   epo:hasFinancialOfferValue <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/Lot/LOT-0001>;
   epo:isVariant false;
   adms:identifier <http://data.europa.eu/a4g/resource/fcfcb817-b0b6-4cca-8d7a-9341493519a4-01/Tender/Identifier/OFFRE%20XELYA> .

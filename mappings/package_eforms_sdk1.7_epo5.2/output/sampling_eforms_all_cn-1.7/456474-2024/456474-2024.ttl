@@ -17,28 +17,13 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>
   a epo:AccessTerm;
   epo:definesProcurementProcedureInformationProvider <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ProcurementProcedureInformationProvider/ORG-0004organization> .
-
-<http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
-  a epo:AccessTerm;
-  epo:hasPublicAccessURL "https://demat.marches.medialex.fr/medialex/publisher_portail/public/displayRC.jsp?iIdAffaire=76841"^^xsd:anyURI;
-  epo:isProcurementDocumentRestricted false .
-
-<http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference2>
-  a epo:AccessTerm;
-  epo:hasPublicAccessURL "https://demat.centraledesmarches.com/publisher_plateforme/public/annonce/consulterDCEHorsIdentification.jsp?iIdAffaire=76841"^^xsd:anyURI;
-  epo:isProcurementDocumentRestricted false .
-
-<http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference3>
-  a epo:AccessTerm;
-  epo:hasPublicAccessURL "https://demat.centraledesmarches.com/7076841"^^xsd:anyURI;
-  epo:isProcurementDocumentRestricted false .
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>
   a epo:AwardCriterion;
@@ -115,6 +100,14 @@
   epo:hasBuyerProfile "https://demat.centraledesmarches.com/7076841"^^xsd:anyURI;
   epo:playedBy <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Organization/ORG-0001> .
 
+<http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Channel$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://demat.centraledesmarches.com/7076841"^^xsd:anyURI .
+
+<http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Channel$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization4_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://demat.centraledesmarches.com"^^xsd:anyURI .
+
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/CompanyAddress$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>
   a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
@@ -175,7 +168,7 @@
   cccev:telephone "0298933659" .
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 87.0;
   time:unitType time:unitMonth .
 
@@ -194,7 +187,7 @@
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasAdditionalContractNature <http://publications.europa.eu/resource/authority/contract-nature/works>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/required>;
@@ -205,156 +198,143 @@
   epo:hasPerformanceConditions """Le SIRCOB a décidé de faire application de l'article L2112-4 du CCP en incluant dans le MGP une clause sociale d'insertion obligatoire. Il est attendu de la part du Titulaire, un engagement pour la réalisation d'heures ou d'emplois d'insertion en phase études et travaux, comme en phase exploitation et maintenance. Les modalités de ces engagements sont précisées á l'art 12 du CCAP et á l'annexe 10 de l'Acte d'engagement.
 Le SIRCOB n'entend imposer aucune forme de groupement particulière. Toutefois, en cas d'attribution du MGP á un groupement conjoint, le mandataire du groupement sera solidaire, pour l'exécution du marché public, de chacun des membres du groupement pour ses obligations contractuelles á l'égard du Pouvoir Adjudicateur ; ce mandataire sera obligatoirement l'exploitant-mainteneur ou le mandataire du sous-groupement exploitant mainteneur. Pour plus d'information sur la forme du candidat, cf. art. 3.4 du Règlement de consultation."""@fr;
   epo:hasRenewalDescription "Le MGP est conclu pour une durée de 6 ans et 3 mois à compter de la date de notification du marché. Le marché est reconductible pour une année supplémentaire. La date prévisionnelle de notification du MGP est prévue courant octobre 2025. La date de prise en charge des prestations d'exploitation et de maintenance de l'UVE est fixée à titre prévisionnel au 1er janvier 2026. "@fr;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/yes> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/yes>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
   epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ContractLocation$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>;
   epo:hasPlaceOfPerformanceAdditionalInformation "Kervoazou"@fr .
 
+<http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Duration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 87.0;
+  time:unitType time:unitMonth .
+
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/DynamicPurchaseSystemTechnicalUsage$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Duration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
   a epo:ExclusionGround;
   dct:description """une déclaration sur l'honneur attestant que le candidat ne se trouve pas dans un cas d'exclusion
 mentionné aux articles L. 2141-1 á L. 2141- 5 et L. 2141-7 á L. 2141-11, du Code de la commande
-publique."""@fr;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/crime-org> .
+publique."""@fr .
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement10>
   a epo:ExclusionGround;
   dct:description """une déclaration sur l'honneur attestant que le candidat ne se trouve pas dans un cas d'exclusion
 mentionné aux articles L. 2141-1 á L. 2141- 5 et L. 2141-7 á L. 2141-11, du Code de la commande
-publique."""@fr;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/socsec-law> .
+publique."""@fr .
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement11>
   a epo:ExclusionGround;
   dct:description """une déclaration sur l'honneur attestant que le candidat ne se trouve pas dans un cas d'exclusion
 mentionné aux articles L. 2141-1 á L. 2141- 5 et L. 2141-7 á L. 2141-11, du Code de la commande
-publique."""@fr;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/labour-law> .
+publique."""@fr .
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement12>
   a epo:ExclusionGround;
   dct:description """une déclaration sur l'honneur attestant que le candidat ne se trouve pas dans un cas d'exclusion
 mentionné aux articles L. 2141-1 á L. 2141- 5 et L. 2141-7 á L. 2141-11, du Code de la commande
-publique."""@fr;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/bankruptcy> .
+publique."""@fr .
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement13>
   a epo:ExclusionGround;
   dct:description """une déclaration sur l'honneur attestant que le candidat ne se trouve pas dans un cas d'exclusion
 mentionné aux articles L. 2141-1 á L. 2141- 5 et L. 2141-7 á L. 2141-11, du Code de la commande
-publique."""@fr;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/bankr-nat> .
+publique."""@fr .
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement14>
   a epo:ExclusionGround;
   dct:description """une déclaration sur l'honneur attestant que le candidat ne se trouve pas dans un cas d'exclusion
 mentionné aux articles L. 2141-1 á L. 2141- 5 et L. 2141-7 á L. 2141-11, du Code de la commande
-publique."""@fr;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/prof-misconduct> .
+publique."""@fr .
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement15>
   a epo:ExclusionGround;
   dct:description """une déclaration sur l'honneur attestant que le candidat ne se trouve pas dans un cas d'exclusion
 mentionné aux articles L. 2141-1 á L. 2141- 5 et L. 2141-7 á L. 2141-11, du Code de la commande
-publique."""@fr;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/distorsion> .
+publique."""@fr .
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement16>
   a epo:ExclusionGround;
   dct:description """une déclaration sur l'honneur attestant que le candidat ne se trouve pas dans un cas d'exclusion
 mentionné aux articles L. 2141-1 á L. 2141- 5 et L. 2141-7 á L. 2141-11, du Code de la commande
-publique."""@fr;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/partic-confl> .
+publique."""@fr .
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement17>
   a epo:ExclusionGround;
   dct:description """une déclaration sur l'honneur attestant que le candidat ne se trouve pas dans un cas d'exclusion
 mentionné aux articles L. 2141-1 á L. 2141- 5 et L. 2141-7 á L. 2141-11, du Code de la commande
-publique."""@fr;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/prep-confl> .
+publique."""@fr .
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement18>
   a epo:ExclusionGround;
   dct:description """une déclaration sur l'honneur attestant que le candidat ne se trouve pas dans un cas d'exclusion
 mentionné aux articles L. 2141-1 á L. 2141- 5 et L. 2141-7 á L. 2141-11, du Code de la commande
-publique."""@fr;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/sanction> .
+publique."""@fr .
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement19>
   a epo:ExclusionGround;
   dct:description """une déclaration sur l'honneur attestant que le candidat ne se trouve pas dans un cas d'exclusion
 mentionné aux articles L. 2141-1 á L. 2141- 5 et L. 2141-7 á L. 2141-11, du Code de la commande
-publique."""@fr;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/nati-ground> .
+publique."""@fr .
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement2>
   a epo:ExclusionGround;
   dct:description """une déclaration sur l'honneur attestant que le candidat ne se trouve pas dans un cas d'exclusion
 mentionné aux articles L. 2141-1 á L. 2141- 5 et L. 2141-7 á L. 2141-11, du Code de la commande
-publique."""@fr;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/corruption> .
+publique."""@fr .
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement20>
   a epo:ExclusionGround;
   dct:description """une déclaration sur l'honneur attestant que le candidat ne se trouve pas dans un cas d'exclusion
 mentionné aux articles L. 2141-1 á L. 2141- 5 et L. 2141-7 á L. 2141-11, du Code de la commande
-publique."""@fr;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/misrepresent> .
+publique."""@fr .
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement3>
   a epo:ExclusionGround;
   dct:description """une déclaration sur l'honneur attestant que le candidat ne se trouve pas dans un cas d'exclusion
 mentionné aux articles L. 2141-1 á L. 2141- 5 et L. 2141-7 á L. 2141-11, du Code de la commande
-publique."""@fr;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/fraud> .
+publique."""@fr .
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement4>
   a epo:ExclusionGround;
   dct:description """une déclaration sur l'honneur attestant que le candidat ne se trouve pas dans un cas d'exclusion
 mentionné aux articles L. 2141-1 á L. 2141- 5 et L. 2141-7 á L. 2141-11, du Code de la commande
-publique."""@fr;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/terr-offence> .
+publique."""@fr .
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement5>
   a epo:ExclusionGround;
   dct:description """une déclaration sur l'honneur attestant que le candidat ne se trouve pas dans un cas d'exclusion
 mentionné aux articles L. 2141-1 á L. 2141- 5 et L. 2141-7 á L. 2141-11, du Code de la commande
-publique."""@fr;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/finan-laund> .
+publique."""@fr .
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement6>
   a epo:ExclusionGround;
   dct:description """une déclaration sur l'honneur attestant que le candidat ne se trouve pas dans un cas d'exclusion
 mentionné aux articles L. 2141-1 á L. 2141- 5 et L. 2141-7 á L. 2141-11, du Code de la commande
-publique."""@fr;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/human-traffic> .
+publique."""@fr .
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement7>
   a epo:ExclusionGround;
   dct:description """une déclaration sur l'honneur attestant que le candidat ne se trouve pas dans un cas d'exclusion
 mentionné aux articles L. 2141-1 á L. 2141- 5 et L. 2141-7 á L. 2141-11, du Code de la commande
-publique."""@fr;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/tax-pay> .
+publique."""@fr .
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement8>
   a epo:ExclusionGround;
   dct:description """une déclaration sur l'honneur attestant que le candidat ne se trouve pas dans un cas d'exclusion
 mentionné aux articles L. 2141-1 á L. 2141- 5 et L. 2141-7 á L. 2141-11, du Code de la commande
-publique."""@fr;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/socsec-pay> .
+publique."""@fr .
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement9>
   a epo:ExclusionGround;
   dct:description """une déclaration sur l'honneur attestant que le candidat ne se trouve pas dans un cas d'exclusion
 mentionné aux articles L. 2141-1 á L. 2141- 5 et L. 2141-7 á L. 2141-11, du Code de la commande
-publique."""@fr;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/envir-law> .
+publique."""@fr .
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -392,23 +372,23 @@ publique."""@fr;
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/SocialProcurement$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType2>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/MonetaryValueLot$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Lot/Identifier/Marchamp%3Beacute%3B%20unique>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/LotPurpose$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
-    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
-    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference2>,
-    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference3>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/MultipleStageProcedureTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>,
     <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/SecurityClearanceTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
-    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>;
+    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1DCE>,
+    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1Documents>,
+    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1R%C3%A8glement%20de%20consultation>;
   epo:isUsingEUFunds false;
   epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>,
     <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion10>,
@@ -420,26 +400,6 @@ publique."""@fr;
     <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion7>,
     <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion8>,
     <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion9>,
-    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement10>,
-    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement11>,
-    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement12>,
-    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement13>,
-    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement14>,
-    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement15>,
-    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement16>,
-    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement17>,
-    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement18>,
-    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement19>,
-    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement2>,
-    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement20>,
-    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement3>,
-    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement4>,
-    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement5>,
-    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement6>,
-    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement7>,
-    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement8>,
-    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement9>,
     <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ParticipationCondition$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1>,
     <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>,
     <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>;
@@ -452,10 +412,6 @@ publique."""@fr;
   a epo:Purpose;
   epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/71000000>, <http://data.europa.eu/cpv/cpv/90513300>;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/90513000> .
-
-<http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/MonetaryValue$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_Prize1>
-  a epo:MonetaryValue;
-  epo:hasAmountValue 60000.0 .
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/MonetaryValueLot$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1>
   a epo:MonetaryValue;
@@ -478,13 +434,15 @@ publique."""@fr;
     <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ReviewProcedureInformationProvider/ORG-0003organization>,
     <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Reviewer/ORG-0002organization>,
     <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/TenderReceiver/ORG-0001organization>;
-  epo:hasESenderDispatchDate "2024-07-29T15:00:00+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-07-29T15:00:00+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00456474-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/cn-standard>;
-  epo:hasOJSIssueNumber "147/2024";
+  epo:hasOJSIssueNumber 147;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/FRA>;
   epo:hasPublicationDate "2024-07-30+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Procedure/2ddb171c-c4b3-49c2-8527-93a498429412>;
@@ -494,6 +452,22 @@ publique."""@fr;
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "2b3dc543-8874-4e2c-9417-32a1975b5db0" .
+
+<http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.7" .
+
+<http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Organization/Identifier$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -513,6 +487,7 @@ publique."""@fr;
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Organization/ORG-0001>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Channel$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>;
   epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/la>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Organization/Identifier$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>;
   epo:hasLegalName "SIRCOB"@fr;
@@ -539,6 +514,7 @@ publique."""@fr;
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Organization/ORG-0004>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Channel$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization4_Company1>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Organization/Identifier$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization4_Company1_PartyLegalEntity1>;
   epo:hasLegalName "SIRCOB"@fr;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/CompanyContactPoint$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization4_Company1_Contact1>;
@@ -549,14 +525,9 @@ publique."""@fr;
   a epo:ParticipationCondition;
   epo:hasReservedProcurement <http://publications.europa.eu/resource/authority/reserved-procurement/none> .
 
-<http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Prize$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_Prize1>
-  a epo:Prize;
-  epo:hasPrizeRank 1;
-  epo:hasPrizeValue <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/MonetaryValue$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_Prize1> .
-
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Procedure/2ddb171c-c4b3-49c2-8527-93a498429412>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>;
   epo:hasAdditionalInformation """Dans le cadre de la candidature, il est rappelé qu'au moins un des membres du groupement doit posséder la qualification d'architecte au sens de la loi n°77-2 du 3 janvier 1977 sur l'architecture. La mission de conception implique nécessairement l'intervention d'un architecte, il est rappelé que l'article 37 du code de déontologie des architectes interdit la sous-traitance aux architectes. Le candidat identifie, á l'appui de sa candidature, l'équipe de maitrise d'oeuvre chargée de la conception de l'ouvrage et du suivi de sa réalisation.
 Pour les éléments á produire au titre de la candidature et des offres afin de remettre un dossier complet et permettre le jugement de ces dossiers, il y a lieu de se reporter au Règlement de consultation.
 Le SIRCOB négocie avec tous les soumissionnaires leurs offres initiales et ultérieures, á
@@ -570,8 +541,28 @@ Les modalités de visites du CVED sont précisées au RC (art. 3.8)."""@fr;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ProcedurePurpose$_ContractNotice1_ProcurementProject1>;
   epo:isAccelerated false;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ProcedureTerm$_ContractNotice1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ProcedureTerm$_ContractNotice1>,
     <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ProcedureTerm$_ContractNotice1_TenderingTerms1_LotDistribution1>;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement10>,
+    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement11>,
+    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement12>,
+    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement13>,
+    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement14>,
+    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement15>,
+    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement16>,
+    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement17>,
+    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement18>,
+    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement19>,
+    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement2>,
+    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement20>,
+    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement3>,
+    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement4>,
+    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement5>,
+    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement6>,
+    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement7>,
+    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement8>,
+    <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement9>;
   dct:description "La présente consultation a pour objet l'attribution d'un MGP pour la conception et la réalisation de travaux de modernisation du CVED (batiment nouveau, protection incendie, etc.) et l'ensemble des prestations d'exploitation, d'entretien, de conduite, de maintenance, de dépannage, de fourniture de pièces de rechange et de consommables sur les équipements du CVED, propriété du SIRCOB, qui alimente un réseau de chaleur industriel."@fr;
   dct:title "La présente consultation a pour objet l'attribution d'un marché global de performance (MGP) pour la conception, la réalisation de travaux et l'exploitation de centre de valorisation énergétique des déchets (CVED) de Carhaix, propriété du SIRCOB, qui alimente un réseau de chaleur industriel."@fr;
   adms:identifier <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Procedure/Identifier/2ddb171c-c4b3-49c2-8527-93a498429412> .
@@ -643,7 +634,6 @@ Tarn-et-Garonne, n°358994)"""@fr .
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/tp-abil>;
   epo:isUsedForCandidateRestriction false;
   dct:description """Capacités techniques et professionnelles en matière de conception, de construction et d'exploitation/maintenance d'une UIOM ou d'unité de valorisation énergétique de déchets ménagers
@@ -652,7 +642,6 @@ et assimilés (95%) - cf. pour plus d'informations art. 6 du RC"""@fr;
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/ef-stand>;
   epo:isUsedForCandidateRestriction true;
   dct:description "Capacités financières (5%) - cf. pour plus d'informations art. 6 du RC"@fr;
@@ -663,7 +652,7 @@ et assimilés (95%) - cf. pour plus d'informations art. 6 du RC"""@fr;
   epo:fulfillsRequirement <http://publications.europa.eu/resource/authority/social-objective/other> .
 
 <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/SpecificDuration$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TenderValidityPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 6.0;
   time:unitType time:unitMonth .
 
@@ -683,3 +672,18 @@ et assimilés (95%) - cf. pour plus d'informations art. 6 du RC"""@fr;
   a epo:TenderReceiver;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Lot/LOT-0001>;
   epo:playedBy <http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1DCE>
+  a epo:AccessTerm;
+  epo:hasPublicAccessURL "https://demat.centraledesmarches.com/publisher_plateforme/public/annonce/consulterDCEHorsIdentification.jsp?iIdAffaire=76841"^^xsd:anyURI;
+  epo:isProcurementDocumentRestricted false .
+
+<http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1Documents>
+  a epo:AccessTerm;
+  epo:hasPublicAccessURL "https://demat.centraledesmarches.com/7076841"^^xsd:anyURI;
+  epo:isProcurementDocumentRestricted false .
+
+<http://data.europa.eu/a4g/resource/2b3dc543-8874-4e2c-9417-32a1975b5db0-01AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1R%C3%A8glement%20de%20consultation>
+  a epo:AccessTerm;
+  epo:hasPublicAccessURL "https://demat.marches.medialex.fr/medialex/publisher_portail/public/displayRC.jsp?iIdAffaire=76841"^^xsd:anyURI;
+  epo:isProcurementDocumentRestricted false .

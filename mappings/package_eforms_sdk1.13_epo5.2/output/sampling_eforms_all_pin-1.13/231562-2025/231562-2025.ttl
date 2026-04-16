@@ -17,13 +17,21 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/Buyer/ORG-0001organization>
   a epo:Buyer;
   epo:playedBy <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/Channel$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://przetargi.pse.pl"^^xsd:anyURI .
+
+<http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/Channel$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "www.gov.pl/web/uzp/kontakt"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>
   a locn:Address;
@@ -67,6 +75,12 @@
   cccev:email "ted@publications.europa.eu";
   cccev:telephone "+352 29291" .
 
+<http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>
+  a dct:Location;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/POL>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/PL518>;
+  locn:address <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/ProcedurePlacePerformance$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1> .
+
 <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works> .
@@ -97,17 +111,20 @@
 
 <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/Notice>
   a epo:Notice, epo:Notice5, epo:PlanningNotice;
+  epo:announcesPlannedProcurement <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/PlannedProcurement$_PriorInformationNotice1_ProcurementProject1>;
   epo:announcesPlannedProcurementPart <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/PlannedProcurementPart/PAR-0001>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/Buyer/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>,
     <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/Reviewer/ORG-0002>;
-  epo:hasESenderDispatchDate "2025-04-09T10:57:19Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2025-04-09T10:57:19Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticePublicationNumber "00231562-2025";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-only>;
-  epo:hasOJSIssueNumber "71/2025";
+  epo:hasOJSIssueNumber 71;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/POL>;
   epo:hasPublicationDate "2025-04-10+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToPrevious <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/Notice/205815-2025>;
   adms:identifier <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/Notice/Identifier> .
@@ -134,6 +151,22 @@
   epo:hasScheme "notice-id";
   skos:notation "bcdaaff4-de72-4041-94c0-9c7952e08872" .
 
+<http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.13" .
+
+<http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
+
 <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
   skos:notation "526-27-48-966" .
@@ -156,6 +189,7 @@
 
 <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/Organization/ORG-0001>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/Channel$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>;
   epo:hasLegalName "Polskie Sieci Elektroenergetyczne Spółka Akcyjna"@pl;
   epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/electricity>;
@@ -165,6 +199,7 @@
 
 <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/Organization/ORG-0002>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/Channel$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1_PartyLegalEntity1>;
   epo:hasLegalName "Krajowa Izba Odwoławcza"@pl;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/CompanyContactPoint$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1_Contact1>;
@@ -183,23 +218,53 @@
   epo:hasNutsCode <http://data.europa.eu/nuts/code/PL518> .
 
 <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>
-  a epo:ProcurementObject;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
-  epo:isCoveredByGPA true;
-  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/ReviewTerm/ORG-0002> .
+  a epo:ProcurementObject .
 
 <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>
   a epo:Purpose;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/45000000> .
 
+<http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/PlannedProcurement$_PriorInformationNotice1_ProcurementProject1>
+  a epo:PlannedProcurement;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+    <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
+  dct:description "Budowa linii 400 kV relacji Dobrzeń - nacięcie linii Pasikurowice – Ostrów"@pl;
+  dct:title "Budowa linii 400 kV relacji Dobrzeń - nacięcie linii Pasikurowice – Ostrów"@pl .
+
 <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/PlannedProcurementPart/PAR-0001>
   a epo:PlannedProcurementPart;
-  epo:foreseesProcurementObject <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
+  epo:isCoveredByGPA true;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/ReviewTerm/ORG-0002>;
   dct:description "Budowa linii 400 kV relacji Dobrzeń - nacięcie linii Pasikurowice – Ostrów"@pl;
   dct:title "Budowa linii 400 kV relacji Dobrzeń - nacięcie linii Pasikurowice – Ostrów"@pl;
   adms:identifier <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/Identifier/PAR-0001> .
+
+<http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/ProcedurePlacePerformance$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/POL>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/PL518> .
+
+<http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>
+  a epo:Purpose;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/45000000> .
+
+<http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>
+  a epo:ContractTerm;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works> .
+
+<http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>
+  a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>;
+  epo:hasPlaceOfPerformanceAdditionalInformation """Informacje dodatkowe: Zamawiający informuje, że na Platformie zakupowej Zamawiającego pod adresem https://przetargi.pse.pl jest dostępna
+informacja o planowanym do uruchomienia postępowaniu o udzielenie zamówienia
+publicznego pod nazwą \"Budowa linii 400 kV relacji Dobrzeń - nacięcie linii Pasikurowice – Ostrów\" zawierająca \"dokumentację roboczą\". \"Dokumentacja robocza\" jest udostępniana w celach informacyjnych i służy do zaplanowania zamierzeń biznesowych Wykonawcy. Ostateczna i wiążąca treść dokumentacji postępowania zostanie przekazana wraz z ogłoszeniem o zamówieniu.
+Zamawiający zastrzega, że nie udziela wyjaśnień dotyczących zamieszczonej \"dokumentacji
+roboczej\"."""@pl .
 
 <http://data.europa.eu/a4g/resource/bcdaaff4-de72-4041-94c0-9c7952e08872-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>
   a epo:ProcurementServiceProvider;

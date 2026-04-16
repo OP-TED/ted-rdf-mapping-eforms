@@ -17,13 +17,13 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:AccessTerm;
-  epo:hasAdditionalInformationDeadline "2023-12-21+01:00"^^xsd:dateTime .
+  epo:hasAdditionalInformationDeadline "2023-12-21T00:00:00+01:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>
   a epo:AccessTerm;
@@ -49,6 +49,10 @@
 <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/Channel$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:AdHocChannel;
   epo:hasAddressURL "www.sanjavier.es"^^xsd:anyURI .
+
+<http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/Channel$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://www.sanjavier.es/es/seccion-24-contrataci-n"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>
   a locn:Address;
@@ -76,7 +80,8 @@
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasEOrdering true;
   epo:hasEPayment true;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/Identifier/LOT-0001>
   a adms:Identifier;
@@ -93,11 +98,12 @@
 
 <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/Lot/Identifier/6548%2F2023>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
+  epo:hasUnknownUsageOfSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/other>;
   epo:isSMESuitable true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/MultipleStageProcedureTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
@@ -145,13 +151,15 @@
     <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/Reviewer/ORG-0001>,
     <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/TenderProcessor/ORG-0001>,
     <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/TenderReceiver/ORG-0001>;
-  epo:hasESenderDispatchDate "2023-11-20T16:51:24Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2023-11-20T16:51:24Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00710555-2023";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-cfc-social>;
-  epo:hasOJSIssueNumber "225/2023";
+  epo:hasOJSIssueNumber 225;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/SPA>;
   epo:hasPublicationDate "2023-11-22Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/Procedure/c9da0d3b-d8e4-4c4b-861a-5a11d6e49237>;
@@ -161,6 +169,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "48887df8-29c4-4bb2-8342-8a83333eb4ec" .
+
+<http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.9" .
+
+<http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/OfflineAccessProvider/ORG-0001>
   a epo:OfflineAccessProvider;
@@ -173,6 +197,7 @@
 
 <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/Organization/ORG-0001>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/Channel$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>;
   epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/la>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>;
   epo:hasLegalName "AYUNTAMIENTO DE SAN JAVIER"@es;
@@ -195,14 +220,14 @@
 
 <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/Procedure/c9da0d3b-d8e4-4c4b-861a-5a11d6e49237>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/MonetaryValueProcedure$_PriorInformationNotice1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/Procedure/Identifier/6548%2F2023>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0023>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/ProcedureTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/ProcedureTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>;
   dct:description "Contrato para la concesión de servicios de la cafetería del centro cívico ubicado en el Parque Almansa de San Javier"@es;
   dct:title "Concesión de servicios de la cafetería del centro cívico ubicado en el Parque Almansa de San Javier"@es;
   adms:identifier <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/Procedure/Identifier/c9da0d3b-d8e4-4c4b-861a-5a11d6e49237> .
@@ -268,13 +293,12 @@
 
 <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/nyk>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/other>;
   dct:description "Para participar deberá de acreditar la solvencia económico financiera y técnica"@es;
   skos:prefLabel "Solvencia económico financiera y técnica"@es .
 
 <http://data.europa.eu/a4g/resource/48887df8-29c4-4bb2-8342-8a83333eb4ec-01/SpecificDuration$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TenderValidityPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 12.0;
   time:unitType time:unitMonth .
 

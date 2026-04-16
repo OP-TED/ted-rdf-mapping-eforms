@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -28,7 +28,7 @@
 <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/AwardDecision/2022-05-26%2B01%3A00>
   a epo:AwardDecision;
   epo:comprisesAwardOutcome <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/LotAwardOutcome/RES-0004>;
-  epo:hasAwardDecisionDate "2022-05-26+01:00"^^xsd:date .
+  epo:hasAwardDecisionDate "2022-05-26T00:00:00+01:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/Buyer/ORG-0002organization>
   a epo:Buyer;
@@ -126,7 +126,7 @@
   epo:amendsContract <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/Contract/CON-0004> .
 
 <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 9.0;
   time:unitType time:unitMonth .
 
@@ -237,7 +237,7 @@ Bruttó összesen:-14893290 Ft
 
 <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/required>;
   epo:hasEOrdering false;
@@ -245,7 +245,8 @@ Bruttó összesen:-14893290 Ft
   epo:hasLegalFormRequirement "Lásd 2022/S 010-016821számú ajánlati felhívásban."@hu;
   epo:hasPaymentArrangement "Lásd 2022/S 010-016821számú ajánlati felhívásban."@hu;
   epo:hasPerformanceConditions "Lásd 2022/S 010-016821számú ajánlati felhívásban."@hu;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -306,7 +307,7 @@ Bruttó összesen:-14893290 Ft
 
 <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/Lot/LOT-0004>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/GreenProcurement$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>;
   epo:hasAdditionalInformation """1. A felhívás II.2.5) Értékelési szempontok pontjában meghatározott Nettó ajánlati ár a tételes költségvetés alapján (HUF) értékelési szempontnál a nettó ajánlati ár kerül értékelésre, továbbá a felolvasólapon is a nettó ajánlati árat szükséges megadni.
@@ -317,7 +318,7 @@ Bruttó összesen:-14893290 Ft
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/Lot/Identifier/EKR001165692021%2F4>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>;
   epo:isUsingEUFunds true;
@@ -337,8 +338,7 @@ További információ a dokumentációban."""@hu;
 <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/LotAwardOutcome/RES-0004>
   a epo:LotAwardOutcome;
   epo:comprisesTenderAwardOutcome <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/TenderAwardOutcome/TEN-6315>;
-  epo:concernsLot <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/Lot/LOT-0004>;
-  rdfs:seeAlso <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/ReviewRequestSummary$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1> .
+  epo:concernsLot <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/Lot/LOT-0004> .
 
 <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>
   a epo:Purpose;
@@ -355,13 +355,16 @@ További információ a dokumentációban."""@hu;
 <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/Notice>
   a epo:ContractModificationNotice, epo:Notice, epo:Notice38;
   epo:announcesContractAmendment <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/ContractAmendment$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_ContractModification1>;
-  epo:hasESenderDispatchDate "2023-12-07T14:47:55+01:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2023-12-07T14:47:55+01:00"^^xsd:dateTime;
+  epo:hasESenderDispatchDate "2023-12-05T16:36:23+01:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/cont-modif>;
   epo:hasNoticePublicationNumber "00747062-2023";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-modif>;
-  epo:hasOJSIssueNumber "237/2023";
+  epo:hasOJSIssueNumber 237;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/HUN>;
   epo:hasPublicationDate "2023-12-08Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/Notice/SpecificationInformation/Version>;
   epo:hasVersion "03";
   epo:refersToAwardDecision <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/AwardDecision/2022-05-26%2B01%3A00>;
   epo:refersToContractToBeModified <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/Contract/CON-0004>;
@@ -391,6 +394,22 @@ További információ a dokumentációban."""@hu;
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "8a1b4d66-d574-43d2-b95d-bba937537655" .
+
+<http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.7" .
+
+<http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
   a epo:NoticeAwardInformation;
@@ -467,7 +486,7 @@ További információ a dokumentációban."""@hu;
 
 <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/Procedure/bc5cc71b-aa33-47c2-8b9b-7b4dc440a669>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>;
   epo:hasAdditionalInformation """I.: 
 
 Táncsics Mihály Általános Iskola- komplex részben ajánlatot benyújtott gazdasági szereplők ismertetése:
@@ -567,6 +586,8 @@ Kbt. 141. § (6) bekezdésen alapuló módosítások:
 
 <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/SubcontractingEstimate$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>
   a epo:SubcontractingEstimate;
+  epo:isSubcontractingPercentageKnown false;
+  epo:isSubcontractingValueKnown false;
   dct:description "MV-É; MV-ÉV; MV-ÉG felelős műszaki vezető"@hu .
 
 <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/Tender/Identifier/EKR001165692021%2F6315>
@@ -578,14 +599,15 @@ Kbt. 141. § (6) bekezdésen alapuló módosítások:
   epo:foreseesSubcontracting <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/SubcontractingEstimate$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
   epo:hasFinancialOfferValue <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
   epo:hasSubcontracting <http://publications.europa.eu/resource/authority/applicability/yes>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/Lot/LOT-0004>;
   adms:identifier <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/Tender/Identifier/EKR001165692021%2F6315> .
 
 <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/TenderAwardOutcome/TEN-6315>
   a epo:TenderAwardOutcome;
   epo:concernsTender <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/Tender/TEN-6315>;
-  epo:hasAwardRank 1 .
+  epo:hasAwardRank 1;
+  epo:specifiesForeignSubsidiesMeasureConclusion <http://publications.europa.eu/resource/authority/foreign-subsidy-measure-conclusion/> .
 
 <http://data.europa.eu/a4g/resource/8a1b4d66-d574-43d2-b95d-bba937537655-03/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>
   a epo:MonetaryValue;

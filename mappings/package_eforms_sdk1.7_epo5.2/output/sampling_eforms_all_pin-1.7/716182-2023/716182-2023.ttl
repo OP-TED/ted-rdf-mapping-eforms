@@ -17,19 +17,13 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>
   a epo:AccessTerm;
   epo:definesProcurementProcedureInformationProvider <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/ProcurementProcedureInformationProvider/ORG-0002organization> .
-
-<http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
-  a epo:AccessTerm;
-  epo:hasPublicAccessURL "https://vergabe.hessen.de"^^xsd:anyURI;
-  epo:involvesProcurementDocument <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/ProcurementDocument$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1https%3A%2F%2Fvergabe.hessen.de>;
-  epo:isProcurementDocumentRestricted false .
 
 <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/Buyer/ORG-0001organization>
   a epo:Buyer;
@@ -89,6 +83,14 @@
   cccev:email "vk@bundeskartellamt.bund.de";
   cccev:telephone "+49 228-9499-0" .
 
+<http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2024-01-01+01:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/ContractEndPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2028-12-31+01:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
@@ -109,18 +111,14 @@
   locn:postCode "64291";
   locn:postName "Darmstadt" .
 
-<http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2024-01-01+01:00"^^xsd:date;
-  epo:hasEnd "2028-12-31+01:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/Interval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/required>;
   epo:hasPerformanceConditions "--"@de;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -163,6 +161,19 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0004" .
 
+<http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/Interval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  time:hasEnd <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/ContractEndPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
+<http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2/Identifier> .
+
+<http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2/Identifier>
+  a adms:Identifier;
+  skos:notation "sl-other" .
+
 <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/Lot/Identifier/A.6000.143308>
   a adms:Identifier;
   epo:hasScheme "InternalID";
@@ -170,7 +181,7 @@
 
 <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/GreenProcurement$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>;
   epo:hasAdditionalInformation """Es handelt sich um eine Wiederholungsbekanntmachung zu 2011/S 80-131436 vom
@@ -184,11 +195,11 @@ zu 2012/S 41-066361 vom 29.02.2012, zu 2012/S 250-414039 vom 29.12.2012, zu
   epo:hasPurpose <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
   epo:isSMESuitable false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
-    <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
-    <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/SubmissionTerm$_PriorInformationNotice1_ProcurementProjectLot1>;
+    <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/SubmissionTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1https%3A%2F%2Fvergabe.hessen.de>;
   epo:isUsingEUFunds false;
   epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/ParticipationCondition$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1>,
     <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>;
@@ -208,18 +219,21 @@ Weitere Informationen zum Projekt FAIR können über das Internet unter http://w
 
 <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/Notice>
   a epo:Notice, epo:Notice7, epo:PlanningNotice;
+  epo:announcesProcedure <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/Procedure/0000000-0000-4000-8000-000000000000>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/Buyer/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/ProcurementProcedureInformationProvider/ORG-0002organization>,
     <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>,
     <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/Reviewer/ORG-0003organization>,
     <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/TenderReceiver/ORG-0002organization>;
-  epo:hasESenderDispatchDate "2023-11-23T00:00:00+01:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2023-11-23T00:00:00+01:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticePublicationNumber "00716182-2023";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-rtl>;
-  epo:hasOJSIssueNumber "227/2023";
+  epo:hasOJSIssueNumber 227;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU>;
   epo:hasPublicationDate "2023-11-24Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/Lot/LOT-0001>;
   epo:refersToPrevious <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/Notice/659571-2022>;
@@ -248,6 +262,22 @@ Weitere Informationen zum Projekt FAIR können über das Internet unter http://w
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "17e9fe3c-aae5-46b8-9543-c65c9c506a81" .
+
+<http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.7" .
+
+<http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -303,9 +333,13 @@ Weitere Informationen zum Projekt FAIR können über das Internet unter http://w
   a epo:ParticipationCondition;
   epo:hasReservedProcurement <http://publications.europa.eu/resource/authority/reserved-procurement/none> .
 
+<http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/PlanningNotice>
+  a epo:PlanningNotice;
+  epo:announcesLot <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/Lot/LOT-0001> .
+
 <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/Procedure/0000000-0000-4000-8000-000000000000>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation """Es handelt sich um eine Wiederholungsbekanntmachung zu 2011/S 80-131436 vom
 23.04.2011,
@@ -344,10 +378,6 @@ Weitere Informationen zum Projekt FAIR können über das Internet unter http://w
 <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>
   a epo:Purpose;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/45000000> .
-
-<http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/ProcurementDocument$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1https%3A%2F%2Fvergabe.hessen.de>
-  a epo:ProcurementDocument;
-  epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU> .
 
 <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/ProcurementProcedureInformationProvider/ORG-0002organization>
   a epo:ProcurementProcedureInformationProvider;
@@ -399,3 +429,9 @@ Weitere Informationen zum Projekt FAIR können über das Internet unter http://w
   a epo:TenderReceiver;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/Lot/LOT-0001>;
   epo:playedBy <http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01/Organization/ORG-0002> .
+
+<http://data.europa.eu/a4g/resource/17e9fe3c-aae5-46b8-9543-c65c9c506a81-01AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1https%3A%2F%2Fvergabe.hessen.de>
+  a epo:AccessTerm;
+  epo:hasPublicAccessURL "https://vergabe.hessen.de"^^xsd:anyURI;
+  epo:isProcurementDocumentRestricted false;
+  epo:providesProcurementDocumentsInOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU> .

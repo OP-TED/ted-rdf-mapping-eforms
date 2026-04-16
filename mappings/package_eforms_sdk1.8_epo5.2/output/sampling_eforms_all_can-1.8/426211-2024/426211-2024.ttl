@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -97,10 +97,17 @@
   a epo:ContractAmendment;
   epo:amendsContract <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Contract/CON-0001> .
 
+<http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2023-12-13+02:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/ContractEndPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2024-07-01+03:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/ContractLocation$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BGR>;
-  locn:address <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/ProcedurePlacePerformance$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1> .
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BGR> .
 
 <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/ContractLocation$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
@@ -123,20 +130,16 @@
   a adms:Identifier;
   skos:notation "CON-0001" .
 
-<http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2023-12-13+02:00"^^xsd:date;
-  epo:hasEnd "2024-07-01+03:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/allowed>;
   epo:hasEOrdering false;
   epo:hasEPayment true;
   epo:hasMaximumNumberOfRenewals 0;
-  epo:hasPaymentArrangement "Възложителят плаща на Изпълнителя Цената по този Договор чрез ежемесечни плащания въз основа на представени от Изпълнителя документи, съгласно чл. 8, ал. 1."@bg .
+  epo:hasPaymentArrangement "Възложителят плаща на Изпълнителя Цената по този Договор чрез ежемесечни плащания въз основа на представени от Изпълнителя документи, съгласно чл. 8, ал. 1."@bg;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -176,6 +179,21 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0003" .
 
+<http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  time:hasEnd <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/ContractEndPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
+<http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  epo:concernsProcurementElement <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Procedure/1845dd60-10f9-4f60-ac4d-58c2d2f07e59>;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/other> .
+
+<http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2>
+  a epo:LocalLegalBasisInformation;
+  epo:concernsProcurementElement <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Procedure/1845dd60-10f9-4f60-ac4d-58c2d2f07e59>;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/other> .
+
 <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Lot/Identifier/308860>
   a adms:Identifier;
   epo:hasScheme "Lot";
@@ -183,18 +201,18 @@
 
 <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/GreenProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType1>,
     <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/GreenProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType2>,
     <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/GreenProcurement$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>,
-    <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/SocialProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType3>,
-    <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/StrategicProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
+    <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/SocialProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>,
+    <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/SocialProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType3>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Lot/Identifier/308860>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:hasRecurrenceDescription "през 2024 г."@bg;
   epo:isRecurrent true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>;
   epo:isUsingEUFunds false;
@@ -238,13 +256,15 @@
 <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Notice>
   a epo:ContractModificationNotice, epo:Notice, epo:Notice38;
   epo:announcesContractAmendment <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/ContractAmendment$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_ContractModification1>;
-  epo:hasESenderDispatchDate "2024-07-12T19:37:11+03:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-07-12T19:37:11+03:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/cont-modif>;
   epo:hasNoticePublicationNumber "00426211-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-modif>;
-  epo:hasOJSIssueNumber "137/2024";
+  epo:hasOJSIssueNumber 137;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/BUL>;
   epo:hasPublicationDate "2024-07-16Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToAwardDecision <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/AwardDecision/CON-0001>;
   epo:refersToContractToBeModified <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Contract/CON-0001>;
@@ -272,6 +292,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "350ba786-fa2f-42af-b2c5-e8456a3aca8f" .
+
+<http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.8" .
+
+<http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
   a epo:NoticeAwardInformation;
@@ -319,13 +355,12 @@
   adms:identifier <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Identifier/ORG-0003> .
 
 <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Procedure/1845dd60-10f9-4f60-ac4d-58c2d2f07e59>
-  a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
+  a epo:LocalLegalBasisInformation, epo:Procedure;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation "Предишна публикация - обявление за възложена поръчка с № F462204/10.01.2024 г., публикувано в ОВ на ЕС под № 2024/S 010-024183 на 15.01.2024 г."@bg;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Procedure/Identifier/308860>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
-  epo:hasLegalBasisDescription "чл. 82, ал. 4 от Закона за обществените поръчки."@bg;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/ProcedurePurpose$_ContractAwardNotice1_ProcurementProject1>;
   dct:description """Агенция „Митници“ на основание чл. 82, ал. 4 от ЗОП, Ви кани да подадете оферта при следните условия:
@@ -347,7 +382,8 @@
 
 2. Срокове:
 2.1. Срок на действие на договора: от датата на подписване на договора до срока на действие на Рамковото споразумение № СПОР – 10/01.07.2022 г. или до достигане на максималната му стойност, в зависимост от това, кое от двете събития настъпи първо.
-2.2. Срок и място за изпълнение на поръчката: Куриерските услуги да се извършват извън страната. Приемането и предаването на пратките се осъществява на адресите на Агенция „Митници“ и териториалните й поделения, посочени в Приложение № 4 към настоящата покана, всеки работен ден от 08:30 до 18:00 ч. Пратките се приемат в часовете, определени в индивидуалните договори, сключени от Възложителя по реда на чл. 82 от ЗОП."""@bg;
+2.2. Срок и място за изпълнение на поръчката: Куриерските услуги да се извършват извън страната. Приемането и предаването на пратките се осъществява на адресите на Агенция „Митници“ и териториалните й поделения, посочени в Приложение № 4 към настоящата покана, всеки работен ден от 08:30 до 18:00 ч. Пратките се приемат в часовете, определени в индивидуалните договори, сключени от Възложителя по реда на чл. 82 от ЗОП."""@bg,
+    "чл. 82, ал. 4 от Закона за обществените поръчки."@bg;
   dct:title "„Предоставяне на международни куриерски услуги за нуждите на Агенция „Митници”"@bg;
   adms:identifier <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Procedure/Identifier/1845dd60-10f9-4f60-ac4d-58c2d2f07e59> .
 
@@ -359,10 +395,6 @@
   a adms:Identifier;
   epo:hasScheme "InternalID";
   skos:notation "308860" .
-
-<http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/ProcedurePlacePerformance$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/BGR> .
 
 <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/ProcedurePurpose$_ContractAwardNotice1_ProcurementProject1>
   a epo:Purpose;
@@ -402,13 +434,13 @@
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Lot/LOT-0001>;
   epo:playedBy <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Organization/ORG-0002> .
 
+<http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/SocialProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>
+  a epo:SocialProcurement;
+  epo:includesAccessibilityCriterion <http://publications.europa.eu/resource/authority/accessibility/n-inc> .
+
 <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/SocialProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType3>
   a epo:SocialProcurement;
   epo:fulfillsRequirement <http://publications.europa.eu/resource/authority/social-objective/other> .
-
-<http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/StrategicProcurement$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>
-  a epo:StrategicProcurement;
-  epo:includesAccessibilityCriterion <http://publications.europa.eu/resource/authority/accessibility/n-inc> .
 
 <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Tender/Identifier/OF1391183%3A%20%22%D0%91%D0%AA%D0%9B%D0%93%D0%90%D0%A0%D0%A1%D0%9A%D0%98%20%D0%9F%D0%9E%D0%A9%D0%98%20%D0%95%D0%90%D0%94%22>
   a adms:Identifier;
@@ -417,14 +449,15 @@
 <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Tender/TEN-0001>
   a epo:Tender;
   epo:hasFinancialOfferValue <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Lot/LOT-0001>;
   adms:identifier <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Tender/Identifier/OF1391183%3A%20%22%D0%91%D0%AA%D0%9B%D0%93%D0%90%D0%A0%D0%A1%D0%9A%D0%98%20%D0%9F%D0%9E%D0%A9%D0%98%20%D0%95%D0%90%D0%94%22> .
 
 <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/TenderAwardOutcome/TEN-0001>
   a epo:TenderAwardOutcome;
   epo:concernsTender <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/Tender/TEN-0001>;
-  epo:hasAwardRank 1 .
+  epo:hasAwardRank 1;
+  epo:specifiesForeignSubsidiesMeasureConclusion <http://publications.europa.eu/resource/authority/foreign-subsidy-measure-conclusion/> .
 
 <http://data.europa.eu/a4g/resource/350ba786-fa2f-42af-b2c5-e8456a3aca8f-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>
   a epo:MonetaryValue;

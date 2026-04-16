@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -83,21 +83,16 @@
 
 <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/ContractLocation$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NOR>;
-  locn:address <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/ProcedurePlacePerformance$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1> .
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NOR> .
 
 <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/ContractLocation$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NOR> .
 
-<http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasTimePeriod <http://publications.europa.eu/resource/authority/timeperiod/UNLIMITED> .
-
 <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies> .
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -147,6 +142,23 @@ SySIKT municipalities have decided to start a process for investigating future E
   a epo:LeadBuyer;
   epo:playedBy <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Organization/ORG-0003> .
 
+<http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier> .
+
+<http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier>
+  a adms:Identifier;
+  epo:hasScheme "ELI";
+  skos:notation "Forskrift om offentlige anskaffelser § 13-4 (1) b og c" .
+
+<http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2/Identifier> .
+
+<http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/LocalLegalBasisInformation$_ContractAwardNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2/Identifier>
+  a adms:Identifier;
+  skos:notation "Anskaffelsesforskriften" .
+
 <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Lot/Identifier/2021%2F1964>
   a adms:Identifier;
   epo:hasScheme "InternalID";
@@ -154,12 +166,12 @@ SySIKT municipalities have decided to start a process for investigating future E
 
 <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Lot/Identifier/2021%2F1964>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>;
@@ -189,6 +201,7 @@ SySIKT municipalities have decided to start a process for investigating future E
 <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Notice>
   a epo:DirectAwardPrenotificationNotice, epo:Notice, epo:Notice25;
   epo:announcesAwardDecision <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/AwardDecision/CON-0001>;
+  epo:announcesContract <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Contract/CON-0001>;
   epo:announcesLot <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Lot/LOT-0001>;
   epo:announcesNoticeAwardInformation <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>;
   epo:announcesProcedure <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Procedure/68156cbf-2102-4a48-9999-c7a521f36521>;
@@ -198,13 +211,16 @@ SySIKT municipalities have decided to start a process for investigating future E
     <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/ProcurementProcedureInformationProvider/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Reviewer/ORG-0002organization>,
     <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Tenderer/TPA-0001>;
-  epo:hasESenderDispatchDate "2024-09-02T07:00:00+00:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-09-02T07:00:00+00:00"^^xsd:dateTime;
+  epo:hasESenderDispatchDate "2024-09-02T09:00:00+00:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/dir-awa-pre>;
   epo:hasNoticePublicationNumber "00530983-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/veat>;
-  epo:hasOJSIssueNumber "172/2024";
+  epo:hasOJSIssueNumber 172;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/ENG>;
   epo:hasPublicationDate "2024-09-04+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Procedure/68156cbf-2102-4a48-9999-c7a521f36521>;
@@ -214,6 +230,22 @@ SySIKT municipalities have decided to start a process for investigating future E
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "5f1b1802-6462-455a-9999-0a11cc519e46" .
+
+<http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.7" .
+
+<http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
   a epo:NoticeAwardInformation;
@@ -247,7 +279,7 @@ SySIKT municipalities have decided to start a process for investigating future E
 
 <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Procedure/68156cbf-2102-4a48-9999-c7a521f36521>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Procedure/Identifier/2024.01>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
@@ -256,7 +288,7 @@ SySIKT municipalities have decided to start a process for investigating future E
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/ProcedurePurpose$_ContractAwardNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/DirectAwardTerm$_ContractAwardNotice1_TenderingProcess1_ProcessJustification1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/DirectAwardTerm$_ContractAwardNotice1_TenderingProcess1_ProcessJustification1>;
   dct:description "SySIKT KO joint agreement for the operation of the municipalities' ERP solution. The municipalities participating in the collaboration are Askvoll, Hyllestad, Fjaler, Høyanger, Solund, Sunnfjord, Vik, and Luster. The current solution is operated in collaboration with Visma. The new agreement for Visma Enterprise Plus will be operated by Visma alone."@en;
   dct:title "Intention notice: ERP Software"@en;
   adms:identifier <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Procedure/Identifier/68156cbf-2102-4a48-9999-c7a521f36521> .
@@ -269,10 +301,6 @@ SySIKT municipalities have decided to start a process for investigating future E
 <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Procedure/Identifier/68156cbf-2102-4a48-9999-c7a521f36521>
   a adms:Identifier;
   skos:notation "68156cbf-2102-4a48-9999-c7a521f36521" .
-
-<http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/ProcedurePlacePerformance$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/NOR> .
 
 <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/ProcedurePurpose$_ContractAwardNotice1_ProcurementProject1>
   a epo:Purpose;
@@ -315,7 +343,7 @@ SySIKT municipalities have decided to start a process for investigating future E
 
 <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Tender/TEN-0001>
   a epo:Tender;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Lot/LOT-0001>;
   adms:identifier <http://data.europa.eu/a4g/resource/5f1b1802-6462-455a-9999-0a11cc519e46-01/Tender/Identifier/Visma%20Enterprise%20AS> .
 

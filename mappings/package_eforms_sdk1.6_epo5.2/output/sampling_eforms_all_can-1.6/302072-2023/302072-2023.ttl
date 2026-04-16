@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -37,6 +37,10 @@
   a epo:Buyer;
   epo:isContractingEntity true;
   epo:playedBy <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/Channel$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://mvg.at/ausschreibungen"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/CompanyAddress$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>
   a locn:Address;
@@ -66,7 +70,8 @@
 
 <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/Identifier/LOT-0000>
   a adms:Identifier;
@@ -89,11 +94,11 @@
 
 <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/MonetaryValueLot$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/Lot/Identifier/2023.11.11602006>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>;
   epo:isUsingEUFunds false;
   epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/AwardCriterion$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>;
@@ -124,13 +129,15 @@
   a epo:Notice, epo:Notice32, epo:ResultNotice;
   epo:announcesAwardDecision <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/AwardDecision/RES-0001>;
   epo:announcesNoticeAwardInformation <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>;
-  epo:hasESenderDispatchDate "2023-05-17T10:50:08.8080091+00:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2023-05-17T10:50:08.8080091+00:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/result>;
   epo:hasNoticePublicationNumber "00302072-2023";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-standard>;
-  epo:hasOJSIssueNumber "96/2023";
+  epo:hasOJSIssueNumber 96;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU>;
   epo:hasPublicationDate "2023-05-19Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/Lot/LOT-0000>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/Procedure/ddf99dcd-b00c-4263-93a4-3e9d198e41a6>;
@@ -144,6 +151,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "2a15b88d-a0f4-4d11-8848-0022489933bb" .
+
+<http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.6" .
+
+<http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
   a epo:NoticeAwardInformation;
@@ -159,6 +182,7 @@
 
 <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/Organization/ORG-0001>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/Channel$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>;
   epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl-cga>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/Organization/Identifier$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>;
   epo:hasLegalName "Monopolverwaltung für Wien, Niederösterreich und Burgenland"@de;
@@ -186,7 +210,7 @@
 
 <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/Procedure/ddf99dcd-b00c-4263-93a4-3e9d198e41a6>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/Procedure/Identifier/2023.11.11602006>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0023>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/2a15b88d-a0f4-4d11-8848-0022489933bb-01/Lot/LOT-0000>;

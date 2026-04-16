@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -53,7 +53,7 @@
 <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/AwardDecision/2024-06-24%2B02%3A00>
   a epo:AwardDecision;
   epo:comprisesAwardOutcome <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/LotAwardOutcome/RES-0001>;
-  epo:hasAwardDecisionDate "2024-06-24+02:00"^^xsd:date .
+  epo:hasAwardDecisionDate "2024-06-24T00:00:00+02:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/Buyer/ORG-0001>
   a epo:Buyer;
@@ -127,7 +127,8 @@
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasOptionsDescription "Conformément à l'article R2194-1 du code de la commande publique et par dérogation à l'article 25 du CCAG-PI, une clause de réexamen permet d'apporter des modifications en cours d'exécution."@fr;
   epo:hasRenewalDescription """Dans le cadre de la mise en oeuvre de fournitures ou services supplémentaires le marché pourra être modifié dans les conditions indiquées à l'article L2194-1 du code de la commande publique.
-"""@fr .
+"""@fr;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -167,13 +168,13 @@
 
 <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation "Durée : 12 mois fermes"@fr;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/Lot/Identifier/202452783>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>;
   epo:isUsingEUFunds false;
@@ -213,15 +214,18 @@ Pour information, le montant de l'enveloppe budgétaire maximum pour financer le
 <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/Notice>
   a epo:Notice, epo:Notice29, epo:ResultNotice;
   epo:announcesAwardDecision <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/AwardDecision/2024-06-24%2B02%3A00>;
+  epo:announcesContract <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/Contract/CON-0001>;
   epo:announcesNoticeAwardInformation <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/Tenderer/TPA-0001>;
-  epo:hasESenderDispatchDate "2024-07-22T15:28:36+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-07-22T15:28:36+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/result>;
   epo:hasNoticePublicationNumber "00445719-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-standard>;
-  epo:hasOJSIssueNumber "143/2024";
+  epo:hasOJSIssueNumber 143;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/FRA>;
   epo:hasPublicationDate "2024-07-24+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/Lot/LOT-0001>;
   epo:refersToPrevious <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/Notice/b182fe70-af51-4335-afba-292009170ff0-01>;
@@ -235,6 +239,22 @@ Pour information, le montant de l'enveloppe budgétaire maximum pour financer le
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "c2dc2a4e-201c-442f-a356-f0cf2549d7dc" .
+
+<http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.9" .
+
+<http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/Notice/b182fe70-af51-4335-afba-292009170ff0-01>
   a epo:Notice;
@@ -291,7 +311,7 @@ Pour information, le montant de l'enveloppe budgétaire maximum pour financer le
 
 <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/Procedure/2a1aa3cf-5c44-46b6-b0e1-98d302609998>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>;
   epo:hasAdditionalInformation """Conformément aux articles R2132-7 à R2132-14 du code de la commande publique, la présente consultation fait l'objet d'une procédure dématérialisée. Cette procédure permet aux candidats qui le souhaitent, via le site internet https://marchespublics.paysdelaloire.fr/ : d'accéder à la « plateforme » de dématérialisation des procédures de marchés publics lancée par la Région Pays de la Loire ; de télécharger gratuitement le règlement de la consultation et le dossier de consultation des entreprises ; de poser des questions ou solliciter des documents complémentaires ; de déposer leurs documents de candidature et d'offre par voie électronique sur la plateforme, ce qui constituera « une offre dématérialisée ».
 Seul le dépôt d'une offre par voie électronique est autorisé. Si une offre est déposée uniquement sur support physique, elle sera déclarée irrégulière. Les soumissionnaires sont informés qu'aucune régularisation ne sera envisagée pour ce motif. Les conditions d'utilisation de la plateforme de dématérialisation des marchés publics sont décrites à l'article 8 du règlement de consultation.
 Les candidats devront remettre un dossier comprenant l'ensemble des documents demandés à l'article 4.3 du règlement de consultation.
@@ -349,7 +369,7 @@ Référé contractuel : article L551-13 et suivants du code de justice administr
 
 <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/Tender/TEN-0001>
   a epo:Tender;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/Lot/LOT-0001>;
   adms:identifier <http://data.europa.eu/a4g/resource/c2dc2a4e-201c-442f-a356-f0cf2549d7dc-01/Tender/Identifier/OFFRE%20CREA> .
 

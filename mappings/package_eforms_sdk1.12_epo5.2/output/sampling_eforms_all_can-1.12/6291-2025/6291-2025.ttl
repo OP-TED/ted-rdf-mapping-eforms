@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -49,6 +49,12 @@
   cccev:email "noreply.esender_hub@bescha.bund.de";
   cccev:telephone "+49228996100" .
 
+<http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>
+  a dct:Location;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE300>;
+  locn:address <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/ProcedurePlacePerformance$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1> .
+
 <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
@@ -75,19 +81,30 @@ Future 2GW HVDC Offshore Substations should be installed in German EEZ"""@de .
   epo:hasScheme "Part";
   skos:notation "PAR-0000" .
 
+<http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier> .
+
+<http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier>
+  a adms:Identifier;
+  skos:notation "other" .
+
 <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/Notice>
   a epo:Notice, epo:Notice5, epo:PlanningNotice;
+  epo:announcesPlannedProcurement <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/PlannedProcurement$_PriorInformationNotice1_ProcurementProject1>;
   epo:announcesPlannedProcurementPart <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/PlannedProcurementPart/PAR-0000>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/Buyer/ORG-0000organization>,
     <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>,
     <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/Reviewer/ORG-0000organization>;
-  epo:hasESenderDispatchDate "2025-01-06T00:00:00+01:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2025-01-06T00:00:00+01:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticePublicationNumber "00006291-2025";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-only>;
-  epo:hasOJSIssueNumber "4/2025";
+  epo:hasOJSIssueNumber 4;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU>;
   epo:hasPublicationDate "2025-01-07+01:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   adms:identifier <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/Notice/Identifier> .
 
@@ -95,6 +112,22 @@ Future 2GW HVDC Offshore Substations should be installed in German EEZ"""@de .
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "d105e587-31af-4143-ab19-20ef9529e8a1" .
+
+<http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.12" .
+
+<http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -133,20 +166,40 @@ Future 2GW HVDC Offshore Substations should be installed in German EEZ"""@de .
   epo:hasNutsCode <http://data.europa.eu/nuts/code/DE300> .
 
 <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>
-  a epo:ProcurementObject;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
-  epo:isSMESuitable false;
-  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/ReviewTerm/ORG-0000organization> .
+  a epo:ProcurementObject .
 
 <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>
   a epo:Purpose;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/71323100> .
 
+<http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/PlannedProcurement$_PriorInformationNotice1_ProcurementProject1>
+  a epo:PlannedProcurement;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+    <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
+  epo:hasLegalBasisDescription "2.1.4 Art. 58 Directive 2014/25/EU"@de, "other";
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
+  dct:description """The publication relates solely to the execution of a market consultation and not to an award procedure for the award of a contract to an economic operator, which would entail the provision of services!
+50Hertz Offshore GmbH, Amprion Offshore GmbH and TenneT Offshore GmbH are planning to tender the execution of a Design Study for 2GW Platforms in the future, which can afterwards be used for the development of Offshore Substations projects stated in the German Grid Development Plan. Therefore we are asking to participate in the market consultation to provide your input regarding this study.
+All further information, as well as a questionnaire, are accessible under the following link: 
+
+https://eliagroup.sharepoint.com/:f:/s/EFSS/EFSS/Ervvv_NBV5lBqyREG3bdF_sB6Kb6dW9bTOEW6v7OXKh7ZQ?e=JVfGYp
+
+If you are interested in participating in the Market Consultation for the \"2GW Platform Design Study\" please return the filled out questionnaire by mail to the below mentioned contact person latest by 17/01/2025:
+
+Benjamin Kirchner (50Hertz Offshore GmbH)
+benjamin.kirchner@50hertz.com
+
+In case of questions please feel free to reach out to the person mentioned above."""@de;
+  dct:title "Market Consultation \"2GW Platform Design Study\""@de .
+
 <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/PlannedProcurementPart/PAR-0000>
   a epo:PlannedProcurementPart;
-  epo:foreseesProcurementObject <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
+  epo:isSMESuitable false;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/ReviewTerm/ORG-0000organization>;
   dct:description """The publication relates solely to the execution of a market consultation and not to an award procedure for the award of a contract to an economic operator, which would entail the provision of services!
 50Hertz Offshore GmbH, Amprion Offshore GmbH and TenneT Offshore GmbH are planning to tender the execution of a Design Study for 2GW Platforms in the future, which can afterwards be used for the development of Offshore Substations projects stated in the German Grid Development Plan. Therefore we are asking to participate in the market consultation to provide your input regarding this study.
 All further information, as well as a questionnaire, are accessible under the following link: 
@@ -161,6 +214,26 @@ benjamin.kirchner@50hertz.com
 In case of questions please feel free to reach out to the person mentioned above."""@de;
   dct:title "Market Consultation \"2GW Platform Design Study\""@de;
   adms:identifier <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/Identifier/PAR-0000> .
+
+<http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/ProcedurePlacePerformance$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/DE300> .
+
+<http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>
+  a epo:Purpose;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/71323100> .
+
+<http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>
+  a epo:ContractTerm;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
+
+<http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>
+  a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>;
+  epo:hasPlaceOfPerformanceAdditionalInformation """The execution of the design study is not bound to Berlin.
+
+Future 2GW HVDC Offshore Substations should be installed in German EEZ"""@de .
 
 <http://data.europa.eu/a4g/resource/d105e587-31af-4143-ab19-20ef9529e8a1-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>
   a epo:ProcurementServiceProvider;

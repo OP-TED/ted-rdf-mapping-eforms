@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -31,6 +31,10 @@
   a epo:Buyer;
   epo:hasBuyerProfile "https://www.contrataciondelestado.es/wps/portal/perfilContratante"^^xsd:anyURI;
   epo:playedBy <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Channel$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://www.contrataciondelestado.es/wps/portal/perfilContratante"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>
   a locn:Address;
@@ -60,6 +64,12 @@
   cccev:email "ted@publications.europa.eu";
   cccev:telephone "+352 29291" .
 
+<http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>
+  a dct:Location;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES511>;
+  locn:address <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/ProcedurePlacePerformance$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1> .
+
 <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
   epo:hasAdditionalContractNature <http://publications.europa.eu/resource/authority/contract-nature/services>;
@@ -83,6 +93,18 @@
   epo:hasScheme "Part";
   skos:notation "PAR-0002" .
 
+<http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Identifier/TPO-0001>
+  a adms:Identifier;
+  skos:notation "TPO-0001" .
+
+<http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier> .
+
+<http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier>
+  a adms:Identifier;
+  skos:notation "Ley 31/2007" .
+
 <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Mediator/ORG-0001>
   a epo:Mediator;
   epo:playedBy <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Organization/ORG-0001> .
@@ -92,8 +114,14 @@
   epo:hasAmountValue 77300000.0;
   epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
 
+<http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/MonetaryValueProcedure$_PriorInformationNotice1_ProcurementProject1_RequestedTenderTotal1>
+  a epo:MonetaryValue;
+  epo:hasAmountValue 77300000.0;
+  epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
+
 <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Notice>
   a epo:Notice, epo:Notice4, epo:PlanningNotice;
+  epo:announcesPlannedProcurement <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/PlannedProcurement$_PriorInformationNotice1_ProcurementProject1>;
   epo:announcesPlannedProcurementPart <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/PlannedProcurementPart/PAR-0002>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Buyer/ORG-0001>,
     <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Mediator/ORG-0001>,
@@ -104,13 +132,15 @@
     <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Reviewer/TPO-0001>,
     <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/TenderProcessor/ORG-0001>,
     <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/TenderReceiver/ORG-0001>;
-  epo:hasESenderDispatchDate "2024-10-07T13:28:49Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-10-07T13:28:49Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticePublicationNumber "00609420-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-only>;
-  epo:hasOJSIssueNumber "197/2024";
+  epo:hasOJSIssueNumber 197;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/SPA>;
   epo:hasPublicationDate "2024-10-09+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToPrevious <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Notice/193127-2015>;
   adms:identifier <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Notice/Identifier> .
@@ -137,9 +167,25 @@
   epo:hasScheme "notice-id";
   skos:notation "ca68510e-7c34-45d4-9361-e706f24e5648" .
 
+<http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.12" .
+
+<http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
+
 <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/OfflineAccessProvider/ORG-0001>
   a epo:OfflineAccessProvider;
-  epo:contextualisedBy <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:contextualisedBy <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/PlannedProcurementPart/PAR-0002>;
   epo:playedBy <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Organization/ORG-0001> .
 
 <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
@@ -160,17 +206,21 @@
 
 <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Organization/ORG-0001>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Channel$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>;
   epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>;
   epo:hasLegalName "Administrador de Infraestructuras Ferroviarias"@es;
   epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/gen-pub>;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/CompanyContactPoint$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_Contact1>;
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>;
-  adms:identifier <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Identifier/ORG-0001> .
+  adms:identifier <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Identifier/ORG-0001>;
+  org:hasUnit <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/OrganizationalUnit/TPO-0001> .
 
-<http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Organization/TPO-0001>
-  a org:Organization;
-  owl:sameAs <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Organization/ORG-0001> .
+<http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/OrganizationalUnit/TPO-0001>
+  a org:OrganizationalUnit;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/TouchPoint/TPO-0001>;
+  dct:title "Tribunal Administrativo Central de Recursos Contractuales"@es;
+  adms:identifier <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Identifier/TPO-0001> .
 
 <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/PartContractLocation$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
@@ -184,22 +234,42 @@
   epo:hasNutsCode <http://data.europa.eu/nuts/code/ES511>;
   locn:postName "Barcelona" .
 
-<http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/PartPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasTimePeriod <http://publications.europa.eu/resource/authority/timeperiod/UNKNOWN> .
+<http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/PartInterval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval .
 
 <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>
-  a epo:ProcurementObject;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
-  epo:hasPurpose <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
-  epo:isCoveredByGPA true;
-  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/ReviewTerm/TPO-0001> .
+  a epo:ProcurementObject .
 
 <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>
   a epo:Purpose;
   epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/45314000>;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/45234115> .
+
+<http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/PartStartPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a epo:ContractTerm;
+  epo:hasUnlimitedDuration true .
+
+<http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/ParticipationCondition$_PriorInformationNotice1_ProcurementProjectLot1>
+  a epo:ParticipationCondition;
+  epo:hasReservedProcurement <http://publications.europa.eu/resource/authority/reserved-procurement/none> .
+
+<http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/PlannedProcurement$_PriorInformationNotice1_ProcurementProject1>
+  a epo:PlannedProcurement;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+    <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
+  epo:hasAdditionalInformation "Cofinanciado por el Fondo Europeo de Desarrollo Regional. FEDER_REACT-EU. Financiado como parte de la respuesta de la Unión a la pandemia de COVID-19, y por el Mecanismo \"Conectar Europa\" de la Unión Euroepa (CEF)."@es;
+  epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/MonetaryValueProcedure$_PriorInformationNotice1_ProcurementProject1_RequestedTenderTotal1>;
+  epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/PlannedProcurement/Identifier/4.15%2F06402.0005>;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
+  epo:hasLegalBasisDescription "Ley 31/2007"@es, "Ley 31/2007";
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>;
+  dct:description "Redacción de los proyectos constructivos, ejecución de las obras, conservación y mantenimiento de las instalaciones de enclavamientos, sistemas de protección del tren, suministro de energía, telecomunicaciones fijas y telecomunicaciones móviles GSM-R para la implantación del sistema ERTMS nivel 2 y aumento de la disponibilidad GSM-R en el tramo L'Hospitalet de Llobregat— Mataró de la línea R1 de la Red de Cercanías de Barcelona"@es;
+  dct:title "Redacción de los proyectos constructivos, ejecución de las obras, conservación y mantenimiento de las instalaciones de enclavamientos, sistemas de protección del tren, suministro de energía, telecomunicaciones fijas y telecomunicaciones móviles GSM-R para la implantación del sistema ERTMS nivel 2 y aumento de la disponibilidad GSM-R en el tramo L'Hospitalet de Llobregat— Mataró"@es .
+
+<http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/PlannedProcurement/Identifier/4.15%2F06402.0005>
+  a adms:Identifier;
+  skos:notation "4.15/06402.0005" .
 
 <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/PlannedProcurementPart/Identifier/4.15%2F06402.0005>
   a adms:Identifier;
@@ -207,18 +277,51 @@
 
 <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/PlannedProcurementPart/PAR-0002>
   a epo:PlannedProcurementPart;
-  epo:foreseesProcurementObject <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
+    <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/PartInterval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>,
+    <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/PartStartPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/MonetaryValuePart$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/PlannedProcurementPart/Identifier/4.15%2F06402.0005>;
-  epo:hasPlannedPeriod <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/PartPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/PartPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
+  epo:isCoveredByGPA true;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/ReviewTerm/TPO-0001>;
   dct:description "Redacción de los proyectos constructivos, ejecución de las obras, conservación y mantenimiento de las instalaciones de enclavamientos, sistemas de protección del tren, suministro de energía, telecomunicaciones fijas y telecomunicaciones móviles GSM-R para la implantación del sistema ERTMS nivel 2 y aumento de la disponibilidad GSM-R en el tramo L'Hospitalet de Llobregat— Mataró de la línea R1 de la Red de Cercanías de Barcelona"@es;
   dct:title "Redacción de los proyectos constructivos, ejecución de las obras, conservación y mantenimiento de las instalaciones de enclavamientos, sistemas de protección del tren, suministro de energía, telecomunicaciones fijas y telecomunicaciones móviles GSM-R para la implantación del sistema ERTMS nivel 2 y aumento de la disponibilidad GSM-R en el tramo L'Hospitalet de Llobregat— Mataró"@es;
   adms:identifier <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Identifier/PAR-0002> .
 
+<http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/PlannedProcurementPart/ca68510e-7c34-45d4-9361-e706f24e5648>
+  a epo:PlannedProcurementPart;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/ParticipationCondition$_PriorInformationNotice1_ProcurementProjectLot1> .
+
+<http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/ProcedurePlacePerformance$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1>
+  a locn:Address;
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/ESP>;
+  epo:hasNutsCode <http://data.europa.eu/nuts/code/ES511>;
+  locn:postName "Barcelona" .
+
+<http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>
+  a epo:Purpose;
+  epo:hasAdditionalClassification <http://data.europa.eu/cpv/cpv/45314000>;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/45234115> .
+
+<http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>
+  a epo:ProcessPlanningTerm;
+  epo:hasEstimatedContractNoticePublicationDate "2024-10-08+02:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/ProcurementProcedureInformationProvider/ORG-0001>
   a epo:ProcurementProcedureInformationProvider;
-  epo:contextualisedBy <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:contextualisedBy <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/PlannedProcurementPart/PAR-0002>;
   epo:playedBy <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>
+  a epo:ContractTerm;
+  epo:hasAdditionalContractNature <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works> .
+
+<http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>
+  a epo:ContractTerm;
+  epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/ContractLocation$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1_Address1> .
 
 <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>
   a epo:ProcurementServiceProvider;
@@ -229,7 +332,7 @@
 <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/ReviewProcedureInformationProvider/TPO-0001>
   a epo:ReviewProcedureInformationProvider;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/TouchPoint/TPO-0001>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Organization/TPO-0001> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/OrganizationalUnit/TPO-0001> .
 
 <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/ReviewTerm/TPO-0001>
   a epo:ReviewTerm;
@@ -239,16 +342,16 @@
 <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Reviewer/TPO-0001>
   a epo:Reviewer;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/TouchPoint/TPO-0001>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Organization/TPO-0001> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/OrganizationalUnit/TPO-0001> .
 
 <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/TenderProcessor/ORG-0001>
   a epo:TenderProcessor;
-  epo:contextualisedBy <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:contextualisedBy <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/PlannedProcurementPart/PAR-0002>;
   epo:playedBy <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Organization/ORG-0001> .
 
 <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/TenderReceiver/ORG-0001>
   a epo:TenderReceiver;
-  epo:contextualisedBy <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/PartProcurementObject$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:contextualisedBy <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/PlannedProcurementPart/PAR-0002>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/TouchPoint/TPO-0001>;
   epo:playedBy <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/Organization/ORG-0001> .
 
@@ -257,7 +360,6 @@
   epo:hasInternetAddress "https://www.hacienda.gob.es/"^^xsd:anyURI;
   cccev:email "tribunal_recursos.contratos@hacienda.gob.es";
   cccev:telephone "+34 913491451";
-  dct:description "Tribunal Administrativo Central de Recursos Contractuales"@es;
   locn:address <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/TouchPointAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint1_PostalAddress1> .
 
 <http://data.europa.eu/a4g/resource/ca68510e-7c34-45d4-9361-e706f24e5648-01/TouchPointAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint1_PostalAddress1>

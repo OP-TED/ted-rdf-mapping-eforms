@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -36,6 +36,14 @@
   epo:isContractingEntity true;
   epo:playedBy <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Organization/ORG-0001> .
 
+<http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Channel$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://www.zenithnovainnovations.com/info-exchange"^^xsd:anyURI .
+
+<http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Channel$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://www.zenithnovainnovations.com/info-exchange/katerina-lisa"^^xsd:anyURI .
+
 <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>
   a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/GRC>;
@@ -53,32 +61,48 @@
   cccev:telephone "+1 (555) 123-4567" .
 
 <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 48.0;
   time:unitType time:unitMonth .
 
 <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works>;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/yes> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/yes>;
+  epo:hasUnknownDuration false .
+
+<http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/EmploymentDocumentation$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_EmploymentLegislationDocumentReference1_Attachment1>
+  a epo:EmploymentDocumentation;
+  epo:hasAddressURL "https://example.com/employment-legislation"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/EmploymentInformationProvider/TPO-0001touchpoint>
   a epo:EmploymentInformationProvider;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Lot/LOT-0001>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/TouchPoint/TPO-0001>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Organization/TPO-0001> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Organization/TPO-0001>,
+    <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/OrganizationalUnit/TPO-0001>;
+  epo:providesDocumentation <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/EmploymentDocumentation$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_EmploymentLegislationDocumentReference1_Attachment1> .
+
+<http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/EnvironmentalDocumentation$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_EnvironmentalLegislationDocumentReference1_Attachment1>
+  a epo:EnvironmentalDocumentation;
+  epo:hasAddressURL "https://example.com/environmental-legislation"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/EnvironmentalProtectionInformationProvider/TPO-0001touchpoint>
   a epo:EnvironmentalProtectionInformationProvider;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Lot/LOT-0001>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/TouchPoint/TPO-0001>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Organization/TPO-0001> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/OrganizationalUnit/TPO-0001>;
+  epo:providesDocumentation <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/EnvironmentalDocumentation$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_EnvironmentalLegislationDocumentReference1_Attachment1> .
+
+<http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
+  a epo:ExclusionGround;
+  epo:hasQualificationCriteriaStatedInNotice true .
 
 <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest2_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Description (BT-67(b)-Procedure) Early termination, damages or other comparable sanctions"@en;
-  dct:type <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-sanction> .
+  epo:hasExclusionGroundType <http://publications.europa.eu/resource/authority/exclusion-ground/exg-mis-sanction>;
+  dct:description "Description (BT-67(b)-Procedure) Early termination, damages or other comparable sanctions"@en .
 
 <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -94,6 +118,11 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0001" .
 
+<http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Identifier/TPO-0001>
+  a adms:Identifier;
+  epo:hasScheme "touchpoint";
+  skos:notation "TPO-0001" .
+
 <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Lot/Identifier/ABE>
   a adms:Identifier;
   epo:hasScheme "InternalID";
@@ -101,17 +130,17 @@
 
 <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Lot/Identifier/ABE>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/MultipleStageProcedureTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/SubmissionTerm$_PriorInformationNotice1_ProcurementProjectLot1>;
-  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest2_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/ParticipationCondition$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1>;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/ParticipationCondition$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1>,
+    <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest2_SpecificTendererRequirement1>;
   dct:description """Description (BT-24-Lot)
 *Description (BT-24-Lot)
 *Description (BT-24-Lot)
@@ -132,6 +161,7 @@ vol3"""@en;
 
 <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Notice>
   a epo:Notice, epo:Notice9, epo:PlanningNotice;
+  epo:announcesProcedure <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Procedure/0000000-0000-4000-8000-000000000000>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Buyer/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/EmploymentInformationProvider/TPO-0001touchpoint>,
     <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/EnvironmentalProtectionInformationProvider/TPO-0001touchpoint>,
@@ -139,10 +169,12 @@ vol3"""@en;
     <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/ProcurementProcedureInformationProvider/TPO-0001touchpoint>,
     <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/ReviewProcedureInformationProvider/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/TaxInformationProvider/ORG-0001organization>;
-  epo:hasESenderDispatchDate "2023-05-26T09:43:46Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2023-05-26T09:43:46Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-rtl>;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/ENG>;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Procedure/0000000-0000-4000-8000-000000000000>;
@@ -153,11 +185,27 @@ vol3"""@en;
   epo:hasScheme "notice-id";
   skos:notation "7f10ad90-127e-4c3b-a7ef-cfae9295d0ce" .
 
+<http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.12" .
+
+<http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
+
 <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/OfflineAccessProvider/TPO-0001touchpoint>
   a epo:OfflineAccessProvider;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Lot/LOT-0001>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/TouchPoint/TPO-0001>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Organization/TPO-0001> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/OrganizationalUnit/TPO-0001> .
 
 <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -165,29 +213,46 @@ vol3"""@en;
 
 <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Organization/ORG-0001>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Channel$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>;
   epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/pub-undert>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>;
   epo:hasLegalName "ZenithNova Innovations "@en;
   epo:hasMainActivity <http://publications.europa.eu/resource/authority/main-activity/urttb>;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/CompanyContactPoint$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_Contact1>;
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>;
-  adms:identifier <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Identifier/ORG-0001> .
+  adms:identifier <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Identifier/ORG-0001>;
+  org:hasUnit <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/OrganizationalUnit/TPO-0001> .
 
-<http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Organization/TPO-0001>
-  a org:Organization;
-  owl:sameAs <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Organization/ORG-0001> .
+<http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/OrganizationalUnit/TPO-0001>
+  a org:OrganizationalUnit;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Channel$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint1>;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/TouchPoint/TPO-0001>;
+  dct:title "Katerina Lisa"@en;
+  adms:identifier <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Identifier/TPO-0001> .
 
 <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/ParticipationCondition$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1>
   a epo:ParticipationCondition;
   epo:hasReservedProcurement <http://publications.europa.eu/resource/authority/reserved-procurement/res-ws> .
 
+<http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/PlanningNotice>
+  a epo:PlanningNotice;
+  epo:announcesLot <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Lot/LOT-0001> .
+
+<http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Procedure>
+  a epo:Procedure;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1> .
+
+<http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Procedure/>
+  a epo:Procedure;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest2_SpecificTendererRequirement1> .
+
 <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Procedure/0000000-0000-4000-8000-000000000000>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32009L0081>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/ProcedureTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/ProcedureTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>;
   dct:description """Description (BTDescription (BTDescription (BTDescription (BTDescription (BT 
 vol3"""@en;
   dct:title "Title (BT-21-Proc vol3"@en .
@@ -206,7 +271,7 @@ vol3"""@en;
   a epo:ProcurementProcedureInformationProvider;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Lot/LOT-0001>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/TouchPoint/TPO-0001>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Organization/TPO-0001> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/OrganizationalUnit/TPO-0001> .
 
 <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>
   a epo:ContractTerm;
@@ -221,20 +286,28 @@ vol3"""@en;
   a epo:ReviewTerm;
   epo:definesReviewProcedureInformationProvider <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/ReviewProcedureInformationProvider/ORG-0001organization> .
 
+<http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest2_SpecificTendererRequirement1>
+  a epo:SelectionCriterion;
+  epo:hasQualificationCriteriaStatedInProcurementDocuments true .
+
 <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/SubmissionTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:SubmissionTerm;
   epo:hasLanguage <http://publications.europa.eu/resource/authority/language/ELL>;
   epo:isGuaranteeRequired false .
 
+<http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/TaxDocumentation$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_FiscalLegislationDocumentReference1_Attachment1>
+  a epo:TaxDocumentation;
+  epo:hasAddressURL "https://example.com/fiscal-legislation"^^xsd:anyURI .
+
 <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/TaxInformationProvider/ORG-0001organization>
   a epo:TaxInformationProvider;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Lot/LOT-0001>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Organization/ORG-0001> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/Organization/ORG-0001>;
+  epo:providesDocumentation <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/TaxDocumentation$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_FiscalLegislationDocumentReference1_Attachment1> .
 
 <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/TouchPoint/TPO-0001>
   a cccev:ContactPoint;
   epo:hasInternetAddress "https://www.zenithnovainnovations.com/contact-us/katerina-lisa"^^xsd:anyURI;
-  dct:description "Katerina Lisa"@en;
   locn:address <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/TouchPointAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint1_PostalAddress1> .
 
 <http://data.europa.eu/a4g/resource/7f10ad90-127e-4c3b-a7ef-cfae9295d0ce-01/TouchPointAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint1_PostalAddress1>

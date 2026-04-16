@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -39,7 +39,7 @@
 <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/AwardDecision/2025-03-27%2B02%3A00>
   a epo:AwardDecision;
   epo:comprisesAwardOutcome <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/LotAwardOutcome/RES-0001>;
-  epo:hasAwardDecisionDate "2025-03-27+02:00"^^xsd:date .
+  epo:hasAwardDecisionDate "2025-03-27T00:00:00+02:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/Buyer/ORG-0005organization>
   a epo:Buyer;
@@ -116,14 +116,13 @@
   skos:notation "1" .
 
 <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 51.0;
   time:unitType time:unitMonth .
 
 <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/ContractLocation$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/HUN>;
-  locn:address <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/ProcedurePlacePerformance$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1> .
+  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/HUN> .
 
 <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/ContractLocation$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
@@ -131,11 +130,12 @@
 
 <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasMaximumNumberOfRenewals 1;
   epo:hasOptionsDescription "A keretösszeg 30%-kal növelhető a II.2.7) pontban leírtak szerint.(A Kbt. 3. § 18. pontja szerinti értelmező rendelkezéssel összhangban a mennyiség a keretmegállapodás megkötésére irányuló jelen eljárásban a keretösszeggel jellemezhető.)"@hu;
-  epo:hasRenewalDescription "Ajánlatkérő döntése alapján a keretmegállapodás a szerződéskötési időszak időtartama alatt egy alkalommal legfeljebb 6 hónappal meghosszabbítható azzal, hogy a meghosszabbítás miatti keretösszeg-emelkedés nem lehet több, mint a keretösszeg 30%-a. A 6 hónapos hosszabbítás a szerződéskötési időszak meghosszabbodását eredményezi. (Ld. II.2.4) 9. pont)"@hu .
+  epo:hasRenewalDescription "Ajánlatkérő döntése alapján a keretmegállapodás a szerződéskötési időszak időtartama alatt egy alkalommal legfeljebb 6 hónappal meghosszabbítható azzal, hogy a meghosszabbítás miatti keretösszeg-emelkedés nem lehet több, mint a keretösszeg 30%-a. A 6 hónapos hosszabbítás a szerződéskötési időszak meghosszabbodását eredményezi. (Ld. II.2.4) 9. pont)"@hu;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -143,9 +143,15 @@
   epo:hasBroadPlaceOfPerformance <http://publications.europa.eu/resource/authority/other-place-service/anyw-cou>;
   epo:hasPlaceOfPerformanceAdditionalInformation "Magyarország, az Érintett Szervezetek székhelyei, telephelyei, illetve az általuk kijelölt magyarországi teljesítési helyek."@hu .
 
+<http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/Duration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 51.0;
+  time:unitType time:unitMonth .
+
 <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/DynamicPurchaseSystemTechnicalUsage$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/Duration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
 
 <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -196,14 +202,14 @@
 
 <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/GreenProcurement$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>;
   epo:hasAdditionalInformation "Keretmegállapodást kötött nyertes ajánlattevő: Oracle Hungary Kft. 1112 Budapest, Balatoni út 2. A. ép. 6. em. Adószám: 10845606-2-44"@hu;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/Lot/Identifier/EKR000306052021%2F1>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>;
@@ -218,8 +224,7 @@
   a epo:LotAwardOutcome;
   epo:comprisesTenderAwardOutcome <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/TenderAwardOutcome/TEN-6498>;
   epo:concernsLot <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/Lot/LOT-0001>;
-  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w>;
-  rdfs:seeAlso <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/ReviewRequestSummary$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1> .
+  epo:hasAwardStatus <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> .
 
 <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>
   a epo:Purpose;
@@ -234,15 +239,19 @@
 <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/Notice>
   a epo:Notice, epo:Notice29, epo:ResultNotice;
   epo:announcesAwardDecision <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/AwardDecision/2025-03-27%2B02%3A00>;
+  epo:announcesContract <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/Contract/CON-0001>;
   epo:announcesNoticeAwardInformation <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/Tenderer/TPA-0001>;
-  epo:hasESenderDispatchDate "2025-04-09T10:18:06+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2025-04-09T10:18:06+02:00"^^xsd:dateTime;
+  epo:hasESenderDispatchDate "2025-04-07T11:30:11+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/result>;
   epo:hasNoticePublicationNumber "00233080-2025";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-standard>;
-  epo:hasOJSIssueNumber "71/2025";
+  epo:hasOJSIssueNumber 71;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/HUN>;
   epo:hasPublicationDate "2025-04-10+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/Notice/SpecificationInformation/Version>;
   epo:hasVersion "02";
   epo:refersToLot <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/Lot/LOT-0001>;
   epo:refersToPrevious <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/Notice/346921-2021>;
@@ -270,6 +279,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "a1a750fa-e4f4-4f63-a60f-a22430efe38a" .
+
+<http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.13" .
+
+<http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
   a epo:NoticeAwardInformation;
@@ -329,7 +354,7 @@
 
 <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/Procedure/30ed1c92-6f37-4c36-9685-62343ec4b2fd>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation "Az eljárás során nem került figyelembevételre környezetvédelmi vagy szociális szempont."@hu;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/Procedure/Identifier/EKR000306052021>;
@@ -349,10 +374,6 @@
   a adms:Identifier;
   epo:hasScheme "InternalID";
   skos:notation "EKR000306052021" .
-
-<http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/ProcedurePlacePerformance$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1>
-  a locn:Address;
-  epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/HUN> .
 
 <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/ProcedurePurpose$_ContractAwardNotice1_ProcurementProject1>
   a epo:Purpose;
@@ -427,7 +448,7 @@
   a epo:Tender;
   epo:hasFinancialOfferValue <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
   epo:hasSubcontracting <http://publications.europa.eu/resource/authority/applicability/no>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/Lot/LOT-0001>;
   adms:identifier <http://data.europa.eu/a4g/resource/a1a750fa-e4f4-4f63-a60f-a22430efe38a-02/Tender/Identifier/EKR000306052021%2F6498> .
 

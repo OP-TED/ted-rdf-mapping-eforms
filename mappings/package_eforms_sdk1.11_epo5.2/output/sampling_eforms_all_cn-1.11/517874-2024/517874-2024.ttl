@@ -17,15 +17,18 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
+<http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_DEFAULT_VALUE_CHANGE_ME_>
   a epo:AccessTerm;
   epo:hasPublicAccessURL "https://ezamowienia.gov.pl/mp-client/search/list/ocds-148610-bba2d57a-1d4f-4957-beda-5d83025d8841"^^xsd:anyURI;
-  epo:involvesProcurementDocument <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ProcurementDocument$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_DEFAULT_VALUE_CHANGE_ME_>;
   epo:isProcurementDocumentRestricted false .
+
+<http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/AccessTermt$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_DEFAULT_VALUE_CHANGE_ME_>
+  a epo:AccessTerm;
+  epo:providesProcurementDocumentsInOfficialLanguage <http://publications.europa.eu/resource/authority/language/POL> .
 
 <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>
   a epo:AwardCriterion;
@@ -101,6 +104,14 @@ Ocenie będą podlegać trzy pierwsze wskazane propozycje ryzyk.
   epo:hasBuyerProfile "https://bip.malopolska.pl/umwm/"^^xsd:anyURI;
   epo:playedBy <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Organization/ORG-0001> .
 
+<http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Channel$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://ezamowienia.gov.pl"^^xsd:anyURI .
+
+<http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Channel$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://ezamowienia.gov.pl"^^xsd:anyURI .
+
 <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/CompanyAddress$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>
   a locn:Address;
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/POL>;
@@ -131,7 +142,7 @@ Ocenie będą podlegać trzy pierwsze wskazane propozycje ryzyk.
   cccev:telephone "(22) 458 78 01" .
 
 <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 16.0;
   time:unitType time:unitWeek .
 
@@ -148,91 +159,84 @@ Ocenie będą podlegać trzy pierwsze wskazane propozycje ryzyk.
 
 <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/allowed>;
   epo:hasEOrdering true;
   epo:hasEPayment true;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
   epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ContractLocation$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1>;
   epo:hasPlaceOfPerformanceAdditionalInformation "Miejsce realizacji to obszar Województwa Małopolskiego"@pl .
 
+<http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Duration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 16.0;
+  time:unitType time:unitWeek .
+
 <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/DynamicPurchaseSystemTechnicalUsage$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Duration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
 
 <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "Wymienione w pkt. 5.1.9 niniejszego ogłoszenia"@pl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/crime-org> .
+  dct:description "Wymienione w pkt. 5.1.9 niniejszego ogłoszenia"@pl .
 
 <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement10>
   a epo:ExclusionGround;
-  dct:description "Wymienione w pkt. 5.1.9 niniejszego ogłoszenia"@pl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/labour-law> .
+  dct:description "Wymienione w pkt. 5.1.9 niniejszego ogłoszenia"@pl .
 
 <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement11>
   a epo:ExclusionGround;
-  dct:description "Wymienione w pkt. 5.1.9 niniejszego ogłoszenia"@pl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/distorsion> .
+  dct:description "Wymienione w pkt. 5.1.9 niniejszego ogłoszenia"@pl .
 
 <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement12>
   a epo:ExclusionGround;
-  dct:description "Wymienione w pkt. 5.1.9 niniejszego ogłoszenia"@pl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/prep-confl> .
+  dct:description "Wymienione w pkt. 5.1.9 niniejszego ogłoszenia"@pl .
 
 <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement13>
   a epo:ExclusionGround;
-  dct:description "Wymienione w pkt. 5.1.9 niniejszego ogłoszenia"@pl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/misrepresent> .
+  dct:description "Wymienione w pkt. 5.1.9 niniejszego ogłoszenia"@pl .
 
 <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement14>
   a epo:ExclusionGround;
-  dct:description "Wymienione w pkt. 5.1.9 niniejszego ogłoszenia"@pl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/nati-ground> .
+  dct:description "Wymienione w pkt. 5.1.9 niniejszego ogłoszenia"@pl .
 
 <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement2>
   a epo:ExclusionGround;
-  dct:description "Wymienione w pkt. 5.1.9 niniejszego ogłoszenia"@pl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/corruption> .
+  dct:description "Wymienione w pkt. 5.1.9 niniejszego ogłoszenia"@pl .
 
 <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement3>
   a epo:ExclusionGround;
-  dct:description "Wymienione w pkt. 5.1.9 niniejszego ogłoszenia"@pl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/fraud> .
+  dct:description "Wymienione w pkt. 5.1.9 niniejszego ogłoszenia"@pl .
 
 <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement4>
   a epo:ExclusionGround;
-  dct:description "Wymienione w pkt. 5.1.9 niniejszego ogłoszenia"@pl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/terr-offence> .
+  dct:description "Wymienione w pkt. 5.1.9 niniejszego ogłoszenia"@pl .
 
 <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement5>
   a epo:ExclusionGround;
-  dct:description "Wymienione w pkt. 5.1.9 niniejszego ogłoszenia"@pl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/finan-laund> .
+  dct:description "Wymienione w pkt. 5.1.9 niniejszego ogłoszenia"@pl .
 
 <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement6>
   a epo:ExclusionGround;
-  dct:description "Wymienione w pkt. 5.1.9 niniejszego ogłoszenia"@pl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/human-traffic> .
+  dct:description "Wymienione w pkt. 5.1.9 niniejszego ogłoszenia"@pl .
 
 <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement7>
   a epo:ExclusionGround;
-  dct:description "Wymienione w pkt. 5.1.9 niniejszego ogłoszenia"@pl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/tax-pay> .
+  dct:description "Wymienione w pkt. 5.1.9 niniejszego ogłoszenia"@pl .
 
 <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement8>
   a epo:ExclusionGround;
-  dct:description "Wymienione w pkt. 5.1.9 niniejszego ogłoszenia"@pl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/socsec-pay> .
+  dct:description "Wymienione w pkt. 5.1.9 niniejszego ogłoszenia"@pl .
 
 <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement9>
   a epo:ExclusionGround;
-  dct:description "Wymienione w pkt. 5.1.9 niniejszego ogłoszenia"@pl;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/envir-law> .
+  dct:description "Wymienione w pkt. 5.1.9 niniejszego ogłoszenia"@pl .
 
 <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -251,14 +255,19 @@ Ocenie będą podlegać trzy pierwsze wskazane propozycje ryzyk.
   a adms:Identifier;
   skos:notation "ORG-0003" .
 
+<http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/LocalLegalBasisInformation$_ContractNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  epo:concernsProcurementElement <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Procedure/276e0560-456d-474f-b619-a5c4553fc320>;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/other> .
+
 <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/MonetaryValueLot$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/LotPurpose$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_DEFAULT_VALUE_CHANGE_ME_>,
     <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/FrameworkAgreementTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/OpeningTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1>,
     <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
@@ -269,20 +278,6 @@ Ocenie będą podlegać trzy pierwsze wskazane propozycje ryzyk.
     <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion2>,
     <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion3>,
     <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/AwardCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion4>,
-    <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement10>,
-    <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement11>,
-    <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement12>,
-    <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement13>,
-    <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement14>,
-    <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement2>,
-    <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement3>,
-    <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement4>,
-    <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement5>,
-    <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement6>,
-    <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement7>,
-    <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement8>,
-    <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement9>,
     <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ParticipationCondition$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1>,
     <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>,
     <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>,
@@ -319,13 +314,15 @@ Ocenie będą podlegać trzy pierwsze wskazane propozycje ryzyk.
   epo:announcesProcedure <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Procedure/276e0560-456d-474f-b619-a5c4553fc320>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Buyer/ORG-0001>,
     <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Reviewer/ORG-0003>;
-  epo:hasESenderDispatchDate "2024-08-28T12:57:42Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-08-28T12:57:42Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00517874-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/cn-standard>;
-  epo:hasOJSIssueNumber "168/2024";
+  epo:hasOJSIssueNumber 168;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/POL>;
   epo:hasPublicationDate "2024-08-29+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Lot/LOT-0001>;
   epo:refersToPrevious <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Notice/411678-2024>;
@@ -354,6 +351,22 @@ Ocenie będą podlegać trzy pierwsze wskazane propozycje ryzyk.
   epo:hasScheme "notice-id";
   skos:notation "bcd16f85-8308-478b-b6fe-ced742d05331" .
 
+<http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.11" .
+
+<http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
+
 <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/OpeningTerm$_ContractNotice1_ProcurementProjectLot1_TenderingProcess1_OpenTenderEvent1>
   a epo:OpeningTerm;
   epo:hasOpeningDateTime "2024-09-13T10:30:00+02:00"^^xsd:dateTime .
@@ -368,6 +381,7 @@ Ocenie będą podlegać trzy pierwsze wskazane propozycje ryzyk.
 
 <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Organization/ORG-0001>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Channel$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>;
   epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/ra>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Organization/Identifier$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>;
   epo:hasLegalName "Województwo Małopolskie"@pl;
@@ -378,6 +392,7 @@ Ocenie będą podlegać trzy pierwsze wskazane propozycje ryzyk.
 
 <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Organization/ORG-0003>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Channel$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Organization/Identifier$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1_PartyLegalEntity1>;
   epo:hasLegalName "Krajowa Izba Odwoławcza"@pl;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/CompanyContactPoint$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1_Contact1>;
@@ -389,14 +404,13 @@ Ocenie będą podlegać trzy pierwsze wskazane propozycje ryzyk.
   epo:hasReservedProcurement <http://publications.europa.eu/resource/authority/reserved-procurement/none> .
 
 <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Procedure/276e0560-456d-474f-b619-a5c4553fc320>
-  a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>;
+  a epo:LocalLegalBasisInformation, epo:Procedure;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>;
   epo:hasAcceleratedProcedureJustification """Zamawiający opublikował wstępne ogłoszenie informacyjne, które zawierało wszystkie informacje wymagane dla ogłoszenia o zamówieniu, w zakresie, w jakim były one dostępne w chwili publikacji wstępnego ogłoszenia informacyjnego, i zostało ono zamieszczone w profilu nabywcy na co najmniej 35 dni i nie więcej niż 12 miesięcy przed dniem przekazania ogłoszenia o zamówieniu Urzędowi Publikacji Unii Europejskiej. 
 Zamawiający w celu skrócenia terminu składania ofert zamieścił wstępne ogłoszenie informacyjne nr publikacji ogłoszenia 411678-2024  (Dz.U. S: 133/2024) z dnia 10.07.2024 r.  na stronie BIP w profilu nabywcy w dniu 10.07.2024 r."""@pl;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/MonetaryValueProcedure$_ContractNotice1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Procedure/Identifier/RR-X.272.17.2024>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
-  epo:hasLegalBasisDescription "Zamówienie publiczne udzielane jest w trybie przetargu nieograniczonego zgodnie z ustawą z dnia 11 września 2019 r. Prawo zamówień publicznych (t.j. Dz.U. z 2023 poz. 1605 z późn. zm.)"@pl;
   epo:hasMainFeature """Zamówienie publiczne udzielane jest w trybie przetargu nieograniczonego zgodnie z ustawą z dnia 11 września 2019 r. Prawo zamówień publicznych (t.j. Dz.U. z 2023 poz. 1605 z późn. zm.), zwaną dalej ustawą. 
 Zamawiający zgodnie z art. 139 i nast. ustawy najpierw dokona badania i oceny ofert, a następnie dokona kwalifikacji podmiotowej wykonawcy, którego oferta została najwyżej oceniona, w zakresie braku podstaw wykluczenia oraz spełniania warunków udziału w postępowaniu.
 Zamawiający nie dopuszcza możliwości składania ofert częściowych.
@@ -408,13 +422,28 @@ Informacje o sposobie porozumiewania się zamawiającego z wykonawcami oraz prze
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ProcedurePurpose$_ContractNotice1_ProcurementProject1>;
   epo:isAccelerated true;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
+    <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement10>,
+    <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement11>,
+    <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement12>,
+    <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement13>,
+    <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement14>,
+    <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement2>,
+    <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement3>,
+    <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement4>,
+    <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement5>,
+    <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement6>,
+    <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement7>,
+    <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement8>,
+    <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ExclusionGround$_ContractNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement9>;
   dct:description """1.	Przedmiotem zamówienia jest przeprowadzenie badania ilościowo-jakościowego dla projektu badawczego „Postawy życiowe młodych Małopolan”. W ramach badania ilościowego zebranych zostanie 1200 ankiet, za pomocą metody mixed-mode CAPI/CAWI albo innej metody zaproponowanej przez Wykonawcę. Badanie jakościowe (II cześć badania) będzie miało na celu pogłębienie wyników ilościowych i obejmie przeprowadzenie 8 zogniskowanych wywiadów grupowych (FGI). Tematyka badania uwzględniać będzie: dostępność wybranych usług publicznych istotnych dla młodych Małopolan, warunki mieszkaniowe, status materialny oraz wartości i wynikające z nich postawy. Badaniem objęte będą osoby w wieku 18-29 lat.
 2.	Warunki realizacji zamówienia zawarte są w projektowanych postanowieniach umowy w sprawie zamówienia publicznego, które zostaną wprowadzone do treści tej umowy – wzorze umowy i stanowią załącznik nr 1C do swz (zwane są dalej wzorem umowy).
 3.	Wykonawca będzie zobowiązany do przeniesienia na Zamawiającego autorskich praw majątkowych, zgodnie z umową.
 4.	Szczegółowy opis przedmiotu zamówienia (SOPZ) stanowi załącznik nr 1D do swz i będzie on wprowadzony jako załącznik do umowy.
 5.	Zamawiający stosownie do dyspozycji wynikającej z art. 95 ustawy określa, że nie wymaga zatrudnienia przez wykonawcę lub podwykonawcę na podstawie stosunku pracy osób wykonujących czynności w zakresie realizacji zamówienia.
 6.	Przedmiot umowy jest współfinansowany ze środków Unii Europejskiej, z Europejskiego Funduszu Rozwoju Regionalnego w ramach programu Fundusze Europejskie dla Małopolski 2021-2027.
-"""@pl;
+"""@pl,
+    "Zamówienie publiczne udzielane jest w trybie przetargu nieograniczonego zgodnie z ustawą z dnia 11 września 2019 r. Prawo zamówień publicznych (t.j. Dz.U. z 2023 poz. 1605 z późn. zm.)"@pl;
   dct:title "Realizacja badania pn. „Postawy życiowe młodych Małopolan”"@pl;
   adms:identifier <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/Procedure/Identifier/276e0560-456d-474f-b619-a5c4553fc320> .
 
@@ -429,10 +458,6 @@ Informacje o sposobie porozumiewania się zamawiającego z wykonawcami oraz prze
 <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ProcedurePurpose$_ContractNotice1_ProcurementProject1>
   a epo:Purpose;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/79300000> .
-
-<http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ProcurementDocument$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_DEFAULT_VALUE_CHANGE_ME_>
-  a epo:ProcurementDocument;
-  epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/POL> .
 
 <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>
   a epo:ContractTerm;
@@ -564,7 +589,7 @@ Opis środków organizacyjno-technicznych stanowi załącznik nr 8 do swz.
   skos:prefLabel "Ciąg dalszy: Wykazu podmiotowych środków dowodowych oraz innych dokumentów lub oświadczeń jakich będzie żądał zamawiający od wykonawcy"@pl .
 
 <http://data.europa.eu/a4g/resource/bcd16f85-8308-478b-b6fe-ced742d05331-01/SpecificDuration$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_TenderValidityPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 90.0;
   time:unitType time:unitDay .
 

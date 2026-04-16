@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -26,7 +26,7 @@
   epo:definesOfflineAccessProvider <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/OfflineAccessProvider/ORG-0001>;
   epo:definesProcurementProcedureInformationProvider <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ProcurementProcedureInformationProvider/ORG-0001> .
 
-<http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
+<http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1Zad%C3%A1vac%C3%AD%20dokumentace>
   a epo:AccessTerm;
   epo:hasPublicAccessURL "https://sluzby.e-zakazky.cz/profil-zadavatele/a24a17eb-a07e-4144-b718-23419b47d050"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted false .
@@ -76,8 +76,12 @@
   cccev:email "neratovice-zakazka@post.cz";
   cccev:telephone "+420 734896885" .
 
+<http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2024-12-01+01:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 580.0;
   time:unitType time:unitDay .
 
@@ -98,32 +102,34 @@
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/CZE>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/CZ020> .
 
-<http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2024-12-01+01:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/Interval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/required>;
   epo:hasEOrdering true;
   epo:hasEPayment true;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
   epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ContractLocation$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1> .
 
+<http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/Duration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 580.0;
+  time:unitType time:unitDay .
+
 <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/DynamicPurchaseSystemTechnicalUsage$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/Duration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
 
 <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
   a epo:ExclusionGround;
-  dct:description "dle zákona č. 134/2016 Sb., o zadávání veřejných zakázek, zejména § 48 ZZVZ"@cs;
-  dct:type <http://publications.europa.eu/resource/authority/criterion/nati-ground> .
+  dct:description "dle zákona č. 134/2016 Sb., o zadávání veřejných zakázek, zejména § 48 ZZVZ"@cs .
 
 <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -153,31 +159,52 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0003" .
 
+<http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/Interval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
+<http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier> .
+
+<http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference1/Identifier>
+  a adms:Identifier;
+  skos:notation "32014L0024" .
+
+<http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2>
+  a epo:LocalLegalBasisInformation;
+  adms:identifier <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2/Identifier> .
+
+<http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/LocalLegalBasisInformation$_PriorInformationNotice1_TenderingTerms1_ProcurementLegislationDocumentReference2/Identifier>
+  a adms:Identifier;
+  skos:notation "134/2016 Sb." .
+
 <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/Lot/Identifier/VZ%2F2024>
   a adms:Identifier;
   skos:notation "VZ/2024" .
 
 <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
+    <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ProcurementCriterion$_PriorInformationNotice1_ProcurementProjectLot1>;
   epo:fulfillsStrategicProcurement <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/GreenProcurement$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType2>,
     <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/SocialProcurement$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_ProcurementAdditionalType3>,
     <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/StrategicProcurement$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/Lot/Identifier/VZ%2F2024>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
+  epo:hasUnknownUsageOfSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/ef-stand>,
+    <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>, <http://publications.europa.eu/resource/authority/selection-criterion/tp-abil>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
-    <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
+    <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1Zad%C3%A1vac%C3%AD%20dokumentace>,
     <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/MultipleStageProcedureTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>,
     <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/SubmissionTerm$_PriorInformationNotice1_ProcurementProjectLot1>;
   epo:isUsingEUFunds true;
-  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>,
-    <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ParticipationCondition$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1>,
-    <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ProcurementCriterion$_PriorInformationNotice1_ProcurementProjectLot1>,
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ParticipationCondition$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1>,
     <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>,
     <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>,
     <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>;
@@ -235,13 +262,15 @@ c)	výstavba, tj. provedení stavebních prací a technologických objektů v so
     <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>,
     <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ReviewProcedureInformationProvider/ORG-0002>,
     <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/Reviewer/ORG-0002>;
-  epo:hasESenderDispatchDate "2024-09-11T15:30:24+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-09-11T15:30:24+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticePublicationNumber "00549349-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-cfc-standard>;
-  epo:hasOJSIssueNumber "178/2024";
+  epo:hasOJSIssueNumber 178;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/CES>;
   epo:hasPublicationDate "2024-09-12+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/Procedure/79744cf9-3d2c-4f19-96c3-6cd26c4818b0>;
@@ -251,6 +280,22 @@ c)	výstavba, tj. provedení stavebních prací a technologických objektů v so
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "44b08881-00fb-4258-b35b-02b86e2fccc2" .
+
+<http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.8" .
+
+<http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/OfflineAccessProvider/ORG-0001>
   a epo:OfflineAccessProvider;
@@ -301,7 +346,7 @@ c)	výstavba, tj. provedení stavebních prací a technologických objektů v so
 
 <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/Procedure/79744cf9-3d2c-4f19-96c3-6cd26c4818b0>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/MonetaryValueProcedure$_PriorInformationNotice1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
@@ -314,6 +359,7 @@ Zadavatel doporučuje dodavatelům využít pro účely vyjádření předběžn
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>;
   dct:description """Předmětem veřejné zakázky jsou stavební práce spočívající ve výstavbě parkovacího domu v Neratovicích ve Středočeském kraji. Předmětem plnění bude provedení stavebních prací včetně zpracování dokumentace pro provedení stavby (DPS) a položkového soupisu stavebních prací, dodávek a služeb s výkazem výměr v souladu s platnými předpisy, předmět veřejné zakázky tedy bude realizován metodou design and build. 
 Jedná se o novostavbu parkovacího domu s nezbytnou dopravní a technickou infrastrukturou. Nová budova bude sloužit jako parkovací dům pro obyvatele města a přilehlého sídliště i návštěvníky města. Stání v parkovacím domě bude zpoplatněno, vjezd a výjezd do budovy bude přes odbavovací zařízení se závorami. Provoz budovy bude bezobslužný.
 Uvnitř domu jsou umístěna standardní parkovací stání o rozměru 2,5 x 5,0vm. Na úrovni 1 bude 10 vyhrazených stání pro osoby ZTP a příprava pro cca 10 stání s možností nabíjení elektromobilů. 
@@ -413,21 +459,18 @@ Ve lhůtě pro doručení návrhu je navrhovatel povinen složit na účet ÚOHS
 
 <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/nyk>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>;
   epo:isUsedForCandidateRestriction false;
   dct:description "Požadavky na kvalifikaci budou uvedeny v zadávací dokumentaci."@cs .
 
 <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/nyk>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/ef-stand>;
   epo:isUsedForCandidateRestriction false;
   dct:description "Požadavky na kvalifikaci budou uvedeny v zadávací dokumentaci."@cs .
 
 <http://data.europa.eu/a4g/resource/44b08881-00fb-4258-b35b-02b86e2fccc2-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/nyk>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/tp-abil>;
   epo:isUsedForCandidateRestriction false;
   dct:description "Požadavky na kvalifikaci budou uvedeny v zadávací dokumentaci."@cs .

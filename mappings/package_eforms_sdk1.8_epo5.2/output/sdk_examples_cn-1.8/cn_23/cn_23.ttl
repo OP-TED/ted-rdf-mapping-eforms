@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -25,7 +25,7 @@
   a epo:AccessTerm;
   epo:definesProcurementProcedureInformationProvider <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/ProcurementProcedureInformationProvider/ORG-0001organization> .
 
-<http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>
+<http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1Identifier1>
   a epo:AccessTerm;
   epo:hasPublicAccessURL "http://www.pro-marchespublics.com"^^xsd:anyURI;
   epo:isProcurementDocumentRestricted false .
@@ -45,6 +45,10 @@
   epo:hasBuyerProfile "http://www.pro-marchespublics.com"^^xsd:anyURI;
   epo:isContractingEntity false;
   epo:playedBy <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/Channel$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "http://www.pro-marchespublics.com"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/CompanyAddress$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>
   a locn:Address;
@@ -107,8 +111,12 @@
   cccev:email "esender@example.com";
   cccev:telephone "+352 123456789" .
 
+<http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2020-10-01+02:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 48.0;
   time:unitType time:unitMonth .
 
@@ -129,16 +137,13 @@
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/FRA>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/FRB04> .
 
-<http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2020-10-01+02:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/ContractPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/ContractDuration$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -169,19 +174,23 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0004" .
 
+<http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/Interval$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/ContractBeginningPeriod$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/Lot/Identifier/%20Dsp%20cr%C3%A8ches>
   a adms:Identifier;
   skos:notation " Dsp crèches" .
 
 <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/ContractTerm$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/Lot/Identifier/%20Dsp%20cr%C3%A8ches>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/LotPurpose$_ContractNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
-    <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_CallForTendersDocumentReference1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>,
+    <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/AccessTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1Identifier1>,
     <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/ReviewTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>,
     <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/SubmissionTerm$_ContractNotice1_ProcurementProjectLot1>;
@@ -216,10 +225,12 @@
     <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/ReviewProcedureInformationProvider/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/Reviewer/ORG-0002organization>,
     <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/TenderReceiver/ORG-0001organization>;
-  epo:hasESenderDispatchDate "2020-04-14T04:44:04+01:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2020-04-14T04:44:04+01:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/cn-standard>;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/FRA>;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/Lot/LOT-0000>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/Procedure/fe181e9c-327f-4a7c-8669-ef0774c9a749>;
@@ -229,6 +240,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "4039abd1-af19-42cf-bce0-7c55806601e8" .
+
+<http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.8" .
+
+<http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/Organization/Identifier$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -248,6 +275,7 @@
 
 <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/Organization/ORG-0001>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/Channel$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>;
   epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/Organization/Identifier$_ContractNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>;
   epo:hasLegalName "Communauté de communes Loches sud Touraine"@fr;
@@ -294,14 +322,14 @@
 
 <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/Procedure/fe181e9c-327f-4a7c-8669-ef0774c9a749>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/ProcurementProjectContractTerm$_ContractNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation "Les dépôts de plis doivent être impérativement remis par voie dématérialisée. Cette consultation bénéficie du service DUME. Pour retrouver cet avis intégral, accéder au DCE, poser des questions à l'acheteur, déposer un pli, allez sur http://www.pro-marchespublics.com -"@fr;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/Procedure/Identifier/Dsp%20cr%C3%A8ches>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0023>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/Lot/LOT-0000>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/ProcedurePurpose$_ContractNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/ProcedureTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/ProcedureTerm$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1>;
   dct:description "— la présente concession de service sous-forme de DSP concerne deux structures de type multi-accueils de quarante berceaux chacune"@fr;
   dct:title "Concession de service public pour la gestion des équipements d'accueil collectif de la petite enfance — secteur nord-est Loches et Tauxigny-Saint-Bauld"@fr;
   adms:identifier <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/Procedure/Identifier/fe181e9c-327f-4a7c-8669-ef0774c9a749> .
@@ -360,19 +388,16 @@
 
 <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>;
   dct:description "NOT AVAILABLE"@fr .
 
 <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/ef-stand>;
   dct:description "NOT AVAILABLE"@fr .
 
 <http://data.europa.eu/a4g/resource/4039abd1-af19-42cf-bce0-7c55806601e8-01/SelectionCriterion$_ContractNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/tp-abil>;
   dct:description "NOT AVAILABLE"@fr .
 

@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -29,7 +29,7 @@
 <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/AwardDecision/2024-12-06%2B01%3A00>
   a epo:AwardDecision;
   epo:comprisesAwardOutcome <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/LotAwardOutcome/RES-0001>;
-  epo:hasAwardDecisionDate "2024-12-06+01:00"^^xsd:date .
+  epo:hasAwardDecisionDate "2024-12-06T00:00:00+01:00"^^xsd:dateTime .
 
 <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/AwardingCentralPurchasingBody$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1>
   a epo:AwardingCentralPurchasingBody;
@@ -39,6 +39,10 @@
   a epo:Buyer;
   epo:hasBuyerProfile "https://www.urp.cnr.it/275858-2024"^^xsd:anyURI;
   epo:playedBy <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Channel$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://www.urp.cnr.it/275858-2024"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/CompanyAddress$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>
   a locn:Address;
@@ -80,7 +84,6 @@
   a epo:Contract;
   epo:hasLotReference <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Lot/LOT-0001>;
   epo:includesTender <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Tender/TEN-0001>;
-  epo:isSubjectToContractSpecificTerm <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/ContractTerm$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_PayerParty1>;
   epo:signedByBuyer <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Buyer/ORG-0001organization>;
   dct:title "PROCEDURA NEGOZIATA SENZA PUBBLICAZIONE DI UN BANDO AI SENSI DELL’ART. 76 COMMA 2 LETTERA B), PUNTO 2 DELD. LGS. 36/2023 PER L’AFFIDAMENTO DI FORNITURA DI SPETTROMETRO DI MASSA IBRIDO TRIPLOQUADRUPOLO TRAPPOLA IONICA LINEARE MODELLO 6500+ QTRAP LC/MS/MS CON TECNOLOGIA SELEXION EUHPLC-Progetto UP-RISE CUP B93D23000940006"@en,
     "PROCEDURA NEGOZIATA SENZA PUBBLICAZIONE DI UN BANDO AI SENSI DELL’ART. 76 COMMA 2 LETTERA B), PUNTO 2 DELD. LGS. 36/2023 PER L’AFFIDAMENTO DI FORNITURA DI SPETTROMETRO DI MASSA IBRIDO TRIPLOQUADRUPOLO TRAPPOLA IONICA LINEARE MODELLO 6500+ QTRAP LC/MS/MS CON TECNOLOGIA SELEXION EUHPLC-Progetto UP-RISE CUP B93D23000940006"@it;
@@ -112,7 +115,8 @@
 
 <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies> .
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -169,12 +173,13 @@
 
 <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
-    <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+    <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
+    <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/ContractTerm$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_PayerParty1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Lot/Identifier/1183%20-%20Spettrometro%20di%20massa>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>;
   epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/AwardCriterion$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AwardingTerms1_AwardingCriterion1_SubordinateAwardingCriterion1>;
   epo:usesTechnique <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/DynamicPurchaseSystemTechnicalUsage$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>;
@@ -189,8 +194,7 @@
 <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/LotAwardOutcome/RES-0001>
   a epo:LotAwardOutcome;
   epo:comprisesTenderAwardOutcome <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/TenderAwardOutcome/TEN-0001>;
-  epo:concernsLot <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Lot/LOT-0001>;
-  rdfs:seeAlso <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/PaymentExecutor/ORG-0001organization> .
+  epo:concernsLot <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Lot/LOT-0001> .
 
 <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>
   a epo:Purpose;
@@ -205,6 +209,7 @@
 <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Notice>
   a epo:DirectAwardPrenotificationNotice, epo:Notice, epo:Notice25;
   epo:announcesAwardDecision <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/AwardDecision/2024-12-06%2B01%3A00>;
+  epo:announcesContract <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Contract/CON-0001>;
   epo:announcesLot <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Lot/LOT-0001>;
   epo:announcesNoticeAwardInformation <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>;
   epo:announcesProcedure <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Procedure/3ad7d716-abdf-44ec-8d7f-d1bf07b2aa66>;
@@ -215,14 +220,16 @@
     <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Reviewer/ORG-0001>,
     <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/TaxInformationProvider/ORG-0001>,
     <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Tenderer/TPA-0001>;
-  epo:hasESenderDispatchDate "2025-03-25T12:29:29Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2025-03-25T12:29:29Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/dir-awa-pre>;
   epo:hasNoticePublicationNumber "00192760-2025";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/veat>;
-  epo:hasOJSIssueNumber "60/2025";
+  epo:hasOJSIssueNumber 60;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/ENG>,
     <http://publications.europa.eu/resource/authority/language/ITA>;
   epo:hasPublicationDate "2025-03-26+01:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Lot/LOT-0001>;
   epo:refersToPrevious <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Notice/474220-2024>;
@@ -242,6 +249,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "435a5c53-a400-4eec-ae0a-7ad391e3414f" .
+
+<http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.13" .
+
+<http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
   a epo:NoticeAwardInformation;
@@ -269,6 +292,7 @@
 
 <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Organization/ORG-0001>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Channel$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>;
   epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/body-pl>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Organization/Identifier$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>;
   epo:hasLegalName "CNR - Consiglio Nazionale delle Ricerche"@en, "CNR - Consiglio Nazionale delle Ricerche"@it;
@@ -307,14 +331,14 @@
 
 <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Procedure/3ad7d716-abdf-44ec-8d7f-d1bf07b2aa66>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Procedure/Identifier/1183%20-%20Spettrometro%20di%20massa>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/ProcedurePurpose$_ContractAwardNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/DirectAwardTerm$_ContractAwardNotice1_TenderingProcess1_ProcessJustification1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/DirectAwardTerm$_ContractAwardNotice1_TenderingProcess1_ProcessJustification1>,
     <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/ProcedureTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>;
   dct:description "Sistema integrato dotato di 1) spettrometro di massa 6500+ QTrap™ equipaggiato con sorgente ESI e sistema SelexION+; 2) auto-campionatore e sistema UHPLC di separazione cromatografica ad alte prestazioni dotato di termostato per colonna; 3) Generatore di azoto con compressore integrato; 4) Banco di supporto con vano in sonorizzato; 5) Specifico software di gestione e trattamento dei dati; 6) Unità di acquisizione dei dati; 7) formazione del personale e garanzia sull’intera apparecchiatura di 12 mesi; 8) Gruppo di continuità UPS; 9) Consegna, installazione e collaudo."@en,
     """Sistema integrato dotato di 1) spettrometro di massa 6500+ QTrap™ equipaggiato con sorgente ESI esistema SelexION+; 2) auto-campionatore e sistema UHPLC di separazione cromatografica ad alte prestazioni dotato ditermostato per colonna; 3) Generatore di azoto con compressore integrato; 4) Banco di supporto con vanoinsonorizzato; 5) Specifico software di gestione e trattamento dei dati; 6) Unità di acquisizione dei dati; 7) formazione delpersonale e garanzia sull’intera apparecchiatura di 12 mesi; 8) Gruppo di continuità UPS; 9) Consegna, installazione ecollaudo. 1. Spettrometro di massa a bassa risoluzione ed elevata sensibilità con altre funzioni integrate: SorgenteIonDrive™ Turbo V compatibile con la sonda TurboIonSpray o la sonda APCI; Sonda TurboIonSpray, compatibile conflussi da 0,005 mL/min a 3 mL/min senza necessità di splitting, ideale per la quantificazione ad elevata sensibilità e adelevati flussi; Sonda APCI, compatibile con flussi da 0,2 a 3 mL/min; Kit standard per la manutenzione della pompa;Dispositivo per la separazione a mobilità differenziale. Il dispositivo dovrà comprendere la soluzione specifica per lacalibrazione della sorgente a mobilità ionica. Garanzia standard su parti e manodopera per un anno a partire dalcompletamento della installazione dello strumento. La garanzia include il servizio di monitoraggio remoto StatusScope eun servizio di manutenzione (PM) durante il periodo di garanzia di un anno; 2. Sistema UHPLC di separazionecromatografica ad alte prestazioni: Il cromatografo liquido dovrà essere in grado di operare sia con colonne HPLCclassiche sia con colonne con impaccamento di dimensioni inferiori a 2μm (UHPLC); Il sistema di pompaggio dovrà essere a gradiente binario con miscelazione in alta pressione; La pompa dovrà essere a doppio micro-pistone (10 μL), inparallelo, che consente basse pulsazioni e linea di base stabile. Deve comprendere un sistema di retrolavaggio deipistoni; Intervallo di flusso compreso tra 0,1 μl/min (0,0001 ml/min) a 10 mL/min con un’accuratezza di ± 1% ed unaprecisione di ≤0,06% della velocità di flusso impostata; Pressione massima di esercizio di 130 MPa/1300 bar(3mL/min); Intervallo di pH 1-14; Kit di lavaggio delle guarnizioni per ridurre al minimo la precipitazione di sale se vengono utilizzate fasi mobili tamponate; Forno a circolazione d’aria con temperatura massima di esercizio di 100°C, ingrado di ospitare anche colonne da 300 mm. 3. Bancone di supporto con vano insonorizzato con le seguenticaratteristiche minime: Lunghezza maggiore di 180 cm; Larghezza maggiore di 80 cm; Capacità fino a 500 kg; Sistema insonorizzato per pompa rotativa; Sistema di estrazione calore con ventola; Mobilità con ruote piroettanti bloccabili. 4. Generatore di azoto a membrana NGA CASTORE XL (LNI) con le seguenti caratteristiche minime: Compressore aspirale integrato; Controllo elettronico del flusso; Doppia uscita di azoto e aria ad elevata portata e purezza; Flusso diazoto prodotto fino a 40 L/min con purezza fino a 99,8%; Flusso di aria compressa prodotto fino a 40 L/min; 5. Software di gestione strumentale ed analisi quantitative sviluppato per l’acquisizione e il processamento dei dati e per soddisfaregli standard di quantificazione High-throughput, che include un’interfaccia utente di tipo grafico che utilizza finestremultiple. Le prestazioni più importanti del software sono: Controllo da computer delle ottiche ioniche, dell’elettronicadell’interfaccia e dei gas allo spettrometro e alle sorgenti, unitamente a tutto il controllo della parte LC ; Tuning ecalibrazione dello strumento incluse la ottimizzazione della risoluzione e la calibrazione delle masse in modalitàautomatica; Ottimizzazione in modalità automatica oppure manuale dei parametri “compound dependent”, dei parametridella sorgente ed approntamento dei metodi di acquisizione “multiple compounds” 6. Unità di acquisizione dei dati: n°1personal computer con le seguenti caratteristiche minime: Processore Intel Xeon W-2245 8 Core Processor (3.9GHz4.7GHz Turbo HT 16.5MB); Memoria RAM da 32 GB (2X16GB DDR4 3200MHZ RDIMM ECC); Scheda Grafica ATIFirePro 2260 - 2 DP (2 DP-DVI adapters); 2 Hard Disk da 2TB a stato solido (tecnologia SSD) configurati in modalitàRaid 1; Masterizzatore 8X DVD+/- RW Slimline; N°2 Monitor Dell LCD (27\"), porte HDMI, DP e mini-DP (risoluzione2560x1440); 3 schede di rete PCIe x1 10/100/1000 BASE-TX Broadcom 5722; Tastiera e mouse forniti in dotazione;Sistema operativo Microsoft Windows 10 Enterprise; Microsoft Office 2016 Professional 7. Formazione del personale eGaranzia: Corso di addestramento presso la sede ISPA-CNR di Bari, per un tempo adeguato al raggiungimento di unostandard operativo minimo pari a 4 giorni lavorativi on site. Garanzia prevista per la strumentazione scientifica (UHPLC-LC-MS/MS) di 12 mesi, comprensivi di una visita di manutenzione preventiva. Estensione della garanzia fino a 36 mesiper la strumentazione scientifica UHPLC-LC-MS/MS ad esclusione della SelexION+. 8. Gruppo di continuità UPS:Gruppo di continuità UPS “Sentinel Tower 1000 A5” con le seguenti caratteristiche: Controllo totale a microprocessore eDSP; Bypass statico e manuale senza interruzione; Potenza nominale: 10000 VA, Potenza attiva: 10000 W, Tensione300/400/415 V (3W+N+PE) - 220/230/240 V (1W+N+PE), Tolleranza di tensione 400 V ± 20% / 230 V ± 20%, Frequenza50/60 Hz ± 5, Fattore di potenza > 0.9, Immunità al fulmine 1 VDR x 300 J: sovracorrenti, cortocircuito, sovratensione,sottotensione, termica, eccessiva scarca della batteria; Rumorosità (a 1m): <48 [bBA] (Modalità ECO); 9. Consegna,installazione e collaudo Maggiori dettagli all'URL https://www.urp.cnr.it/275858-2024 inoltre sulla piattaforma https://www.acquistinretepa.it/
@@ -392,7 +416,7 @@ numero gara 4571339"""@it;
 <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Tender/TEN-0001>
   a epo:Tender;
   epo:hasFinancialOfferValue <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Lot/LOT-0001>;
   adms:identifier <http://data.europa.eu/a4g/resource/435a5c53-a400-4eec-ae0a-7ad391e3414f-01/Tender/Identifier/NG4749641_L1> .
 

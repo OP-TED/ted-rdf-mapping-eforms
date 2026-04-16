@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -101,7 +101,7 @@
   skos:notation "C4C2147440" .
 
 <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 72.0;
   time:unitType time:unitMonth .
 
@@ -120,18 +120,25 @@
 
 <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasMaximumNumberOfRenewals 0;
-  epo:hasOptionsDescription "option de durée : 3 ans supplémentaires Durée de l'option 1 : 12 mois Durée de l'option 2 : 12 mois Durée de l'option 3 : 12 mois La durée du marché mentionnée à la rubrique II.2.7 comprend les 3 options de durée."@fr .
+  epo:hasOptionsDescription "option de durée : 3 ans supplémentaires Durée de l'option 1 : 12 mois Durée de l'option 2 : 12 mois Durée de l'option 3 : 12 mois La durée du marché mentionnée à la rubrique II.2.7 comprend les 3 options de durée."@fr;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
   epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/ContractLocation$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1> .
 
+<http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Duration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 72.0;
+  time:unitType time:unitMonth .
+
 <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/DynamicPurchaseSystemTechnicalUsage$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Duration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
 
 <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/FrameworkAgreementMaximumMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_FrameworkAgreementValues1>
   a epo:MonetaryValue .
@@ -163,12 +170,12 @@
 
 <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/MonetaryValueLot$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/FrameworkAgreementTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>;
   epo:isUsingEUFunds false;
@@ -207,18 +214,65 @@
   epo:hasAmountValue 2460000.0;
   epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
 
+<http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/MaximumFrameworkAgreementAwardedMonetaryValueLot$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Notice>;
+  epo:hasAccessibilityDate "2033-01-01+01:00"^^xsd:date;
+  epo:hasMaskableProperty epo:hasAmountValue;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/eo-int> .
+
+<http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_FrameworkAgreementValues1_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/FrameworkAgreementMaximumMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_FrameworkAgreementValues1>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Notice>;
+  epo:hasAccessibilityDate "2033-01-01+01:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Intérêts commerciaux d’un opérateur économique"@fr;
+  epo:hasMaskableProperty epo:hasAmountValue;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/eo-int> .
+
+<http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1_ReceivedSubmissionsStatistics1_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/SubmissionStatisticalInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotResult1>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Notice>;
+  epo:hasAccessibilityDate "2033-01-01+01:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Intérêts commerciaux d’un opérateur économique"@fr;
+  epo:hasMaskableProperty epo:hasReceivedTenders;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/eo-int> .
+
+<http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Tender/TEN-0001>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Notice>;
+  epo:hasAccessibilityDate "2033-01-01+01:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Intérêts commerciaux d’un opérateur économique"@fr;
+  epo:hasMaskableProperty epo:hasAwardRank;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/eo-int> .
+
+<http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1_FieldsPrivacy2>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Notice>;
+  epo:hasAccessibilityDate "2033-01-01+01:00"^^xsd:date;
+  epo:hasConfidentialityJustification "Intérêts commerciaux d’un opérateur économique"@fr;
+  epo:hasMaskableProperty epo:hasAmountValue;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/eo-int> .
+
 <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Notice>
   a epo:Notice, epo:Notice30, epo:ResultNotice;
   epo:announcesAwardDecision <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/AwardDecision/CON-0001>;
+  epo:announcesContract <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Contract/CON-0001>;
   epo:announcesNoticeAwardInformation <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Tenderer/TPA-0001>;
-  epo:hasESenderDispatchDate "2024-07-11T07:59:18Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-07-11T07:59:18Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/result>;
   epo:hasNoticePublicationNumber "00419360-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-standard>;
-  epo:hasOJSIssueNumber "135/2024";
+  epo:hasOJSIssueNumber 135;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/FRA>;
   epo:hasPublicationDate "2024-07-12Z"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Lot/LOT-0000>;
   epo:refersToPrevious <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Notice/43527-2024>;
@@ -242,6 +296,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "abb101ba-b931-4696-8006-b688b52badf9" .
+
+<http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.11" .
+
+<http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
   a epo:NoticeAwardInformation;
@@ -303,14 +373,14 @@
 
 <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Procedure/ad4ada27-8666-4edb-af02-2cb63d86252c>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>;
   epo:hasAdditionalInformation "Pour répondre au présent avis de marché, les candidats doivent se manifester sur le Portail Achats d'EDF -Demande d'information n° AVIS007495 - et rattacher les documents demandés au présent avis de marché. Les candidats intéressés, non encore inscrits, s'auto-référenceront depuis la page d'accueil du Portail Achats sur le site https://pha2.edf.com à l'aide du lien placé dans l'encart : « Nouveau Fournisseur ? Se référencer ». Un document intitulé « Identification des membres du groupement et répartition des prestations » est disponible dans l'espace collaboratif dédié aux fournisseurs dans le Portail Achats. Conformément à la réglementation européenne relative aux subventions étrangères faussant le marché intérieur, et notamment le Règlement (UE) 2022/2560 du 14 décembre 2022 et le Règlement d’Exécution (UE) 2023/1441 du 10 juillet 2023, les candidats sont soumis à une obligation de notification prévue à l’article 29 du Règlement 2022/2560 du 14 décembre 2022. En l’absence de communication de la notification ou de la déclaration à la Commission et à défaut de régularisation, l’offre étant incomplète et irrégulière, EDF est tenu de la rejeter et d’informer la Commission de ce rejet. Si la notification ou la déclaration est incomplète, la Commission informe le candidat et EDF de ses conclusions. Si à l’issue d’un délai de 10 jours ouvrables, le candidat n’a pas complété sa notification ou sa déclaration, la Commission déclare l’offre irrégulière et demande à EDF « d’adopter une décision de rejet d’une telle offre ou de la demande de participation ». Par ailleurs, Edf a la possibilité, au moment de l’examen des offres et quand bien même une déclaration aurait été transmise, si elle soupçonne la présence de subventions étrangères, de faire-part sans tarder de ses soupçons à la Commission. » La consultation sera effectuée via le Portail Achats électronique d’EDF « https://pha2.edf.com\" Dans le cadre de la dématérialisation de ses procédures, EDF SA informe l'ensemble des soumissionnaires que la signature électronique des marchés est privilégiée, que ceux-ci soient attribués à une seule entreprise ou à un groupement d'entreprises. EDF se réserve la possibilité d’attribuer le marché sur la base des offres initiales sans négociation."@fr;
   epo:hasEstimatedValue <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/MonetaryValueProcedure$_ContractAwardNotice1_ProcurementProject1_RequestedTenderTotal1>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Lot/LOT-0000>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/ProcedurePurpose$_ContractAwardNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/ProcedureTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/ProcedureTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>;
   dct:description "Marché de maintenance des moyens de levage de l'unité de production de Cordemais. Les Prestations comprennent : - la maintenance préventive (systématique). - l’écriture des gammes et procédures. - les essais de fonctionnement périodique - l’accompagnement du bureau de contrôle. - la mise à jour du cahier de maintenance. - la maintenance curative, les dépannages suite à expertise ou anomalies de fonctionnement"@fr;
   dct:title "Marché de maintenance des moyens de levage de l'unité de production de Cordemais"@fr;
   adms:identifier <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Procedure/Identifier/ad4ada27-8666-4edb-af02-2cb63d86252c> .
@@ -358,14 +428,15 @@
 <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Tender/TEN-0001>
   a epo:Tender;
   epo:hasFinancialOfferValue <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Lot/LOT-0000>;
   epo:isVariant false;
   adms:identifier <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Tender/Identifier/Offre%20ADC> .
 
 <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/TenderAwardOutcome/TEN-0001>
   a epo:TenderAwardOutcome;
-  epo:concernsTender <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Tender/TEN-0001> .
+  epo:concernsTender <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/Tender/TEN-0001>;
+  epo:specifiesForeignSubsidiesMeasureConclusion <http://publications.europa.eu/resource/authority/foreign-subsidy-measure-conclusion/> .
 
 <http://data.europa.eu/a4g/resource/abb101ba-b931-4696-8006-b688b52badf9-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>
   a epo:MonetaryValue;

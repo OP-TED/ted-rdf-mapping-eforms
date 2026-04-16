@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -72,6 +72,14 @@
 <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/ContractAmendment$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_ContractModification1>
   a epo:ContractAmendment;
   epo:amendsContract <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Contract/CON-0001> .
+
+<http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2024-10-01+02:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/ContractEndPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2024-10-08+02:00"^^xsd:date .
 
 <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/ContractLocation$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1_Address1>
   a dct:Location;
@@ -132,19 +140,15 @@ Opdrachtgever wenst deze modificatie ten laatste in 2025 geïmplementeerd te heb
   epo:hasModificationJustification <http://publications.europa.eu/resource/authority/modification-justification/add-wss>;
   epo:hasModificationReasonDescription "Er is sprake van een dwingende spoed in verband met een niet-acceptabel risico met betrekking tunnelveiligheid, bereikbaarheid en doorstroming. De KWA tunnel moet blijvend voldoen aan de gestelde kaders, regels en wetgeving."@nl .
 
-<http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2024-10-01+02:00"^^xsd:date;
-  epo:hasEnd "2024-10-08+02:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/not-allowed>;
   epo:hasEOrdering false;
   epo:hasEPayment false;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -165,13 +169,14 @@ Opdrachtgever wenst deze modificatie ten laatste in 2025 geïmplementeerd te heb
   a epo:EmploymentInformationProvider;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Lot/LOT-0000>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/TouchPoint/TPO-0004>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Organization/TPO-0004> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Organization/TPO-0004>,
+    <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/OrganizationalUnit/TPO-0004> .
 
 <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/EnvironmentalProtectionInformationProvider/TPO-0003>
   a epo:EnvironmentalProtectionInformationProvider;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Lot/LOT-0000>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/TouchPoint/TPO-0003>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Organization/TPO-0003> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/OrganizationalUnit/TPO-0003> .
 
 <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/GreenProcurement$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_StrategicProcurement1>
   a epo:GreenProcurement;
@@ -192,6 +197,31 @@ Opdrachtgever wenst deze modificatie ten laatste in 2025 geïmplementeerd te heb
   epo:hasScheme "organization";
   skos:notation "ORG-0002" .
 
+<http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Identifier/TPO-0001>
+  a adms:Identifier;
+  epo:hasScheme "touchpoint";
+  skos:notation "TPO-0001" .
+
+<http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Identifier/TPO-0002>
+  a adms:Identifier;
+  epo:hasScheme "touchpoint";
+  skos:notation "TPO-0002" .
+
+<http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Identifier/TPO-0003>
+  a adms:Identifier;
+  epo:hasScheme "touchpoint";
+  skos:notation "TPO-0003" .
+
+<http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Identifier/TPO-0004>
+  a adms:Identifier;
+  epo:hasScheme "touchpoint";
+  skos:notation "TPO-0004" .
+
+<http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  time:hasEnd <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/ContractEndPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Lot/Identifier/1>
   a adms:Identifier;
   epo:hasScheme "InternalID";
@@ -199,7 +229,7 @@ Opdrachtgever wenst deze modificatie ten laatste in 2025 geïmplementeerd te heb
 
 <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>,
     <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation2>,
     <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation3>;
@@ -208,7 +238,7 @@ Opdrachtgever wenst deze modificatie ten laatste in 2025 geïmplementeerd te heb
   epo:hasPurpose <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
   epo:isRecurrent false;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/ReviewTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>;
   epo:isUsingEUFunds false;
@@ -230,16 +260,32 @@ Opdrachtgever wenst deze modificatie ten laatste in 2025 geïmplementeerd te heb
   a epo:MonetaryValue;
   epo:hasCurrency <http://publications.europa.eu/resource/authority/currency/EUR> .
 
+<http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/MonetaryValueNoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Notice>;
+  epo:hasMaskableProperty epo:hasAmountValue;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/eo-int> .
+
+<http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/NonPublishedInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1_FieldsPrivacy1>
+  a epo:NonPublishedInformation;
+  epo:concernsMaskedObject <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
+  epo:concernsNotice <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Notice>;
+  epo:hasMaskableProperty epo:hasAmountValue;
+  epo:hasNonPublicationJustification <http://publications.europa.eu/resource/authority/non-publication-justification/eo-int> .
+
 <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Notice>
   a epo:ContractModificationNotice, epo:Notice, epo:Notice38;
   epo:announcesContractAmendment <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/ContractAmendment$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_ContractModification1>;
-  epo:hasESenderDispatchDate "2024-10-10T10:20:29.251142849+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-10-10T10:20:29.251142849+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/cont-modif>;
   epo:hasNoticePublicationNumber "00616516-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-modif>;
-  epo:hasOJSIssueNumber "199/2024";
+  epo:hasOJSIssueNumber 199;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/NLD>;
   epo:hasPublicationDate "2024-10-11+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToAwardDecision <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/AwardDecision/CON-0001>;
   epo:refersToContractToBeModified <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Contract/CON-0001>;
@@ -270,6 +316,22 @@ Opdrachtgever wenst deze modificatie ten laatste in 2025 geïmplementeerd te heb
   epo:hasScheme "notice-id";
   skos:notation "ee193b8f-aa12-4c15-bafb-9552fd7a6eef" .
 
+<http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.12" .
+
+<http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
+
 <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/NoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
   a epo:NoticeAwardInformation;
   epo:hasTotalAwardedValue <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/MonetaryValueNoticeAwardInformation$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1> .
@@ -288,7 +350,11 @@ Opdrachtgever wenst deze modificatie ten laatste in 2025 geïmplementeerd te heb
   epo:hasLegalName "Rijkswaterstaat Programma's Projecten en Onderhoud"@nl;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/CompanyContactPoint$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_Contact1>;
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/CompanyAddress$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>;
-  adms:identifier <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Identifier/ORG-0001> .
+  adms:identifier <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Identifier/ORG-0001>;
+  org:hasUnit <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/OrganizationalUnit/TPO-0001>,
+    <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/OrganizationalUnit/TPO-0002>,
+    <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/OrganizationalUnit/TPO-0003>,
+    <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/OrganizationalUnit/TPO-0004> .
 
 <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Organization/ORG-0002>
   a org:Organization;
@@ -297,25 +363,33 @@ Opdrachtgever wenst deze modificatie ten laatste in 2025 geïmplementeerd te heb
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/CompanyAddress$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1_PostalAddress1>;
   adms:identifier <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Identifier/ORG-0002> .
 
-<http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Organization/TPO-0001>
-  a org:Organization;
-  owl:sameAs <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Organization/ORG-0001> .
+<http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/OrganizationalUnit/TPO-0001>
+  a org:OrganizationalUnit;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/TouchPoint/TPO-0001>;
+  dct:title "Burgerlijke rechter"@nl;
+  adms:identifier <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Identifier/TPO-0001> .
 
-<http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Organization/TPO-0002>
-  a org:Organization;
-  owl:sameAs <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Organization/ORG-0001> .
+<http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/OrganizationalUnit/TPO-0002>
+  a org:OrganizationalUnit;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/TouchPoint/TPO-0002>;
+  dct:title "Belastingdienst"@nl;
+  adms:identifier <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Identifier/TPO-0002> .
 
-<http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Organization/TPO-0003>
-  a org:Organization;
-  owl:sameAs <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Organization/ORG-0001> .
+<http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/OrganizationalUnit/TPO-0003>
+  a org:OrganizationalUnit;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/TouchPoint/TPO-0003>;
+  dct:title "Milieubescherming"@nl;
+  adms:identifier <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Identifier/TPO-0003> .
 
-<http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Organization/TPO-0004>
-  a org:Organization;
-  owl:sameAs <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Organization/ORG-0001> .
+<http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/OrganizationalUnit/TPO-0004>
+  a org:OrganizationalUnit;
+  epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/TouchPoint/TPO-0004>;
+  dct:title "Arbo"@nl;
+  adms:identifier <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Identifier/TPO-0004> .
 
 <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Procedure/98d256f3-8d0a-45bd-a492-ca79302b29e5>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation1>,
     <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation2>,
     <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1_RealizedLocation3>;
@@ -324,7 +398,7 @@ Opdrachtgever wenst deze modificatie ten laatste in 2025 geïmplementeerd te heb
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Lot/LOT-0000>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/ProcedurePurpose$_ContractAwardNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/ProcedureTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/ProcedureTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>;
   dct:description """Tussen de PLC en CIM servers (die de interfacing verzorgen met Intercom, Omroep en CCTV) valt soms de communicatie weg . Het retry-mechanisme dat geïmplementeerd is om de communicatie te herstellen is echter niet robuust genoeg waardoor in sommige gevallen de communicatie niet automatisch hersteld kan worden en handmatig herstel van de verbinding nodig is.  Dit probleem is sinds de aanleg van KWA tunnel (A2/N2) aanwezig, maar inmiddels is er een oplossing bedacht die de opdrachtgever graag geïmplementeerd ziet worden. De oplossing zorgt voor automatisch herstel, waardoor kortstondige uitval van de communicatie niet langer leidt tot het niet-bedienbaar zijn van het opject.
 
 Opdrachtgever wenst deze modificatie ten laatste in 2025 geïmplementeerd te hebben in de KWA tunnel. Middels deze VTW willen wij deze werkzaamheden aan opdrachtnemer opdragen."""@nl;
@@ -408,13 +482,13 @@ Opdrachtgever wenst deze modificatie ten laatste in 2025 geïmplementeerd te heb
   a epo:Reviewer;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Lot/LOT-0000>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/TouchPoint/TPO-0001>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Organization/TPO-0001> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/OrganizationalUnit/TPO-0001> .
 
 <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/TaxInformationProvider/TPO-0002>
   a epo:TaxInformationProvider;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Lot/LOT-0000>;
   epo:hasContactPointInRole <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/TouchPoint/TPO-0002>;
-  epo:playedBy <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Organization/TPO-0002> .
+  epo:playedBy <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/OrganizationalUnit/TPO-0002> .
 
 <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Tender/Identifier/1>
   a adms:Identifier;
@@ -424,7 +498,7 @@ Opdrachtgever wenst deze modificatie ten laatste in 2025 geïmplementeerd te heb
   a epo:Tender;
   epo:hasFinancialOfferValue <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
   epo:hasSubcontracting <http://publications.europa.eu/resource/authority/applicability/no>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Tenderer/TPA-0001>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Tenderer/TPA-0001>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Lot/LOT-0000>;
   adms:identifier <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/Tender/Identifier/1> .
 
@@ -444,28 +518,24 @@ Opdrachtgever wenst deze modificatie ten laatste in 2025 geïmplementeerd te heb
   a cccev:ContactPoint;
   epo:hasInternetAddress "http://www.rijkswaterstaat.nl"^^xsd:anyURI;
   cccev:email "aanbestedingsteam-gww@rws.nl";
-  dct:description "Burgerlijke rechter"@nl;
   locn:address <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/TouchPointAddress$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint3_PostalAddress1> .
 
 <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/TouchPoint/TPO-0002>
   a cccev:ContactPoint;
   epo:hasInternetAddress "http://www.belastingdienst.nl"^^xsd:anyURI;
   cccev:email "aanbestedingsteam-gww@rws.nl";
-  dct:description "Belastingdienst"@nl;
   locn:address <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/TouchPointAddress$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint4_PostalAddress1> .
 
 <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/TouchPoint/TPO-0003>
   a cccev:ContactPoint;
   epo:hasInternetAddress "http://www.rijksoverheid.nl/ministeries/ienm.nl"^^xsd:anyURI;
   cccev:email "aanbestedingsteam-gww@rws.nl";
-  dct:description "Milieubescherming"@nl;
   locn:address <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/TouchPointAddress$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint2_PostalAddress1> .
 
 <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/TouchPoint/TPO-0004>
   a cccev:ContactPoint;
   epo:hasInternetAddress "http://www.rijksoverheid.nl/ministeries/szw"^^xsd:anyURI;
   cccev:email "aanbestedingsteam-gww@rws.nl";
-  dct:description "Arbo"@nl;
   locn:address <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/TouchPointAddress$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint1_PostalAddress1> .
 
 <http://data.europa.eu/a4g/resource/ee193b8f-aa12-4c15-bafb-9552fd7a6eef-01/TouchPointAddress$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_TouchPoint1_PostalAddress1>

@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -29,6 +29,14 @@
   a epo:Buyer;
   epo:hasBuyerProfile "https://cez.gov.pl/pl/zamowienia/zamowienia-publiczne"^^xsd:anyURI;
   epo:playedBy <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Organization/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Channel$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://ezamowienia.gov.pl/pl/"^^xsd:anyURI .
+
+<http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Channel$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1>
+  a cccev:Channel;
+  epo:hasAddressURL "https://www.uzp.gov.pl/kio"^^xsd:anyURI .
 
 <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>
   a locn:Address;
@@ -72,7 +80,7 @@
   cccev:telephone "+352 29291" .
 
 <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 36.0;
   time:unitType time:unitMonth .
 
@@ -95,19 +103,30 @@
 
 <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/supplies>;
   epo:hasEInvoicingPermission <http://publications.europa.eu/resource/authority/permission/allowed>;
   epo:hasOptionsDescription "Wsparcie Eksperckie w łącznym maksymalnym wymiarze 700 roboczogodzin."@pl;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
   epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/ContractLocation$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1> .
 
+<http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Duration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 36.0;
+  time:unitType time:unitMonth .
+
 <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/DynamicPurchaseSystemTechnicalUsage$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Duration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
+
+<http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
+  a epo:ExclusionGround;
+  epo:hasQualificationCriteriaStatedInProcurementDocuments true .
 
 <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -135,20 +154,21 @@
 
 <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasAdditionalInformation """Zamawiający na etapie ogłoszenia postępowania określi szczegółowe warunki zamówienia tj. warunki udziału w postępowaniu, kryteria oceny ofert, wielkość zamówienia, zamówienia opcjonalne.
 Termin składania ofert zostanie określony w ogłoszeniu o zamówieniu w zakresie przedmiotu wskazanym we wstępnym ogłoszeniu informacyjnym."""@pl;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
   epo:isSMESuitable true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1_PresentationPeriod1>,
     <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/SubmissionTerm$_PriorInformationNotice1_ProcurementProjectLot1>;
   epo:isUsingEUFunds false;
-  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/ParticipationCondition$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest2>;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/ParticipationCondition$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest2>,
+    <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>;
   epo:usesTechnique <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/DynamicPurchaseSystemTechnicalUsage$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>;
   dct:description """CZĘŚĆ 1: Budowa rozwiązania Security Data Lake, składające się na:
 1.	Dostarczenie, uruchomienie i integracja ze środowiskiem Zamawiającego rozwiązania Security Data Lake, złożonego z następujących elementów - (zamówienie podstawowe):
@@ -170,17 +190,20 @@ CZĘŚĆ 2: Rozbudowa posiadanej przez Zamawiającego macierzy, składające si�
 
 <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Notice>
   a epo:Notice, epo:Notice7, epo:PlanningNotice;
+  epo:announcesProcedure <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Procedure/0000000-0000-4000-8000-000000000000>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Buyer/ORG-0001organization>,
     <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/ProcurementProcedureInformationProvider/ORG-0001>,
     <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>,
     <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Reviewer/ORG-0002>;
-  epo:hasESenderDispatchDate "2025-04-02T18:36:53Z"^^xsd:dateTime;
+  epo:hasDispatchDate "2025-04-02T18:36:53Z"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticePublicationNumber "00220095-2025";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-rtl>;
-  epo:hasOJSIssueNumber "67/2025";
+  epo:hasOJSIssueNumber 67;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/POL>;
   epo:hasPublicationDate "2025-04-04+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Lot/LOT-0001>;
   epo:refersToProcedure <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Procedure/0000000-0000-4000-8000-000000000000>;
@@ -190,6 +213,22 @@ CZĘŚĆ 2: Rozbudowa posiadanej przez Zamawiającego macierzy, składające si�
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "d725ee0a-3bc1-4844-a396-16ba345c3338" .
+
+<http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.13" .
+
+<http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -213,6 +252,7 @@ CZĘŚĆ 2: Rozbudowa posiadanej przez Zamawiającego macierzy, składające si�
 
 <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Organization/ORG-0001>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Channel$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1>;
   epo:hasBuyerLegalType <http://publications.europa.eu/resource/authority/buyer-legal-type/cga>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>;
   epo:hasLegalName "Centrum e-Zdrowia"@pl;
@@ -223,6 +263,7 @@ CZĘŚĆ 2: Rozbudowa posiadanej przez Zamawiającego macierzy, składające si�
 
 <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Organization/ORG-0002>
   a org:Organization;
+  epo:exposesChannel <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Channel$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1>;
   epo:hasLegalIdentifier <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1_PartyLegalEntity1>;
   epo:hasLegalName "Krajowa Izba Odwoławcza"@pl;
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/CompanyContactPoint$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization2_Company1_Contact1>;
@@ -233,14 +274,23 @@ CZĘŚĆ 2: Rozbudowa posiadanej przez Zamawiającego macierzy, składające si�
   a epo:ParticipationCondition;
   epo:hasReservedProcurement <http://publications.europa.eu/resource/authority/reserved-procurement/none> .
 
+<http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/PlanningNotice>
+  a epo:PlanningNotice;
+  epo:announcesLot <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Lot/LOT-0001> .
+
+<http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Procedure>
+  a epo:Procedure;
+  epo:specifiesProcurementCriterion <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/ExclusionGround$_PriorInformationNotice1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1> .
+
 <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Procedure/0000000-0000-4000-8000-000000000000>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>,
     <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1_RealizedLocation1>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0024>;
   epo:hasProcedureType <http://publications.europa.eu/resource/authority/procurement-procedure-type/open>;
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Lot/LOT-0001>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>;
   dct:description """CZĘŚĆ 1: Budowa rozwiązania Security Data Lake, składające się na:
 1.	Dostarczenie, uruchomienie i integracja ze środowiskiem Zamawiającego rozwiązania Security Data Lake, złożonego z następujących elementów - (zamówienie podstawowe):
 a)	Platforma strumieniowego przetwarzania danych; 
@@ -262,6 +312,10 @@ CZĘŚĆ 2: Rozbudowa posiadanej przez Zamawiającego macierzy, składające si�
 <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>
   a epo:Purpose;
   epo:hasMainClassification <http://data.europa.eu/cpv/cpv/48730000> .
+
+<http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/ProcessPlanningTerm$_PriorInformationNotice1_PlannedDate1>
+  a epo:ProcessPlanningTerm;
+  epo:hasEstimatedContractNoticePublicationDate "2025-05-07+01:00"^^xsd:date .
 
 <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/ProcurementProcedureInformationProvider/ORG-0001>
   a epo:ProcurementProcedureInformationProvider;
@@ -294,6 +348,10 @@ CZĘŚĆ 2: Rozbudowa posiadanej przez Zamawiającego macierzy, składające si�
   a epo:Reviewer;
   epo:contextualisedBy <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Lot/LOT-0001>;
   epo:playedBy <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/Organization/ORG-0002> .
+
+<http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_TendererQualificationRequest1_SpecificTendererRequirement1>
+  a epo:SelectionCriterion;
+  epo:hasQualificationCriteriaStatedInProcurementDocuments true .
 
 <http://data.europa.eu/a4g/resource/d725ee0a-3bc1-4844-a396-16ba345c3338-01/SubmissionTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:SubmissionTerm;

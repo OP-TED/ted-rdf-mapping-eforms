@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -48,14 +48,17 @@
 
 <http://data.europa.eu/a4g/resource/5d8022a0-1288-4b97-8e66-bc889200f23d-01/Notice>
   a epo:Notice, epo:Notice1, epo:PlanningNotice;
+  epo:announcesPlannedProcurement <http://data.europa.eu/a4g/resource/5d8022a0-1288-4b97-8e66-bc889200f23d-01/PlannedProcurement$_PriorInformationNotice1_ProcurementProject1>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/5d8022a0-1288-4b97-8e66-bc889200f23d-01/Buyer/ORG-0001>;
-  epo:hasESenderDispatchDate "2024-09-26T11:29:50.4938657+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-09-26T11:29:50.4938657+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/planning>;
   epo:hasNoticePublicationNumber "00581996-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-buyer>;
-  epo:hasOJSIssueNumber "189/2024";
+  epo:hasOJSIssueNumber 189;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/FRA>;
   epo:hasPublicationDate "2024-09-27+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/5d8022a0-1288-4b97-8e66-bc889200f23d-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/5d8022a0-1288-4b97-8e66-bc889200f23d-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   adms:identifier <http://data.europa.eu/a4g/resource/5d8022a0-1288-4b97-8e66-bc889200f23d-01/Notice/Identifier> .
 
@@ -63,6 +66,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "5d8022a0-1288-4b97-8e66-bc889200f23d" .
+
+<http://data.europa.eu/a4g/resource/5d8022a0-1288-4b97-8e66-bc889200f23d-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/5d8022a0-1288-4b97-8e66-bc889200f23d-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/5d8022a0-1288-4b97-8e66-bc889200f23d-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.10" .
+
+<http://data.europa.eu/a4g/resource/5d8022a0-1288-4b97-8e66-bc889200f23d-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/5d8022a0-1288-4b97-8e66-bc889200f23d-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/5d8022a0-1288-4b97-8e66-bc889200f23d-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/5d8022a0-1288-4b97-8e66-bc889200f23d-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -77,3 +96,34 @@
   epo:hasPrimaryContactPoint <http://data.europa.eu/a4g/resource/5d8022a0-1288-4b97-8e66-bc889200f23d-01/CompanyContactPoint$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_Contact1>;
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/5d8022a0-1288-4b97-8e66-bc889200f23d-01/CompanyAddress$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PostalAddress1>;
   adms:identifier <http://data.europa.eu/a4g/resource/5d8022a0-1288-4b97-8e66-bc889200f23d-01/Identifier/ORG-0001> .
+
+<http://data.europa.eu/a4g/resource/5d8022a0-1288-4b97-8e66-bc889200f23d-01/PlannedProcurement$_PriorInformationNotice1_ProcurementProject1>
+  a epo:PlannedProcurement;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/5d8022a0-1288-4b97-8e66-bc889200f23d-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>;
+  epo:hasAdditionalInformation "L'appel d'offres ouvert sera publié courant novembre 2024"@fr;
+  epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/other>;
+  epo:hasPurpose <http://data.europa.eu/a4g/resource/5d8022a0-1288-4b97-8e66-bc889200f23d-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
+  dct:description """Le projet consiste en la rénovation de la salle des sports Maillebois existante ainsi que de la création d'une nouvelle salle. Le marché se décompose en 14 lots :
+- Lot n° 1 terrassement, VRD, tranchées (montant estimatif : 517 000 €)
+- Lot n° 2 aménagements paysagers, espaces verts, mobilier urbain (montant estimatif : 45 000 €)
+- Lot n° 3 forages et sondes géothermiques (montant estimatif : 538 000 €)
+- Lot n° 4 pompe à chaleur, chaufferie, réseaux de chaleur (montant estimatif : 481 000 €)
+- Lot n° 5 chaussée thermoactive et finition de voirie (montant estimatif : 151 000 €)
+- Lot n° 6 démolitions, désamiantage, fondations, gros oeuvre, charpente métallique (montant estimatif : 1 874 000 €
+- Lot n° 7 couverture, étanchéité, bardage (montant estimatif : 653 000 €)
+- Lot n° 8 menuiseries extérieures, serrurerie (montant estimatif : 221 000 €)
+- Lot n° 9 menuiseries intérieures, mobilier, plâtrerie, faux plafonds, peinture (montant estimatif : 213 000 €
+- Lot n° 10 carrelages, faïences (montant estimatif : 85 000 €
+- Lot n° 11 plomberie, sanitaires, chauffage, ventilation, climatisation (montant estimatif : 494 000 €)
+- Lot n° 12 électricité CFO CFA (montant estimatif : 286 000 €)
+- Lot n° 13 sols sportifs, équipements sportifs (montant estimatif : 354 000 €)
+- Lot n° 14 ascenseur (montant estimatif : 26 000 €)"""@fr;
+  dct:title "Complexe sportif Maillebois : construction d’une nouvelle salle et rénovation de la salle existante"@fr .
+
+<http://data.europa.eu/a4g/resource/5d8022a0-1288-4b97-8e66-bc889200f23d-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>
+  a epo:Purpose;
+  epo:hasMainClassification <http://data.europa.eu/cpv/cpv/45000000> .
+
+<http://data.europa.eu/a4g/resource/5d8022a0-1288-4b97-8e66-bc889200f23d-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>
+  a epo:ContractTerm;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/works> .

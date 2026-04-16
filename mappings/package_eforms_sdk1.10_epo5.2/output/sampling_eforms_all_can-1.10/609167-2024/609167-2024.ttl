@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -84,8 +84,12 @@
   a adms:Identifier;
   skos:notation "Inhousevergabe gem. Art. 5 Abs. 1 VO 1370/2007 iVm § 108 GWB eines öffentlichen Dienstleistungsauftrages nach Art. 3 Abs. 1 VO 1370/2007 über öffentliche Personenverkehrsdienste Linienbündel \"Stadtverkehr Emden\"" .
 
+<http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2025-01-01+01:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 120.0;
   time:unitType time:unitMonth .
 
@@ -100,19 +104,34 @@
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/DE942> .
 
-<http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2025-01-01+01:00"^^xsd:date .
+<http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/ContractTerm$_ContractAwardNotice1_ProcurementProject1>
+  a epo:ContractTerm;
+  epo:hasTransportServiceType <http://publications.europa.eu/resource/authority/transport-service/bus-s> .
 
 <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/ContractPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services> .
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/ContractDuration$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
   epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/ContractLocation$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1_Address1> .
+
+<http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>
+  a epo:ContractTerm .
+
+<http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/ContractTerm$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1>
+  a epo:ContractTerm;
+  epo:hasTicketsSalesRevenueAllocation 100.0 .
+
+<http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/ContractTerm$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>
+  a epo:ContractTerm;
+  epo:definesPublicTransportationKilometers <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Quantity$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1_PublicTransportationCumulatedDistance1> .
+
+<http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/ContractTerm$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_SettledContract1_DurationJustification1>
+  a epo:ContractTerm .
 
 <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Identifier/LOT-0000>
   a adms:Identifier;
@@ -134,12 +153,17 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0002" .
 
+<http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Interval$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/ContractBeginningPeriod$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Lot/LOT-0000>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/ContractTerm$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/LotPurpose$_ContractAwardNotice1_ProcurementProjectLot1_ProcurementProject1>;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/AccessTerm$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1>,
+    <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/ContractTerm$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
   dct:description """Die Stadt Emden ist in ihrem Zuständigkeitsgebiet gemäß § 4 Abs. 1 Nr. 3 NNVG Aufgabenträgerin für den ÖPNV und zuständige Behörde im Sinne von Art. 2 lit. c) VO 1370/2007. Sie hat die Direktvergabe eines öffentlichen Dienstleistungsauftrags über öffentliche Personenverkehrsdienste mit Bussen in ihrem Zuständigkeitsgebiet entsprechend § 8a Abs. 2 Satz 1 PBefG im Wege der Inhousevergabe nach Art. 5 Abs. 1 VO 1370/2007 i.V.m. § 108 GWB (vgl. EuGH, Urt. v. 21.3.2019, Az. C-266/17 und C-267/17 sowie BGH, B. v. 12.11.2019 – XIII ZB 120/19) an die SVE vorgenommen. 
 
 Die Direktvergabe des öDA erfolgte als Gesamtleistung i.S.d. § 8a Abs. 2 S. 4 PBefG und umfasst das Linienbündel „Stadtverkehr Emden“ i. S. d. §§ 9 Abs. 2, 13 Abs. 2 Satz 1 Nr. 3 lit d) PBefG gemäß Kap. 13 und 11.2.2 des Nahverkehrsplans \"Stadt Emden 2023\".
@@ -156,6 +180,10 @@ anderen Ländern sicherstellen. Die Stadt Emden beabsichtigt vor diesem Hintergr
   dct:title "Inhousevergabe gem. Art. 5 Abs. 1 VO 1370/2007 iVm § 108 GWB eines öffentlichen Dienstleistungsauftrages nach Art. 3 Abs. 1 VO 1370/2007 über öffentliche Personenverkehrsdienste Linienbündel \"Stadtverkehr Emden\""@de;
   adms:identifier <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Identifier/LOT-0000> .
 
+<http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Lot/TEN-0000>
+  a epo:Lot;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/ContractTerm$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1> .
+
 <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/LotAwardOutcome/RES-0000>
   a epo:LotAwardOutcome;
   epo:comprisesTenderAwardOutcome <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/TenderAwardOutcome/TEN-0000>;
@@ -170,14 +198,17 @@ anderen Ländern sicherstellen. Die Stadt Emden beabsichtigt vor diesem Hintergr
 <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Notice>
   a epo:Notice, epo:NoticeT02, epo:ResultNotice;
   epo:announcesAwardDecision <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/AwardDecision/CON-0000>;
+  epo:announcesContract <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Contract/CON-0000>;
   epo:announcesRole <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Tenderer/TPA-0000>;
-  epo:hasESenderDispatchDate "2024-10-07T00:00:00+02:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2024-10-07T00:00:00+02:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/result>;
   epo:hasNoticePublicationNumber "00609167-2024";
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/can-tran>;
-  epo:hasOJSIssueNumber "197/2024";
+  epo:hasOJSIssueNumber 197;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU>;
   epo:hasPublicationDate "2024-10-09+02:00"^^xsd:date;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Lot/LOT-0000>;
   epo:refersToPrevious <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Notice/712820-2022>,
@@ -210,6 +241,22 @@ anderen Ländern sicherstellen. Die Stadt Emden beabsichtigt vor diesem Hintergr
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "4882c6c2-62f0-4141-8f15-e21287374655" .
+
+<http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.10" .
+
+<http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Organization/Identifier$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -248,13 +295,17 @@ anderen Ländern sicherstellen. Die Stadt Emden beabsichtigt vor diesem Hintergr
   cccev:registeredAddress <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/CompanyAddress$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization3_Company1_PostalAddress1>;
   adms:identifier <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Identifier/ORG-0002> .
 
+<http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Procedure>
+  a epo:Procedure;
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/ContractTerm$_ContractAwardNotice1_ProcurementProject1> .
+
 <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Procedure/Identifier/ba8a8aba-26c5-4b21-bed4-65979201b84b>
   a adms:Identifier;
   skos:notation "ba8a8aba-26c5-4b21-bed4-65979201b84b" .
 
 <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Procedure/ba8a8aba-26c5-4b21-bed4-65979201b84b>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/ProcurementProjectContractTerm$_ContractAwardNotice1_ProcurementProject1>;
   epo:hasAdditionalInformation """A. Entgegen der unter Ziffer 2.1 getätigten Angabe wird mit dieser Bekanntmachung die Vergabe eines öffentlichen Dienstleistungsauftrages (öDA) über öffentliche Personenverkehrsdienste nach Art. 3 Abs. 1 Verordnung (EG) Nr. 1370/2007 (VO 1370/2007) im Wege einer Inhousevergabe nach Art. 5 Abs. 1 VO 1370/2007 i. V. m. § 108 Gesetz gegen Wettbewerbsbeschränkungen (GWB) bekannt gemacht. Soweit als Verfahrensart ein \"Wettbewerbliches Ausschreibungsverfahren\" angegeben ist, erfolgt dies nur, weil die Angabe der Verfahrensart „Inhousevergabe\" technisch nicht möglich war.
 
 B. Die Stadt Emden wird eine gesonderte Vergabebekanntmachung nach § 39 VgV veranlassen, in der sie unter Bezugnahme auf diese Vergabebekanntmachungen ihren Veröffentlichungspflichten nach § 8 Abs. 2 Abs. 3 SaubFahrzeugBeschG nachkommen wird. Hintergrund für diese gesonderte Bekanntmachung ist, dass diese Vergabebekanntmachung nach der VO 1370/2007 keine Möglichkeit zur Mitteilung der entsprechenden Fahrzeuge vorsieht, so dass ein Rückgriff auf die entsprechenden Standardformulare notwendig ist.
@@ -290,6 +341,14 @@ D. Auf die Rechtsbehelfsfrist des § 135 Abs. 2 Satz 2 GWB wird hingewiesen. Dan
   epo:playedBy <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Organization/ORG-0002>;
   dct:description "ted-esen" .
 
+<http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/QualityTargetInformation$_ContractAwardNotice1_ProcurementProjectLot1_TenderingTerms1_ContractExecutionRequirement1>
+  a epo:QualityTargetInformation;
+  epo:hasQualityTargetCode <http://publications.europa.eu/resource/authority/customer-service/other> .
+
+<http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Quantity$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1_PublicTransportationCumulatedDistance1>
+  a epo:Quantity;
+  epo:hasQuantityValue 0.0 .
+
 <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Tender/Identifier/Inhousevergabe%20gem.%20Art.%205%20Abs.%201%20VO%201370%2F2007%20iVm%20%C2%A7%20108%20GWB%20eines%20%C3%B6ffentlichen%20Dienstleistungsauftrages%20nach%20Art.%203%20Abs.%201%20VO%201370%2F2007%20%C3%BCber%20%C3%B6ffentliche%20Personenverkehrsdienste%20Linienb%C3%BCndel%20%22Stadtverkehr%20Emden%22>
   a adms:Identifier;
   skos:notation "Inhousevergabe gem. Art. 5 Abs. 1 VO 1370/2007 iVm § 108 GWB eines öffentlichen Dienstleistungsauftrages nach Art. 3 Abs. 1 VO 1370/2007 über öffentliche Personenverkehrsdienste Linienbündel \"Stadtverkehr Emden\"" .
@@ -297,7 +356,7 @@ D. Auf die Rechtsbehelfsfrist des § 135 Abs. 2 Satz 2 GWB wird hingewiesen. Dan
 <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Tender/TEN-0000>
   a epo:Tender;
   epo:hasFinancialOfferValue <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/TenderMonetaryValue$_ContractAwardNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_NoticeResult1_LotTender1>;
-  epo:isSubmitedBy <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Tenderer/TPA-0000>;
+  epo:isSubmittedBy <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Tenderer/TPA-0000>;
   epo:isSubmittedForLot <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Lot/LOT-0000>;
   adms:identifier <http://data.europa.eu/a4g/resource/4882c6c2-62f0-4141-8f15-e21287374655-01/Tender/Identifier/Inhousevergabe%20gem.%20Art.%205%20Abs.%201%20VO%201370%2F2007%20iVm%20%C2%A7%20108%20GWB%20eines%20%C3%B6ffentlichen%20Dienstleistungsauftrages%20nach%20Art.%203%20Abs.%201%20VO%201370%2F2007%20%C3%BCber%20%C3%B6ffentliche%20Personenverkehrsdienste%20Linienb%C3%BCndel%20%22Stadtverkehr%20Emden%22> .
 

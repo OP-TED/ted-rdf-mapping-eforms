@@ -17,7 +17,7 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -107,13 +107,21 @@
   cccev:email "esender@example.com";
   cccev:telephone "+352 123456789" .
 
+<http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2020-09-01+02:00"^^xsd:date .
+
+<http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot2_ProcurementProject1_PlannedPeriod1>
+  a time:Instant;
+  time:inXSDDate "2020-09-01+02:00"^^xsd:date .
+
 <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 24.0;
   time:unitType time:unitMonth .
 
 <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot2_ProcurementProject1_PlannedPeriod1>
-  a epo:SpecificDuration;
+  a time:Duration;
   time:numericDuration 24.0;
   time:unitType time:unitMonth .
 
@@ -139,22 +147,15 @@
   epo:hasCountryCode <http://publications.europa.eu/resource/authority/country/DEU>;
   epo:hasNutsCode <http://data.europa.eu/nuts/code/DE113> .
 
-<http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2020-09-01+02:00"^^xsd:date .
-
-<http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot2_ProcurementProject1_PlannedPeriod1>
-  a epo:Period;
-  epo:hasBeginning "2020-09-01+02:00"^^xsd:date .
-
 <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/Interval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasMaximumNumberOfRenewals 2;
   epo:hasRenewalDescription "Zweimalige Option auf Verlängerung um jeweils 24 Monate (max. 48 Monate)."@de;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
@@ -163,25 +164,38 @@
 
 <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot2>
   a epo:ContractTerm;
-  epo:definesContractDuration <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot2_ProcurementProject1_PlannedPeriod1>;
-  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ContractPeriod$_PriorInformationNotice1_ProcurementProjectLot2_ProcurementProject1_PlannedPeriod1>;
+  epo:definesContractPeriod <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/Interval$_PriorInformationNotice1_ProcurementProjectLot2_ProcurementProject1_PlannedPeriod1>;
+  epo:definesEstimatedContractDuration <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ContractDuration$_PriorInformationNotice1_ProcurementProjectLot2_ProcurementProject1_PlannedPeriod1>;
   epo:hasContractNatureType <http://publications.europa.eu/resource/authority/contract-nature/services>;
   epo:hasMaximumNumberOfRenewals 2;
   epo:hasRenewalDescription "Zweimalige Option auf Verlängerung um jeweils 24 Monate (max. 48 Monate)."@de;
-  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no> .
+  epo:hasReservedExecution <http://publications.europa.eu/resource/authority/applicability/no>;
+  epo:hasUnknownDuration false .
 
 <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot2_ProcurementProject1_RealizedLocation1>
   a epo:ContractTerm;
   epo:definesSpecificPlaceOfPerformance <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ContractLocation$_PriorInformationNotice1_ProcurementProjectLot2_ProcurementProject1_RealizedLocation1_Address1>;
   epo:hasPlaceOfPerformanceAdditionalInformation "Flughafen Stuttgart"@de .
 
+<http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/Duration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 24.0;
+  time:unitType time:unitMonth .
+
+<http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/Duration$_PriorInformationNotice1_ProcurementProjectLot2_ProcurementProject1_PlannedPeriod1_DurationMeasure1>
+  a time:Duration;
+  time:numericDuration 24.0;
+  time:unitType time:unitMonth .
+
 <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/DynamicPurchaseSystemTechnicalUsage$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/Duration$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
 
 <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/DynamicPurchaseSystemTechnicalUsage$_PriorInformationNotice1_ProcurementProjectLot2_TenderingProcess1>
   a epo:DynamicPurchaseSystemTechnique;
-  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none> .
+  epo:hasDPSScope <http://publications.europa.eu/resource/authority/dps-usage/none>;
+  epo:hasEstimatedDuration <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/Duration$_PriorInformationNotice1_ProcurementProjectLot2_ProcurementProject1_PlannedPeriod1_DurationMeasure1> .
 
 <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>
   a epo:FrameworkAgreementTerm;
@@ -221,6 +235,14 @@
   epo:hasScheme "organization";
   skos:notation "ORG-0004" .
 
+<http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/Interval$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_PlannedPeriod1> .
+
+<http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/Interval$_PriorInformationNotice1_ProcurementProjectLot2_ProcurementProject1_PlannedPeriod1>
+  a time:Interval;
+  time:hasBeginning <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ContractBeginningPeriod$_PriorInformationNotice1_ProcurementProjectLot2_ProcurementProject1_PlannedPeriod1> .
+
 <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/Lot/Identifier/lot%201>
   a adms:Identifier;
   skos:notation "lot 1" .
@@ -231,12 +253,12 @@
 
 <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/Lot/LOT-0001>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1_RealizedLocation1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/Lot/Identifier/lot%201>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot1_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/MultipleStageProcedureTerm$_PriorInformationNotice1_ProcurementProjectLot1>,
     <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_AppealTerms1>,
@@ -254,12 +276,12 @@
 
 <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/Lot/LOT-0002>
   a epo:Lot;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot2>,
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot2>,
     <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ContractTerm$_PriorInformationNotice1_ProcurementProjectLot2_ProcurementProject1_RealizedLocation1>;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/Lot/Identifier/lot%202>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/LotPurpose$_PriorInformationNotice1_ProcurementProjectLot2_ProcurementProject1>;
   epo:isCoveredByGPA true;
-  epo:isSubjectToLotSpecificTerm <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot2_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/AccessTerm$_PriorInformationNotice1_ProcurementProjectLot2_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/FrameworkAgreementTerm$_PriorInformationNotice1_ProcurementProjectLot2_TenderingProcess1>,
     <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot2_TenderingTerms1_AppealTerms1>,
     <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ReviewTerm$_PriorInformationNotice1_ProcurementProjectLot2_TenderingTerms1_AppealTerms1_PresentationPeriod1>,
@@ -303,10 +325,12 @@
     <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ProcurementServiceProvider$_PriorInformationNotice1_ContractingParty1_Party1_ServiceProviderParty1>,
     <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/Reviewer/ORG-0002organization>,
     <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/TenderReceiver/ORG-0001organization>;
-  epo:hasESenderDispatchDate "2020-04-08T12:00:00+01:00"^^xsd:dateTime;
+  epo:hasDispatchDate "2020-04-08T12:00:00+01:00"^^xsd:dateTime;
   epo:hasFormType <http://publications.europa.eu/resource/authority/form-type/competition>;
   epo:hasNoticeType <http://publications.europa.eu/resource/authority/notice-type/pin-cfc-standard>;
   epo:hasOfficialLanguage <http://publications.europa.eu/resource/authority/language/DEU>;
+  epo:hasSpecificationInformation <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/Notice/SpecificationInformation/Customisation>,
+    <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/Notice/SpecificationInformation/Version>;
   epo:hasVersion "01";
   epo:refersToLot <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/Lot/LOT-0001>,
     <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/Lot/LOT-0002>;
@@ -317,6 +341,22 @@
   a adms:Identifier;
   epo:hasScheme "notice-id";
   skos:notation "c48d000f-2598-47b3-856e-de93bf654518" .
+
+<http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/Notice/SpecificationInformation/Customisation>
+  a epo:SpecificationInformation;
+  epo:hasSourceSpecificationCustomisation <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/Notice/SpecificationInformation/Customisation/Identifier> .
+
+<http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/Notice/SpecificationInformation/Customisation/Identifier>
+  a adms:Identifier;
+  skos:notation "eforms-sdk-1.3" .
+
+<http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/Notice/SpecificationInformation/Version>
+  a epo:SpecificationInformation;
+  epo:hasSourceVersionSpecification <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/Notice/SpecificationInformation/Version/Identifier> .
+
+<http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/Notice/SpecificationInformation/Version/Identifier>
+  a adms:Identifier;
+  skos:notation "2.3" .
 
 <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/Organization/Identifier$_PriorInformationNotice1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_Organizations1_Organization1_Company1_PartyLegalEntity1>
   a adms:Identifier;
@@ -386,7 +426,7 @@
 
 <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/Procedure/c2a0dcd1-4d17-4072-9252-38de16ead921>
   a epo:Procedure;
-  epo:foreseesContractSpecificTerm <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>;
+  epo:foreseesTerm <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ProcurementProjectContractTerm$_PriorInformationNotice1_ProcurementProject1>;
   epo:hasAdditionalInformation "a) Der Auftraggeber ist ausschließlich Sektorenauftraggeber nach § 100 Abs. 1 Nr. 2 GWB. b) Hinweise zum Verfahrensablauf: In der 1. Phase der Interessenbekundung haben Unternehmen zunächst nur allgemein ihr Interesse an der Teilnahme am Vergabeverfahren zu bekunden. Der Auftraggeber hat hierfür ein Formblatt erstellt. Das Formblatt kann nach Ziffer I.3 der vorliegenden Bekanntmachung abgerufen werden. Die Interessenbekundungen müssen in Textform über die Vergabeplattform des Auftraggebers bis zum Schlusstermin für deren Eingang nach Ziffer IV.2.2) eingehen. Eine Interessenbekundung als Bewerbergemeinschaft ist möglich. Die Einreichung der Eignungsunterlagen (entsprechend dem Teilnahmeantrag) ist in dieser Phase nicht erforderlich. Ein Unternehmen, das sein Interesse in der 1. Phase nicht bekundet hat, kann im weiteren Verlauf des Vergabeverfahrens nicht berücksichtigt werden. Der Auftraggeber wird in der 2. Phase des Vergabeverfahrens die Unternehmen, die frist- und formgerecht eine Interessenbekundung eingereicht haben, auffordern ihr Interesse zu bestätigen (Interessensbestätigung), in dem die in der entsprechenden Aufforderung aufgeführten Eignungsunterlagen eingereicht werden (Teilnahmeantrag). Eine Bewerbergemeinschaft kann in dieser Phase nur noch mit Unternehmen gebildet werden, die zur Interessenbestätigung aufgefordert wurden. In der Aufforderung zur Interessenbestätigung werden die für die Teilnahme maßgeblichen Informationen mitgeteilt werden. In der 3. Phase werden die erfolgreichen Bewerber zur Angabe eines Angebots aufgefordert. Der Auftraggeber behält sich nach § 15 Abs. 4 SektVO vor, den Auftrag auf der Grundlage der Erstangebote zu vergeben, ohne in Verhandlungen einzutreten. c) Die in Ziffer II.2.7) und in Ziffer IV.2.3) enthaltenen Zeitangaben stehen unter dem Vorbehalt der Anpassung und Aktualisierung. d) Fragen zum Vergabeverfahren sind elektronisch in Textform über die eVergabe-Plattform gem. Ziffer I.3 einzureichen. Fragen sind rechtzeitig gestellt, wenn sie bis spätestens zum 20.3.2020 eingegangen sind. e) Der Auftraggeber behält sich vor, bei Unterschreitung der Mindestzahl von drei zulassungsfähigen Bewerbungen das vorliegende Vergabeverfahren einzustellen. Der Auftraggeber behält sich zudem vor, bei einer Unterschreitung der Mindestzahl von drei wertungsfähigen Angeboten das vorliegende Vergabeverfahren einzustellen. Bei einer losweisen Vergabe gelten die voranstehenden Vorbehalte für jedes Los."@de;
   epo:hasInternalIdentifier <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/Procedure/Identifier/xyz>;
   epo:hasLegalBasis <http://publications.europa.eu/resource/authority/legal-basis/32014L0025>;
@@ -394,7 +434,7 @@
   epo:hasProcurementScopeDividedIntoLot <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/Lot/LOT-0001>,
     <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/Lot/LOT-0002>;
   epo:hasPurpose <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ProcedurePurpose$_PriorInformationNotice1_ProcurementProject1>;
-  epo:isSubjectToProcedureSpecificTerm <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ProcedureTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
+  epo:isSubjectToTerm <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ProcedureTerm$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ProcedureTerm$_PriorInformationNotice1_ProcurementProjectLot2_TenderingTerms1>,
     <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/ProcedureTerm$_PriorInformationNotice1_TenderingTerms1_LotDistribution1>;
   dct:description "Wartung, Funktionsprüfung und Instandsetzung von ca. 3 700 Brandschutztüren – inkl. ca. 100 integrierter Feststelleinrichtungen – am Flughafen Stuttgart. Die Wartungsplanung wird vom AG vorgegeben und vom AN mittels gestelltem Ipad dokumentiert. Der Auftraggeber führt vorliegend ein Vergabeverfahren mit Interessenbekundung, Interessenbestätigung und Aufforderung zur Abgabe eines Angebots im Wege eines Verhandlungsverfahrens ohne gesonderte Auftragsbekanntmachung durch. In Ziffer VI.3 b) der vorliegenden Bekanntmachung ist der Ablauf konkretisiert."@de;
@@ -458,37 +498,31 @@
 
 <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>;
   dct:description "Die vorliegend maßgeblichen Eignungsunterlagen werden in der Aufforderung zur Interessenbestätigung nach § 36 Abs. 5 SektVO mitgeteilt werden. Für die Interessenbekundung interessierter Unternehmen wird auf Ziffer VI.3 b) der vorliegenden Bekanntmachung verwiesen."@de .
 
 <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/ef-stand>;
   dct:description "Die vorliegend maßgeblichen Eignungsunterlagen werden in der Aufforderung zur Interessenbestätigung nach § 36 Abs. 5 SektVO mitgeteilt werden. Für die Interessenbekundung interessierter Unternehmen wird auf Ziffer VI.3 b) der vorliegenden Bekanntmachung verwiesen."@de .
 
 <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot1_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/tp-abil>;
   dct:description "Die vorliegend maßgeblichen Eignungsunterlagen werden in der Aufforderung zur Interessenbestätigung nach § 36 Abs. 5 SektVO mitgeteilt werden. Für die Interessenbekundung interessierter Unternehmen wird auf Ziffer VI.3 b) der vorliegenden Bekanntmachung verwiesen."@de .
 
 <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot2_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria1>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/sui-act>;
   dct:description "Die vorliegend maßgeblichen Eignungsunterlagen werden in der Aufforderung zur Interessenbestätigung nach § 36 Abs. 5 SektVO mitgeteilt werden. Für die Interessenbekundung interessierter Unternehmen wird auf Ziffer VI.3 b) der vorliegenden Bekanntmachung verwiesen."@de .
 
 <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot2_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria2>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/ef-stand>;
   dct:description "Die vorliegend maßgeblichen Eignungsunterlagen werden in der Aufforderung zur Interessenbestätigung nach § 36 Abs. 5 SektVO mitgeteilt werden. Für die Interessenbekundung interessierter Unternehmen wird auf Ziffer VI.3 b) der vorliegenden Bekanntmachung verwiesen."@de .
 
 <http://data.europa.eu/a4g/resource/c48d000f-2598-47b3-856e-de93bf654518-01/SelectionCriterion$_PriorInformationNotice1_ProcurementProjectLot2_TenderingTerms1_UBLExtensions1_UBLExtension1_ExtensionContent1_EformsExtension1_SelectionCriteria3>
   a epo:SelectionCriterion;
-  epo:hasSelectionCriteriaUsage <http://publications.europa.eu/resource/authority/usage/used>;
   epo:hasSelectionCriterionType <http://publications.europa.eu/resource/authority/selection-criterion/tp-abil>;
   dct:description "Die vorliegend maßgeblichen Eignungsunterlagen werden in der Aufforderung zur Interessenbestätigung nach § 36 Abs. 5 SektVO mitgeteilt werden. Für die Interessenbekundung interessierter Unternehmen wird auf Ziffer VI.3 b) der vorliegenden Bekanntmachung verwiesen."@de .
 
