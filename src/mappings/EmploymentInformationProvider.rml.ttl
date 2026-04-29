@@ -827,13 +827,16 @@ tedm:MG-InternationalProcurementInstrumentMeasuresInformation_ND-IPILotResult a 
         ] ;
     ] ;
     rr:predicateObjectMap [
-        rdfs:label "concernsInternationalProcurementInstrumentMeasure" ;
-        rdfs:comment "concernsInternationalProcurementInstrumentMeasure of MG-InternationalProcurementInstrumentMeasuresInformation under ND-IPILotResult" ;
+        rdfs:label "BT-685-LotResult" ;
+        rdfs:comment "Specific IPI Measure of MG-InternationalProcurementInstrumentMeasuresInformation under ND-IPILotResult" ;
         rr:predicate epo:concernsInternationalProcurementInstrumentMeasure ;
         rr:objectMap [
             rdfs:label "at-voc:international-procurement-instrument-measure" ;
-            rr:template "http://publications.europa.eu/resource/authority/international-procurement-instrument-measure/{efbc:MeasureCode}" ;
-            rr:termType rr:IRI ;
+            rr:parentTriplesMap tedm:international-procurement-instrument-measure ;
+            rr:joinCondition [
+                rr:child "efbc:MeasureCode" ;
+                rr:parent "code.value" ;
+            ] ;
         ] ;
     ] .
 
