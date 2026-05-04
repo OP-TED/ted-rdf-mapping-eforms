@@ -3307,20 +3307,20 @@ tedm:MG-QualityTargetInformation-concernsContractTerm-ContractTerm_ND-LotTenderi
         ] ;
     rr:subjectMap
         [
-            rdfs:label "ND-LotTenderingTerms" ;
+            rdfs:label "ND-QualityTarget" ;
             rml:reference "'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/QualityTargetInformation$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_')" ;
             rr:class epo:QualityTargetInformation
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "ND-LotTenderingTerms" ;
-            rdfs:comment "ND-LotTenderingTerms of MG-QualityTargetInformation under ND-Lot" ;
+            rdfs:label "ND-QualityTarget" ;
+            rdfs:comment "Contract term relation of MG-QualityTargetInformation under ND-QualityTarget" ;
             rr:predicate epo:concernsContractTerm ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:MG-ContractTerm-concernsContractTerm-QualityTargetInformation_ND-LotTenderingTerms ;
                     rr:joinCondition [
-                        rr:child "path(../..)" ;
+                        rr:child "path(..)" ;
                         rr:parent "path(.)" ;
                     ] ;
                 ] ;
@@ -3340,29 +3340,44 @@ tedm:MG-QualityTargetInformation-concernsContractTerm-ContractTerm_ND-LotTenderi
                     ] ;
                 ] ;
         ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "OPT-072-QualityTargetInformation" ;
-            rdfs:comment "OPT-072-QualityTargetInformation of MG-QualityTargetInformation under ND-Lot" ;
-            rr:predicate epo:hasQualityTargetDescription ;
-            rr:objectMap
-                [
-                    rml:reference "if(exists(@languageID)) then cbc:Description else null" ;
-                    rml:languageMap [
-                        fnml:functionValue [
-                            rr:predicateObjectMap [
-                                rr:predicate idlab-fn:str ;
-                                rr:objectMap [ rml:reference "cbc:Description/@languageID" ]
-                            ] ,
-                            tedm:idlab-fn_executes_lookup ,
-                            tedm:idlab-fn_inputFile_language ,
-                            tedm:idlab-fn_fromColumn_code ,
-                            tedm:idlab-fn_toColumn_code
-                        ]
-                    ] ;
-                ] ;
-        ] ;
 .
+
+tedm:MG-langString-hasQualityTargetDescription-QualityTargetInformation_ND-QualityTarget a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/source.xml" ;
+    rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:ContractExecutionRequirement[cbc:ExecutionRequirementCode/@listName='customer-service']/cbc:Description" ;
+    rml:referenceFormulation ql:XPath ;
+  ] ;
+  rr:subjectMap [
+    rr:class epo:QualityTargetInformation ;
+    rdfs:label "ND-QualityTarget" ;
+    rml:reference "'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/QualityTargetInformation$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_')" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate epo:hasQualityTargetDescription ;
+    rr:objectMap [
+      rml:reference "if(exists(@languageID)) then . else null" ;
+      rml:languageMap [
+        fnml:functionValue [
+          rr:predicateObjectMap [
+            rr:predicate idlab-fn:str ;
+            rr:objectMap [
+              rml:reference "@languageID" ;
+            ] ;
+          ] ;
+          rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+          rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+          rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+          rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+        ] ;
+      ] ;
+      rdfs:comment "Language of Quality Target Description of MG-QualityTargetInformation under ND-QualityTarget" ;
+      rdfs:label "OPT-072-Lot-Language" ;
+    ] ;
+    rdfs:comment "Quality Target Description of MG-QualityTargetInformation under ND-QualityTarget" ;
+    rdfs:label "OPT-072-Lot" ;
+  ] ;
+  rdfs:label "MG-QualityTargetInformation" .
 
 tedm:MG-ContractTerm-concernsContractTerm-QualityTargetInformation_ND-LotTenderingTerms a rr:TriplesMap ;
     rdfs:label "MG-ContractTerm" ;
