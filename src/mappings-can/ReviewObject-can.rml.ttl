@@ -760,7 +760,7 @@ tedm:MG-Identifier-identifier-ReviewRequest-refersToPrevious-ReviewDecision_ND-R
         [
             tedm:minSDKVersion "1.13" ;
             rdfs:label "ND-ReviewStatus" ;
-            rml:reference "if (efbc:AppealStageCode='dec') then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ReviewRequest/Identifier$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (efbc:AppealStageCode='dec') then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ReviewObject/Identifier$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -785,7 +785,7 @@ tedm:MG-Identifier-identifier-ReviewRequest-refersToPrevious-ReviewDecision_ND-R
 .
 
 tedm:MG-ReviewRequest-refersToPrevious-ReviewDecision_ND-ReviewStatus a rr:TriplesMap ;
-    rdfs:label "MG-ReviewRequest" ;
+    rdfs:label "MG-ReviewObject" ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -795,8 +795,7 @@ tedm:MG-ReviewRequest-refersToPrevious-ReviewDecision_ND-ReviewStatus a rr:Tripl
     rr:subjectMap
         [
             rdfs:label "ND-ReviewStatus" ;
-            rml:reference "if ((efbc:AppealStageCode='dec') and exists(efbc:PreviousAppealID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ReviewRequest$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
-            rr:class epo:ReviewRequest
+            rml:reference "if ((efbc:AppealStageCode='dec') and exists(efbc:PreviousAppealID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ReviewObject$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null"
         ] ;
      rr:predicateObjectMap
         [
@@ -816,7 +815,7 @@ tedm:MG-ReviewRequest-refersToPrevious-ReviewDecision_ND-ReviewStatus a rr:Tripl
         [
             tedm:minSDKVersion "1.13" ;
             rdfs:label "BT-795-Review-Decision" ;
-            rdfs:comment "Review Request Fee of MG-ReviewRequest under ND-ReviewStatus (from ReviewDecision)" ;
+            rdfs:comment "Review Request Fee of previous MG-ReviewObject under ND-ReviewStatus (from ReviewDecision)" ;
             rr:predicate epo:hasReviewRequestFee     ;
              rr:objectMap
                 [
