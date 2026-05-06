@@ -809,7 +809,6 @@ tedm:energy-efficiency-basis a rr:TriplesMap ;
         ]
 .
 
-
 tedm:energy-efficiency-item a rr:TriplesMap ;
     rml:logicalSource
         [
@@ -842,6 +841,20 @@ tedm:international-procurement-instrument-measure a rr:TriplesMap ;
     rml:logicalSource
         [
             rml:source "transformation/resources/international-procurement-instrument-measure.json" ;
+            rml:iterator "$.results.bindings[*]" ;
+            rml:referenceFormulation ql:JSONPath
+        ] ;
+    rr:subjectMap
+        [
+            rml:reference
+                "conceptURI.value" ;
+        ]
+.
+
+tedm:foreign-subsidy-measure-conclusion a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "transformation/resources/foreign-subsidy-measure-conclusion.json" ;
             rml:iterator "$.results.bindings[*]" ;
             rml:referenceFormulation ql:JSONPath
         ] ;
