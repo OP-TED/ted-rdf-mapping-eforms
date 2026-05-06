@@ -6287,8 +6287,11 @@ tedm:MG-InternationalProcurementInstrumentMeasuresInformation_ND-IPIMeasureExcep
             rr:objectMap
                 [
                     rdfs:label "at-voc:international-procurement-instrument-application" ;
-                    rr:termType rr:IRI ;
-                    rml:reference "if(not(exists(../../../../efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='int-pro-ins-exc-inf']) and efbc:ExceptionCode/text() = 'unpublished' )) then 'http://publications.europa.eu/resource/authority/international-procurement-instrument-application/' || efbc:ExceptionCode else null" ;
+                    rr:parentTriplesMap tedm:international-procurement-instrument-application ;
+                    rr:joinCondition [
+                        rr:child "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='int-pro-ins-exc-inf']) and efbc:ExceptionCode/text() = 'unpublished' )) then efbc:ExceptionCode else null" ;
+                        rr:parent "code.value" ;
+                    ] ;
                 ] ;
         ] ;
     rr:predicateObjectMap
