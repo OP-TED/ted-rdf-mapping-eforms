@@ -6289,7 +6289,7 @@ tedm:MG-InternationalProcurementInstrumentMeasuresInformation_ND-IPIMeasureExcep
                     rdfs:label "at-voc:international-procurement-instrument-application" ;
                     rr:parentTriplesMap tedm:international-procurement-instrument-application ;
                     rr:joinCondition [
-                        rr:child "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='int-pro-ins-exc-inf']) and efbc:ExceptionCode/text() = 'unpublished' )) then efbc:ExceptionCode else null" ;
+                        rr:child "efbc:ExceptionCode" ;
                         rr:parent "code.value" ;
                     ] ;
                 ] ;
@@ -6301,7 +6301,7 @@ tedm:MG-InternationalProcurementInstrumentMeasuresInformation_ND-IPIMeasureExcep
             rr:predicate epo:hasPublicInterestExceptionJustification ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(@languageID) and not(exists(../../../../efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='pub-int-exc-jus']) and efbc:ExceptionDescription/text() = 'unpublished' )) then efbc:ExceptionDescription else null" ;
+                    rml:reference "efbc:ExceptionDescription" ;
                     rml:languageMap [
                         fnml:functionValue [
                             rr:predicateObjectMap [
@@ -6343,7 +6343,7 @@ tedm:MG-InternationalProcurementInstrumentMeasuresInformation_ND-IPIMeasureStati
             rr:predicate epo:hasNumberOfTendersConcerned ;
             rr:objectMap
                 [
-                    rml:reference "if(not(exists(../../../../efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='num-ten-con']) and efbc:StatisticsNumeric/text() = '-1' )) then efbc:StatisticsNumeric else null" ;
+                    rml:reference "efbc:StatisticsNumeric" ;
                     rr:datatype xsd:integer
                 ] ;
         ] ;
