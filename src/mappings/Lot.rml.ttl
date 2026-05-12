@@ -3488,7 +3488,20 @@ tedm:MG-ContractTerm-foreseesTerm-Lot_ND-LotProcurementScope a rr:TriplesMap ;
             rr:predicate epo:hasUnknownDuration ;
             rr:objectMap
                 [
-                    rml:reference "if (cbc:DescriptionCode/text()='UNKNOWN') then 'true' else 'false'" ;
+                    rml:reference "if (cbc:DescriptionCode/text()='UNKNOWN') then 'true' else null" ;
+                    rr:datatype xsd:boolean ;
+
+                ] ;
+        ] ;
+     rr:predicateObjectMap
+        [
+            # VERINFO: across versions only mapping-irrelevant changes, and introduction of List attribute from 1.9+
+            rdfs:label "BT-538-Lot";
+            rdfs:comment "Duration Other of MG-ContractTerm under ND-LotDuration" ;
+            rr:predicate epo:hasUnlimitedDuration ;
+            rr:objectMap
+                [
+                    rml:reference "if (cbc:DescriptionCode/text()='UNLIMITED') then 'true' else null" ;
                     rr:datatype xsd:boolean ;
 
                 ] ;
