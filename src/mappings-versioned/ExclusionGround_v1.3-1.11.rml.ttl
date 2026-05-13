@@ -36,7 +36,6 @@ tedm:MG-ExclusionGround_ND-ExclusionGrounds a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-ExclusionGrounds" ;
-#    rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ExclusionGround${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rml:reference "if(exists(cbc:Description) or exists(cbc:TendererRequirementTypeCode[@listName='exclusion-ground'])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ExclusionGround$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:ExclusionGround
         ] ;
@@ -51,7 +50,7 @@ tedm:MG-ExclusionGround_ND-ExclusionGrounds a rr:TriplesMap ;
                     rdfs:label "at-voc:exclusion-ground" ;
                     rr:parentTriplesMap tedm:exclusion-ground ;
                     rr:joinCondition [
-                        rr:child "cbc:TendererRequirementTypeCode" ;
+                        rr:child "cbc:TendererRequirementTypeCode[@listName='exclusion-ground']" ;
                         rr:parent "code.value" ;
                      ] ;
                 ] ;
