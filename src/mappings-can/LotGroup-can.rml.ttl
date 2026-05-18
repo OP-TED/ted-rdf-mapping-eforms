@@ -42,22 +42,6 @@
 #         ] ;
 # .
 
-tedm:MG-LotGroup-describesLotGroup-LotGroupAwardInformation_ND-NoticeResultGroupFA a rr:TriplesMap ;
-    rdfs:label "MG-LotGroup";
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:GroupFramework";
-            rml:referenceFormulation ql:XPath
-        ];
-    rr:subjectMap
-        [
-            rdfs:label  "ND-NoticeResultGroupFA";
-            rml:reference "if (not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='gro-max-ide']) and efac:TenderLot/cbc:ID/text() = 'unpublished' )) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/LotGroup/' || efac:TenderLot/cbc:ID else null" ;
-            rr:class epo:LotGroup
-        ] ;
-.
-
 tedm:MG-LotGroup_ND-NoticeResultGroupFA  a rr:TriplesMap ;
     rdfs:label "MG-LotGroup_ND";
     rml:logicalSource

@@ -77,7 +77,7 @@ tedm:MG-LotGroupAwardInformation_ND-NoticeResultGroupFA a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-LotsGroupFA";
-            rml:reference "if (exists(efbc:GroupFrameworkMaximumValueAmount) or exists(efbc:GroupFrameworkReestimatedValueAmount)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/LotGroupAwardInformation$' || replace(replace(replace(path(.), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(efbc:GroupFrameworkMaximumValueAmount) or exists(efbc:GroupFrameworkReestimatedValueAmount) or exists(efac:TenderLot/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/LotGroupAwardInformation$' || replace(replace(replace(path(.), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:LotGroupAwardInformation
         ] ;
     rr:predicateObjectMap
@@ -100,10 +100,10 @@ tedm:MG-LotGroupAwardInformation_ND-NoticeResultGroupFA a rr:TriplesMap ;
              rr:predicate epo:describesLotGroup ;
              rr:objectMap
                  [
-                   rr:parentTriplesMap tedm:MG-LotGroup-describesLotGroup-LotGroupAwardInformation_ND-NoticeResultGroupFA ;
-                     rr:joinCondition[
-                         rr:child "path(.)";
-                         rr:parent "path(.)"
+                   rr:parentTriplesMap tedm:MG-LotGroup_ND-NoticeResultGroupFA ;
+                     rr:joinCondition [
+                         rr:child "if (not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='gro-max-ide']))) then path(.) else null" ;
+                         rr:parent "path(.)" ;
                      ];
                  ] ;
          ];
