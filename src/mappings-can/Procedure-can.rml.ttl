@@ -199,6 +199,108 @@ tedm:MG-Identifier-identifier-Procedure-refersToPreviousProcedure-DirectAwardTer
         ];
     .
 
+# OPP-040: Transport Service Type (Procedure) - Variant 1 (ND-ProcedureTransportServiceType)
+tedm:MG-Procedure-isSubjectToTerm-ContractTerm_ND-ProcedureTransportServiceType_v1 a rr:TriplesMap ;
+    rdfs:label "MG-Procedure" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProject/cac:ProcurementAdditionalType[cbc:ProcurementTypeCode/@listName='transport-service']/cbc:ProcurementTypeCode" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Procedure" ;
+        rml:reference "if (not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E2', text())]))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Procedure/' || (if (exists(/*/cbc:ContractFolderID)) then encode-for-uri(/*/cbc:ContractFolderID) else '0000000-0000-4000-8000-000000000000') else null" ;
+        rr:class epo:Procedure
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPP-040-Procedure (isSubjectToTerm)" ;
+        rdfs:comment "Connection from Procedure to ContractTerm" ;
+        rr:predicate epo:isSubjectToTerm ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-ContractTerm-isSubjectToTerm-Procedure_ND-ProcedureTransportServiceType_v1 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-ContractTerm-isSubjectToTerm-Procedure_ND-ProcedureTransportServiceType_v1 a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm-isSubjectToTerm-Procedure" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProject/cac:ProcurementAdditionalType[cbc:ProcurementTypeCode/@listName='transport-service']/cbc:ProcurementTypeCode" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-ProcedureTransportServiceType" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTerm${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:ContractTerm
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPP-040-Procedure" ;
+        rdfs:comment "Transport Service Type for Procedure (variant 1)" ;
+        rr:predicate epo:hasTransportServiceType ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:transport-service ;
+            rr:joinCondition [
+                rr:child "." ;
+                rr:parent "code.value" ;
+            ] ;
+        ] ;
+    ] .
+
+# OPP-040: Transport Service Type (Procedure) - Variant 2 (ND-ProcedureProcurementScope)
+tedm:MG-Procedure-isSubjectToTerm-ContractTerm_ND-ProcedureProcurementScope_v2 a rr:TriplesMap ;
+    rdfs:label "MG-Procedure" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProject/cac:ProcurementAdditionalType/cbc:ProcurementTypeCode[@listName='transport-service']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-Procedure" ;
+        rml:reference "if (not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E2', text())]))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Procedure/' || (if (exists(/*/cbc:ContractFolderID)) then encode-for-uri(/*/cbc:ContractFolderID) else '0000000-0000-4000-8000-000000000000') else null" ;
+        rr:class epo:Procedure
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPP-040-Procedure (isSubjectToTerm)" ;
+        rdfs:comment "Connection from Procedure to ContractTerm" ;
+        rr:predicate epo:isSubjectToTerm ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:MG-ContractTerm-isSubjectToTerm-Procedure_ND-ProcedureProcurementScope_v2 ;
+            rr:joinCondition [
+                rr:child "path(.)" ;
+                rr:parent "path(.)" ;
+            ] ;
+        ] ;
+    ] .
+
+tedm:MG-ContractTerm-isSubjectToTerm-Procedure_ND-ProcedureProcurementScope_v2 a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm-isSubjectToTerm-Procedure" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProject/cac:ProcurementAdditionalType/cbc:ProcurementTypeCode[@listName='transport-service']" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-ProcedureProcurementScope" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTerm${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:ContractTerm
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPP-040-Procedure" ;
+        rdfs:comment "Transport Service Type for Procedure (variant 2)" ;
+        rr:predicate epo:hasTransportServiceType ;
+        rr:objectMap [
+            rr:parentTriplesMap tedm:transport-service ;
+            rr:joinCondition [
+                rr:child "." ;
+                rr:parent "code.value" ;
+            ] ;
+        ] ;
+    ] .
+
 tedm:MG-langString-hasJustification-DirectAwardTerm-isSubjectToTerm-Procedure_ND-DirectAward a rr:TriplesMap ;
     rml:logicalSource [
         rml:source "data/source.xml" ;
