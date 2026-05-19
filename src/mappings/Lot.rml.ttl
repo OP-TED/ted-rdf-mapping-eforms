@@ -1080,6 +1080,37 @@ tedm:MG-Lot_ND-LotProcurementScope a rr:TriplesMap ;
     #     ] ;
 .
 
+tedm:MG-Lot_ND-LotDuration a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm";
+        rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject/cac:PlannedPeriod";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotDuration";
+             rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Lot/{../../cbc:ID}" ;
+            rr:class epo:Lot
+        ] ;
+    rr:predicateObjectMap
+        [
+
+            rdfs:label "BT-781-Lot, BT-538-Lot" ;
+            rdfs:comment "Connection between MG-Lot and MG-ContractTerm under ND-LotDuration" ;
+            rr:predicate epo:foreseesTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ContractTerm-foreseesTerm-Lot_ND-LotDuration ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ];
+.
+
 tedm:MG-Identifier-identifier-Lot_ND-Lot a rr:TriplesMap ;
     rdfs:label "BT-137-Lot";
     rml:logicalSource
@@ -3436,7 +3467,7 @@ tedm:MG-ContractTerm-foreseesTerm-Lot_ND-LotProcurementScope a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-LotProcurementScope";
-            rml:reference "if (exists(cbc:ProcurementTypeCode[@listName='contract-nature']) or exists(cac:PlannedPeriod/cbc:DurationMeasure) or exists(cac:PlannedPeriod/cbc:StartDate) or exists(cac:PlannedPeriod/cbc:EndDate) or exists(cac:PlannedPeriod/cbc:DescriptionCode)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractTerm$' || replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '') else null";
+            rml:reference "if (exists(cbc:ProcurementTypeCode[@listName='contract-nature']) or exists(cac:PlannedPeriod/cbc:DurationMeasure) or exists(cac:PlannedPeriod/cbc:StartDate) or exists(cac:PlannedPeriod/cbc:EndDate)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractTerm$' || replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '') else null";
             rr:class epo:ContractTerm
         ] ;
     rr:predicateObjectMap
@@ -3480,32 +3511,6 @@ tedm:MG-ContractTerm-foreseesTerm-Lot_ND-LotProcurementScope a rr:TriplesMap ;
                     ];
                 ] ;
         ] ;
-     rr:predicateObjectMap
-        [
-            # VERINFO: across versions only mapping-irrelevant changes, and introduction of List attribute from 1.9+
-            rdfs:label "BT-538-Lot";
-            rdfs:comment "Duration Other of MG-ContractTerm under ND-LotDuration" ;
-            rr:predicate epo:hasUnknownDuration ;
-            rr:objectMap
-                [
-                    rml:reference "if (cac:PlannedPeriod/cbc:DescriptionCode/text()='UNKNOWN') then 'true' else null" ;
-                    rr:datatype xsd:boolean ;
-
-                ] ;
-        ] ;
-     rr:predicateObjectMap
-        [
-            # VERINFO: across versions only mapping-irrelevant changes, and introduction of List attribute from 1.9+
-            rdfs:label "BT-538-Lot";
-            rdfs:comment "Duration Other of MG-ContractTerm under ND-LotDuration" ;
-            rr:predicate epo:hasUnlimitedDuration ;
-            rr:objectMap
-                [
-                    rml:reference "if (cac:PlannedPeriod/cbc:DescriptionCode/text()='UNLIMITED') then 'true' else null" ;
-                    rr:datatype xsd:boolean ;
-
-                ] ;
-        ]
 .
 
 tedm:MG-Quantity-hasTotalQuantity-Purpose-hasPurpose-Lot_ND-LotProcurementScope a rr:TriplesMap ;
@@ -5025,6 +5030,47 @@ tedm:MG-Duration-definesEstimatedContractDuration-ContractTerm-foreseesTerm-Lot_
                         rr:child "cbc:DurationMeasure/@unitCode" ;
                         rr:parent "xmlElement" ;
                     ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-ContractTerm-foreseesTerm-Lot_ND-LotDuration a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject/cac:PlannedPeriod";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotDuration";
+            rml:reference "if (exists(cbc:Description) or exists(cbc:DescriptionCode)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractTerm$' || replace(replace(replace(path(../..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class epo:ContractTerm
+        ] ;
+    # pOMap for BT-781-Lot is in Lot-compl
+    rr:predicateObjectMap
+        [
+            # VERINFO: across versions only mapping-irrelevant changes, and introduction of List attribute from 1.9+
+            rdfs:label "BT-538-Lot (UNKNOWN)" ;
+            rdfs:comment "Duration Other of MG-ContractTerm under ND-LotDuration, UNKNOWN case" ;
+            rr:predicate epo:hasUnknownDuration ;
+            rr:objectMap
+                [
+                    rml:reference "if (cbc:DescriptionCode/text()='UNKNOWN') then 'true' else null" ;
+                    rr:datatype xsd:boolean ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            # VERINFO: across versions only mapping-irrelevant changes, and introduction of List attribute from 1.9+
+            rdfs:label "BT-538-Lot (UNLIMITED)" ;
+            rdfs:comment "Duration Other of MG-ContractTerm under ND-LotDuration, UNLIMITED case" ;
+            rr:predicate epo:hasUnlimitedDuration ;
+            rr:objectMap
+                [
+                    rml:reference "if (cbc:DescriptionCode/text()='UNLIMITED') then 'true' else null" ;
+                    rr:datatype xsd:boolean ;
                 ] ;
         ] ;
 .
