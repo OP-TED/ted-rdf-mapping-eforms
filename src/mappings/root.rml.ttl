@@ -86,7 +86,7 @@ tedm:MG-CompetitionNotice_ND-Root
             rr:predicate epo:announcesRole ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember;
+                    rr:parentTriplesMap tedm:MG-Lot-contextualisedBy-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember ;
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -835,12 +835,12 @@ tedm:MG-Person-playedBy-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTe
             rr:class person:Person;
 
         ] ;
-     rr:predicateObjectMap
+    rr:predicateObjectMap
         [
             # Differences across versions are practically superficial and have little to no functional effect on this mapping even though different iterators can be interpreted
             # VERINFO: SDK v1.8 from v1.3-1.7 contains rel XPath change within the same abs XPath due to node change, along with repeatable=false
             rdfs:label "BT-46-Lot" ;
-            rdfs:comment "JuryMemberName of MG-Person under ND-AwardingTermsJuryMember (v1.8+), ND-AwardingTerms (v1.3-1.7)" ;
+            rdfs:comment "Jury Member Name of MG-Person under ND-AwardingTermsJuryMember (v1.8+), ND-AwardingTerms (v1.3-1.7)" ;
             rr:predicate foaf:familyName ;
             rr:objectMap
                 [
@@ -849,7 +849,7 @@ tedm:MG-Person-playedBy-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTe
         ] ;
 .
 
-tedm:MG-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember a rr:TriplesMap ;
+tedm:MG-Lot-contextualisedBy-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember a rr:TriplesMap ;
     rdfs:label "MG-JuryMember";
     rml:logicalSource
         [
@@ -864,10 +864,10 @@ tedm:MG-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember a 
             rr:class epo:JuryMember;
 
         ] ;
-     rr:predicateObjectMap
+    rr:predicateObjectMap
         [
-            rdfs:label "BT-46-Lot" ;
-            rdfs:comment "JuryMemberName of MG-JuryMember under ND-AwardingTermsJuryMember" ;
+            rdfs:label "BT-46-Lot (Person)" ;
+            rdfs:comment "Connection between MG-JuryMember and MG-Person under ND-AwardingTermsJuryMember (v1.8+), ND-AwardingTerms (v1.3-1.7)" ;
             rr:predicate epo:playedBy ;
             rr:objectMap
                 [
@@ -878,6 +878,20 @@ tedm:MG-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember a 
                     ];
                 ] ;
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-46-Lot (Lot)" ;
+            rdfs:comment "Connection between MG-JuryMember and MG-Lot under ND-AwardingTermsJuryMember (v1.8+), ND-AwardingTerms (v1.3-1.7)" ;
+            rr:predicate epo:contextualisedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Lot_ND-Lot ;
+                    rr:joinCondition [
+                        rr:child "../../../cbc:ID" ;
+                        rr:parent "cbc:ID" ;
+                    ];
+                ] ;
+        ] ;        
 .
 
 tedm:MG-Candidate-announcesRole-CompetitionNotice_ND-Participants a rr:TriplesMap ;
