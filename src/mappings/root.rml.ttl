@@ -436,6 +436,39 @@ tedm:MG-AgentInRole-refersToRole-Notice_ND-Root a rr:TriplesMap ;
         ] ;
 .
 
+# this is a fictitious MG/node to anchor on a repeatable element
+tedm:MG-Notice_ND-AdditionalNoticeLanguage
+    a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:AdditionalNoticeLanguage";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Root" ;
+            rdfs:comment "Primary type declaration for MG-Notice under ND-Root" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Notice" ;
+            rr:class epo:Notice
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-702(b)-notice" ;
+            rdfs:comment "Notice Official Language of MG-Notice under ND-Root" ;
+            rr:predicate epo:hasOfficialLanguage ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:language" ;
+                    rr:parentTriplesMap tedm:language ;
+                    rr:joinCondition [
+                        rr:child "cbc:ID" ;
+                        rr:parent "op_code" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
 tedm:MG-Notice_ND-Root
     a rr:TriplesMap ;
     rml:logicalSource
@@ -537,21 +570,6 @@ tedm:MG-Notice_ND-Root
                     # we look up as complete IRI for full coverage -- if we don't find one we don't map
                     rr:joinCondition [
                         rr:child "cbc:NoticeLanguageCode" ;
-                        rr:parent "op_code" ;
-                    ] ;
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-702(b)-notice" ;
-            rdfs:comment "Notice Official Language of MG-Notice under ND-Root" ;
-            rr:predicate epo:hasOfficialLanguage ;
-            rr:objectMap
-                [
-                    rdfs:label "at-voc:language" ;
-                    rr:parentTriplesMap tedm:language ;
-                    rr:joinCondition [
-                        rr:child "cac:AdditionalNoticeLanguage/cbc:ID" ;
                         rr:parent "op_code" ;
                     ] ;
                 ] ;
