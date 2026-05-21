@@ -148,21 +148,7 @@ tedm:MG-Contract_ND-SettledContract  a rr:TriplesMap ;
         ] ;
      rr:predicateObjectMap
         [
-            rdfs:label "ND-ContractEUFunds and BT-5011-Contract" ;
-            rdfs:comment "Contract EU Funds of MG-Contract under ND-SettledContract" ;
-            rr:predicate  epo:isFundedBy ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-Fund-isFundedBy-Contract_ND-SettledContract ;
-                    rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(.)";
-                    ];
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-722-Contract" ;
+            rdfs:label "ND-ContractEUFunds and its fields BT-5011-Contract, BT-722-Contract" ;
             rdfs:comment "Contract EU Funds Programme of MG-Contract under ND-SettledContract" ;
             rr:predicate  epo:isFundedBy ;
             rr:objectMap
@@ -208,53 +194,6 @@ tedm:MG-Contract_ND-SettledContract  a rr:TriplesMap ;
         ] ;
 .
 
-tedm:MG-Fund_ND-SettledContract  a rr:TriplesMap ;
-  rdfs:label "MG-Fund";
-       rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:SettledContract" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-SettledContract" ;
-             rml:reference "if (exists(efac:Funding)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Fund$' || replace(replace(replace(path(.), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
-            rr:class epo:Fund
-        ] ;
-.
-
-tedm:MG-Fund-isFundedBy-Contract_ND-SettledContract   a rr:TriplesMap ;
-  rdfs:label "MG-Fund";
-       rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:SettledContract" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-SettledContract" ;
-             rml:reference "if (exists(efac:Funding)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Fund$' || replace(replace(replace(path(.), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
-            rr:class epo:Fund
-        ] ;
-    rr:predicateObjectMap
-        [
-            # Differences across versions have no functional effect on this mapping
-            # VERINFO: SDK v1.6 contains only node name change
-            rdfs:label "BT-5011-Contract" ;
-            rdfs:comment "Contract EU Funds Financing Identifier (Contract EU Funds Identifier up to v1.6) of MG-Fund under ND-SettledContract" ;
-            rr:predicate adms:identifier ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-Identifier-identifier-Fund-isFundedBy-Contract_ND-ContractEUFunds ;
-                    rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(..)";
-                    ];
-                ] ;
-        ] ;
-    .
 tedm:MG-Identifier-identifier-Fund-isFundedBy-Contract_ND-ContractEUFunds a rr:TriplesMap ;
   rdfs:label "MG-Identifier";
        rml:logicalSource
@@ -301,10 +240,26 @@ tedm:MG-Fund-isFundedBy-Contract_ND-ContractEUFunds a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-ContractEUFunds" ;
-            rml:reference "if((exists(cbc:FundingProgramCode)) or (exists(cbc:Description))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Fund$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if(exists(efbc:FinancingIdentifier) or exists(cbc:FundingProgramCode)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Fund$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:Fund
         ] ;
 
+    rr:predicateObjectMap
+        [
+            # Differences across versions have no functional effect on this mapping
+            # VERINFO: SDK v1.6 contains only node name change
+            rdfs:label "BT-5011-Contract" ;
+            rdfs:comment "Contract EU Funds Financing Identifier (Contract EU Funds Identifier up to v1.6) of MG-Fund under ND-SettledContract" ;
+            rr:predicate adms:identifier ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Identifier-identifier-Fund-isFundedBy-Contract_ND-ContractEUFunds ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(.)";
+                    ];
+                ] ;
+        ] ;
      rr:predicateObjectMap
         [
             rdfs:label "BT-722-Contract";
@@ -584,7 +539,7 @@ tedm:MG-langString-description-Fund-isFundedBy-Contract_ND-ContractEUFunds a rr:
     rr:subjectMap [
         rr:class epo-not:Fund ;
         rdfs:label "ND-ContractEUFunds" ;
-        rml:reference "'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Fund$' || replace(replace(replace(path(../..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_')" ;
+        rml:reference "'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Fund$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_')" ;
     ] ;
     rr:predicateObjectMap [
         tedm:minSDKVersion "1.9.1" ;
