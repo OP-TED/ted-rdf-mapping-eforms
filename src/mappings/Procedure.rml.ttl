@@ -1631,38 +1631,6 @@ tedm:MG-Location_ND-ProcedurePlacePerformance a rr:TriplesMap ;
         ]
 .
 
-tedm:MG-ContractTerm_ND-ProcedurePlacePerformance a rr:TriplesMap ;
-    rdfs:label "MG-ContractTerm";
-     rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProject/cac:RealizedLocation/cac:Address";
-            rml:referenceFormulation ql:XPath
-        ];
-    rr:subjectMap
-        [
-            rdfs:label "ND-ProcedurePlacePerformance";
-            rml:reference "if (not(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E2', text())]))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ProcurementProjectContractTerm$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
-            rr:class epo:ContractTerm;
-        ] ;
-
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-727-Procedure";
-            rdfs:comment "Place Performance Services Other of MG-ContractTerm under ND-ProcedurePlacePerformance";
-            rr:predicate epo:hasBroadPlaceOfPerformance ;
-            rr:objectMap
-                [
-                    rdfs:label "at-voc:other-place-service";
-                    rr:parentTriplesMap tedm:other-place-service ;
-                    rr:joinCondition [
-                        rr:child "cbc:Region" ;
-                        rr:parent "code.value" ;
-                    ] ;
-                ] ;
-        ] ;
-.
-
 tedm:MG-ContractTerm-foreseesTerm-Procedure_ND-ProcedurePlacePerformanceAdditionalInformation a rr:TriplesMap ;
     rdfs:label "MG-ContractTerm";
     rml:logicalSource
@@ -1747,6 +1715,21 @@ tedm:MG-ContractTerm-foreseesTerm-Procedure_ND-ProcedurePlacePerformance a rr:Tr
                     ] ;
                 ] ;
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-727-Procedure (Procedure)";
+            rdfs:comment "Place Performance Services Other of MG-ContractTerm (Procedure) under ND-ProcedurePlacePerformance";
+            rr:predicate epo:hasBroadPlaceOfPerformance ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:other-place-service";
+                    rr:parentTriplesMap tedm:other-place-service ;
+                    rr:joinCondition [
+                        rr:child "cbc:Region" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
 .
 
 tedm:MG-ContractTerm-foreseesTerm-PlannedProcurement_ND-ProcedurePlacePerformance a rr:TriplesMap ;
@@ -1776,6 +1759,21 @@ tedm:MG-ContractTerm-foreseesTerm-PlannedProcurement_ND-ProcedurePlacePerformanc
                     ] ;
                 ] ;
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-727-Procedure (PlannedProcurement)";
+            rdfs:comment "Place Performance Services Other of MG-ContractTerm (PlannedProcurement) under ND-ProcedurePlacePerformance";
+            rr:predicate epo:hasBroadPlaceOfPerformance ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:other-place-service";
+                    rr:parentTriplesMap tedm:other-place-service ;
+                    rr:joinCondition [
+                        rr:child "cbc:Region" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;        
 .
 
 tedm:MG-ProcedureTerm-isSubjectToTerm-Procedure_ND-CrossBorderLaw a rr:TriplesMap ;
