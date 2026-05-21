@@ -35,12 +35,12 @@ tedm:MG-MonetaryValue-hasGroupFrameworkAgreementMaximumValue-LotGroupAwardInform
    rr:subjectMap
         [
             rdfs:label "ND-NoticeResultGroupFA";
-            rml:reference "if (exists(efbc:GroupFrameworkMaximumValueAmount)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/MonetaryValue$' || replace(replace(replace(path(.), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(efbc:GroupFrameworkMaximumValueAmount)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/GroupFrameworkAgreementMaximumMonetaryValue$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:MonetaryValue
         ] ;
    rr:predicateObjectMap
         [
-            rdfs:label "BT-156-NoticeResult";
+            rdfs:label "BT-156-NoticeResult (value)";
             rdfs:comment "Group Framework Maximum Value of MG-MonetaryValue under ND-NoticeResultGroupFA";
             rr:predicate epo:hasAmountValue ;
             rr:objectMap
@@ -51,7 +51,7 @@ tedm:MG-MonetaryValue-hasGroupFrameworkAgreementMaximumValue-LotGroupAwardInform
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-156-NoticeResult";
+            rdfs:label "BT-156-NoticeResult-Currency";
             rdfs:comment "Currency of Group Framework Maximum Value of MG-MonetaryValue under ND-NoticeResultGroupFA";
             rr:predicate epo:hasCurrency ;
             rr:objectMap
@@ -82,7 +82,7 @@ tedm:MG-LotGroupAwardInformation_ND-NoticeResultGroupFA a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-156-NoticeResult";
+            rdfs:label "BT-156-NoticeResult (object)";
             rr:predicate epo:hasGroupFrameworkAgreementMaximumValue    ;
             rr:objectMap
                 [
@@ -109,14 +109,14 @@ tedm:MG-LotGroupAwardInformation_ND-NoticeResultGroupFA a rr:TriplesMap ;
          ];
     rr:predicateObjectMap
         [
-            rdfs:label "BT-1561-NoticeResultGroupFA" ;
+            rdfs:label "BT-1561-NoticeResult (object)" ;
             rdfs:comment "Group Framework Reestimated Value Amount of MG-MonetaryValue-hasApproximateGroupFrameworkAgreementValue-LotGroupAwardInformation under ND-NoticeResultGroupFA" ;
             rr:predicate epo:hasApproximateGroupFrameworkAgreementValue ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:MG-MonetaryValue-hasApproximateGroupFrameworkAgreementValue-LotGroupAwardInformation-announcesLotGroupAwardInformation-ResultNotice_ND-NoticeResultGroupFA ;
                     rr:joinCondition [
-                        rr:child "path(..)" ;
+                        rr:child "path(.)" ;
                         rr:parent "path(.)" ;
                     ] ;
                 ]
@@ -128,29 +128,29 @@ tedm:MG-MonetaryValue-hasApproximateGroupFrameworkAgreementValue-LotGroupAwardIn
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:GroupFramework/efbc:GroupFrameworkReestimatedValueAmount" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:GroupFramework" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
         [
             rdfs:label "ND-NoticeResultGroupFA" ;
-            rml:reference "if (not(exists(../efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='not-ree-val']) and text() = '-1') and not(exists(../efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='gro-ree-val']) and text() = '-1')) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/MonetaryValue$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(efbc:GroupFrameworkReestimatedValueAmount)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ApproximateGroupFrameworkAgreementMonetaryValue$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:MonetaryValue
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-1561-NoticeResultGroupFA" ;
+            rdfs:label "BT-1561-NoticeResult (value)" ;
             rdfs:comment "Group Framework Reestimated Value Amount of MG-MonetaryValue under ND-NoticeResultGroupFA" ;
             rr:predicate epo:hasAmountValue ;
             rr:objectMap
                 [
-                    rml:reference "if(not(exists(../efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='not-ree-val']) and text() = '-1') and not(exists(../efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='gro-ree-val']) and text() = '-1')) then text() else null" ;
+                    rml:reference "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='not-ree-val']) and text() = '-1') and not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='gro-ree-val']) and text() = '-1')) then efbc:GroupFrameworkReestimatedValueAmount else null" ;
                     rr:datatype xsd:decimal
                 ]
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-1561-NoticeResultGroupFA-Currency" ;
+            rdfs:label "BT-1561-NoticeResult-Currency" ;
             rdfs:comment "Currency of Group Framework Reestimated Value Amount of MG-MonetaryValue under ND-NoticeResultGroupFA" ;
             rr:predicate epo:hasCurrency ;
             rr:objectMap
