@@ -794,11 +794,11 @@ tedm:MG-Lot_ND-Lot a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-79-Lot";
+            rdfs:label "BT-79-Lot (object)";
             rr:predicate epo:foreseesTerm ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-ProcurementCriterion-foreseesTerm-Lot_ND-LotTenderingTerms;
+                    rr:parentTriplesMap tedm:MG-ContractTerm-foreseesTerm-Lot_ND-LotTenderingTerms;
                     rr:joinCondition [
                         rr:child "path(.)";
                         rr:parent "path(..)";
@@ -3585,8 +3585,8 @@ tedm:MG-Purpose-hasPurpose-Lot_ND-LotProcurementScope a rr:TriplesMap ;
         ]
 .
 
-tedm:MG-ProcurementCriterion-foreseesTerm-Lot_ND-LotTenderingTerms a rr:TriplesMap ;
-    rdfs:label "MG-ProcurementCriterion";
+tedm:MG-ContractTerm-foreseesTerm-Lot_ND-LotTenderingTerms a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm";
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -3596,13 +3596,13 @@ tedm:MG-ProcurementCriterion-foreseesTerm-Lot_ND-LotTenderingTerms a rr:TriplesM
     rr:subjectMap
         [
             rdfs:label "ND-LotTenderingTerms";
-            rml:reference "if (exists(cbc:RequiredCurriculaCode)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ProcurementCriterion$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
-            rr:class epo:ProcurementCriterion
+            rml:reference "if (exists(cbc:RequiredCurriculaCode)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractTerm$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class epo:ContractTerm
         ] ;
       rr:predicateObjectMap
         [
-            rdfs:label "BT-79-Lot";
-            rdfs:comment "Performing Staff Qualification of MG-ProcurementCriterion under ND-LotTenderingTerms";
+            rdfs:label "BT-79-Lot (value)";
+            rdfs:comment "Performing Staff Qualification of MG-ContractTerm under ND-LotTenderingTerms";
             rr:predicate epo:hasPerformingStaffQualificationInformation ;
             rr:objectMap
                 [
