@@ -807,7 +807,7 @@ tedm:MG-Lot_ND-Lot a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-717-Lot";
+            rdfs:label "BT-717-Lot (object)";
             rr:predicate epo:fulfillsStrategicProcurement ;
             rr:objectMap
                 [
@@ -4154,7 +4154,7 @@ tedm:MG-GreenProcurement-fulfillsStrategicProcurement-Lot_ND-StrategicProcuremen
     rr:subjectMap
         [
             rdfs:label "ND-StrategicProcurementLot";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/GreenProcurement${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rml:reference "if (efbc:ApplicableLegalBasis/text()='true') then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/GreenProcurement$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:GreenProcurement
         ] ;
         # VERINFO: BT-717-Lot is in versioned files
@@ -4642,8 +4642,8 @@ tedm:MG-EnergyEfficiencyInformation_ND-EEDProcurementDetailsLot a rr:TriplesMap 
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "ND-EEDInformationLot" ;
-            rdfs:comment "ND-EEDInformationLot of MG-EnergyEfficiencyInformation under ND-EEDInformationLot" ;
+            rdfs:label "BT-810-Lot" ;
+            rdfs:comment "EED Applicable of MG-EnergyEfficiencyInformation under ND-EEDInformationLot" ;
             rr:predicate epo:concernsGreenProcurement ;
             rr:objectMap
                 [
