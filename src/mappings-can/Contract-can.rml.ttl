@@ -619,36 +619,37 @@ tedm:MG-Asset_ND-AssetList a rr:TriplesMap ;
             rml:reference "'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Asset$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_')" ;
             rr:class epo:Asset
         ] ;
+#    rr:predicateObjectMap
+#        [
+#            rdfs:label "OPP-021-Contract" ;
+#            rdfs:comment "Used asset of MG-Asset under ND-AssetList" ;
+#            rr:predicate dct:description ;
+#            rr:objectMap
+#                [
+#                    rml:reference "if(exists(@languageID)) then efbc:AssetDescription else null" ;
+#                    rml:languageMap [
+#                        fnml:functionValue [
+#                            rr:predicateObjectMap [
+#                                rr:predicate idlab-fn:str ;
+#                                rr:objectMap [ rml:reference "efbc:AssetDescription/@languageID" ]
+#                            ] ,
+#                            tedm:idlab-fn_executes_lookup ,
+#                            tedm:idlab-fn_inputFile_language ,
+#                            tedm:idlab-fn_fromColumn_code ,
+#                            tedm:idlab-fn_toColumn_code
+#                        ]
+#                    ] ;
+#                ] ;
+#        ] ;
+    # TODO replicate this technique for all multilingual mappings, i.e. have a separate dedicated multilingual mapping and one plain mapping
     rr:predicateObjectMap
         [
-            rdfs:label "OPP-021-Asset" ;
-            rdfs:comment "Asset Description (multilingual) of MG-Asset under ND-AssetList" ;
+            rdfs:label "OPP-021-Contract (plain text)" ;
+            rdfs:comment "Used asset of MG-Asset under ND-AssetList (plain text)" ;
             rr:predicate dct:description ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(@languageID)) then efbc:AssetDescription else null" ;
-                    rml:languageMap [
-                        fnml:functionValue [
-                            rr:predicateObjectMap [
-                                rr:predicate idlab-fn:str ;
-                                rr:objectMap [ rml:reference "efbc:AssetDescription/@languageID" ]
-                            ] ,
-                            tedm:idlab-fn_executes_lookup ,
-                            tedm:idlab-fn_inputFile_language ,
-                            tedm:idlab-fn_fromColumn_code ,
-                            tedm:idlab-fn_toColumn_code
-                        ]
-                    ] ;
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "OPP-021-Asset-Plain" ;
-            rdfs:comment "Asset Description (plain text) of MG-Asset under ND-AssetList" ;
-            rr:predicate dct:description ;
-            rr:objectMap
-                [
-                    rml:reference "efbc:AssetDescription" ;
+                    rml:reference "if (not(exists(efbc:AssetDescription/@languageID))) then efbc:AssetDescription else null" ;
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -672,6 +673,43 @@ tedm:MG-Asset_ND-AssetList a rr:TriplesMap ;
                 ] ;
         ] ;
 .
+
+tedm:MG-langString-description-Asset_ND-AssetList a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/source.xml" ;
+    rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:SettledContract/efac:DurationJustification/efac:AssetsList/efac:Asset/efbc:AssetDescription" ;
+    rml:referenceFormulation ql:XPath ;
+  ] ;
+  rr:subjectMap [
+    rr:class epo:Asset ;
+    rdfs:label "ND-AssetList" ;
+    rml:reference "'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Asset$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_')" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dct:description ;
+    rr:objectMap [
+      rml:reference "if(exists(@languageID)) then . else null" ;
+      rml:languageMap [
+        fnml:functionValue [
+          rr:predicateObjectMap [
+            rr:predicate idlab-fn:str ;
+            rr:objectMap [
+              rml:reference "@languageID" ;
+            ] ;
+          ] ;
+          rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+          rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+          rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+          rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+        ] ;
+      ] ;
+      rdfs:comment "Language of Used asset of MG-Asset under ND-AssetList" ;
+      rdfs:label "OPP-021-Contract-Language" ;
+    ] ;
+    rdfs:comment "Used asset of MG-Asset under ND-AssetList" ;
+    rdfs:label "OPP-021-Contract" ;
+  ] ;
+  rdfs:label "MG-Asset" .
 
 tedm:MG-ContractTerm-describesAsset-ContractTerm_ND-ExtendedDurationJustification a rr:TriplesMap ;
     rdfs:label "MG-ContractTerm" ;

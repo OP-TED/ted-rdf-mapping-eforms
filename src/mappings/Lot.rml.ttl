@@ -6398,33 +6398,70 @@ tedm:MG-InternationalProcurementInstrumentMeasuresInformation_ND-IPIMeasureExcep
                     ] ;
                 ] ;
         ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-688-LotResult";
-            rdfs:comment "Overriding reasons relating to the public interest of MG-InternationalProcurementInstrumentMeasuresInformation under ND-IPIMeasureException";
-            rr:predicate epo:hasPublicInterestExceptionJustification ;
-            rr:objectMap
-                [
-                    rml:reference "efbc:ExceptionDescription" ;
-                    rml:languageMap [
-                        fnml:functionValue [
-                            rr:predicateObjectMap [
-                                rr:predicate idlab-fn:str ;
-                                rr:objectMap [
-                                    rml:reference "@languageID" ;
-                                ] ;
-                            ] ;
-                            rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
-                            rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
-                            rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
-                            rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+#    rr:predicateObjectMap
+#        [
+#            rdfs:label "BT-688-LotResult";
+#            rdfs:comment "Overriding reasons relating to the public interest of MG-InternationalProcurementInstrumentMeasuresInformation under ND-IPIMeasureException";
+#            rr:predicate epo:hasPublicInterestExceptionJustification ;
+#            rr:objectMap
+#                [
+#                    rml:reference "efbc:ExceptionDescription" ;
+#                    rml:languageMap [
+#                        fnml:functionValue [
+#                            rr:predicateObjectMap [
+#                                rr:predicate idlab-fn:str ;
+#                                rr:objectMap [
+#                                    rml:reference "@languageID" ;
+#                                ] ;
+#                            ] ;
+#                            rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+#                            rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+#                            rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+#                            rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+#                        ] ;
+#                    ] ;
+#                    rdfs:comment "Language of Exception Description of MG-InternationalProcurementInstrumentMeasuresInformation under ND-IPIMeasureException" ;
+#                    rdfs:label "BT-688-LotResult-Language" ;
+#                ] ;
+#        ] ;
+.
+
+tedm:MG-langString-hasPublicInterestExceptionJustification-InternationalProcurementInstrumentMeasuresInformation_ND-IPIMeasureException a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:StrategicProcurement/efac:StrategicProcurementInformation/efac:AppliedMeasure/efac:MeasureException[efbc:ExceptionCode/@listName='international-procurement-instrument-application']/efbc:ExceptionDescription" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rr:class epo:InternationalProcurementInstrumentMeasuresInformation ;
+        rdfs:label "ND-IPIMeasureException" ;
+        rml:reference "'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/InternationalProcurementInstrumentMeasuresInformation$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_')" ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate epo:hasPublicInterestExceptionJustification ;
+        rr:objectMap [
+            rml:reference "if(exists(@languageID)) then . else null" ;
+            rml:languageMap [
+                fnml:functionValue [
+                    rr:predicateObjectMap [
+                        rr:predicate idlab-fn:str ;
+                        rr:objectMap [
+                            rml:reference "@languageID" ;
                         ] ;
                     ] ;
-                    rdfs:comment "Language of Exception Description of MG-InternationalProcurementInstrumentMeasuresInformation under ND-IPIMeasureException" ;
-                    rdfs:label "BT-688-LotResult-Language" ;
+                    rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+                    rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+                    rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+                    rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
                 ] ;
+            ] ;
+            rdfs:comment "Language of Exception Description of MG-InternationalProcurementInstrumentMeasuresInformation under ND-IPIMeasureException" ;
+            rdfs:label "BT-688-LotResult-Language" ;
         ] ;
-.
+        rdfs:comment "Overriding reasons relating to the public interest of MG-InternationalProcurementInstrumentMeasuresInformation under ND-IPIMeasureException" ;
+        rdfs:label "BT-688-LotResult" ;
+    ] ;
+    rdfs:label "MG-InternationalProcurementInstrumentMeasuresInformation" .
 
 tedm:MG-InternationalProcurementInstrumentMeasuresInformation_ND-IPIMeasureStatistics a rr:TriplesMap ;
     rdfs:label "MG-InternationalProcurementInstrumentMeasuresInformation" ;
