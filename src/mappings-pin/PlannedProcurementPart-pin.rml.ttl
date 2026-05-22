@@ -1147,7 +1147,7 @@ tedm:MG-DynamicPurchaseSystemTechnique-foreseesTechnique-PlannedProcurementPart_
     rr:subjectMap
         [
             rdfs:label "ND-PartDPSContractingSystem";
-            rml:reference "if (exists(cbc:ContractingSystemTypeCode)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/PartDynamicPurchaseSystemTechnique$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(cbc:ContractingSystemTypeCode) and not(cbc:ContractingSystemTypeCode/text()='none')) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/PartDynamicPurchaseSystemTechnique$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:DynamicPurchaseSystemTechnique
         ] ;
         # VERINFO: BT-766-Part is in versioned files
