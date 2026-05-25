@@ -65,9 +65,45 @@ tedm:MG-EmploymentInformationProvider_ND-PartEmploymentLegislation a rr:TriplesM
                     ];
                 ] ;
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-130-Part-EmployLegis" ;
+            rdfs:comment "Connection of MG-EmploymentInformationProvider to MG-EmploymentDocumentation under ND-PartEmploymentLegislation" ;
+            rr:predicate epo:providesDocumentation ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-EmploymentDocumentation-providesDocumentation-EmploymentInformationProvider_ND-PartEmploymentLegislation ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(../../..)" ;
+                    ] ;
+                ] ;
+        ] ;        
     rr:subjectMap [
         rdfs:label "ND-PartEmploymentLegislation" ;
         rr:class epo:EmploymentInformationProvider ;
         rml:reference "if(exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/EmploymentInformationProvider/' || encode-for-uri(cac:IssuerParty/cac:PartyIdentification/cbc:ID) else null";
     ] ;
 .
+
+tedm:MG-EmploymentDocumentation-providesDocumentation-EmploymentInformationProvider_ND-PartEmploymentLegislation a rr:TriplesMap ;
+    rdfs:label "MG-EmploymentDocumentation" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:EmploymentLegislationDocumentReference/cac:Attachment/cac:ExternalReference/cbc:URI" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-PartEmploymentLegislation" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/EmploymentDocumentation${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:EmploymentDocumentation
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPT-130-Part-EmployLegis" ;
+        rdfs:comment "Address URL of MG-EmploymentDocumentation under ND-PartEmploymentLegislation" ;
+        rr:predicate epo:hasAddressURL ;
+        rr:objectMap [
+            rml:reference "." ;
+            rr:datatype xsd:anyURI
+        ] ;
+    ] .
