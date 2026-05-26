@@ -23,6 +23,7 @@
 @prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix idlab-fn: <http://example.com/idlab/function/> .
+@prefix person: <http://www.w3.org/ns/person#> .
 
 # This is a catch-all TriplesMap to map several related nodes (we group into one representative node)
 tedm:MG-Organization_ND-Company a rr:TriplesMap ;
@@ -159,6 +160,23 @@ tedm:MG-Organization_ND-Company a rr:TriplesMap ;
         ] ;
 .
 
+# this TMap is only to assign an additional class to the Organization given a specific child path and condition
+tedm:MG-Person_ND-Organization a rr:TriplesMap ;
+    rdfs:label "MG-Person" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efbc:NaturalPersonIndicator[text()='true']" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    # VERINFO: no XPath changes from 1.6 to 1.7
+    rr:subjectMap
+        [
+            rdfs:label "BT-633-Organization" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Organization/{../efac:Company/cac:PartyIdentification/cbc:ID}" ;
+            rr:class person:Person
+        ] ;
+.
 
 tedm:MG-Channel-exposesChannel-Organization_ND-Company a rr:TriplesMap ;
     rdfs:label "MG-Channel" ;
