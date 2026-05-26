@@ -96,7 +96,7 @@ tedm:MG-CompetitionNotice_ND-Root
             rr:predicate epo:announcesRole ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-Candidate-announcesRole-CompetitionNotice_ND-Participants;
+                    rr:parentTriplesMap tedm:MG-Candidate_ND-Participants;
                 ] ;
         ] ;
 .
@@ -912,33 +912,7 @@ tedm:MG-Lot-contextualisedBy-JuryMember-announcesRole-CompetitionNotice_ND-Award
         ] ;        
 .
 
-tedm:MG-Candidate-announcesRole-CompetitionNotice_ND-Participants a rr:TriplesMap ;
-    rdfs:label "MG-Candidate" ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:EconomicOperatorShortList/cac:PreSelectedParty" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-Participants" ;
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Candidate${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
-            rr:class epo:Candidate
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-47-Candidate" ;
-            rdfs:comment "Name of MG-Candidate under ND-Participants" ;
-            rr:predicate dct:title ;
-            rr:objectMap
-                [
-                    rml:reference "cac:PartyName/cbc:Name" ;
-                ] ;
-        ] ;
-.
-
-tedm:MG-Lot-contextualisedBy-Candidate_ND-Participants a rr:TriplesMap ;
+tedm:MG-Candidate_ND-Participants a rr:TriplesMap ;
     rdfs:label "MG-Candidate" ;
     rml:logicalSource
         [
@@ -969,9 +943,9 @@ tedm:MG-Lot-contextualisedBy-Candidate_ND-Participants a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-47-Candidate" ;
+            rdfs:label "BT-47-Lot" ;
             rdfs:comment "Name of MG-Candidate under ND-Participants" ;
-            rr:predicate dct:title ;
+            rr:predicate dct:description ;
             rr:objectMap
                 [
                     rml:reference "cac:PartyName/cbc:Name" ;
