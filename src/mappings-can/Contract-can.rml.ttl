@@ -75,6 +75,15 @@ tedm:MG-Contract_ND-SettledContract  a rr:TriplesMap ;
             rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Contract/' || cbc:ID else null" ;
             rr:class epo:Contract
         ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate rdf:type ;
+            rr:objectMap
+                [
+                    rml:reference "if (/*/cac:ProcurementProjectLot[(cbc:ID/@schemeName='Lot') and (cbc:ID/text()=/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender[cbc:ID/text()=//efac:LotTender/cbc:ID/text()]/efac:TenderLot/cbc:ID/text())]/cac:TenderingProcess/cac:ContractingSystem/cbc:ContractingSystemTypeCode[@listName='framework-agreement' and starts-with(text(),'fa-')]) then 'http://data.europa.eu/a4g/ontology#FrameworkAgreement' else null" ;
+                    rr:termType rr:IRI ;
+                ] ;
+        ] ;
      rr:predicateObjectMap
         [
             rdfs:label "BT-150-Contract" ;
