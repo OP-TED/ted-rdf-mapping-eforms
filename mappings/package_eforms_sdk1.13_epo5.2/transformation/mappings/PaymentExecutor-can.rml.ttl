@@ -36,7 +36,7 @@ tedm:MG-ContractTerm-foreseesTerm-Lot_ND-PayerParty a rr:TriplesMap ;
         [
             rdfs:label "ND-PayerParty" ;
             rdfs:comment "LotResultTechnicalIdentifier of MG-LotAwardOutcome under ND-LotResult" ;
-            rml:reference "if (exists(../../efac:SettledContract/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractTerm$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractTerm$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_')" ;
             rr:class epo:ContractTerm
         ] ;
     rr:predicateObjectMap
@@ -65,7 +65,7 @@ tedm:MG-PaymentExecutor-definesPaymentExecutor-ContractTerm-foreseesTerm-Lot_ND-
     rr:subjectMap
         [
             rdfs:label "ND-PayerParty" ;
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PaymentExecutor/{concat(cac:PartyIdentification/cbc:ID, cac:PartyIdentification/cbc:ID/@schemeName)}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PaymentExecutor/{cac:PartyIdentification/cbc:ID}" ;
             rr:class epo:PaymentExecutor
         ] ;
     .
@@ -81,7 +81,7 @@ tedm:MG-PaymentExecutor_ND-PayerParty a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-PayerParty" ;
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PaymentExecutor/{concat(cac:PartyIdentification/cbc:ID, cac:PartyIdentification/cbc:ID/@schemeName)}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PaymentExecutor/{cac:PartyIdentification/cbc:ID}" ;
             rr:class epo:PaymentExecutor
         ] ;
      rr:predicateObjectMap
@@ -132,23 +132,6 @@ tedm:MG-Organization-playedBy-PaymentExecutor_ND-PayerParty a rr:TriplesMap ;
         ] ;
     .
 
-# Commented out for the removal of rdf:seeAlso
-#tedm:MG-PaymentExecutor-seeAlso-LotAwardOutcome_ND-PayerParty a rr:TriplesMap ;
-#  rdfs:label "MG-PaymentExecutor";
-#       rml:logicalSource
-#        [
-#            rml:source "data/source.xml" ;
-#            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/cac:PayerParty" ;
-#            rml:referenceFormulation ql:XPath
-#        ] ;
-#    rr:subjectMap
-#        [
-#            rdfs:label "ND-PayerParty" ;
-#            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PaymentExecutor/{concat(cac:PartyIdentification/cbc:ID, cac:PartyIdentification/cbc:ID/@schemeName)}" ;
-#            rr:class epo:PaymentExecutor
-#        ] ;
-#    .
-
 tedm:MG-PaymentExecutor-announcesRole-ResultNotice_ND-PayerParty a rr:TriplesMap ;
   rdfs:label "MG-PaymentExecutor";
        rml:logicalSource
@@ -160,7 +143,7 @@ tedm:MG-PaymentExecutor-announcesRole-ResultNotice_ND-PayerParty a rr:TriplesMap
     rr:subjectMap
         [
             rdfs:label "ND-PayerParty" ;
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PaymentExecutor/{concat(cac:PartyIdentification/cbc:ID, cac:PartyIdentification/cbc:ID/@schemeName)}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PaymentExecutor/{cac:PartyIdentification/cbc:ID}" ;
             rr:class epo:PaymentExecutor
         ] ;
     .

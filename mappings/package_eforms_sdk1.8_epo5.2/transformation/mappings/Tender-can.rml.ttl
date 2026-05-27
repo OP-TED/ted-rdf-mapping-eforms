@@ -71,7 +71,7 @@ tedm:MG-TenderAwardOutcome_ND-LotTender  a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-LotTender" ;
-            rml:reference "if (exists(cbc:RankCode)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/TenderAwardOutcome/' || cbc:ID else null" ;
+            rml:reference "if (exists(cbc:RankCode) or exists(efbc:ForeignSubsidiesMeasuresCode[@listName='foreign-subsidy-measure-conclusion'])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/TenderAwardOutcome/' || cbc:ID else null" ;
             rr:class epo:TenderAwardOutcome
         ] ;
     rr:predicateObjectMap
@@ -107,8 +107,11 @@ tedm:MG-TenderAwardOutcome_ND-LotTender  a rr:TriplesMap ;
             rr:objectMap
                 [
                     rdfs:label "at-voc:foreign-subsidy-measure-conclusion" ;
-                    rr:termType rr:IRI ;
-                    rml:reference "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='for-sub-mea-con']) and efbc:ForeignSubsidiesMeasuresCode[@listName='foreign-subsidy-measure-conclusion']/text() = 'unpublished' )) then 'http://publications.europa.eu/resource/authority/foreign-subsidy-measure-conclusion/' || efbc:ForeignSubsidiesMeasuresCode[@listName='foreign-subsidy-measure-conclusion'] else null" ;
+                    rr:parentTriplesMap tedm:foreign-subsidy-measure-conclusion ;
+                    rr:joinCondition [
+                        rr:child "efbc:ForeignSubsidiesMeasuresCode[@listName='foreign-subsidy-measure-conclusion']" ;
+                        rr:parent "code.value" ;
+                    ] ;
                 ] ;
         ] ;
 .
@@ -384,7 +387,7 @@ tedm:MG-Lot-isSubmittedForLot-Tender_ND-LotTender  a rr:TriplesMap ;
     rr:subjectMap
         [
              rdfs:label "ND-LotTender" ;
-             rml:reference "if (exists( efac:TenderLot/cbc:ID[text() = /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cbc:ID/text()] )) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Lot/' || efac:TenderLot/cbc:ID else null" ;
+             rml:reference "if (exists( efac:TenderLot/cbc:ID[text() = /*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cbc:ID/text()] ) or starts-with(efac:TenderLot/cbc:ID, 'LOT')) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Lot/' || efac:TenderLot/cbc:ID else null" ;
              rr:class epo:Lot
         ] ;
     rr:predicateObjectMap
@@ -471,7 +474,7 @@ tedm:MG-LotGroup-isSubjectToGrouping-Tender_ND-LotTender  a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-LotTender" ;
-            rml:reference "if (exists( efac:TenderLot/cbc:ID[text() = /*/cac:TenderingTerms/cac:LotDistribution/cac:LotsGroup/cbc:LotsGroupID/text()] )) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/LotGroup/' || efac:TenderLot/cbc:ID else null" ;
+            rml:reference "if (exists( efac:TenderLot/cbc:ID[text() = /*/cac:TenderingTerms/cac:LotDistribution/cac:LotsGroup/cbc:LotsGroupID/text()] ) or starts-with(efac:TenderLot/cbc:ID, 'GLO')) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/LotGroup/' || efac:TenderLot/cbc:ID else null" ;
             rr:class epo:LotGroup
         ] ;
     .
@@ -582,7 +585,7 @@ tedm:MG-Tender_ND-ConcessionRevenue a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-ConcessionRevenue" ;
-            rml:reference "if (exists(efbc:RevenueBuyerAmount) or exists(efbc:RevenueUserAmount)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Tender/' || ../cbc:ID else null" ;
+            rml:reference "if (exists(efbc:RevenueBuyerAmount) or exists(efbc:RevenueUserAmount) or exists(efbc:ValueDescription)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Tender/' || ../cbc:ID else null" ;
             rr:class epo:Tender
         ] ;
     rr:predicateObjectMap
@@ -612,7 +615,7 @@ tedm:MG-ConcessionEstimate-foreseesConcession-Tender_ND-ConcessionRevenue a rr:T
     rr:subjectMap
         [
             rdfs:label "ND-ConcessionRevenue" ;
-            rml:reference "if (exists(efbc:RevenueBuyerAmount) or exists(efbc:RevenueUserAmount)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ConcessionEstimate$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(efbc:RevenueBuyerAmount) or exists(efbc:RevenueUserAmount) or exists(efbc:ValueDescription)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ConcessionEstimate$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:ConcessionEstimate
         ] ;
     rr:predicateObjectMap
@@ -750,7 +753,7 @@ tedm:MG-langString-hasCalculationMethod-ConcessionEstimate-foreseesConcession-Te
             rr:predicate epo:hasCalculationMethod ;
             rr:objectMap
                 [
-                    rml:reference "if((exists(@languageID)) and (not( exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='val-con-des']) and efbc:ValueDescription/text() = 'unpublished' ))) then . else null" ;
+                    rml:reference "if((exists(@languageID)) and (not( exists(../efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='val-con-des']) and ./text() = 'unpublished' ))) then . else null" ;
                     rml:languageMap [
                         fnml:functionValue [
                             rr:predicateObjectMap [

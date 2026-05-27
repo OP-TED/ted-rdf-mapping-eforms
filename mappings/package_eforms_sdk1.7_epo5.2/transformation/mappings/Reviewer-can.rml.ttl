@@ -36,7 +36,7 @@ tedm:MG-Reviewer_ND-AppealProcessingParty a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-ReviewStatus" ;
-            rml:reference "if (exists(cac:Party/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Reviewer$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(cac:Party/cac:PartyIdentification/cbc:ID) or exists(efbc:AppealProcessingPartyTypeCode)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Reviewer$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:Reviewer ;
         ] ;
      rr:predicateObjectMap

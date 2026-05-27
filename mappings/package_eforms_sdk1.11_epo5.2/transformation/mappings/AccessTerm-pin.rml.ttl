@@ -57,7 +57,7 @@ tedm:MG-AccessTerm_ND-PartInfoRequestPeriod a rr:TriplesMap ;
             rr:predicate epo:hasAdditionalInformationDeadline ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(cbc:EndDate) and exists(cbc:EndTime) and contains(cbc:EndDate, '+')) then substring-before(cbc:EndDate, '+') || 'T' || cbc:EndTime else if(exists(cbc:EndDate) and exists(cbc:EndTime)) then cbc:EndDate || 'T' || cbc:EndTime else if(exists(cbc:EndDate)) then cbc:EndDate else null" ;
+                    rml:reference "if(exists(cbc:EndDate) and exists(cbc:EndTime) and matches(cbc:EndDate, '[+\\-]\\d\\d:\\d\\d|Z')) then replace(cbc:EndDate, '...:..|Z', '') || 'T' || cbc:EndTime else if(exists(cbc:EndDate) and exists(cbc:EndTime)) then cbc:EndDate || 'T' || cbc:EndTime else if(exists(cbc:EndDate)) then cbc:EndDate else null" ;
                     rr:datatype xsd:dateTime ;
 
                 ] ;
