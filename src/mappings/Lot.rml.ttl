@@ -4771,7 +4771,7 @@ tedm:MG-Address-address-Location-definesSpecificPlaceOfPerformance-ContractTerm-
     rr:subjectMap
         [
             rdfs:comment "ND-LotPerformanceAddress";
-            rml:reference "if(exists(cbc:StreetName) or exists(cbc:AdditionalStreetName) or exists(cac:AddressLine/cbc:Line) or exists(cbc:CityName) or exists(cbc:PostalZone) or (not(exists(cbc:Region)) and exists(cac:Country/cbc:IdentificationCode))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractLocationAddress$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if(exists(cbc:StreetName) or exists(cbc:AdditionalStreetName) or exists(cac:AddressLine/cbc:Line) or exists(cbc:CityName) or exists(cbc:PostalZone) or (not(exists(cbc:Region)) and (exists(cac:Country/cbc:IdentificationCode) or exists(cbc:CountrySubentityCode)))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractLocationAddress$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class locn:Address
         ] ;
     rr:predicateObjectMap
@@ -4858,7 +4858,7 @@ tedm:MG-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesTerm-Lot
         [
             rdfs:label  "ND-LotPerformanceAddress" ;
             # we check for the elements of a linked Address as otherwise this Location should not be instantiated either
-            rml:reference "if(exists(cbc:StreetName) or exists(cbc:AdditionalStreetName) or exists(cac:AddressLine/cbc:Line) or exists(cbc:CityName) or exists(cbc:PostalZone) or exists(cac:Country/cbc:IdentificationCode)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractLocation$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if(exists(cbc:StreetName) or exists(cbc:AdditionalStreetName) or exists(cac:AddressLine/cbc:Line) or exists(cbc:CityName) or exists(cbc:PostalZone) or exists(cbc:CountrySubentityCode) or exists(cac:Country/cbc:IdentificationCode)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractLocation$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class dct:Location
         ];
     rr:predicateObjectMap
