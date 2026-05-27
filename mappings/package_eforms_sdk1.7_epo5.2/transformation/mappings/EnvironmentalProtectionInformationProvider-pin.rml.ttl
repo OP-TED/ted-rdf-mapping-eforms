@@ -18,7 +18,7 @@ tedm:MG-EnvironmentalProtectionInformationProvider_ND-PartEnvironmentalLegislati
     rr:subjectMap [
         rdfs:label "ND-PartEnvironmentalLegislation" ;
         rr:class epo:EnvironmentalProtectionInformationProvider ;
-        rml:reference "if(exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/EnvironmentalProtectionInformationProvider/' || encode-for-uri(concat(cac:IssuerParty/cac:PartyIdentification/cbc:ID, cac:IssuerParty/cac:PartyIdentification/cbc:ID/@schemeName)) else null";
+        rml:reference "if(exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/EnvironmentalProtectionInformationProvider/' || encode-for-uri(cac:IssuerParty/cac:PartyIdentification/cbc:ID) else null";
     ] ;
     rr:predicateObjectMap [
         rdfs:label "OPT-301-Part-EnvironLegis" ;
@@ -68,4 +68,40 @@ tedm:MG-EnvironmentalProtectionInformationProvider_ND-PartEnvironmentalLegislati
                     ];
                 ] ;
         ] ;
-    .
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-120-Part-EnvironmentalLegis" ;
+            rdfs:comment "Connection of MG-EnvironmentalProtectionInformationProvider to MG-EnvironmentalDocumentation under ND-PartEnvironmentalLegislation" ;
+            rr:predicate epo:providesDocumentation ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-EnvironmentalDocumentation-providesDocumentation-EnvironmentalProtectionInformationProvider_ND-PartEnvironmentalLegislation ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(../../..)" ;
+                    ] ;
+                ] ;
+        ] ;        
+.
+
+tedm:MG-EnvironmentalDocumentation-providesDocumentation-EnvironmentalProtectionInformationProvider_ND-PartEnvironmentalLegislation a rr:TriplesMap ;
+    rdfs:label "MG-EnvironmentalDocumentation" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:EnvironmentalLegislationDocumentReference/cac:Attachment/cac:ExternalReference/cbc:URI" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-PartEnvironmentalLegislation" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/EnvironmentalDocumentation${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:EnvironmentalDocumentation
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPT-120-Part-EnvironmentalLegis" ;
+        rdfs:comment "Address URL of MG-EnvironmentalDocumentation under ND-PartEnvironmentalLegislation" ;
+        rr:predicate epo:hasAddressURL ;
+        rr:objectMap [
+            rml:reference "." ;
+            rr:datatype xsd:anyURI
+        ] ;
+    ] .
