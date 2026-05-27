@@ -24,6 +24,44 @@
 @prefix idlab-fn: <http://example.com/idlab/function/> .
 @prefix tedm: <http://data.europa.eu/a4g/mapping/rml/> .
 
+tedm:MG-ChangeInformation_ND-Changes a rr:TriplesMap ;
+    rdfs:label "MG-ChangeInformation";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Changes" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Changes";
+            rml:reference "if(not(exists(efac:ChangeReason) or exists(efac:Change)) and exists(efbc:ChangedNoticeIdentifier)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || 'ChangeInformation$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class epo:ChangeInformation
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-Changes";
+            rr:predicate epo:concernsNotice ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Notice_ND-Root ;
+                ] ;
+        ] ;            
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-758-notice (object; Notice)";
+            rr:predicate epo:refersToPreviousNotice ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Notice-refersToPreviousNotice-ChangeInformation_ND-Changes ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ];
+                ] ;
+        ] ;            
+.
+
 tedm:MG-ChangeInformation_ND-ChangeReason  a rr:TriplesMap ;
     rdfs:label "MG-ChangeInformation";
     rml:logicalSource
@@ -53,9 +91,9 @@ tedm:MG-ChangeInformation_ND-ChangeReason  a rr:TriplesMap ;
             rr:predicate epo:refersToPreviousNotice ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-Notice-refersToPreviousNotice-ChangeInformation_ND-ChangeReason ;
+                    rr:parentTriplesMap tedm:MG-Notice-refersToPreviousNotice-ChangeInformation_ND-Changes ;
                     rr:joinCondition [
-                        rr:child "path(.)" ;
+                        rr:child "path(..)" ;
                         rr:parent "path(.)" ;
                     ];
                 ] ;
@@ -132,9 +170,9 @@ tedm:MG-ChangeInformation_ND-Change a rr:TriplesMap ;
             rr:predicate epo:refersToPreviousNotice ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-Notice-refersToPreviousNotice-ChangeInformation_ND-Change ;
+                    rr:parentTriplesMap tedm:MG-Notice-refersToPreviousNotice-ChangeInformation_ND-Changes ;
                     rr:joinCondition [
-                        rr:child "path(.)" ;
+                        rr:child "path(..)" ;
                         rr:parent "path(.)" ;
                     ];
                 ] ;
@@ -223,43 +261,18 @@ tedm:MG-Identifier-identifier-Notice-refersToPreviousNotice-ChangeInformation_ND
     #     ] ;
 .
 
-tedm:MG-Notice-refersToPreviousNotice-ChangeInformation_ND-ChangeReason a rr:TriplesMap ;
+tedm:MG-Notice-refersToPreviousNotice-ChangeInformation_ND-Changes a rr:TriplesMap ;
     rdfs:label "MG-Notice";
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Changes/efac:ChangeReason" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Changes" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
         [
-            rdfs:label "ND-ChangeReason";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Notice/{../efbc:ChangedNoticeIdentifier}" ;
-            rr:class epo:Notice
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-758-notice (object; Identifier)";
-            rr:predicate adms:identifier ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-Identifier-identifier-Notice-refersToPreviousNotice-ChangeInformation_ND-Changes ;
-                ] ;
-        ]
-.
-
-tedm:MG-Notice-refersToPreviousNotice-ChangeInformation_ND-Change a rr:TriplesMap ;
-    rdfs:label "MG-Notice";
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Changes/efac:Change" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-Change";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Notice/{../efbc:ChangedNoticeIdentifier}" ;
+            rdfs:label "ND-Changes";
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Notice/{efbc:ChangedNoticeIdentifier}" ;
             rr:class epo:Notice
         ] ;
     rr:predicateObjectMap
