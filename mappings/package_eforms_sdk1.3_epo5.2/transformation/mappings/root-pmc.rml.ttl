@@ -47,6 +47,26 @@ tedm:MG-PreMarketConsultationNotice_ND-Root
             rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Notice" ;
             rr:class epo-not:PreMarketConsultationNotice
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-01-notice (Procedure)" ;
+            rdfs:comment "Connection between PreMarketConsultationNotice and Procedure under ND-Root" ;
+            rr:predicate epo:preparesForPotentialProcurementObject ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Procedure_ND-Root ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-Lot" ;
+            rdfs:comment "Connection between Lot and Procedure under ND-Root" ;
+            rr:predicate epo:preparesForPotentialProcurementObject ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Lot_ND-Lot ;
+                ] ;
+        ] ;
 .
 
 ##--- Function Parameters ---

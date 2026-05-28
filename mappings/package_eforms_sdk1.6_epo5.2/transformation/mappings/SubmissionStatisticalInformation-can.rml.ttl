@@ -264,7 +264,7 @@ tedm:MG-MonetaryValue-hasHighestReceivedTenderValue-SubmissionStatisticalInforma
                     rdfs:label "at-voc:currency" ;
                     rr:parentTriplesMap tedm:currency ;
                     rr:joinCondition [
-                        rr:child "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='ten-val-hig']) and cbc:HigherTenderAmount/text() = '-1' )) then cbc:HigherTenderAmount/@currencyID  else null" ;
+                        rr:child "cbc:HigherTenderAmount/@currencyID" ;
                         rr:parent "code.value" ;
                     ] ;
                 ] ;
@@ -298,7 +298,7 @@ tedm:MG-MonetaryValue-hasLowestReceivedTenderValue-SubmissionStatisticalInformat
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-711-LotResult-Currency" ;
+            rdfs:label "BT-710-LotResult-Currency" ;
             rdfs:comment "Currency of Tender Value Lowest of MG-MonetaryValue under ND-LotResult" ;
             rr:predicate epo:hasCurrency ;
             rr:objectMap
@@ -306,7 +306,7 @@ tedm:MG-MonetaryValue-hasLowestReceivedTenderValue-SubmissionStatisticalInformat
                     rdfs:label "at-voc:currency" ;
                     rr:parentTriplesMap tedm:currency ;
                     rr:joinCondition [
-                        rr:child "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='ten-val-low']) and cbc:LowerTenderAmount/text() = '-1' )) then cbc:LowerTenderAmount/@currencyID else null" ;
+                        rr:child "cbc:LowerTenderAmount/@currencyID" ;
                         rr:parent "code.value" ;
                     ] ;
                 ] ;

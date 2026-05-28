@@ -86,7 +86,7 @@ tedm:MG-CompetitionNotice_ND-Root
             rr:predicate epo:announcesRole ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember;
+                    rr:parentTriplesMap tedm:MG-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember ;
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -96,7 +96,7 @@ tedm:MG-CompetitionNotice_ND-Root
             rr:predicate epo:announcesRole ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-Candidate-announcesRole-CompetitionNotice_ND-Participants;
+                    rr:parentTriplesMap tedm:MG-Candidate_ND-Participants;
                 ] ;
         ] ;
 .
@@ -436,6 +436,39 @@ tedm:MG-AgentInRole-refersToRole-Notice_ND-Root a rr:TriplesMap ;
         ] ;
 .
 
+# this is a fictitious MG/node to anchor on a repeatable element
+tedm:MG-Notice_ND-AdditionalNoticeLanguage
+    a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:AdditionalNoticeLanguage";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Root" ;
+            rdfs:comment "Primary type declaration for MG-Notice under ND-Root" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Notice" ;
+            rr:class epo:Notice
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-702(b)-notice" ;
+            rdfs:comment "Notice Official Language of MG-Notice under ND-Root" ;
+            rr:predicate epo:hasOfficialLanguage ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:language" ;
+                    rr:parentTriplesMap tedm:language ;
+                    rr:joinCondition [
+                        rr:child "cbc:ID" ;
+                        rr:parent "op_code" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
 tedm:MG-Notice_ND-Root
     a rr:TriplesMap ;
     rml:logicalSource
@@ -543,21 +576,6 @@ tedm:MG-Notice_ND-Root
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-702(b)-notice" ;
-            rdfs:comment "Notice Official Language of MG-Notice under ND-Root" ;
-            rr:predicate epo:hasOfficialLanguage ;
-            rr:objectMap
-                [
-                    rdfs:label "at-voc:language" ;
-                    rr:parentTriplesMap tedm:language ;
-                    rr:joinCondition [
-                        rr:child "cac:AdditionalNoticeLanguage/cbc:ID" ;
-                        rr:parent "op_code" ;
-                    ] ;
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
             rdfs:label "BT-05(a)-notice and BT-05(b)-notice" ;
             rdfs:comment "Notice Dispatch Date and Notice Dispatch Time of MG-Notice under ND-Root" ;
             rr:predicate epo:hasDispatchDate ;
@@ -598,8 +616,8 @@ tedm:MG-Notice_ND-Root
             rr:predicate epo:hasOJSIssueNumber ;
             rr:objectMap
                 [
-                    rml:reference "if(contains(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Publication/efbc:GazetteID[@schemeName='ojs-id'], '/')) then substring-before(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Publication/efbc:GazetteID[@schemeName='ojs-id'], '/') else ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Publication/efbc:GazetteID[@schemeName='ojs-id']" ;
-                    rr:datatype xsd:integer ;
+                    rml:reference "ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Publication/efbc:GazetteID[@schemeName='ojs-id']" ;
+                    rr:datatype xsd:string ;
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -831,16 +849,16 @@ tedm:MG-Person-playedBy-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTe
     rr:subjectMap
         [
             rdfs:label "ND-AwardingTermsJuryMember" ;
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Person${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Person${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class person:Person;
 
         ] ;
-     rr:predicateObjectMap
+    rr:predicateObjectMap
         [
             # Differences across versions are practically superficial and have little to no functional effect on this mapping even though different iterators can be interpreted
             # VERINFO: SDK v1.8 from v1.3-1.7 contains rel XPath change within the same abs XPath due to node change, along with repeatable=false
             rdfs:label "BT-46-Lot" ;
-            rdfs:comment "JuryMemberName of MG-Person under ND-AwardingTermsJuryMember (v1.8+), ND-AwardingTerms (v1.3-1.7)" ;
+            rdfs:comment "Jury Member Name of MG-Person under ND-AwardingTermsJuryMember (v1.8+), ND-AwardingTerms (v1.3-1.7)" ;
             rr:predicate foaf:familyName ;
             rr:objectMap
                 [
@@ -860,14 +878,14 @@ tedm:MG-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember a 
     rr:subjectMap
         [
             rdfs:label "ND-AwardingTermsJuryMember" ;
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/JuryMember${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/JuryMember${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class epo:JuryMember;
 
         ] ;
-     rr:predicateObjectMap
+    rr:predicateObjectMap
         [
-            rdfs:label "BT-46-Lot" ;
-            rdfs:comment "JuryMemberName of MG-JuryMember under ND-AwardingTermsJuryMember" ;
+            rdfs:label "BT-46-Lot (Person)" ;
+            rdfs:comment "Connection between MG-JuryMember and MG-Person under ND-AwardingTermsJuryMember (v1.8+), ND-AwardingTerms (v1.3-1.7)" ;
             rr:predicate epo:playedBy ;
             rr:objectMap
                 [
@@ -878,35 +896,23 @@ tedm:MG-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember a 
                     ];
                 ] ;
         ] ;
-.
-
-tedm:MG-Candidate-announcesRole-CompetitionNotice_ND-Participants a rr:TriplesMap ;
-    rdfs:label "MG-Candidate" ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:EconomicOperatorShortList/cac:PreSelectedParty" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-Participants" ;
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Candidate${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
-            rr:class epo:Candidate
-        ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-47-Candidate" ;
-            rdfs:comment "Name of MG-Candidate under ND-Participants" ;
-            rr:predicate dct:title ;
+            rdfs:label "BT-46-Lot (Lot)" ;
+            rdfs:comment "Connection between MG-JuryMember and MG-Lot under ND-AwardingTermsJuryMember (v1.8+), ND-AwardingTerms (v1.3-1.7)" ;
+            rr:predicate epo:contextualisedBy ;
             rr:objectMap
                 [
-                    rml:reference "cac:PartyName/cbc:Name" ;
+                    rr:parentTriplesMap tedm:MG-Lot_ND-Lot ;
+                    rr:joinCondition [
+                        rr:child "../../../cbc:ID" ;
+                        rr:parent "cbc:ID" ;
+                    ];
                 ] ;
-        ] ;
+        ] ;        
 .
 
-tedm:MG-Lot-contextualisedBy-Candidate_ND-Participants a rr:TriplesMap ;
+tedm:MG-Candidate_ND-Participants a rr:TriplesMap ;
     rdfs:label "MG-Candidate" ;
     rml:logicalSource
         [
@@ -930,14 +936,14 @@ tedm:MG-Lot-contextualisedBy-Candidate_ND-Participants a rr:TriplesMap ;
                     rr:parentTriplesMap tedm:MG-Lot_ND-Lot ;
                     rr:joinCondition
                         [
-                            rr:child "../../cbc:ID" ;
+                            rr:child "../../../cbc:ID" ;
                             rr:parent "cbc:ID" ;
                         ] ;
                 ] ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-47-Candidate" ;
+            rdfs:label "BT-47-Lot" ;
             rdfs:comment "Name of MG-Candidate under ND-Participants" ;
             rr:predicate dct:title ;
             rr:objectMap

@@ -36,7 +36,7 @@ tedm:MG-TenderReceiver_ND-PartTenderingTerms a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-PartTenderingTerms" ;
-            rml:reference "if(exists(cac:TenderRecipientParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/TenderReceiver/' || encode-for-uri(concat(cac:TenderRecipientParty/cac:PartyIdentification/cbc:ID, cac:TenderRecipientParty/cac:PartyIdentification/cbc:ID/@schemeName)) else null";
+            rml:reference "if(exists(cac:TenderRecipientParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/TenderReceiver/' || encode-for-uri(cac:TenderRecipientParty/cac:PartyIdentification/cbc:ID) else null";
             rr:class epo:TenderReceiver
         ] ;
     rr:predicateObjectMap

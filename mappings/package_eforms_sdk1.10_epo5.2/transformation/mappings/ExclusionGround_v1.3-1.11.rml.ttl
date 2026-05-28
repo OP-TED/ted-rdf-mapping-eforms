@@ -36,7 +36,6 @@ tedm:MG-ExclusionGround_ND-ExclusionGrounds a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-ExclusionGrounds" ;
-#    rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ExclusionGround${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rml:reference "if(exists(cbc:Description) or exists(cbc:TendererRequirementTypeCode[@listName='exclusion-ground'])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ExclusionGround$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:ExclusionGround
         ] ;
@@ -44,14 +43,14 @@ tedm:MG-ExclusionGround_ND-ExclusionGrounds a rr:TriplesMap ;
         [
             rdfs:label "BT-67(a)-Procedure" ;
             rdfs:comment "Exclusion Ground of MG-ExclusionGround under ND-ExclusionGrounds" ;
-            rr:predicate epo:hasExclusionGroundType ;
+            rr:predicate dct:type ;
             rr:objectMap
                 [
-                    tedm:minSDKVersion "1.12" ;
-                    rdfs:label "at-voc:exclusion-ground" ;
-                    rr:parentTriplesMap tedm:exclusion-ground ;
+                    tedm:maxSDKVersion "1.11" ;
+                    rdfs:label "at-voc:criterion" ;
+                    rr:parentTriplesMap tedm:criterion ;
                     rr:joinCondition [
-                        rr:child "cbc:TendererRequirementTypeCode" ;
+                        rr:child "cbc:TendererRequirementTypeCode[@listName='exclusion-ground']" ;
                         rr:parent "code.value" ;
                      ] ;
                 ] ;

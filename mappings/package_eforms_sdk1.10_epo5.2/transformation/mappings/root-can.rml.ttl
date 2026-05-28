@@ -48,30 +48,28 @@ tedm:MG-ResultNotice_ND-Root
             rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Notice" ;
             rr:class epo-not:ResultNotice
         ] ;
-# Commented out for the removal of rdfs:seeAlso
-#    rr:predicateObjectMap
-#        [
-#            tedm:minSDKVersion "1.13" ;
-#            rdfs:label "MG-ReviewRequest-seeAlso-ResultNotice" ;
-#            rdfs:comment "the relation between MG-ReviewDecision and ResultNotice under ND-Root" ;
-#            rr:predicate rdfs:seeAlso ;
-#            rr:objectMap
-#                [
-#                    rr:parentTriplesMap tedm:MG-ReviewRequest-seeAlso-ResultNotice_ND-ReviewStatus
-#                ] ;
-#        ] ;
-# Commented out for the removal of rdfs:seeAlso
-#    rr:predicateObjectMap
-#        [
-#            tedm:minSDKVersion "1.13" ;
-#            rdfs:label "MG-ReviewDecision-seeAlso-ResultNotice" ;
-#            rdfs:comment "the relation between MG-ReviewDecision and ResultNotice under ND-Root" ;
-#            rr:predicate rdfs:seeAlso ;
-#            rr:objectMap
-#                [
-#                    rr:parentTriplesMap tedm:MG-ReviewDecision-seeAlso-ResultNotice_ND-ReviewStatus
-#               ] ;
-#        ] ;
+    rr:predicateObjectMap
+        [
+            tedm:minSDKVersion "1.13" ;
+            rdfs:label "MG-ReviewRequest-announcesReviewRequest-ResultNotice" ;
+            rdfs:comment "the relation between MG-ReviewRequest and ResultNotice under ND-Root" ;
+            rr:predicate epo:announcesReviewRequest ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ReviewRequest-announcesReviewRequest-ResultNotice_ND-ReviewStatus
+                ] ;
+        ] ;
+    # rr:predicateObjectMap
+    #     [
+    #         tedm:minSDKVersion "1.13" ;
+    #         rdfs:label "MG-ReviewDecision-announcesReviewDecision-ResultNotice" ;
+    #         rdfs:comment "the relation between MG-ReviewDecision and ResultNotice under ND-Root" ;
+    #         rr:predicate epo:announcesReviewDecision ;
+    #         rr:objectMap
+    #             [
+    #                 rr:parentTriplesMap tedm:MG-ReviewDecision-announcesReviewDecision-ResultNotice_ND-ReviewStatus
+    #             ] ;
+    #     ] ;
     rr:predicateObjectMap
         [
             tedm:minSDKVersion "1.13" ;
@@ -553,7 +551,7 @@ tedm:MG-Subcontractor-announcesRole-ResultNotice_ND-SubContractor a rr:TriplesMa
     rr:subjectMap
         [
             rdfs:label "ND-SubContractor";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Subcontractor/{concat(cbc:ID, cbc:ID/@schemeName)}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Subcontractor/{concat(../cbc:ID, '_', cbc:ID)}" ;
             rr:class epo:Subcontractor
         ] ;
 .
