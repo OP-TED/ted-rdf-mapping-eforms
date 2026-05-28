@@ -661,7 +661,7 @@ tedm:MG-Constraint-hasConstraint-AwardCriterion-specifiesProcurementCriterion-Lo
             # Differences across versions are practically superficial and have little to no functional effect on this mapping even though different iterators can be interpreted
             # VERINFO: SDK v1.8 from v1.3-1.7 contains only node change with stylistic XPath changes yielding the same effective XPaths, along with introduction of List attribute and other mapping-irrelevant changes
             rdfs:label  "BT-541-LotsGroup-ThresholdNumber";
-            rdfs:comment "Award Criterion Number Threshold of MG-Constraint under ND-LotsGroupAwardThresholdCriterionParameter (v1.8+), ND-LotsGroupAwardCriterionParameter (v1.3-1.7)";
+            rdfs:comment "Award Criterion Number Threshold of MG-Constraint under ND-LotsGroupAwardThresholdCriterionParameter";
             rr:predicate epo:hasThresholdValue ;
             rr:objectMap
                 [
@@ -672,7 +672,7 @@ tedm:MG-Constraint-hasConstraint-AwardCriterion-specifiesProcurementCriterion-Lo
     rr:predicateObjectMap
         [
             rdfs:label  "BT-5423-LotsGroup";
-            rdfs:comment "Award Criterion Number Threshold of MG-Constraint under ND-LotAwardThresholdCriterionParameter";
+            rdfs:comment "Award Criterion Number Threshold of MG-Constraint under ND-LotAwardThresholdCriterionParameter (v1.8+), ND-LotsGroupAwardCriterionParameter (v1.3-1.7)";
             rr:predicate epo:hasThresholdType ;
             rr:objectMap
                 [
@@ -701,7 +701,7 @@ tedm:MG-langString-description-AwardCriterion-specifiesProcurementCriterion-LotG
     rr:predicateObjectMap [
         rr:predicate dct:description ;
         rr:objectMap [
-            rml:reference "if((exists(@languageID)) and (not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-des']) and ./text() = 'unpublished' ))) then . else null" ;
+            rml:reference "if((exists(@languageID)) and (not(exists(../ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-des']) and ./text() = 'unpublished' ))) then . else null" ;
             rml:languageMap [
                 fnml:functionValue [
                     rr:predicateObjectMap [
@@ -775,7 +775,7 @@ tedm:MG-langString-prefLabel-AwardCriterion-specifiesProcurementCriterion-LotGro
     rr:predicateObjectMap [
         rr:predicate skos:prefLabel ;
         rr:objectMap [
-            rml:reference "if((exists(@languageID)) and (not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-nam']) and ./text() = 'unpublished' ))) then . else null" ;
+            rml:reference "if((exists(@languageID)) and (not(exists(../ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-nam']) and ./text() = 'unpublished' ))) then . else null" ;
             rml:languageMap [
                 fnml:functionValue [
                     rr:predicateObjectMap [
@@ -843,12 +843,12 @@ tedm:MG-langString-hasAwardCriteriaEvaluationFormula-AwardEvaluationTerm-isSubje
   rr:subjectMap [
     rr:class epo:AwardEvaluationTerm ;
     rdfs:label "ND-LotsGroupAwardCriteria" ;
-    rml:reference "if(((exists(../cbc:Description)) and not(exists(../ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-ord']) and ../cbc:Description/text() = 'unpublished')) or ((exists(../cbc:CalculationExpression)) and not(exists(../ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-com']) and ../cbc:CalculationExpression/text() = 'unpublished'))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/AwardEvaluationTerm$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+    rml:reference "'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/AwardEvaluationTerm$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_')" ;
   ] ;
   rr:predicateObjectMap [
     rr:predicate epo:hasAwardCriteriaEvaluationFormula ;
     rr:objectMap [
-      rml:reference "if(exists(@languageID) and not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-com']) and ./text() = 'unpublished')) then . else null" ;
+      rml:reference "if(exists(@languageID) and not(exists(../ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-com']) and ./text() = 'unpublished')) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -880,12 +880,12 @@ tedm:MG-langString-hasAwardCriteriaOrderJustification-AwardEvaluationTerm-isSubj
   rr:subjectMap [
     rr:class epo:AwardEvaluationTerm ;
     rdfs:label "ND-LotsGroupAwardCriteria" ;
-    rml:reference "if(((exists(../cbc:Description)) and not(exists(../ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-ord']) and ../cbc:Description/text() = 'unpublished')) or ((exists(../cbc:CalculationExpression)) and not(exists(../ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-com']) and ../cbc:CalculationExpression/text() = 'unpublished'))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/AwardEvaluationTerm$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+    rml:reference "'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/AwardEvaluationTerm$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_')" ;
   ] ;
   rr:predicateObjectMap [
     rr:predicate epo:hasAwardCriteriaOrderJustification ;
     rr:objectMap [
-      rml:reference "if(exists(@languageID) and not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-ord']) and cbc:Description/text() = 'unpublished')) then . else null" ;
+      rml:reference "if(exists(@languageID) and not(exists(../ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-ord']) and ./text() = 'unpublished')) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -919,7 +919,9 @@ tedm:MG-AwardEvaluationTerm-isSubjectToTerm-LotGroup_ND-LotsGroupAwardCriteria a
     rr:subjectMap
         [
             rdfs:label "ND-LotsGroupAwardCriteria";
-            rml:reference "if(((exists(cbc:Description)) and not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-ord']) and cbc:Description/text() = 'unpublished')) or ((exists(cbc:CalculationExpression)) and not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-com']) and cbc:CalculationExpression/text() = 'unpublished'))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/AwardEvaluationTerm$' || replace(replace(replace(path(.), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if(((exists(cbc:Description)) and not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-ord']) and cbc:Description/text() = 'unpublished')) or ((exists(cbc:CalculationExpression)) and not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-com']) and cbc:CalculationExpression/text() = 'unpublished'))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/AwardEvaluationTerm$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:AwardEvaluationTerm
         ] ;
+    # This is a placeholder TriplesMap for the mappings of fields 
+    # BT-543-LotsGroup and BT-733-LotGroup, which will have their own multi-language maps
     .

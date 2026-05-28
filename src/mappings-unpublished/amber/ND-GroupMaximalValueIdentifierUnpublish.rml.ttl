@@ -38,7 +38,20 @@ tedm:MG-NonPublishedInformation_ND-GroupMaximalValueIdentifierUnpublish a rr:Tri
             rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/NonPublishedInformation${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class epo:NonPublishedInformation
         ] ;
-    # Amber (partial): epo:concernsMaskedObject omitted — CM does not provide enough information to resolve rr:parentTriplesMap for the masked object (dark yellow/orange row).
+    rr:predicateObjectMap
+        [
+			rdfs:label "ND-GroupMaximalValueIdentifierUnpublish (concernsMaskedObject)" ;
+			rdfs:comment "Connection from NonPublishedInformation to LotGroupAwardInformation under MG-LotGroupAwardInformation_ND-NoticeResultGroupFA" ;
+            rr:predicate epo:concernsMaskedObject ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-LotGroupAwardInformation_ND-NoticeResultGroupFA ;
+                    rr:joinCondition [
+                        rr:parent "path(.)" ;
+                        rr:child "path(..)" ;
+                    ] ;
+                ] ;
+        ] ;
 	rr:predicateObjectMap
         [
     		rdfs:label "ND-GroupMaximalValueIdentifierUnpublish (concernsNotice)" ;
