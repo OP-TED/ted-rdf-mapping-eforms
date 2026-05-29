@@ -5,6 +5,7 @@
 There are a total of 59 unmappable fields to ePO 5.2.0:
 [cols="3*", options="header"]
 |===
+|eForms SDK ID |Name |Mapping Notes (public)
 |BT-738-notice
 |Notice Publication Date Preferred
 |unmappable since publicationProvision was deleted in ePO 4.0.0. This is not a problem as these values are not provided in the xml input data.
@@ -222,12 +223,12 @@ See also: https://docs.ted.europa.eu/epo-wgm/notes/2025-09-25-wgm.html#_contract
 |===
 |epo:hasAccessibilityDate | Reporting problem: xsd:date with timezone is not recognized as valid
 |epo:hasAdditionalInformationDeadline | Data problem: xsd:dateTime is expected but data does not contain the time component
-|epo:hasAwardDecisionDate | Data problem: xsd:dateTime is expected but data does not contain the time component
+|epo:hasAwardDecisionDate | Modelling problem (ePO/eForms): ePO expects an xsd:dateTime, but eForms provides only a date
 |epo:hasContractConclusionDate | Reporting problem: xsd:date with timezone is not recognized as valid
 |epo:hasEstimatedContractNoticePublicationDate | Reporting problem: xsd:date with timezone is not recognized as valid
 |epo:hasEstimatedInvitationToExpressInterestDate | Reporting problem: xsd:date with timezone is not recognized as valid
 |epo:hasEstimatedInvitationToTenderDate | Reporting problem: xsd:date with timezone is not recognized as valid
-|epo:hasProcurementDocumentChangeDate | Data problem: xsd:dateTime is expected but data does not contain the time component
+|epo:hasProcurementDocumentChangeDate | Modelling problem (ePO/eForms): ePO expects an xsd:dateTime, but eForms provides only a date
 |epo:hasWithdrawalDate | Reporting problem: xsd:date with timezone is not recognized as valid
 |epo:hasElectronicTenders | Data problem: decimal value provided while integer is expected
 |epo:hasMaskableProperty | ePO declares the property value as xsd:anyURI, but we use rdf:Property instead, which is more correct, and ePO will be updated to fix this
@@ -248,20 +249,20 @@ See also: https://docs.ted.europa.eu/epo-wgm/notes/2025-09-25-wgm.html#_contract
 |===
 === sh:MinCountConstraintComponent
 |===
-|	epo:concernsMaskedObject|Data problem: The data being unpublished is not present as a masked value (576085-2024)
-|	epo:hasAllegedIrregularityType|Incomplete info related to previous notice data: ReviewRequests referenced from ReviewDecisions don't have all the fields declared as mandatory in ePO
-|	epo:hasAmountValue|Privacy-related problem: Masked values, such as "-1" and "unpublished" will not be instantiated in RDF
-|	epo:hasChangeJustification|Modelling problem (ePO/eForms): Separate and partially complete ChangeInformation instances are created from the nodes ND-ChangeReason, ND-Change and ND-Changes
-|	epo:hasCurrency|Data problem: Some Monetary values are missing the currency, e.g. for XML element cbc:EstimatedOverallContractAmount (field BT-27-Part)
-|	epo:hasIrregularityType|Data/Modelling problem (ePO/eForms): Some ReviewIrregularitySummary instances do not have irregularity type (field BT-636-LotResult) specified in eForms
-|	epo:hasLotReference|Data/Modelling problem: Some Contracts do not have a Lot reference in eForms
-|	epo:hasMainClassification|Incomplete info related to previous notice data: Previous epo:Procedure instances referenced in this notice will not have all the fields declared as mandatory in ePO. Also, it may be Data/Modelling problem, as certain Lot definitions don't have main classification specified in eForms, only additional classifications!
-|	epo:hasNoticeType|Incomplete info related to previous notice data: Previous epo:Notice instances referenced in this notice will not have all the fields declared as mandatory in ePO
-|	epo:hasNumberOfReviewRequests|Modelling problem (ePO/eForms): this property is not mapped from any of the eForms fields. Consider relaxing the cardinality of the property
-|	epo:hasOpeningDateTime|Data/ePO problem: Opening DateTime sometimes is not specified, just opening place. Consider relaxing the cardinality of the property
-	epo:hasProcurementScopeDividedIntoLot - Incomplete info related to previous notice data: Previous epo:Procedure instances referenced in this notice will not have all the fields declared as mandatory in ePO
-|	epo:isSubmittedForLot|Data/ePO problem: The lot reference (field BT-13714-Tender) might be missing from a Tender definition in eForms. Consider relaxing the cardinality of the property
-|	epo:playedBy|Modelling/ePO problem: Due to the nature of information provided for field BT-47-Lot the epo:Candidate instance will not have a playedBy relationship to a specific foaf:Agent. Consider relaxing the cardinality of the property
-|	epo:refersToPreviousNotice|Modelling problem (ePO/eForms): Separate and partially complete ChangeInformation instances are created from the nodes ND-ChangeReason, ND-Change and ND-Changes
-|	epo:relatesToEFormSectionIdentifier|Modelling problem (ePO/eForms): Separate and partially complete ChangeInformation instances are created from the nodes ND-ChangeReason, ND-Change and ND-Changes
+|	epo:concernsMaskedObject | Data problem: The data being unpublished is not present as a masked value (576085-2024)
+|	epo:hasAllegedIrregularityType | Incomplete info related to previous notice data: ReviewRequests referenced from ReviewDecisions don't have all the fields declared as mandatory in ePO
+|	epo:hasAmountValue | Privacy-related problem: Masked values, such as "-1" and "unpublished" will not be instantiated in RDF
+|	epo:hasChangeJustification | Modelling problem (ePO/eForms): Separate and partially complete ChangeInformation instances are created from the nodes ND-ChangeReason, ND-Change and ND-Changes
+|	epo:hasCurrency | Data problem: Some Monetary values are missing the currency, e.g. for XML element cbc:EstimatedOverallContractAmount (field BT-27-Part)
+|	epo:hasIrregularityType | Data/Modelling problem (ePO/eForms): Some ReviewIrregularitySummary instances do not have irregularity type (field BT-636-LotResult) specified in eForms
+|	epo:hasLotReference | Data/Modelling problem: Some Contracts do not have a Lot reference in eForms
+|	epo:hasMainClassification | Incomplete info related to previous notice data: Previous epo:Procedure instances referenced in this notice will not have all the fields declared as mandatory in ePO. Also, it may be Data/Modelling problem, as certain Lot definitions don't have main classification specified in eForms, only additional classifications!
+|	epo:hasNoticeType | Incomplete info related to previous notice data: Previous epo:Notice instances referenced in this notice will not have all the fields declared as mandatory in ePO
+|	epo:hasNumberOfReviewRequests | Modelling problem (ePO/eForms): this property is not mapped from any of the eForms fields. Consider relaxing the cardinality of the property
+|	epo:hasOpeningDateTime | Data/ePO problem: Opening DateTime sometimes is not specified, just opening place. Consider relaxing the cardinality of the property
+|	epo:hasProcurementScopeDividedIntoLot | Incomplete info related to previous notice data: Previous epo:Procedure instances referenced in this notice will not have all the fields declared as mandatory in ePO
+|	epo:isSubmittedForLot | Data/ePO problem: The lot reference (field BT-13714-Tender) might be missing from a Tender definition in eForms. Consider relaxing the cardinality of the property
+|	epo:playedBy | Modelling/ePO problem: Due to the nature of information provided for field BT-47-Lot the epo:Candidate instance will not have a playedBy relationship to a specific foaf:Agent. Consider relaxing the cardinality of the property
+|	epo:refersToPreviousNotice | Modelling problem (ePO/eForms): Separate and partially complete ChangeInformation instances are created from the nodes ND-ChangeReason, ND-Change and ND-Changes
+|	epo:relatesToEFormSectionIdentifier | Modelling problem (ePO/eForms): Separate and partially complete ChangeInformation instances are created from the nodes ND-ChangeReason, ND-Change and ND-Changes
 |===
