@@ -794,11 +794,11 @@ tedm:MG-Lot_ND-Lot a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-79-Lot";
+            rdfs:label "BT-79-Lot (object)";
             rr:predicate epo:foreseesTerm ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-ProcurementCriterion-foreseesTerm-Lot_ND-LotTenderingTerms;
+                    rr:parentTriplesMap tedm:MG-ContractTerm-foreseesTerm-Lot_ND-LotTenderingTerms;
                     rr:joinCondition [
                         rr:child "path(.)";
                         rr:parent "path(..)";
@@ -807,7 +807,7 @@ tedm:MG-Lot_ND-Lot a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-717-Lot";
+            rdfs:label "BT-717-Lot (object)";
             rr:predicate epo:fulfillsStrategicProcurement ;
             rr:objectMap
                 [
@@ -1078,6 +1078,37 @@ tedm:MG-Lot_ND-LotProcurementScope a rr:TriplesMap ;
     #                 ] ;
     #             ] ;
     #     ] ;
+.
+
+tedm:MG-Lot_ND-LotDuration a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm";
+        rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject/cac:PlannedPeriod";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotDuration";
+             rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Lot/{../../cbc:ID}" ;
+            rr:class epo:Lot
+        ] ;
+    rr:predicateObjectMap
+        [
+
+            rdfs:label "BT-781-Lot, BT-538-Lot" ;
+            rdfs:comment "Connection between MG-Lot and MG-ContractTerm under ND-LotDuration" ;
+            rr:predicate epo:foreseesTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ContractTerm-foreseesTerm-Lot_ND-LotDuration ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ];
 .
 
 tedm:MG-Identifier-identifier-Lot_ND-Lot a rr:TriplesMap ;
@@ -1461,7 +1492,7 @@ tedm:MG-DynamicPurchaseSystemTechnique-usesTechnique-Lot_ND-LotTenderingProcess 
         [
             rdfs:label "ND-LotTenderingProcess";
             # INFO: forbidden in subtypes 1-6, 14-15, 19, 23-24, 28, 32, 35-40, CEI, E1-E2, E6, T01-T02
-            rml:reference "if (exists(cac:ContractingSystem/cbc:ContractingSystemTypeCode[@listName='dps-usage'])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/DynamicPurchaseSystemTechnicalUsage$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(cac:ContractingSystem/cbc:ContractingSystemTypeCode[@listName='dps-usage' and not(text()='none')])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/DynamicPurchaseSystemTechnicalUsage$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:DynamicPurchaseSystemTechnique
         ] ;
     rr:predicateObjectMap
@@ -1488,10 +1519,10 @@ tedm:MG-DynamicPurchaseSystemTechnique-usesTechnique-Lot_ND-LotTenderingProcess 
             rr:predicate epo:hasEstimatedDuration ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-Duration-hasEstimatedDuration-DynamicPurchaseSystemTechnique-usesTechnique-Lot_ND-LotDuration ;
+                    rr:parentTriplesMap tedm:MG-Duration-definesEstimatedContractDuration-ContractTerm-foreseesTerm-Lot_ND-LotDuration ;
                     rr:joinCondition [
                         rr:child "path(..)" ;
-                        rr:parent "path(../../..)" ;
+                        rr:parent "path(../..)" ;
                     ] ;
                 ] ;
         ]
@@ -1698,7 +1729,7 @@ tedm:MG-SubmissionTerm-isSubjectToTerm-Lot_ND-SubmissionDeadline a rr:TriplesMap
             rr:predicate epo:hasReceiptTenderDeadline ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(cbc:EndDate) and exists(cbc:EndTime) and contains(cbc:EndDate, '+')) then substring-before(cbc:EndDate, '+') || 'T' || cbc:EndTime else if(exists(cbc:EndDate) and exists(cbc:EndTime)) then cbc:EndDate || 'T' || cbc:EndTime else if(exists(cbc:EndDate) and contains(cbc:EndDate, '+')) then substring-before(cbc:EndDate, '+') || 'T00:00:00+' || substring-after(cbc:EndDate, '+') else if(exists(cbc:EndDate)) then cbc:EndDate || 'T00:00:00' else null";
+                    rml:reference "if(exists(cbc:EndDate) and exists(cbc:EndTime) and matches(cbc:EndDate, '[+\\-]\\d\\d:\\d\\d|Z')) then replace(cbc:EndDate, '...:..|Z', '') || 'T' || cbc:EndTime else if(exists(cbc:EndDate) and exists(cbc:EndTime)) then cbc:EndDate || 'T' || cbc:EndTime else if(exists(cbc:EndDate)) then cbc:EndDate else null" ;
                     rr:datatype xsd:dateTime;
                 ] ;
         ]
@@ -1725,7 +1756,7 @@ tedm:MG-SubmissionTerm-isSubjectToTerm-Lot_ND-InterestExpressionReceptionPeriod 
             rr:predicate epo:hasReceiptExpressionDeadline ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(cbc:EndDate) and exists(cbc:EndTime) and contains(cbc:EndDate, '+')) then substring-before(cbc:EndDate, '+') || 'T' || cbc:EndTime else if(exists(cbc:EndDate) and exists(cbc:EndTime)) then cbc:EndDate || 'T' || cbc:EndTime else if(exists(cbc:EndDate)) then cbc:EndDate else null";
+                    rml:reference "if(exists(cbc:EndDate) and exists(cbc:EndTime) and matches(cbc:EndDate, '[+\\-]\\d\\d:\\d\\d|Z')) then replace(cbc:EndDate, '...:..|Z', '') || 'T' || cbc:EndTime else if(exists(cbc:EndDate) and exists(cbc:EndTime)) then cbc:EndDate || 'T' || cbc:EndTime else if(exists(cbc:EndDate)) then cbc:EndDate else null" ;
                     rr:datatype xsd:dateTime;
                 ] ;
         ]
@@ -1752,7 +1783,7 @@ rr:predicateObjectMap
             rr:predicate epo:hasAdditionalInformationDeadline ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(cbc:EndDate) and exists(cbc:EndTime) and contains(cbc:EndDate, '+')) then substring-before(cbc:EndDate, '+') || 'T' || cbc:EndTime else if(exists(cbc:EndDate) and exists(cbc:EndTime)) then cbc:EndDate || 'T' || cbc:EndTime else if(exists(cbc:EndDate) and contains(cbc:EndDate, '+')) then substring-before(cbc:EndDate, '+') || 'T00:00:00+' || substring-after(cbc:EndDate, '+') else if(exists(cbc:EndDate)) then cbc:EndDate || 'T00:00:00' else null";
+                    rml:reference "if(exists(cbc:EndDate) and exists(cbc:EndTime) and matches(cbc:EndDate, '[+\\-]\\d\\d:\\d\\d|Z')) then replace(cbc:EndDate, '...:..|Z', '') || 'T' || cbc:EndTime else if(exists(cbc:EndDate) and exists(cbc:EndTime)) then cbc:EndDate || 'T' || cbc:EndTime else if(exists(cbc:EndDate)) then cbc:EndDate else null" ;
                     rr:datatype xsd:dateTime;
                 ] ;
         ]
@@ -1779,7 +1810,7 @@ tedm:MG-SubmissionTerm-isSubjectToTerm-Lot_ND-ParticipationRequestPeriod a rr:Tr
             rr:predicate epo:hasReceiptParticipationRequestDeadline ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(cbc:EndDate) and exists(cbc:EndTime) and contains(cbc:EndDate, '+')) then substring-before(cbc:EndDate, '+') || 'T' || cbc:EndTime else if(exists(cbc:EndDate) and exists(cbc:EndTime)) then cbc:EndDate || 'T' || cbc:EndTime else if(exists(cbc:EndDate)) then cbc:EndDate else null";
+                    rml:reference "if(exists(cbc:EndDate) and exists(cbc:EndTime) and matches(cbc:EndDate, '[+\\-]\\d\\d:\\d\\d|Z')) then replace(cbc:EndDate, '...:..|Z', '') || 'T' || cbc:EndTime else if(exists(cbc:EndDate) and exists(cbc:EndTime)) then cbc:EndDate || 'T' || cbc:EndTime else if(exists(cbc:EndDate)) then cbc:EndDate else null" ;
                     rr:datatype xsd:dateTime;
                 ] ;
         ]
@@ -1830,7 +1861,7 @@ tedm:MG-OpeningTerm-isSubjectToTerm-Lot_ND-PublicOpening a rr:TriplesMap ;
             rr:predicate epo:hasOpeningDateTime ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(cbc:OccurrenceDate) and exists(cbc:OccurrenceTime) and contains(cbc:OccurrenceDate, '+')) then substring-before(cbc:OccurrenceDate, '+') || 'T' || cbc:OccurrenceTime else if(exists(cbc:OccurrenceDate) and exists(cbc:OccurrenceTime)) then cbc:OccurrenceDate || 'T' || cbc:OccurrenceTime else if(exists(cbc:OccurrenceDate)) then cbc:OccurrenceDate else null";
+                    rml:reference "if(exists(cbc:OccurrenceDate) and exists(cbc:OccurrenceTime) and matches(cbc:OccurrenceDate, '[+\\-]\\d\\d:\\d\\d|Z')) then replace(cbc:OccurrenceDate, '...:..|Z', '') || 'T' || cbc:OccurrenceTime else if(exists(cbc:OccurrenceDate) and exists(cbc:OccurrenceTime)) then cbc:OccurrenceDate || 'T' || cbc:OccurrenceTime else if(exists(cbc:OccurrenceDate)) then cbc:OccurrenceDate else null" ;
                     rr:datatype xsd:dateTime;
                 ] ;
         ];
@@ -2033,7 +2064,7 @@ tedm:MG-Fund-isFundedBy-Lot_ND-Funding a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-Funding";
-            rml:reference "if (exists(efbc:FinancingIdentifier)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Fund$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(efbc:FinancingIdentifier) or exists(cbc:FundingProgramCode) or exists(cbc:Description)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Fund$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:Fund
         ] ;
     rr:predicateObjectMap
@@ -2591,26 +2622,26 @@ tedm:MG-Constraint-hasConstraint-AwardCriterion-specifiesProcurementCriterion-Lo
         [
             # Differences across versions are practically superficial and have little to no functional effect on this mapping even though different iterators can be interpreted
             # VERINFO: SDK v1.8 from v1.3-1.7 contains only node change with stylistic XPath changes yielding the same effective XPaths, along with introduction of List attribute and other mapping-irrelevant changes
-            rdfs:label  "BT-5423-Lot";
-            rdfs:comment "Award Criterion Number Threshold of MG-Constraint under ND-LotAwardThresholdCriterionParameter (v1.8+), ND-LotAwardCriterionParameter (v1.3-1.7)";
+            rdfs:label  "BT-541-Lot-ThresholdNumber";
+            rdfs:comment "Award Criterion Number Threshold of MG-Constraint under ND-LotAwardThresholdCriterionParameter";
             rr:predicate epo:hasThresholdValue ;
             rr:objectMap
                 [
-                    rml:reference "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-thr']) and efbc:ParameterCode/text() = 'unpublished' )) then efbc:ParameterNumeric else null";
+                    rml:reference "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-num']) and efbc:ParameterNumeric/text() = '-1' )) then efbc:ParameterNumeric else null" ;
                     rr:datatype xsd:decimal;
                 ]
         ] ;
      rr:predicateObjectMap
         [
-            rdfs:label  "BT-541-Lot-ThresholdNumber";
-            rdfs:comment "Award Criterion Number Threshold of MG-Constraint under ND-LotAwardThresholdCriterionParameter";
+            rdfs:label  "BT-5423-Lot";
+            rdfs:comment "Award Criterion Number Threshold of MG-Constraint under ND-LotAwardThresholdCriterionParameter (v1.8+), ND-LotAwardCriterionParameter (v1.3-1.7)";
             rr:predicate epo:hasThresholdType ;
             rr:objectMap
                 [
                     rdfs:label "at-voc:number-threshold" ;
                     rr:parentTriplesMap tedm:number-threshold ;
                     rr:joinCondition [
-                        rr:child "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-num']) and efbc:ParameterNumeric/text() = '-1' )) then efbc:ParameterCode else null" ;
+                        rr:child "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-thr']) and efbc:ParameterCode/text() = 'unpublished' )) then efbc:ParameterCode else null" ;
                         rr:parent "code.value"
                     ] ;
                 ] ;
@@ -2803,7 +2834,7 @@ tedm:MG-DesignContestRegimeTerm-isSubjectToTerm-Lot_ND-AwardingTerms a rr:Triple
     rr:subjectMap
         [
             rdfs:label  "ND-AwardingTerms";
-            rml:reference "if(exists(cbc:FollowupContractIndicator)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/DesignContestRegimeTerm$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if(exists(cbc:FollowupContractIndicator)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/DesignContestRegimeTerm$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:DesignContestRegimeTerm
         ] ;
     rr:predicateObjectMap
@@ -2871,8 +2902,8 @@ tedm:MG-Prize-definesPrize-DesignContestRegimeTerm-isSubjectToTerm-Lot_ND-Prize 
         ];
     rr:predicateObjectMap
         [
-            rdfs:label "BT-644-Lot";
-            rdfs:comment "PrizeValue of MG-Prize under ND-Prize";
+            rdfs:label "BT-644-Lot (object; DesignContestRegimeTerm)";
+            rdfs:comment "Prize Value of MG-Prize under ND-Prize";
             rr:predicate epo:hasPrizeValue ;
             rr:objectMap
                 [
@@ -2901,8 +2932,8 @@ tedm:MG-MonetaryValue-hasPrizeValue-Prize-definesPrize-DesignContestRegimeTerm-i
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-644-Lot";
-            rdfs:comment "PrizeValue of MG-MonetaryValue under ND-Prize";
+            rdfs:label "BT-644-Lot (value; DesignContestRegimeTerm)";
+            rdfs:comment "Prize Value of MG-MonetaryValue under ND-Prize";
             rr:predicate epo:hasAmountValue ;
             rr:objectMap
                 [
@@ -2910,6 +2941,21 @@ tedm:MG-MonetaryValue-hasPrizeValue-Prize-definesPrize-DesignContestRegimeTerm-i
                    rr:datatype xsd:decimal;
                 ] ;
         ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-644-Lot-Currency (DesignContestRegimeTerm)" ;
+            rdfs:comment "Currency of Prize Value of MG-MonetaryValue under ND-Prize" ;
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:currency" ;
+                    rr:parentTriplesMap tedm:currency ;
+                    rr:joinCondition [
+                        rr:child "cbc:ValueAmount/@currencyID" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
 .
 
 # EPO 5.3.0 Mapping
@@ -2940,8 +2986,8 @@ tedm:MG-MonetaryValue-hasPrizeValue-Prize-definesPrize-DesignContestRegimeTerm-i
 #        ];
 #    rr:predicateObjectMap
 #        [
-#            rdfs:label "BT-644-Lot";
-#            rdfs:comment "PrizeValue of MG-Prize under ND-Prize";
+#            rdfs:label "BT-644-Lot (object; ProcedureTerm)";
+#            rdfs:comment "Prize Value of MG-Prize under ND-Prize";
 #            rr:predicate epo:hasPrizeValue ;
 #            rr:objectMap
 #                [
@@ -2955,7 +3001,7 @@ tedm:MG-MonetaryValue-hasPrizeValue-Prize-definesPrize-DesignContestRegimeTerm-i
 #.
 
 # EPO 5.3.0 Mapping
-#tedm:MG-MonetaryValue-hasPrizeValue-Prize-definesPrize-ProcedureTerm-isSubjectToTerm-Lot_ND-Prize a rr:TriplesMap ;
+# tedm:MG-MonetaryValue-hasPrizeValue-Prize-definesPrize-ProcedureTerm-isSubjectToTerm-Lot_ND-Prize a rr:TriplesMap ;
 #    rdfs:label "MG-MonetaryValue";
 #    rml:logicalSource
 #        [
@@ -2971,8 +3017,8 @@ tedm:MG-MonetaryValue-hasPrizeValue-Prize-definesPrize-DesignContestRegimeTerm-i
 #        ] ;
 #    rr:predicateObjectMap
 #        [
-#            rdfs:label "BT-644-Lot";
-#            rdfs:comment "PrizeValue of MG-MonetaryValue under ND-Prize";
+#            rdfs:label "BT-644-Lot (ProcedureTerm)";
+#            rdfs:comment "Prize Value of MG-MonetaryValue under ND-Prize";
 #            rr:predicate epo:hasAmountValue ;
 #            rr:objectMap
 #                [
@@ -2980,6 +3026,21 @@ tedm:MG-MonetaryValue-hasPrizeValue-Prize-definesPrize-DesignContestRegimeTerm-i
 #                   rr:datatype xsd:decimal;
 #                ] ;
 #        ];
+#    rr:predicateObjectMap
+#        [
+#            rdfs:label "BT-644-Lot-Currency (ProcedureTerm)" ;
+#            rdfs:comment "Currency of Prize Value of MG-MonetaryValue under ND-Prize" ;
+#            rr:predicate epo:hasCurrency ;
+#            rr:objectMap
+#                [
+#                    rdfs:label "at-voc:currency" ;
+#                    rr:parentTriplesMap tedm:currency ;
+#                    rr:joinCondition [
+#                        rr:child "cbc:ValueAmount/@currencyID" ;
+#                        rr:parent "code.value" ;
+#                    ] ;
+#                ] ;
+#        ] ;
 #.
 
 tedm:MG-SubmissionTerm-isSubjectToTerm-Lot_ND-LateTendererInformation a rr:TriplesMap ;
@@ -3307,58 +3368,77 @@ tedm:MG-QualityTargetInformation-concernsContractTerm-ContractTerm_ND-LotTenderi
         ] ;
     rr:subjectMap
         [
-            rdfs:label "ND-LotTenderingTerms" ;
+            rdfs:label "ND-QualityTarget" ;
             rml:reference "'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/QualityTargetInformation$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_')" ;
             rr:class epo:QualityTargetInformation
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "ND-LotTenderingTerms" ;
-            rdfs:comment "ND-LotTenderingTerms of MG-QualityTargetInformation under ND-Lot" ;
+            rdfs:label "ND-QualityTarget" ;
+            rdfs:comment "Contract term relation of MG-QualityTargetInformation under ND-QualityTarget" ;
             rr:predicate epo:concernsContractTerm ;
             rr:objectMap
                 [
                     rr:parentTriplesMap tedm:MG-ContractTerm-concernsContractTerm-QualityTargetInformation_ND-LotTenderingTerms ;
                     rr:joinCondition [
-                        rr:child "path(../..)" ;
+                        rr:child "path(..)" ;
                         rr:parent "path(.)" ;
                     ] ;
                 ] ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "OPT-071-QualityTargetInformation" ;
-            rdfs:comment "OPT-071-QualityTargetInformation of MG-QualityTargetInformation under ND-Lot" ;
+            rdfs:label "OPT-071-Lot" ;
+            rdfs:comment "Quality Target Code of MG-QualityTargetInformation under ND-Lot" ;
             rr:predicate epo:hasQualityTargetCode ;
             rr:objectMap
                 [
-                    rr:template "http://publications.europa.eu/resource/authority/customer-service/{cbc:ExecutionRequirementCode}" ;
-                    rr:termType rr:IRI ;
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "OPT-072-QualityTargetInformation" ;
-            rdfs:comment "OPT-072-QualityTargetInformation of MG-QualityTargetInformation under ND-Lot" ;
-            rr:predicate epo:hasQualityTargetDescription ;
-            rr:objectMap
-                [
-                    rml:reference "if(exists(@languageID)) then cbc:Description else null" ;
-                    rml:languageMap [
-                        fnml:functionValue [
-                            rr:predicateObjectMap [
-                                rr:predicate idlab-fn:str ;
-                                rr:objectMap [ rml:reference "cbc:Description/@languageID" ]
-                            ] ,
-                            tedm:idlab-fn_executes_lookup ,
-                            tedm:idlab-fn_inputFile_language ,
-                            tedm:idlab-fn_fromColumn_code ,
-                            tedm:idlab-fn_toColumn_code
-                        ]
+                    rdfs:label "at-voc:customer-service" ;
+                    rr:parentTriplesMap tedm:customer-service ;
+                    rr:joinCondition [
+                        rr:child "cbc:ExecutionRequirementCode" ;
+                        rr:parent "code.value" ;
                     ] ;
                 ] ;
         ] ;
 .
+
+tedm:MG-langString-hasQualityTargetDescription-QualityTargetInformation_ND-QualityTarget a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/source.xml" ;
+    rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:ContractExecutionRequirement[cbc:ExecutionRequirementCode/@listName='customer-service']/cbc:Description" ;
+    rml:referenceFormulation ql:XPath ;
+  ] ;
+  rr:subjectMap [
+    rr:class epo:QualityTargetInformation ;
+    rdfs:label "ND-QualityTarget" ;
+    rml:reference "'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/QualityTargetInformation$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_')" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate epo:hasQualityTargetDescription ;
+    rr:objectMap [
+      rml:reference "if(exists(@languageID)) then . else null" ;
+      rml:languageMap [
+        fnml:functionValue [
+          rr:predicateObjectMap [
+            rr:predicate idlab-fn:str ;
+            rr:objectMap [
+              rml:reference "@languageID" ;
+            ] ;
+          ] ;
+          rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+          rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+          rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+          rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+        ] ;
+      ] ;
+      rdfs:comment "Language of Quality Target Description of MG-QualityTargetInformation under ND-QualityTarget" ;
+      rdfs:label "OPT-072-Lot-Language" ;
+    ] ;
+    rdfs:comment "Quality Target Description of MG-QualityTargetInformation under ND-QualityTarget" ;
+    rdfs:label "OPT-072-Lot" ;
+  ] ;
+  rdfs:label "MG-QualityTargetInformation" .
 
 tedm:MG-ContractTerm-concernsContractTerm-QualityTargetInformation_ND-LotTenderingTerms a rr:TriplesMap ;
     rdfs:label "MG-ContractTerm" ;
@@ -3387,7 +3467,7 @@ tedm:MG-ContractTerm-foreseesTerm-Lot_ND-LotProcurementScope a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-LotProcurementScope";
-            rml:reference "if (exists(cbc:ProcurementTypeCode[@listName='contract-nature']) or exists(cac:PlannedPeriod/cbc:DurationMeasure) or exists(cac:PlannedPeriod/cbc:StartDate) or exists(cac:PlannedPeriod/cbc:EndDate) or exists(cac:PlannedPeriod/cbc:DescriptionCode)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractTerm$' || replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '') else null";
+            rml:reference "if (exists(cbc:ProcurementTypeCode[@listName='contract-nature']) or exists(cac:PlannedPeriod/cbc:DurationMeasure) or exists(cac:PlannedPeriod/cbc:StartDate) or exists(cac:PlannedPeriod/cbc:EndDate)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractTerm$' || replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '') else null";
             rr:class epo:ContractTerm
         ] ;
     rr:predicateObjectMap
@@ -3431,19 +3511,6 @@ tedm:MG-ContractTerm-foreseesTerm-Lot_ND-LotProcurementScope a rr:TriplesMap ;
                     ];
                 ] ;
         ] ;
-     rr:predicateObjectMap
-        [
-            # VERINFO: across versions only mapping-irrelevant changes, and introduction of List attribute from 1.9+
-            rdfs:label "BT-538-Lot";
-            rdfs:comment "Duration Other of MG-ContractTerm under ND-LotDuration" ;
-            rr:predicate epo:hasUnknownDuration ;
-            rr:objectMap
-                [
-                    rml:reference "if (cbc:DescriptionCode/text()='UNKNOWN') then 'true' else 'false'" ;
-                    rr:datatype xsd:boolean ;
-
-                ] ;
-        ]
 .
 
 tedm:MG-Quantity-hasTotalQuantity-Purpose-hasPurpose-Lot_ND-LotProcurementScope a rr:TriplesMap ;
@@ -3518,8 +3585,8 @@ tedm:MG-Purpose-hasPurpose-Lot_ND-LotProcurementScope a rr:TriplesMap ;
         ]
 .
 
-tedm:MG-ProcurementCriterion-foreseesTerm-Lot_ND-LotTenderingTerms a rr:TriplesMap ;
-    rdfs:label "MG-ProcurementCriterion";
+tedm:MG-ContractTerm-foreseesTerm-Lot_ND-LotTenderingTerms a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm";
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
@@ -3529,13 +3596,13 @@ tedm:MG-ProcurementCriterion-foreseesTerm-Lot_ND-LotTenderingTerms a rr:TriplesM
     rr:subjectMap
         [
             rdfs:label "ND-LotTenderingTerms";
-            rml:reference "if (exists(cbc:RequiredCurriculaCode)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ProcurementCriterion$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
-            rr:class epo:ProcurementCriterion
+            rml:reference "if (exists(cbc:RequiredCurriculaCode)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractTerm$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class epo:ContractTerm
         ] ;
       rr:predicateObjectMap
         [
-            rdfs:label "BT-79-Lot";
-            rdfs:comment "Performing Staff Qualification of MG-ProcurementCriterion under ND-LotTenderingTerms";
+            rdfs:label "BT-79-Lot (value)";
+            rdfs:comment "Performing Staff Qualification of MG-ContractTerm under ND-LotTenderingTerms";
             rr:predicate epo:hasPerformingStaffQualificationInformation ;
             rr:objectMap
                 [
@@ -4029,7 +4096,7 @@ tedm:MG-StrategicProcurement-fulfillsStrategicProcurement-Lot_ND-StrategicProcur
     rr:subjectMap
         [
             rdfs:label "ND-StrategicProcurementType";
-            rml:reference "if (cbc:ProcurementTypeCode/text()!='none') then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/StrategicProcurement$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (cbc:ProcurementTypeCode/text()!='none') then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/StrategicProcurement$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:StrategicProcurement
         ] ;
     # rr:predicateObjectMap
@@ -4087,7 +4154,7 @@ tedm:MG-GreenProcurement-fulfillsStrategicProcurement-Lot_ND-StrategicProcuremen
     rr:subjectMap
         [
             rdfs:label "ND-StrategicProcurementLot";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/GreenProcurement${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rml:reference "if (efbc:ApplicableLegalBasis/text()='true') then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/GreenProcurement$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:GreenProcurement
         ] ;
         # VERINFO: BT-717-Lot is in versioned files
@@ -4545,30 +4612,38 @@ tedm:MG-EnergyEfficiencyInformation_ND-EEDProcurementDetailsLot a rr:TriplesMap 
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-811-EnergyEfficiencyInformation-LegalFramework" ;
-            rdfs:comment "BT-811-EnergyEfficiencyInformation-LegalFramework of MG-GreenProcurement-concernsGreenProcurement-EnergyEfficiencyInformation under ND-EEDProcurementDetailsLot" ;
+            rdfs:label "BT-811(a)-Lot" ;
+            rdfs:comment "EED List (Basis) of MG-GreenProcurement-concernsGreenProcurement-EnergyEfficiencyInformation under ND-EEDProcurementDetailsLot" ;
             rr:predicate epo:hasCalculationBasedOn ;
             rr:objectMap
                 [
-                    rr:template "http://publications.europa.eu/resource/authority/energy-efficiency-basis/{efbc:LegalFrameworkCode}" ;
-                    rr:termType rr:IRI ;
+                    rdfs:label "at-voc:energy-efficiency-basis" ;
+                    rr:parentTriplesMap tedm:energy-efficiency-basis ;
+                    rr:joinCondition [
+                        rr:child "efbc:LegalFrameworkCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
                 ] ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-811-EnergyEfficiencyInformation-AssetCategory" ;
-            rdfs:comment "BT-811-EnergyEfficiencyInformation-AssetCategory of MG-GreenProcurement-concernsGreenProcurement-EnergyEfficiencyInformation under ND-EEDProcurementDetailsLot" ;
+            rdfs:label "BT-811(b)-Lot" ;
+            rdfs:comment "EED List (Item) of MG-GreenProcurement-concernsGreenProcurement-EnergyEfficiencyInformation under ND-EEDProcurementDetailsLot" ;
             rr:predicate epo:concernsEnergyEfficiencyItemCategory ;
             rr:objectMap
                 [
-                    rr:template "http://publications.europa.eu/resource/authority/energy-efficiency-item/{efbc:AssetCategoryCode}" ;
-                    rr:termType rr:IRI ;
+                    rdfs:label "at-voc:energy-efficiency-item" ;
+                    rr:parentTriplesMap tedm:energy-efficiency-item ;
+                    rr:joinCondition [
+                        rr:child "efbc:AssetCategoryCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
                 ] ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "ND-EEDInformationLot" ;
-            rdfs:comment "ND-EEDInformationLot of MG-EnergyEfficiencyInformation under ND-EEDInformationLot" ;
+            rdfs:label "BT-810-Lot" ;
+            rdfs:comment "EED Applicable of MG-EnergyEfficiencyInformation under ND-EEDInformationLot" ;
             rr:predicate epo:concernsGreenProcurement ;
             rr:objectMap
                 [
@@ -4696,7 +4771,7 @@ tedm:MG-Address-address-Location-definesSpecificPlaceOfPerformance-ContractTerm-
     rr:subjectMap
         [
             rdfs:comment "ND-LotPerformanceAddress";
-            rml:reference "if(exists(cbc:StreetName) or exists(cbc:AdditionalStreetName) or exists(cac:AddressLine/cbc:Line) or exists(cbc:CityName) or exists(cbc:PostalZone) or (not(exists(cbc:Region)) and exists(cac:Country/cbc:IdentificationCode))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractLocationAddress$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if(exists(cbc:StreetName) or exists(cbc:AdditionalStreetName) or exists(cac:AddressLine/cbc:Line) or exists(cbc:CityName) or exists(cbc:PostalZone) or (not(exists(cbc:Region)) and (exists(cac:Country/cbc:IdentificationCode) or exists(cbc:CountrySubentityCode)))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractLocationAddress$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class locn:Address
         ] ;
     rr:predicateObjectMap
@@ -4783,7 +4858,7 @@ tedm:MG-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesTerm-Lot
         [
             rdfs:label  "ND-LotPerformanceAddress" ;
             # we check for the elements of a linked Address as otherwise this Location should not be instantiated either
-            rml:reference "if(exists(cbc:StreetName) or exists(cbc:AdditionalStreetName) or exists(cac:AddressLine/cbc:Line) or exists(cbc:CityName) or exists(cbc:PostalZone) or exists(cac:Country/cbc:IdentificationCode)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractLocation$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if(exists(cbc:StreetName) or exists(cbc:AdditionalStreetName) or exists(cac:AddressLine/cbc:Line) or exists(cbc:CityName) or exists(cbc:PostalZone) or exists(cbc:CountrySubentityCode) or exists(cac:Country/cbc:IdentificationCode)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractLocation$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class dct:Location
         ];
     rr:predicateObjectMap
@@ -4927,7 +5002,7 @@ tedm:MG-Duration-definesEstimatedContractDuration-ContractTerm-foreseesTerm-Lot_
     rr:subjectMap
         [
             rdfs:label "ND-LotDuration";
-            rml:reference "if (exists(cbc:DurationMeasure)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractDuration$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if (exists(cbc:DurationMeasure)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/EstimatedDuration$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class time:Duration
         ] ;
     rr:predicateObjectMap
@@ -4959,47 +5034,48 @@ tedm:MG-Duration-definesEstimatedContractDuration-ContractTerm-foreseesTerm-Lot_
         ] ;
 .
 
-tedm:MG-Duration-hasEstimatedDuration-DynamicPurchaseSystemTechnique-usesTechnique-Lot_ND-LotDuration a rr:TriplesMap ;
-    rdfs:label "MG-Duration" ;
+tedm:MG-ContractTerm-foreseesTerm-Lot_ND-LotDuration a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm";
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot'][cac:TenderingProcess/cac:ContractingSystem/cbc:ContractingSystemTypeCode[@listName='dps-usage']]/cac:ProcurementProject/cac:PlannedPeriod/cbc:DurationMeasure" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:ProcurementProject/cac:PlannedPeriod";
             rml:referenceFormulation ql:XPath
-        ] ;
+        ];
     rr:subjectMap
         [
-            rdfs:label "ND-LotDuration" ;
-            rml:reference "if (exists(.)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Duration$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
-            rr:class time:Duration
+            rdfs:label "ND-LotDuration";
+            rml:reference "if (exists(cbc:Description) or exists(cbc:DescriptionCode)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractTerm$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class epo:ContractTerm
         ] ;
+    # pOMap for BT-781-Lot is in Lot-compl
     rr:predicateObjectMap
         [
-            rdfs:label "BT-36-Lot (value)" ;
-            rdfs:comment "Duration Period of MG-Duration under ND-LotDuration" ;
-            rr:predicate time:numericDuration ;
+            # VERINFO: across versions only mapping-irrelevant changes, and introduction of List attribute from 1.9+
+            rdfs:label "BT-538-Lot (UNKNOWN)" ;
+            rdfs:comment "Duration Other of MG-ContractTerm under ND-LotDuration, UNKNOWN case" ;
+            rr:predicate epo:hasUnknownDuration ;
             rr:objectMap
                 [
-                    rml:reference "." ;
-                    rr:datatype xsd:decimal ;
+                    rml:reference "if (cbc:DescriptionCode/text()='UNKNOWN') then 'true' else null" ;
+                    rr:datatype xsd:boolean ;
                 ] ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-36-Lot (unit)" ;
-            rdfs:comment "Unit of Duration Period of MG-Duration under ND-LotDuration" ;
-            rr:predicate time:unitType ;
+            # VERINFO: across versions only mapping-irrelevant changes, and introduction of List attribute from 1.9+
+            rdfs:label "BT-538-Lot (UNLIMITED)" ;
+            rdfs:comment "Duration Other of MG-ContractTerm under ND-LotDuration, UNLIMITED case" ;
+            rr:predicate epo:hasUnlimitedDuration ;
             rr:objectMap
                 [
-                    rdfs:label "BT-36-Lot-Unit (time:TemporalUnit)" ;
-                    rr:parentTriplesMap tedm:temporal_unit ;
-                    rr:joinCondition [
-                        rr:child "@unitCode" ;
-                        rr:parent "xmlElement" ;
-                    ] ;
+                    rml:reference "if (cbc:DescriptionCode/text()='UNLIMITED') then 'true' else null" ;
+                    rr:datatype xsd:boolean ;
                 ] ;
         ] ;
 .
+
+tedm:MG-Duration-hasEstimatedDuration-DynamicPurchaseSystemTechnique-usesTechnique-Lot_ND-LotDuration owl:sameAs tedm:MG-Duration-definesEstimatedContractDuration-ContractTerm-foreseesTerm-Lot_ND-LotDuration .
 
 tedm:MG-Instant-hasBeginning-Interval-definesContractPeriod-ContractTerm-foreseesTerm-Lot_ND-LotDuration a rr:TriplesMap ;
     rdfs:label "MG-Period";
@@ -5249,7 +5325,7 @@ tedm:MG-langString-description-AwardCriterion-specifiesProcurementCriterion-Lot_
   rr:predicateObjectMap [
     rr:predicate dct:description ;
     rr:objectMap [
-      rml:reference "if((exists(@languageID)) and (not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-des']) and ./text() = 'unpublished' ))) then . else null" ;
+      rml:reference "if((exists(@languageID)) and (not(exists(../ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-des']) and ./text() = 'unpublished' ))) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -5318,7 +5394,7 @@ tedm:MG-langString-description-Fund-isFundedBy-Lot_ND-Funding a rr:TriplesMap ;
   rr:subjectMap [
     rr:class epo-not:Fund ;
     rdfs:label "ND-Funding" ;
-    rml:reference "if (exists(../efbc:FinancingIdentifier)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Fund$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+    rml:reference "'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Fund$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_')" ;
   ] ;
   rr:predicateObjectMap [
     rr:predicate dct:description ;
@@ -5584,7 +5660,7 @@ tedm:MG-langString-hasAwardCriteriaEvaluationFormula-AwardEvaluationTerm-isSubje
   rr:predicateObjectMap [
     rr:predicate epo-not:hasAwardCriteriaEvaluationFormula ;
     rr:objectMap [
-      rml:reference "if((exists(@languageID)) and (not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-com']) and ./text() = 'unpublished' ))) then . else null" ;
+      rml:reference "if((exists(@languageID)) and (not(exists(../ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-com']) and ./text() = 'unpublished' ))) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -5621,7 +5697,7 @@ tedm:MG-langString-hasAwardCriteriaOrderJustification-AwardEvaluationTerm-isSubj
   rr:predicateObjectMap [
     rr:predicate epo-not:hasAwardCriteriaOrderJustification ;
     rr:objectMap [
-      rml:reference "if((exists(@languageID)) and (not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-ord']) and ./text() = 'unpublished' ))) then . else null" ;
+      rml:reference "if((exists(@languageID)) and (not(exists(../ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-ord']) and ./text() = 'unpublished' ))) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -6098,7 +6174,7 @@ tedm:MG-langString-hasStrategicProcurementDescription-StrategicProcurement-fulfi
   rr:subjectMap [
     rr:class epo-not:StrategicProcurement ;
     rdfs:label "ND-StrategicProcurementType" ;
-    rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/StrategicProcurement${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+    rml:reference "if (../cbc:ProcurementTypeCode/text()!='none') then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/StrategicProcurement$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
   ] ;
   rr:predicateObjectMap [
     rr:predicate epo-not:hasStrategicProcurementDescription ;
@@ -6140,7 +6216,7 @@ tedm:MG-langString-prefLabel-AwardCriterion-specifiesProcurementCriterion-Lot_ND
   rr:predicateObjectMap [
     rr:predicate skos:prefLabel ;
     rr:objectMap [
-      rml:reference "if((exists(@languageID)) and (not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-nam']) and ./text() = 'unpublished' ))) then . else null" ;
+      rml:reference "if((exists(@languageID)) and (not(exists(../ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-nam']) and ./text() = 'unpublished' ))) then . else null" ;
       rml:languageMap [
         fnml:functionValue [
           rr:predicateObjectMap [
@@ -6275,37 +6351,77 @@ tedm:MG-InternationalProcurementInstrumentMeasuresInformation_ND-IPIMeasureExcep
             rr:objectMap
                 [
                     rdfs:label "at-voc:international-procurement-instrument-application" ;
-                    rr:termType rr:IRI ;
-                    rml:reference "if(not(exists(../../../../efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='int-pro-ins-exc-inf']) and efbc:ExceptionCode/text() = 'unpublished' )) then 'http://publications.europa.eu/resource/authority/international-procurement-instrument-application/' || efbc:ExceptionCode else null" ;
+                    rr:parentTriplesMap tedm:international-procurement-instrument-application ;
+                    rr:joinCondition [
+                        rr:child "efbc:ExceptionCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
                 ] ;
         ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-688-LotResult";
-            rdfs:comment "Overriding reasons relating to the public interest of MG-InternationalProcurementInstrumentMeasuresInformation under ND-IPIMeasureException";
-            rr:predicate epo:hasPublicInterestExceptionJustification ;
-            rr:objectMap
-                [
-                    rml:reference "if(exists(@languageID) and not(exists(../../../../efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='pub-int-exc-jus']) and efbc:ExceptionDescription/text() = 'unpublished' )) then efbc:ExceptionDescription else null" ;
-                    rml:languageMap [
-                        fnml:functionValue [
-                            rr:predicateObjectMap [
-                                rr:predicate idlab-fn:str ;
-                                rr:objectMap [
-                                    rml:reference "@languageID" ;
-                                ] ;
-                            ] ;
-                            rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
-                            rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
-                            rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
-                            rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+#    rr:predicateObjectMap
+#        [
+#            rdfs:label "BT-688-LotResult";
+#            rdfs:comment "Overriding reasons relating to the public interest of MG-InternationalProcurementInstrumentMeasuresInformation under ND-IPIMeasureException";
+#            rr:predicate epo:hasPublicInterestExceptionJustification ;
+#            rr:objectMap
+#                [
+#                    rml:reference "efbc:ExceptionDescription" ;
+#                    rml:languageMap [
+#                        fnml:functionValue [
+#                            rr:predicateObjectMap [
+#                                rr:predicate idlab-fn:str ;
+#                                rr:objectMap [
+#                                    rml:reference "@languageID" ;
+#                                ] ;
+#                            ] ;
+#                            rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+#                            rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+#                            rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+#                            rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+#                        ] ;
+#                    ] ;
+#                    rdfs:comment "Language of Exception Description of MG-InternationalProcurementInstrumentMeasuresInformation under ND-IPIMeasureException" ;
+#                    rdfs:label "BT-688-LotResult-Language" ;
+#                ] ;
+#        ] ;
+.
+
+tedm:MG-langString-hasPublicInterestExceptionJustification-InternationalProcurementInstrumentMeasuresInformation_ND-IPIMeasureException a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:StrategicProcurement/efac:StrategicProcurementInformation/efac:AppliedMeasure/efac:MeasureException[efbc:ExceptionCode/@listName='international-procurement-instrument-application']/efbc:ExceptionDescription" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rr:class epo:InternationalProcurementInstrumentMeasuresInformation ;
+        rdfs:label "ND-IPIMeasureException" ;
+        rml:reference "'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/InternationalProcurementInstrumentMeasuresInformation$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_')" ;
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate epo:hasPublicInterestExceptionJustification ;
+        rr:objectMap [
+            rml:reference "if(exists(@languageID)) then . else null" ;
+            rml:languageMap [
+                fnml:functionValue [
+                    rr:predicateObjectMap [
+                        rr:predicate idlab-fn:str ;
+                        rr:objectMap [
+                            rml:reference "@languageID" ;
                         ] ;
                     ] ;
-                    rdfs:comment "Language of Exception Description of MG-InternationalProcurementInstrumentMeasuresInformation under ND-IPIMeasureException" ;
-                    rdfs:label "BT-688-LotResult-Language" ;
+                    rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+                    rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+                    rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+                    rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
                 ] ;
+            ] ;
+            rdfs:comment "Language of Exception Description of MG-InternationalProcurementInstrumentMeasuresInformation under ND-IPIMeasureException" ;
+            rdfs:label "BT-688-LotResult-Language" ;
         ] ;
-.
+        rdfs:comment "Overriding reasons relating to the public interest of MG-InternationalProcurementInstrumentMeasuresInformation under ND-IPIMeasureException" ;
+        rdfs:label "BT-688-LotResult" ;
+    ] ;
+    rdfs:label "MG-InternationalProcurementInstrumentMeasuresInformation" .
 
 tedm:MG-InternationalProcurementInstrumentMeasuresInformation_ND-IPIMeasureStatistics a rr:TriplesMap ;
     rdfs:label "MG-InternationalProcurementInstrumentMeasuresInformation" ;
@@ -6328,7 +6444,7 @@ tedm:MG-InternationalProcurementInstrumentMeasuresInformation_ND-IPIMeasureStati
             rr:predicate epo:hasNumberOfTendersConcerned ;
             rr:objectMap
                 [
-                    rml:reference "if(not(exists(../../../../efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='num-ten-con']) and efbc:StatisticsNumeric/text() = '-1' )) then efbc:StatisticsNumeric else null" ;
+                    rml:reference "efbc:StatisticsNumeric" ;
                     rr:datatype xsd:integer
                 ] ;
         ] ;
@@ -6407,7 +6523,7 @@ tedm:MG-Lot_ND-RevenueAllocation a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-RevenueAllocation";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Lot/{../cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Lot/{../TenderLot/cbc:ID}" ;
             rr:class epo:Lot
         ] ;
     rr:predicateObjectMap
@@ -6436,32 +6552,69 @@ tedm:MG-ContractTerm-isSubjectToTerm-Lot_ND-RewardsPenalties a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-RewardsPenalties";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTerm${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}";
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTerm${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}";
             rr:class epo:ContractTerm
         ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "OPP-034-Tender" ;
-            rdfs:comment "Penalties and Rewards Description of MG-ContractTerm under ND-RewardsPenalties" ;
-            rr:predicate epo:hasPenaltiesAndRewardsDescription ;
-            rr:objectMap
-                [
-                    rml:reference "if(exists(@languageID)) then cbc:Description else null" ;
-                    rml:languageMap [
-                        fnml:functionValue [
-                            rr:predicateObjectMap [
-                                rr:predicate idlab-fn:str ;
-                                rr:objectMap [ rml:reference "cbc:Description/@languageID" ]
-                            ] ,
-                            tedm:idlab-fn_executes_lookup ,
-                            tedm:idlab-fn_inputFile_language ,
-                            tedm:idlab-fn_fromColumn_code ,
-                            tedm:idlab-fn_toColumn_code
-                        ]
-                    ] ;
-                ] ;
-        ] ;
+    # rr:predicateObjectMap
+    #     [
+    #         rdfs:label "OPP-034-Tender" ;
+    #         rdfs:comment "Penalties and Rewards Description of MG-ContractTerm under ND-RewardsPenalties" ;
+    #         rr:predicate epo:hasPenaltiesAndRewardsDescription ;
+    #         rr:objectMap
+    #             [
+    #                 rml:reference "if(exists(@languageID)) then efbc:TermDescription else null" ;
+    #                 rml:languageMap [
+    #                     fnml:functionValue [
+    #                         rr:predicateObjectMap [
+    #                             rr:predicate idlab-fn:str ;
+    #                             rr:objectMap [ rml:reference "efbc:TermDescription/@languageID" ]
+    #                         ] ,
+    #                         tedm:idlab-fn_executes_lookup ,
+    #                         tedm:idlab-fn_inputFile_language ,
+    #                         tedm:idlab-fn_fromColumn_code ,
+    #                         tedm:idlab-fn_toColumn_code
+    #                     ]
+    #                 ] ;
+    #             ] ;
+    #     ] ;
 .
+
+tedm:MG-langString-hasPenaltiesAndRewardsDescription-ContractTerm_ND-RewardsPenalties a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/source.xml" ;
+    rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender/efac:ContractTerm[efbc:TermCode/@listName='rewards-penalties']/efbc:TermDescription" ;
+    rml:referenceFormulation ql:XPath ;
+  ] ;
+  rr:subjectMap [
+    rr:class epo:ContractTerm ;
+    rdfs:label "ND-RewardsPenalties" ;
+    rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTerm${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}";
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate epo:hasPenaltiesAndRewardsDescription ;
+    rr:objectMap [
+      rml:reference "if(exists(@languageID)) then . else null" ;
+      rml:languageMap [
+        fnml:functionValue [
+          rr:predicateObjectMap [
+            rr:predicate idlab-fn:str ;
+            rr:objectMap [
+              rml:reference "@languageID" ;
+            ] ;
+          ] ;
+          rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+          rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+          rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+          rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+        ] ;
+      ] ;
+      rdfs:comment "Language of Penalties and Rewards Description of MG-ContractTerm under ND-RewardsPenalties" ;
+      rdfs:label "OPP-034-Tender-Language" ;
+    ] ;
+    rdfs:comment "Penalties and Rewards Description of MG-ContractTerm under ND-RewardsPenalties" ;
+    rdfs:label "OPP-034-Tender" ;
+  ] ;
+  rdfs:label "MG-ContractTerm" .
 
 tedm:MG-Lot_ND-RewardsPenalties a rr:TriplesMap ;
     rdfs:label "MG-Lot";
@@ -6474,7 +6627,7 @@ tedm:MG-Lot_ND-RewardsPenalties a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-RewardsPenalties";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Lot/{../cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Lot/{../TenderLot/cbc:ID}" ;
             rr:class epo:Lot
         ] ;
     rr:predicateObjectMap
@@ -6519,7 +6672,7 @@ tedm:MG-Lot_ND-OtherContractExecutionConditions a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-OtherContractExecutionConditions";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Lot/{../cbc:ID}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Lot/{../TenderLot/cbc:ID}" ;
             rr:class epo:Lot
         ] ;
     rr:predicateObjectMap

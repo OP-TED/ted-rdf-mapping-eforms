@@ -75,6 +75,15 @@ tedm:MG-Contract_ND-SettledContract  a rr:TriplesMap ;
             rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Contract/' || cbc:ID else null" ;
             rr:class epo:Contract
         ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate rdf:type ;
+            rr:objectMap
+                [
+                    rml:reference "if (/*/cac:ProcurementProjectLot[(cbc:ID/@schemeName='Lot') and (cbc:ID/text()=/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender[cbc:ID/text()=//efac:LotTender/cbc:ID/text()]/efac:TenderLot/cbc:ID/text())]/cac:TenderingProcess/cac:ContractingSystem/cbc:ContractingSystemTypeCode[@listName='framework-agreement' and starts-with(text(),'fa-')]) then 'http://data.europa.eu/a4g/ontology#FrameworkAgreement' else null" ;
+                    rr:termType rr:IRI ;
+                ] ;
+        ] ;
      rr:predicateObjectMap
         [
             rdfs:label "BT-150-Contract" ;
@@ -148,21 +157,7 @@ tedm:MG-Contract_ND-SettledContract  a rr:TriplesMap ;
         ] ;
      rr:predicateObjectMap
         [
-            rdfs:label "ND-ContractEUFunds and BT-5011-Contract" ;
-            rdfs:comment "Contract EU Funds of MG-Contract under ND-SettledContract" ;
-            rr:predicate  epo:isFundedBy ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-Fund-isFundedBy-Contract_ND-SettledContract ;
-                    rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(.)";
-                    ];
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-722-Contract" ;
+            rdfs:label "ND-ContractEUFunds and its fields BT-5011-Contract, BT-722-Contract" ;
             rdfs:comment "Contract EU Funds Programme of MG-Contract under ND-SettledContract" ;
             rr:predicate  epo:isFundedBy ;
             rr:objectMap
@@ -208,53 +203,6 @@ tedm:MG-Contract_ND-SettledContract  a rr:TriplesMap ;
         ] ;
 .
 
-tedm:MG-Fund_ND-SettledContract  a rr:TriplesMap ;
-  rdfs:label "MG-Fund";
-       rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:SettledContract" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-SettledContract" ;
-             rml:reference "if (exists(efac:Funding)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Fund$' || replace(replace(replace(path(.), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
-            rr:class epo:Fund
-        ] ;
-.
-
-tedm:MG-Fund-isFundedBy-Contract_ND-SettledContract   a rr:TriplesMap ;
-  rdfs:label "MG-Fund";
-       rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:SettledContract" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-SettledContract" ;
-             rml:reference "if (exists(efac:Funding)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Fund$' || replace(replace(replace(path(.), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
-            rr:class epo:Fund
-        ] ;
-    rr:predicateObjectMap
-        [
-            # Differences across versions have no functional effect on this mapping
-            # VERINFO: SDK v1.6 contains only node name change
-            rdfs:label "BT-5011-Contract" ;
-            rdfs:comment "Contract EU Funds Financing Identifier (Contract EU Funds Identifier up to v1.6) of MG-Fund under ND-SettledContract" ;
-            rr:predicate adms:identifier ;
-            rr:objectMap
-                [
-                    rr:parentTriplesMap tedm:MG-Identifier-identifier-Fund-isFundedBy-Contract_ND-ContractEUFunds ;
-                    rr:joinCondition [
-                        rr:child "path(.)";
-                        rr:parent "path(..)";
-                    ];
-                ] ;
-        ] ;
-    .
 tedm:MG-Identifier-identifier-Fund-isFundedBy-Contract_ND-ContractEUFunds a rr:TriplesMap ;
   rdfs:label "MG-Identifier";
        rml:logicalSource
@@ -301,10 +249,26 @@ tedm:MG-Fund-isFundedBy-Contract_ND-ContractEUFunds a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-ContractEUFunds" ;
-            rml:reference "if((exists(cbc:FundingProgramCode)) or (exists(cbc:Description))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Fund$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if(exists(efbc:FinancingIdentifier) or exists(cbc:FundingProgramCode)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Fund$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:Fund
         ] ;
 
+    rr:predicateObjectMap
+        [
+            # Differences across versions have no functional effect on this mapping
+            # VERINFO: SDK v1.6 contains only node name change
+            rdfs:label "BT-5011-Contract" ;
+            rdfs:comment "Contract EU Funds Financing Identifier (Contract EU Funds Identifier up to v1.6) of MG-Fund under ND-SettledContract" ;
+            rr:predicate adms:identifier ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Identifier-identifier-Fund-isFundedBy-Contract_ND-ContractEUFunds ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(.)";
+                    ];
+                ] ;
+        ] ;
      rr:predicateObjectMap
         [
             rdfs:label "BT-722-Contract";
@@ -375,7 +339,7 @@ tedm:MG-Buyer-signedByBuyer-Contract_ND-ContractSignatory a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-ContractSignatory" ;
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Buyer/{concat(cac:PartyIdentification/cbc:ID, cac:PartyIdentification/cbc:ID/@schemeName)}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Buyer/{cac:PartyIdentification/cbc:ID}" ;
             rr:class epo:Buyer
         ] ;
     rr:predicateObjectMap
@@ -439,7 +403,7 @@ tedm:MG:PurchaseContract_ND-SettledContract  a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-SettledContract" ;
-            rml:reference "if (exists(efbc:ContractFrameworkIndicator)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Contract/' || cbc:ID else null" ;
+            rml:reference "if (exists(cac:NoticeDocumentReference/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Contract/' || cbc:ID else null" ;
             rr:class epo:PurchaseContract
         ] ;
     rr:predicateObjectMap
@@ -584,7 +548,7 @@ tedm:MG-langString-description-Fund-isFundedBy-Contract_ND-ContractEUFunds a rr:
     rr:subjectMap [
         rr:class epo-not:Fund ;
         rdfs:label "ND-ContractEUFunds" ;
-        rml:reference "'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Fund$' || replace(replace(replace(path(../..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_')" ;
+        rml:reference "'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Fund$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_')" ;
     ] ;
     rr:predicateObjectMap [
         tedm:minSDKVersion "1.9.1" ;
@@ -664,36 +628,37 @@ tedm:MG-Asset_ND-AssetList a rr:TriplesMap ;
             rml:reference "'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Asset$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_')" ;
             rr:class epo:Asset
         ] ;
+#    rr:predicateObjectMap
+#        [
+#            rdfs:label "OPP-021-Contract" ;
+#            rdfs:comment "Used asset of MG-Asset under ND-AssetList" ;
+#            rr:predicate dct:description ;
+#            rr:objectMap
+#                [
+#                    rml:reference "if(exists(@languageID)) then efbc:AssetDescription else null" ;
+#                    rml:languageMap [
+#                        fnml:functionValue [
+#                            rr:predicateObjectMap [
+#                                rr:predicate idlab-fn:str ;
+#                                rr:objectMap [ rml:reference "efbc:AssetDescription/@languageID" ]
+#                            ] ,
+#                            tedm:idlab-fn_executes_lookup ,
+#                            tedm:idlab-fn_inputFile_language ,
+#                            tedm:idlab-fn_fromColumn_code ,
+#                            tedm:idlab-fn_toColumn_code
+#                        ]
+#                    ] ;
+#                ] ;
+#        ] ;
+    # TODO replicate this technique for all multilingual mappings, i.e. have a separate dedicated multilingual mapping and one plain mapping
     rr:predicateObjectMap
         [
-            rdfs:label "OPP-021-Asset" ;
-            rdfs:comment "Asset Description (multilingual) of MG-Asset under ND-AssetList" ;
+            rdfs:label "OPP-021-Contract (plain text)" ;
+            rdfs:comment "Used asset of MG-Asset under ND-AssetList (plain text)" ;
             rr:predicate dct:description ;
             rr:objectMap
                 [
-                    rml:reference "if(exists(@languageID)) then efbc:AssetDescription else null" ;
-                    rml:languageMap [
-                        fnml:functionValue [
-                            rr:predicateObjectMap [
-                                rr:predicate idlab-fn:str ;
-                                rr:objectMap [ rml:reference "efbc:AssetDescription/@languageID" ]
-                            ] ,
-                            tedm:idlab-fn_executes_lookup ,
-                            tedm:idlab-fn_inputFile_language ,
-                            tedm:idlab-fn_fromColumn_code ,
-                            tedm:idlab-fn_toColumn_code
-                        ]
-                    ] ;
-                ] ;
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "OPP-021-Asset-Plain" ;
-            rdfs:comment "Asset Description (plain text) of MG-Asset under ND-AssetList" ;
-            rr:predicate dct:description ;
-            rr:objectMap
-                [
-                    rml:reference "efbc:AssetDescription" ;
+                    rml:reference "if (not(exists(efbc:AssetDescription/@languageID))) then efbc:AssetDescription else null" ;
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -717,6 +682,43 @@ tedm:MG-Asset_ND-AssetList a rr:TriplesMap ;
                 ] ;
         ] ;
 .
+
+tedm:MG-langString-description-Asset_ND-AssetList a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/source.xml" ;
+    rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:SettledContract/efac:DurationJustification/efac:AssetsList/efac:Asset/efbc:AssetDescription" ;
+    rml:referenceFormulation ql:XPath ;
+  ] ;
+  rr:subjectMap [
+    rr:class epo:Asset ;
+    rdfs:label "ND-AssetList" ;
+    rml:reference "'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/Asset$' || replace(replace(replace(path(..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_')" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate dct:description ;
+    rr:objectMap [
+      rml:reference "if(exists(@languageID)) then . else null" ;
+      rml:languageMap [
+        fnml:functionValue [
+          rr:predicateObjectMap [
+            rr:predicate idlab-fn:str ;
+            rr:objectMap [
+              rml:reference "@languageID" ;
+            ] ;
+          ] ;
+          rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+          rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+          rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+          rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+        ] ;
+      ] ;
+      rdfs:comment "Language of Used asset of MG-Asset under ND-AssetList" ;
+      rdfs:label "OPP-021-Contract-Language" ;
+    ] ;
+    rdfs:comment "Used asset of MG-Asset under ND-AssetList" ;
+    rdfs:label "OPP-021-Contract" ;
+  ] ;
+  rdfs:label "MG-Asset" .
 
 tedm:MG-ContractTerm-describesAsset-ContractTerm_ND-ExtendedDurationJustification a rr:TriplesMap ;
     rdfs:label "MG-ContractTerm" ;
@@ -759,12 +761,12 @@ tedm:MG-EnergyEfficiencyInformation_ND-EEDAssetQuantity a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-EEDAssetQuantity" ;
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/EnergyEfficiencyInformation${replace(translate(path(../../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/EnergyEfficiencyInformation${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
             rr:class epo:EnergyEfficiencyInformation
         ] ;
             rr:predicateObjectMap
         [
-            rdfs:label "BT-815-EnergyEfficiencyInformation" ;
+            rdfs:label "BT-815-LotResult" ;
             rdfs:comment "Total Items of MG-EnergyEfficiencyInformation under ND-EEDAssetQuantity" ;
             rr:predicate epo:concernsTotalItems ;
             rr:objectMap
@@ -791,26 +793,32 @@ tedm:MG-EnergyEfficiencyInformation_ND-EEDProcurementDetailsLotResult a rr:Tripl
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-811-EnergyEfficiencyInformation" ;
-            rdfs:comment "Calculation Based On of MG-EnergyEfficiencyInformation under ND-EEDProcurementDetailsLotResult" ;
+            rdfs:label "BT-811(a)-LotResult" ;
+            rdfs:comment "EED List (Basis) of MG-EnergyEfficiencyInformation under ND-EEDProcurementDetailsLotResult" ;
             rr:predicate epo:hasCalculationBasedOn ;
             rr:objectMap
                 [
                     rdfs:label "at-voc:energy-efficiency-basis" ;
-                    rr:template "http://publications.europa.eu/resource/authority/energy-efficiency-basis/{efbc:LegalFrameworkCode}" ;
-                    rr:termType rr:IRI ;
+                    rr:parentTriplesMap tedm:energy-efficiency-basis ;
+                    rr:joinCondition [
+                        rr:child "efbc:LegalFrameworkCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
                 ] ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-811-EnergyEfficiencyInformation" ;
-            rdfs:comment "Energy Efficiency Item Category of MG-EnergyEfficiencyInformation under ND-EEDProcurementDetailsLotResult" ;
+            rdfs:label "BT-811(b)-LotResult" ;
+            rdfs:comment "EED List (Item) of MG-EnergyEfficiencyInformation under ND-EEDProcurementDetailsLotResult" ;
             rr:predicate epo:concernsEnergyEfficiencyItemCategory ;
             rr:objectMap
                 [
                     rdfs:label "at-voc:energy-efficiency-item" ;
-                    rr:template "http://publications.europa.eu/resource/authority/energy-efficiency-item/{efbc:AssetCategoryCode}" ;
-                    rr:termType rr:IRI ;
+                    rr:parentTriplesMap tedm:energy-efficiency-item ;
+                    rr:joinCondition [
+                        rr:child "efbc:AssetCategoryCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -845,14 +853,17 @@ tedm:MG-EnergyEfficiencyInformation_ND-EEDAssetLabel a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-812-EnergyEfficiencyInformation" ;
+            rdfs:label "BT-812-LotResult" ;
             rdfs:comment "Energy Efficiency Label of MG-EnergyEfficiencyInformation under ND-EEDAssetLabel" ;
             rr:predicate epo:hasEnergyEfficiencyLabel ;
             rr:objectMap
                 [
                     rdfs:label "at-voc:energy-efficiency-label" ;
-                    rr:template "http://publications.europa.eu/resource/authority/energy-efficiency-label/{.}" ;
-                    rr:termType rr:IRI ;
+                    rr:parentTriplesMap tedm:energy-efficiency-label ;
+                    rr:joinCondition [
+                        rr:child "." ;
+                        rr:parent "code.value" ;
+                    ] ;
                 ] ;
         ] ;
 .
@@ -873,7 +884,7 @@ tedm:MG-EnergyEfficiencyInformation_ND-EEDConsumption a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-813-EnergyEfficiencyInformation" ;
+            rdfs:label "BT-813-LotResult" ;
             rdfs:comment "Item Consumption of MG-EnergyEfficiencyInformation under ND-EEDConsumption" ;
             rr:predicate epo:hasItemConsumption ;
             rr:objectMap
@@ -903,7 +914,7 @@ tedm:MG-Quantity-hasItemConsumption-EnergyEfficiencyInformation_ND-EEDConsumptio
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-813-EnergyEfficiencyInformation" ;
+            rdfs:label "BT-813-LotResult" ;
             rdfs:comment "Quantity Value of MG-Quantity for MG-EnergyEfficiencyInformation under ND-EEDConsumption" ;
             rr:predicate epo:hasQuantityValue ;
             rr:objectMap
@@ -914,17 +925,13 @@ tedm:MG-Quantity-hasItemConsumption-EnergyEfficiencyInformation_ND-EEDConsumptio
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "OPT-080-EnergyEfficiencyInformation" ;
+            rdfs:label "OPT-080-LotResult" ;
             rdfs:comment "Unit Code of MG-Quantity for MG-EnergyEfficiencyInformation under ND-EEDConsumption" ;
-            rr:predicate epo:hasUnitCode ;
+            rr:predicate epo:hasUnitDescription ;
             rr:objectMap
                 [
-                    rdfs:label "at-voc:measurement-unit" ;
-                    rr:parentTriplesMap tedm:measurement-unit ;
-                    rr:joinCondition [
-                        rr:child "../efbc:AssetMetricCode" ;
-                        rr:parent "code.value" ;
-                    ] ;
+                    rml:reference "../efbc:AssetMetricCode" ;
+                    rr:datatype xsd:string ;
                 ] ;
         ] ;
 .
@@ -945,7 +952,7 @@ tedm:MG-EnergyEfficiencyInformation_ND-EEDSavings a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-814-EnergyEfficiencyInformation" ;
+            rdfs:label "BT-814-LotResult" ;
             rdfs:comment "Item Consumption Savings of MG-EnergyEfficiencyInformation under ND-EEDSavings" ;
             rr:predicate epo:hasItemConsumptionSavings ;
             rr:objectMap
@@ -975,7 +982,7 @@ tedm:MG-Quantity-hasItemConsumptionSavings-EnergyEfficiencyInformation_ND-EEDSav
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "BT-814-EnergyEfficiencyInformation" ;
+            rdfs:label "BT-814-LotResult" ;
             rdfs:comment "Quantity Value of MG-Quantity for MG-EnergyEfficiencyInformation under ND-EEDSavings" ;
             rr:predicate epo:hasQuantityValue ;
             rr:objectMap
@@ -986,17 +993,13 @@ tedm:MG-Quantity-hasItemConsumptionSavings-EnergyEfficiencyInformation_ND-EEDSav
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "OPT-081-EnergyEfficiencyInformation" ;
+            rdfs:label "OPT-081-LotResult" ;
             rdfs:comment "Unit Code of MG-Quantity for MG-EnergyEfficiencyInformation under ND-EEDSavings" ;
-            rr:predicate epo:hasUnitCode ;
+            rr:predicate epo:hasUnitDescription ;
             rr:objectMap
                 [
-                    rdfs:label "at-voc:measurement-unit" ;
-                    rr:parentTriplesMap tedm:measurement-unit ;
-                    rr:joinCondition [
-                        rr:child "../efbc:AssetMetricCode" ;
-                        rr:parent "code.value" ;
-                    ] ;
+                    rml:reference "../efbc:AssetMetricCode" ;
+                    rr:datatype xsd:string ;
                 ] ;
         ] ;
 .

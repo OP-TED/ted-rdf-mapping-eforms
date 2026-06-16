@@ -2,9 +2,10 @@
 
 == Unmappable Fields For eForm Mappings V 2.0.0
 
-There are a total of 58 unmappable fields to ePO 5.2.0:
+There are a total of 59 unmappable fields to ePO 5.2.0:
 [cols="3*", options="header"]
 |===
+|eForms SDK ID |Name |Mapping Notes (public)
 |BT-738-notice
 |Notice Publication Date Preferred
 |unmappable since publicationProvision was deleted in ePO 4.0.0. This is not a problem as these values are not provided in the xml input data.
@@ -128,6 +129,10 @@ The proper identifier instance the will be associated to the epo:Tender intence 
 |BT-1711-Tender
 |Tender Ranked
 |Cannot be mapped, as ePO does not provide a way of explicitly encoding this indicator. However, a SPARQL query can be written that checks whether the output contains an epo:TenderAwardOutcome instance that links to this epo:Tender instance, and which has a value on the epo:hasAwardRank property, or not.
+|OPT-322-LotResult
+|LotResult Technical Identifier
+|We create an epo:LotAwardOutcome instance at the node ND-LotResult, and use this ID as part of its IRI.
+There is no need for a mapping here, as ePO does not foresee an adms:identifier on the LotAwardOutcome class.
 |OPT-155-LotResult
 |Vehicle Type
 |This code does not exist in ePO. Instead, each of the three values found in the codelist are represented in ePO as attributes mapped in field OPT-156-LotResult.
@@ -164,10 +169,12 @@ So, this field cannot be (and doesn't need to be) mapped explicitely, but we cou
 |Unmappable, since we do not have a fax attribute for a Person. We could use the business of the person's contact point but that is already mapped elsewhere.
 |BT-26(m)-Part
 |Classification Type (e.g. CPV)
-|The value of the listName attribute needs to be 'cpv' and it is added as an xpath condition for the mapping of BT-262-Part.
+|Mappable only starting with ePO 5.2 onwards (See GH #726) https://github.com/OP-TED/ePO/issues/726#issuecomment-2838604194
+We can map this only to CPV, no codelist is needed
 |BT-26(a)-Part
 |Classification Type (e.g. CPV)
-|The value of the listName attribute needs to be 'cpv' and it is added as an xpath condition for the mapping of BT-263-Part.
+|Mappable only starting with ePO 5.2 onwards (See GH #726) https://github.com/OP-TED/ePO/issues/726#issuecomment-2838604194
+We can map this only to CPV, no codelist is needed
 |OPA-36-Part-Number
 |Numeric value of the duration period
 |Field could be used for notices subtypes 4, 5, 6, E2 notices (starting with SDK 1 .13), however it is not mentioned in any of those form json files.
@@ -203,21 +210,59 @@ According to https://docs.ted.europa.eu/epo-wgm/notes/2025-01-21-wgm.html#_discu
 See also: https://docs.ted.europa.eu/epo-wgm/notes/2025-09-25-wgm.html#_contract_terms_and_other_information_of_a_tender
 |===
 
-= Remaining SHACL Violations from previous versions
 
-[cols="1*", options="header"]
+== Known SHACL Violations (non-issues with regard to the RML mappings)
+
+=== sh:ClassConstraintComponent
 |===
-|Issue
-|sh:DatatypeConstraintComponent epo:hasOJSIssueNumber known type conflict issue in ePO (expects integer but reality is string)
-|sh:MinCountConstraintComponent epo:hasOfficialLanguage known issue
-|sh:MinCountConstraintComponent epo:hasNoticeType known issue with referenced entity with minimal information (previous Notice) generally (“external resources”)
-|sh:MinCountConstraintComponent epo:hasProcedureType issue with missing elements in some data (no ProcedureCode or even TenderingProcess) with other reason
-|sh:DatatypeConstraintComponent epo:hasAwardDecisionDate known type conflict issue in ePO (expects dateTime but reality is date) generally
-|sh:MinCountConstraintComponent epo:hasLotReference referenced entity with minimal information (proxy FrameworkAgreement)
-|sh:DatatypeConstraintComponent epo:hasProcurementDocumentChangeDate known type conflict issue in ePO (expects dateTime but reality is date) generally
-|sh:MinCountConstraintComponent epo:relatesToEFormSectionIdentifier issue with missing elements in some data (no changed section identifier), see for e.g. SDK example change-cn_24_void
-|sh:DatatypeConstraintComponent epo:hasOpeningDateTime known type conflict issue in ePO (expects dateTime but reality is date) generally
-|sh:DatatypeConstraintComponent epo:hasReceiptTenderDeadline known type conflict issue in ePO (expects dateTime but reality is date) generally
-|sh:MaxCountConstraintComponent dct:description known issue about multiple values with language tags
-|sh:MinCountConstraintComponent epo:isSubmittedForLot known issue about Lot- vs. LotGroup-specific property
+|epo:definesInformationProvider | ePO SHACL shape problem for the the subclasses of epo:AuxiliaryParty
+|epo:playedBy | Reporting problem: person:Person is not recognized as a foaf:Agent
+|===
+
+=== sh:DatatypeConstraintComponent
+|===
+|epo:hasAccessibilityDate | Reporting problem: xsd:date with timezone is not recognized as valid
+|epo:hasAdditionalInformationDeadline | Data problem: xsd:dateTime is expected but data does not contain the time component
+|epo:hasAwardDecisionDate | Modelling problem (ePO/eForms): ePO expects an xsd:dateTime, but eForms provides only a date
+|epo:hasContractConclusionDate | Reporting problem: xsd:date with timezone is not recognized as valid
+|epo:hasEstimatedContractNoticePublicationDate | Reporting problem: xsd:date with timezone is not recognized as valid
+|epo:hasEstimatedInvitationToExpressInterestDate | Reporting problem: xsd:date with timezone is not recognized as valid
+|epo:hasEstimatedInvitationToTenderDate | Reporting problem: xsd:date with timezone is not recognized as valid
+|epo:hasProcurementDocumentChangeDate | Modelling problem (ePO/eForms): ePO expects an xsd:dateTime, but eForms provides only a date
+|epo:hasWithdrawalDate | Reporting problem: xsd:date with timezone is not recognized as valid
+|epo:hasElectronicTenders | Data problem: decimal value provided while integer is expected
+|epo:hasMaskableProperty | ePO declares the property value as xsd:anyURI, but we use rdf:Property instead, which is more correct, and ePO will be updated to fix this
+|===
+=== sh:MaxCountConstraintComponent
+|===
+|epo:hasAwardCriteriaOrderJustification | ePO problem: known issue about multiple values with language tags
+|epo:hasBuyerProfile | Data/Modelling problem: Multiple Buyer roles can be played by the same organization, each specifying different information that will be merged
+|epo:hasDurationExtensionJustification | ePO problem: known issue about multiple values with language tags
+|epo:hasLaunchFrameworkAgreementMaximumValue | Modelling problem: Two fields (BT-271-LotsGroup and BT-157-LotsGroup) are mapped to the same property
+|epo:hasLegalFormRequirement | ePO problem: known issue about multiple values with language tags
+|epo:hasOpeningPlace | ePO problem: known issue about multiple values with language tags
+|epo:hasPenaltiesAndRewardsDescription | ePO problem: known issue about multiple values with language tags
+|epo:hasQualityTargetDescription | ePO problem: known issue about multiple values with language tags
+|epo:hasRecurrenceDescription | ePO problem: known issue about multiple values with language tags
+|epo:hasRestrictedAccessURL|Data/Modelling problem: Multiple <cac:CallForTendersDocumentReference> elements (node ND-LotDocumentsReference) with the same cbc:ID, but different <cac:ExternalReference/cbc:URI> will result in one RDF instance with two values for the  epo:hasRestrictedAccessURL property, violating ePO's constraint. (e.g. notice 650149-2024) ePO might want to consider relaxing the cardinality constraint.
+|epo:specifiesReviewRequester | Data/Modelling problem (ePO/eForms): ePO restrict max cardinality of epo:specifiesReviewRequester to one, but data contains two <efac:AppealingParty> child under the same <efac:AppealInformation> XML element.
+|===
+=== sh:MinCountConstraintComponent
+|===
+|	epo:concernsMaskedObject | Data problem: The data being unpublished is not present as a masked value (576085-2024)
+|	epo:hasAllegedIrregularityType | Incomplete info related to previous notice data: ReviewRequests referenced from ReviewDecisions don't have all the fields declared as mandatory in ePO
+|	epo:hasAmountValue | Privacy-related problem: Masked values, such as "-1" and "unpublished" will not be instantiated in RDF
+|	epo:hasChangeJustification | Modelling problem (ePO/eForms): Separate and partially complete ChangeInformation instances are created from the nodes ND-ChangeReason, ND-Change and ND-Changes
+|	epo:hasCurrency | Data problem: Some Monetary values are missing the currency, e.g. for XML element cbc:EstimatedOverallContractAmount (field BT-27-Part)
+|	epo:hasIrregularityType | Data/Modelling problem (ePO/eForms): Some ReviewIrregularitySummary instances do not have irregularity type (field BT-636-LotResult) specified in eForms
+|	epo:hasLotReference | Data/Modelling problem: Some Contracts do not have a Lot reference in eForms
+|	epo:hasMainClassification | Incomplete info related to previous notice data: Previous epo:Procedure instances referenced in this notice will not have all the fields declared as mandatory in ePO. Also, it may be Data/Modelling problem, as certain Lot definitions don't have main classification specified in eForms, only additional classifications!
+|	epo:hasNoticeType | Incomplete info related to previous notice data: Previous epo:Notice instances referenced in this notice will not have all the fields declared as mandatory in ePO
+|	epo:hasNumberOfReviewRequests | Modelling problem (ePO/eForms): this property is not mapped from any of the eForms fields. Consider relaxing the cardinality of the property
+|	epo:hasOpeningDateTime | Data/ePO problem: Opening DateTime sometimes is not specified, just opening place. Consider relaxing the cardinality of the property
+|	epo:hasProcurementScopeDividedIntoLot | Incomplete info related to previous notice data: Previous epo:Procedure instances referenced in this notice will not have all the fields declared as mandatory in ePO
+|	epo:isSubmittedForLot | Data/ePO problem: The lot reference (field BT-13714-Tender) might be missing from a Tender definition in eForms. Consider relaxing the cardinality of the property
+|	epo:playedBy | Modelling/ePO problem: Due to the nature of information provided for field BT-47-Lot the epo:Candidate instance will not have a playedBy relationship to a specific foaf:Agent. Consider relaxing the cardinality of the property
+|	epo:refersToPreviousNotice | Modelling problem (ePO/eForms): Separate and partially complete ChangeInformation instances are created from the nodes ND-ChangeReason, ND-Change and ND-Changes
+|	epo:relatesToEFormSectionIdentifier | Modelling problem (ePO/eForms): Separate and partially complete ChangeInformation instances are created from the nodes ND-ChangeReason, ND-Change and ND-Changes
 |===

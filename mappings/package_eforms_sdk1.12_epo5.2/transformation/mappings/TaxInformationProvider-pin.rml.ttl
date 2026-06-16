@@ -35,7 +35,7 @@ tedm:MG-TaxInformationProvider_ND-PartFiscalLegislation a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-PartFiscalLegislation" ;
-            rml:reference "if(exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/TaxInformationProvider/' || encode-for-uri(concat(cac:IssuerParty/cac:PartyIdentification/cbc:ID, cac:IssuerParty/cac:PartyIdentification/cbc:ID/@schemeName)) else null";
+            rml:reference "if(exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/TaxInformationProvider/' || encode-for-uri(cac:IssuerParty/cac:PartyIdentification/cbc:ID) else null";
             rr:class epo:TaxInformationProvider
         ] ;
     rr:predicateObjectMap
@@ -91,4 +91,40 @@ tedm:MG-TaxInformationProvider_ND-PartFiscalLegislation a rr:TriplesMap ;
                    ];
                ] ;
        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-110-Part-FiscalLegis" ;
+            rdfs:comment "Connection of MG-TaxInformationProvider to MG-TaxDocumentation under ND-PartFiscalLegislation" ;
+            rr:predicate epo:providesDocumentation ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-TaxDocumentation-providesDocumentation-TaxInformationProvider_ND-PartFiscalLegislation ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(../../..)" ;
+                    ] ;
+                ] ;
+        ] ;
 .
+
+tedm:MG-TaxDocumentation-providesDocumentation-TaxInformationProvider_ND-PartFiscalLegislation a rr:TriplesMap ;
+    rdfs:label "MG-TaxDocumentation" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:TenderingTerms/cac:FiscalLegislationDocumentReference/cac:Attachment/cac:ExternalReference/cbc:URI" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-PartFiscalLegislation" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/TaxDocumentation${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:TaxDocumentation
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPT-110-Part-FiscalLegis" ;
+        rdfs:comment "Address URL of MG-TaxDocumentation under ND-PartFiscalLegislation" ;
+        rr:predicate epo:hasAddressURL ;
+        rr:objectMap [
+            rml:reference "." ;
+            rr:datatype xsd:anyURI
+        ] ;
+    ] .
