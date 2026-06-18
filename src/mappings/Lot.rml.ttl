@@ -350,6 +350,19 @@ tedm:MG-Lot_ND-Lot a rr:TriplesMap ;
                     ] ;
                 ] ;
         ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "Connection between MG-Lot and MG-ContractTerm under ND-QualityTarget" ;
+            rr:predicate epo:isSubjectToTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ContractTerm-concernsContractTerm-QualityTargetInformation_ND-QualityTarget ;
+                    rr:joinCondition [
+                            rr:child "path(.)" ;
+                            rr:parent "path(../..)" ;
+                    ] ;
+                ] ;
+        ] ;
     rr:predicateObjectMap [
             rdfs:label "BT-124-Lot";
             rr:predicate epo:usesChannel ;
@@ -3358,7 +3371,7 @@ tedm:MG-ContractTerm-foreseesTerm-Lot_ND-ExecutionRequirements a rr:TriplesMap ;
     #     ] ;
 .
 
-tedm:MG-QualityTargetInformation-concernsContractTerm-ContractTerm_ND-LotTenderingTerms a rr:TriplesMap ;
+tedm:MG-QualityTargetInformation-concernsContractTerm-ContractTerm_ND-QualityTarget a rr:TriplesMap ;
     rdfs:label "MG-QualityTargetInformation" ;
     rml:logicalSource
         [
@@ -3379,17 +3392,17 @@ tedm:MG-QualityTargetInformation-concernsContractTerm-ContractTerm_ND-LotTenderi
             rr:predicate epo:concernsContractTerm ;
             rr:objectMap
                 [
-                    rr:parentTriplesMap tedm:MG-ContractTerm-concernsContractTerm-QualityTargetInformation_ND-LotTenderingTerms ;
+                    rr:parentTriplesMap tedm:MG-ContractTerm-concernsContractTerm-QualityTargetInformation_ND-QualityTarget ;
                     rr:joinCondition [
                         rr:child "path(..)" ;
-                        rr:parent "path(.)" ;
+                        rr:parent "path(..)" ;
                     ] ;
                 ] ;
         ] ;
     rr:predicateObjectMap
         [
             rdfs:label "OPT-071-Lot" ;
-            rdfs:comment "Quality Target Code of MG-QualityTargetInformation under ND-Lot" ;
+            rdfs:comment "Quality Target Code of MG-QualityTargetInformation under ND-QualityTarget" ;
             rr:predicate epo:hasQualityTargetCode ;
             rr:objectMap
                 [
@@ -3440,18 +3453,18 @@ tedm:MG-langString-hasQualityTargetDescription-QualityTargetInformation_ND-Quali
   ] ;
   rdfs:label "MG-QualityTargetInformation" .
 
-tedm:MG-ContractTerm-concernsContractTerm-QualityTargetInformation_ND-LotTenderingTerms a rr:TriplesMap ;
+tedm:MG-ContractTerm-concernsContractTerm-QualityTargetInformation_ND-QualityTarget a rr:TriplesMap ;
     rdfs:label "MG-ContractTerm" ;
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:ContractExecutionRequirement[cbc:ExecutionRequirementCode/@listName='customer-service']" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
         [
             rdfs:label "ND-LotTenderingTerms" ;
-            rml:reference "if (exists(cac:ContractExecutionRequirement[cbc:ExecutionRequirementCode/@listName='customer-service'])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractTerm$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractTerm$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_')" ;
             rr:class epo:ContractTerm
         ] ;
 .
