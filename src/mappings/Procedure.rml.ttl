@@ -1969,32 +1969,6 @@ tedm:MG-langString-hasCrossBorderLaw-ProcedureTerm-isSubjectToTerm-Procedure_ND-
     ] ;
     rdfs:label "MG-ProcedureTerm" .
 
-tedm:MG-LocalLegalBasisInformation_ND-LocalLegalBasisNoID a rr:TriplesMap ;
-    rdfs:label "MG-LocalLegalBasisInformation" ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:TenderingTerms/cac:ProcurementLegislationDocumentReference[cbc:ID/text()='LocalLegalBasis']" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-LocalLegalBasisNoID" ;
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/LocalLegalBasisInformation${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
-            rr:class epo:LocalLegalBasisInformation
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-01(e)-Procedure" ;
-            rdfs:comment "Legal Basis of MG-LocalLegalBasisInformation under ND-LocalLegalBasisNoID" ;
-            rr:predicate epo:hasLegalBasis ;
-            rr:objectMap
-                [
-                    rr:constant <http://publications.europa.eu/resource/authority/legal-basis/other> ;
-                ] ;
-        ] ;
-.
-
 tedm:MG-Procedure-concernsProcurementElement-LocalLegalBasisInformation_ND-LocalLegalBasisNoID a rr:TriplesMap ;
     rdfs:label "MG-LocalLegalBasisInformation" ;
     rml:logicalSource
