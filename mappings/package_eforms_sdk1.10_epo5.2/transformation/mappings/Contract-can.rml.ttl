@@ -720,7 +720,7 @@ tedm:MG-langString-description-Asset_ND-AssetList a rr:TriplesMap ;
   ] ;
   rdfs:label "MG-Asset" .
 
-tedm:MG-ContractTerm-describesAsset-ContractTerm_ND-ExtendedDurationJustification a rr:TriplesMap ;
+tedm:MG-ContractTerm-isSubjectToTerm-Lot_ND-ExtendedDurationJustification a rr:TriplesMap ;
     rdfs:label "MG-ContractTerm" ;
     rml:logicalSource
         [
@@ -731,13 +731,13 @@ tedm:MG-ContractTerm-describesAsset-ContractTerm_ND-ExtendedDurationJustificatio
     rr:subjectMap
         [
             rdfs:label "ND-ExtendedDurationJustification" ;
-            rml:reference "if (exists(efbc:ExtendedDurationIndicator)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractTerm$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if(efbc:ExtendedDurationIndicator/text()='true') then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractTerm$' || replace(replace(replace(path(../..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class epo:ContractTerm
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "OPP-020-ContractTerm" ;
-            rdfs:comment "OPP-020-ContractTerm of MG-ContractTerm-isSubjectToTerm-Lot under ND-ExtendedDurationJustification" ;
+            rdfs:label "OPP-020-Contract" ;
+            rdfs:comment "Assets related contract extension indicator of MG-ContractTerm under ND-ExtendedDurationJustification" ;
             rr:predicate epo:describesAsset ;
             rr:objectMap
                 [

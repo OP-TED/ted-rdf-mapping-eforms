@@ -590,22 +590,6 @@ tedm:MG-Purpose_ND-PartAdditionalClassification a rr:TriplesMap ;
         ] ;
 .
 
-tedm:MG-ProcurementObject-foreseesProcurementObject-PlannedProcurementPart_ND-PartPerformanceAddress a rr:TriplesMap ;
-    rdfs:label "MG-ProcurementObject" ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Part']/cac:ProcurementProject";
-            rml:referenceFormulation ql:XPath
-        ];
-    rr:subjectMap
-        [
-            rdfs:label "ND-PartProcurementScope";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/PartProcurementObject${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}";
-            rr:class epo:ProcurementObject
-        ] ;
-.
-
 tedm:MG-ContractTerm-foreseesTerm-PlannedProcurementPart_ND-PartProcurementScope a rr:TriplesMap ;
     rdfs:label "MG-ContractTerm" ;
     rml:logicalSource
@@ -971,7 +955,7 @@ tedm:MG-Interval-hasPlannedPeriod-PlannedProcurementPart_ND-PartDuration a rr:Tr
     rr:subjectMap
         [
             rdfs:label "ND-PartDuration" ;
-            rml:reference "if ((exists(cbc:StartDate)) or (exists(cbc:EndDate)) or (exists(cbc:DescriptionCode))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/PartInterval$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rml:reference "if ((exists(cbc:StartDate)) or (exists(cbc:EndDate))) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/PartInterval$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
             rr:class time:Interval
         ] ;
     rr:predicateObjectMap

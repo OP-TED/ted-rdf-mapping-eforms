@@ -1931,6 +1931,40 @@ tedm:MG-langString-hasAdditionalInformation-Procedure_ND-ProcedureProcurementSco
     ] ;
     rdfs:label "MG-Procedure" .
 
+tedm:MG-langString-hasAdditionalInformation-PlannedProcurement_ND-ProcedureProcurementScope a rr:TriplesMap ;
+    rdfs:label "MG-PlannedProcurement" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProject/cbc:Note" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-ProcedureProcurementScope" ;
+        rml:reference "if (exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode[contains('1 2 3 4 5 6 E2', text())])) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/PlannedProcurement$' || replace(replace(replace(path(/*/cac:ProcurementProject), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+        rr:class epo:PlannedProcurement
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "BT-300-Procedure (PlannedProcurement)" ;
+        rdfs:comment "Additional information for PlannedProcurement" ;
+        rr:predicate epo:hasAdditionalInformation ;
+        rr:objectMap [
+            rml:reference "if(exists(@languageID)) then . else null" ;
+            rml:languageMap [
+                fnml:functionValue [
+                    rr:predicateObjectMap [
+                        rr:predicate idlab-fn:str ;
+                        rr:objectMap [ rml:reference "@languageID" ]
+                    ] ,
+                    tedm:idlab-fn_executes_lookup ,
+                    tedm:idlab-fn_inputFile_language ,
+                    tedm:idlab-fn_fromColumn_code ,
+                    tedm:idlab-fn_toColumn_code
+                ]
+            ] ;
+        ] ;
+    ]
+.
+
 tedm:MG-langString-hasCrossBorderLaw-ProcedureTerm-isSubjectToTerm-Procedure_ND-CrossBorderLaw a rr:TriplesMap ;
     rml:logicalSource [
         rml:source "data/source.xml" ;
@@ -1968,32 +2002,6 @@ tedm:MG-langString-hasCrossBorderLaw-ProcedureTerm-isSubjectToTerm-Procedure_ND-
         rdfs:label "BT-09(b)-Procedure" ;
     ] ;
     rdfs:label "MG-ProcedureTerm" .
-
-tedm:MG-LocalLegalBasisInformation_ND-LocalLegalBasisNoID a rr:TriplesMap ;
-    rdfs:label "MG-LocalLegalBasisInformation" ;
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/cac:TenderingTerms/cac:ProcurementLegislationDocumentReference[cbc:ID/text()='LocalLegalBasis']" ;
-            rml:referenceFormulation ql:XPath
-        ] ;
-    rr:subjectMap
-        [
-            rdfs:label "ND-LocalLegalBasisNoID" ;
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/LocalLegalBasisInformation${replace(translate(path(), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
-            rr:class epo:LocalLegalBasisInformation
-        ] ;
-    rr:predicateObjectMap
-        [
-            rdfs:label "BT-01(e)-Procedure" ;
-            rdfs:comment "Legal Basis of MG-LocalLegalBasisInformation under ND-LocalLegalBasisNoID" ;
-            rr:predicate epo:hasLegalBasis ;
-            rr:objectMap
-                [
-                    rr:constant <http://publications.europa.eu/resource/authority/legal-basis/other> ;
-                ] ;
-        ] ;
-.
 
 tedm:MG-Procedure-concernsProcurementElement-LocalLegalBasisInformation_ND-LocalLegalBasisNoID a rr:TriplesMap ;
     rdfs:label "MG-LocalLegalBasisInformation" ;

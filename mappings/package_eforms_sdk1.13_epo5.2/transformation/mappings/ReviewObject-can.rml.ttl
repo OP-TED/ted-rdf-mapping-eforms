@@ -1159,13 +1159,13 @@ tedm:MG-Identifier-relatesToEFormSectionIdentifier-ReviewInformation_ND-Appealed
     rml:logicalSource
         [
             rml:source "data/source.xml" ;
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation/efac:AppealedItem/cbc:ID" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Appeals/efac:AppealInformation/efac:AppealedItem" ;
             rml:referenceFormulation ql:XPath
         ] ;
     rr:subjectMap
         [
             rdfs:label "ND-AppealedItemReference" ;
-            rml:reference "if (exists(../..)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ReviewInformation$' || replace(replace(replace(path(../..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') || '/AppealedItem$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') || '/Identifier' else null" ;
+            rml:reference "'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ReviewInformation$' || replace(replace(replace(path(../..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') || '/AppealedItem$' || replace(replace(replace(path(), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') || '/Identifier'" ;
             rr:class adms:Identifier
         ] ;
     rr:predicateObjectMap
@@ -1176,7 +1176,7 @@ tedm:MG-Identifier-relatesToEFormSectionIdentifier-ReviewInformation_ND-Appealed
             rr:predicate skos:notation ;
             rr:objectMap
                 [
-                    rml:reference "." ;
+                    rml:reference "cbc:ID" ;
                 ] ;
         ] ;
     rr:predicateObjectMap
@@ -1187,7 +1187,7 @@ tedm:MG-Identifier-relatesToEFormSectionIdentifier-ReviewInformation_ND-Appealed
             rr:predicate epo:hasScheme ;
             rr:objectMap
                 [
-                    rml:reference "@schemeName" ;
+                    rml:reference "cbc:ID/@schemeName" ;
                 ] ;
         ] ;
 .
