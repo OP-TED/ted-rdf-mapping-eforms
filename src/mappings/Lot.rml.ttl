@@ -2791,21 +2791,7 @@ tedm:MG-ContractTerm-foreseesTerm-Lot_ND-TendererLegalForm a rr:TriplesMap ;
     #             ] ;
     #     ] ;
 .
-tedm:MG-ContractTerm-isSubjectToTerm-Lot_ND-ExtendedDurationJustification a rr:TriplesMap ;
-    rdfs:label "MG-ContractTerm";
-    rml:logicalSource
-        [
-            rml:source "data/source.xml" ;
-            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:SettledContract/efac:DurationJustification";
-            rml:referenceFormulation ql:XPath
-        ];
-    rr:subjectMap
-        [
-            rdfs:label  "ND-TendererLegalForm";
-            rml:reference "if(efbc:ExtendedDurationIndicator/text()='true') then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractTerm$' || replace(replace(replace(path(../..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
-            rr:class epo:ContractTerm
-        ] ;
- .
+
 tedm:MG-Lot_ND-ExtendedDurationJustification a rr:TriplesMap ;
     rdfs:label "MG-ContractTerm";
     rml:logicalSource
@@ -2816,25 +2802,25 @@ tedm:MG-Lot_ND-ExtendedDurationJustification a rr:TriplesMap ;
         ];
     rr:subjectMap
         [
-            rdfs:label  "ND-TendererLegalForm";
-#            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Lot/{../../efac:TenderLot/cbc:ID}" ;
-             rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Lot/{../../efac:LotTender/efac:TenderLot/cbc:ID}" ;            rr:class epo:Lot
+            rdfs:label "ND-ExtendedDurationJustification";
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/Lot/{../../efac:LotTender/efac:TenderLot/cbc:ID}" ;
+            rr:class epo:Lot
         ] ;
      rr:predicateObjectMap
         [
-            rdfs:label "ND-ExtendedDurationJustification" ;
-            rdfs:comment " of MG-Contract under ND-SettledContract" ;
-            rr:predicate  epo:isSubjectToTerm ;
-             rr:objectMap
+            rdfs:label "OPP-020-Contract (object)" ;
+            rdfs:comment "Connection between MG-ContractTerm and Lot under ND-ExtendedDurationJustification" ;
+            rr:predicate epo:isSubjectToTerm ;
+            rr:objectMap
                 [
                     rr:parentTriplesMap tedm:MG-ContractTerm-isSubjectToTerm-Lot_ND-ExtendedDurationJustification ;
-                    rr:joinCondition[
+                    rr:joinCondition [
                         rr:child "path(.)";
-                        rr:parent "path(.)"
+                        rr:parent "path(.)";
                     ];
                 ] ;
         ] ;
- .
+.
 
 tedm:MG-DesignContestRegimeTerm-isSubjectToTerm-Lot_ND-AwardingTerms a rr:TriplesMap ;
     rdfs:label "MG-DesignContestRegimeTerm";
@@ -6510,12 +6496,13 @@ tedm:MG-ContractTerm-isSubjectToTerm-Lot_ND-RevenueAllocation a rr:TriplesMap ;
     rr:subjectMap
         [
             rdfs:label "ND-RevenueAllocation";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTerm${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}";
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTermRevenueAllocation${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}";
             rr:class epo:ContractTerm
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "RevenueAllocation" ;
+            rdfs:label "OPP-032-Tender" ;
+            rdfs:comment "Revenues Allocation of MG-ContractTerm under ND-RevenueAllocation" ;
             rr:predicate epo:hasTicketsSalesRevenueAllocation ;
             rr:objectMap
                 [
@@ -6645,7 +6632,7 @@ tedm:MG-Lot_ND-RewardsPenalties a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "ND-RewardsPenalties";
+            rdfs:label "OPP-034-Tender (object)";
             rr:predicate epo:isSubjectToTerm ;
             rr:objectMap
                 [
@@ -6669,10 +6656,143 @@ tedm:MG-ContractTerm-isSubjectToTerm-Lot_ND-OtherContractExecutionConditions a r
     rr:subjectMap
         [
             rdfs:label "ND-OtherContractExecutionConditions";
-            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTerm${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}";
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTermOtherContractExecutionConditions${replace(translate(path(..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}";
             rr:class epo:ContractTerm
         ] ;
 .
+
+tedm:MG-langString-TermDescription-ContractTerm_ND-OtherContractExecutionConditions a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "data/source.xml" ;
+    rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender/efac:ContractTerm[not(efbc:TermCode/text()='all-rev-tic')][efbc:TermCode/@listName='contract-detail']/efbc:TermDescription" ;
+    rml:referenceFormulation ql:XPath ;
+  ] ;
+  rr:subjectMap [
+    rr:class epo:ContractTerm ;
+    rdfs:label "ND-OtherContractExecutionConditions" ;
+    rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTermOtherContractExecutionConditions${replace(translate(path(../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}";
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate epo:hasCompensationCostParametersDescription ;
+    rr:objectMap [
+      rml:reference "if(exists(@languageID) and ../efbc:TermCode[@listName='contract-detail']/text()='cost-comp') then . else null" ;
+      rml:languageMap [
+        fnml:functionValue [
+          rr:predicateObjectMap [
+            rr:predicate idlab-fn:str ;
+            rr:objectMap [
+              rml:reference "@languageID" ;
+            ] ;
+          ] ;
+          rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+          rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+          rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+          rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+        ] ;
+      ] ;
+      rdfs:comment "Language of Other Contract Execution Conditions Description of MG-ContractTerm under ND-OtherContractExecutionConditions" ;
+      rdfs:label "OPP-031-Tender-Language (cost-comp)" ;
+    ] ;
+    rdfs:comment "Other Contract Execution Conditions Description of MG-ContractTerm under ND-OtherContractExecutionConditions" ;
+    rdfs:label "OPP-031-Tender (cost-comp)" ;
+  ] ;
+    rr:predicateObjectMap [
+    rr:predicate epo:hasParticularConditionsDescription ;
+    rr:objectMap [
+      rml:reference "if(exists(@languageID) and ../efbc:TermCode[@listName='contract-detail']/text()='other') then . else null" ;
+      rml:languageMap [
+        fnml:functionValue [
+          rr:predicateObjectMap [
+            rr:predicate idlab-fn:str ;
+            rr:objectMap [
+              rml:reference "@languageID" ;
+            ] ;
+          ] ;
+          rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+          rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+          rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+          rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+        ] ;
+      ] ;
+      rdfs:comment "Language of Other Contract Execution Conditions Description of MG-ContractTerm under ND-OtherContractExecutionConditions" ;
+      rdfs:label "OPP-031-Tender-Language (other)" ;
+    ] ;
+    rdfs:comment "Other Contract Execution Conditions Description of MG-ContractTerm under ND-OtherContractExecutionConditions" ;
+    rdfs:label "OPP-031-Tender (other)" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate epo:hasGrantedExclusiveRightsDescription ;
+    rr:objectMap [
+      rml:reference "if(exists(@languageID) and ../efbc:TermCode[@listName='contract-detail']/text()='exc-right') then . else null" ;
+      rml:languageMap [
+        fnml:functionValue [
+          rr:predicateObjectMap [
+            rr:predicate idlab-fn:str ;
+            rr:objectMap [
+              rml:reference "@languageID" ;
+            ] ;
+          ] ;
+          rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+          rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+          rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+          rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+        ] ;
+      ] ;
+      rdfs:comment "Language of Other Contract Execution Conditions Description of MG-ContractTerm under ND-OtherContractExecutionConditions" ;
+      rdfs:label "OPP-031-Tender-Language (exc-right)" ;
+    ] ;
+    rdfs:comment "Other Contract Execution Conditions Description of MG-ContractTerm under ND-OtherContractExecutionConditions" ;
+    rdfs:label "OPP-031-Tender (exc-right)" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate epo:hasPublicServiceObligationsDescription ;
+    rr:objectMap [
+      rml:reference "if(exists(@languageID) and ../efbc:TermCode[@listName='contract-detail']/text()='publ-ser-obl') then . else null" ;
+      rml:languageMap [
+        fnml:functionValue [
+          rr:predicateObjectMap [
+            rr:predicate idlab-fn:str ;
+            rr:objectMap [
+              rml:reference "@languageID" ;
+            ] ;
+          ] ;
+          rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+          rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+          rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+          rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+        ] ;
+      ] ;
+      rdfs:comment "Language of Other Contract Execution Conditions Description of MG-ContractTerm under ND-OtherContractExecutionConditions" ;
+      rdfs:label "OPP-031-Tender-Language (publ-ser-obl)" ;
+    ] ;
+    rdfs:comment "Other Contract Execution Conditions Description of MG-ContractTerm under ND-OtherContractExecutionConditions" ;
+    rdfs:label "OPP-031-Tender (publ-ser-obl)" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate epo:hasSocialStandardsDescription ;
+    rr:objectMap [
+      rml:reference "if(exists(@languageID) and ../efbc:TermCode[@listName='contract-detail']/text()='soc-stand') then . else null" ;
+      rml:languageMap [
+        fnml:functionValue [
+          rr:predicateObjectMap [
+            rr:predicate idlab-fn:str ;
+            rr:objectMap [
+              rml:reference "@languageID" ;
+            ] ;
+          ] ;
+          rr:predicateObjectMap tedm:idlab-fn_executes_lookup ;
+          rr:predicateObjectMap tedm:idlab-fn_fromColumn_code ;
+          rr:predicateObjectMap tedm:idlab-fn_inputFile_language ;
+          rr:predicateObjectMap tedm:idlab-fn_toColumn_code ;
+        ] ;
+      ] ;
+      rdfs:comment "Language of Other Contract Execution Conditions Description of MG-ContractTerm under ND-OtherContractExecutionConditions" ;
+      rdfs:label "OPP-031-Tender-Language (soc-stand)" ;
+    ] ;
+    rdfs:comment "Other Contract Execution Conditions Description of MG-ContractTerm under ND-OtherContractExecutionConditions" ;
+    rdfs:label "OPP-031-Tender (soc-stand)" ;
+  ] ;  
+  rdfs:label "MG-ContractTerm" .
 
 tedm:MG-Lot_ND-OtherContractExecutionConditions a rr:TriplesMap ;
     rdfs:label "MG-Lot";
@@ -6690,7 +6810,7 @@ tedm:MG-Lot_ND-OtherContractExecutionConditions a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
-            rdfs:label "RewardsPenalties";
+            rdfs:label "OPP-031-Tender (object)";
             rr:predicate epo:isSubjectToTerm ;
             rr:objectMap
                 [
