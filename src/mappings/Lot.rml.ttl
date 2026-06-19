@@ -663,6 +663,19 @@ tedm:MG-Lot_ND-Lot a rr:TriplesMap ;
         ] ;
     rr:predicateObjectMap
         [
+            rdfs:label "OPT-070-Lot (object)";
+            rr:predicate epo:isSubjectToTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ContractTerm-isSubjectToTerm-Lot_ND-LotReservedExecution ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../..)";
+                    ];
+                ]
+        ] ;            
+    rr:predicateObjectMap
+        [
             rdfs:label "BT-743-Lot";
             rr:predicate epo:foreseesTerm ;
             rr:objectMap
@@ -3282,6 +3295,55 @@ tedm:MG-ContractTerm-foreseesTerm-Lot_ND-LotReservedExecution a rr:TriplesMap ;
                 ] ;
         ] ;
 .
+
+tedm:MG-ContractTerm-isSubjectToTerm-Lot_ND-LotReservedExecution a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm-isSubjectToTerm-Lot" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:ContractExecutionRequirement[cbc:ExecutionRequirementCode/@listName='reserved-execution']" ;
+            rml:referenceFormulation ql:XPath ;
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotReservedExecution" ;
+            rml:reference "if (exists(cbc:Description)) then 'http://data.europa.eu/a4g/resource/' || /*/cbc:ID[@schemeName='notice-id'] || '-' || /*/cbc:VersionID || '/ContractTerm$' || replace(replace(replace(path(../..), 'Q\\{[^}]+\\}', ''), '\\[([0-9]+)\\]', '$1'), '/', '_') else null" ;
+            rr:class epo:ContractTerm
+        ] ;
+.
+
+tedm:MG-langString-hasReservedExecutionJustification-ContractTerm-isSubjectToTerm-Lot_ND-LotReservedExecution a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm-isSubjectToTerm-Lot" ;
+    rml:logicalSource [
+        rml:source "data/source.xml" ;
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:ContractExecutionRequirement[cbc:ExecutionRequirementCode/@listName='reserved-execution']/cbc:Description" ;
+        rml:referenceFormulation ql:XPath ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-LotReservedExecution" ;
+        rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/ContractTerm${replace(translate(path(../../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+        rr:class epo:ContractTerm
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPT-070-Lot (value)" ;
+        rdfs:comment "Reserved Execution Justification for Lot (variant 1)" ;
+        rr:predicate epo:hasReservedExecutionJustification ;
+        rr:objectMap [
+            rml:reference "if(exists(@languageID)) then . else null" ;
+            rml:languageMap [
+                fnml:functionValue [
+                    rr:predicateObjectMap [
+                        rr:predicate idlab-fn:str ;
+                        rr:objectMap [ rml:reference "./@languageID" ]
+                    ] ,
+                    tedm:idlab-fn_executes_lookup ,
+                    tedm:idlab-fn_inputFile_language ,
+                    tedm:idlab-fn_fromColumn_code ,
+                    tedm:idlab-fn_toColumn_code
+                ]
+            ] ;
+        ] ;
+    ] .
 
 tedm:MG-ContractTerm-foreseesTerm-Lot_ND-LotEInvoicing a rr:TriplesMap ;
     rdfs:label "MG-ContractTerm";
