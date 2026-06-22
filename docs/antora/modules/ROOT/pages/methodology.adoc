@@ -112,15 +112,16 @@ where:
 
 The following are some examples of exceptions to the rule:
 
-1. `epo:AgentInRole` instances, which
-https://github.com/OP-TED/ted-rdf-mapping-eforms/issues/31[require a carefully
-constructed URI] seeded with information about the related party (a
-`foaf:Agent`).
+1. Some `epo:AgentInRole` instances, which https://github.com/OP-TED/ted-rdf-mapping-eforms/issues/31[require a carefully constructed URI] seeded with information about the related party (a `foaf:Agent`). Currently, only the Subcontractor role is represented in this way, combining the TenderingParty's ID with the Subcontractor's (because the same organization can play the subcontractor role in different tenders).
 
 2. `epo:AwardDecision` instances, which have a trailer based on the `cbc:AwardDate` to yield the same instance for awards on the same date across possibly repeating elements.
 
 3. External resources that cannot be identified, such as the Framework
 Agreement contract representing `OPT-100-Contract Framework Notice Identifier`, for whom a proxy `epo:FrameworkAgreement` is created _without_ a trailer.
+
+4. Some cases of the Identifier, where a re-encoded and normalized XPath is used instead of an ID value, resulting in the scheme `{ns-notice}/{parent-class}/Identifier${reencoded-xpath}`. This is because the value may be too descriptive in practice, or it is of a deeply nested external entity, which may risk conflation with other entities of the same class that have the same ID value but different contexts.
+
+5. Some cases of the trailer where there is a need to concatenate a re-encoded and normalized XPath with an ID value, to ensure uniqueness, resulting in the scheme `{ns-notice}/{concept}${reencoded-xpath}{id-value}`. One example of this is `epo:AccessTerm` instances related to procurement documents.
 
 [NOTE]
 ====
