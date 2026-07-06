@@ -410,3 +410,49 @@ tedm:MG-LotAwardOutcome_ND-PayerParty a rr:TriplesMap ;
 #                ] ;
 #        ] ;
 .
+
+# BT-685-LotResult: International Procurement Instrument Measures Information
+tedm:MG-InternationalProcurementInstrumentMeasuresInformation_ND-IPILotResult a rr:TriplesMap ;
+    rdfs:label "MG-InternationalProcurementInstrumentMeasuresInformation" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:StrategicProcurement[efac:StrategicProcurementInformation/efac:AppliedMeasure/efbc:MeasureCode/@listName='international-procurement-instrument-measure']/efac:StrategicProcurementInformation/efac:AppliedMeasure" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-IPILotResult" ;
+            rr:template "http://data.europa.eu/a4g/resource/{/*/cbc:ID[@schemeName='notice-id']}-{/*/cbc:VersionID}/InternationalProcurementInstrumentMeasuresInformation${replace(translate(path(../../..), concat(codepoints-to-string(123), codepoints-to-string(125), '/[]'), '  _'), 'Q .*? ', '')}" ;
+            rr:class epo:InternationalProcurementInstrumentMeasuresInformation
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "concernsLotAwardOutcome" ;
+            rdfs:comment "Connection from InternationalProcurementInstrumentMeasuresInformation to LotAwardOutcome" ;
+            rr:predicate epo:concernsLotAwardOutcome ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-LotAwardOutcome_ND-LotResult ;
+                    rr:joinCondition [
+                        rr:child "path(../../../.)" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-685-LotResult" ;
+            rdfs:comment "Specific IPI Measure of MG-InternationalProcurementInstrumentMeasuresInformation under ND-IPILotResult" ;
+            rr:predicate epo:concernsInternationalProcurementInstrumentMeasure ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:international-procurement-instrument-measure" ;
+                    rr:parentTriplesMap tedm:international-procurement-instrument-measure ;
+                    rr:joinCondition [
+                        rr:child "efbc:MeasureCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+.
