@@ -16,7 +16,7 @@ This repository provides mappings between [eForms SDK](https://github.com/OP-TED
 The artefacts provided in this repository are used by the [TED-SWS system](https://docs.ted.europa.eu/ODS/latest/index.html). They are provided in the [mappings](./mappings) folder and are organised in packages called [Mapping Suites](https://docs.ted.europa.eu/ODS/latest/mapping_eforms/package_structure.html).
 
 This project is under development. The current scope of this project includes the mapping of:
-- all notice subtypes except X01 and X02, according to **eForms SDK versions 1.3 to 1.13**0, **_excluding_** the information **encoded in privacy fields** (represented by BT IDs `BT-195`, `BT-196`, `BT-197` and `BT-198`)
+- all notice subtypes except X01 and X02, according to **eForms SDK versions 1.3 to 1.14**0, **_excluding_** the information **encoded in privacy fields** (represented by BT IDs `BT-195`, `BT-196`, `BT-197` and `BT-198`)
 
 The official documentation of this project [is available here](http://docs.ted.europa.eu/ted-rdf-mapping-eforms/index.html) and will be integrated into the [TED Semantic Web Service Project Documentation](https://docs.ted.europa.eu/ODS/latest/).
 
