@@ -393,4 +393,12 @@ codeList/id modified to ""language"" (generalization) from SDK 1.12 onwards.
 |sh:MaxCountConstraintComponent epo:hasRecurrenceDescription known issue about multiple values with language tags
 |sh:MaxCountConstraintComponent locn:fullAddress when reported in multilingual notices (e.g. the SDK example cn_24_multilingual), known issue about multiple values with language tags
 |sh:MaxCountConstraintComponent skos:prefLabel known issue about multiple values with language tags
+|sh:MinCountConstraintComponent epo:hasProcurementScopeDividedIntoLot Incomplete info related to previous notice data: Previous epo:Procedure instances referenced in this notice will not have all the fields declared as mandatory in ePO
+|sh:ClassConstraintComponent epo:refersToPrevious OK inference issue
+|sh:DatatypeConstraintComponent epo:hasDecisionDate known type conflict issue in ePO (expects dateTime but reality is date) generally
+|sh:MinCountConstraintComponent epo:resolvesReviewRequest This property does not contain a mapping rule or an RML condition. It is the equivalent of ‘answersReviewRequest’ in epo 5.2 which is succesfullly mapped.
+|sh:DatatypeConstraintComponent epo:hasRequestDate known type conflict issue in ePO (expects dateTime but reality is date) generally
+|sh:MinCountConstraintComponent epo:hasNumberOfReviewRequests Modelling problem (ePO/eForms): this property is not mapped from any of the eForms fields. Consider relaxing the cardinality of the property
+|sh:MinCountConstraintComponent epo:concernsGreenProcurement Missing rml condition
+|sh:MinCountConstraintComponent skos:notation There is a potential mismatch in the RML subject condition. The RML creates a ProcedureIdentifier even when ContractFolderID is absent, while skos:notation can only be produced when ContractFolderID exists. We should next determine whether the intended mapping is to not create the ProcedureIdentifier when BT-04/ContractFolderID is absent, or whether there is some other reason the RML deliberately creates it.
 |===
